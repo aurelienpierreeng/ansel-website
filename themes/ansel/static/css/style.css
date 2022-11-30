@@ -1,0 +1,190 @@
+body { background-color: #f2f2f2!important; }
+
+.nav-item { padding: 0 1rem; }
+
+#content {
+  text-align: justify;
+  text-rendering : geometricprecision;
+  font-kerning: normal;
+  hyphens: auto;
+}
+
+.no-hyphenation { hyphens: none; }
+.text-left { text-align: left; }
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.b-example-divider {
+  margin: 3rem 0;
+  height: 3rem;
+  width: 100%
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.feather-16{
+  width: 16px;
+  height: 16px;
+}
+
+.feather-24{
+  width: 24px;
+  height: 24px;
+}
+
+.feather-32{
+  width: 32px;
+  height: 32px;
+}
+
+.feather-16{
+  width: 16px;
+  height: 16px;
+}
+
+.feather-24{
+  width: 24px;
+  height: 24px;
+}
+
+.feather-138{
+  width: 138px;
+  height: 138px;
+}
+
+/* Image comparison slider, aka fifty-fifty */
+/* From https://www.w3schools.com/howto/howto_js_image_comparison.asp */
+.img-comp-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 16px 0px rgba(56, 86, 122, 0.6);
+  overflow: hidden;
+}
+
+.img-comp-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+}
+
+.img-comp-over {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  z-index: 2;
+}
+
+.img-comp-under {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.comp-cursor {
+  position: absolute;
+  z-index: 9;
+  cursor: ew-resize;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.comp-cursor-button {
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.comp-cursor-line {
+  width: 2px;
+  flex-grow: 1;
+  background-color: #fff;
+}
+
+.img-comp-container .label {
+  position: absolute;
+  top: 1rem;
+  z-index: 1;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.33);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  text-align: center;
+  letter-spacing: 1px;
+  user-select: none;
+  opacity: 0;
+  transition: 0.25s cubic-bezier(.68,.26,.58,1.22);
+}
+
+.img-comp-container:hover .label {
+  opacity: 1;
+}
+
+.img-comp-container .label.label-before {
+  left: 1rem;
+}
+
+.img-comp-container .label.label-after {
+  right: 1rem;
+}

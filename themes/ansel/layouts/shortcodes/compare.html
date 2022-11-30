@@ -1,0 +1,24 @@
+{{ if .IsNamedParams }}
+  <figure>
+    <div class="img-comp-container">
+      <div class="img-comp-under">
+        <span class="label label-after">After</span>
+        <img src="{{ .Get "after" }}" alt="after">
+      </div>
+      <div class="img-comp-over">
+        <span class="label label-before">Before</span>
+        <img src="{{ .Get "before"}}" alt="before">
+      </div>
+    </div>
+
+  {{ if .Inner }}
+    <figcaption class="text-left pt-2">
+      <p class="text-left">
+        {{ .Inner}}
+      </p>
+    </figcaption>
+  {{ end}}
+
+  </figure>
+
+{{ end }}

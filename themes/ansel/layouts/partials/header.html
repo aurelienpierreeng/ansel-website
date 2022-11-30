@@ -1,0 +1,25 @@
+<nav id="nav" class="navbar fixed-top navbar-dark bg-dark">
+  <div class="container container-fluid">
+      <a class="navbar-brand mb-0 h1">
+        <img src="https://raw.githubusercontent.com/Aurelien-Pierre/R-Darktable/master/data/pixmaps/scalable/darktable.svg" alt="Ansel" width="32" height="32" class="d-inline-block align-text-top">
+        {{ .Site.Title }}
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarNav"></div>
+        <ul class="navbar-nav flex-row  mb-1">
+          {{ range .Site.Menus.main }}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ .URL }}">
+              {{ if .Pre }}
+              {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
+              {{ $icon }}
+              {{ end }}
+              {{ $text := print .Name | safeHTML }}
+              {{ $text }}
+              </a>
+            </li>
+          {{ end }}
+          </ul>
+      </div>
+    </div>
+</nav>

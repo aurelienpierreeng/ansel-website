@@ -1,0 +1,32 @@
+baseURL = 'https://ansel.io/'
+languageCode = 'en-us'
+title = 'Ansel'
+theme = 'ansel'
+
+[menu]
+  [[menu.main]]
+    name = "Workflows"
+    pre = "tool"
+    url = "/workflows/"
+    weight = 1
+
+  [[menu.main]]
+    name = "News"
+    pre = "rss"
+    url = "/news/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Support"
+    pre = "user"
+    url = "/support/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Documentation"
+    pre = "book"
+    url = "/doc/"
+    weight = 3
+
+[markup.goldmark.renderer]
+unsafe= true
