@@ -1,3 +1,11 @@
+/*
+ * Client-side comparison slider for images.
+ * Loosely based on https://codepen.io/Coding_Journey/pen/QWdQraQ and
+ * https://www.w3schools.com/howto/howto_js_image_comparison.asp.
+ *
+ * Copyright © 2022 - Aurélien Pierre.
+ */
+
 function initComparisons() {
   var x, i;
   /* Find all elements with an "overlay" class and add the events */

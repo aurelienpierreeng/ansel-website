@@ -2,7 +2,6 @@
 title: "Photo-editing software for artists."
 date: 2022-11-27T22:36:34+01:00
 draft: false
-featured_image: '/images/gohugo-default-sample-hero-image.jpg'
 ---
 
 <div class="px-4 pt-5 my-5 text-center">
@@ -40,15 +39,8 @@ featured_image: '/images/gohugo-default-sample-hero-image.jpg'
 <div class="b-example-divider"></div>
 
 <div class="container text-center">
+  <h2>Downloads</h2><hr>
 
-## Downloads
-
-<hr>
-
-
-</div>
-
-<div class="container text-center">
   <div class="row align-items-start">
     <div class="col">
       <img src="img/Tux.svg" class="col" height="80">
@@ -88,27 +80,23 @@ featured_image: '/images/gohugo-default-sample-hero-image.jpg'
 <div class="b-example-divider"></div>
 
 <div class="container text-center">
-
-## Why Ansel ?
-
-<hr>
-
+  <h2>Why Ansel ?</h2><hr>
 </div>
 
 <div class="container">
-<div class="row align-items-start">
-<div class="col">
-
-Many solutions already exist to produce ready-to-consume photographs for masses, from smartphones filters to out-of-cameras JPEGs, followed recently by AI-driven automagic applying ~~caricatural~~ dramatic toy filters. These make photography easier than ever, but are the produced images really **your** images and, in any case, the images **you** expected ?
-
-</div>
-<div class="col">
-
-Pressing the camera shutter merely started a process ending when the on-screen picture looks like the one you had in mind. _Ansel_ proposes to put the artists back at the center of the creative process and enables them with an interface to manipulate images with precision and nuance, using state-of-the-art color science and independent color controls.
-
-</div>
-</div>
-<hr>
+  <div class="row align-items-start">
+    <div class="col">
+      <p>
+        Many solutions already exist to produce ready-to-consume photographs for masses, from smartphones filters to out-of-cameras JPEGs, followed recently by AI-driven automagic applying  <del>caricatural</del> dramatic toy filters. These make photography easier than ever, but are the produced images really <strong>your</strong> images and, in any case, the images <strong>you</strong> expected ?
+      </p>
+    </div>
+    <div class="col">
+      <p>
+        Pressing the camera shutter merely started a process ending when the on-screen picture looks like the one you had in mind. <em>Ansel</em> proposes to put the artists back at the center of the creative process and enables them with an interface to manipulate images with precision and nuance, using state-of-the-art color science and independent color controls.
+      </p>
+    </div>
+  </div>
+  <hr>
 </div>
 
 <div class="px-4 my-5 text-center">
@@ -118,17 +106,11 @@ Pressing the camera shutter merely started a process ending when the on-screen p
 <div class="b-example-divider"></div>
 
 <div class="container text-center">
-
-## What can Ansel for you ?
-
-<hr>
-
+  <h2>What can Ansel for you ?</h2><hr>
 </div>
 
 <div class="container">
-
-### Color work
-
+  <h3>Color work</h3>
 </div>
 
 <div class="container text-center">
@@ -153,30 +135,76 @@ Pressing the camera shutter merely started a process ending when the on-screen p
           Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
       {{</ compare >}}
     </div>
+    <div class="col">
+      <h4>Hue qualifying and keying</h4>
+      {{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+          Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+      {{</ compare >}}
+    </div>
   </div>
 </div>
 
-### Tonal work
+<div class="container">
+  <h3>Tonal work</h3>
+</div>
 
-#### HDR images
+<div class="container text-center">
+  <div class="row align-items-start">
+    <div class="col">
+      <h4>HDR tone mapping</h4>
+      {{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+          Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+      {{</ compare >}}
+    </div>
+    <div class="col">
+      <h4>Zone-system editing</h4>
+      {{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+          Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+      {{</ compare >}}
+    </div>
+  </div>
+</div>
 
-#### Zone-system editing
+<div class="container">
+  <h3>Image reconstruction</h3>
+</div>
 
-### Image reconstruction
-
-#### Deblurring
-
-#### Dehazing
-
-#### Denoising
+<div class="container text-center">
+  <div class="row align-items-start">
+    <div class="col">
+      <h4>Lens deblurring</h4>
+      {{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+          Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+      {{</ compare >}}
+    </div>
+    <div class="col">
+      <h4>Dehazing</h4>
+      {{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+          Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+      {{</ compare >}}
+    </div>
+  </div>
+  <div class="row align-items-start">
+    <div class="col">
+      <h4>Denoising</h4>
+      {{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+          Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+      {{</ compare >}}
+    </div>
+    <div class="col">
+      <h4>Highlights reconstruction</h4>
+      {{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+          Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+      {{</ compare >}}
+    </div>
+  </div>
+</div>
 
 ### Advanced features
 
 #### Masking and blending
 
 #### Censoring
-
-#### Shortcuts
 
 ### Film scans
 
