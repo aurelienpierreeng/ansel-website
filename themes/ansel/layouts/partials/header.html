@@ -1,12 +1,11 @@
-<nav id="nav" class="navbar fixed-top navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-sm">
   <div class="container container-fluid">
       <a class="navbar-brand mb-0 h1">
         <img src="https://raw.githubusercontent.com/Aurelien-Pierre/R-Darktable/master/data/pixmaps/scalable/darktable.svg" alt="Ansel" width="32" height="32" class="d-inline-block align-text-top">
         {{ .Site.Title }}
       </a>
 
-      <div class="collapse navbar-collapse" id="navbarNav"></div>
-        <ul class="navbar-nav navbar-dark flex-row  mb-1">
+        <ul class="navbar-nav navbar-collapse navbar-dark flex-row justify-content-end">
           {{ range .Site.Menus.main }}
             <li class="nav-item">
               <a class="nav-link" href="{{ .URL }}">
@@ -20,6 +19,5 @@
             </li>
           {{ end }}
           </ul>
-      </div>
-    </div>
+  </div>
 </nav>
