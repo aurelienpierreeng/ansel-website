@@ -1,5 +1,8 @@
-baseURL = 'https://ansel.io/'
+baseURL = 'https://ansel.photos/'
 languageCode = 'en-us'
+defaultContentLanguage = 'en'
+
+copyright = 'Everything is mine'
 title = 'Ansel'
 theme = 'ansel'
 
@@ -30,3 +33,14 @@ theme = 'ansel'
 
 [markup.goldmark.renderer]
 unsafe= true
+
+[languages]
+  [languages.en]
+    title = 'Ansel'
+    weight = 1
+  [languages.fr]
+    title = 'Ansel'
+    weight = 2
+
+[taxonomies]
+  tag = 'tags'
