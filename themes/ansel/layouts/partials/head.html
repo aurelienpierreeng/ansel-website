@@ -1,56 +1,62 @@
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="https://github.com/Aurelien-Pierre/Ansel/raw/master/data/pixmaps/idbutton.png">
-  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://github.com/Aurelien-Pierre/Ansel/raw/master/data/pixmaps/idbutton.png">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.min.css">
 
-  {{ $title := "" }}
-  {{ if .IsHome }}
-    {{ $title = .Site.Title }}
-  {{ else }}
-    {{ $title = print .Site.Title " | " .Title }}
-  {{ end }}
-  <title>{{ $title }}</title>
+{{ $title := "" }}
+{{ if .IsHome }}
+{{ $title = .Site.Title }}
+{{ else }}
+{{ $title = print .Site.Title " | " .Title }}
+{{ end }}
+<title>{{ $title }}</title>
 
-  <meta name="author" content="{{ index .Site.Author "name" }}"/>
+<meta name="author" content="{{ index .Site.Author "name" }}"/>
 
-  {{ if .Params.description }}
-    <meta name="description" content="{{ .Params.description | safeHTML }}">
-  {{ else if .Summary }}
-    <meta name="description" content="{{ .Summary | safeHTML }}">
-  {{ else }}
-    <meta name="description" content="{{ .Title | safeHTML }}">
-  {{ end }}
+{{ $description := "" }}
+{{ if .Params.description }}
+{{ $description = .Params.description | safeHTML }}
+{{ else if .Summary }}
+{{ $description = .Summary| safeHTML }}
+{{ else }}
+{{ $description = .Title | safeHTML }}
+{{ end }}
 
-  <meta name="robots" content="index,follow"/>
-  <!--<link rel="alternate" href="http://example.com" hreflang="en-us" />-->
+<meta name="description" content="{{ $description }}">
 
-  {{ $href := print (absLangURL .RelPermalink)}}
+<meta name="robots" content="index,follow"/>
+<!--<link rel="alternate" href="http://example.com" hreflang="en-us" />-->
 
-  {{ if .IsPage }}
-    <link rel="canonical" href="{{ $href }}" >
-  {{ end }}
+{{ $href := print (absLangURL .RelPermalink)}}
 
-  <meta property="og:title" content="{{ .Title | safeHTML }}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="{{ $href }}" />
-  <meta property='og:site_name' content="{{ .Site.Title }}" />
-  {{ if .Params.thumbnail }}
-  <meta property="og:image" content="{{ .Params.thumbnail }}" />
-  {{ end }}
+{{ if .IsPage }}
+<link rel="canonical" href="{{ $href }}" >
+{{ end }}
 
-  <meta property="article:author" content="{{ index .Site.Author "profile" }}">
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ .Title | safeHTML }}" />
+<meta property="og:url" content="{{ $href }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
 
-  <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02" }}">
-  {{ if .Lastmod }}
-    <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
-  {{ end }}
+{{ if .Params.thumbnail }}
+<meta property="og:image" content="{{ .Params.thumbnail }}" />
+{{ end }}
+<meta property="og:description" content="{{ $description }}">
 
-  {{ with .Params.tags }}
-    {{ range . }}
-      <meta property="article:tag" content="{{ . }}" />
-    {{ end }}
-  {{ end }}
+<meta property="article:author" content="{{ index .Site.Author "url" }}">
+<meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02" }}">
 
+{{ if .Lastmod }}
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
+{{ end }}
+
+{{ with .Params.tags }}
+{{ range . }}
+<meta property="article:tag" content="{{ . }}" />
+{{ end }}
+{{ end }}
+
+<meta property="article:section" content="{{ .Section }}">
 </head>

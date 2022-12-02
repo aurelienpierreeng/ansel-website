@@ -8,6 +8,7 @@ theme = 'ansel'
 [author]
   name = 'Aurélien Pierre'
   GitHubUser = 'aurelienpierre'
+  url = "https://aurelienpierre.com"
 
 [menu]
   [[menu.main]]
