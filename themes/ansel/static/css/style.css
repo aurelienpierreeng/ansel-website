@@ -1,5 +1,10 @@
 body { background-color: #f2f2f2!important; }
 
+html, body {
+  scroll-padding-top: 75px;
+  scroll-behavior: smooth;
+}
+
 .nav-item { padding: 0 1rem; }
 
 #content {
@@ -19,11 +24,22 @@ body { background-color: #f2f2f2!important; }
 .no-hyphenation { hyphens: none; }
 .text-left { text-align: left; }
 
+#toc {
+	position: sticky;
+	top: calc(75px + var(--bs-card-spacer-y));
+	align-self: start;
+}
+
 #TableOfContents ul {
   list-style: none;
   display: list-item;
   margin: 0;
   padding: 0;
+}
+
+#TableOfContents a {
+  text-decoration: none;
+  color: #6c757d; /* Bootstrap "muted" text color */
 }
 
 #TableOfContents ul li ul {
@@ -33,6 +49,11 @@ body { background-color: #f2f2f2!important; }
 
 #TableOfContents ul li ul li {
   list-style:square;
+}
+
+#TableOfContents li.active a {
+  font-weight: 600;
+  color: black!important;
 }
 
 div.mermaid {
