@@ -1,10 +1,13 @@
 baseURL = 'https://ansel.photos/'
 languageCode = 'en-us'
 defaultContentLanguage = 'en'
-
-copyright = 'Everything is mine'
+copyright = '© Copyright 2022 – Aurélien Pierre'
 title = 'Ansel'
 theme = 'ansel'
+
+[author]
+  name = 'Aurélien Pierre'
+  GitHubUser = 'aurelienpierre'
 
 [menu]
   [[menu.main]]
