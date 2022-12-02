@@ -36,21 +36,20 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{ $href }}" />
   <meta property='og:site_name' content="{{ .Site.Title }}" />
-
-  <meta property="og:article:author" content="{{ index .Site.Author "profile" }}">
-
   {{ if .Params.thumbnail }}
-    <meta property="og:image" content="{{ .Params.thumbnail }}" />
+  <meta property="og:image" content="{{ .Params.thumbnail }}" />
   {{ end }}
 
-  <meta property="og:article:published_time" content="{{ .PublishDate.Format "2006-01-02" }}">
+  <meta property="article:author" content="{{ index .Site.Author "profile" }}">
+
+  <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02" }}">
   {{ if .Lastmod }}
-    <meta property="og:article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
+    <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
   {{ end }}
 
   {{ with .Params.tags }}
     {{ range . }}
-      <meta property="og:article:tag" content="{{ . }}" />
+      <meta property="article:tag" content="{{ . }}" />
     {{ end }}
   {{ end }}
 
