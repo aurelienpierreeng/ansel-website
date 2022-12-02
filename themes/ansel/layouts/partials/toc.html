@@ -1,8 +1,10 @@
 {{ if and (gt .WordCount 3 ) (.Params.toc) }}
   <aside class="col-sm-2 flex-column">
-    <header>
-      <h2>In this page</h2>
-    </header>
-    {{ .TableOfContents }}
+    <div id="toc" class="card">
+      <div class="card-body">
+        <h2 class="card-title fs-5">Contents</h2>
+        {{ .TableOfContents }}
+      </div>
+    </div>
   </aside>
 {{ end }}

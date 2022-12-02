@@ -19,6 +19,22 @@ body { background-color: #f2f2f2!important; }
 .no-hyphenation { hyphens: none; }
 .text-left { text-align: left; }
 
+#TableOfContents ul {
+  list-style: none;
+  display: list-item;
+  margin: 0;
+  padding: 0;
+}
+
+#TableOfContents ul li ul {
+  margin: 0;
+  padding: 0 0 0 1rem;
+}
+
+#TableOfContents ul li ul li {
+  list-style:square;
+}
+
 div.mermaid {
   margin: 1rem auto;
   width: fit-content;
