@@ -4,6 +4,7 @@
 <link rel="icon" type="image/png" href="https://github.com/Aurelien-Pierre/Ansel/raw/master/data/pixmaps/idbutton.png">
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.min.css">
+<link rel="sitemap" href="/sitemap.xml" />
 
 {{ $title := "" }}
 {{ if .IsHome }}
@@ -25,8 +26,9 @@
 {{ end }}
 
 <meta name="description" content="{{ $description }}">
-
 <meta name="robots" content="index,follow"/>
+<meta name="copyright" content="{{ .Site.Copyright }}"/>
+
 <!--<link rel="alternate" href="http://example.com" hreflang="en-us" />-->
 
 {{ $href := print (absLangURL .RelPermalink)}}
