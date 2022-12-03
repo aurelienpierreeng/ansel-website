@@ -23,6 +23,7 @@ html, body {
 
 .no-hyphenation { hyphens: none; }
 .text-left { text-align: left; }
+.post-title { text-align: left; }
 
 #toc {
 	position: sticky;
@@ -122,14 +123,17 @@ div.mermaid {
 
 .comp-cursor-button {
   /*set the appearance of the slider:*/
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background: transparent;
   border: 2px solid #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  color: #fff;
+  font-size: 18px;
+  font-weight: thin;
 }
 
 .comp-cursor-line {
