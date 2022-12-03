@@ -1,4 +1,4 @@
-<script src="/js/fifty-fifty.min.js"></script>
+<script src="/js/fifty-fifty.min.js?ver=1.0.0"></script>
 <script>
   window.onload = function() {
       //dom not only ready, but everything is loaded
@@ -8,7 +8,7 @@
 <script src="/js/bootstrap.bundle.min.js"></script>
 
 {{ if .Page.Store.Get "hasMermaid" }}
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="/js/mermaid.min.js?ver=9.1.6"></script>
   <script>
     mermaid.initialize({ startOnLoad: true,
                          theme: "neutral",
@@ -47,7 +47,7 @@
         }
     };
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+  <script src="/js/tex-svg.js?ver=3.2.2" async></script>
 {{ end }}
 
-<script src="/js/scripts.min.js"></script>
+<script src="/js/scripts.min.js?ver=1.0.0"></script>

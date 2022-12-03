@@ -65,7 +65,7 @@ div.mermaid {
 .b-example-divider {
   margin: 3rem 0;
   height: 3rem;
-  width: 100%
+  width: 100%;
   background-color: rgba(0, 0, 0, .1);
   border: solid rgba(0, 0, 0, .15);
   border-width: 1px 0;
@@ -88,6 +88,7 @@ div.mermaid {
   display: block;
   width: 100%;
   height: auto;
+
   object-fit: cover;
   pointer-events: none;
   user-select: none;
