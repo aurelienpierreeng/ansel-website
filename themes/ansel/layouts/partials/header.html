@@ -10,7 +10,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ .URL }}">
               {{ if .Pre }}
-              {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
+              {{ $icon := printf "<i class=\"%s\"></i> " .Pre | safeHTML }}
               {{ $icon }}
               {{ end }}
               {{ $text := print .Name | safeHTML }}

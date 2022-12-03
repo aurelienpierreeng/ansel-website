@@ -16,9 +16,6 @@ function initComparisons() {
     compareImages(x[i]);
   }
 
-  // Run feather icons for chevrons
-  feather.replace({ 'stroke-width': 3, 'color': '#fff' });
-
   function set_heights(slider) {
     /* Sliders use 100% of column width and auto-adjust their height.
     We need to anchor the height of everything to the one of the smallest image */
@@ -54,7 +51,7 @@ function initComparisons() {
     /* Create cursor */
     cursor = document.createElement("DIV");
     cursor.setAttribute("class", "comp-cursor");
-    cursor.innerHTML = "<div class='comp-cursor-line'></div><div class='comp-cursor-button'><i data-feather='chevron-left'></i><i data-feather='chevron-right'></i></div><div class='comp-cursor-line'>";
+    cursor.innerHTML = "<div class='comp-cursor-line'></div><div class='comp-cursor-button'><i class='fas fa-chevron-left'></i><i class='fas fa-chevron-right'></i></div><div class='comp-cursor-line'></div>";
 
     /* Insert slider */
     over.parentElement.insertBefore(cursor, over);

@@ -13,25 +13,25 @@ theme = 'ansel'
 [menu]
   [[menu.main]]
     name = "Workflows"
-    pre = "tool"
+    pre = "fas fa-paint-roller"
     url = "/workflows/"
     weight = 1
 
   [[menu.main]]
     name = "News"
-    pre = "rss"
+    pre = "fas fa-newspaper"
     url = "/news/"
     weight = 2
 
   [[menu.main]]
     name = "Support"
-    pre = "user"
+    pre = "fas fa-hands-helping"
     url = "/support/"
     weight = 3
 
   [[menu.main]]
     name = "Documentation"
-    pre = "book"
+    pre = "fas fa-book"
     url = "/doc/"
     weight = 3
 
@@ -52,5 +52,5 @@ unsafe= true
 [markup]
   [markup.tableOfContents]
     startLevel = 2
-    endLevel = 5
+    endLevel = 3
     ordered = false
