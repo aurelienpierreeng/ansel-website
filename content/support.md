@@ -4,7 +4,7 @@ date: 2022-12-04T02:19:02+01:00
 draft: false
 ---
 
-I try my best to help everyone but there are limits I crossed in the past *(working 60h/week or debugging in bed at 2 am)* that I'm not willing to cross again. Please remember that :
+I try my best to help everyone but there are limits I crossed in the past *(working 60 h/week or debugging in bed at 2 am)* that I'm not willing to cross again. Please remember that :
 
 1. photography might be your hobby but it is my job,
 2. there is one of me and many of you,
@@ -55,7 +55,7 @@ Please upload your files on my [private cloud](https://cloud.apmlt.net/s/YAdfYaj
 
 ## Getting premium user support
 
-Don't stay alone with your problems and directly book the developer to get personalized solutions.
+Don't stay alone with your problems and directly book the developer to get personalized solutions. Support is given through video-conferencing with screen-sharing.
 
 {{% row %}}
 {{% card title="Emergency support" icon="ambulance" %}}
@@ -67,9 +67,9 @@ Don't stay alone with your problems and directly book the developer to get perso
 {{% /card %}}
 {{% /row %}}
 
-## Developper support
+## Developer support
 
-If you are considering joining forces for dev and debug, here is how I work.
+If you are considering joining forces for development and debugging, here is how I work.
 
 {{% row %}}
 {{% card title="Guidelines" icon="code-branch" %}}

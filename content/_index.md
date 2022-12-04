@@ -3,6 +3,7 @@ title: "Photo-editing software for artists"
 date: 2022-11-27T22:36:34+01:00
 draft: false
 description: "Ansel is an open-source raw photo editor for artists"
+thumbnail: "https://user-images.githubusercontent.com/45535283/"
 ---
 
 <div class="px-4 pt-5 my-5 text-center">

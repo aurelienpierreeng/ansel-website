@@ -3,6 +3,7 @@ title: "Logiciel de traitement photo pour artistes"
 date: 2022-11-27T22:36:34+01:00
 draft: false
 description: "Ansel est un éditeur de photos brutes pour artistes"
+thumbnail: "https://user-images.githubusercontent.com/45535283/"
 ---
 
 <div class="px-4 pt-5 my-5 text-center">
