@@ -2,13 +2,13 @@
 title: "Photo-editing software for artists."
 date: 2022-11-27T22:36:34+01:00
 draft: false
-description: "Ansel is an open-source raw photo editor for artists"
+description: "Ansel est un éditeur de photos brutes pour artistes"
 ---
 
 <div class="px-4 pt-5 my-5 text-center">
-  <h1 class="display-4 fw-bold">Your digital darkroom</h1>
+  <h1 class="display-4 fw-bold">Votre chambre noire numérique</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4"><em>Ansel</em> is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs.</p>
+    <p class="lead mb-4"><em>Ansel</em> est un logiciel libre de traitement photo pour artistes digitaux, conçu pour vous aider à obtenir votre propre interprétation de photos numériques brutes.</p>
   </div>
   <div class="overflow-hidden" style="max-height: 70vh;">
     <div class="container px-5">
@@ -21,12 +21,12 @@ description: "Ansel is an open-source raw photo editor for artists"
 
 {{% row %}}
 {{% column %}}
-It is grounded in the legacy of <a href="https://wikipedia.org/wiki/Ansel_Adams">Ansel Adams</a>, pianist and photographer, who pushed darkroom craftsmanship like never before to serve his photographic vision.
+Il s'inscrit dans la lignée de <a href="https://wikipedia.org/wiki/Ansel_Adams">Ansel Adams</a>, pianiste et photographe, qui a poussé l'artisanat de la chambre noire comme jamais pour servir sa vision photographique.
 {{% /column %}}
 {{% column %}}
 <figure class="text-center">
 <blockquote class="blockquote">
-  <p>The negative is the score, and the print is the performance.</p>
+  <p>Le négatif est la partition, le tirage est l'exécution.</p>
 </blockquote>
 <figcaption class="blockquote-footer">
   <cite title="Ansel Adams">Ansel Adams</cite>
@@ -36,44 +36,44 @@ It is grounded in the legacy of <a href="https://wikipedia.org/wiki/Ansel_Adams"
 {{% /row %}}
 {{< divider >}}
 
-## Install
+## Installer
 
 <hr>
 
 {{< warning >}}
-This website is in construction. Most of the content is still placeholders and links are not all working.
+Ce site est en construction. La majorité du contenu est des gabarits remplissage et les liens ne fonctionnent pas tous.
 {{< /warning >}}
 
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
-Distribution-agnostic executable
+Exécutable indépendant de la distribution
 {{< button url="#" label="Download ansel.appimage" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
-Windows 10 & 11 installer
+Installeur Windows 10 & 11
 {{< button url="#" label="Download ansel.exe" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="terminal" title="Build from source" %}}
-Best performance for your hardware
+Les meilleurs performances pour votre matériel
 {{< button url="#" label="Go to building instructions" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 
-<strong>Minimal recommended configuration</strong> : CPU Intel i5 (4 cores) / 8 GB RAM / GPU Nvidia GTX 850.
+<strong>Configuration minimale recommandée</strong> : Processeur Intel i5 (4 cores) / RAM 8 Go / Carte graphique Nvidia GTX 850.
 
 {{< divider >}}
 
-## Why Ansel ?
+## Pourquoi Ansel ?
 <hr>
 
 {{% row %}}
 {{% column %}}
-Many solutions already exist to produce ready-to-consume photographs for masses, from smartphones filters to out-of-cameras JPEGs, followed recently by AI-driven automagic applying  ~~caricatural~~ dramatic toy filters. These make photography easier than ever, but are the produced images really __your__ images and, in any case, the images __you__ expected ?
+De nombreuses solutions existent pour produire des photographies prêtes à consommer pour les masses, des filtres de smartphones aux JPEG produits par les appareils photo, suivis récemment par la magie des IA appliquant des filtres jouets ~~caricaturaux~~ dramatiques. Tout ça rend la photographie plus facile que jamais, mais les images produites sont-elles réellement __vos__ images et, dans les cas, les images que __vous__ attendiez ?
 {{% /column %}}
 {{% column %}}
-Pressing the camera shutter merely started a process ending when the on-screen picture looks like the one you had in mind. _Ansel_ proposes to put the artists back at the center of the creative process and enables them with an interface to manipulate images with precision and nuance, using state-of-the-art color science and independent color controls.
+Appuyer sur le déclencheur de l'appareil photo a seulement démarré un processus se terminant quand l'image à l'écran ressemble à celle que vous aviez à l'esprit. _Ansel_ propose de remettre les artistes au centre du processus créatif et leur fournit une interface pour manipuler des images avec précision et nuance, en utilisant une science de la couleur à la pointe et des contrôles de couleur indépendants.
 {{% /column %}}
 
 {{% /row %}}
@@ -81,7 +81,7 @@ Pressing the camera shutter merely started a process ending when the on-screen p
 
 
 {{% row %}}
-<p class="no-hyphenation lead text-left mx-auto my-3 col-10"><em>Ansel</em> lets you interpret your raw photographs much like a music instrument, when most software tries to automatically play the score for you, but mechanically and soullessly.</p>
+<p class="no-hyphenation lead text-left mx-auto my-3 col-10"><em>Ansel</em> vous permet d'interpréter vos photos brutes comme un instrument de musique, là où la plupart des logiciels essaient de jouer la partition automatiquement à votre place, mais mécaniquement et sans âme.</p>
 {{% /row %}}
 {{< divider >}}
 
