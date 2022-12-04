@@ -4,8 +4,10 @@
 <link rel="icon" type="image/png" href="https://github.com/Aurelien-Pierre/Ansel/raw/master/data/pixmaps/idbutton.png">
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.min.css?ver=1.0.0">
-<link rel="stylesheet" type="text/css" href="/fontawesome/css/all.css">
-<link rel="stylesheet" type="text/css" href="/fontawesome/css/brands.css">
+
+<link rel="stylesheet" type="text/css" href="/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" type="text/css" href="/fontawesome/css/solid.min.css">
+<link rel="stylesheet" type="text/css" href="/fontawesome/css/brands.min.css">
 
 <link rel="sitemap" href="/sitemap.xml" />
 
@@ -32,7 +34,12 @@
 <meta name="robots" content="index,follow"/>
 <meta name="copyright" content="{{ .Site.Copyright }}"/>
 
-<!--<link rel="alternate" href="http://example.com" hreflang="en-us" />-->
+{{ if .IsTranslated }}
+  {{ range .AllTranslations }}
+  <link rel="alternate" href="{{ .Permalink }}" hreflang="{{ .Lang }}" title="{{ .Language.LanguageName }}"/>
+  {{ end }}
+</ul>
+{{ end }}
 
 {{ $href := print (absLangURL .RelPermalink)}}
 

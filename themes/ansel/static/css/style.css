@@ -21,6 +21,12 @@ html, body {
   flex-basis: min-content;
 }
 
+.bg-image{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .no-hyphenation { hyphens: none; }
 .text-left { text-align: left; }
 .post-title { text-align: left; }

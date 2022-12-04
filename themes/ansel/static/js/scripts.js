@@ -23,3 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 });
+
+// Create cookie to get the Browser Language
+const userLang = navigator.language || navigator.userLanguage;
+console.log(userLang);
+document.cookie = `nf_lang = ${userLang}`;

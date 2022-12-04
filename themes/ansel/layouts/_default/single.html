@@ -2,12 +2,10 @@
 
 {{ if .Params.thumbnail }}
 <div class="container card my-5">
-  {{ $image_type_arr := split .Params.thumbnail "." }}
-  {{ $image_ext := index $image_type_arr 1 }}
-  {{ if eq $image_ext "svg" }}
-      <object data="{{ .Params.thumbnail }}" width="100%"></object>
+  {{ if strings.HasSuffix .Params.thumbnail ".svg" }}
+      <object data="{{ .Params.thumbnail | absLangURL }}" width="100%"></object>
   {{ else }}
-      <img src="{{ .Params.thumbnail }}" width="100%">
+      <img src="{{ .Params.thumbnail | absLangURL }}" width="100%">
   {{ end }}
 </div>
 {{ end }}

@@ -4,28 +4,19 @@
 
     {{ range .Pages.ByPublishDate.Reverse }}
         <article class="shadow-sm p-3 mb-5 bg-body rounded dp-flex row justify-content-between" >
-            {{ if .Params.thumbnail }}
-                {{ $image_type_arr := split .Params.thumbnail "." }}
-                {{ $image_ext := index $image_type_arr 1 }}
-                {{ if eq $image_ext "svg" }}
-                    <object data="{{ .Params.thumbnail }}" class="image-fit col col-md-6 px-0 flex-md-shrink-1 flex-md-grow-1"></object>
-                {{ else }}
-                    <img src="{{ .Params.thumbnail }}" class="image-fit col col-md-6 px-0 flex-md-shrink-1 flex-md-grow-1">
-                {{ end }}
-
-            {{ else }}
-                <img src="https://via.placeholder.com/300" class="image-fit col col-md-6 px-0 flex-md-shrink-1 flex-md-grow-1">
-            {{ end }}
-            <div class="col-md-8 flex-fill flex-fill">
+            {{ $image := print (.Params.thumbnail | absLangURL) }}
+            <div class="image-fit col col-md-8 px-0 flex-md-shrink-1 flex-md-grow-1 bg-image" style="background-image: url({{ $image | safeCSS }});">
+            </div>
+            <div class="col-md-5 flex-fill">
                 <h2>
-                    <a class="link-dark display-6 post-title" href="{{ .RelPermalink }}">
+                    <a class="link-dark display-6 post-title" href="{{ .Permalink }}">
                         {{ .Title }}
                     </a>
                 </h2>
                 {{ partial "metadata.html" . }}
                 <hr>
                 {{ .Summary }}
-                <a class="btn btn-dark float-end" href="{{ .RelPermalink }}">Read &raquo;</a>
+                <a class="btn btn-dark float-end" href="{{ .Permalink }}">Read &raquo;</a>
             </div>
         </article>
     {{ end }}
