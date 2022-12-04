@@ -31,6 +31,21 @@ html, body {
 .text-left { text-align: left; }
 .post-title { text-align: left; }
 
+.icon-circle {
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  border: 1px solid #f4f4f4;
+  height: 32px;
+  width: 32px;
+  font-size: 32px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
 #toc {
 	position: sticky;
 	top: calc(75px + var(--bs-card-spacer-y));

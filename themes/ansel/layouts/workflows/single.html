@@ -12,9 +12,13 @@
 
 <div class="container-fluid dp-flex row justify-content-center">
 
+  {{ partial "toc.html" . }}
+
   <article class="col-sm-6">
     <header>
       <h1 class="display-3 post-title">{{ .Title }}</h1>
+      <hr>
+      {{ partial "metadata.html" . }}
       <hr>
     </header>
     <section>
