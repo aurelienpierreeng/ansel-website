@@ -2,5 +2,5 @@
 {{ if $icon }}
 <div class="my-2"><a role="button" class="btn btn-dark" href="{{ .Get "url" }}"><i class="fas fa-{{ print $icon | safeCSS }}"></i><span class="px-1">{{ .Get "label" }}</span></a></div>
 {{ else }}
-<div class="my-2"></div><a role="button" class="btn btn-dark" href="{{ .Get "url" }}">{{ .Get "label" }}</a></div>
+<div class="my-2"></div><a role="button" class="btn btn-dark" href="{{ .Get "url" | absLangURL }}">{{ .Get "label" }}</a></div>
 {{ end }}
