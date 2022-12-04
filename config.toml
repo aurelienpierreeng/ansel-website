@@ -4,6 +4,8 @@ defaultContentLanguage = 'en'
 copyright = '© Copyright 2022 – Aurélien Pierre'
 title = 'Ansel'
 theme = 'ansel'
+enableGitInfo = true
+defaultContentLanguageInSubdir = true
 
 [author]
   name = 'Aurélien Pierre'
@@ -12,24 +14,28 @@ theme = 'ansel'
 
 [menu]
   [[menu.main]]
+    identifier = "workflows"
     name = "Workflows"
     pre = "fas fa-paint-roller"
     url = "/workflows/"
     weight = 1
 
   [[menu.main]]
+    identifier = "news"
     name = "News"
     pre = "fas fa-newspaper"
     url = "/news/"
     weight = 2
 
   [[menu.main]]
+    identifier = "support"
     name = "Support"
     pre = "fas fa-hands-helping"
     url = "/support/"
     weight = 3
 
   [[menu.main]]
+    identifier = "documentation"
     name = "Documentation"
     pre = "fas fa-book"
     url = "/doc/"
@@ -41,9 +47,11 @@ unsafe= true
 [languages]
   [languages.en]
     title = 'Ansel'
+    languagename = "English"
     weight = 1
   [languages.fr]
     title = 'Ansel'
+    languagename = "Français"
     weight = 2
 
 [taxonomies]
