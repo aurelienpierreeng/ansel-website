@@ -13,20 +13,21 @@ I try my best to help everyone but there are limits I crossed in the past *(wo
 
 ## Learning resources
 
-<div class="row">
+There already is a fair deal of information around on Ansel's usage. As Ansel is based on darktable 4.0, most tutorials on darktable 4.x (and 3.x, to a lesser extent) are still relevant, even though the GUI may be slightly different.
+
+{{% row %}}
 {{% card title="Videos" icon="chalkboard-teacher" %}}
 {{< button url="https://www.youtube.com/channel/UCmsSn3fujI81EKEr4NLxrcg" icon="youtube fab" label="Youtube channel" >}}
 {{% /card %}}
 
 {{% card title="Documentation" icon="book" %}}
-{{< button url="/en/doc" icon="glasses" label="Read it, seriously" >}}
+{{< button url="/doc" icon="glasses" label="Read it, seriously" >}}
 {{% /card %}}
-</div>
+{{% /row %}}
 
 ## Getting free user support
 
-<div class="row">
-
+{{% row %}}
 {{% card title="Bugs" icon="bug" %}}
 {{< button url="https://github.com/Aurelien-Pierre/Ansel/issues" icon="github fab" label="Bug tracker" >}}
 {{% /card %}}
@@ -38,8 +39,7 @@ I try my best to help everyone but there are limits I crossed in the past *(wo
 {{% card title="Chat" icon="comments" %}}
 {{< button url="https://matrix.to/#/#r&darktable-en:matrix.org" icon="envelope" label="Matrix chat" >}}
 {{% /card %}}
-
-</div>
+{{% /row %}}
 
 
 1. Try to use the public channels above as much as possible, in order to leave archives that can be indexed by search engines and found later to help other people,
@@ -55,8 +55,9 @@ Please upload your files on my [private cloud](https://cloud.apmlt.net/s/YAdfYaj
 
 ## Getting premium user support
 
-<div class="row">
+Don't stay alone with your problems and directly book the developer to get personalized solutions.
 
+{{% row %}}
 {{% card title="Emergency support" icon="ambulance" %}}
 {{< button url="https://photo.aurelienpierre.com/private-lessons-on-retouching-with-darktable/?lang=en#book-me" icon="calendar-alt" label="Book an appointment" >}}
 {{% /card %}}
@@ -64,13 +65,13 @@ Please upload your files on my [private cloud](https://cloud.apmlt.net/s/YAdfYaj
 {{% card title="Retouching classes" icon="chalkboard-teacher" %}}
 {{< button url="https://photo.aurelienpierre.com/private-lessons-on-retouching-with-darktable/?lang=en#book-me" icon="calendar-alt" label="Book an appointment" >}}
 {{% /card %}}
-
-</div>
+{{% /row %}}
 
 ## Developper support
 
-<div class="row">
+If you are considering joining forces for dev and debug, here is how I work.
 
+{{% row %}}
 {{% card title="Guidelines" icon="code-branch" %}}
 {{< button url="https://github.com/Aurelien-Pierre/Ansel/wiki" icon="github fab" label="Dev wiki" >}}
 {{% /card %}}
@@ -78,5 +79,4 @@ Please upload your files on my [private cloud](https://cloud.apmlt.net/s/YAdfYaj
 {{% card title="Dev mentorship" icon="user-friends" %}}
 {{< button url="https://photo.aurelienpierre.com/private-lessons-on-retouching-with-darktable/?lang=en#book-me" icon="calendar-alt" label="Book an appointment" >}}
 {{% /card %}}
-
-</div>
+{{% /row %}}
