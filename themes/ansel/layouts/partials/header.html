@@ -1,11 +1,14 @@
-<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-sm">
+<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
   <div class="container container-fluid">
       <a class="navbar-brand mb-0 h1" href="{{.Site.BaseURL}}">
         <img src="https://raw.githubusercontent.com/Aurelien-Pierre/R-Darktable/master/data/pixmaps/scalable/darktable.svg" alt="Ansel" width="32" height="32" class="d-inline-block align-text-top">
         {{ .Site.Title }}
       </a>
-
-        <ul class="navbar-nav navbar-collapse navbar-dark flex-row justify-content-end mx">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav navbar-dark">
           {{- $currentPage := . -}}
           {{ range .Site.Menus.main -}}
             <li class="nav-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }} mx-0 px-0">
@@ -17,14 +20,13 @@
               </a>
             </li>
           {{ end }}
-          <li class="nav-item">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-light dropdown-toggle align-middle" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item mx-0 px-0 dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-language"></i>
                 {{ .Language.LanguageName }}
-              </button>
+              </a>
               {{ if .IsTranslated }}
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><h6 class="dropdown-header">Languages</h6></li>
+              <ul class="dropdown-menu dropdown-menu-bottom bg-dark">
                 {{ range .Translations }}
                 <li class="dropdown-item btn-sm">
                   <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
@@ -32,8 +34,8 @@
                 {{ end }}
               </ul>
               {{ end }}
-            </div>
           </li>
         </ul>
+      </div>
   </div>
 </nav>
