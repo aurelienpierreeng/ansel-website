@@ -40,6 +40,10 @@ It is grounded in the legacy of <a href="https://wikipedia.org/wiki/Ansel_Adams"
 
 <hr>
 
+{{< warning >}}
+This website is in construction. Most of the content is still placeholders and links are not all working.
+{{< /warning >}}
+
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Distribution-agnostic executable

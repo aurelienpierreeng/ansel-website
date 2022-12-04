@@ -5,9 +5,9 @@
     {{ range .Pages.ByPublishDate.Reverse }}
         <article class="shadow-sm p-3 mb-5 bg-body rounded dp-flex row justify-content-between" >
             {{ $image := print (.Params.thumbnail | absLangURL) }}
-            <div class="image-fit col col-md-8 px-0 flex-md-shrink-1 flex-md-grow-1 bg-image" style="background-image: url({{ $image | safeCSS }});">
-            </div>
-            <div class="col-md-5 flex-fill">
+            <a class="image-fit col col-lg-4 px-0 bg-image" style="background-image: url({{ $image | safeCSS }});" href="{{ .Permalink }}">
+            </a>
+            <div class="col col-lg-8 col-md-12" style="min-width: 480px;">
                 <h2>
                     <a class="link-dark display-6 post-title" href="{{ .Permalink }}">
                         {{ .Title }}

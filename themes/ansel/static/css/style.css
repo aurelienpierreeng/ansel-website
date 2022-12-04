@@ -12,13 +12,14 @@ html, body {
   text-rendering : geometricprecision;
   font-kerning: normal;
   hyphens: auto;
-  padding-top: 75px;
 }
 
 .image-fit {
   object-fit: cover;
   flex: 1;
   flex-basis: min-content;
+  min-width: 300px;
+  min-height: 300px;
 }
 
 .bg-image{
