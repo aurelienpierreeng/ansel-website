@@ -1,5 +1,5 @@
 ---
-title: "Photo-editing software for artists."
+title: "Logiciel de traitement photo pour artistes"
 date: 2022-11-27T22:36:34+01:00
 draft: false
 description: "Ansel est un éditeur de photos brutes pour artistes"
