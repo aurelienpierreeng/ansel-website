@@ -2,6 +2,10 @@
 <div class="container">
     <h1 class="display-2 text-left my-4 border-bottom border-dark">{{ .Title }}</h1>
 
+    <section>
+    {{ .Content }}
+    </section>
+
     {{ range .Pages.ByPublishDate.Reverse }}
         <article class="shadow-sm p-3 mb-5 bg-body rounded dp-flex row justify-content-between" >
             {{ $image := print (.Params.thumbnail | absLangURL) }}

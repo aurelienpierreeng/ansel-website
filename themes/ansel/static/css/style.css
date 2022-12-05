@@ -5,6 +5,10 @@ html, body {
   scroll-behavior: smooth;
 }
 
+img {
+  max-width: 100%;
+}
+
 .nav-item { padding: 0 1rem; }
 
 #content {

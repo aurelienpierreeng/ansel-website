@@ -68,8 +68,8 @@
 <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
 {{ end }}
 
-{{ with .Params.tags }}
-{{ range . }}
+{{ if .Keywords }}
+{{ range .Keywords }}
 <meta property="article:tag" content="{{ . }}" />
 {{ end }}
 {{ end }}

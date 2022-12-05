@@ -1,11 +1,11 @@
 baseURL = 'https://ansel.photos/'
-languageCode = 'en-us'
 defaultContentLanguage = 'en'
 copyright = '© Copyright 2022 – Aurélien Pierre'
 title = 'Ansel'
 theme = 'ansel'
 enableGitInfo = true
 defaultContentLanguageInSubdir = true
+canonifyURLs = true
 
 [author]
   name = 'Aurélien Pierre'
@@ -41,9 +41,6 @@ defaultContentLanguageInSubdir = true
     url = "/doc/"
     weight = 3
 
-[markup.goldmark.renderer]
-unsafe= true
-
 [languages]
   [languages.en]
     title = 'Ansel'
@@ -54,11 +51,24 @@ unsafe= true
     languagename = "Français"
     weight = 2
 
-[taxonomies]
-  tag = 'tags'
-
 [markup]
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 3
     ordered = false
+
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[module]
+  replacements = '/ -> /doc/'
+  [[module.imports]]
+    disable = false
+    ignoreConfig = false
+    ignoreImports = true
+    path = "github.com/aurelien-pierre/ansel-doc"
+
+    [[module.imports.mounts]]
+      source = 'content/'
+      target = 'content/doc/'
+      lang= "en"
