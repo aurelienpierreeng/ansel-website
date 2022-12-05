@@ -1,20 +1,19 @@
 {{ define "main" }}
 <div class="container">
-    <h1 class="display-1 post-title">{{ .Title }}</h1>
+    <h1 class="display-2 text-left my-4 border-bottom border-dark">{{ .Title }}</h1>
 
     {{ range .Pages.ByPublishDate.Reverse }}
         <article class="shadow-sm p-3 mb-5 bg-body rounded dp-flex row justify-content-between" >
             {{ $image := print (.Params.thumbnail | absLangURL) }}
-            <a class="image-fit col col-lg-4 px-0 bg-image" style="background-image: url({{ $image | safeCSS }});" href="{{ .Permalink }}">
+            <a class="image-fit col col-lg-4 col-md-2 col-sm-12 px-0 bg-image" style="background-image: url({{ $image | safeCSS }});" href="{{ .Permalink }}">
             </a>
-            <div class="col col-lg-8 col-md-12" style="min-width: 480px;">
-                <h2>
-                    <a class="link-dark display-6 post-title" href="{{ .Permalink }}">
+            <div class="col col-lg-8 col-md-12 col-sm-12">
+                <h2 class="mt-2">
+                    <a class="link-dark display-6 text-left text-decoration-none" href="{{ .Permalink }}">
                         {{ .Title }}
                     </a>
                 </h2>
-                {{ partial "metadata.html" . }}
-                <hr>
+                {{ partial "metadata_list.html" . }}
                 {{ .Summary }}
                 <a class="btn btn-dark float-end" href="{{ .Permalink }}">Read &raquo;</a>
             </div>

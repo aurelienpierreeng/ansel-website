@@ -10,12 +10,11 @@
 </div>
 {{ end }}
 
-<div class="container-fluid dp-flex row justify-content-center">
+<div class="container dp-flex row justify-content-center mx-auto">
 
-  <article class="col-sm-6">
-    <header>
-      <h1 class="display-3 post-title">{{ .Title }}</h1>
-      <hr>
+  <article class="col col-lg-8 col-md-12 col-sm-12">
+    <header class="border-bottom border-dark my-4">
+      <h1 class="display-2 text-left my-4">{{ .Title }}</h1>
     </header>
     <section>
       {{ .Content }}

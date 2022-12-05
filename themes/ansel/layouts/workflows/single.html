@@ -15,12 +15,10 @@
 
   {{ partial "toc.html" . }}
 
-  <article class="col my-2" style="min-width: 480px">
-    <header>
-      <h1 class="display-3 post-title">{{ .Title }}</h1>
-      <hr>
+  <article class="col my-2">
+    <header class="border-top border-dark">
+      <h1 class="display-2 text-left my-4">{{ .Title }}</h1>
       {{ partial "metadata.html" . }}
-      <hr>
     </header>
     <section>
       {{ .Content }}
