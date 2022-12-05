@@ -4,7 +4,7 @@ date: 2022-12-01T13:12:15+01:00
 draft: false
 latex: true
 toc: true
-tags: ['Color science', 'Pipeline']
+keywords: ['Color science', 'Pipeline']
 thumbnail: "/workflows/img/hero-scene-referred.svg"
 ---
 
@@ -13,6 +13,11 @@ In this article, you will learn what the scene-referred workflow is, how Ansel u
 <!--more-->
 
 ## Introduction
+
+```mermaid
+graph TD;
+    A[fa:fa-tree Scene] --> B[fa:fa-camera Camera];
+```
 
 The scene-referred workflow is the backbone of the Ansel's imaging pipeline. It is a working logic that comes from the cinema industry because it is the only way to have robust, seamless, compositing (also known as *alpha blending*) and movies rely heavily on it for special effects.
 
