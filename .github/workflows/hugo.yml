@@ -43,6 +43,9 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
+      - name: Refresh modules
+        run: |
+          hugo mod get -u ./...
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
