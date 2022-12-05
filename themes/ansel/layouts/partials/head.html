@@ -31,8 +31,12 @@
 {{ end }}
 
 <meta name="description" content="{{ $description }}">
-<meta name="robots" content="index,follow"/>
+<meta name="robots" content="index, follow"/>
 <meta name="copyright" content="{{ .Site.Copyright }}"/>
+
+{{ if .Keywords }}
+<meta name="keywords" content="{{ delimit .Keywords ", " }}">
+{{ end }}
 
 {{ if .IsTranslated }}
   {{ range .AllTranslations }}
@@ -41,7 +45,7 @@
 </ul>
 {{ end }}
 
-{{ $href := print (absLangURL .RelPermalink)}}
+{{ $href := print (absLangURL .Permalink)}}
 
 {{ if .IsPage }}
 <link rel="canonical" href="{{ $href }}" >
@@ -53,7 +57,7 @@
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 
 {{ if .Params.thumbnail }}
-<meta property="og:image" content="{{ .Params.thumbnail }}" />
+<meta property="og:image" content="{{ .Params.thumbnail | absLangURL}}" />
 {{ end }}
 <meta property="og:description" content="{{ $description }}">
 
