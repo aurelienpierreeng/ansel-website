@@ -13,7 +13,7 @@
           {{ range .Site.Menus.main -}}
             {{ $active := in $currentPage.RelPermalink .URL }}
             <li class="nav-item mx-0 px-0">
-              <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | absLangURL }}">
+              <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | absLangURL }}" {{ if $active }} aria-current="page" {{ end }}>
               {{ if .Pre }}
               {{ printf "<i class=\"%s\"></i> " .Pre | safeHTML }}
               {{ end }}

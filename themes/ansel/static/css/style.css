@@ -14,12 +14,17 @@ img {
 
 .nav-item { padding: 0 1rem; }
 
+.dropdown-muted::after {
+  content: "";
+}
+
 #content {
-  text-align: justify;
   text-rendering : geometricprecision;
   font-kerning: normal;
   hyphens: auto;
 }
+
+.p { text-align: justify; }
 
 .image-fit {
   object-fit: cover;
@@ -71,6 +76,7 @@ img {
 
 #TableOfContents a {
   text-decoration: none;
+  text-transform: capitalize;
   color: #6c757d; /* Bootstrap "muted" text color */
 }
 

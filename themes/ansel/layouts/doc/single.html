@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+<div class="container">
+{{ if .Params.thumbnail }}
+<div class="card my-2">
+  {{ if strings.HasSuffix .Params.thumbnail ".svg" }}
+      <object data="{{ .Params.thumbnail | absLangURL }}" width="100%"></object>
+  {{ else }}
+      <img src="{{ .Params.thumbnail | absLangURL }}" width="100%">
+  {{ end }}
+</div>
+{{ end }}
+
+{{ partial "breadcrumb.html" . }}
+
+<div class="row flex-row justify-content-between">
+
+  {{ partial "toc.html" . }}
+
+  <article class="col my-2">
+    <header class="border-top border-dark">
+      <h1 class="display-2 text-left my-4 text-capitalize">{{ .Title }}</h1>
+      {{ partial "metadata.html" . }}
+    </header>
+    <section>
+      {{ .Content }}
+    </section>
+  </article>
+
+</div>
+</div>
+
+{{ with .Site.GetPage "/doc" }}
+{{ partial "offcanvas-nav.html" . }}
+{{ end }}
+
+{{ end }}

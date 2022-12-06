@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="container">
+<div class="col col-lg-8 col-md-12 col-sm-12 mx-auto">
+    <h1 class="display-2 text-left my-4 border-bottom border-dark">{{ .Title }}</h1>
+
+    <section>
+    {{ .Content }}
+    </section>
+
+    {{ partial "navigation.html" . }}
+</div>
+</div>
+
+{{ with .Site.GetPage "/doc" }}
+{{ partial "offcanvas-nav.html" . }}
+{{ end }}
+
+{{ end }}
