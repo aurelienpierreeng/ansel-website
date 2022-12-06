@@ -7,12 +7,10 @@
     {{ .Content }}
     </section>
 
-    {{ partial "navigation.html" . }}
+    {{- partial "navigation.html" (dict "top" . "current" .) -}}
 </div>
 </div>
 
-{{ with .Site.GetPage "/doc" }}
-{{ partial "offcanvas-nav.html" . }}
-{{ end }}
+{{- partial "offcanvas-nav.html" (dict "top" (.Site.GetPage "/doc/") "current" .) -}}
 
 {{ end }}

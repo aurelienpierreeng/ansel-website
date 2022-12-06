@@ -30,8 +30,6 @@
 </div>
 </div>
 
-{{ with .Site.GetPage "/doc" }}
-{{ partial "offcanvas-nav.html" . }}
-{{ end }}
+{{- partial "offcanvas-nav.html" (dict "top" (.Site.GetPage "/doc/") "current" .) -}}
 
 {{ end }}
