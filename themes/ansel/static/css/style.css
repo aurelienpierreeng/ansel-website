@@ -82,7 +82,7 @@ img {
 
 #TableOfContents ul li ul {
   margin: 0;
-  padding: 0 0 0 1.5rem;
+  padding: 0 0 0 2.5rem;
 }
 
 #TableOfContents ul li ul li {
@@ -97,7 +97,7 @@ img {
 ul.section-nav, ol.section-nav { padding-left: 0; }
 .section-nav li ul, .section-nav li ol { padding-left: 1.5rem; }
 .list-button {
-  padding: 0 0.25rem;
+  padding: 0;
   margin: 0;
   vertical-align: top;
 }
