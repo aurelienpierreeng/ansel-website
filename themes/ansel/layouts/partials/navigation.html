@@ -1,7 +1,7 @@
 {{- template "nav-children" (dict "Section" .top "CurrentPage" .current "isDropdown" false) -}}
 
 {{- define "nav-children" -}}{{- /* (dict "Section" .Section "CurrentPage" .CurrentPage) */ -}}
-{{ $current := or (.CurrentPage.IsAncestor .Section) (.CurrentPage.IsDescendant .Section) }}
+{{ $current := (.CurrentPage.IsDescendant .Section) }}
 
 <ul {{if .isDropdown }}class="multi-collapse collapse {{ if $current }}show{{ end }}" id="collapsible-{{ print .collapseID }}"{{ else }}class="px-0"{{ end }}>
    {{- range .Section.Pages -}}
