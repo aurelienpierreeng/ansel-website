@@ -53,7 +53,7 @@ canonifyURLs = true
 
 [markup]
   [markup.tableOfContents]
-    startLevel = 1
+    startLevel = 2
     endLevel = 3
     ordered = false
 
