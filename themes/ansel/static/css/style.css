@@ -94,6 +94,9 @@ img {
   color: black!important;
 }
 
+ul.section-nav, ol.section-nav { padding-left: 0; }
+.section-nav li ul, .section-nav li ol { padding-left: 1rem; }
+
 div.mermaid {
   margin: 1rem auto;
   width: fit-content;

@@ -3,7 +3,7 @@
 {{- define "nav-children" -}}{{- /* (dict "Section" .Section "CurrentPage" .CurrentPage) */ -}}
 {{ $current := (.CurrentPage.IsDescendant .Section) }}
 
-<ul {{if .isDropdown }}class="multi-collapse collapse {{ if $current }}show{{ end }}" id="collapsible-{{ print .collapseID }}"{{ else }}class="px-0"{{ end }}>
+<ul {{if .isDropdown }}class="section-nav multi-collapse collapse {{ if $current }}show{{ end }}" id="collapsible-{{ print .collapseID }}"{{ else }}class="px-0 my-0 section-nav"{{ end }}>
    {{- range .Section.Pages -}}
    {{ if .IsSection }}
     {{ $seed := "foo" }}
