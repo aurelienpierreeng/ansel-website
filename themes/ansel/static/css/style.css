@@ -82,7 +82,7 @@ img {
 
 #TableOfContents ul li ul {
   margin: 0;
-  padding: 0 0 0 1rem;
+  padding: 0 0 0 1.5rem;
 }
 
 #TableOfContents ul li ul li {
@@ -95,11 +95,24 @@ img {
 }
 
 ul.section-nav, ol.section-nav { padding-left: 0; }
-.section-nav li ul, .section-nav li ol { padding-left: 1rem; }
+.section-nav li ul, .section-nav li ol { padding-left: 1.5rem; }
 .list-button {
   padding: 0 0.25rem;
   margin: 0;
   vertical-align: top;
+}
+
+/* Bootstrap hacks */
+.links-dark li,
+.links-dark .btn,
+.links-dark a {
+  color: #212529!important;
+}
+
+.links-secondary li,
+.links-secondary .btn,
+.links-secondary a {
+  color: #6c757d;
 }
 
 div.mermaid {

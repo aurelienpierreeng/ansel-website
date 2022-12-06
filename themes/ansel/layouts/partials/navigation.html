@@ -12,33 +12,47 @@
 
 {{- define "nav-children" -}}{{- /* (dict "Section" .Section "CurrentPage" .CurrentPage) */ -}}
 {{ $current := or (.CurrentPage.IsDescendant .Section) (.CurrentPage.InSection .Section) }}
+{{ $family := or (.CurrentPage.IsAncestor .Section) (.CurrentPage.InSection .Section) }}
+{{ $CurrentPage := .CurrentPage }}
 
-<ul {{if .isDropdown }}class="section-nav multi-collapse collapse {{ if $current }}show{{ end }}" id="collapsible-{{ print .collapseID }}"{{ else }}class="px-0 my-0 section-nav"{{ end }}>
-   {{- range .Section.Pages -}}
-   {{ if .IsSection }}
-    {{ $seed := "foo" }}
-    {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
-   <li class="dropdown list-unstyled">
-    {{ template "nav-link" (dict "Page" . "CurrentPage" $.CurrentPage "isParent" true "collapseID" $random) }}
-    {{ template "nav-children" (dict "Section" . "CurrentPage" $.CurrentPage "isDropdown" true "collapseID" $random) }}
-   </li>
-   {{ else if and .IsPage .Content }}
-   <li class="list-unstyled">
-   {{ template "nav-link" (dict "Page" . "CurrentPage" $.CurrentPage "isParent" false)}}
-   </li>
-   {{ end }}
-   {{- end -}}
+<ul
+{{if .isDropdown }}
+class="section-nav multi-collapse collapse {{ if $current }}show{{ end }} {{ if $family }}links-dark{{ else }}links-secondary{{ end }}" id="collapsible-{{ print .collapseID }}"
+{{ else }}
+class="px-0 my-0 section-nav {{ if $family }}links-dark{{ else }}links-secondary{{ end }}"
+{{ end }} >
+  {{- range .Section.Pages -}}
+    {{ if .IsSection }}
+      {{ $seed := "foo" }}
+      {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
+      {{ $family_parent := .IsAncestor $CurrentPage}}
+
+      <li class="dropdown list-unstyled {{ if $family_parent }}links-dark{{ else }}links-secondary{{ end }}">
+        {{ template "nav-link" (dict "Page" . "CurrentPage" $.CurrentPage "isParent" true "collapseID" $random) }}
+        {{ template "nav-children" (dict "Section" . "CurrentPage" $.CurrentPage "isDropdown" true "collapseID" $random) }}
+      </li>
+    {{ else if and .IsPage .Content }}
+      <li class="list-unstyled">
+      {{ template "nav-link" (dict "Page" . "CurrentPage" $.CurrentPage "isParent" false)}}
+      </li>
+    {{ end }}
+  {{- end -}}
 </ul>
 {{- end -}}
 
 {{ define "nav-link" }}{{/* (dict "Page" .Page "CurrentPage" .CurrentPage "parent" .isParent "isParent") */}}
 {{ $current := eq .CurrentPage .Page }}
+
   {{ if .isParent }}
-    <button class="btn btn-sm dropdown-toggle list-button" data-bs-toggle="collapse" href="#collapsible-{{ print .collapseID }}" role="button" aria-expanded="false" aria-controls="collapsible-{{ print .collapseID }}" title="Expand"></button>
+    <button class="btn btn-sm list-button" data-bs-toggle="collapse" href="#collapsible-{{ print .collapseID }}" role="button" aria-expanded="false" aria-controls="collapsible-{{ print .collapseID }}" title="Expand">
+      <i class="fas fa-plus-square"></i>
+    </button>
   {{ else }}
-    <button class="btn btn-sm list-button" style="" href="{{ .Page.RelPermalink }}">&#9632;</button>
+    <a role="button" class="btn btn-sm list-button" href="{{ .Page.RelPermalink }}">
+      <i class="fas fa-long-arrow-alt-right" style="opacity:0;"></i>
+    </a>
   {{ end }}
-  <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }} link-dark text-capitalize text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>
+  <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }} text-capitalize text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>
       {{ .Page.Title }}
   </a>
 {{ end }}
