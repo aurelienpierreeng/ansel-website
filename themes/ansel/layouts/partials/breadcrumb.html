@@ -1,5 +1,5 @@
-<nav class="my-1 text-center">
-<ol class="nav list-inline" id="breadcrumb">
+<nav aria-label="breadcrumb" id="breadcrumb">
+<ol class="breadcrumb mt-4">
   {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
 </ol>
 {{ define "breadcrumbnav" }}
@@ -8,9 +8,13 @@
 {{ else if not .p1.IsHome }}
 {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
 {{ end }}
-<li{{ if eq .p1 .p2 }} class="active list-inline" aria-current="page" {{ end }}>
+{{ if eq .p1 .p2 }}
+  <li class="breadcrumb-item active" aria-current="page">
+    {{ .p1.Title }}
+  </li>
+{{ else }}
+<li class="breadcrumb-item active" aria-current="page">
   <a href="{{ .p1.Permalink }}">{{ .p1.Title }}</a>
-</li>
-<span class="mx-1"> / </span>
+</li>{{ end }}
 {{ end }}
 </nav>
