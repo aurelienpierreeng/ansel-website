@@ -9,6 +9,8 @@ img {
   max-width: 100%;
 }
 
+article { min-width: 300px; }
+
 .active { font-weight: bold; }
 .navbar-nav .active { color: rgba(255, 255, 255, 0.75)!important; }
 
