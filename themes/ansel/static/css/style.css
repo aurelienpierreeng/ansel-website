@@ -9,6 +9,9 @@ img {
   max-width: 100%;
 }
 
+.active { font-weight: bold; }
+.navbar-nav .active { color: rgba(255, 255, 255, 0.75)!important; }
+
 .nav-item { padding: 0 1rem; }
 
 #content {
@@ -34,6 +37,9 @@ img {
 
 .no-hyphenation { hyphens: none; }
 .text-left { text-align: left; }
+
+.heading .header-link { opacity: 0; }
+.heading:hover .header-link { opacity: 1; }
 
 .icon-circle {
   padding: 1rem;

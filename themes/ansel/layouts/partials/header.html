@@ -11,8 +11,9 @@
         <ul class="navbar-nav navbar-dark">
           {{- $currentPage := . -}}
           {{ range .Site.Menus.main -}}
-            <li class="nav-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }} mx-0 px-0">
-              <a class="nav-link" href="{{ .URL | absLangURL }}">
+            {{ $active := in $currentPage.RelPermalink .URL }}
+            <li class="nav-item mx-0 px-0">
+              <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | absLangURL }}">
               {{ if .Pre }}
               {{ printf "<i class=\"%s\"></i> " .Pre | safeHTML }}
               {{ end }}
