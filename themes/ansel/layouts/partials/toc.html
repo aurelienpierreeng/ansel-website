@@ -1,10 +1,17 @@
-{{ if and (gt .WordCount 3 ) }}
-  <aside class="col col-lg-4 col-md-12 col-sm-12 flex-column my-2">
-    <nav id="toc" class="card">
-      <div class="card-body">
-        <h2 class="card-title fs-5">Contents</h2>
-        {{ .TableOfContents }}
-      </div>
-    </nav>
-  </aside>
+{{ if and (gt .WordCount 300) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+<nav id="toc" class="card my-1">
+  <div class="card-header" id="headingToc">
+    <div class="fs-5">
+      On this page
+      <button class="btn btn-outline-dark btn-sm float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTocBody" aria-expanded="true" aria-controls="collapseTocBody" title="Collapse">
+        <i class="fas fa-chevron-down fs-6 align-middle"></i>
+      </button>
+    </div>
+  </div>
+  <div class="collapse show" aria-labelledby="headingToc" id="collapseTocBody">
+    <div class="card-body">
+      {{ .TableOfContents }}
+    </div>
+  </div>
+</nav>
 {{ end }}

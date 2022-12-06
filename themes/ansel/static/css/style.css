@@ -61,9 +61,9 @@ img {
   box-sizing: content-box;
 }
 
-#toc {
+#sidebar {
 	position: sticky;
-	top: calc(75px + var(--bs-card-spacer-y));
+	top: 75px;
 	align-self: start;
 }
 
@@ -96,6 +96,11 @@ img {
 
 ul.section-nav, ol.section-nav { padding-left: 0; }
 .section-nav li ul, .section-nav li ol { padding-left: 1rem; }
+.list-button {
+  padding: 0 0.25rem;
+  margin: 0;
+  vertical-align: top;
+}
 
 div.mermaid {
   margin: 1rem auto;

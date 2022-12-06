@@ -15,16 +15,19 @@
 
 <div class="row flex-row justify-content-between">
 
-  {{ partial "toc.html" . }}
+  <aside class="col col-lg-4 col-md-12 col-sm-12 flex-column my-2">
+    <div id="sidebar">
+        {{ partial "toc.html" . }}
+        {{ partial "sidebar-nav.html" . }}
+    </div>
+  </aside>
 
   <article class="col my-2">
     <header class="border-top border-dark">
       <h1 class="display-2 text-left my-4 text-capitalize">{{ .Title }}</h1>
       {{ partial "metadata.html" . }}
     </header>
-    <section>
-      {{ .Content }}
-    </section>
+    <section>{{ .Content }}</section>
   </article>
 
 </div>
