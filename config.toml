@@ -72,3 +72,6 @@ canonifyURLs = true
       source = 'content/'
       target = 'content/doc/'
       lang= "en"
+
+[outputs]
+  home = ["HTML", "JSON", "RSS"]

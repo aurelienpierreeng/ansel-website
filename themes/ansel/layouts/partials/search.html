@@ -1,0 +1,27 @@
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch" aria-labelledby="offcanvasSearch">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasSearchLabel">Search</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="input-group flex-nowrap mb-3">
+      <input id="search-query" class="form-control" onkeydown="search_results_from_keyboard()" />
+      <button type="submit" onclick="search_results()" class="btn btn-sm btn-dark">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<button class="btn btn-dark btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch" aria-controls="offcanvaSearch" style="position:fixed; bottom: 0.75rem; right: 0.75rem;" title="Open research sidebar"><i class="fas fa-search"></i></button>
+
+<template id="search-result-template">
+  <div class="border-bottom mb-3 border-secondary">
+    <h6 class="text-capitalize">
+      <a href="(url">(title)</a>
+      <span class="text-muted float-end" title="Matching score">(score)</span>
+    </h6>
+    <p>(summary)</p>
+  </div>
+</template>
