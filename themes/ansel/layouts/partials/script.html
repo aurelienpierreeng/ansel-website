@@ -1,11 +1,11 @@
-<script src="/js/fifty-fifty.min.js?ver=1.0.0"></script>
+<script src="/js/fifty-fifty.min.js?ver=1.0.0" async></script>
 <script>
   window.onload = function() {
       //dom not only ready, but everything is loaded
       initComparisons();
   };
 </script>
-<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/bootstrap.min.js?ver=5.2.3"></script>
 
 {{ if .Page.Store.Get "hasMermaid" }}
   <script src="/js/mermaid.min.js?ver=9.1.6"></script>
@@ -50,10 +50,10 @@
   <script src="/js/tex-svg.js?ver=3.2.2" async></script>
 {{ end }}
 
-<script src="/js/scripts.min.js?ver=1.0.0"></script>
+<script src="/js/scripts.min.js?ver=2.0.0"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js" defer></script>
-<script src="{{ "js/search.min.js" | absURL }}" defer></script>
+<script src="/js/fuse.min.js?ver=6.6.2" defer></script>
+<script src="{{ "/js/search.min.js" | absURL }}" defer></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
   loadJSON("{{ "/index.json" | absLangURL }}");
