@@ -8,7 +8,6 @@ function create_fuse(db_json) {
     minMatchCharLength: 4,
     threshold: 0.,
     ignoreLocation: true,
-    findAllMatches: true,
     keys: [
       { name: "title", weight: 0.8 },
       { name: "summary", weight: 0.6 },
@@ -53,6 +52,7 @@ function display_result(elem) {
 
   summary = clone.querySelector("p");
   summary.innerHTML = summary.innerHTML.replace("(summary)", truncate(elem.item.summary, 140));
+  summary.innerHTML = summary.innerHTML.replace("(section)", elem.item.section);
 
   tbody.appendChild(clone);
 }
