@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
   <div class="container container-fluid">
       <a class="navbar-brand mb-0 h1" href="{{ .Site.BaseURL | relLangURL }}">
-        <img src="https://raw.githubusercontent.com/Aurelien-Pierre/R-Darktable/master/data/pixmaps/scalable/darktable.svg" alt="Ansel" width="32" height="32" class="d-inline-block align-text-top">
+        <img src="/favicon.svg" alt="Ansel" width="32" height="32" class="d-inline-block align-text-top">
         {{ .Site.Title }}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
           {{ range .Site.Menus.main -}}
             {{ $active := in $currentPage.RelPermalink .URL }}
             <li class="nav-item mx-0 px-0">
-              <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | absLangURL }}" {{ if $active }} aria-current="page" {{ end }}>
+              <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | relLangURL }}" {{ if $active }} aria-current="page" {{ end }}>
               {{ if .Pre }}
               {{ printf "<i class=\"%s\"></i> " .Pre | safeHTML }}
               {{ end }}

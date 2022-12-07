@@ -9,7 +9,7 @@
 {{ with .Keywords }}
 — <i class="fas fa-tags align-middle"></i>
 {{ range . }}
-{{ $href := print (absLangURL "tags/") (urlize .) }}
+{{ $href := print (relLangURL "tags/") (urlize .) }}
 <a class="btn btn-sm btn-outline-dark" href="{{ $href }}">{{ . }}</a>
 {{ end }}
 {{ end }}

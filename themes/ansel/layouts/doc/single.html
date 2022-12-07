@@ -4,9 +4,9 @@
 {{ if .Params.thumbnail }}
 <div class="card my-2">
   {{ if strings.HasSuffix .Params.thumbnail ".svg" }}
-      <object data="{{ .Params.thumbnail | absLangURL }}" width="100%"></object>
+      <object data="{{ .Params.thumbnail | relLangURL }}" width="100%"></object>
   {{ else }}
-      <img src="{{ .Params.thumbnail | absLangURL }}" width="100%">
+      <img src="{{ .Params.thumbnail | relLangURL }}" width="100%">
   {{ end }}
 </div>
 {{ end }}

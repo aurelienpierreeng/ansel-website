@@ -1,7 +1,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="https://github.com/Aurelien-Pierre/Ansel/raw/master/data/pixmaps/idbutton.png">
+<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.min.css?ver=1.1.0">
 <link rel="stylesheet" type="text/css" href="/fontawesome/css/fontawesome.min.css">
@@ -44,7 +44,7 @@
 </ul>
 {{ end }}
 
-{{ $href := print (absLangURL .Permalink)}}
+{{ $href := print (relLangURL .Permalink)}}
 
 {{ if .IsPage }}
 <link rel="canonical" href="{{ $href }}" >
@@ -56,7 +56,7 @@
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 
 {{ if .Params.thumbnail }}
-<meta property="og:image" content="{{ .Params.thumbnail | absLangURL}}" />
+<meta property="og:image" content="{{ .Params.thumbnail | relLangURL}}" />
 {{ end }}
 <meta property="og:description" content="{{ $description }}">
 
@@ -74,4 +74,15 @@
 {{ end }}
 
 <meta property="article:section" content="{{ .Section }}">
+
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Ansel" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+};
+</script>
 </head>

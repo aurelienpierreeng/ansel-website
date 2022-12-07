@@ -1,0 +1,54 @@
+{
+  "lang": "en",
+  "short_name": "Ansel",
+  "name": "Ansel photo editor",
+  "description": "Ansel is an open-source raw photo editor for artists",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg",
+      "sizes": "192x192",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/?utm_source=pwa",
+  "id": "/?utm_source=pwa",
+  "scope": "/",
+  "background_color": "#f2f2f2",
+  "theme_color": "#ffffff",
+  "display": "standalone",
+  "shortcuts": [
+    {
+       "name": "Documentation",
+       "description": "User manual",
+       "url": "/doc/?utm_source=pwa",
+       "icons": [
+        {
+          "src": "/book-solid.svg",
+          "type": "image/svg+xml",
+          "sizes": "131x150",
+          "purpose": "maskable"
+        }
+      ]
+    },
+    {
+      "name": "Workflows",
+      "description": "Basic use cases",
+      "url": "/workflows/?utm_source=pwa",
+      "icons": [
+        {
+          "src": "/paint-roller-solid.svg",
+          "type": "image/svg+xml",
+          "sizes": "150x150",
+          "purpose": "maskable"
+        }
+      ]
+    }
+ ]
+}

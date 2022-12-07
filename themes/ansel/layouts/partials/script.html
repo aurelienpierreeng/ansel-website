@@ -53,9 +53,9 @@
 <script src="/js/scripts.min.js?ver=2.0.0"></script>
 
 <script src="/js/fuse.min.js?ver=6.6.2" defer></script>
-<script src="{{ "/js/search.min.js" | absURL }}" defer></script>
+<script src="{{ "/js/search.min.js" | relURL }}" defer></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-  loadJSON("{{ "/index.json" | absLangURL }}");
+  loadJSON("{{ "/index.json" | relLangURL }}");
 });
 </script>
