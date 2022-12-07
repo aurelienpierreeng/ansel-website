@@ -70,10 +70,10 @@ Best performance for your hardware
 <hr>
 
 {{% row %}}
-{{% column %}}
+{{% column p=true %}}
 Many solutions already exist to produce ready-to-consume photographs for masses, from smartphones filters to out-of-cameras JPEGs, followed recently by AI-driven automagic applying  ~~caricatural~~ dramatic toy filters. These make photography easier than ever, but are the produced images really __your__ images and, in any case, the images __you__ expected ?
 {{% /column %}}
-{{% column %}}
+{{% column p=true %}}
 Pressing the camera shutter merely started a process ending when the on-screen picture looks like the one you had in mind. _Ansel_ proposes to put the artists back at the center of the creative process and enables them with an interface to manipulate images with precision and nuance, using state-of-the-art color science and independent color controls.
 {{% /column %}}
 

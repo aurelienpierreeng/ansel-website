@@ -28,7 +28,7 @@ dt { text-transform: capitalize; }
   hyphens: auto;
 }
 
-.p { text-align: justify; }
+p { text-align: justify; }
 
 .image-fit {
   object-fit: cover;

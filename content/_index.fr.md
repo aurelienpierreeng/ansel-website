@@ -70,10 +70,10 @@ Les meilleurs performances pour votre matériel
 <hr>
 
 {{% row %}}
-{{% column %}}
+{{% column p=true %}}
 De nombreuses solutions existent pour produire des photographies prêtes à consommer pour les masses, des filtres de smartphones aux JPEG produits par les appareils photo, suivis récemment par la magie des IA appliquant des filtres jouets ~~caricaturaux~~ dramatiques. Tout ça rend la photographie plus facile que jamais, mais les images produites sont-elles réellement __vos__ images et, dans les cas, les images que __vous__ attendiez ?
 {{% /column %}}
-{{% column %}}
+{{% column p=true %}}
 Appuyer sur le déclencheur de l'appareil photo a seulement démarré un processus se terminant quand l'image à l'écran ressemble à celle que vous aviez à l'esprit. _Ansel_ propose de remettre les artistes au centre du processus créatif et leur fournit une interface pour manipuler des images avec précision et nuance, en utilisant une science de la couleur à la pointe et des contrôles de couleur indépendants.
 {{% /column %}}
 
