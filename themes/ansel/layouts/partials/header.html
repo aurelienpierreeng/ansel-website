@@ -5,8 +5,9 @@
         {{ .Site.Title }}
       </a>
 
+      {{ if .Page.Store.Get "hasSectionNav" }}
       <button class="btn navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav" title="Open navigation sidebar"><i class="fas fa-stream"></i></button>
-
+      {{ end }}
 
       <button class="btn navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch" aria-controls="offcanvaSearch" title="Open research sidebar"><i class="fas fa-search"></i></button>
 
