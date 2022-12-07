@@ -4,14 +4,14 @@
     {{ partial "breadcrumb.html" . }}
 
     <div class="row flex-row justify-content-between">
-        <aside class="col col-lg-4 col-md-12 col-sm-12 flex-column my-2">
+        <aside class="col-12 col-lg-4 flex-column my-2">
             <div id="sidebar">
                 {{ partial "toc.html" . }}
                 {{ partial "sidebar-nav.html" . }}
             </div>
         </aside>
 
-        <article class="col col-lg-8 col-md-12 col-sm-12 my-2">
+        <article class="col-12 col-lg-8 my-2">
           <header class="border-top border-dark">
             <h1 class="display-3 text-left my-4 text-capitalize">{{ .Title }}</h1>
             {{ partial "metadata.html" . }}
