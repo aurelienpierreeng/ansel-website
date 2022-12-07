@@ -159,7 +159,7 @@ div.mermaid {
   display: block;
   width: 100%;
   height: auto;
-
+  max-width: none;
   object-fit: cover;
   pointer-events: none;
   user-select: none;
