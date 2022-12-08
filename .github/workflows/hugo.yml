@@ -59,6 +59,23 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
+          
+  # Check broken links job
+  check:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Test HTML
+        continue-on-error: false
+        uses: wjdp/htmltest-action@master
+        with:
+          config: .htmltest.yml
+      - name: Archive htmltest results
+        uses: actions/upload-artifact@v2
+        with:
+          name: htmltest-report
+          path: tmp/.htmltest/htmltest.log
+          retention-days: 15 # Default is 90 days
 
   # Deployment job
   deploy:
