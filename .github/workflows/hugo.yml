@@ -55,7 +55,7 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            -d $GITHUB_WORKSPACE/dist
+            -d $GITHUB_WORKSPACE/.public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
