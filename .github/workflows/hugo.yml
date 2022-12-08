@@ -54,11 +54,12 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            -d $GITHUB_WORKSPACE/dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./public
+          path: $GITHUB_WORKSPACE/.public
           
   # Check broken links job
   check:
@@ -69,7 +70,7 @@ jobs:
         continue-on-error: false
         uses: wjdp/htmltest-action@master
         with:
-          path: ./public
+          path: .public
       - name: Archive htmltest results
         uses: actions/upload-artifact@v2
         with:
