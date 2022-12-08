@@ -1,10 +1,20 @@
 {{ $link := strings.Replace .Destination "_index.md" "" }}
 {{ $isRemote := strings.HasPrefix $link "http" }}
 {{- if not $isRemote -}}
-{{ $url := urls.Parse $link }}
-{{- if $url.Path -}}
-{{ $fragment := "" }}
-{{- with $url.Fragment }}{{ $fragment = printf "#%s" . }}{{ end -}}
-{{- with .Page.GetPage $url.Path }}{{ $link = printf "%s%s" .RelPermalink $fragment }}{{ end }}{{ end -}}
+  {{ $url := urls.Parse $link }}
+  {{- if $url.Path -}}
+    {{ $fragment := printf "#%s" $url.Fragment }}
+    {{- with .Page.GetPage $url.Path -}}
+      {{ $link = printf "%s%s" .RelPermalink $fragment }}
+    {{ else }}
+      {{- /* Hugo couldn't find the page. Typically because it's a relative path like
+          `../../../stuff.md`. In that case, remove `.md` and hope the browser
+          supports relative pathes to resolve the URL.
+          In an ideal world, we split the path at `/` and go up the tree by as
+          many elements, but we don't have access to the calling file from here */ -}}
+      {{- /* $tree := split $url.Path "/" */ -}}
+      {{ $link = strings.Replace $link ".md" "" }}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
-<a href="{{ $link | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if $isRemote }} target="_blank"{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ $link | safeURL }}" title="{{ .Title | safeHTML }}" {{ if $isRemote }} target="_blank"{{ end }}>{{ .Text | safeHTML }}</a>
