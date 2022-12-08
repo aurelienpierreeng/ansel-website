@@ -9,5 +9,6 @@
         {{- partial "footer.html" . -}}
         {{- partial "script.html" . -}}
         {{- partial "search.html" . -}}
+        {{- partial "offcanvas-nav.html" (dict "top" (.Site.GetPage .Section ) "current" .) -}}
     </body>
 </html>

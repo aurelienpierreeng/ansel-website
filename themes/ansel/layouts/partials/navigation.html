@@ -25,7 +25,7 @@ class="section-nav {{ if $family }}links-dark{{ else }}links-secondary{{ end }}"
     {{ if .IsSection }}
       {{ $seed := "foo" }}
       {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
-      {{ $family_parent := .IsAncestor $CurrentPage}}
+      {{ $family_parent := or (.IsAncestor $CurrentPage) (.IsDescendant $CurrentPage) }}
 
       <li class="dropdown list-unstyled {{ if $family_parent }}links-dark{{ else }}links-secondary{{ end }}">
         {{ template "nav-link" (dict "Page" . "CurrentPage" $.CurrentPage "isParent" true "collapseID" $random) }}
