@@ -30,7 +30,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.102.3
+      HUGO_VERSION: 0.98.0
     steps:
       - name: Install Hugo CLI
         run: |
@@ -69,7 +69,7 @@ jobs:
         continue-on-error: false
         uses: wjdp/htmltest-action@master
         with:
-          config: .htmltest.yml
+          path: ./public
       - name: Archive htmltest results
         uses: actions/upload-artifact@v2
         with:
