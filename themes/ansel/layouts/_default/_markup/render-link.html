@@ -7,6 +7,27 @@
     {{- with .Page.GetPage $url.Path -}}
       {{ $link = printf "%s%s" .RelPermalink $fragment }}
     {{- else -}}
+      {{- /* Because ../../stuff.md will be interpreted as ../../stuff/index.html after
+          compilation, relative links need to go one step higher to resolve properly */ -}}
+      {{ if strings.HasPrefix $link "../" }}
+        {{- /* Try again to get Hugo to resolve the link */ -}}
+        {{- with .Page.GetPage (urls.Parse (printf "../%s" $link)).Path -}}
+          {{ $link = printf "%s%s" .RelPermalink $fragment }}
+        {{- else -}}
+        {{- /* Try one more step higher just in case */ -}}
+          {{- with .Page.GetPage (urls.Parse (printf "../../%s" $link)).Path -}}
+          {{ $link = printf "%s%s" .RelPermalink $fragment }}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+
+      {{ if strings.HasPrefix $link "./" }}
+        {{- /* Try again to get Hugo to resolve the link */ -}}
+        {{- with .Page.GetPage (urls.Parse (strings.Replace $link "./" "../")).Path -}}
+          {{ $link = printf "%s%s" .RelPermalink $fragment }}
+        {{- end -}}
+      {{- end -}}
+
       {{- /* Hugo couldn't find the page. Typically because it's a relative path like
           `../../../stuff.md`. In that case, remove `.md` and hope the browser
           supports relative pathes to resolve the URL.
@@ -14,20 +35,7 @@
           many elements, but we don't have access to the calling file from here */ -}}
       {{- /* $tree := split $url.Path "/" */ -}}
       {{ $link = strings.Replace $link ".md" "/" }}
-      {{- /* Because ../../stuff.md will be interpreted as ../../stuff/index.html after
-          compilation, relative links need to go one step higher to resolve properly */ -}}
-      {{ if strings.HasPrefix $link "../" }}
-        {{- /* Try again to get Hugo to resolve the link */ -}}
-        {{- with .Page.GetPage (urls.Parse (printf "../%s" $link)).Path -}}
-          {{ $link = printf "%s%s" .RelPermalink $fragment }}
-        {{- end -}}
-      {{- end -}}
-      {{ if strings.HasPrefix $link "./" }}
-        {{- /* Try again to get Hugo to resolve the link */ -}}
-        {{- with .Page.GetPage (urls.Parse (strings.Replace $link "./" "../")).Path -}}
-          {{ $link = printf "%s%s" .RelPermalink $fragment }}
-        {{- end -}}
-      {{- end -}}
+
     {{- end -}}
   {{- end -}}
 {{- end -}}
