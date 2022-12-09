@@ -73,10 +73,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: ./public
-      - name: Test HTML with HTMLTest
+      - name: List files
+        run: |
+          ls
+      - name: Check HTML with HTMLTest
         uses: wjdp/htmltest-action@master
         with:
-          config: ./public/.htmltest.yml
+          config: /home/runner/work/ansel-website/ansel-website/public/artifact/.htmltest.yml
       - name: Archive htmltest results
         uses: actions/upload-artifact@v2
         with:
