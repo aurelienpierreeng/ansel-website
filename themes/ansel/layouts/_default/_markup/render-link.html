@@ -14,6 +14,11 @@
           many elements, but we don't have access to the calling file from here */ -}}
       {{- /* $tree := split $url.Path "/" */ -}}
       {{ $link = strings.Replace $link ".md" "/" }}
+      {{- /* Because ../../stuff.md will be interpreted as ../../stuff/index.html after
+          compilation, relative links need to go one step higher to resolve properly */ -}}
+      {{ if strings.HasPrefix $link "../" }}
+        {{ $link = printf "../%s" $link }}
+      {{ end }}
     {{- end -}}
   {{- end -}}
 {{- end -}}
