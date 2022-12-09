@@ -6,3 +6,5 @@ IgnoreURLs:
   - "https://www.instagram.com/photo.aurelienpierre/"
   # My cloud forbids bots
   - "https://cloud.apmlt.net/s/YAdfYajPkE5nLyW"
+  # Science-y portal refuses bots
+  - "https://doi.org/10.1002/col.20128"
