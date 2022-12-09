@@ -73,5 +73,10 @@ canonifyURLs = true
       target = 'content/doc/'
       lang= "en"
 
+    [[module.imports.mounts]]
+      source = 'content/'
+      target = 'content/doc/'
+      lang= "fr"
+
 [outputs]
   home = ["HTML", "JSON", "RSS"]
