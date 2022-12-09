@@ -58,7 +58,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: .public
+          path: ./public
+
           
   # Check broken links job
   check:
@@ -68,12 +69,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          path: .public
+          path: ./public
       - name: Test HTML
         continue-on-error: false
         uses: wjdp/htmltest-action@master
         with:
-          path: .public
+          path: ./public
       - name: Archive htmltest results
         uses: actions/upload-artifact@v2
         with:
