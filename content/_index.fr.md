@@ -48,17 +48,17 @@ Ce site est en construction. La majorité du contenu est des gabarits remplissag
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Exécutable indépendant de la distribution
-{{< button url="#" label="Download ansel.appimage" icon="download" >}}
+{{< button url="/" label="Download ansel.appimage" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
 Installeur Windows 10 & 11
-{{< button url="#" label="Download ansel.exe" icon="download" >}}
+{{< button url="/" label="Download ansel.exe" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="terminal" title="Build from source" %}}
 Les meilleurs performances pour votre matériel
-{{< button url="#" label="Go to building instructions" icon="wrench" >}}
+{{< button url="/" label="Go to building instructions" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 

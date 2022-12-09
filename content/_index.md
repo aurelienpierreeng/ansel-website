@@ -48,17 +48,17 @@ This website is in construction. Most of the content is still placeholders and l
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Distribution-agnostic executable
-{{< button url="#" label="Download ansel.appimage" icon="download" >}}
+{{< button url="/" label="Download ansel.appimage" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
 Windows 10 & 11 installer
-{{< button url="#" label="Download ansel.exe" icon="download" >}}
+{{< button url="/" label="Download ansel.exe" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="terminal" title="Build from source" %}}
 Best performance for your hardware
-{{< button url="#" label="Go to building instructions" icon="wrench" >}}
+{{< button url="/" label="Go to building instructions" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 
