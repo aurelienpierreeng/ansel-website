@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: ./public
-          
+
   # Check broken links job
   check:
     runs-on: ubuntu-latest
@@ -74,7 +74,6 @@ jobs:
         with:
           path: ./public
       - name: Test HTML with HTMLTest
-        continue-on-error: false
         uses: wjdp/htmltest-action@master
         with:
           path: ./public
