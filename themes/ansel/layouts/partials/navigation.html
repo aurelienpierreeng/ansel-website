@@ -2,7 +2,7 @@
 <ul class="px-0 my-0 section-nav">
   {{ $current := eq .top .current }}
   <li class="dropdown list-unstyled">
-    <a href="#" class="{{ if $current }}active{{ end }} link-dark text-capitalize text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>{{ .top.Title }}</a>
+    <span class="{{ if $current }}active{{ end }} link-dark text-capitalize text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>{{ .top.Title }}</span>
     {{- template "nav-children" (dict "Section" .top "CurrentPage" .current "isDropdown" false) -}}
   </li>
 </ul>
