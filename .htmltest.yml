@@ -1,1 +1,8 @@
-DirectoryPath: "dist"
+DirectoryPath: "./public"
+IgnoreURLs:
+  # Ignare HTML template for search - (url) is replaced client-side by JS
+  - "(url)"
+  # Don't check social networks
+  - "https://www.instagram.com/photo.aurelienpierre/"
+  # My cloud forbids bots
+  - "https://cloud.apmlt.net/s/YAdfYajPkE5nLyW"
