@@ -3,7 +3,7 @@
 {{- if not $isRemote -}}
   {{ $url := urls.Parse $link }}
   {{- if $url.Path -}}
-    {{ $fragment := $url.Fragment }}
+    {{ $fragment := printf "#%s" $url.Fragment }}
     {{- with .Page.GetPage $url.Path -}}
       {{ $link = .RelPermalink }}
     {{- else -}}
@@ -40,7 +40,7 @@
       {{ $link = strings.Replace $link ".md" "" }}
 
       {{- /* Append the anchor if any */ -}}
-      {{ $link = printf "%s/#%s" $link $fragment }}
+      {{ $link = printf "%s/%s" $link $fragment }}
 
     {{- end -}}
   {{- end -}}
