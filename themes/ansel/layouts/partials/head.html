@@ -44,7 +44,7 @@
 </ul>
 {{ end }}
 
-{{ $href := print (relLangURL .Permalink)}}
+{{ $href := print (relLangURL .RelPermalink)}}
 
 {{ if .IsPage }}
 <link rel="canonical" href="{{ $href }}" >
@@ -52,7 +52,7 @@
 
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ .Title | safeHTML }}" />
-<meta property="og:url" content="{{ $href }}" />
+<meta property="og:url" content="{{ $href | absLangURL }}" />
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 
 {{ if .Params.thumbnail }}
