@@ -55,11 +55,14 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Upload artifact
+      - name: Upload page artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
-
+      - name: Upload folder artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./public
           
   # Check broken links job
   check:
