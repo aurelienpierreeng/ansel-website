@@ -79,7 +79,7 @@ jobs:
       - name: Check HTML with HTMLTest
         uses: wjdp/htmltest-action@master
         with:
-          config: ./public/.htmltest.yml
+          config: ./public/artifact/.htmltest.yml
       - name: Archive htmltest results
         uses: actions/upload-artifact@v2
         with:
