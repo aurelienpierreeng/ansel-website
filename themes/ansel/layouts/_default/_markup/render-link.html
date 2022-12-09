@@ -6,7 +6,7 @@
     {{ $fragment := printf "#%s" $url.Fragment }}
     {{- with .Page.GetPage $url.Path -}}
       {{ $link = printf "%s%s" .RelPermalink $fragment }}
-    {{ else }}
+    {{- else -}}
       {{- /* Hugo couldn't find the page. Typically because it's a relative path like
           `../../../stuff.md`. In that case, remove `.md` and hope the browser
           supports relative pathes to resolve the URL.
@@ -18,7 +18,12 @@
           compilation, relative links need to go one step higher to resolve properly */ -}}
       {{ if strings.HasPrefix $link "../" }}
         {{ $link = printf "../%s" $link }}
-      {{ end }}
+        {{- /* Try again to get Hugo to resolve the link */ -}}
+        {{ $url_bis := urls.Parse $link }}
+        {{- with .Page.GetPage $url_bis.Path -}}
+          {{ $link = printf "%s%s" .RelPermalink $fragment }}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
