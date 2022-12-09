@@ -70,7 +70,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: ./public
-      - name: Test HTML
+      - name: Test HTML with HTMLTest
         continue-on-error: false
         uses: wjdp/htmltest-action@master
         with:
@@ -81,6 +81,10 @@ jobs:
           name: htmltest-report
           path: tmp/.htmltest/htmltest.log
           retention-days: 15 # Default is 90 days
+      - name: Check HTML with HTMLProofer
+        uses: chabad360/htmlproofer@master
+        with:
+          directory: ./public
 
   # Deployment job
   deploy:
