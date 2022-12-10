@@ -34,6 +34,7 @@
 
 {{- define "section" -}}
 {{ if .IsSection }}
+  {{ template "item" . }}
   {{ range .Pages }}
     {{ template "section" . }}
   {{ end }}
