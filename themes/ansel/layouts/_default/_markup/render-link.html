@@ -4,7 +4,8 @@
   {{ $url := urls.Parse $link }}
   {{- if $url.Path -}}
     {{ $fragment := printf "#%s" $url.Fragment }}
-    {{- with .Page.GetPage $url.Path -}}
+    {{ $link = $url.Path }}
+    {{- with .Page.GetPage $link -}}
       {{ $link = .RelPermalink }}
     {{- else -}}
       {{- /* Because ../../stuff.md will be interpreted as ../../stuff/index.html after
@@ -39,8 +40,13 @@
       {{- /* $tree := split $url.Path "/" */ -}}
       {{ $link = strings.Replace $link ".md" "" }}
 
-      {{- /* Append the anchor if any */ -}}
-      {{ $link = printf "%s/%s" $link $fragment }}
+      {{- /* Append the anchor and trailing / if needed */ -}}
+      {{ if not (strings.HasSuffix $link "/") }}
+          {{ $link = printf "%s/" $link }}
+      {{ end }}
+      {{ if $fragment }}
+        {{ $link = printf "%s%s" $link $fragment }}
+      {{ end }}
 
     {{- end -}}
   {{- end -}}
