@@ -80,3 +80,6 @@ canonifyURLs = true
 
 [outputs]
   home = ["HTML", "JSON", "RSS"]
+
+[taxonomies]
+  tag = "tags"

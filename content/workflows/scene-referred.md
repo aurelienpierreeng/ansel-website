@@ -4,7 +4,7 @@ date: 2022-12-01T13:12:15+01:00
 draft: false
 latex: true
 toc: true
-keywords: ['Color science', 'Pipeline']
+tags: ['Color science', 'Pipeline']
 thumbnail: "/workflows/img/hero-scene-referred.svg"
 ---
 

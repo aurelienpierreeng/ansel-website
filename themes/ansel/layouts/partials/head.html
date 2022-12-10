@@ -33,8 +33,8 @@
 <meta name="robots" content="index, follow"/>
 <meta name="copyright" content="{{ .Site.Copyright }}"/>
 
-{{ if .Keywords }}
-<meta name="keywords" content="{{ delimit .Keywords ", " }}">
+{{ if .Params.tags }}
+<meta name="keywords" content="{{ delimit .Params.tags ", " }}">
 {{ end }}
 
 {{ if .IsTranslated }}
@@ -67,10 +67,8 @@
 <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
 {{ end }}
 
-{{ if .Keywords }}
-{{ range .Keywords }}
+{{ range .Params.tags }}
 <meta property="article:tag" content="{{ . }}" />
-{{ end }}
 {{ end }}
 
 <meta property="article:section" content="{{ .Section }}">
