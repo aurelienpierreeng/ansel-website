@@ -60,23 +60,22 @@ canonifyURLs = true
   [markup.goldmark.renderer]
     unsafe = true
 
+[module]
+  [[module.imports]]
+    disable = false
+    ignoreConfig = false
+    ignoreImports = true
+    path = "github.com/aurelien-pierre/ansel-doc"
 
-#[module]
-#  [[module.imports]]
-#    disable = false
-#    ignoreConfig = false
-#    ignoreImports = true
-#    path = "github.com/aurelien-pierre/ansel-doc"
-#
-#    [[module.imports.mounts]]
-#      source = 'content/'
-#      target = 'content/doc/'
-#      lang= "en"
-#
-#    [[module.imports.mounts]]
-#      source = 'content/'
-#      target = 'content/doc/'
-#      lang= "fr"
+    [[module.imports.mounts]]
+      source = 'content/'
+      target = 'content/doc/'
+      lang= "en"
+
+    [[module.imports.mounts]]
+      source = 'content/'
+      target = 'content/doc/'
+      lang= "fr"
 
 [outputs]
   home = ["HTML", "JSON", "RSS"]
