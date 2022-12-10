@@ -16,8 +16,6 @@
         {{- /* Fish for the file somewhere in the current tree */ -}}
         {{ if os.FileExists (printf "../%s" $link) }}
           {{ $link = printf "../%s" $link }}
-        {{ else if os.FileExists (printf "../../%s" $link) }}
-          {{ $link = printf "../../%s" $link }}
         {{- /* else nothing because the page writer messed up big time, so that needs a
                manual fix -> let it fail */ -}}
         {{ end }}
@@ -25,8 +23,6 @@
         {{- /* Fish for the file somewhere in the current tree */ -}}
         {{ if os.FileExists (strings.Replace $link "./" "../") }}
           {{ $link = strings.Replace $link "./" "../" }}
-        {{ else if os.FileExists (strings.Replace $link "./" "../../") }}
-          {{ $link = strings.Replace $link "./" "../../" }}
         {{- /* else nothing because the page writer messed up big time, so that needs a
             manual fix -> let it fail */ -}}
         {{- end -}}
