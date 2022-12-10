@@ -63,9 +63,9 @@ canonifyURLs = true
 [module]
   [[module.imports]]
     disable = false
-    ignoreConfig = false
+    ignoreConfig = true
     ignoreImports = true
-    path = "github.com/aurelien-pierre/ansel-doc"
+    path = "github.com/aurelienpierreeng/ansel-doc"
 
     [[module.imports.mounts]]
       source = 'content/'
