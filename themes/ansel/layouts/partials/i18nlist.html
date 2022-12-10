@@ -8,7 +8,7 @@
     <li><h6 class="dropdown-header">Languages</h6></li>
     {{ range .Translations }}
     <li class="dropdown-item btn-sm">
-      <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+      <a href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Language.LanguageName }}</a>
     </li>
     {{ end }}
   </ul>

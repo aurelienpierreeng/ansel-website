@@ -1,4 +1,14 @@
 <div class="border-top border-bottom border-dark py-2 my-4">
 {{ partial "metadata_common.html" . }}
 {{ partial "i18nlist.html" . }}
+
+{{ if .IsPage }}
+  {{ with .GetPage .Section }}
+    {{ partial "rss.html" . }}
+  {{ end }}
+{{ else }}
+  {{ with .FirstSection }}
+    {{ partial "rss.html" . }}
+  {{ end }}
+{{ end }}
 </div>
