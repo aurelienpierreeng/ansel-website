@@ -3,48 +3,24 @@
 {{- if not $isRemote -}}
   {{ $url := urls.Parse $link }}
   {{- if $url.Path -}}
-    {{ $fragment := printf "#%s" $url.Fragment }}
+    {{ $fragment := printf "%s" $url.Fragment }}
+    {{ print $fragment }}
     {{ $link = $url.Path }}
     {{- with .Page.GetPage $link -}}
       {{ $link = .RelPermalink }}
     {{- else -}}
-      {{- /* Because ../../stuff.md will be interpreted as ../../stuff/index.html after
-          compilation, relative links need to go one step higher to resolve properly */ -}}
-      {{- if os.FileExists $link -}}
-        {{ $link = $link }}
-      {{- else if strings.HasPrefix $link "../" -}}
-        {{- /* Fish for the file somewhere in the current tree */ -}}
-        {{ if os.FileExists (printf "../%s" $link) }}
-          {{ $link = printf "../%s" $link }}
-        {{- /* else nothing because the page writer messed up big time, so that needs a
-               manual fix -> let it fail */ -}}
-        {{ end }}
-      {{- else if strings.HasPrefix $link "./" -}}
-        {{- /* Fish for the file somewhere in the current tree */ -}}
-        {{ if os.FileExists (strings.Replace $link "./" "../") }}
-          {{ $link = strings.Replace $link "./" "../" }}
-        {{- /* else nothing because the page writer messed up big time, so that needs a
-            manual fix -> let it fail */ -}}
-        {{- end -}}
-      {{- end -}}
-
-      {{- /* Hugo couldn't find the page. Typically because it's a relative path like
-          `../../../stuff.md`. In that case, remove `.md` and hope the browser
-          supports relative pathes to resolve the URL.
-          In an ideal world, we split the path at `/` and go up the tree by as
-          many elements, but we don't have access to the calling file from here */ -}}
-      {{- /* $tree := split $url.Path "/" */ -}}
-      {{ $link = strings.Replace $link ".md" "" }}
-
-      {{- /* Append the anchor and trailing / if needed */ -}}
-      {{ if not (strings.HasSuffix $link "/") }}
-          {{ $link = printf "%s/" $link }}
-      {{ end }}
-      {{ if $fragment }}
-        {{ $link = printf "%s%s" $link $fragment }}
-      {{ end }}
-
+      {{- /* $link = strings.Replace $link ".md" "" */ -}}
     {{- end -}}
+
+    {{- /* Append the anchor and trailing / if needed */ -}}
+    {{ if not (strings.HasSuffix $link "/") }}
+      {{ $link = printf "%s/" $link }}
+    {{ end }}
+
+    {{ if $fragment }}
+      {{ $link = printf "%s#%s" $link $fragment }}
+    {{ end }}
+
   {{- end -}}
 {{- end -}}
 <a href="{{ $link | safeURL }}" title="{{ .Title | safeHTML }}" {{ if $isRemote }} target="_blank"{{ end }}>{{ .Text | safeHTML }}</a>
