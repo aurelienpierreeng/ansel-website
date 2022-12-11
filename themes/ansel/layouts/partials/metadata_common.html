@@ -6,10 +6,9 @@
 <time datetime="{{ .Lastmod.Format "2006-01-02" }}" title="Last modification date">{{ .Lastmod | time.Format ":date_long" }}</time>
 {{ end }}
 
-{{ with .Params.tags }}
+{{ if .Params.tags }}
 — <i class="fas fa-tags align-middle"></i>
-  {{ range . }}
-    {{ $href := print (relLangURL "tags/") (urlize .) }}
-    <a class="btn btn-sm btn-outline-dark" href="{{ $href }}">{{ . }}</a>
+  {{ range (.GetTerms "tags") }}
+    <a class="btn btn-sm btn-outline-dark" href="{{ .Permalink }}">{{ .Title }}</a>
   {{ end }}
 {{ end }}
