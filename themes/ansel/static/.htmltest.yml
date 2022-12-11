@@ -1,6 +1,6 @@
 DirectoryPath: "./public/artifact"
 IgnoreURLs:
-  # Ignare HTML template for search - (url) is replaced client-side by JS
+  # Ignore HTML template for search - (url) is replaced client-side by JS
   - "(url)"
   # Don't check social networks
   - "https://www.instagram.com/photo.aurelienpierre/"
@@ -8,3 +8,4 @@ IgnoreURLs:
   - "https://cloud.apmlt.net/s/YAdfYajPkE5nLyW"
   # Science-y portal refuses bots
   - "https://doi.org/10.1002/col.20128"
+  - "https://doi.org/10.1364/OE.25.015131"
