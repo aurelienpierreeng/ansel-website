@@ -4,7 +4,6 @@
   {{ $url := urls.Parse $link }}
   {{- if $url.Path -}}
     {{ $fragment := printf "%s" $url.Fragment }}
-    {{ print $fragment }}
     {{ $link = $url.Path }}
     {{- with .Page.GetPage $link -}}
       {{ $link = .RelPermalink }}
