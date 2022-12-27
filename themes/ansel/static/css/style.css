@@ -46,6 +46,7 @@ p { text-align: justify; }
 
 .no-hyphenation { hyphens: none; }
 .text-left { text-align: left; }
+.text-center p { text-align: center; }
 
 .heading .header-link { opacity: 0; }
 .heading:hover .header-link { opacity: 1; }

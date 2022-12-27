@@ -2,12 +2,14 @@
 <div class="card h-100">
 <div class="card-body text-center justify-content-between d-flex flex-column">
 <span class="my-2 text-center w-100">
-<i class="fas fa-{{ .Get "icon" }} align-top icon-circle"></i>
+  <i class="fas fa-{{ .Get "icon" }} align-top icon-circle"></i>
 </span>
-<h5 class="card-title fs-5 text-center my-2">
+<h5 class="fs-5 text-center my-2">
   {{ .Get "title" }}
 </h5>
-{{ .Inner }}
+<div class="text-center my-2">
+  {{ .Inner }}
+</div>
 </div>
 </div>
 </div>
