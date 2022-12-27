@@ -2,6 +2,7 @@
 title: "Assistance"
 date: 2022-12-04T02:19:02+01:00
 draft: false
+weight: 40
 ---
 
 Je fais de mon mieux pour aider tout le monde, mais il y a des limites que j'ai dépassées dans le passé *(travailler 60 h/semaine ou débugger au lit à 2 h du matin)* que je ne souhaite plus dépasser à l'avenir. Veuillez garder à l'esprit que :
@@ -21,7 +22,7 @@ Il y a déjà une quantité honorable d'information sur l'utilisation d'Ansel. C
 {{% /card %}}
 
 {{% card title="Documentation" icon="book" %}}
-{{< button url="/doc" icon="glasses" label="Lisez la, sérieusement" >}}
+{{< button url="/fr/doc" icon="glasses" label="Lisez la, sérieusement" >}}
 {{% /card %}}
 {{% /row %}}
 
