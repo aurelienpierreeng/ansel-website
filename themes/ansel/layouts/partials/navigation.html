@@ -48,7 +48,7 @@ class="section-nav {{ if $family }}links-dark{{ else }}links-secondary{{ end }}"
       <i class="fas fa-plus-square"></i>
     </button>
   {{ end }}
-  <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }} text-capitalize text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>
-      {{ .Page.Title }}
+  <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }} text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>
+      {{ .Page.Title | humanize }}
   </a>
 {{ end }}

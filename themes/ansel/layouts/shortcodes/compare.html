@@ -12,8 +12,8 @@
 </div>
 
 {{ if .Inner }}
-<figcaption class="text-left pt-2">
-<p class="text-left">{{ .Inner}}</p>
+<figcaption>
+<p>{{ .Inner | markdownify }}</p>
 </figcaption>
 {{ end}}
 

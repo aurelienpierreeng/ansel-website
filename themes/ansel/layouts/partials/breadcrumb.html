@@ -9,12 +9,12 @@
 {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
 {{ end }}
 {{ if eq .p1 .p2 }}
-  <li class="breadcrumb-item active text-capitalize" aria-current="page">
-    {{ .p1.Title }}
+  <li class="breadcrumb-item active" aria-current="page">
+    {{ .p1.Title | humanize }}
   </li>
 {{ else }}
-<li class="breadcrumb-item text-capitalize">
-  <a href="{{ .p1.Permalink }}" class="text-decoration-none">{{ .p1.Title }}</a>
+<li class="breadcrumb-item">
+  <a href="{{ .p1.Permalink }}" class="text-decoration-none">{{ .p1.Title | humanize }}</a>
 </li>{{ end }}
 {{ end }}
 </nav>
