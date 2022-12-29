@@ -53,7 +53,7 @@ Exécutable indépendant de la distribution
 
 {{% card icon="windows fab" title="Windows" %}}
 Installeur Windows 10 & 11
-{{< button url="/" label="Download ansel.exe" icon="download" >}}
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Download ansel.exe" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="terminal" title="Build from source" %}}

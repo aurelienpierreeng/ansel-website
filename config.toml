@@ -58,7 +58,9 @@ canonifyURLs = true
     ordered = false
 
   [markup.goldmark.renderer]
-    unsafe = true
+      hardWraps = false
+      unsafe = true
+      xhtml = true
 
 [module]
   [[module.imports]]
