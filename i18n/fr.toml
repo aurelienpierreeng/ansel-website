@@ -6,3 +6,12 @@
 
 [workflows]
   other = "Flux de travail"
+
+[before]
+  other = "Avant"
+
+[after]
+  other = "Après"
+
+[subscribe]
+  other = "S'abonner à cette section par RSS"

@@ -1,0 +1,8 @@
+[before]
+  other = "Before"
+
+[after]
+  other = "After"
+
+[subscribe]
+  other = "Subscribe to this section with RSS"

@@ -4,11 +4,11 @@
 
 {{ if .IsPage }}
   {{ with .GetPage .Section }}
-    {{ partial "rss.html" . }}
+    — {{ partial "rss.html" . }}
   {{ end }}
 {{ else }}
   {{ with .FirstSection }}
-    {{ partial "rss.html" . }}
+    — {{ partial "rss.html" . }}
   {{ end }}
 {{ end }}
 </div>

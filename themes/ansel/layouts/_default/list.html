@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="container">
-    <h1 class="display-3 text-left my-4 border-bottom border-dark">{{ .Title }}</h1>
+    <h1 class="display-3 text-left my-4 border-bottom border-dark">{{ .Title }} <span class="float-end align-middle">{{ partial "rss.html" . }}</span></h1>
 
     <section>
     {{ .Content }}

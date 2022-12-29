@@ -1,6 +1,5 @@
 {{ with .OutputFormats.Get "rss" -}}
-—
-<a rel="{{ .Rel }}" href="{{ .Permalink }}" title="Subscribe to this section with RSS" type="{{ .MediaType.Type }}" class="link-dark no-text-transform">
+<a rel="{{ .Rel }}" href="{{ .Permalink }}" title="{{ i18n "subscribe" }}" type="{{ .MediaType.Type }}" class="link-dark no-text-transform">
   <i class="fas fa-rss-square"></i>
 </a>
 {{ end }}
