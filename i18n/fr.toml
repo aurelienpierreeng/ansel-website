@@ -15,3 +15,7 @@
 
 [subscribe]
   other = "S'abonner à cette section par RSS"
+
+[author]
+  one = "Auteur"
+  other = "Auteurs"

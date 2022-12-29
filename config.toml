@@ -6,6 +6,7 @@ theme = 'ansel'
 enableGitInfo = true
 defaultContentLanguageInSubdir = true
 canonifyURLs = true
+removePathAccents = true
 
 [author]
   name = 'Aurélien Pierre'
@@ -84,3 +85,4 @@ canonifyURLs = true
 
 [taxonomies]
   tag = "tags"
+	author = "authors"

@@ -6,3 +6,7 @@
 
 [subscribe]
   other = "Subscribe to this section with RSS"
+
+[author]
+  one = "Author"
+  other = "Authors"
