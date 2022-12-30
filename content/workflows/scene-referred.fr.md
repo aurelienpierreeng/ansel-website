@@ -65,6 +65,12 @@ Dans les firmwares des appareils photo et dans les applications typiques de trai
 Le résultat de l'application d'une transformation écran pour écran SDR (après) par dessus le RVB brut étalonné (avant). Notez comme on a perdu du contraste local dans les hautes lumières, à cause de la compression, par souci d'éclaircir les tons moyens. Ceci est un compromis difficile à éviter sans introduire d'autres artefacts bien plus laids.
 {{</ compare >}}
 
+La pente de cette courbe détermine le contraste global. De nombreuses applications propriétaires vont appliquer une telle courbe sans vous le dire et sans vous laisser la désactiver, de sorte que vous n'avez aucune idée de ce qui se passe en coulisses. Certaines applications vont seulement vous laisser choisir un look de base parmi "par défaut", "neutre", "portrait", "intense", "HDR", etc. ce qui aura pour effet de charger une courbe différente. Certaines applications embarquent même la courbe directement dans le profil de couleur d'entrée. 
+
+{{< note >}}
+Pour un éditeur logiciel commercial, le choix de cette courbe par défaut est crucial car il détermine la première impression que le client a en ouvrant sa photo, et cette première impression conditionne souvent le sentiment de qualité du logiciel. Cependant, les utilisateurs avancés regrettent souvent que la première étape de leur retouche doivent être annuler ou atténuer le look par défaut, ce qui n'est pas toujours facile. Vous trouverez ainsi des gens qui disent aimer « les couleurs Capture One » ou plutôt « les couleurs Lightroom », ce qui n'est rien de plus qu'un choix esthétique de l'éditeur quant au look par défaut.
+{{</ note >}}
+
 ## Travailler sur une image
 
 Dans la section précédente, nous avons appris qu'il faudrait travailler, non seulement pour reconstruire une restitution crédible des couleurs à partir du RVB brut, mais aussi pour remapper correctement la plage dynamique de la scène vers l'appareil d'affichage cible. Ici, nous allons voir comment ce travail est effectivement réalisé, en étudiant spécifiquement l'étape « _Beaucoup de travail numérique_ » du diagramme de flux ci-dessus.
@@ -170,3 +176,5 @@ Des effets similaires seront observés en travaillant avec des masques et le com
 Ansel est capable d'utiliser à la fois le flux relatif à la scène et le flux relatif à l'affichage, car il hérite de certains modules anciens de darktable. La plupart des modules relatifs à l'affichage ont été remplacés par des équivalents relatifs à la scène, et les derniers restants devraient suivre en 2023. 
 
 Bientôt, Ansel sera entièrement relatif à la scène, ce qui permettra des transformations écran plus intelligentes, combinées avec le mappage de gamut et des extractions de profil ICC.
+
+Il n'est généralement pas possible d'utiliser des modules prévus pour le flux relatif à l'affichage dans la partie du pipeline relative à la scène, car ils attendent un point blanc à 100 %, et vont généralement écrêter les valeurs RVB supérieures à 100 % (certains doivent le faire pour éviter des instabilités numériques dans les algorithmes). Certains attendent même un point gris à 50 %, comme les [modes de fusion](https://en.wikipedia.org/wiki/Blend_modes) alpha _écran_, _lumière douce_, _lumière dure_, _incrustation_, _éclaircir_, _assombrir_ qui traitent différemment les pixels dont les valeurs sont supérieures ou inférieures au seuil de 50 %.

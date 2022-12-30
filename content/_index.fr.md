@@ -11,9 +11,9 @@ thumbnail: "https://user-images.githubusercontent.com/45535283/"
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"><em>Ansel</em> est un logiciel libre de traitement photo pour artistes digitaux, conçu pour vous aider à obtenir votre propre interprétation de photos numériques brutes.</p>
   </div>
-  <div class="overflow-hidden" style="max-height: 80vh;">
-    <div class="container px-5">
-      <img src="/main-screenshot.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" loading="lazy">
+  <div class="overflow-hidden" style="max-height: 65vh;">
+    <div class="container px-5 my-5">
+      <img src="/main-screenshot-fr.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" width="1000" loading="lazy">
     </div>
   </div>
 </div>
@@ -25,7 +25,7 @@ thumbnail: "https://user-images.githubusercontent.com/45535283/"
 Il s'inscrit dans la lignée de <a href="https://wikipedia.org/wiki/Ansel_Adams">Ansel Adams</a>, pianiste et photographe, qui a poussé l'artisanat de la chambre noire comme jamais pour servir sa vision photographique.
 {{% /column %}}
 {{% column %}}
-<figure class="text-center">
+<figure class="text-left">
 <blockquote class="blockquote">
   <p>Le négatif est la partition, le tirage est l'interprétation.</p>
 </blockquote>

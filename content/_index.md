@@ -11,9 +11,9 @@ thumbnail: "https://user-images.githubusercontent.com/45535283/"
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"><em>Ansel</em> is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs.</p>
   </div>
-  <div class="overflow-hidden" style="max-height: 80vh;">
-    <div class="container px-5">
-      <img src="/main-screenshot.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" loading="lazy">
+  <div class="overflow-hidden" style="max-height: 65vh;">
+    <div class="container px-5 my-5">
+      <img src="/main-screenshot.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" loading="lazy" width="1000">
     </div>
   </div>
 </div>
@@ -25,7 +25,7 @@ thumbnail: "https://user-images.githubusercontent.com/45535283/"
 It is grounded in the legacy of <a href="https://wikipedia.org/wiki/Ansel_Adams">Ansel Adams</a>, pianist and photographer, who pushed darkroom craftsmanship like never before to serve his photographic vision.
 {{% /column %}}
 {{% column %}}
-<figure class="text-center">
+<figure class="text-left">
 <blockquote class="blockquote">
   <p>The negative is the score, and the print is the performance.</p>
 </blockquote>

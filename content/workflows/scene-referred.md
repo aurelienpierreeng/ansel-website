@@ -100,6 +100,12 @@ In camera firmwares and in typical image editing applications, this display tran
 The result of applying a display transform for SDR screen (after) over calibrated raw RGB (before). Note how we lost local contrast in highlights, due to the compression, for the sake of brightening mid-tones. This is a trade-off difficult to avoid without introducing other much uglier artifacts.
 {{</ compare >}}
 
+The slope of this curve determines the global contrast. Many proprietary applications will apply a such curve without telling you and without letting you disable it, so you may have no idea what happens backstage. Some applications only let you choose a base look between "default", "neutral", "portrait", "intense", "HDR", etc. which will load a different curve. Some applications even embed the curve in the input color profile.
+
+{{< note >}}
+For a commercial software publisher, the choice of this default curve is crucial because it determines the first impression that the customer has when opening his photo, and this first impression often conditions the feeling of quality of the software. However, advanced users often regret that the first step of their editing is to cancel or soften the default look, which is not always easy. You will find people saying they like "Capture One colors" or rather "Lightroom colors", which is nothing more than an aesthetic choice of the publisher regarding the default look.
+{{</ note >}}
+
 ## Working on an image
 
 In the previous section, we learned that we would have to work to not only to reconstruct a believable color rendition from the raw RGB, but also to remap the scene dynamic range properly for the target display device. Here, we will see how this work is actually done, by studying more specifically the "_Lots of digital work_" step of the previous section flowchart.
@@ -204,3 +210,5 @@ Similar effects will be observed when working with masks and alpha compositing, 
 Ansel is able to use both the display-referred and scene-referred workflows, because it inherits some legacy modules from darktable. Most display-referred modules have been replaced by scene-referred counterparts, and the remaining ones should follow in 2023. 
 
 Soon, Ansel will be entirely scene-referred, allowing for more clever display transforms combined with gamut mapping and ICC profiles extractions.
+
+It is generally not possible to use display-referred modules in the scene-referred part of the pipeline, because they expect a white point at 100 %, and will generally clip RGB values above 100 % (some need to do it to avoid numeric instabilities in algorithms). Some even expect a grey point at 50 %, like the alpha [blending modes](https://en.wikipedia.org/wiki/Blend_modes) _screen_, _soft light_, _hard light_, _overlay_, _dodge_, _burn_ which process differently pixels which values are greater or lower than the  50 % threshold.
