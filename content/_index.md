@@ -11,9 +11,9 @@ thumbnail: "https://user-images.githubusercontent.com/45535283/"
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"><em>Ansel</em> is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs.</p>
   </div>
-  <div class="overflow-hidden" style="max-height: 70vh;">
+  <div class="overflow-hidden" style="max-height: 80vh;">
     <div class="container px-5">
-      <img src="https://user-images.githubusercontent.com/45535283/148689197-e53dd75f-32f1-4297-9a0f-a9547fd4e7c7.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+      <img src="/main-screenshot.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" loading="lazy">
     </div>
   </div>
 </div>
@@ -48,7 +48,7 @@ This website is in construction. Most of the content is still placeholders and l
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Distribution-agnostic executable
-{{< button url="/" label="Download ansel.appimage" icon="download" >}}
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip" label="Download ansel.appimage" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}

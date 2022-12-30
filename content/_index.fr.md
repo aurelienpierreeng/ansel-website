@@ -11,9 +11,9 @@ thumbnail: "https://user-images.githubusercontent.com/45535283/"
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"><em>Ansel</em> est un logiciel libre de traitement photo pour artistes digitaux, conçu pour vous aider à obtenir votre propre interprétation de photos numériques brutes.</p>
   </div>
-  <div class="overflow-hidden" style="max-height: 70vh;">
+  <div class="overflow-hidden" style="max-height: 80vh;">
     <div class="container px-5">
-      <img src="https://user-images.githubusercontent.com/45535283/148689197-e53dd75f-32f1-4297-9a0f-a9547fd4e7c7.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+      <img src="/main-screenshot.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" loading="lazy">
     </div>
   </div>
 </div>
@@ -27,7 +27,7 @@ Il s'inscrit dans la lignée de <a href="https://wikipedia.org/wiki/Ansel_Adams"
 {{% column %}}
 <figure class="text-center">
 <blockquote class="blockquote">
-  <p>Le négatif est la partition, le tirage est l'exécution.</p>
+  <p>Le négatif est la partition, le tirage est l'interprétation.</p>
 </blockquote>
 <figcaption class="blockquote-footer">
   <cite title="Ansel Adams">Ansel Adams</cite>
@@ -48,7 +48,7 @@ Ce site est en construction. La majorité du contenu est des gabarits remplissag
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Exécutable indépendant de la distribution
-{{< button url="/" label="Download ansel.appimage" icon="download" >}}
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip" label="Download ansel.appimage" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
