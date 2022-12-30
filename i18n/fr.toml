@@ -19,3 +19,9 @@
 [author]
   one = "Auteur"
   other = "Auteurs"
+
+[onthispage]
+  other = "Sur cette page"
+
+[inthissection]
+  other = "Dans cette section"

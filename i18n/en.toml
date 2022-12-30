@@ -10,3 +10,9 @@
 [author]
   one = "Author"
   other = "Authors"
+
+[onthispage]
+  other = "On this page"
+
+[inthissection]
+  other = "In this section"
