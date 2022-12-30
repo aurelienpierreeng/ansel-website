@@ -14,7 +14,7 @@
   </li>
 {{ else }}
 <li class="breadcrumb-item">
-  <a href="{{ .p1.Permalink }}" class="text-decoration-none">{{ .p1.Title | humanize }}</a>
+  <a href="{{ .p1.Permalink }}" class="text-decoration-none">{{ .p1.Title | strings.FirstUpper | safeHTML }}</a>
 </li>{{ end }}
 {{ end }}
 </nav>

@@ -14,7 +14,7 @@
 
   <article class="col-12 col-lg-8">
     <header class="border-bottom border-dark my-4">
-      <h1 class="display-3 text-left my-4">{{ .Title }}</h1>
+      <h1 class="display-3 text-left my-4">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
     </header>
     <section>
       {{ .Content }}
