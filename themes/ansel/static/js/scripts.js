@@ -2,18 +2,19 @@
 // Code adapted from https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
 window.addEventListener('DOMContentLoaded', () => {
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  const observer = new IntersectionObserver(entries =>
+  {
+    entries.forEach(entry =>
+    {
       const id = entry.target.getAttribute('id');
-      if (entry.intersectionRatio > 0) {
-        document.querySelectorAll('aside nav li a').forEach((section) => {
-          section.classList.remove('active');
-        });
-      }
+      if (entry.intersectionRatio > 0)
+        document.querySelectorAll('aside nav li a').forEach(section => { section.classList.remove('active'); });
       else {
-        document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.remove('active');
+        var element = document.querySelector(`nav li a[href="#${id}"]`);
+        if (element)
+          element.parentElement.classList.remove('active');
       }
-    }
+    })
   });
 
 	// Track all titles that have an `id` applied

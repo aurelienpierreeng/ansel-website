@@ -160,8 +160,8 @@ div.mermaid {
   position: relative;
   width: 100%;
   height: auto;
-  border-radius: 0.5rem;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .img-comp-container img {
@@ -250,3 +250,31 @@ div.mermaid {
 .img-comp-container .label.label-after {
   right: 1rem;
 }
+
+.open-lightbox-button {
+  position: absolute;
+  right: -1.5rem;
+  top: -1.5rem;
+  opacity: 0;
+  border-radius: 50%;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  padding: 0.25rem 0.3rem;
+  cursor: pointer;
+}
+
+figure:hover .open-lightbox-button { opacity: 1; }
+
+#lightbox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 3rem;
+  background: white;
+  z-index: 9999;
+}
+
+#lightbox figure .open-lightbox-button { opacity: 1; }
+#lightbox figure figcaption { display: none }

@@ -6,14 +6,21 @@
  * Copyright © 2022 - Aurélien Pierre.
  */
 
-function initComparisons() {
+function initComparisons(id=false) {
   var x, i;
   /* Find all elements with an "overlay" class and add the events */
-  x = document.getElementsByClassName("img-comp-container");
-  for (i = 0; i < x.length; i++) {
-    var height, width;
-    set_heights(x[i]);
-    compareImages(x[i]);
+  if (!id) {
+    x = document.getElementsByClassName("img-comp-container");
+    for (i = 0; i < x.length; i++) {
+      set_heights(x[i]);
+      compareImages(x[i]);
+    }
+  }
+  else {
+    container = document.getElementById(id);
+    x = container.getElementsByClassName("img-comp-container")[0];
+    set_heights(x);
+    compareImages(x);
   }
 
   function set_heights(slider) {
@@ -40,6 +47,7 @@ function initComparisons() {
     over.style.width = (width / 2) + "px";
     over_image.style.width = width + "px";
     under_image.style.width = width + "px";
+    slider.style.width = width + "px";
   }
 
   function compareImages(slider) {
@@ -116,4 +124,76 @@ function initComparisons() {
       cursor.style.left = over.offsetWidth - (cursor.offsetWidth / 2) + "px";
     }
   }
+}
+
+
+function lightbox(id) {
+  // If we already have a lightbox, close it
+  box = document.getElementById("lightbox");
+  if (box) {
+    box.parentNode.removeChild(box);
+    return;
+  }
+
+  // Clone the current 50/50 slider
+  const template = document.getElementById(id);
+  const clone = template.cloneNode(true);
+
+  // Get the old sizes of images
+  var under = template.getElementsByClassName("img-comp-under")[0];
+  height = under.offsetHeight;
+  width = under.offsetWidth;
+  image_ratio = width / height;
+
+  // Remove the current slider cursor
+  const elements = clone.getElementsByClassName("comp-cursor");
+  while(elements.length > 0){
+      elements[0].parentNode.removeChild(elements[0]);
+  }
+
+  // Change the button icon for a cross
+  const button = clone.getElementsByClassName("open-lightbox-button")[0];
+  button.classList.remove('fa-expand-alt');
+  button.classList.add("fa-times");
+
+  // Add the slider in an overlay
+  const lightbox = document.createElement("div");
+  lightbox.id = "lightbox";
+  lightbox.appendChild(clone);
+  document.body.appendChild(lightbox);
+
+  // Container width and height minus padding and border
+  var cs = getComputedStyle(lightbox);
+  var paddingX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+  var paddingY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+  var borderX = parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+  var borderY = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+
+  max_width = lightbox.offsetWidth - paddingX - borderX;
+  max_height = lightbox.offsetHeight - paddingY - borderY;
+
+  // Set new sizes for full-screen
+  height = Math.min(max_height, max_width / image_ratio);
+  width = Math.min(max_width, max_height * image_ratio);
+
+  var slider = clone.getElementsByClassName("img-comp-container")[0];
+  var over = clone.getElementsByClassName("img-comp-over")[0];
+  var over_image = over.getElementsByTagName("img")[0];
+  var under = clone.getElementsByClassName("img-comp-under")[0];
+  var under_image = under.getElementsByTagName("img")[0];
+
+  slider.style.height = height + "px";
+  over_image.style.height = height + "px";
+  under_image.style.height = height + "px";
+  over.style.height = height + "px";
+  under.style.height = height + "px";
+
+  slider.style.width = width + "px";
+  over_image.style.width = width + "px";
+  under_image.style.width = width + "px";
+  over.style.width = width + "px";
+  under.style.width = width + "px";
+
+  // Re-init a new slider
+  initComparisons("lightbox");
 }
