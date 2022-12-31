@@ -82,21 +82,25 @@ Appuyer sur le déclencheur de l'appareil photo a seulement démarré un process
 {{% /row %}}
 {{< divider >}}
 
-## What can Ansel for you ?
+## Que peut Ansel pour vous ?
 <hr>
 
-### Color work
+Ansel vous permet de gérer vos collections d'images, de traiter vos fichiers numériques bruts de capteur et vos pellicules numérisées, et d'exporter le résultat vers les formats de fichiers courants. Il stocke votre historique de traitement sous forme de texte et vous permet de remonter dans le temps à n'importe quelle étape de votre traitement, à tout moment.
+
+### Travail sur la couleur
+
+Ansel embarque une science de la couleur récente et compatible HDR : l'adaptation chromatique CIE CAT 2016, l'espace de couleur HDR JzAzBz (2017) et l'espace de couleur perceptuel darktable UCS 2021, développé spécialement pour manipuler la saturation des couleurs en évitant l'effet fluo.
 
 {{% row %}}
 {{% column %}}
- ##### Color calibration
+ ##### Calibration des couleurs
 {{< compare after="/calibration-after.jpg" before="/calibration-before.jpg" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+Corrigez la balance des blancs et obtenez des couleurs haute fidélité en seulement quelques clics, en étalonnant les couleurs avec un Color Checker directement en chambre noire.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
- ##### Color-grading
+ ##### Gradation des couleurs
 {{< compare after="/grading-after.jpg" before="/grading-before.jpg" >}}
 Donnez ambiance et caractère à vos photos en polissant leur palette de couleur avec des contrôles nuancés et détaillés, dans les espaces de couleur RVB, Ych ou HSB, à des fins créatives ou correctives.
 {{</ compare >}}
@@ -105,16 +109,16 @@ Donnez ambiance et caractère à vos photos en polissant leur palette de couleur
 
 {{% row %}}
 {{% column %}}
-##### Color matching
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Correspondance de couleur
+{{< compare after="/matching-after.jpg" before="/matching-before.jpg" >}}
+Forcez l'adaptation chromatique de sorte que n'importe quel objet sélectionné corresponde à une couleur prédéterminée, saisie à partir de ses coordonées CIE Lab (pour les logos ou les couleurs de marques commerciales), ou en échantillonnant la couleur du même objet dans une autre photo, pour obtenir un rendu des couleur uniforme sur une série.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Hue qualifying and keying
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Qualificateurs de teinte et fusion
+{{< compare after="/masking-after.jpg" before="/masking-before.jpg" >}}
+Utilisez les qualificateurs de teinte, chroma et luminosité pour définir rapidement des masques, et appliquer des effets sélectifs. Combinez les masques paramétriques avec des masques dessinés avec des opérations booléennes. Raffinez et détaillez les bords des masques par floutage ou détection de bords intelligente.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
@@ -172,35 +176,20 @@ Sauvez à la fois la couleur et la texture dans les hautes lumières, récupére
 {{% /column %}}
 {{% /row %}}
 
-### Advanced features
+### Fonctions spécialisées
 
 {{% row %}}
 {{% column %}}
-##### Masking and blending
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+##### Correction automatique de la perspective
+{{< compare after="/perspective-after.jpg" before="/perspective-before.jpg" >}}
+Laissez l'apprentissage machine détecter automatiquement les lignes verticales et horizontales et calculer la meilleure correction géométrique pour pivoter, redresser et recadrer l'image, en tenant optionnellement compte du type d'objectif utilisé.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Censoring
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-{{</ compare >}}
-{{% /column %}}
-{{% /row %}}
-### Printing
-
-{{% row %}}
-{{% column %}}
-##### Printer profiles
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
-{{</ compare >}}
-{{% /column %}}
-
-{{% column %}}
-##### Gamut mapping
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Censurer
+{{< compare after="/censorize-after.jpg" before="/censorize-before.jpg" >}}
+Anonymisez facilement des gens, plaques d'immatriculation, etc. et jouez avec les conditions d'utilisation des réseaux socialement prudes sans trop défigurer vos images.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}

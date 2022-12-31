@@ -85,7 +85,11 @@ Pressing the camera shutter merely started a process ending when the on-screen p
 ## What can Ansel for you ?
 <hr>
 
+Ansel allows you to manage your collections of pictures, to edit your raw digital photographs and film scans non-destructively and to export the result to common file formats. It stores your editing histories as text and lets you go back in time at any editing step you like, anytime.
+
 ### Color work
+
+Ansel ships a recent color science, compatible with HDR : the chromatic adaptation CIE CAT 2016, the HDR color space JzAzBz (2017) and the perceptual color space darktable UCS 2021, developed specifically to manipulate color saturation without the fluorescent effect.
 
 {{% row %}}
 {{% column %}}
@@ -93,6 +97,7 @@ Pressing the camera shutter merely started a process ending when the on-screen p
 {{< compare after="/calibration-after.jpg" before="/calibration-before.jpg" >}}
 Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
 {{</ compare >}}
+
 {{% /column %}}
 
 {{% column %}}
@@ -106,15 +111,15 @@ Give ambiance and character to your pictures by polishing their color palette wi
 {{% row %}}
 {{% column %}}
 ##### Color matching
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/matching-after.jpg" before="/matching-before.jpg" >}}
+Force the chromatic adaptation such that any selected object matches a predetermined color, input from CIE Lab coordinates (for logos and brand colors), or by sampling the color of the same object in another shot, as to even the color rendition over the series.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
 ##### Hue qualifying and keying
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/masking-after.jpg" before="/masking-before.jpg" >}}
+Use the hue, chroma and lightness qualifiers to quickly define masks and apply selective effects. Combine parametric masks with drawn masks and boolean operations. Refine and feather the edges of masks by blurring or using clever edges detection.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
@@ -172,35 +177,20 @@ Salvage both color and texture in highlights, recover blown areas by propagating
 {{% /column %}}
 {{% /row %}}
 
-### Advanced features
+### Specialized features
 
 {{% row %}}
 {{% column %}}
-##### Masking and blending
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+##### Automatic perspective correction
+{{< compare after="/perspective-after.jpg" before="/perspective-before.jpg" >}}
+Let the machine learning detect automatically vertical and horizontal lines and compute the best geometric correction to rotate, straighten and crop the picture, optionnaly taking into account the kind of lens used.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
 ##### Censoring
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-{{</ compare >}}
-{{% /column %}}
-{{% /row %}}
-### Printing
-
-{{% row %}}
-{{% column %}}
-##### Printer profiles
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
-{{</ compare >}}
-{{% /column %}}
-
-{{% column %}}
-##### Gamut mapping
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/censorize-after.jpg" before="/censorize-before.jpg" >}}
+Anonymize people, license plates, etc. and play with use conditions of socially prude network without defiling your pictures too much.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
