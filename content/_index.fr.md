@@ -6,13 +6,13 @@ description: "Ansel est un éditeur de photos brutes pour artistes"
 thumbnail: "https://user-images.githubusercontent.com/45535283/"
 ---
 
-<div class="px-4 pt-5 my-5 text-center">
+<div class="pt-5 my-5 text-center">
   <h1 class="display-4 fw-bold">Votre chambre noire numérique</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"><em>Ansel</em> est un logiciel libre de traitement photo pour artistes digitaux, conçu pour vous aider à obtenir votre propre interprétation de photos numériques brutes.</p>
   </div>
   <div class="overflow-hidden" style="max-height: 65vh;">
-    <div class="container px-5 my-5">
+    <div class="container my-5">
       <img src="/main-screenshot-fr.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" width="1000" loading="lazy">
     </div>
   </div>

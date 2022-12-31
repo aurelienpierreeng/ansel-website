@@ -284,9 +284,16 @@ figure:hover .open-lightbox-button { opacity: 1; }
   padding: 1rem;
   background: white;
   z-index: 9999;
+  vertical-align: middle;
+  box-sizing: border-box;
 }
 
-#lightbox figure { margin: 0 auto!important; }
+#lightbox figure {
+  margin-left: auto!important;
+  margin-right: auto!important;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
 #lightbox figure .open-lightbox-button { opacity: 1; }
 #lightbox figure figcaption { display: none }
 #lightbox .open-lightbox-button {

@@ -6,13 +6,13 @@ description: "Ansel is an open-source raw photo editor for artists"
 thumbnail: "https://user-images.githubusercontent.com/45535283/"
 ---
 
-<div class="px-4 pt-5 my-5 text-center">
+<div class="pt-5 my-5 text-center">
   <h1 class="display-4 fw-bold">Your digital darkroom</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"><em>Ansel</em> is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs.</p>
   </div>
   <div class="overflow-hidden" style="max-height: 65vh;">
-    <div class="container px-5 my-5">
+    <div class="container my-5">
       <img src="/main-screenshot.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" loading="lazy" width="1000">
     </div>
   </div>
