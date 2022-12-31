@@ -41,24 +41,20 @@ Il s'inscrit dans la lignée de <a href="https://wikipedia.org/wiki/Ansel_Adams"
 
 <hr>
 
-{{< warning >}}
-Ce site est en construction. La majorité du contenu est des gabarits remplissage et les liens ne fonctionnent pas tous.
-{{< /warning >}}
-
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Exécutable indépendant de la distribution
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip" label="Download ansel.appimage" icon="download" >}}
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip" label="Télécharger ansel.appimage" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
 Installeur Windows 10 & 11
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Download ansel.exe" icon="download" >}}
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Télécharger ansel.exe" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="terminal" title="Build from source" %}}
 Les meilleurs performances pour votre matériel
-{{< button url="/" label="Go to building instructions" icon="wrench" >}}
+{{< button url="/" label="Instructions de compilation" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 
@@ -142,36 +138,36 @@ Fix white balance and get high-fidelity colors in just a few clicks, by calibrat
 {{% /column %}}
 {{% /row %}}
 
-### Image reconstruction
+### Reconstruction d'image
 
 {{% row %}}
 {{% column %}}
-##### Lens deblurring
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Défloutage d'objectif
+{{< compare after="/sharpen-after.jpg" before="/sharpen-before.jpg" >}}
+Libérez le pouvoir de l'apprentissage machine basée sur l'analyse de gradients multi-échelle pour rajeunir les vieux objectifs, récupérer les erreurs de mise au point ou renforcer votre sujet, mais sans les artefacts de bord typiques, les bizarreries de sur-accentuation ou le bruit additionnel.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Dehazing
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Désembuage
+{{< compare after="/dehaze-after.jpg" before="/dehaze-before.jpg" >}}
+Restaurez une certaine profondeur dans les clichés brumeux et flous en ramenant des textures et de la saturation dans les couleurs, sans pour autant sur-accentuer les détails déjà nets.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
 
 {{% row %}}
 {{% column %}}
-##### Denoising
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Débruitage
+{{< compare after="/denoise-after.jpg" before="/denoise-before.jpg" >}}
+Supprimez le bruit chromatique, adoucissez et fusionnez le bruit de luminance.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Highlights reconstruction
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Reconstruction des hautes lumières
+{{< compare after="/highlights-after.jpg" before="/highlights-before.jpg" >}}
+Sauvez à la fois la couleur et la texture dans les hautes lumières, récupérez les zones brûlées en propageant les gradients pendant que le gamut-mapping surveille vos arrières en garantissant que les hautes lumières saturées peuvent toujours être imprimées à leur teinte d'origine. Vous n'êtes plus obligé de délaver les hautes lumières pour cacher les problèmes.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}

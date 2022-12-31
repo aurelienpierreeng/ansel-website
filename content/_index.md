@@ -41,10 +41,6 @@ It is grounded in the legacy of <a href="https://wikipedia.org/wiki/Ansel_Adams"
 
 <hr>
 
-{{< warning >}}
-This website is in construction. Most of the content is still placeholders and links are not all working.
-{{< /warning >}}
-
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Distribution-agnostic executable
@@ -58,7 +54,7 @@ Windows 10 & 11 installer
 
 {{% card icon="terminal" title="Build from source" %}}
 Best performance for your hardware
-{{< button url="/" label="Go to building instructions" icon="wrench" >}}
+{{< button url="/" label="Building instructions" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 
@@ -147,15 +143,15 @@ Fix white balance and get high-fidelity colors in just a few clicks, by calibrat
 {{% row %}}
 {{% column %}}
 ##### Lens deblurring
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/sharpen-after.jpg" before="/sharpen-before.jpg" >}}
+Unleash the power of multiscale, gradient-based machine learning to rejuvenate old lenses, recover focusing mistakes or add emphasis on your subject, but without the typical edge artifacts, over-sharpening oddities or added noise.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
 ##### Dehazing
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/dehaze-after.jpg" before="/dehaze-before.jpg" >}}
+Restore some depth in foggy and hazy shots by bringing back textures and saturation in colors, without overaccentuating already sharp details.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
@@ -163,15 +159,15 @@ Fix white balance and get high-fidelity colors in just a few clicks, by calibrat
 {{% row %}}
 {{% column %}}
 ##### Denoising
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/denoise-after.jpg" before="/denoise-before.jpg" >}}
+Remove chromatic noise, soften and blend lumaninance noise.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
 ##### Highlights reconstruction
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/highlights-after.jpg" before="/highlights-before.jpg" >}}
+Salvage both color and texture in highlights, recover blown areas by propagating gradients while the gamut-mapping watches your back to ensure colorful highlights can still be printed at their proper hue. You don't have to bleach highlights to hide problems anymore.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
