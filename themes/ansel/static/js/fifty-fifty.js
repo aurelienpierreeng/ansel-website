@@ -152,7 +152,7 @@ function lightbox(id) {
   }
 
   // Change the button icon for a cross
-  const button = clone.getElementsByClassName("open-lightbox-button")[0];
+  const button = clone.getElementsByClassName("open-lightbox-icon")[0];
   button.classList.remove('fa-expand-alt');
   button.classList.add("fa-times");
 

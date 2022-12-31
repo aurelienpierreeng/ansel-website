@@ -204,8 +204,8 @@ div.mermaid {
 
 .comp-cursor-button {
   /*set the appearance of the slider:*/
-  width: 50px;
-  height: 50px;
+  width: 2.5rem;
+  height: 2.5rem;
   background: transparent;
   border: 2px solid #fff;
   border-radius: 50%;
@@ -213,7 +213,7 @@ div.mermaid {
   align-items: center;
   justify-content: space-evenly;
   color: #fff;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: thin;
 }
 
@@ -253,14 +253,24 @@ div.mermaid {
 
 .open-lightbox-button {
   position: absolute;
-  right: -1.5rem;
-  top: -1.5rem;
+  width: 2rem;
+  height: 2rem;
+  right: -1rem;
+  top: -1rem;
   opacity: 0;
   border-radius: 50%;
   background-color: #ddd;
-  border: 1px solid #ccc;
-  padding: 0.25rem 0.3rem;
+  border: 2px solid #fff;
   cursor: pointer;
+  font-size: 1rem;
+  z-index: 99;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.open-lightbox-icon {
+  text-align: center;
+  vertical-align: middle;
 }
 
 figure:hover .open-lightbox-button { opacity: 1; }
@@ -271,10 +281,15 @@ figure:hover .open-lightbox-button { opacity: 1; }
   top: 0;
   width: 100vw;
   height: 100vh;
-  padding: 3rem;
+  padding: 1rem;
   background: white;
   z-index: 9999;
 }
 
+#lightbox figure { margin: 0 auto!important; }
 #lightbox figure .open-lightbox-button { opacity: 1; }
 #lightbox figure figcaption { display: none }
+#lightbox .open-lightbox-button {
+  right: 0;
+  top: -1rem;
+}

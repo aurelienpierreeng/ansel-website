@@ -2,7 +2,9 @@
 {{ $seed := "bar" }}
 {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
 <figure style="position: relative; overflow: visible;" id="{{ print $random }}">
-<i class="fas fa-expand-alt open-lightbox-button" onclick="lightbox({{ print $random }})"></i>
+<button class="open-lightbox-button">
+  <i class="fas fa-expand-alt open-lightbox-icon" onclick="lightbox({{ print $random }})"></i>
+</button>
 <div class="img-comp-container">
   <div class="img-comp-under">
     <span class="label label-after">{{ i18n "after" }}</span>
