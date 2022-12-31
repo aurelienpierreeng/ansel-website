@@ -90,15 +90,15 @@ Appuyer sur le déclencheur de l'appareil photo a seulement démarré un process
 {{% row %}}
 {{% column %}}
  ##### Color calibration
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
+{{< compare after="/calibration-after.jpg" before="/calibration-before.jpg" >}}
 Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
  ##### Color-grading
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/grading-after.jpg" before="/grading-before.jpg" >}}
+Donnez ambiance et caractère à vos photos en polissant leur palette de couleur avec des contrôles nuancés et détaillés, dans les espaces de couleur RVB, Ych ou HSB, à des fins créatives ou correctives.
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
