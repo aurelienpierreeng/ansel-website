@@ -127,18 +127,20 @@ Use the hue, chroma and lightness qualifiers to quickly define masks and apply s
 
 ### Tonal work
 
+The tonal working methods are designed to manipulate luminance without affecting hue nor saturation, in order to respect the color work, done apart.
+
 {{% row %}}
 {{% column %}}
 ##### HDR tone mapping
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/filmic-after.jpg" before="/filmic-before.jpg" >}}
+Recover deep shadows and compress the dynamic range while retaining original saturation and hue, with gamut mapping to ensure the colors fit in the output color space. _(Photo : Andreas Schneider)_
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
 ##### Zone-system editing
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+{{< compare after="/toneeq-after.jpg" before="/toneeq-before.jpg" >}}
+Balance densities based on exposure zones, by preserving local contrast thanks to an edge detection algorithm, and select the exposure zones to affect directly from the picture, through the interactive cursor. _(Photo : Andreas Schneider)_
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
@@ -199,11 +201,14 @@ Anonymize people, license plates, etc. and play with use conditions of socially 
 
 {{% row %}}
 {{% card title="Edits" icon="desktop" %}}
-Ansel is based on darktable 4.0 and is fully compatible with XMP edits and database darktable 2.x up to 4.0 database and XMP files.
+Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to 4.0 database and XMP files.
 {{% /card %}}
 {{% card title="Cameras" icon="camera" %}}
 New cameras may need up to 24 months to be fully supported after their commercial release.
+{{< button url="https://rawspeed.org/CameraSupport.html" label="Supported cameras" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
+
+
 
 {{% /container %}}

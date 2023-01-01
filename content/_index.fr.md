@@ -124,20 +124,22 @@ Utilisez les qualificateurs de teinte, chroma et luminosité pour définir rapid
 {{% /row %}}
 
 
-### Tonal work
+### Travail sur les tonalités
+
+Les méthodes de travail sur les tonalités sont conçues pour manipuler la luminance sans affecter la teinte ni la saturation, afin de respecter le travail sur la couleur, effectué à part.
 
 {{% row %}}
 {{% column %}}
-##### HDR tone mapping
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Mappage de ton HDR
+{{< compare after="/filmic-after.jpg" before="/filmic-before.jpg" >}}
+Récupérez les ombres denses et compressez la plage dynamique tout en gardant la saturation et la teinte d'origine, avec un mappage de gamut pour garantir que les couleurs tiennent dans l'espace de couleur de sortie. _(Photo : Andreas Schneider)_
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Zone-system editing
-{{< compare after="https://www.dropbox.com/s/h8rds5ozk0u3s2f/coder.jpg?raw=1" before="https://www.dropbox.com/s/pem8kaorr488apn/universe.jpg?raw=1" >}}
-Fix white balance and get high-fidelity colors in just a few clicks, by calibrating colors with a Color Checker directly in the darkroom.
+##### Traitement basé sur le _zone system_
+{{< compare after="/toneeq-after.jpg" before="/toneeq-before.jpg" >}}
+Équilibrez les densités par zone de lumination, en préservant le contraste local grâce à un algorithme de détection des bords, et sélectionnez les zones de lumination à affecter directement dans l'image via le curseur interactif. _(Photo : Andreas Schneider)_
 {{</ compare >}}
 {{% /column %}}
 {{% /row %}}
@@ -194,15 +196,18 @@ Anonymisez facilement des gens, plaques d'immatriculation, etc. et jouez avec le
 {{% /column %}}
 {{% /row %}}
 
-## Compatibility
+## Compatibilité
 
 {{% row %}}
 {{% card title="Edits" icon="desktop" %}}
-Ansel is based on darktable 4.0 and is fully compatible with XMP edits and database darktable 2.x up to 4.0 database and XMP files.
+Ansel est basé sur darktable 4.0 et est entièrement compatible avec les XMP de traitement et la base de données de darktable 2.x à 4.0.
 {{% /card %}}
-{{% card title="Cameras" icon="camera" %}}
-New cameras may need up to 24 months to be fully supported after their commercial release.
+{{% card title="Appareils photos" icon="camera" %}}
+Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le marché pour être entièrement supportés.
+{{< button url="https://rawspeed.org/CameraSupport.html" label="Appareils pris en charge" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
+
+
 
 {{% /container %}}
