@@ -54,7 +54,7 @@ Installeur Windows 10 & 11
 
 {{% card icon="terminal" title="Build from source" %}}
 Les meilleurs performances pour votre matériel
-{{< button url="/" label="Instructions de compilation" icon="wrench" >}}
+{{< button url="/fr/doc/install" label="Instructions de compilation" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 

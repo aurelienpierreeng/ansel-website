@@ -54,7 +54,7 @@ Windows 10 & 11 installer
 
 {{% card icon="terminal" title="Build from source" %}}
 Best performance for your hardware
-{{< button url="/" label="Building instructions" icon="wrench" >}}
+{{< button url="/en/doc/install" label="Building instructions" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 
