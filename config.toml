@@ -33,6 +33,13 @@ removePathAccents = true
     name = "Support"
     pre = "fas fa-hands-helping"
     url = "/support/"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "resources"
+    name = "Resources"
+    pre = "fas fa-question-circle"
+    url = "/resources/"
     weight = 4
 
   [[menu.main]]

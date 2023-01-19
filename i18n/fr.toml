@@ -7,6 +7,9 @@
 [workflows]
   other = "Flux de travail"
 
+[resources]
+  other = "Ressources"
+
 [before]
   other = "Avant"
 

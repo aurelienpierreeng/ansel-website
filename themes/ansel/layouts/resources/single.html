@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<div class="container">
+{{ if .Params.thumbnail }}
+<div class="card my-2">
+  {{ if strings.HasSuffix .Params.thumbnail ".svg" }}
+      <object data="{{ .Params.thumbnail | relLangURL }}" width="100%"></object>
+  {{ else }}
+      <img src="{{ .Params.thumbnail | relLangURL }}" width="100%">
+  {{ end }}
+</div>
+{{ end }}
+
+{{ partial "breadcrumb.html" . }}
+
+<div class="row flex-row justify-content-between">
+
+  <aside class="col-12 col-lg-4 flex-column my-2">
+    <div id="sidebar">
+        {{ partial "toc.html" . }}
+    </div>
+  </aside>
+
+  <article class="col-12 col-lg-8 my-2">
+    <header class="border-top border-dark">
+      <h1 class="display-3 text-left my-4">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
+      {{ partial "metadata.html" . }}
+    </header>
+    <section>
+      {{ .Content }}
+    </section>
+    {{- partial "authors.html"  . -}}
+  </article>
+
+</div>
+</div>
+
+{{- partial "offcanvas-nav.html" (dict "top" (.Site.GetPage "/resources/") "current" .) -}}
+
+{{ end }}
