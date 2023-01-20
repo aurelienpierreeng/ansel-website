@@ -12,8 +12,8 @@ Cette page regroupe la plupart des erreurs et des idées fausses sur Ansel que l
 
 ## Je dois être un expert / ingénieur pour utiliser Ansel
 
-Mes [vidéos](https://www.youtube.com/channel/UCmsSn3fujI81EKEr4NLxrcg)
-et mes articles contiennent à la fois la partie "quoi faire" et la partie "pourquoi/comment". Le "pourquoi/comment" est typiquement technique ou même théorique, et sert à justifier le "quoi faire". Il y a plusieurs raisons pour lesquelles je donne les deux :
+Mes [vidéos](https://www.youtube.com/channel/UCmsSn3fujI81EKEr4NLxrcg) et mes  articles contiennent à  la fois la  partie "quoi faire"  et la partie  "pourquoi/comment".   Le  "pourquoi/comment"  est  typiquement technique ou même théorique, et sert à justifier le "quoi faire". Il y
+a plusieurs raisons pour lesquelles je donne les deux :
 
 1. Les explications techniques précises sont très difficiles à trouver sur internet, et je suis à peu près le seul à lier la théorie et la pratique en vidéo. Autrement, il est très facile de trouver des informations fausses en photographie, venant de gens juste au dessus de la moyenne qui essaient d'aider, mais induisent les autres en erreur.
 1. Je déteste personnellement les gourous qui lancent des consignes sans prendre la peine de les justifier. Les règles ont toujours une raison et doivent être violées dès que cette raison cesse d'être valide. On trouve beaucoup de gens qui continuent à suivre de vieilles règles parce que « les anciens savaient ce qu'ils faisaient » — mais ils ne se souviennent pas pourquoi ils le faisaient — alors que les circonstances ont changé.
@@ -43,9 +43,7 @@ Mais souvenez vous que ce rendu par défaut en ouvrant la chambre noire n'est qu
 
 ## Les modules dépréciés ne fonctionnent plus
 
-Ansel est basé sur darktable 4.0. darktable 4.0 a déprécié de nombreux
-modules. Ansel en  a déprécié encore plus. Les  modules sont dépréciés
-quand une meilleure alternative est disponible.
+Ansel est basé sur darktable 4.0. darktable 4.0 a déprécié de nombreux modules. Ansel en  a déprécié encore plus. Les  modules sont dépréciés quand une meilleure alternative est disponible.
 
 Mais « déprécié » est un mot un peu fort pour dire « le widget du module est cachée dans l'interface graphique ». Le code d'interface graphique et le code de traitement de pixels sont toujours dans le logiciel, et seront toujours exécutés pour les anciens traitement utilisant ce module. Pour ces traitements, le module sera visible dans l'interface.
 
