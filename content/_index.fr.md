@@ -200,7 +200,8 @@ Anonymisez facilement des gens, plaques d'immatriculation, etc. et jouez avec le
 
 {{% row %}}
 {{% card title="Edits" icon="desktop" %}}
-Ansel est basé sur darktable 4.0 et est entièrement compatible avec les XMP de traitement et la base de données de darktable 2.x à 4.0.
+Ansel est basé sur darktable 4.0 et est entièrement compatible avec les XMP de traitement et la base de données de darktable 2.x à 4.0. Vous venez de darktable ?
+{{< button url="/fr/doc/special-topics/from-darktable/" label="Découvrez ce qui a changé" icon="sync" >}}
 {{% /card %}}
 {{% card title="Appareils photos" icon="camera" %}}
 Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le marché pour être entièrement supportés.

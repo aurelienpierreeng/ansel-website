@@ -201,7 +201,8 @@ Anonymize people, license plates, etc. and play with use conditions of socially 
 
 {{% row %}}
 {{% card title="Edits" icon="desktop" %}}
-Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to 4.0 database and XMP files.
+Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to 4.0 database and XMP files. Coming from darktable ?
+{{< button url="/en/doc/special-topics/from-darktable/" label="Find out what is changed" icon="sync" >}}
 {{% /card %}}
 {{% card title="Cameras" icon="camera" %}}
 New cameras may need up to 24 months to be fully supported after their commercial release.
