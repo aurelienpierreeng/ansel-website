@@ -16,7 +16,7 @@ Mes [vidéos](https://www.youtube.com/channel/UCmsSn3fujI81EKEr4NLxrcg)
 et mes articles contiennent à la fois la partie "quoi faire" et la partie "pourquoi/comment". Le "pourquoi/comment" est typiquement technique ou même théorique, et sert à justifier le "quoi faire". Il y a plusieurs raisons pour lesquelles je donne les deux :
 
 1. Les explications techniques précises sont très difficiles à trouver sur internet, et je suis à peu près le seul à lier la théorie et la pratique en vidéo. Autrement, il est très facile de trouver des informations fausses en photographie, venant de gens juste au dessus de la moyenne qui essaient d'aider, mais induisent les autres en erreur.
-1. Je déteste personnellement les gourous qui lancent des consignes sans prendre la peine de les justifier. Les règles ont toujours une raison et doivent être violées dès que cette raison cesse d'être valide. On trouve beaucoup de gens qui continuent à suivre de vieilles règles parce que « les anciens savaient ce qu'ils faisaient » — mais il ne se souviennent pas pourquoi ils le faisaient — alors que les circonstances ont changé.
+1. Je déteste personnellement les gourous qui lancent des consignes sans prendre la peine de les justifier. Les règles ont toujours une raison et doivent être violées dès que cette raison cesse d'être valide. On trouve beaucoup de gens qui continuent à suivre de vieilles règles parce que « les anciens savaient ce qu'ils faisaient » — mais ils ne se souviennent pas pourquoi ils le faisaient — alors que les circonstances ont changé.
 1. Comprendre comment les outils se comportent vous permet de prédire à quelle moment ils vont échouer (parce qu'il vont tous échouer à un certain point), ce qui vous permet de régler les problèmes avant même qu'ils apparaissent, et de préparer un plan B quand ça arrive,
 1. La plupart des conseils que je donne sont contextuels au résultat désiré et au type d'image travaillée. Supprimer le contexte les rend faux en général.
 
@@ -36,14 +36,14 @@ Les photos brutes (raw) ont typiquement un fichier JPEG intégré qui sert de mi
 
 Cette miniature a été traitée et améliorée par le logiciel interne de l'appareil photo, d'une manière qui l'éclaircit en général beaucoup, ajoute du contraste, de la saturation, et très souvent la teinte pour un rendu plus chaud.
 
-Ce que vous voyez en ouvrant l'image dans la chambre noire d'Ansel est une image becoup moins traitée, plus proche du fichier brut et plus neutre, prévue pour être une base à votre traitement personnel.
+Ce que vous voyez en ouvrant l'image dans la chambre noire d'Ansel est une image beaucoup moins traitée, plus proche du fichier brut et plus neutre, prévue pour être une base à votre traitement personnel.
 
 Mais souvenez vous que ce rendu par défaut en ouvrant la chambre noire n'est que ça : une base de travail, un point de départ. À la fin, même les réglages par défaut peuvent être ajustés à votre convenance, ce qui est tout l'intérêt du logiciel.
 
 
 ## Les modules dépréciés ne fonctionnent plus
 
-Ansel est basé sur darktable 4.0. darktable 4.0 a déprécié de nombreux modules. Ansel en a déprécié encore plus. Les modules sont dépréciés quand une meilleur alternative est introduite.
+Ansel est basé sur darktable 4.0. darktable 4.0 a déprécié de nombreux modules. Ansel en a déprécié encore plus. Les modules sont dépréciés quand une meilleure alternative est introduite.
 
 Mais « déprécié » est un mot un peu fort pour dire « le widget du module est cachée dans l'interface graphique ». Le code d'interface graphique et le code de traitement de pixels sont toujours dans le logiciel, et seront toujours exécutés pour les anciens traitement utilisant ce module. Pour ces traitements, le module sera visible dans l'interface.
 
