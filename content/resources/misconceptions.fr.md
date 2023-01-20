@@ -6,13 +6,14 @@ weight: 10
 authors: ["Aurélien Pierre"]
 ---
 
-Cette page adresse la plupart des erreurs et des idées fausses sur Ansel que l'on peut trouver sur internet.
+Cette page regroupe la plupart des erreurs et des idées fausses sur Ansel que l'on peut trouver sur internet.
 
 <!--more-->
 
 ## Je dois être un expert / ingénieur pour utiliser Ansel
 
-Mes [vidéos](https://www.youtube.com/channel/UCmsSn3fujI81EKEr4NLxrcg) et mes articles contiennent typiquement à la fois la partie "quoi faire" et la partie "pourquoi/comment". Le "pourquoi/comment" est typiquement technique ou même théorique, et sert à justifier le "quoi faire". Il y a plusieurs raisons pour lesquelles je donne les deux :
+Mes [vidéos](https://www.youtube.com/channel/UCmsSn3fujI81EKEr4NLxrcg)
+et mes articles contiennent à la fois la partie "quoi faire" et la partie "pourquoi/comment". Le "pourquoi/comment" est typiquement technique ou même théorique, et sert à justifier le "quoi faire". Il y a plusieurs raisons pour lesquelles je donne les deux :
 
 1. Les explications techniques précises sont très difficiles à trouver sur internet, et je suis à peu près le seul à lier la théorie et la pratique en vidéo. Autrement, il est très facile de trouver des informations fausses en photographie, venant de gens juste au dessus de la moyenne qui essaient d'aider, mais induisent les autres en erreur.
 1. Je déteste personnellement les gourous qui lancent des consignes sans prendre la peine de les justifier. Les règles ont toujours une raison et doivent être violées dès que cette raison cesse d'être valide. On trouve beaucoup de gens qui continuent à suivre de vieilles règles parce que « les anciens savaient ce qu'ils faisaient » — mais il ne se souviennent pas pourquoi ils le faisaient — alors que les circonstances ont changé.
