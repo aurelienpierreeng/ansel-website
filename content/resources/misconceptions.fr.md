@@ -43,7 +43,9 @@ Mais souvenez vous que ce rendu par défaut en ouvrant la chambre noire n'est qu
 
 ## Les modules dépréciés ne fonctionnent plus
 
-Ansel est basé sur darktable 4.0. darktable 4.0 a déprécié de nombreux modules. Ansel en a déprécié encore plus. Les modules sont dépréciés quand une meilleure alternative est introduite.
+Ansel est basé sur darktable 4.0. darktable 4.0 a déprécié de nombreux
+modules. Ansel en  a déprécié encore plus. Les  modules sont dépréciés
+quand une meilleure alternative est disponible.
 
 Mais « déprécié » est un mot un peu fort pour dire « le widget du module est cachée dans l'interface graphique ». Le code d'interface graphique et le code de traitement de pixels sont toujours dans le logiciel, et seront toujours exécutés pour les anciens traitement utilisant ce module. Pour ces traitements, le module sera visible dans l'interface.
 
