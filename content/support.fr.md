@@ -67,16 +67,16 @@ Ne restez pas seul avec vos problèmes et prenez rendez-vous directement avec le
 {{% /card %}}
 {{% /row %}}
 
-## Developer support
+## Soutien aux développeurs
 
-If you are considering joining forces for development and debugging, here is how I work.
+Si vous envisagez de contribuer pour le développement et le débogage, voici comment je travaille. 
 
 {{% row %}}
-{{% card title="Guidelines" icon="code-branch" %}}
+{{% card title="Principes (page en anglais)" icon="code-branch" %}}
 {{< button url="https://github.com/Aurelien-Pierre/Ansel/wiki" icon="github fab" label="Dev wiki" >}}
 {{% /card %}}
 
-{{% card title="Dev mentorship" icon="user-friends" %}}
-{{< button url="https://photo.aurelienpierre.com/cours-particuliers-de-retouche-sous-darktable/#book-me" icon="calendar-alt" label="Book an appointment" >}}
+{{% card title="Tutorat en développement" icon="user-friends" %}}
+{{< button url="https://photo.aurelienpierre.com/cours-particuliers-de-retouche-sous-darktable/#book-me" icon="calendar-alt" label="Prendre RDV" >}}
 {{% /card %}}
 {{% /row %}}
