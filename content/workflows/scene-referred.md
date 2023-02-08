@@ -104,7 +104,7 @@ Therefore, we need at least to brighten the mid-tones and usually to compress th
 
 In camera firmwares and in typical image editing applications, this display transform is commonly achieved through a "curve" (though the curve is only the graphical representation of the transform, not the transform itself) resembling this :
 
-{{< figure src="./display-transform.png" caption="A typical 'S' curve used commonly as SDR display transform. The 3 nodes represent respectively the black, middle-grey and white points. The dark diagonal in background is the 'no-operation' line, meaning the pixels will have the same RGB values after the transform as before." width="600" class="float-start">}}
+{{< figure src="./display-transform.png" caption="A typical 'S' curve used commonly as SDR display transform. The 3 nodes represent respectively the black, middle-grey and white points. The dark diagonal in background is the 'no-operation' line, meaning the pixels will have the same RGB values after the transform as before." width="600">}}
 
 {{< compare after="./display-calibrated.jpg" before="./raw-calibrated.jpg" >}}
 The result of applying a display transform for SDR screen (after) over calibrated raw RGB (before). Note how we lost local contrast in highlights, due to the compression, for the sake of brightening mid-tones. This is a trade-off difficult to avoid without introducing other much uglier artifacts.

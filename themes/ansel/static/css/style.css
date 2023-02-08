@@ -30,13 +30,18 @@ article { min-width: 300px; }
 
 p { text-align: justify; }
 
+figure { display: grid; }
+
 figure figcaption {
   margin-top: 0.5rem;
   font-style: italic;
   text-align: left;
 }
 
-figure img { text-align: center; }
+figure img {
+  text-align: center!important;
+  margin: 0 auto;
+}
 
 .image-fit {
   object-fit: cover;
@@ -154,6 +159,12 @@ div.mermaid {
 
 /* Image comparison slider, aka fifty-fifty */
 /* From https://www.w3schools.com/howto/howto_js_image_comparison.asp */
+.img-comp-wrapper {
+  position: relative;
+  overflow: visible;
+  clear: both;
+}
+
 .img-comp-container {
   position: relative;
   width: 100%;

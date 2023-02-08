@@ -1,7 +1,7 @@
 {{ if .IsNamedParams }}
 {{ $seed := "bar" }}
 {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
-<figure style="position: relative; overflow: visible;" id="{{ print $random }}">
+<figure class="img-comp-wrapper" id="{{ print $random }}">
 <button class="open-lightbox-button" onclick="lightbox({{ print $random }})">
   <i class="fas fa-expand-alt open-lightbox-icon"></i>
 </button>
