@@ -25,22 +25,29 @@ Quand vous prenez une photo d'une scène, le capteur de votre appareil transform
 
 ```mermaid
 graph TD;
-	O[fa:fa-bulb Source lumineuse] --> A;
+	  O[fa:fa-bulb Source lumineuse] --> A;
     A[<img src='./FL1_lightspectrum.fr.png' width='800' height='447' />] --> B["fa:fa-camera Capteur (Nikon D5100)"];
-    B --> C[<img src='./FL1_seen_by_NikonD5100.fr.png' width='400' height='226' />];
-    C --> H["fa:fa-laptop Beaucoup de travail numérique"];
-    H --> G;
+    B --> C[RVB capteur<br><img src='./FL1_seen_by_NikonD5100.fr.png' width='400' height='226' />];
     A --> D["fa:fa-eye Œil humain"];
-    D --> E[<img src='./FL1_seen_by_human.fr.png' width='400' height='226' />];
-    E --> F["fa:fa-brain Cerveau humain"];
-    F --> G[<img src='./FL1_color.fr.png' width='400' height='397' />];
+    D --> E[LMS cônes<br><img src='./FL1_seen_by_human.fr.png' width='400' height='226' />];
+    E ------> F["fa:fa-brain Cerveau humain"];
+    F --> G[Stimulus coloré<br><img src='./FL1_color.fr.png' width='400' height='397' />];
+
+    C --> H["fa:fa-laptop Beaucoup de travail numérique"];
+    H --> HH[sRVB<br><img src='./FL1_sRGB.fr.png' width='400' height='304' />];
+    HH --> I[fa:fa-desktop Écran];
+    I --> J[<img src='./FL1_lightspectrum.fr.png' width='400' height='223' />];
+    J --> K["fa:fa-eye Œil humain / fa:fa-brain Cerveau humain"];
+    K --> L[Stimulus coloré<br><img src='./FL1_color.fr.png' width='400' height='397' />];
 ```
 
 {{< note >}}
-Les graphiques ci-dessus sont générés par l'auteur à partir de données réelles. L'illuminant CIE FL1 est une ampoule fluo-compacte standard de type lumière du jour. Le « RVB humain » est produit en utilisant la réponse des cônes (LMS) pour l'observateur standard 2° CIE 2015. Le RVB capteur est produit à partir de mesures de sensibilité spectrale. La couleur réelle du spectre lumineux est un "blanc" lumière du jour (proche de D65).
+Les graphiques ci-dessus sont générés par l'auteur à partir de données réelles. L'illuminant CIE FL1 est une ampoule fluo-compacte standard de type lumière du jour. Le « RVB humain » est produit en utilisant la réponse des cellules cônes de la rétine (LMS) pour l'observateur standard 2° CIE 2015. Le RVB capteur est produit à partir de mesures de sensibilité spectrale. La couleur réelle du spectre lumineux est un "blanc" lumière du jour (proche de D65).
 {{</ note >}}
 
-Le premier et principal problème qui apparaît lorsqu'on fabrique des images à travers des capteurs est que le RVB qu'ils produisent est très différent du signal produit par la rétine. Si l'on veut que l'image numérique paraisse au moins vaguement semblable à la perception humaine, nous allons devoir travailler dur pour que ça se produise, en manipulant numériquement le signal RVB brut.
+On notera que le début et la fin du pipeline graphique sont un spectre lumineux qui, s'il est identique, produira le même stimulus coloré pour l'observateur[^4]. De même, les deux organes technologiques impliqués dans la capture du signal et sa restitution travaillent en RVB. Par contre, aucun espace RVB utilisé dans le pipeline ne correspond au signal LMS des cônes. Si l'on veut que l'image numérique paraisse au moins vaguement semblable à la perception humaine, nous allons devoir travailler dur pour que ça se produise, en manipulant numériquement le signal RVB brut, mais sans nécessairement se soucier de la perception au cours du processus. Il suffira d'assure la cohérence du spectre lumineux aux deux extrémités.
+
+[^4]: Ceci suppose une plage dynamique de la scène suffisamment faible. Pour des plages dynamiques très élevées, les hautes lumières vont virer vers le jaune (virage de Bezold-Brücke), comme on peut l'observer avec le disque solaire ou les flammes, alors que le même spectre lumineux vu à une intensié plus faible apparaît rouge.
 
 Ceci est un aspect malcompris de la photo numérique, où la manipulation numérique est souvent vue par les puristes comme un moyen de truquer ou de trafiquer le contenu, et l'image brute est souvent vue comme une sorte de vérité « neutre » ou « objective » parce qu'elle a été réalisée par une machine. L'image produite par la machine est en faite complètement fausse et la manipulation numérique est absolument nécessaire pour la faire ressembler à la scène originale malgré toutes les distorsions optiques survenues dans la caméra.
 
@@ -65,7 +72,7 @@ Dans les firmwares des appareils photo et dans les applications typiques de trai
 Le résultat de l'application d'une transformation écran pour écran SDR (après) par dessus le RVB brut étalonné (avant). Notez comme on a perdu du contraste local dans les hautes lumières, à cause de la compression, par souci d'éclaircir les tons moyens. Ceci est un compromis difficile à éviter sans introduire d'autres artefacts bien plus laids.
 {{</ compare >}}
 
-La pente de cette courbe détermine le contraste global. De nombreuses applications propriétaires vont appliquer une telle courbe sans vous le dire et sans vous laisser la désactiver, de sorte que vous n'avez aucune idée de ce qui se passe en coulisses. Certaines applications vont seulement vous laisser choisir un look de base parmi "par défaut", "neutre", "portrait", "intense", "HDR", etc. ce qui aura pour effet de charger une courbe différente. Certaines applications embarquent même la courbe directement dans le profil de couleur d'entrée. 
+La pente de cette courbe détermine le contraste global. De nombreuses applications propriétaires vont appliquer une telle courbe sans vous le dire et sans vous laisser la désactiver, de sorte que vous n'avez aucune idée de ce qui se passe en coulisses. Certaines applications vont seulement vous laisser choisir un look de base parmi "par défaut", "neutre", "portrait", "intense", "HDR", etc. ce qui aura pour effet de charger une courbe différente. Certaines applications embarquent même la courbe directement dans le profil de couleur d'entrée.
 
 {{< note >}}
 Pour un éditeur logiciel commercial, le choix de cette courbe par défaut est crucial car il détermine la première impression que le client a en ouvrant sa photo, et cette première impression conditionne souvent le sentiment de qualité du logiciel. Cependant, les utilisateurs avancés regrettent souvent que la première étape de leur retouche doivent être annuler ou atténuer le look par défaut, ce qui n'est pas toujours facile. Vous trouverez ainsi des gens qui disent aimer « les couleurs Capture One » ou plutôt « les couleurs Lightroom », ce qui n'est rien de plus qu'un choix esthétique de l'éditeur quant au look par défaut.
@@ -173,7 +180,7 @@ Des effets similaires seront observés en travaillant avec des masques et le com
 
 ## Comment est-ce implémenté dans Ansel ?
 
-Ansel est capable d'utiliser à la fois le flux relatif à la scène et le flux relatif à l'affichage, car il hérite de certains modules anciens de darktable. La plupart des modules relatifs à l'affichage ont été remplacés par des équivalents relatifs à la scène, et les derniers restants devraient suivre en 2023. 
+Ansel est capable d'utiliser à la fois le flux relatif à la scène et le flux relatif à l'affichage, car il hérite de certains modules anciens de darktable. La plupart des modules relatifs à l'affichage ont été remplacés par des équivalents relatifs à la scène, et les derniers restants devraient suivre en 2023.
 
 Bientôt, Ansel sera entièrement relatif à la scène, ce qui permettra des transformations écran plus intelligentes, combinées avec le mappage de gamut et des extractions de profil ICC.
 
