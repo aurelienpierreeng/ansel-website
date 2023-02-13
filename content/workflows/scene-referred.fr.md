@@ -66,7 +66,7 @@ En conséquence, nous devons au moins éclaircir les tons moyens et habituelleme
 
 Dans les firmwares des appareils photo et dans les applications typiques de traitement d'image, cette transformation écran est communément accomplie par une « courbe » (même si la courbe n'est que la représentation graphique de la transformation, pas la transformation elle-même) qui ressemble à ceci :
 
-{{< figure src="./display-transform.fr.png" caption="Une courbe en « S » typique utilisée communément pour les transformations écran SDR. Les 3 nœuds représentent respectivement les points noir, gris moyen et blanc. La diagonale sombre dans l'arrière-plan est la ligne de « non-opération », ce qui veut dire que les pixels auront les mêmes valeurs RVB après la transformation qu'avant." width="600">}}
+{{< figure src="./display-transform.fr.png" caption="Une courbe en « S » typique utilisée communément pour les transformations écran SDR. Les 3 nœuds représentent respectivement les points noir, gris moyen et blanc. La diagonale sombre dans l'arrière-plan est la ligne de « non-opération », ce qui veut dire que les pixels auront les mêmes valeurs RVB après la transformation qu'avant." width="600" class="align-center" />}}
 
 {{< compare after="./display-calibrated.fr.jpg" before="./raw-calibrated.fr.jpg" >}}
 Le résultat de l'application d'une transformation écran pour écran SDR (après) par dessus le RVB brut étalonné (avant). Notez comme on a perdu du contraste local dans les hautes lumières, à cause de la compression, par souci d'éclaircir les tons moyens. Ceci est un compromis difficile à éviter sans introduire d'autres artefacts bien plus laids.
