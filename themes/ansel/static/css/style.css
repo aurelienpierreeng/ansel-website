@@ -30,7 +30,10 @@ article { min-width: 300px; }
 
 p { text-align: justify; }
 
-figure { display: grid; }
+figure {
+  display: block;
+  max-width: 100%;
+}
 
 figure figcaption {
   margin-top: 0.5rem;
@@ -303,12 +306,13 @@ figure:hover .open-lightbox-button { opacity: 1; }
   box-sizing: border-box;
   position: absolute;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  left: 50%;
+  -ms-transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
 }
 #lightbox figure .open-lightbox-button { opacity: 1; }
 #lightbox figure figcaption { display: none }
 #lightbox .open-lightbox-button {
-  right: 0;
+  right: -1rem;
   top: -1rem;
 }
