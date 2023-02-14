@@ -1,0 +1,18 @@
+{{ if .IsNamedParams }}
+{{ $seed := "bar" }}
+{{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
+<figure class="img-wrapper" id="{{ print $random }}">
+<button class="open-lightbox-button" onclick="lightbox({{ print $random }})">
+  <i class="fas fa-expand-alt open-lightbox-icon"></i>
+</button>
+<div class="img-container">
+  <img src="{{ .Get "src" }}" style="{{ with .Get "width" }}width:{{ . }}px;{{ end }} {{ with .Get "height" }}height:{{ . }}px{{ end }}" {{ with .Get "class" }} class="{{ . }}" {{ end }} >
+</div>
+
+<figcaption>
+  {{with .Get "caption" }}<p>{{ print . }}</p>{{ end }}
+  {{with .Inner }}<p>{{ print . | markdownify }}</p>{{ end }}
+</figcaption>
+
+</figure>
+{{ end }}

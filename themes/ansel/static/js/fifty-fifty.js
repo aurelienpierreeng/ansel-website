@@ -50,8 +50,6 @@ function compute_bounding_box(slider, image_ratio, full_width=true) {
     height = Math.min(max_height, max_width / image_ratio);
   }
 
-  console.log(max_width, max_height, image_ratio, width, height);
-
   return [width, height];
 }
 
@@ -84,6 +82,25 @@ window.addEventListener('resize', function () {
     full_width = x[i].parentNode.id != "lightbox-slider";
     sizes = set_heights(x[i], full_width);
     reset_cursor(x[i], sizes);
+  }
+
+  box = document.getElementById("lightbox");
+  if (box) {
+    wrapper = box.getElementsByClassName("img-wrapper")[0];
+    if (wrapper) {
+      // Dynamically resize images with regard to the lightbox bounding box
+      var images = box.getElementsByTagName("img");
+      var height = 0, width = 0;
+      for (i = 0; i < images.length; i++) {
+        height = Math.max(height, images[i].naturalHeight);
+        width = Math.max(width, images[i].naturalWidth);
+      }
+      sizes = compute_bounding_box(wrapper, width / height, false);
+      for (i = 0; i < images.length; i++) {
+        images[i].style.height = sizes[1] + "px";
+        images[i].style.width = sizes[0] + "px";
+      }
+    }
   }
 })
 
@@ -187,22 +204,25 @@ function lightbox(id) {
   box = document.getElementById("lightbox");
   if (box) {
     box.parentNode.removeChild(box);
+
+    // Restore scrollbars
+    document.body.style.overflow = "scroll";
     return;
   }
 
-  // Clone the current 50/50 slider
+  // Clone the current figure content
   const template = document.getElementById(id);
   const clone = template.cloneNode(true);
   clone.id = "lightbox-slider"
 
-  // Get the old sizes of images
-  var under = template.getElementsByClassName("img-comp-under")[0];
-  image_ratio = under.offsetWidth / under.offsetHeight;
+  if (template.classList.contains("img-comp-wrapper"))
+  {
+    // Remove the current slider cursor
+    const elements = clone.getElementsByClassName("comp-cursor");
 
-  // Remove the current slider cursor
-  const elements = clone.getElementsByClassName("comp-cursor");
-  while(elements.length > 0){
+    while (elements.length > 0) {
       elements[0].parentNode.removeChild(elements[0]);
+    }
   }
 
   // Change the button icon for a cross
@@ -216,6 +236,31 @@ function lightbox(id) {
   lightbox.appendChild(clone);
   document.body.appendChild(lightbox);
 
-  // Re-init a new slider
-  initComparisons("lightbox");
+  if (template.classList.contains("img-comp-wrapper")) {
+    // Re-init a new slider
+    initComparisons("lightbox");
+  }
+  else if (template.classList.contains("img-wrapper")) {
+    // Resize regular figure.
+    // For figures, we don't force full-width compared to parent container, except in lightbox
+
+    // Fetch sizes in the original HTML element.
+    var images = template.getElementsByTagName("img");
+    var height = 0, width = 0;
+    for (i = 0; i < images.length; i++) {
+      height = Math.max(height, images[i].naturalHeight);
+      width = Math.max(width, images[i].naturalWidth);
+    }
+    sizes = compute_bounding_box(clone, width / height, false);
+
+    // Apply new sizes in the cloned element (not initialized yet).
+    images = clone.getElementsByTagName("img");
+    for (i = 0; i < images.length;  i++) {
+      images[i].style.height = sizes[1] + "px";
+      images[i].style.width = sizes[0] + "px";
+    }
+  }
+
+  // Hide scrollbars because they overlap content in Chrome
+  document.body.style.overflow = "hidden";
 }
