@@ -1,25 +1,22 @@
-{{ $link := strings.Replace .Destination "_index.md" "" }}
-{{ $isRemote := strings.HasPrefix $link "http" }}
+{{- $link := strings.Replace .Destination "_index.md" "" -}}
+{{- $isRemote := strings.HasPrefix $link "http" -}}
 {{- if not $isRemote -}}
-  {{ $url := urls.Parse $link }}
+  {{- $url := urls.Parse $link -}}
   {{- if $url.Path -}}
-    {{ $fragment := printf "%s" $url.Fragment }}
-    {{ $link = $url.Path }}
+    {{- $fragment := printf "%s" $url.Fragment -}}
+    {{- $link = $url.Path -}}
     {{- with .Page.GetPage $link -}}
-      {{ $link = .RelPermalink }}
+      {{- $link = .RelPermalink -}}
     {{- else -}}
-      {{- /* $link = strings.Replace $link ".md" "" */ -}}
+      {{- $link = strings.Replace $link ".md" "" -}}
     {{- end -}}
-
     {{- /* Append the anchor and trailing / if needed */ -}}
-    {{ if not (strings.HasSuffix $link "/") }}
-      {{ $link = printf "%s/" $link }}
-    {{ end }}
-
-    {{ if $fragment }}
-      {{ $link = printf "%s#%s" $link $fragment }}
-    {{ end }}
-
+    {{- if not (strings.HasSuffix $link "/") -}}
+      {{- $link = printf "%s/" $link -}}
+    {{- end -}}
+    {{- if $fragment -}}
+      {{- $link = printf "%s#%s" $link $fragment -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 <a href="{{ $link | safeURL }}" title="{{ .Title | safeHTML }}" {{ if $isRemote }} target="_blank"{{ end }}>{{ .Text | safeHTML }}</a>
