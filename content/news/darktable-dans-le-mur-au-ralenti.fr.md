@@ -29,11 +29,11 @@ Par exemple, la contrainte imposée sur le design du pipeline d'autoriser un ord
 
 Sauf qu'une partie significative des utilisateurs programmeurs qui gravitent autour du projet sur Github et autour de la mailing-list développeurs reste convaincue qu'il n'y a ni bon ni mauvais workflow, juste des préférences personnelles. Ainsi, les modules devraient pouvoir se ré-ordonnancer à volonté, tant dans le pipeline que dans dans le workflow, et donc dans l'interface. La confusion vient du fait que la retouche non-destructive est vue à tort comme asynchrone (ce qui serait le cas si l'on n'utilisait ni masques ni mode de fusion) alors que le pipeline des pixels est séquentiel et plus proche d'une logique d'empilement de calques, telle qu'on la trouve dans Adobe Photoshop, Gimp, Krita, etc.
 
-Découpler l'ordre des modules de leur ordre dans le pipeline revient autoriser toutes les utilisations même pathologiques, et à devoir écrire [des pages et des pages](https://docs.darktable.org/usermanual/4.0/en/darkroom/pixelpipe/the-pixelpipe-and-module-order/#changing-module-order) de documentation pour mettre en garde, expliquer quoi faire, comment et pourquoi, documentation que personne ne lira pour finir par reposer en boucle les mêmes questions sur les différents forums toutes le semaines.
+Découpler l'ordre des modules de leur ordre dans le pipeline revient autoriser toutes les utilisations même pathologiques, et à devoir écrire [des pages et des pages](https://docs.darktable.org/usermanual/4.0/en/darkroom/pixelpipe/the-pixelpipe-and-module-order/#changing-module-order) de documentation pour mettre en garde, expliquer quoi faire, comment et pourquoi ; documentation que personne ne lira pour finir par reposer en boucle les mêmes questions sur les différents forums toutes le semaines.
 
 Dans cette histoire, tout le monde perd son temps par la faute d'un design d'interface qui essaie d'être si souple qu'il ne peut être rendu robuste et sécuritaire par défaut. On nage en plein [culte du cargo](https://fr.wikipedia.org/wiki/Culte_du_cargo) libriste, qui aime avoir l'illusion du choix, c'est à dire se voir offrir de nombreuses options dont la plupart sont inutilisables ou dangereuses, au détriment de la simplicité ([KISS](https://fr.wikipedia.org/wiki/Principe_KISS)), offertes à des utilisateurs dont la majorité ne comprend pas les implications de chaque option.
 
-En l'absence de consensus sur l'ordonnancement des modules dans l'interface, un outil compliqué, peu fiable et lourd a été introduit fin 2020 pour permettre à chaque utilisateur de configurer la présentation des modules en onglets. Il est muni de nombreuses options inutiles et stocke la disposition courante dans la base de données en utilisant le nom traduit des modules, ce qui fait que changer la langue de l'interface fait perdre les pré-réglages. Entièrement configurable, il permet aux utilisateurs de choisir comment se faire mal, sans aucun guide de bonne pratique. Cette immondice est codée sur près de 4000 lignes [mélangeant allègrement des requêtes SQL au milieu du code d'interface GTK](https://github.com/darktable-org/darktable/blob/master/src/libs/modulegroups.c#L3422-L3540), et les presets sont créés via des [macros compilateur redondantes](https://github.com/darktable-org/darktable/blob/master/src/libs/modulegroups.c#L1533-L1768), alors que les modules ont tous depuis longtemps un [drapeau binaire](https://github.com/darktable-org/darktable/blob/master/src/iop/borders.c#L193) permettant de régler leur groupe par défaut de façon… modulaire.
+En l'absence de consensus sur l'ordonnancement des modules dans l'interface, un outil compliqué, peu fiable et lourd a été introduit fin 2020 pour permettre à chaque utilisateur de configurer la présentation des modules en onglets. Il est muni de nombreuses options inutiles et stocke la disposition courante dans la base de données en utilisant le nom traduit des modules, ce qui fait que changer la langue de l'interface fait perdre les pré-réglages. Entièrement configurable, il permet aux utilisateurs de choisir comment se faire mal, sans aucun guide de bonne pratique. Cette immondice est codée sur près de 4000 lignes [mélangeant allègrement des requêtes SQL au milieu du code d'interface GTK](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/modulegroups.c#L3499-L3616), et les presets sont créés via des [macros compilateur redondantes](https://github.com/darktable-org/darktable/blob/master/src/libs/modulegroups.c#L1533-L1768), alors que les modules ont tous depuis longtemps un [drapeau binaire](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/iop/borders.c#L196) permettant de régler leur groupe par défaut de façon… modulaire.
 
 Et plus important, il remplace une fonctionnalité simple et efficace, disponible jusque dans Darktable 3.2 : 
 
@@ -47,7 +47,7 @@ En 2021 est ajouté ce que j'appelle le grand [turducken](https://fr.wikipedia.o
 
 Fin 2022, soit un an et demi après cette fonctionnalité, dans le [sondage que j'ai réalisé](https://www.poll-maker.com/S-Quiz-Results?qp=2539714x3792Bf5e-98#), moins de 10 % des utilisateurs possèdent un périphérique MIDI, et seulement 2% l'utilisent pour Darktable. À comparer avec les 45 % d'utilisateurs qui possèdent une tablette graphique (type Wacom), dont le support par darktable est toujours si bancal que 6 % seulement l'utilisent. En dehors d'un problème de priorité, ce que je ne tolère pas ici, ce sont les effets de bords introduits par ce changement et le coût global qu'il a eu, à commencer par le fait qu'il n'importe pas les raccourcis utilisateur définis dans les versions 3.2 et antérieures, et qu'il rend la configuration de nouveaux raccourcis terriblement compliquée.
 
-Avant le grand turducken, seule une liste restreinte de contrôles graphiques pouvaient être mappés vers des raccourcis claviers ou mixtes (clavier + souris). Cette liste était manuellement déclarée par les développeurs. Le grand turducken MIDI introduit permet de conecter tous les contrôles GUI vers des raccourcis, présentant à l'utilisateur une liste de plusieurs milliers d'éléments à configurer, dans laquelle il est difficile de trouver les 3 dont vous avez vraiment besoin, et le moteur de recherche textuel est trop basique pour être utile :
+Avant le grand turducken, seule une liste restreinte de contrôles graphiques pouvaient être mappés vers des raccourcis claviers ou mixtes (clavier + souris). Cette liste était manuellement sélectionnée par les développeurs. Le grand turducken MIDI introduit permet de conecter _tous_ les contrôles GUI vers des raccourcis, présentant à l'utilisateur une liste de plusieurs milliers d'éléments à configurer, dans laquelle il est difficile de trouver les 3 dont vous avez vraiment besoin, et le moteur de recherche textuel est trop basique pour être utile :
 
 ![](/posts/shortcuts.png)
 
@@ -189,7 +189,7 @@ case DT_ACTION_ELEMENT_ZOOM:
 
 Les programmeurs comprennent de quoi je parle, pour les autres, sachez que je ne comprends guère plus que vous ce que ça fait : c'est du code de merde et si plusieurs bugs ne sont pas cachés là-dedans, ça sera de la pure chance. Chasser des bugs dans ce merdier relève de l'archéologie de fond d'égoût.
 
-Le vrai problème de ce genre de code, c'est qu'on ne peut pas l'améliorer sans le réécrire plus ou moins complètement : pour le corriger, il faut d'abord le comprendre, et la raison pour laquelle on doit le corriger, c'est parce qu'il est incompréhensible et dangereux à long terme. On appelle ça de la [dette technique](https://fr.wikipedia.org/wiki/Dette_technique). En clair, tout le travail investi dans cette fonctionnalité va créer du travail additionnel parce qu'il est déraisonnable de garder du code de ce type au milieu d'une base de code de plusieurs centaines de milliers de lignes.
+Le vrai problème de ce genre de code, c'est qu'on ne peut pas l'améliorer sans le réécrire plus ou moins complètement : pour le corriger, il faut d'abord le comprendre, et la raison pour laquelle on doit le corriger, est précisément parce qu'il est incompréhensible et dangereux à long terme. On appelle ça de la [dette technique](https://fr.wikipedia.org/wiki/Dette_technique). En clair, tout le travail investi dans cette fonctionnalité va créer du travail additionnel parce qu'il est déraisonnable de garder du code de ce type au milieu d'une base de code de plusieurs centaines de milliers de lignes sans s'attendre à ce que ça nous explose à la face un jour.
 
 C'est d'autant plus ridicule dans le contexte d'une application open-source où l'essentiel du personnel n'est même pas programmeur de formation. Le développeur intelligent écrit du code compréhensible par des idiots.
 
@@ -274,6 +274,95 @@ for(int k = 0; k < num_rules; k++)
 et autres `if` imbriqués sur deux niveaux dans des `switch case` nécessaires au support des raccourcis clavier ([source](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/filters/rating_range.c#L201-L265)).
 
 Cette dernière saloperie a été la goutte d'eau qui a fait déborder le vase et m'a fait forker Ansel. Je refuse de continuer à travailler sur une bombe à retardement dans une équipe qui ne voit pas le problème et qui fait mumuse avec du code sur son temps libre. Coder les amuse peut-être, moi pas. Et réparer les conneries de gamins irresponsables qui ont deux fois mon âge, surtout quand ils cassent des trucs que j'ai nettoyé il y a 3 ou 4 ans, me met en rage.
+
+### Table lumineuse
+
+La table lumineuse a subi deux ré-écritures quasi complètes, la première début 2019, visant à optimiser le code pour rendre la vue plus rapide, la deuxième fin 2019, qui ajoute de nombreuses fonctionnalités discutables dont la vue [sélection](https://docs.darktable.org/usermanual/development/fr/lighttable/lighttable-modes/culling/).
+
+Rapidement, le mode sélection est décomposé en deux modes : la sélection dynamique et la sélection statique, qui gèrent le nombre d'images différemment. Beaucoup d'utilisateurs n'ont toujours pas compris la différence 4 ans plus tard. On a donc alors la vue par défaut (gestionnaire de fichier), la vue table lumineuse zoomable (que personne n'utilise), la vue sélection statique, sélection dynamique, et le mode prévisualisation (une seule image en plein écran).
+
+Puis de nouvelles options d'apparence sont ajoutées aux miniatures de la table lumineuse, permettant de définir les surimpressions : surimpressions permanentes basiques, surimpressions permanentes avec infos EXIF étendues, les mêmes mais affichées seulement au survol, et enfin au survol temporisées (avec minuterie réglable).
+
+Le code d'interface qui fait le rendu des miniatures et de leur surimpressions doit donc tenir compte de 5 vues différentes et de [7 variantes d'affichages](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail.h#L38-L48), soit 35 combinaisons possibles. Le code qui assure le redimensionnement correct des miniatures [fait donc 220 lignes à lui seul](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail.c#L1565-L1786).
+
+Mais ça ne s'arrête pas là, puisque le code de rendu graphique des miniature est partagé également avec la barre "pellicule", ce qui fait en fait 36 combinaisons possibles dans le rendu des miniatures. Multiplié par 3 thèmes de couleur de base, ça fait donc 108 jeu d'instruction CSS possibles pour styliser l'interface… dont beaucoup de combinaisons [ont été oubliées dans la grande refonte graphique de Darktable 4.0](https://github.com/darktable-org/darktable/pull/11835), et comment aurait-il pu en être autrement ?
+
+Dans Darktable 2.6, on avait donc __4193 lignes__ pour l'ensemble, qui ne comportait que la vue gestionnaire de fichier, table lumineuse zoomable et prévisualisation plein écran avec deux modes d'affichage des surimpressions (toujours visible ou visible au survol) :
+
+* 2634 lignes dans [views/lighttable](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/views/lighttable.c) pour la vue table lumineuse et le rendu des miniatures,
+* 1124 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/libs/tools/filmstrip.c) pour la barre pellicule, dont une partie duplique partiellement le code de la table lumineuse, en ce qui concerne le rendu des miniatures,
+* 435 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/libs/tools/global_toolbox.c), pour le menu de boutons permettant d'activer ou désactiver l'affichage des surimpressions.
+
+Après Darktable 3.0 et l'ajout des modes de sélection, on passe à __6731 lignes__ :
+
+* 5149 lignes dans [views/lighttable](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/views/lighttable.c)
+* 1177 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/filmstrip.c),
+* 405 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/global_toolbox.c)
+
+Après Darktable 3.2 et l'ajout des 7 variantes de surimpressions hautement configurables et la refactorisation du code, on passe à __8380 lignes__:
+
+* 1463 lignes dans [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/views/lighttable.c)
+* 1642 lignes dans [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/culling.c), où les fonctionnalités des vues sélection ont été détachées,
+* 2447 lignes dans [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbtable.c), où sont gérés les conteneurs de miniatures pour la table lumineuse et
+* 1736 lignes dans [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail.c), où sont gérées les miniatures en elles-mêmes,
+* 169 lignes dans [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail_btn.c), où sont déclarés des boutons spécifiques aux miniatures,
+* 115 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/filmstrip.c)
+* 808 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/global_toolbox.c)
+
+Dans Darktable 4.2, après correction de nombreux bugs, on arrive à un total de __9264 lignes__ :
+
+* 1348 lignes dans [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/views/lighttable.c)
+* 1828 lignes dans [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/culling.c), pour le code spécifique à la vue sélection,
+* 2698 lignes dans [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbtable.c), pour le code construisant les conteneurs de miniatures,
+* 2093 lignes dans [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail.c), pour le code de rendu des miniatures elle-mêmes,
+* 166 lignes dans [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail_btn.c), pour les boutons spécifiques aux miniatures
+* 109 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/filmstrip.c)
+* 1022 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/global_toolbox.c)
+
+Le nombre de lignes est une chose, mais ce n'est pas la pire. En effet, si vous démarrez `darktable -d sql` et que vous survolez une miniature de la table lumineuse, vous allez obtenir en console :
+
+```bash
+140.8252 [sql] darktable/src/common/image.c:311, function dt_image_film_roll(): prepare "SELECT folder FROM main.film_rolls WHERE id = ?1"
+140.8259 [sql] darktable/src/common/image.c:387, function dt_image_full_path(): prepare "SELECT folder || '/' || filename FROM main.images i, main.film_rolls f WHERE i.film_id = f.id and i.id = ?1"
+140.8271 [sql] darktable/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+140.8273 [sql] darktable/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+140.8275 [sql] darktable/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+140.8277 [sql] darktable/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+140.8279 [sql] darktable/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+140.8280 [sql] darktable/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+140.8282 [sql] darktable/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+140.8284 [sql] darktable/src/common/tags.c:635, function dt_tag_get_attached(): prepare "SELECT DISTINCT I.tagid, T.name, T.flags, T.synonyms, COUNT(DISTINCT I.imgid) AS inb FROM main.tagged_images AS I JOIN data.tags AS T ON T.id = I.tagid WHERE I.imgid IN (104337) AND T.id NOT IN memory.darktable_tags GROUP BY I.tagid  ORDER by T.name"
+140.8286 [sql] darktable/src/common/tags.c:635, function dt_tag_get_attached(): prepare "SELECT DISTINCT I.tagid, T.name, T.flags, T.synonyms, COUNT(DISTINCT I.imgid) AS inb FROM main.tagged_images AS I JOIN data.tags AS T ON T.id = I.tagid WHERE I.imgid IN (104337) AND T.id NOT IN memory.darktable_tags GROUP BY I.tagid  ORDER by T.name"
+140.9512 [sql] darktable/src/common/act_on.c:156, function _cache_update(): prepare "SELECT imgid FROM main.selected_images WHERE imgid=104337"
+140.9547 [sql] darktable/src/common/act_on.c:156, function _cache_update(): prepare "SELECT imgid FROM main.selected_images WHERE imgid=104337"
+140.9550 [sql] darktable/src/common/act_on.c:288, function dt_act_on_get_query(): prepare "SELECT imgid FROM main.selected_images WHERE imgid =104337"
+140.9552 [sql] darktable/src/libs/metadata.c:263, function _update(): prepare "SELECT key, value, COUNT(id) AS ct FROM main.meta_data WHERE id IN (104337) GROUP BY key, value ORDER BY value"
+140.9555 [sql] darktable/src/common/collection.c:973, function dt_collection_get_selected_count(): prepare "SELECT COUNT(*) FROM main.selected_images"
+140.9556 [sql] darktable/src/libs/image.c:240, function _update(): prepare "SELECT COUNT(id) FROM main.images WHERE group_id = ?1 AND id != ?2"
+140.9558 [sql] darktable/src/common/tags.c:635, function dt_tag_get_attached(): prepare "SELECT DISTINCT I.tagid, T.name, T.flags, T.synonyms, COUNT(DISTINCT I.imgid) AS inb FROM main.tagged_images AS I JOIN data.tags AS T ON T.id = I.tagid WHERE I.imgid IN (104337) AND T.id NOT IN memory.darktable_tags GROUP BY I.tagid  ORDER by T.name"
+```
+
+ce qui veut dire que 18 requêtes SQL sont faites dans la base de données, destinées à récupérer les informations de l'image, et démarrées à chaque fois que le curseur survole une nouvelle miniature dans la table lumineuse, pour aucune raison car les métadonnées n'ont pas changé depuis le précédent survol.
+
+Dans Ansel, en retirant la plupart des options, j'ai réussi à économniser 7 requêtes, ce qui n'empêche pas les requêtes dupliquées :
+
+```bash
+12.614534 [sql] ansel/src/common/image.c:285, function dt_image_film_roll(): prepare "SELECT folder FROM main.film_rolls WHERE id = ?1"
+12.615225 [sql] ansel/src/common/image.c:356, function dt_image_full_path(): prepare "SELECT folder || '/' || filename FROM main.images i, main.film_rolls f WHERE i.film_id = f.id and i.id = ?1"
+12.616499 [sql] ansel/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+12.616636 [sql] ansel/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+12.616769 [sql] ansel/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+12.616853 [sql] ansel/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+12.616930 [sql] ansel/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+12.617007 [sql] ansel/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+12.617084 [sql] ansel/src/common/metadata.c:487, function dt_metadata_get(): prepare "SELECT value FROM main.meta_data WHERE id = ?1 AND key = ?2 ORDER BY value"
+12.617205 [sql] ansel/src/common/tags.c:635, function dt_tag_get_attached(): prepare "SELECT DISTINCT I.tagid, T.name, T.flags, T.synonyms, COUNT(DISTINCT I.imgid) AS inb FROM main.tagged_images AS I JOIN data.tags AS T ON T.id = I.tagid WHERE I.imgid IN (133727) AND T.id NOT IN memory.darktable_tags GROUP BY I.tagid  ORDER by T.name"
+12.617565 [sql] ansel/src/common/tags.c:635, function dt_tag_get_attached(): prepare "SELECT DISTINCT I.tagid, T.name, T.flags, T.synonyms, COUNT(DISTINCT I.imgid) AS inb FROM main.tagged_images AS I JOIN data.tags AS T ON T.id = I.tagid WHERE I.imgid IN (133727) AND T.id NOT IN memory.darktable_tags GROUP BY I.tagid  ORDER by T.name"
+```
+
+Le problème est que le code source imbrique des commandes SQL à l'intérieur des fonctions qui dessinent l'interface graphique, et déméler ce fouillis à travers les différentes couches héritées de la refactorisation est encore une fois de l'archéologie.
+
+On est sur un cas de figure où la "refactorisation" a en réalité complexifié le code et où fusionner le code de rendu des miniatures entre la barre pellicule et la table lumineuse n'a fait qu'ajouter des `if{ }` internes à plusieurs niveaux qui en compliquent encore la structure, juste pour obéir aveuglément au principe de réutilisation du code.
 
 ## Le cosmétique prend le dessus sur la stabilité
 
