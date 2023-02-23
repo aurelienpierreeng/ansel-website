@@ -295,29 +295,29 @@ Dans Darktable 2.6, on avait donc __4193 lignes__ pour l'ensemble, qui ne compor
 
 Après Darktable 3.0 et l'ajout des modes de sélection, on passe à __6731 lignes__ :
 
-* 5149 lignes dans [views/lighttable](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/views/lighttable.c)
+* 5149 lignes dans [views/lighttable](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/views/lighttable.c),
 * 1177 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/filmstrip.c),
-* 405 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/global_toolbox.c)
+* 405 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/global_toolbox.c).
 
 Après Darktable 3.2 et l'ajout des 7 variantes de surimpressions hautement configurables et la refactorisation du code, on passe à __8380 lignes__:
 
-* 1463 lignes dans [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/views/lighttable.c)
+* 1463 lignes dans [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/views/lighttable.c),
 * 1642 lignes dans [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/culling.c), où les fonctionnalités des vues sélection ont été détachées,
-* 2447 lignes dans [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbtable.c), où sont gérés les conteneurs de miniatures pour la table lumineuse et
+* 2447 lignes dans [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbtable.c), où sont gérés les conteneurs de miniatures pour la table lumineuse et de la barre pellicule,
 * 1736 lignes dans [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail.c), où sont gérées les miniatures en elles-mêmes,
 * 169 lignes dans [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail_btn.c), où sont déclarés des boutons spécifiques aux miniatures,
-* 115 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/filmstrip.c)
-* 808 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/global_toolbox.c)
+* 115 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/filmstrip.c),
+* 808 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/global_toolbox.c).
 
 Dans Darktable 4.2, après correction de nombreux bugs, on arrive à un total de __9264 lignes__ :
 
-* 1348 lignes dans [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/views/lighttable.c)
-* 1828 lignes dans [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/culling.c), pour le code spécifique à la vue sélection,
-* 2698 lignes dans [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbtable.c), pour le code construisant les conteneurs de miniatures,
-* 2093 lignes dans [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail.c), pour le code de rendu des miniatures elle-mêmes,
-* 166 lignes dans [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail_btn.c), pour les boutons spécifiques aux miniatures
-* 109 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/filmstrip.c)
-* 1022 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/global_toolbox.c)
+* 1348 lignes dans [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/views/lighttable.c),
+* 1828 lignes dans [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/culling.c),
+* 2698 lignes dans [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbtable.c),
+* 2093 lignes dans [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail.c),
+* 166 lignes dans [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail_btn.c),
+* 109 lignes dans [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/filmstrip.c),
+* 1022 lignes dans [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/global_toolbox.c).
 
 Le nombre de lignes est une chose, mais ce n'est pas la pire. En effet, si vous démarrez `darktable -d sql` et que vous survolez une miniature de la table lumineuse, vous allez obtenir en console :
 
@@ -344,7 +344,7 @@ Le nombre de lignes est une chose, mais ce n'est pas la pire. En effet, si vous 
 
 ce qui veut dire que 18 requêtes SQL sont faites dans la base de données, destinées à récupérer les informations de l'image, et démarrées à chaque fois que le curseur survole une nouvelle miniature dans la table lumineuse, pour aucune raison car les métadonnées n'ont pas changé depuis le précédent survol.
 
-Dans Ansel, en retirant la plupart des options, j'ai réussi à économniser 7 requêtes, ce qui n'empêche pas les requêtes dupliquées :
+Dans Ansel, en retirant la plupart des options, j'ai réussi à économniser 7 requêtes, ce qui n'empêche pas les requêtes dupliquées mais améliore tout de même les timings (les timestamps sont les nombres en début de ligne):
 
 ```bash
 12.614534 [sql] ansel/src/common/image.c:285, function dt_image_film_roll(): prepare "SELECT folder FROM main.film_rolls WHERE id = ?1"
@@ -360,7 +360,7 @@ Dans Ansel, en retirant la plupart des options, j'ai réussi à économniser 7 r
 12.617565 [sql] ansel/src/common/tags.c:635, function dt_tag_get_attached(): prepare "SELECT DISTINCT I.tagid, T.name, T.flags, T.synonyms, COUNT(DISTINCT I.imgid) AS inb FROM main.tagged_images AS I JOIN data.tags AS T ON T.id = I.tagid WHERE I.imgid IN (133727) AND T.id NOT IN memory.darktable_tags GROUP BY I.tagid  ORDER by T.name"
 ```
 
-Le problème est que le code source imbrique des commandes SQL à l'intérieur des fonctions qui dessinent l'interface graphique, et déméler ce fouillis à travers les différentes couches héritées de la refactorisation est encore une fois de l'archéologie.
+Le problème est que le code source imbrique des commandes SQL à l'intérieur des fonctions qui dessinent l'interface graphique, et déméler ce fouillis à travers les différentes couches héritées de la refactorisation est encore une fois de l'archéologie. Et si le problème avait été réglé quand tout le code faisait 6700 lignes sur 3 fichiers, on n'en serait pas, 4 ans plus tard, à en chercher les causes dans 2500 lignes de plus dans 7 fichiers différents (sans compter les fichiers d'en-tête `.h`).
 
 On est sur un cas de figure où la "refactorisation" a en réalité complexifié le code et où fusionner le code de rendu des miniatures entre la barre pellicule et la table lumineuse n'a fait qu'ajouter des `if{ }` internes à plusieurs niveaux qui en compliquent encore la structure, juste pour obéir aveuglément au principe de réutilisation du code.
 
