@@ -4,6 +4,7 @@ date: 2022-11-27T22:36:34+01:00
 draft: false
 description: "Ansel est un éditeur de photos brutes pour artistes"
 thumbnail: "https://user-images.githubusercontent.com/45535283/"
+tags: ["darktable", "ansel", "photo editing"]
 ---
 
 <div class="pt-5 my-5 text-center">
@@ -209,6 +210,16 @@ Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le
 {{% /card %}}
 {{% /row %}}
 
+{{< divider >}}
 
+## Darktable, mais en mieux
+
+{{% row %}}
+
+<p class="no-hyphenation lead text-left mx-auto my-3"><em>Ansel</em> est ce que Darktable 4.0 aurait pu être si ses développeurs n'étaient pas si occupés à la transformer en cauchemard d'utilisabilité. Ansel est une variante de Darktable 4.0 où 25 000 lignes de code mal écrit et de fonctionnalités à moité cassées ont été retirées, et 9 000 lignes ont été réécrites : il s'exécute plus vite, il est plus réactif, utilise moins de puissance et requiert moins de configuration. Appréciez une app qui met l'accent sur la tâche à accomplir et la stabilité.</p>
+
+{{% /row %}}
+
+{{< divider >}}
 
 {{% /container %}}

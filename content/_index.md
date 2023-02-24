@@ -4,6 +4,7 @@ date: 2022-11-27T22:36:34+01:00
 draft: false
 description: "Ansel is an open-source raw photo editor for artists"
 thumbnail: "https://user-images.githubusercontent.com/45535283/"
+tags: ["darktable", "ansel", "photo editing"]
 ---
 
 <div class="pt-5 my-5 text-center">
@@ -210,6 +211,15 @@ New cameras may need up to 24 months to be fully supported after their commercia
 {{% /card %}}
 {{% /row %}}
 
+{{< divider >}}
+## Darktable, but better
 
+{{% row %}}
+
+<p class="no-hyphenation lead text-left mx-auto my-3"><em>Ansel</em> is what Darktable 4.0 could have been if its developers were not so busy turning it into an usability nightmare. Ansel is a Darktable 4.0 variant where 25.000 lines of poorly-written code and half-broken features have been removed, and 9.000 lines rewritten : it runs faster, smoother, uses less power and requires less configuration. Enjoy an app focusing on getting work done and stability.</p>
+
+{{% /row %}}
+
+{{< divider >}}
 
 {{% /container %}}
