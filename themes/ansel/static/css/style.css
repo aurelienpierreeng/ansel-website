@@ -1,7 +1,7 @@
 body { background-color: #f2f2f2!important; }
 
 html, body {
-  scroll-padding-top: 75px;
+  scroll-padding-top: 80px;
   scroll-behavior: smooth;
 }
 
@@ -9,6 +9,88 @@ html, body {
 
 img {
   max-width: 100%;
+}
+
+/* Menu items tweaks */
+
+.scrolled-down{
+  transform:translateY(-100%); transition: all 0.3s ease-in-out;
+}
+.scrolled-up{
+  transform:translateY(0); transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand img {
+  height: 2.5rem;
+  width: auto;
+}
+
+.menu-item.nav-item {
+  margin: 0 0 0 0.5rem;
+  padding: 0;
+}
+
+.sys-icon {
+  display: flex!important;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem!important;
+  margin-right: 0.75rem;
+  align-items: center;
+  font-style: normal;
+  font-weight: 400!important;
+}
+
+.sys-icon:before {
+  line-height: 1.75rem;
+  height: 1.75rem;
+  display: block;
+}
+
+.menu-item a.nav-link {
+  padding: 0.5rem 0.75rem!important;
+  line-height: 1.5rem;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+}
+
+.menu-icon {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 2.25rem;
+}
+
+.round-menu-button {
+  flex-direction: row;
+  border-radius: 50%!important;
+  background: #333!important;
+  height: 2.5rem;
+  width: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  color: #ddd;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  align-items: center;
+  padding: 0!important;
+}
+
+.round-menu-button i,
+.round-menu-button i::before
+{
+  margin: 0!important;
+  padding: 0!important;
+  text-align: center;
+  width: 2.5rem;
+}
+
+.round-menu-button:hover {
+  border-color: #ddd;
 }
 
 article { min-width: 300px; }
@@ -84,7 +166,7 @@ figure img {
 
 #sidebar {
 	position: sticky;
-	top: 75px;
+	top: 80px;
 	align-self: start;
 }
 

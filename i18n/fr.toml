@@ -10,6 +10,9 @@
 [resources]
   other = "Ressources"
 
+[community]
+  other = "Communauté"
+
 [before]
   other = "Avant"
 
