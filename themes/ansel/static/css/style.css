@@ -25,6 +25,19 @@ img {
   width: auto;
 }
 
+.navbar .container-fluid {
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 768px)
+{
+  .navbar-brand img {
+    height: 2.5rem;
+    width: auto;
+  }
+}
+
 .menu-item.nav-item {
   margin: 0 0 0 0.5rem;
   padding: 0;
@@ -68,9 +81,9 @@ img {
   flex-direction: row;
   border-radius: 50%!important;
   background: #333!important;
-  height: 2.5rem;
-  width: 2.5rem;
-  line-height: 2.5rem;
+  height: 2rem;
+  width: 2rem;
+  line-height: 2rem;
   text-align: center;
   color: #ddd;
   font-size: 1rem;
@@ -78,6 +91,15 @@ img {
   vertical-align: middle;
   align-items: center;
   padding: 0!important;
+}
+
+@media (min-width: 768px)
+{
+  .round-menu-button {
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 2.5rem;
+  }
 }
 
 .round-menu-button i,
