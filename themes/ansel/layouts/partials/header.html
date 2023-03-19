@@ -1,8 +1,8 @@
-<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg autohide">
-  <div class="container-fluid mx-auto px-3 px-md-4 px-lg-6 box-border my-1" style="height: 2.5rem; position: relative;">
+<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-xl autohide">
+  <div class="container-fluid box-border" style="position: relative;">
 
-    <div class="d-flex align-self-start align-items-center">
-      <button class="navbar-toggler round-menu-button me-3 d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="d-flex align-items-center">
+      <button class="navbar-toggler round-menu-button me-3 d-flex d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
 
@@ -16,7 +16,7 @@
         {{- $currentPage := . -}}
         {{ range .Site.Menus.main -}}
           {{ $active := in $currentPage.RelPermalink .URL }}
-          <li class="nav-item md-rounded menu-item py-md-2">
+          <li class="nav-item md-rounded menu-item">
             <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | relLangURL }}" {{ if $active }} aria-current="page" {{ end }}>
             {{ if .Pre }}
               <div class="menu-icon">
