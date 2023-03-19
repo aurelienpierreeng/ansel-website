@@ -25,9 +25,21 @@ img {
   width: auto;
 }
 
+.navbar-collapse {
+  position: absolute;
+  top: 2.5rem;
+}
+
+@media (min-width: 992px)
+{
+  .navbar-collapse {
+    position: relative;
+    top: 0;
+  }
+}
+
 .navbar .container-fluid {
   align-content: center;
-  flex-wrap: nowrap;
 }
 
 @media (min-width: 768px)
