@@ -59,7 +59,14 @@ Best performance for your hardware
 {{% /card %}}
 {{% /row %}}
 
-<strong>Minimal recommended configuration</strong> : CPU Intel i5 (4 cores) / 8 GB RAM / GPU Nvidia GTX 850.
+{{% row %}}
+{{% column p=true %}}
+<strong>Minimal recommended configuration</strong> : <br> CPU Intel i5 (4 cores) / 8 GB RAM / GPU Nvidia GTX 850.
+{{% /column %}}
+{{% column p=true %}}
+The links above always point to the latest nightly build of the "fairly stable" branch. If you want a particular version or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).
+{{% /column %}}
+{{% /row %}}
 
 {{< divider >}}
 
@@ -73,7 +80,6 @@ Many solutions already exist to produce ready-to-consume photographs for masses,
 {{% column p=true %}}
 Pressing the camera shutter merely started a process ending when the on-screen picture looks like the one you had in mind. _Ansel_ proposes to put the artists back at the center of the creative process and enables them with an interface to manipulate images with precision and nuance, using state-of-the-art color science and independent color controls.
 {{% /column %}}
-
 {{% /row %}}
 <hr>
 
@@ -206,8 +212,12 @@ Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to
 {{< button url="/en/doc/special-topics/from-darktable/" label="Find out what is changed" icon="sync" >}}
 {{% /card %}}
 {{% card title="Cameras" icon="camera" %}}
-New cameras may need up to 24 months to be fully supported after their commercial release.
+Ansel uses Rawspeed and Libraw to decode raw photographs. New cameras may need up to 24 months to be fully supported after their commercial release.
 {{< button url="https://rawspeed.org/CameraSupport.html" label="Supported cameras" icon="wrench" >}}
+{{% /card %}}
+{{% card title="Languages" icon="language" %}}
+The software is integrally translated in English, French and simplified Chinese. Partial translations are available in German, Spanish, Portugese, Ukranian, etc.
+{{< button url="https://github.com/aurelienpierreeng/ansel/wiki/Translations" label="Improve translations" icon="comment" >}}
 {{% /card %}}
 {{% /row %}}
 
@@ -216,7 +226,7 @@ New cameras may need up to 24 months to be fully supported after their commercia
 
 {{% row %}}
 
-<p class="no-hyphenation lead text-left mx-auto my-3"><em>Ansel</em> is what Darktable 4.0 could have been if its developers were not so busy turning it into an usability nightmare. Ansel is a Darktable 4.0 variant where 29.000 lines of poorly-written code and half-broken features have been removed, and 10.000 lines rewritten : it runs faster, smoother, uses less power and requires less configuration. Enjoy an app focusing on getting work done and stability.</p>
+<p class="no-hyphenation lead text-left mx-auto my-3"><em>Ansel</em> is what Darktable 4.0 could have been if its developers were not so busy turning it into an usability nightmare. Ansel is a Darktable 4.0 variant where 30.000 lines of poorly-written code and half-broken features have been removed, and 11.000 lines rewritten : it runs faster, smoother, uses less power and requires less configuration. Enjoy an app focusing on getting work done and stability.</p>
 
 {{% /row %}}
 

@@ -33,11 +33,11 @@ Il y a déjà une quantité honorable d'informations sur l'utilisation d'Ansel. 
 {{< button url="https://github.com/Aurelien-Pierre/Ansel/issues" icon="github fab" label="Tracker de bugs" >}}
 {{% /card %}}
 
-{{% card title="Forum anglophone" icon="user-tie" %}}
-{{< button url="https://github.com/Aurelien-Pierre/Ansel/discussions" icon="github fab" label="Github Discussion" >}}
+{{% card title="Forum" icon="comments" %}}
+{{< button url="https://community.ansel.photos" icon="users" label="Discussions communautaires" >}}
 {{% /card %}}
 
-{{% card title="Chat" icon="comments" %}}
+{{% card title="Chat" icon="comment-dots" %}}
 {{< button url="https://matrix.to/#/#r&darktable-fr:matrix.org" icon="envelope" label="Chat Matrix" >}}
 {{% /card %}}
 {{% /row %}}
@@ -62,6 +62,10 @@ Ne restez pas seul avec vos problèmes et prenez rendez-vous directement avec le
 {{< button url="https://photo.aurelienpierre.com/cours-particuliers-de-retouche-sous-darktable/#book-me" icon="calendar-alt" label="Prendre RDV" >}}
 {{% /card %}}
 
+{{% card title="Support premium" icon="question" %}}
+{{< button url="https://community.ansel.photos/view-group-profile/premium-support" icon="hands-helping" label="Obtenir de l'aide prioritaire" >}}
+{{% /card %}}
+
 {{% card title="Cours de retouche" icon="chalkboard-teacher" %}}
 {{< button url="https://photo.aurelienpierre.com/cours-particuliers-de-retouche-sous-darktable/#book-me" icon="calendar-alt" label="Prendre RDV" >}}
 {{% /card %}}
@@ -69,7 +73,7 @@ Ne restez pas seul avec vos problèmes et prenez rendez-vous directement avec le
 
 ## Soutien aux développeurs
 
-Si vous envisagez de contribuer pour le développement et le débogage, voici comment je travaille. 
+Si vous envisagez de contribuer pour le développement et le débogage, voici comment je travaille.
 
 {{% row %}}
 {{% card title="Principes (page en anglais)" icon="code-branch" %}}

@@ -55,11 +55,18 @@ Installeur Windows 10 & 11
 
 {{% card icon="terminal" title="Build from source" %}}
 Les meilleurs performances pour votre matériel
-{{< button url="/fr/doc/install" label="Instructions de compilation" icon="wrench" >}}
+{{< button url="/en/doc/install" label="Instructions de compilation" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 
-<strong>Configuration minimale recommandée</strong> : Processeur Intel i5 (4 cores) / RAM 8 Go / Carte graphique Nvidia GTX 850.
+{{% row %}}
+{{% column p=true %}}
+<strong>Configuration minimale recommandée</strong> : <br> CPU Intel i5 (4 cœurs) / 8 GB RAM / GPU Nvidia GTX 850.
+{{% /column %}}
+{{% column p=true %}}
+Les liens ci-dessus pointent toujours vers la dernière compilation quotidienne de la branche « raisonnablement stable ». Si vous voulez une version particulière ou que vous voulez rétrograder, [vous pouvez trouver toutes les versions intermédiaires sur Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).
+{{% /column %}}
+{{% /row %}}
 
 {{< divider >}}
 
@@ -205,8 +212,12 @@ Ansel est basé sur darktable 4.0 et est entièrement compatible avec les XMP de
 {{< button url="/fr/doc/special-topics/from-darktable/" label="Découvrez ce qui a changé" icon="sync" >}}
 {{% /card %}}
 {{% card title="Appareils photos" icon="camera" %}}
-Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le marché pour être entièrement supportés.
+Ansel utilise Rawspeed et Libraw pour décoder les photos brutes. Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le marché pour être entièrement supportés.
 {{< button url="https://rawspeed.org/CameraSupport.html" label="Appareils pris en charge" icon="wrench" >}}
+{{% /card %}}
+{{% card title="Langues" icon="language" %}}
+Le logiciel est intégralement traduit en anglais, français et chinois simplifié. Des traductions partielles sont disponibles en allemand, espagnol, portugais, ukrainien, etc.
+{{< button url="https://github.com/aurelienpierreeng/ansel/wiki/Translations" label="Améliorez les traductions" icon="comment" >}}
 {{% /card %}}
 {{% /row %}}
 
@@ -216,7 +227,7 @@ Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le
 
 {{% row %}}
 
-<p class="no-hyphenation lead text-left mx-auto my-3"><em>Ansel</em> est ce que Darktable 4.0 aurait pu être si ses développeurs n'étaient pas si occupés à la transformer en cauchemard d'utilisabilité. Ansel est une variante de Darktable 4.0 où 29 000 lignes de code mal écrit et de fonctionnalités à moité cassées ont été retirées, et 10 000 lignes ont été réécrites : il s'exécute plus vite, il est plus réactif, utilise moins de puissance et requiert moins de configuration. Appréciez une app qui met l'accent sur la tâche à accomplir et la stabilité.</p>
+<p class="no-hyphenation lead text-left mx-auto my-3"><em>Ansel</em> est ce que Darktable 4.0 aurait pu être si ses développeurs n'étaient pas si occupés à la transformer en cauchemard d'utilisabilité. Ansel est une variante de Darktable 4.0 où 30 000 lignes de code mal écrit et de fonctionnalités à moité cassées ont été retirées, et 11 000 lignes ont été réécrites : il s'exécute plus vite, il est plus réactif, utilise moins de puissance et requiert moins de configuration. Appréciez une app qui met l'accent sur la tâche à accomplir et la stabilité.</p>
 
 {{% /row %}}
 

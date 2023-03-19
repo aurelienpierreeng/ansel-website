@@ -33,11 +33,11 @@ There already is a fair deal of information around on Ansel's usage. As Ansel is
 {{< button url="https://github.com/Aurelien-Pierre/Ansel/issues" icon="github fab" label="Bug tracker" >}}
 {{% /card %}}
 
-{{% card title="Forum" icon="user-tie" %}}
-{{< button url="https://github.com/Aurelien-Pierre/Ansel/discussions" icon="github fab" label="Github Discussion" >}}
+{{% card title="Forum" icon="comments" %}}
+{{< button url="https://community.ansel.photos" icon="users" label="Community discussions" >}}
 {{% /card %}}
 
-{{% card title="Chat" icon="comments" %}}
+{{% card title="Chat" icon="comment-dots" %}}
 {{< button url="https://matrix.to/#/#r&darktable-en:matrix.org" icon="envelope" label="Matrix chat" >}}
 {{% /card %}}
 {{% /row %}}
@@ -56,11 +56,15 @@ Please upload your files on my [private cloud](https://cloud.apmlt.net/s/YAdfYaj
 
 ## Getting premium user support
 
-Don't stay alone with your problems and directly book the developer to get personalized solutions. Support is given through video-conferencing with screen-sharing.
+Don't stay alone with your problems and directly book the developer to get personalized solutions. Support is given through video-conferencing with screen-sharing or on the premium group.
 
 {{% row %}}
 {{% card title="Emergency support" icon="ambulance" %}}
 {{< button url="https://photo.aurelienpierre.com/private-lessons-on-retouching-with-darktable/?lang=en#book-me" icon="calendar-alt" label="Book an appointment" >}}
+{{% /card %}}
+
+{{% card title="Premium support" icon="question" %}}
+{{< button url="https://community.ansel.photos/view-group-profile/premium-support" icon="hands-helping" label="Get priority help" >}}
 {{% /card %}}
 
 {{% card title="Retouching classes" icon="chalkboard-teacher" %}}
