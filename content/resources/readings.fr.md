@@ -19,25 +19,35 @@ La théorie de la couleur a 2 aspects :
 * __scientifique__, lié historiquement à la physique de la lumière, mais à présent d'avantage apparenté à la psychologie, qui essaie de relier les signaux physiques avec des stimuli sensoriels,
 * __artistique__, qui étudie la sémantique de la couleur (essentiellement culturelle) et comment elle agit pour créer des ombrages crédibles en peinture ou des ambiances dans les photographies et le cinéma.
 
-Il faut mentionner que l'aspect scientifique a été aussi étudié par des artistes (comme [Munsell](https://en.wikipedia.org/wiki/Munsell_color_system)). La discipline mélange des notions de physique (spectre lumineux, là où tout commence), biologie et médecine (cellules rétiniennes, nerf optique et cerveau, c'est à dire le capteur humain), psychologie (mémoire de la couleur et images rémanentes), histoire de l'art (harmonies colorées) et ethnologie (signication culturelle des couleurs).
+Il faut mentionner que l'aspect scientifique a été aussi étudié par des artistes (comme [Munsell](https://en.wikipedia.org/wiki/Munsell_color_system)). La discipline mélange des notions de :
+
+* physique (spectre lumineux, là où tout commence),
+* biologie et médecine (cellules rétiniennes, nerf optique et cerveau, c'est à dire le capteur humain),
+* psychologie (mémoire de la couleur et images rémanentes),
+* histoire de l'art (harmonies colorées),
+* ethnologie (signication culturelle des couleurs).
+
+Chaque auteur n'étant typiquement un expert que dans un seul de ces domaines, bien qu'ayant besoin des autres, il est souvent utile de savoir à l'avance sous quel angle il va traiter le sujet, et à quel moment il risque de sortir de sa spécialité.
 
 ### Pièges à éviter
 
-L'essentiel du discours sur la couleur se concentre sur des modèles d'apparence des couleurs en 3D : teinte-chroma-clarté ou teinte-saturation-luminosité. Il s'agit simplement de décomposer la couleur en 3 propriétés absolues qui devraient idéalement être totalement indépendantes les unes des autres, car ceci serait pratique pour les applications concrètes dans le monde réel.
+L'essentiel du discours sur la couleur se concentre sur des modèles d'apparence des couleurs tridimensionnels : teinte-chroma-clarté ou teinte-saturation-luminosité. Il s'agit basiquement de décomposer la couleur en 3 propriétés absolues qui devraient idéalement être totalement indépendantes les unes des autres, ce qui serait pratique pour les applications concrètes dans le monde réel.
 
 Le problème est que la vision n'est pas absolue mais sujette aux interférences avec l'arrière-plan et l'environnement. Le même patch de couleur affiché sur différents fonds (de couleur et d'illumination variables) apparaîtra différent. Mais la vision est également sensible au contraste local et aux motifs répétitifs, et des preuves scientifiques suggèrent qu'elle est bien plus liée à des phénomènes d'opposition des couleurs (c'est à dire à des stimuli soustractifs) qu'à des intensités absolues (stimuli additifs).
 
-C'est la raison pour laquelle, dans les industries des média et de l'imprimerie, l'évaluation des couleurs est réalisé en conditions standard : lumière D50 ou D65, arrière-plan et environnement gris moyen, lumière incidente de luminance 100 à 300 Cd/m². Le problème est que tout cela ne tient toujours pas compte des effets du contenu de l'image elle-même, car la même robe rouge peut paraître très différente vue contre un ciel bleu, un mur gris ou un feuillage vert, même si vous avez éliminé tous les effets possibles de l'éclairage ambiant.
+Lorsqu'on parle de modèle teinte-chroma-clarté, par exemple, on implique que les couleurs sont évaluées contre un fond blanc, tel que présenté dans le [nuancier de Munsell](https://fr.wikipedia.org/wiki/Nuancier_de_Munsell#/media/Fichier:Munsell_Books.jpg). Le modèle devient passablement erroné dans tout autre contexte, en particulier parce que la chroma contribue à la perception de luminosité ([effet Helmholtz-Kohlrausch](https://en.wikipedia.org/wiki/Helmholtz%E2%80%93Kohlrausch_effect)), ce dont la clarté ne tient pas compte.
 
-Tandis que les modèles d'apparence des couleurs essaient d'éliminer la contribution de nombreux paramètres pour tenter de trouver des dimensions de la couleur vraiment indépendantes, nous devons garder à l'esprit que leurs hypothèses de base ne peuvent êtres validées dans les conditions réelles, et leur utilisabilité pratique dans le monde réel est limitée. Dans tous les cas, les modèles sont des réductions mathématiques de réalités bien plus complexes afin d'être calculables. Et les 3 dimensions de la couleur ne sont pas réellement indépendantes.
+C'est la raison pour laquelle, dans les industries des média et de l'imprimerie, l'évaluation des couleurs est réalisé en conditions standard : lumière D50 ou D65, arrière-plan et environnement gris moyen, lumière incidente de luminance 100 à 300 Cd/m². Le problème est que tout cela ne tient toujours pas compte des effets du contenu de l'image en elle-même, car la même robe rouge peut paraître très différente vue contre un ciel bleu, un mur gris ou un feuillage vert, même si vous avez éliminé tous les effets possibles de l'éclairage ambiant.
+
+Tandis que les modèles d'apparence des couleurs essaient d'éliminer la contribution de nombreux paramètres pour tenter de trouver des dimensions de la couleur vraiment indépendantes, nous devons garder à l'esprit que leurs hypothèses de base sont rarement validées dans les conditions réelles, et leur utilisabilité pratique dans le monde réel est limitée. Dans tous les cas, les modèles sont des réductions mathématiques de réalités bien plus complexes afin d'être calculables. Et les 3 dimensions de la couleur ne sont pas réellement indépendantes.
 
 ### À quel point la théorie de la couleur est-elle utile ?
 
-Les retoucheurs d'images, artistes digitaux et autres pousseurs de pixels traitent des images encodées en tant que signaux RVB. Celles-ci sont des signaux additifs qui ont du sens dans des pipelines d'imagerie commençant avec des capteurs qui accumulent des photons et finissant avec des panneaux LED qui émettent des photons. Rien de tout ça n'est directement lié à la mécanique réelle de la vision humaine. C'est en réalité beaucoup plus proche de la physique de la lumière.
+Les retoucheurs d'images, artistes digitaux et autres pousseurs de pixels traitent des images encodées sous forme de signaux RVB. Ceux-ci sont des signaux additifs qui ont du sens dans des pipelines d'imagerie commençant avec des capteurs qui accumulent des photons et finissant avec des panneaux LED qui émettent des photons. Rien de tout ça n'est directement lié à la mécanique réelle de la vision humaine : c'est en réalité beaucoup plus proche de la physique de la lumière.
 
-L'histoire de l'art a été écrite en grande partie par des peintres qui travaillaient avec des pigments, par natures soustractifs. Plusieurs siècles avant que Newton n'observent la diffraction de la lumière par des prismes (les couleurs de l'arc en ciel), ils étaient capables de restituer la peau et la chair humaine avec une incroyable maîtrise, sans avoir les connaissances que nous avons actuellement, et en utilisant un schéma de mélange des pigments qui n'a rien à voir avec la vision humaine.
+L'histoire de l'art a été écrite en grande partie par des peintres qui travaillaient avec des pigments, par nature soustractifs. Plusieurs siècles avant que Newton n'observe la diffraction de la lumière par des prismes (les couleurs de l'arc en ciel), ils étaient capables de restituer la peau et la chair humaine avec une incroyable maîtrise, sans avoir le dixième des connaissances que nous avons actuellement, et en utilisant un schéma de mélange des pigments qui n'a rien à voir avec la vision humaine.
 
-La théorie de la couleur n'est pas un pré-requis pour faire de l'art, et certainement pas pour faire de l'art de qualité. Mais…
+La théorie de la couleur n'est donc pas un pré-requis pour faire de l'art, et certainement pas pour faire de l'art de qualité. Mais…
 
 La théorie de la couleur fournit des noms à mettre sur des phénomènes que nous vivons quotidiennement et qui sont pour la plupart profondément contre-intuitifs. Si vous avez déjà rencontré des gens qui ont souffert des mois et des années sans que le personnel médical ne soit capable de diagnostiquer précisément leur maladie, vous savez à quel point il est important de pouvoir nommer la maladie, même si aucun traitement n'est disponible.
 
@@ -45,9 +55,11 @@ Les retoucheurs d'images souffrent d'utiliser des outils de manipulation de la c
 
 ## Références
 
-Malheureusement pour les francophones, l'information de qualité en théorie de la couleur est exclusivement en langue anglaise, qui est également la langue de la recherche scientifique. Les ressources francophones disponibles sont peu nombreuses et le peu qu'il y a est de mauvaise qualité. Le reste de cet article sera donc dans la langue des publications référencées…
+Malheureusement pour les francophones, l'information de qualité en théorie de la couleur est exclusivement en langue anglaise, qui est également la langue de la recherche scientifique. Les ressources francophones disponibles sont peu nombreuses et le peu qu'il y a est de mauvaise qualité, quand elles ne véhiculent pas carrément des énormités. Le reste de cet article sera donc dans la langue des publications référencées…
 
 ### Color science
+
+_Fundamentals, concepts and terminology of colo(u)r._
 
 Color Appearance Models, 3rd Edition. Mark D. Fairchild. 2013.
 : Mark Fairchild is professor at the Rochester Institute of Technology (closely tied to Munsell legacy and located in the neighbourhood of the Eastman Kodak company). The  Chapters 1 to 9 list the different aspects of vision and adaptation, along with the parameters affecting it and the color terminology. The 9 central chapters detail the typical industry-ready color appearance models, with implementation details that will only interest engineers. The last 3 chapters treat matters such as color management and color reproduction that may interest any graphic artist. [Publisher website](https://www.wiley.com/en-us/Color+Appearance+Models%2C+3rd+Edition-p-9781119967033)
@@ -57,3 +69,20 @@ Colour : sense and measurement. Richard Kirk. 2022.
 
 The dimensions of color. David Briggs. [Website 1](http://www.huevaluechroma.com/). [Website 2](https://sites.google.com/site/djcbriggs/life-drawings-2).
 : David Briggs is a member of the Colour Society of Australia and teacher at the National Art School and University of Technology in Sydney. As a drawer and painter, his publications give an useful insight on the interconnections between color theory and pigments mixing practice.
+
+### Color pipelines
+
+_How digital images are handled in your computer from start to finish_
+
+The Hitchhiker's Guide to Digital colour. Troy Sobotka. [Website](https://hg2dc.com/)
+: I have worked with Troy for years — he has basically helped most open-source software projects to unfuck their color pipelines in the past decade (at least the ones who accepted they had a problem whether or not they saw it) — and he is the original author of Filmic for Blender. We share the same passion for calling bullshit bullshit and idiots idiots. The HG2DC website is a step-by-step walk through computer graphics with lots of pictures and video animations explaining where, why and what happens to your RGB pixels.
+
+The Computer Graphics Cinematography Book. Chris Brejon. [Website](https://chrisbrejon.com/cg-cinematography/)
+: Chris has worked at 5 of the most prominent movie studios in the world, over the past 13 years, as a lighting and compositing artist. Although the book focuses on cinematography, the chapters on color management, composition, lighting and color theory apply directly to photography as well (though the workflow changes a bit).
+
+### 2D painting and 3D rendering
+
+_Constructing images from scratch_
+
+Marco Bucci's YouTube channel. [Website](https://www.youtube.com/channel/UCsDxB-CSMQ0Vu_hTag7-2UQ)
+: Marco Bucci is a painter and shows how he constructs his paintings, most importantly how he shades subjects to give depth to 2D paintings. This is highly interesting because photographers just capture what is there, and can afford to never bother about the "true", "desired" and "believable" colors of a shadow. Since painters (and 3D artists) create everything from scratch, they have to ask themselves what color it should be. Give a good binge to his channel, I promise you will never look at a drop shadow the same way. _(You may need to discard some of his color theory explanations though, they are often inaccurate)_.
