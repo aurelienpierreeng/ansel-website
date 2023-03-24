@@ -53,6 +53,18 @@ La théorie de la couleur fournit des noms à mettre sur des phénomènes que no
 
 Les retoucheurs d'images souffrent d'utiliser des outils de manipulation de la couleur qui ne se comportent pas comme la vision humaine. Vous pouvez additionner des lumières, vous pouvez additionner des pigments, mais vous ne pouvez pas additionner des teintes car elles sont entièrement un produit du système cognitif humain. Mélanger des lumières et des pigments ayant une teinte originale donnée ne produira pas une teinte résultante facile à prévoire à la fin. La théorie de la couleur fournit des concepts pour comprendre ces déviations et pour mieux les gérer, c'est à dire pour donner du sens à ce que vous voyez, au-delà de ce qui se passe en poussant des curseurs dans une interface graphique.
 
+### Colorimétrie ou sciences de la couleur ?
+
+La colorimétrie est une branche à part des sciences de la couleur, qui s'intéresse à _mesurer_ la couleur, ce qui n'est pas loin d'être une contradiction dans les termes, car la couleur est une perception et qu'on ne peut guère mesurer les perceptions sensorielles sans violer les règles d'éthique de la recherche sur patients vivants.
+
+On nomme [colorimètre](https://en.wikipedia.org/wiki/Tristimulus_colorimeter) un capteur trichromatique qui satisfait au critère de Maxwell-Luther-Ives, c'est à dire que ses "couleurs primaires" permettent d'exprimer tout spectre lumineux visible par une combinaison linéaire. Je vous épargne les détails mathématiques, retenez simplement que tout capteur photographique n'est pas automatiquement un colorimétre, et introduit donc des erreurs de mesure qu'on appelle [métamérisme](https://en.wikipedia.org/wiki/Metamerism_(color)#Metameric_failure), qui seront bien embêtantes pour reproduire fidèlement les couleurs. En pratique, seuls les capteurs servant à l'étalonnage de la chaîne graphique se rapprochent du critère de Maxwell-Luther-Ives.[^1]
+
+[^1]: D'après l'article [_What is the space of spectral sensitivity functions for digital cameras_](http://www.gujinwei.org/research/camspec/camspec.pdf), par Jun Jiang, Dengyu Liu, Jinwei Gu and Sabine Süsstrunk (2013), ce sont les appareils Canon qui sont les plus proches des conditions de Maxwell-Luther-Ives (deux fois meilleurs que les Hasselblad), mais une recherche croisée sur [DXOMark](https://www.dxomark.fr/Cameras/) indique que cette colorimétrie améliorée se fait au détriment du bruit en basse lumière. Les monstres d'ISO actuels ont donc vraisembablement sacrifié beaucoup de précision dans la couleur pour gagner en sensibilité.
+
+L'objectif final de la colorimétrie n'est pas d'étudier la vision humaine, ni d'en comprendre le fonctionnement, mais de fournir des outils optiques, mathématiques et des métriques d'erreur (comme le delta E) qui permettent de profiler et de corriger la restitution des couleurs sur des systèmes d'affichage et de reproduction d'images, ou d'en effectuer le contrôle qualité. La colorimétrie est donc une discipline d'ingéniérie, avec tous les compromis pratiques que cela suppose, pas une science.
+
+Le terme _colorimétrie_ est improprement utilisé par toutes sortes de charlatans, pour désigner toutes sortes de choses n'ayant rien à voir, car il sonne scientifique tout en contenant le mot-clé "couleur", connoté artistiquement.
+
 ## Références
 
 Malheureusement pour les francophones, l'information de qualité en théorie de la couleur est exclusivement en langue anglaise, qui est également la langue de la recherche scientifique. Les ressources francophones disponibles sont peu nombreuses et le peu qu'il y a est de mauvaise qualité, quand elles ne véhiculent pas carrément des énormités. Le reste de cet article sera donc dans la langue des publications référencées…

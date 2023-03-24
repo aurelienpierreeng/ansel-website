@@ -53,6 +53,18 @@ Color theory provides names to put on phenomena we experience daily and that are
 
 Image retouchers suffer from using color manipulation tools that simply don't behave according to color vision. You can add lights, you can add pigments, but you can't add hues because hues are entirely a product of the human cognitive system. Mixing lights and pigments of a certain original hue will not produce an easily-predictable hue at the end. Color theory provides concepts to understand those deviations and to better handle them, that is, to make sense of what you see beyond what you do when pushing GUI sliders.
 
+### Colorimetry or color sciences ?
+
+Colorimetry is a special branch of color sciences, which aims at _measuring_ color, and this is short from being a contradiction in terms, because color is a perception and we can't really measure perceptions without violating the ethical rules of research on living patients.
+
+We call [colorimeter](https://en.wikipedia.org/wiki/Tristimulus_colorimeter) a sensor that satisfies the Maxwell-Luther-Ives condition, meaning its "primaries" allow to express any light spectrum as a linear combination. I will spare you the maths details, just remember that any random photographic sensor is not automatically a colorimeter, and therefore introduces measuring errors called [metamerism](https://en.wikipedia.org/wiki/Metamerism_(color)#Metameric_failure), which will be very annoying when trying to accurately reproduce colors. In practice, only sensors used for calibration of the graphic chain will be close to the Maxwell-Luther-Ives condition.[^1]
+
+[^1]: From the paper [_What is the space of spectral sensitivity functions for digital cameras_](http://www.gujinwei.org/research/camspec/camspec.pdf), by Jun Jiang, Dengyu Liu, Jinwei Gu and Sabine Süsstrunk (2013), the Canon cameras are the closest from the Maxwell-Luther-Ives condition (twice as good as the Hasselblad), but a cross-search on [DXOMark](https://www.dxomark.fr/Cameras/) indicates that this improved colorimetry is done at the expense of low-light noise. The current ISO beasts have most likely sacrificed a lot of color accuracy to win on sensitivity.
+
+The final goal of colorimetry is not to study human vision, nor to understand its behaviour, but to provide optical and mathematical tools, as well as error metrics (like the delta E) allowing to profile and to correct color rendering on display and image reproduction systems, but also to perform quality control and management. Colorimetry is therefore an engineering field, with all the practical compromises it implies, not a science.
+
+The _colorimetry_ term is improperly used by all sorts of scammers to designate unrelated things, because it sounds scientific while still containing the artsy-connotated "color" keyword.
+
 ## References
 
 ### Color science
