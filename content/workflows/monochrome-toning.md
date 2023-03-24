@@ -3,6 +3,7 @@ title: "Monochrome toning"
 date: 2023-03-24
 draft: false
 toc: true
+thumbnail: "https://ansel.photos/posts/toning-workflow-cyanotype-3.jpg"
 tags: ['film', 'monochrome']
 authors: ["Aurélien Pierre"]
 ---
