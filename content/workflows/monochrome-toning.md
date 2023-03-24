@@ -81,3 +81,45 @@ Again, I barely touched the _Power_ settings, with a 0.10% chroma at hue 55°.
 ### Conclusion
 
 There is not one definite platinotype look because the final tint depends on the proportions of the mix between platinum and palladium in the photo-sensible emulsion. The result presented here is more opinionated than most actual platinotypes I have seen, for educating purposes. You may want to dial it down a notch for a more believable result (reduce chroma).
+
+Selenium toning can be reproduced exactly the same way, only the hue will need to be changed to purple.
+
+## Variant 3 : sepia
+
+The sepia toning is obtained from a typical silver halide print where the silver halide is turned into sulphide, which is more stable and has better longevity. It results in a brown shift.
+
+The digital reproduction of the toning is very similar in spirit to the platinotype, only the hue will be slightly different (70° instead of 55°) and the shift is more pronounced, which will require to use the _Shadows lift_ as well.
+
+The proposed settings are (all hues set to 70°): 
+
+* _Global offset_:
+  * chroma : 0.20%
+  * luminance : 0.20%
+* _Shadows lift_:
+  * chroma: 10%
+* _Highlights gain_ : don't touch it (same as previously)
+* _Power_: 
+  * chroma: 1.50%
+
+This gives us:
+
+![](/posts/toning-workflow-sepia.jpg)
+
+
+## Variant 4 : split-toning
+
+Split-toning is a process where highlights and shadows get a different color shift, the most common being teal and orange. It is not specific to monochrome toning, and can be used for color work, where it becomes a particular case of color grading (more on that topic in [ressources](../resources/readings.md#color-grading)). For monochrome, the split-toning will need to be very gentle to keep it believable.
+
+Using the color balance module, we only need to use the _Highlights gain_ and the _Shadows lift_. Here is a proposal for teal and orange :
+
+![](/posts/toning-workflow-split-toning.jpg)
+
+The possibilities are limitless, and the typical "teal and orange" should be used carefully because it has been already overused and abused.
+
+## Conclusion
+
+You may have noticed that all the analog-inspired tonings (that is, all except split-toning) don't affect whites. This is because, on an analog print, white is achieved by letting the paper naked, while black and midtones uses photosensitive pigments.
+
+Pure black and pure white are ignored by the _Power_ setting of the color balance module, which is a property of the power function (maths…). However, the more you increase its chroma and the more impact it has on very bright and very dark midtones. If you ever find that it takes too much of highlights once you found a proper setting for midtones, you can always desaturate them in the _Master_ tab, using the _Perceptual saturation grading_ for the _Highlights_ channel (because _perceptual saturation_ is applied after the _4 ways_ settings in the pixel pipeline, while the _linear chroma grading_ is applied before).
+
+The real strength of the color balance module here is to let you fine-tune very precisely how the effects target shadows, midtones or highlights, and how fast the transitions are between them. But with great power comes great responsibilities, and it is certainly a tool that requires some time to master.
