@@ -113,3 +113,18 @@ Color and Contrast. Nate Baldwin. [Website](https://colorandcontrast.com/)
 
 Optical Illusions. R. Beau Lotto. [Website](https://www.echalk.co.uk/amusements/OpticalIllusions/colourPerception/colourPerception.html)
 : Witness the impact of different surround brightness and hue on color patches that are exactly similar.
+
+
+### Color-grading
+
+_Correcting or introducing color shifts to ensure consistent look between pictures and create some ambiance_
+
+Color Correction Handbook (vol. 1) / Color Correction Look Book (vol 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)
+: These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.
+
+### News and insights
+
+_Staying up-to-date with color stuff, technical analyses and other myths debunking about color_
+
+Colour science library, blog. [Website](https://www.colour-science.org/blog/)
+: The colour-science project provides a Python library with many color models and other numeric tools for engineers and researchers working on color and vision. I use it extensively, in particular to create color sweeps and other graphs on this website. While this will not interest end-users, the blog of the project contains well-documented and useful insights on matters like color calibration and lighting.
