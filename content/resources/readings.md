@@ -125,4 +125,4 @@ Color Correction Handbook (vol. 1) / Color Correction Look Book (vol 2). Alexis 
 _Staying up-to-date with color stuff, technical analyses and other myths debunking about color_
 
 Colour science library, blog. [Website](https://www.colour-science.org/blog/)
-: The colour-science project provides a Python library with many color models and other numeric tools for engineers and researchers working on color and vision. I use it extensively, in particular to create color sweeps and other graphs on this website. While this will not interest end-users, the blog of the project contains well-documented and useful insights on matters like color calibration and lighting.
+: The colour-science project provides a Python library with many color models and other numeric tools for engineers and researchers working on color and vision. I use it extensively, in particular to create color sweeps and other graphs on this website. While this will not interest end-users, the blog of the project contains well-documented and useful insights on matters like color calibration and lighting.
