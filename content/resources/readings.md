@@ -33,7 +33,9 @@ Every author being typically an expert in only one of those fields, but still ne
 
 Most color talk focuses on tri-dimensional models of color appearance : the hue-chroma-lightness, or the hue-saturation-brightness. That is basically color split into 3 absolute properties that would ideally be completely independent from each other, because it would be mathematically practical for real-world applications.
 
-Problem is, vision is not absolute but subjected to the interference of the background and surrounding. The same color patch displayed on different backgrounds (varying color and illumination) will appear differently. But vision is also very sensitive to local contrast and patterns, and scientific evidence suggests that it is actually much more about color opponency (that is, subtractive stimuli) than about intensities (additive stimuli).
+Problem is, vision is not absolute but subjected to the interference of the background and surrounding. The same color patch displayed on different backgrounds (varying color and illumination) will appear differently. But vision is also very sensitive to local contrast and patterns, and scientific evidence suggests that it is actually much more about color opponency (that is, subtractive stimuli) than about intensities (additive stimuli).[^2]
+
+[^2]: To convince yourself, visit [this website](https://www.echalk.co.uk/amusements/OpticalIllusions/colourPerception/colourPerception.html), showcasing optical illusions where grey patches put in a blue surround appear yellow, and vice versa.
 
 When we talk about the hue-chroma-lightness model, for instance, we imply that colors are evaluated against a white background, as in the [Munsell book](https://fr.wikipedia.org/wiki/Nuancier_de_Munsell#/media/Fichier:Munsell_Books.jpg). This model becomes fairly wrong in any other context, in particular because chroma contributes to the perception of brightness ([Helmholtz-Kohlrausch effect](https://en.wikipedia.org/wiki/Helmholtz%E2%80%93Kohlrausch_effect)), which is discarded by the lightness.
 
