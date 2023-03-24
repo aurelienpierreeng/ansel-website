@@ -100,3 +100,16 @@ _Constructing images from scratch_
 
 Marco Bucci's YouTube channel. [Website](https://www.youtube.com/channel/UCsDxB-CSMQ0Vu_hTag7-2UQ)
 : Marco Bucci is a painter and shows how he constructs his paintings, most importantly how he shades subjects to give depth to 2D paintings. This is highly interesting because photographers just capture what is there, and can afford to never bother about the "true", "desired" and "believable" colors of a shadow. Since painters (and 3D artists) create everything from scratch, they have to ask themselves what color it should be. Give a good binge to his channel, I promise you will never look at a drop shadow the same way. _(You may need to discard some of his color theory explanations though, they are often inaccurate)_.
+
+### Visual illusions
+
+_Witnessing the gullibility of our own perceptual system is key to anticipating problems in real-world applications_
+
+The illusory staircase Gelb effect. [Website](http://www.psy.ritsumei.ac.jp/~akitaoka/illgelbe.html)
+: Repeating the same grey or colored patch over a gradient changes the percieved color of the patch, in addition of the typical Mach banding effect (see below).
+
+Color and Contrast. Nate Baldwin. [Website](https://colorandcontrast.com/)
+: Many visual effects and illusions demonstrated, involving local contrast illusions. The website focuses on user interface design and aims at demonstrating the origin of best practices, but the demonstrations are relevant for any audience.
+
+Optical Illusions. R. Beau Lotto. [Website](https://www.echalk.co.uk/amusements/OpticalIllusions/colourPerception/colourPerception.html)
+: Witness the impact of different surround brightness and hue on color patches that are exactly similar.
