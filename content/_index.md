@@ -232,4 +232,25 @@ The software is integrally translated in English, French and simplified Chinese.
 
 {{< divider >}}
 
+## A software by Aurélien Pierre
+
+{{% row %}}
+{{% column class="col col-12 col-lg-8" %}}
+
+<img src="/Auto-portrait-0088-MLM_0774_01.jpg" class="rounded mx-auto d-block float-start me-4 mb-4" width="200"/>
+
+On the following picture, I made the styling, the make-up, the lighting, the shot, the editing, the retouching, the software color filters, the documentation to use them, the website to talk about them in 2 languages, and even the colorspace used for saturation adjustment. You will find _very_ few people with this kind of full-stack understanding of light and color able to also write efficient computer programs and read academic research papers on applied mathematics. Yet, you will find a lot of image editing applications and a lot of guys trying…
+
+I have given 4 years of my life to the Darktable project, only to see it destroyed by clueless geeks playing code stashing on their spare time, everyone pushing his own agenda with no sense of design, in a project where nobody is responsible for anything and where we work too fast on everything at the same time. Ansel development is driven by results and achieved by proper color science throughout the pixel pipeline. Things are done at a pace that ensures the quality of the code. The design is based on the user feedback I gathered from giving individual editing/retouching lessons with Darktable over the past 3 years, and on the 2 user surveys I ran in 2020 and 2022. The software is only a mean to an end and it infuriates me when it gets in the way of creativity and productivity. Having __one__ designer leading the project and managing priorities should hopefully prevent that.
+
+Developing it still takes an average of 45 h/week for not even minimal wage, and if you think open-source imaging options need to be made better, well it will not happen by itself (_and don't expect the guys who created the problems to be the ones fixing them_).
+
+{{< button url="https://community.ansel.photos/donations-make" label="Support the development" icon="donate" class="text-center">}}
+{{% /column %}}
+
+{{% column class="col col-12 col-lg-4" %}}
+{{< figure src="/Shoot Minh-Ly Hangar 2 - Rouge-0026-DSC_0560--WEB-LOW.jpg" class="img-fluid" style="width: 100%" />}}
+{{% /column %}}
+{{% /row %}}
+
 {{% /container %}}

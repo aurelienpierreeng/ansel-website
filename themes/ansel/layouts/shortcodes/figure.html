@@ -6,7 +6,7 @@
   <i class="fas fa-expand-alt open-lightbox-icon"></i>
 </button>
 <div class="img-container">
-  <img src="{{ .Get "src" }}" style="{{ with .Get "width" }}width:{{ . }}px;{{ end }} {{ with .Get "height" }}height:{{ . }}px{{ end }}" {{ with .Get "class" }} class="{{ . }}" {{ end }} >
+  <img src="{{ .Get "src" }}" style="{{ with .Get "width" }}width:{{ . }}px;{{ end }} {{ with .Get "height" }}height:{{ . }}px{{ end }} {{ .Get "style" }}" {{ with .Get "class" }} class="{{ . }}" {{ end }} >
 </div>
 
 <figcaption>

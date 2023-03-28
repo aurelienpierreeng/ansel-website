@@ -233,4 +233,25 @@ Le logiciel est intégralement traduit en anglais, français et chinois simplifi
 
 {{< divider >}}
 
+## Un logiciel par Aurélien Pierre
+
+{{% row %}}
+{{% column class="col col-12 col-lg-8" %}}
+
+<img src="/Auto-portrait-0088-MLM_0774_01.jpg" class="rounded mx-auto d-block float-start me-4 mb-4" width="200"/>
+
+Sur l'image ci-contre, j'ai réalisé le stylisme, le maquillage, l'éclairage, la capture, le traitement, la retouche, les filtres de couleur logiciels, la documentation pour les utiliser, le site web pour en parler en 2 langues, et même l'espace de couleur pour l'ajustement de la saturation. Vous trouverez _très_ peu de gens ayant cette compréhension de la lumière et de la couleur sur toute la chaîne qui sont aussi capables d'écrire des programmes informatiques efficaces et de lire des articles académiques de recherche en mathématiques appliquées. Mais vous trouverez beaucoup d'applications de traitement d'image et beaucoup de gens qui s'essaient…
+
+J'ai donné 4 ans de ma vie au projet Darktable, juste pour le voir détruit par des geeks désemparés qui jouent à accumuler du code pendant leur temps libre, chacun poussant ses propres intentions sans aucun sens du design, dans un projet où personne n'est responsable de rien et où on travaille trop vite sur tout en même temps. Le dévelopment d'Ansel est motivé par les résultats et exécuté avec une science de la couleur propre à travers le pipeline des pixels. Les choses sont faites à un rythme permettant d'assurer la qualité du code. Le design est basé sur les retours utilisateurs que j'ai collecté en donnant des cours particuliers de retouche/traitement avec Darktable ces 3 dernières années, et sur les 2 enquêtes que j'ai menées en 2020 et 2022 sur les utilisateurs. Le logiciel est seulement un moyen vers un but et j'enrage quand il se met en travers de la créativité et de la productivité. Avoir __un__ concepteur dirigeant le projet et gérant les priorités devrait éviter ça.
+
+Le développement prend toujours une moyenne de 45 h/semaine pour moins que le salaire minimum, et si vous pensez que les options open-source d'imageries ont besoin d'être améliorées, et bien ça ne se fera pas tout seul (_et n'attendez pas de ceux qui ont créé les problèmes qu'ils soient ceux qui les réglent_).
+
+{{< button url="https://community.ansel.photos/donations-make" label="Soutenir le développement" icon="donate" class="text-center">}}
+{{% /column %}}
+
+{{% column class="col col-12 col-lg-4" %}}
+{{< figure src="/Shoot Minh-Ly Hangar 2 - Rouge-0026-DSC_0560--WEB-LOW.jpg" class="img-fluid" style="width: 100%" />}}
+{{% /column %}}
+{{% /row %}}
+
 {{% /container %}}
