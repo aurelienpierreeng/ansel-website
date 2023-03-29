@@ -253,4 +253,32 @@ Developing it still takes an average of 45 h/week for not even minimal wage, and
 {{% /column %}}
 {{% /row %}}
 
+{{< divider >}}
+
+## Source code
+
+Ansel software and documentation are released under the GNU/GPL v3 license and versionned with Git. The website is copyrighted but still publicly visible. The work repositories are hosted on Github and are mirrored on Gitlab for backup.
+
+{{% row %}}
+
+{{% card title="Software" icon="desktop" %}}
+GNU/GPL v3 license.
+{{< button url="https://github.com/aurelienpierreeng/ansel" label="Github (original)" icon="github fab">}}
+{{< button url="https://gitlab.com/aurelienpierreeng/ansel" label="Gitlab (mirror)" icon="gitlab fab">}}
+{{% /card %}}
+
+{{% card title="Documentation" icon="book" %}}
+GNU/GPL v3 license.
+{{< button url="https://github.com/aurelienpierreeng/ansel-doc" label="Github (original)" icon="github fab">}}
+{{< button url="https://gitlab.com/aurelienpierreeng/ansel-doc" label="Gitlab (mirror)" icon="gitlab fab">}}
+{{% /card %}}
+
+{{% card title="Website" icon="globe" %}}
+Copyright.
+{{< button url="https://github.com/aurelienpierreeng/ansel-website" label="Github (original)" icon="github fab">}}
+{{< button url="https://gitlab.com/aurelienpierreeng/ansel-website" label="Gitlab (mirror)" icon="gitlab fab">}}
+{{% /card %}}
+
+{{% /row %}}
+
 {{% /container %}}
