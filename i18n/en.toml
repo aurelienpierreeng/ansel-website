@@ -11,8 +11,23 @@
   one = "Author"
   other = "Authors"
 
+[community]
+  other = "Community"
+
 [onthispage]
   other = "On this page"
 
 [inthissection]
   other = "In this section"
+
+[comments]
+  other = "Comments & Questions"
+
+[related]
+  other = "Related topics"
+
+[chantal]
+  other = "Chantal is a bilingual artificial intelligence model for natural language processing, trained for Ansel, photography, image processing and color theory, and able to find relevant web pages among curated sources."
+
+[find_related]
+  other = "Find related pages"

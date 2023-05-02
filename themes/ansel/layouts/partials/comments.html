@@ -1,0 +1,53 @@
+<section class="border-top border-dark mt-5 mb-0 pt-4">
+  <h2>{{ i18n "comments" }} ?</h2>
+  <aside class="row">
+    <div class="col">
+      <div class="col-content text-center bg-white rounded-1 p-2 my-2">
+        <a href="https://matrix.to/#/#ansel-en:matrix.org" target="_blank" class="text-decoration-none link-dark">
+          <i class="fas fa-comment-dots fs-1 align-middle my-3"></i> <span class="fs-2 align-middle my-3">🇬🇧</span><br>
+          <h5>English chat</h5>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col-content text-center bg-white rounded-1 p-2 my-2">
+        <a href="https://matrix.to/#/#ansel-fr:matrix.org" target="_blank" class="text-decoration-none link-dark">
+          <i class="fas fa-comment-dots fs-1 align-middle my-3"></i> <span class="fs-2 align-middle my-3">🇫🇷</span><br>
+          <h5>Chat français</h5>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col-content text-center bg-white rounded-1 p-2 my-2">
+        <a href="https://matrix.to/#/#ansel-fr:matrix.org" target="_blank" class="text-decoration-none link-dark">
+          <i class="fas fa-comments fs-1 align-middle my-3"></i> <span class="fs-2 align-middle my-3">🇫🇷 🇬🇧</span><br>
+          <h5>{{ i18n "community" }}</h5>
+        </a>
+      </div>
+    </div>
+  </aside>
+</section>
+
+{{ $params := print .Site.Title " " .Title }}
+
+<section class="border-top border-dark my-5 py-4">
+  <h2>{{ i18n "related" }}</h2>
+  <aside class="row">
+    <div class="col">
+      <div class="col-content text-center bg-white rounded-1 p-2 my-2">
+        <a href="https://chantal.aurelienpierre.com/?s={{ $params | safeURL }}" target="_blank" class="text-decoration-none link-dark">
+          <img src="https://chantal.aurelienpierre.com/static/chantal.svg" title="Chantal AI" class="fs-2 align-middle my-3"/>
+          <br>
+          <span class="align-middle my-3">🇫🇷 🇬🇧</span>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col-content p-2 my-2">
+        <a href="https://chantal.aurelienpierre.com/?s={{ $params | safeURL }}" target="_blank" class="text-decoration-none link-dark">
+          {{ i18n "chantal" }}<br><span class="link-primary">{{ i18n "find_related" }} »</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+</section>

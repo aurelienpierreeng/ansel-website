@@ -28,6 +28,7 @@
       {{ partial "metadata.html" . }}
     </header>
     <section>{{ .Content }}</section>
+    {{- partial "comments.html"  . -}}
   </article>
 
 </div>

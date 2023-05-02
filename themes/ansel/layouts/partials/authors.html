@@ -1,14 +1,16 @@
 
 {{ if .Param "authors" }}
-<section class="border-top border-dark my-5 py-4">
+<section class="border-top border-dark mt-5 mb-0 pt-4">
 <h2>{{ i18n "author" (len (.Param "authors")) }}</h2>
 {{ range .Param "authors" }}
 	{{ $name := . }}
 	{{ $path := printf "/%s/%s" "authors" ($name | urlize) }}
 	{{ with $.Site.GetPage $path }}
-		<img src="{{ printf "%s?s=120" .Params.gravatar }}" class="float-start me-2">
-    <h5>{{ .Params.name }}</h5>
-		<p>{{ .Params.bio }} <a href="{{ .Params.website }}">Website »</a></p>
+		<div class="clearfix">
+			<img src="{{ printf "%s?s=120" .Params.gravatar }}" class="float-start me-2">
+			<h5>{{ .Params.name }}</h5>
+			<p>{{ .Params.bio }} <a href="{{ .Params.website }}">Website »</a></p>
+		</div>
 	{{ end }}
 {{ end }}
 </section>

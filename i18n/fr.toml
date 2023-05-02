@@ -31,3 +31,15 @@
 
 [inthissection]
   other = "Dans cette section"
+
+[comments]
+  other = "Commentaires et questions"
+
+[related]
+  other = "Sujets liés"
+
+[chantal]
+  other = "Chantal est un modèle d'intelligence artificielle bilingue de traitement du langage naturel, entraîné pour Ansel, la photographie, le traitement d'image et la théorie de la couleur, et capable de trouver les pages web les plus pertinentes parmi des sources sélectionnées."
+
+[find_related]
+  other = "Trouver des pages similaires"
