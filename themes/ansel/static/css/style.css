@@ -268,3 +268,9 @@ div.mermaid {
     border-radius:125px / 25px;
     box-shadow:0 0 10px black;
   }
+
+/* Code blocks */
+
+.highlight pre {
+  padding: 0.5rem;
+}
