@@ -164,6 +164,12 @@ figure img {
   min-height: 300px;
 }
 
+.gallery hr {
+  width: 100%;
+  margin: 0;
+  height: 1px;
+}
+
 .bg-image{
   background-size: cover;
   background-position: center;

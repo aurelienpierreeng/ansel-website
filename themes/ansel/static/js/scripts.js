@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/* Auto-hide elements on scroll-down, show them on scroll-up */
 document.addEventListener("DOMContentLoaded", function(){
 
   el_autohide = document.querySelector('.autohide');
