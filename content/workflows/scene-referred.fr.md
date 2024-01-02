@@ -168,7 +168,7 @@ D'abord, puisque le flux relatif à la scène est conçu autour de l'idée que l
 
 Ensuite, il s'illustre particulièrement dans les filtres numériques définis optiquement, essayant de reproduire des effets réels, comme le floutage, le défloutage, la suppression du bruit et la reconstruction de signaux. Les exemples ce-dessous montrent la différence entre appliquer un filtre de bokeh synthétique, simulant un diaphragme d'objectif, avant ou après la transformation écran.
 
-{{< figure src="initial.fr.jpg" caption="Base image" >}}
+{{< figure src="initial.fr.jpg" caption="Base image" />}}
 
 {{< compare after="./blur-after.fr.jpg" before="./blur-before.fr.jpg" >}}
 Le résultat de l'application d'un flou d'objectif avant (relatif à la scène) ou après (relatif à l'affichage) la transformation écran. La relation de clarté entre les bulles de bokeh et l'environnement sombre est détruite et incohérente en relatif à l'affichage.
