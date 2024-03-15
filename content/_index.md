@@ -216,7 +216,7 @@ Ansel uses Rawspeed and Libraw to decode raw photographs. New cameras may need u
 {{< button url="https://rawspeed.org/CameraSupport.html" label="Supported cameras" icon="wrench" >}}
 {{% /card %}}
 {{% card title="Languages" icon="language" %}}
-The software is integrally translated in English, French and simplified Chinese. Partial translations are available in German, Spanish, Portugese, Ukranian, etc.
+The software is integrally translated in English, French, Italian and simplified Chinese. Partial translations are available in German, Spanish, Portugese, Ukranian, etc.
 {{< button url="https://github.com/aurelienpierreeng/ansel/wiki/Translations" label="Improve translations" icon="comment" >}}
 {{% /card %}}
 {{% /row %}}
