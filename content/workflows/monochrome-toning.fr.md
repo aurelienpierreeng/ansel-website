@@ -1,5 +1,5 @@
 ---
-title: "Tons monochromes"
+title: "Virage partiel monochrome"
 date: 2023-03-24
 draft: false
 toc: true
