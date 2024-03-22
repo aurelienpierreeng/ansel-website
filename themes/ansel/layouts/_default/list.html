@@ -16,8 +16,8 @@
         </section>
 
         {{ if $content }}
-        <article class="bg-white rounded bg-white rounded expanded-bg" id="post-content">
-            <header class="border-secondary my-0 pb-4 align-middle">
+        <article class="bg-white rounded bg-white rounded expanded-bg mb-4" id="post-content">
+            <header class="border-secondary my-0 pb-4 pt-1 align-middle">
               <h1 class="entry-title my-3" property="title">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
             </header>
             <section class="meta">
