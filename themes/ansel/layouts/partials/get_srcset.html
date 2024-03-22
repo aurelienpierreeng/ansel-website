@@ -6,7 +6,7 @@
     {{ $iw := $image.Width }}
     {{ $ih := $image.Height }}
     {{ $set := slice }}
-    {{ range slice 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 }}
+    {{ range slice 140 264 331 400 496 576 600 720 800 992 1200 1320 1440 1600 1920 2048 }}
       {{ if lt . $iw }}
         {{ $size := print  . "x" .}}
         {{ $thumb := $image.Fit $size }}
