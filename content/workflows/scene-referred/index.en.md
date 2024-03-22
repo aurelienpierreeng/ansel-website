@@ -63,7 +63,7 @@ def plot():
 ```mermaid
 graph TD;
 	O[fa:fa-bulb Light source] --> A;
-    A[<img src='./FL1_lightspectrum.png' width='800' height='447' />] --> B["fa:fa-camera Sensor (Nikon D5100)"];
+    A[<img src='/FL1_lightspectrum.png' width='800' height='447' />] --> B["fa:fa-camera Sensor (Nikon D5100)"];
     B --> C[Sensor RGB<br><img src='/FL1_seen_by_NikonD5100.png' width='400' height='226' />];
     A --> D["fa:fa-eye Human eye"];
     D --> E[Cone LMS<br><img src='/FL1_seen_by_human.png' width='400' height='226' />];
