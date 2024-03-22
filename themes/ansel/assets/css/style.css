@@ -152,6 +152,10 @@ article { min-width: 300px; }
   hyphens: auto;
 }
 
+.expanded-bg {
+  box-shadow: white 0px 0px 1.5rem 1.5rem;
+}
+
 p { text-align: justify; }
 
 .no-hyphenation { hyphens: none; }
