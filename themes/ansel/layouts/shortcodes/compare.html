@@ -1,26 +1,35 @@
+{{ $p := .Page }}
+{{ .Page.Scratch.Set "columns" (.Get "cols" | default 0 ) }}
+
 {{ if .IsNamedParams }}
-{{ $seed := "bar" }}
-{{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
-<figure class="img-comp-wrapper" id="{{ print $random }}">
+{{ $random := delimit (shuffle (split (md5 (.Get "after") ) "" )) "" }}
+
+{{ $after := partial "get_resource.html" (dict "src" (.Get "after") "Page" .Page ) }}
+{{ $before := partial "get_resource.html" (dict "src" (.Get "before") "Page" .Page ) }}
+{{ $sizes := partial "get_sizes.html" (dict "class" (.Get "class") "Page" .Page ) }}
+
+<figure class="img-comp-wrapper" id="{{ print $random }}" style="max-width: 100%;">
 <button class="open-lightbox-button" onclick="lightbox({{ print $random }})">
   <i class="fas fa-expand-alt open-lightbox-icon"></i>
 </button>
 <div class="img-comp-container">
   <div class="img-comp-under">
     <span class="label label-after">{{ i18n "after" }}</span>
-    <img src="{{ .Get "after" }}" alt="{{ i18n "after" }}">
+    <img src="{{ $after.Permalink  }}" alt="{{ i18n "after" }}" width="{{ $after.Width }}" height="{{ $after.Height }}" decoding="async" loading="lazy" sizes="{{ $sizes }}" srcset="{{ partial "get_srcset.html" $after }}">
   </div>
   <div class="img-comp-over">
     <span class="label label-before">{{ i18n "before" }}</span>
-    <img src="{{ .Get "before" }}" alt="{{ i18n "before" }}">
+    <img src="{{ $before.Permalink }}" alt="{{ i18n "before" }}" width="{{ $before.Width }}" height="{{ $before.Height }}" decoding="async" loading="lazy" sizes="{{ $sizes }}" srcset="{{ partial "get_srcset.html" $before }}">
   </div>
 </div>
 
-{{ if .Inner }}
+{{ with .Inner }}
 <figcaption>
-<p>{{ .Inner | markdownify }}</p>
+{{ . | $p.RenderString }}
 </figcaption>
 {{ end}}
 
 </figure>
 {{ end }}
+
+{{ .Page.Scratch.Delete "columns" }}

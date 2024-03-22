@@ -1,5 +1,6 @@
+{{ $p := .Page }}
+{{ .Page.Scratch.Set "columns" (.Get "cols" | default 2 ) }}
 <div class="col my-2 {{.Get "class" }}" style="min-width: 300px">
-{{ if .Get "p" }}<p>{{ end }}
-{{ .Inner | markdownify }}
-{{ if .Get "p" }}</p>{{ end }}
+{{ .Inner | $p.RenderString  }}
 </div>
+{{ .Page.Scratch.Delete "columns" }}

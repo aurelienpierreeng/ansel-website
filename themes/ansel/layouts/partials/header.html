@@ -12,11 +12,11 @@
     </div>
 
     <div class="collapse navbar-collapse ms-2 navbar-dark bg-dark" id="navbarNav">
-      <ul class="navbar-nav navbar-dark">
+      <ul class="navbar-nav navbar-dark d-flex align-items-stretch">
         {{- $currentPage := . -}}
         {{ range .Site.Menus.main -}}
           {{ $active := in $currentPage.RelPermalink .URL }}
-          <li class="nav-item md-rounded menu-item">
+          <li class="nav-item md-rounded menu-item d-flex justify-content-between flex-grow">
             <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | relLangURL }}" {{ if $active }} aria-current="page" {{ end }}>
             {{ if .Pre }}
               <div class="menu-icon">
@@ -33,7 +33,7 @@
     </div>
 
     <div class="d-flex align-items-center">
-      <button class="d-flex d-lg-none round-menu-button justify-content-end align-self-center ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch" aria-controls="offcanvaSearch" title="Open research sidebar">
+      <button class="d-flex round-menu-button justify-content-end align-self-center ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch" aria-controls="offcanvaSearch" title="Open research sidebar">
         <i class="fas fa-search px-0 mx-0"></i>
       </button>
 

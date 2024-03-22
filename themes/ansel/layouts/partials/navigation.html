@@ -1,54 +1,76 @@
 {{ if .includeTop }}
-<ul class="px-0 my-0 section-nav">
-  {{ $current := eq .top .current }}
-  <li class="dropdown list-unstyled">
-    <span class="{{ if $current }}active{{ end }} link-dark text-capitalize text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>{{ .top.Title }}</span>
-    {{- template "nav-children" (dict "Section" .top "CurrentPage" .current "isDropdown" false) -}}
+<ul class="px-0 m-0 section-nav list-unstyled">
+  {{ $active := eq .top .current }}
+  <li class="dropdown">
+    <button class="btn btn-toggle p-0 m-0 collapse border-0 rounded link-dark text-left align-items-center d-inline-flex sibling"
+    aria-expanded="true"
+    title="Expand"
+    {{ if $active }}aria-current="page"{{ end }}>
+      {{ .top.Title | strings.FirstUpper | safeHTML }}
+    </button>
+    {{- template "nav-children" (dict "Section" .top "CurrentPage" .current "isDropdown" false "recurseLevel" 0) -}}
   </li>
 </ul>
 {{ else }}
-  {{- template "nav-children" (dict "Section" .top "CurrentPage" .current "isDropdown" false) -}}
+  {{- template "nav-children" (dict "Section" .top "CurrentPage" .current "isDropdown" false "recurseLevel" 0) -}}
 {{ end }}
 
 {{- define "nav-children" -}}{{- /* (dict "Section" .Section "CurrentPage" .CurrentPage) */ -}}
-{{ $current := or (.CurrentPage.IsDescendant .Section) (.CurrentPage.InSection .Section) }}
-{{ $family := or (.CurrentPage.IsAncestor .Section) (.CurrentPage.InSection .Section) }}
-{{ $CurrentPage := .CurrentPage }}
+  {{ $CurrentSection := .Section }}
+  {{ $CurrentPage := .CurrentPage }}
+  {{ $current := or (.CurrentPage.IsDescendant .Section) (.CurrentPage.InSection .Section) }}
 
-<ul
-{{if .isDropdown }}
-class="section-nav multi-collapse collapse {{ if $current }}show{{ end }} {{ if $family }}links-dark{{ else }}links-secondary{{ end }}" id="collapsible-{{ print .collapseID }}"
-{{ else }}
-class="section-nav {{ if $family }}links-dark{{ else }}links-secondary{{ end }}"
-{{ end }} >
-  {{- range .Section.Pages -}}
-    {{ if .IsSection }}
-      {{ $seed := "foo" }}
-      {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
-      {{ $family_parent := or (.IsAncestor $CurrentPage) (.IsDescendant $CurrentPage) }}
+  <ul
+  {{if .isDropdown }}
+    class="list-unstyled multi-collapse collapse {{ if $current }}show{{ end }} mx-0 my-1"
+    id="collapsible-{{ print .collapseID }}"
+  {{ else }}
+    class="list-unstyled mx-0 my-1"
+  {{ end }}
+  {{ if gt .recurseLevel 0 }}
+    style="margin-left: 1.25rem!important; padding-left: 0!important;"
+  {{ end }}
+  >
+    {{- range .Section.Pages -}}
+      {{ $is_sibling := or (.IsAncestor $CurrentPage) ($CurrentSection.IsAncestor $CurrentPage) }}
+      {{ $random := delimit (shuffle (split (md5 "foo") "" )) "" }}
+      {{ $open_by_default := ($CurrentPage.IsDescendant .) }}
+      {{ if not .Params.hidden }}
+        <li class="hover-link">
+          {{ template "nav-link" (dict "Page" . "CurrentPage" $CurrentPage "isParent" .IsSection
+                                      "collapseID" $random "isSibling" $open_by_default "isCurrent" $open_by_default
+                                      "recurseLevel" $.recurseLevel) }}
 
-      <li class="dropdown list-unstyled {{ if $family_parent }}links-dark{{ else }}links-secondary{{ end }}">
-        {{ template "nav-link" (dict "Page" . "CurrentPage" $.CurrentPage "isParent" true "collapseID" $random) }}
-        {{ template "nav-children" (dict "Section" . "CurrentPage" $.CurrentPage "isDropdown" true "collapseID" $random) }}
-      </li>
-    {{ else if and .IsPage .Content }}
-      <li class="list-unstyled">
-      {{ template "nav-link" (dict "Page" . "CurrentPage" $.CurrentPage "isParent" false)}}
-      </li>
-    {{ end }}
-  {{- end -}}
-</ul>
+          {{ if .IsSection }}
+            {{ template "nav-children" (dict "Section" . "CurrentPage" $CurrentPage "isDropdown" true "collapseID" $random
+                                            "recurseLevel" (add $.recurseLevel 1)) }}
+          {{ end }}
+        </li>
+      {{ end }}
+    {{- end -}}
+  </ul>
 {{- end -}}
 
-{{ define "nav-link" }}{{/* (dict "Page" .Page "CurrentPage" .CurrentPage "parent" .isParent "isParent") */}}
+{{ define "nav-link" }}{{/* (dict "Page" .Page "CurrentPage" .CurrentPage "parent" .isParent "isParent" .isSibling .isCurrent) */}}
 {{ $current := eq .CurrentPage .Page }}
-
   {{ if .isParent }}
-    <button class="btn btn-sm list-button px-0" data-bs-toggle="collapse" href="#collapsible-{{ print .collapseID }}" role="button" aria-expanded="false" aria-controls="collapsible-{{ print .collapseID }}" title="Expand">
-      <i class="fas fa-plus-square"></i>
-    </button>
-  {{ end }}
-  <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }} text-left text-decoration-none" {{ if $current }}aria-current="page"{{ end }}>
+    <button class="btn btn-toggle p-0 m-0 collapse border-0 rounded align-items-center d-inline-flex {{ if .isSibling }}sibling{{ end }} {{if or .isSibling $current }}link-dark{{ else }}link-secondary{{ end }} text-left text-decoration-none"
+    data-bs-target="#collapsible-{{ print .collapseID }}"
+    aria-expanded={{ if or .isCurrent $current }}"true"{{ else }}"false"{{ end }}
+    data-bs-toggle="collapse"
+    title="Expand"
+    {{ if $current }}aria-current="page"{{ end }}>
       {{ .Page.Title | strings.FirstUpper | safeHTML }}
-  </a>
+    </button>
+    <a href="{{ .Page.RelPermalink }}" rel="dofollow"
+    class="p-0 m-0 border-0 rounded align-items-center link-secondary d-inline-flex text-left text-decoration-none hover-link">
+      <i class="fa fa-link fa-fw"></i>
+    </a>
+  {{ else }}
+    <a href="{{ .Page.RelPermalink }}" rel="dofollow"
+    class="btn btn-toggle p-0 m-0 item border-0 rounded align-items-center d-inline-flex {{ if .isSibling }}sibling{{ end }} {{ if $current }}link-dark{{ else }}link-secondary{{ end }} text-left text-decoration-none"
+    {{ if $current }}aria-current="page"{{ end }}>
+      {{ .Page.Title | strings.FirstUpper | safeHTML }}
+    </a>
+  {{ end }}
 {{ end }}

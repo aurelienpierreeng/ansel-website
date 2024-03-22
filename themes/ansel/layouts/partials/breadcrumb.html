@@ -1,5 +1,5 @@
 <nav aria-label="breadcrumb" id="breadcrumb">
-<ol class="breadcrumb mt-4">
+<ol class="breadcrumb mb-3">
   {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
 </ol>
 {{ define "breadcrumbnav" }}
@@ -10,7 +10,7 @@
 {{ end }}
 {{ if eq .p1 .p2 }}
   <li class="breadcrumb-item active" aria-current="page">
-    {{ .p1.Title | humanize }}
+    {{ .p1.Title | strings.FirstUpper }}
   </li>
 {{ else }}
 <li class="breadcrumb-item">

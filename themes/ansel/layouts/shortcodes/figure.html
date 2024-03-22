@@ -1,18 +1,10 @@
-{{ if .IsNamedParams }}
-{{ $seed := "bar" }}
-{{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
-<figure class="img-wrapper" id="{{ print $random }}">
-<button class="open-lightbox-button" onclick="lightbox({{ print $random }})">
-  <i class="fas fa-expand-alt open-lightbox-icon"></i>
-</button>
-<div class="img-container">
-  <img src="{{ .Get "src" }}" style="{{ with .Get "width" }}width:{{ . }}px;{{ end }} {{ with .Get "height" }}height:{{ . }}px{{ end }} {{ .Get "style" }}" {{ with .Get "class" }} class="{{ . }}" {{ end }} >
-</div>
-
-<figcaption>
-  {{with .Get "caption" }}<p>{{ print . }}</p>{{ end }}
-  {{with .Inner }}<p>{{ print . | markdownify }}</p>{{ end }}
-</figcaption>
-
-</figure>
+{{ $caption := "" }}
+{{ if not $caption }}
+  {{ $caption = .Get "caption" }}
 {{ end }}
+{{ if not $caption }}
+  {{ with .Inner }}
+    {{ $caption = . }}
+  {{ end }}
+{{ end }}
+{{ partial "image.html" (dict "Page" .Page "Src" (.Get "src") "Caption" $caption "Width" (.Get "width") "Height" (.Get "height") "Class" (.Get "class") "Style" (.Get "style") ) }}

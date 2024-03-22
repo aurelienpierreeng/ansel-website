@@ -1,17 +1,6 @@
-{{ if and (gt .WordCount 300) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
-<nav id="toc" class="card">
-  <div class="card-header" id="headingToc">
-    <div class="fs-5">
-      {{ i18n "onthispage" }}
-      <button class="btn btn-outline-secondary btn-sm float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTocBody" aria-expanded="true" aria-controls="collapseTocBody" title="Collapse">
-        <i class="fas fa-chevron-down fs-6 align-middle"></i>
-      </button>
-    </div>
-  </div>
-  <div class="collapse show" aria-labelledby="headingToc" id="collapseTocBody">
-    <div class="card-body">
-      {{ .TableOfContents }}
-    </div>
-  </div>
-</nav>
+{{ if (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+<div id="toc">
+  <h5>{{ i18n "onthispage" }}</h5>
+  {{ .TableOfContents }}
+</div>
 {{ end }}

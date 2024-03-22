@@ -1,0 +1,25 @@
+{{ $cols := int (.Page.Scratch.Get "columns" | default 0) }}
+{{ $sizes := "" }}
+<!-- figure out in what container we are -->
+{{ if eq $cols 0 }}
+  <!-- we are not in a gallery -->
+  {{ if eq .Class "narrow-width" }}
+    {{ $sizes = "(max-width: 36rem) 100vw, 36rem" }}
+  {{ else }}
+    {{ $sizes = site.Params.Images.sizes }}
+  {{ end }}
+
+<!-- in the following, assume all galleries always span full-width -->
+{{ else if eq $cols 1 }}
+{{ $sizes = "(max-width: 992px) 100vw, (max-width: 1200px) 66.67vw, 50vw" }}
+
+<!-- galleries columns can't be narrower than 140 px (set in style.css) -->
+{{ else if eq $cols 2 }}
+{{ $sizes = "(max-width: 140px) 100vw, (max-width: 992px) 50vw, (max-width: 1200px) 33.33vw, 25vw" }}
+{{ else if eq $cols 3 }}
+{{ $sizes = "(max-width: 140px) 100vw, (max-width: 992px) 33.33vw, (max-width: 1200px) 22vw, 16.67vw" }}
+{{ else if eq $cols 4 }}
+{{ $sizes = "(max-width: 140px) 100vw, (max-width: 992px) 25vw, (max-width: 1200px) 16.67vw, 12.5vw" }}
+{{ end }}
+
+{{- return $sizes -}}

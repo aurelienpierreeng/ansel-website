@@ -1,3 +1,4 @@
+{{ $p := .Page }}
 <div class="row justify-content-evenly">
-{{ .Inner | markdownify }}
+{{ .Inner | $p.RenderString }}
 </div>

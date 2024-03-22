@@ -1,0 +1,38 @@
+{{ $src := .Src | safeURL }}
+{{ $p := .Page }}
+
+<!-- figure out in what container we are -->
+{{ $sizes := partial "get_sizes.html" (dict "class" .Class "Page" .Page) }}
+{{ $image := partial "get_resource.html" (dict "src" $src "Page" .Page ) }}
+
+{{ if $image }}
+  {{ $fig_id := $image.RelPermalink | anchorize | safeCSS }}
+  {{ $srcset := partial "get_srcset.html" $image }}
+  {{ $isSVG :=  eq $image.MediaType.SubType "svg" }}
+  {{ $isShit :=  eq $image.MediaType.SubType "webp" }}
+  {{ $isDistant := strings.HasPrefix $src "http" }}
+  <!-- WebP is shit as far as encoding goes, but Hugo doesn't encode it properly anyway. Don't srcset it -->
+
+<figure class="img-wrapper {{ with .Class }}{{ . }}{{ end }} {{ if .Caption }}caption-figure{{ end }}" id="{{ $fig_id }}">
+<button class="open-lightbox-button" onclick="lightbox({{ $fig_id }})">
+  <i class="fa fa-expand-alt open-lightbox-icon fa-fw"></i>
+</button>
+<button class="open-link-button" onclick="window.open('{{ $image.Permalink }}', '_blank');">
+  <i class="fa fa-external-link-alt open-link-icon fa-fw"></i>
+</button>
+<div class="img-container" onclick="lightbox({{ $fig_id }})" style="cursor: pointer;" >
+  <img src={{ $image.RelPermalink }} alt="image"
+    style="{{ with .Width }}width:{{ . }}px;{{ end }} {{ with .Height }}height:{{ . }}px{{ end }} {{ with .Style }}{{ . }}{{ end }}"
+    decoding="async" loading="lazy"
+    {{- if and (and $srcset (not $isShit)) (not $isDistant) -}}sizes="{{ $sizes }}" srcset="{{ $srcset }}"{{- end -}}
+    {{- if not $isSVG -}}width="{{ $image.Width }}" height="{{ $image.Height }}"{{- end -}}
+  />
+</div>
+{{ with .Caption }}
+<figcaption>
+{{ . }}
+</figcaption>
+{{ end }}
+</figure>
+{{ end }}
+{{- "" -}}

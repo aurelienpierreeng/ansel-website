@@ -1,0 +1,21 @@
+{{ $srcset := "" }}
+{{ $image := . }}
+{{ if $image }}
+  {{ if not ( eq $image.MediaType.SubType "svg" ) }}
+    {{ print "is not SVG" }}
+    {{ $iw := $image.Width }}
+    {{ $ih := $image.Height }}
+    {{ $set := slice }}
+    {{ range slice 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 }}
+      {{ if lt . $iw }}
+        {{ $size := print  . "x" .}}
+        {{ $thumb := $image.Fit $size }}
+        {{ $set = $set | append (printf ("%s %dw") $thumb.RelPermalink $thumb.Width ) }}
+      {{ end }}
+    {{ end }}
+    {{ if gt (len $set) 0 }}
+      {{ $srcset = delimit $set ", "}}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{- return $srcset -}}

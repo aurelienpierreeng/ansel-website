@@ -1,0 +1,59 @@
+<script>
+  var slides = [];
+  var current_slide = 0;
+  function sanitize_slide(value) {
+    if(value > slides.length - 1)
+      return 0;
+    else if(value < 0)
+      return slides.length - 1;
+    else
+      return value;
+  }
+  function first_slide() {
+    slides[current_slide].classList.add("visible");
+  }
+  function next_slide() {
+    slides[current_slide].classList.remove("visible");
+    current_slide = sanitize_slide(current_slide + 1);
+    slides[current_slide].classList.add("visible");
+  }
+  function prev_slide() {
+    slides[current_slide].classList.remove("visible");
+    current_slide = sanitize_slide(current_slide - 1);
+    slides[current_slide].classList.add("visible");
+  }
+</script>
+
+<div class="slideshow container shadow-lg p-0" id="slideshow-1">
+  {{ $p := .Page }}
+  {{ $i := 0 }}
+  {{ range split (.Get "images") "," }}
+    {{ $i = add $i 1 }}
+    {{ $image := partial "get_resource.html" (dict "src" . "Page" $p ) }}
+    {{ $srcset := partial "get_srcset.html" $image }}
+    <div class="slide" id="slide-{{ $i }}">
+      <img src={{ $image.RelPermalink }} alt="image"
+      decoding="async" loading="lazy"
+      {{- if $srcset -}}sizes="(max-width: 1320px) 100vw, 1320px" srcset="{{ $srcset }}"{{- end -}}
+      width="{{ $image.Width }}" height="{{ $image.Height }}"
+      />
+    </div>
+    <script>
+      slides.push(document.getElementById("slide-{{ $i }}"));
+    </script>
+  {{ end }}
+  <div class="previous d-flex flex-row align-items-center justify-content-start" href="#" onclick="prev_slide();">
+    <button class="btn btn-sm btn-dark shadow">
+      <i class="fa fa-fw fa-chevron-left fs-2 text-light"></i>
+    </button>
+  </div>
+  <div class="next d-flex flex-row align-items-center justify-content-end" href="#" onclick="next_slide();">
+    <button class="btn btn-sm btn-dark shadow">
+    <i class="fa fa-fw fa-chevron-right fs-2 text-light"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  first_slide();
+</script>

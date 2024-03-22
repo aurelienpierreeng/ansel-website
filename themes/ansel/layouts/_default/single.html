@@ -1,25 +1,60 @@
 {{ define "main" }}
+{{ $has_toc := (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
 
-{{ if .Params.thumbnail }}
-<div class="container card my-5">
-  {{ if strings.HasSuffix .Params.thumbnail ".svg" }}
-      <object data="{{ .Params.thumbnail | relLangURL }}" width="100%"></object>
+{{ partial "header_thumb.html" . }}
+
+<div class="container-fluid">
+
+<div class="d-flex row mx-auto justify-content-between">
+  <aside class="d-none d-lg-flex col-lg-4 col-xl-3 flex-column my-3">
+    <div id="sidebar-left" class="sidebar">
+      {{ partial "sidebar-nav.html" .}}
+    </div>
+  </aside>
+
+  {{ if eq .Params.type "large" }}
+  <div class="column col-12 col-lg-8 col-xl-9 my-3">
   {{ else }}
-      <img src="{{ .Params.thumbnail | relLangURL }}" width="100%">
+  <div class="column col-12 col-lg-8 col-xl-6 my-3">
   {{ end }}
-</div>
-{{ end }}
-
-<div class="container dp-flex row justify-content-center mx-auto">
-
-  <article class="col-12 col-lg-8">
-    <header class="border-bottom border-dark my-4">
-      <h1 class="display-3 text-left my-4">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
-    </header>
-    <section>
-      {{ .Content }}
+    <section class="border-secondary">
+      {{ partial "breadcrumb.html" . }}
     </section>
+  <article class="bg-white p-4 rounded shadow-sm border border-light-subtle" id="post-content">
+    <header class="border-secondary my-0 pb-4 align-middle">
+      <h1 class="entry-title my-3" property="title">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
+    </header>
+    <section class="meta">
+      {{ partial "metadata.html" . }}
+    </section>
+    <div id="content-body" class="post-content border-secondary libertine clearfix">
+      <section>
+        {{ .Content }}
+      </section>
+    </div>
   </article>
 
+  {{ partial "social.html" . }}
+  {{ partial "prev-next.html" . }}
+
+  {{- if not .Params.noauthor }}
+
+  {{ partial "authors.html"  . }}
+
+  {{- /* partial "related_posts.html" . */ -}}
+
+  {{ partial "comments.html" . }}
+  {{- end -}}
+  </div>
+
+  <aside class="d-none d-xl-flex col-xl-3 flex-column my-3">
+    <div id="sidebar-right" class="sidebar">
+      {{ if $has_toc }}
+          {{ partial "toc.html" . }}
+      {{ end }}
+    </div>
+  </aside>
 </div>
+</div>
+
 {{ end }}

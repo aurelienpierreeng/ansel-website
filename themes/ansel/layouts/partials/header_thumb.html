@@ -1,0 +1,13 @@
+{{ if .Params.thumbnail }}
+  {{ $thumb := partial "get_resource.html" (dict "src" .Params.thumbnail "Page" .Page ) }}
+  <div class="mb-2 bg-white shadow" >
+    {{ if strings.HasSuffix .Params.thumbnail ".svg" }}
+      <object data="{{ $thumb.RelPermalink }}" width="100%"></object>
+    {{ else }}
+      {{ $srcset := partial "get_srcset.html" $thumb }}
+      <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}"
+      style="width: 100%; height: auto;"
+      {{ if $srcset }}sizes="100vw" srcset="{{ $srcset }}"{{ end }} />
+    {{ end }}
+  </div>
+{{ end }}

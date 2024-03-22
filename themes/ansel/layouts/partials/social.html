@@ -1,0 +1,61 @@
+<aside class="border-top border-bottom border-secondary mt-3 py-2 d-flex align-items-center gap-2 flex-wrap justify-content-end">
+  <span class="float-start m-0 p-0 me-auto text-secondary">Share</span>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | absLangURL }}&t={{ .Title }}" title="FaceBook" target="_blank">
+    <i class="fab fa-facebook fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink | absLangURL }}" title="Twitter" target="_blank">
+    <i class="fab fa-twitter fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://www.linkedin.com/shareArticle?url={{ .Permalink | absLangURL }}&title=[post-title]{{ .Title }}" title="LinkedIn" target="_blank">
+    <i class="fab fa-linkedin fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://bufferapp.com/add?text={{ .Title }}&url={{ .Permalink | absLangURL }}" title="Buffer" target="_blank">
+    <i class="fab fa-buffer fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://getpocket.com/edit.php?url={{ .Permalink | absLangURL }}" title="Buffer" target="_blank">
+    <i class="fab fa-get-pocket fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://www.tumblr.com/share/link?url={{ .Permalink | absLangURL }}&name={{ .Title }}&description={{ .Summary }} "title="Tumblr" target="_blank">
+    <i class="fab fa-tumblr fa-fw social-icons"></i>
+  </a>
+
+  <script>
+    function MastodonShare(){
+      // Get the Mastodon domain
+      domain = prompt("Enter your Mastodon domain", "mastodon.social");
+
+      if (domain == "" || domain == null)
+        return;
+
+      url = "https://" + domain + "/share?text=" + {{ .Title }} + "&url=" + {{ .Permalink }};
+      window.open(url, '_blank');
+    }
+  </script>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="#" title="Mastodon" onclick="MastodonShare()">
+    <i class="fab fa-mastodon fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://api.whatsapp.com/send?text={{ .Title }} {{ .Permalink | absLangURL }}" title="WhatsApp" target="_blank">
+    <i class="fab fa-whatsapp fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://t.me/share/url?url={{ .Permalink | absLangURL }}&text={{ .Title }}" title="Telegram" target="_blank">
+    <i class="fab fa-telegram fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="https://reddit.com/submit?url={{ .Permalink | absLangURL }}&title={{ .Title }}" title="Reddit" target="_blank">
+    <i class="fab fa-reddit fa-fw social-icons"></i>
+  </a>
+
+  <a class="btn btn-secondary p-1 lh-1" role="button" href="mailto:?subject={{ .Title }}&body={{ .Summary }}{{ .Permalink | absLangURL }}" title="Email" target="_blank">
+    <i class="fa fa-envelope fa-fw social-icons"></i>
+  </a>
+
+</aside>

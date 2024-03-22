@@ -1,0 +1,14 @@
+{{ $related := .Site.RegularPages.Related . | first 4 }}
+{{ with $related }}
+  <section id="related-posts" class="my-0">
+    <h2 class="heading">
+      {{ i18n "seealso" }}
+      <span class="header-filet"></span>
+    </h2>
+    <div class="d-flex flex-row gap-3 flex-grow-0 flex-wrap py-3">
+      {{ range . }}
+        {{ .Render "relative" }}
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

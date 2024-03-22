@@ -1,5 +1,15 @@
 {{- $link := strings.Replace .Destination "_index.md" "" -}}
 {{- $isRemote := strings.HasPrefix $link "http" -}}
+{{- $isWikipedia := strings.Contains $link "wikipedia.org" -}}
+{{- $isNetwork := strings.Contains $link "ansel.photos" -}}
+{{- $isDownload := eq (lower .Title) "download" -}}
+{{- $title := .Title -}}
+{{- if and $isWikipedia (not $title) -}}
+{{- $title = "Wikipedia link" -}}
+{{- end -}}
+{{- if and $isRemote (and (not $isNetwork) (not $title)) -}}
+{{- $title = "External link" -}}
+{{- end -}}
 {{- if not $isRemote -}}
   {{- $url := urls.Parse $link -}}
   {{- if $url.Path -}}
@@ -19,5 +29,15 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-<a href="{{ $link | safeURL }}" title="{{ .Title | safeHTML }}" {{ if $isRemote }} target="_blank"{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ $link | safeURL }}" title="{{ $title | safeHTML }}" {{ if $isRemote }}target="_blank"{{ end }} {{ if and $isRemote (not $isNetwork) }}rel="noopener noreferrer nofollow"{{ else }}rel="dofollow"{{ end }} {{ if $isDownload }}download{{ end }} >{{ .Text | safeHTML }}
+{{- if $isDownload -}}
+&thinsp;<sup class="icon"><i class="fa fa-download"></i></sup>
+{{- else if $isRemote -}}
+{{- if $isWikipedia -}}
+&thinsp;<sup class="icon"><i class="fab fa-wikipedia-w"></i></sup>
+{{- else if not $isNetwork -}}
+&thinsp;<sup class="icon"><i class="fa fa-external-link-alt"></i></sup>
+{{- end }}
+{{- end -}}
+</a>
 {{- "" -}}

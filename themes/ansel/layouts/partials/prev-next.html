@@ -1,0 +1,19 @@
+{{ if or .PrevInSection .NextInSection }}
+<section class="clearfix border-secondary border-bottom d-flex flex-grow-0 justify-content-between my-0">
+  <div class="previous-post border-secondary border-end border-secondary py-3 flex-fill pe-3 text-start">
+    {{ with .NextInSection }}
+      <a class="text-decoration-none fs-6 text-start link-secondary" href="{{ .Permalink }}?ref=footer">
+        &larr; {{ .Title  | safeHTML}}
+      </a>
+      {{ end }}
+  </div>
+
+<div class="next-post border-secondary border-start py-3 flex-fill ps-3 text-end">
+  {{ with .PrevInSection }}
+    <a class="text-decoration-none fs-6 text-end link-secondary" href="{{ .Permalink }}?ref=footer">
+      {{ .Title | safeHTML }} &rarr;
+    </a>
+    {{ end }}
+</div>
+</section>
+{{ end }}

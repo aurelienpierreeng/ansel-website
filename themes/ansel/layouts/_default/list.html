@@ -1,27 +1,88 @@
 {{ define "main" }}
-<div class="container">
-    <h1 class="display-3 text-left my-4 border-bottom border-dark">{{ .Title }} <span class="float-end align-middle">{{ partial "rss.html" . }}</span></h1>
+{{ $has_toc := (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+{{ $content := .Content }}
 
-    <section>
-    {{ .Content }}
-    </section>
+<div class="container-fluid">
+<div class="d-flex row mx-auto justify-content-between">
+    <aside class="d-none d-lg-flex col-lg-4 col-xl-3 flex-column my-3">
+        <div id="sidebar-left" class="sidebar">
+        {{ partial "sidebar-nav.html" .}}
+        </div>
+    </aside>
 
-    {{ range .Pages.ByPublishDate.Reverse }}
-        <article class="shadow-sm p-3 mb-5 bg-body rounded dp-flex row justify-content-between" >
-            {{ $image := print (.Params.thumbnail | relLangURL) }}
-            <a class="image-fit col-12 col-lg-4 px-0 bg-image" style="background-image: url({{ $image | safeCSS }});" href="{{ .Permalink }}">
-            </a>
-            <div class="col-12 col-lg-8">
-                <h2 class="mt-2">
-                    <a class="link-dark display-6 text-left text-decoration-none" href="{{ .Permalink }}">
-                        {{ .Title }}
-                    </a>
-                </h2>
-                {{ partial "metadata_list.html" . }}
-                {{ .Summary }}
-                <a class="btn btn-dark float-end" href="{{ .Permalink }}">Read &raquo;</a>
+    <div class="column col-12 col-lg-8 col-xl-6 my-3">
+        <section class="border-secondary">
+        {{ partial "breadcrumb.html" . }}
+        </section>
+
+        {{ if $content }}
+        <article class="bg-white p-4 rounded shadow-sm border border-light-subtle" id="post-content">
+            <header class="border-secondary my-0 pb-4 align-middle">
+              <h1 class="entry-title my-3" property="title">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
+            </header>
+            <section class="meta">
+              {{ partial "metadata.html" . }}
+            </section>
+            <div id="content-body" class="post-content border-secondary libertine clearfix">
+              <section>
+                {{ $content }}
+              </section>
             </div>
         </article>
-    {{ end }}
+
+        {{ partial "social.html" . }}
+        {{ partial "prev-next.html" . }}
+        {{ end }}
+
+        {{ if not $content }}
+            <h1 class="display-3 text-left my-4 border-bottom border-dark">{{ .Title }} <span class="float-end align-middle">{{ partial "rss.html" . }}</span></h1>
+        {{ else }}
+            <h1 class="display-3 text-left my-4 border-bottom border-dark">Section content <span class="float-end align-middle">{{ partial "rss.html" . }}</span></h1>
+        {{ end }}
+
+        <div class="d-inline-flex flex-row flex-wrap gap-3" >
+        {{ range .Pages.ByPublishDate.Reverse }}
+            <article class="shadow-sm p-0 m-0 bg-body rounded justify-content-between row position-relative overflow-hidden flex-fill" >
+                {{ if .Params.thumbnail }}
+                    <div class="col-12 col-lg-4 m-0 p-0">
+                    {{ $thumb := partial "get_resource.html" (dict "src" .Params.thumbnail
+                    "Page" .Page ) }}
+                        <a class="stretched-link full-height" href="{{ .Permalink }}" target="_blank" rel="dofollow">
+                        {{ if strings.HasSuffix .Params.thumbnail ".svg" }}
+                            <object data="{{ $thumb.RelPermalink }}" width="100%" class="image-fit"></object>
+                        {{ else }}
+                            {{ $srcset := partial "get_srcset.html" $thumb }}
+                            <img src="{{ $thumb.RelPermalink }}" class="image-fit" decoding="async" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}"
+                            {{ if $srcset }}sizes="(max-width: 576px) 100vw, (max-width: 768px) 540px, (max-width: 992px) 720px, (max-width: 1200px) 33vw, 380px" srcset="{{ $srcset }}"{{ end }} />
+                        {{ end }}
+                        </a>
+                    </div>
+                {{ end }}
+                <div class="col my-3 px-3">
+                    <h2 class="my-4">
+                        <a class="link-dark display-6 text-left text-decoration-none" href="{{ .Permalink }}">
+                            {{ .Title }}
+                        </a>
+                    </h2>
+                    {{ if not $content }}
+                        {{ partial "metadata_list.html" . }}
+                        <div class="mb-3">
+                            {{ .Summary }}
+                        </div>
+                    {{ end }}
+                </div>
+            </article>
+        {{ end }}
+        </div>
+    </div>
+
+    <aside class="d-none d-xl-flex col-xl-3 flex-column my-3">
+        <div id="sidebar-right" class="sidebar">
+          {{ if $has_toc }}
+              {{ partial "toc.html" . }}
+          {{ end }}
+        </div>
+    </aside>
+</div>
 </div>
 {{ end }}

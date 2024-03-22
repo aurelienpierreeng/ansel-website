@@ -1,62 +1,92 @@
+<!--
 <script src="/js/fifty-fifty.min.js?ver=1.2" async></script>
-<link rel="stylesheet" type="text/css" href="/css/fifty-fifty.min.css?ver=1.3">
-<script>
-  window.onload = function() {
-      //dom not only ready, but everything is loaded
-      initComparisons();
-  };
-</script>
 <script src="/js/bootstrap.bundle.min.js?ver=5.2.3"></script>
+<script src="/js/scripts.min.js"></script>
+<script src="/js/fuse.min.js?ver=6.6.2" defer></script>
+<script src="{{ "/js/search.min.js" | relURL }}" defer></script>
+-->
+
+{{ $ff_js := resources.Get "js/fifty-fifty.js" }}
+{{ $bt_js := resources.Get "js/bootstrap.bundle.js" }}
+{{ $script := resources.Get "js/scripts.js" }}
+{{ $fuse := resources.Get "js/fuse.js" }}
+{{ $srch := resources.Get "js/search.js" }}
+{{ $js := slice $ff_js $bt_js $script $fuse $srch | resources.Concat "js/bundle.js" | minify | fingerprint }}
+<script src="{{ $js.Permalink }}" defer></script>
+
 
 {{ if .Page.Store.Get "hasMermaid" }}
-  <script src="/js/mermaid.min.js?ver=9.1.6"></script>
+  {{- /* $mermaid := resources.Get "js/mermaid.min.js" }}
+  <script src="{{ $mermaid.Permalink }}"></script>
   <script>
     mermaid.initialize({ startOnLoad: true,
                          theme: "neutral",
                          securityLevel: "loose" });
+  </script>
+  {{ */ -}}
+  <script type="module" async>
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true,
+                         theme: "neutral",
+                         securityLevel: "loose",
+                         width: "100%" });
   </script>
 {{ end }}
 
 {{ if .Params.latex}}
   <script>
     MathJax = {
-        packages: {'[+]': ['autoload', 'require']},
+        loader: {
+          load: ['input/tex-base', 'output/svg', '[tex]/require', '[tex]/autoload', '[tex]/ams']
+        },
         tex: {
           tags: 'all',
+          linebreaks: { automatic: true },
           inlineMath: [ ['$','$'] ],
           displayMath: [ ['$$','$$'] ],
           processEscapes: true,
           processEnvironments: true,
           processRefs: true,
+          autoload: {
+            cases: [[], ['numcases', 'subnumcases']]
+          },
+          packages: {'[+]': ['autoload', 'require', 'ams']},
         },
         svg: {
           mtextInheritFont: true,
           merrorInheritFont: true,
           mathmlSpacing: false,
           skipAttributes: {},
-          exFactor: .5,
+          exFactor: .6,
           displayAlign: 'center',
           displayIndent: '0',
           fontCache: 'global',
           localID: null,
           internalSpeechTitles: true,
-          titleID: 0
+          titleID: 0,
+          linebreaks: { automatic: true },
         },
         options: {
-          ignoreHtmlClass: 'no_math',    //  class that marks tags not to search
+          ignoreHtmlClass: 'no_math',//  class that marks tags not to search
           processHtmlClass: 'math',  //  class that marks tags that should be searched
         }
     };
   </script>
-  <script src="/js/tex-svg.js?ver=3.2.2" async></script>
+  <!--<script src="/js/tex-svg.js?ver=3.2.2" async></script>-->
+  <!--<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>-->
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js">
+</script>
 {{ end }}
 
-<script src="/js/scripts.min.js?ver=2.0.1"></script>
 
-<script src="/js/fuse.min.js?ver=6.6.2" defer></script>
-<script src="{{ "/js/search.min.js" | relURL }}" defer></script>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-  loadJSON("{{ "/index.json" | relLangURL }}");
-});
+  window.onload = function() {
+    //dom not only ready, but everything is loaded
+    initComparisons();
+  };
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    loadJSON("{{ "/index.json" | relLangURL }}");
+  });
 </script>

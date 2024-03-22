@@ -1,12 +1,15 @@
 baseURL = 'https://ansel.photos/'
 defaultContentLanguage = 'en'
-copyright = '© Copyright 2022 – Aurélien Pierre'
+copyright = '© Copyright 2022-2024 – Aurélien Pierre'
 title = 'Ansel'
 theme = 'ansel'
+
 enableGitInfo = true
 defaultContentLanguageInSubdir = true
 canonifyURLs = true
 removePathAccents = true
+timeout = "360s"
+
 
 [author]
   name = 'Aurélien Pierre'
@@ -69,8 +72,8 @@ removePathAccents = true
 [markup]
   [markup.tableOfContents]
     startLevel = 2
-    endLevel = 3
-    ordered = false
+    endLevel = 4
+    ordered = true
   [markup.goldmark]
     [markup.goldmark.extensions]
       definitionList = true
@@ -87,7 +90,26 @@ removePathAccents = true
       unsafe = true
       xhtml = true
 
+  [markup.highlight]
+    anchorLineNos = true
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    noHl = false
+    tabWidth = 4
+
+FootnoteReturnLinkContents = "↩"
+
 [module]
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
   [[module.imports]]
     disable = false
     ignoreConfig = true
@@ -110,3 +132,59 @@ removePathAccents = true
 [taxonomies]
   tag = "tags"
 	author = "authors"
+
+[imaging]
+  bgColor = '#ffffff'
+  hint = 'photo'
+  quality = 86
+  resampleFilter = 'linear'
+
+[Params.Images]
+    maxSize = 4096
+    setSizes = [ 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000 ]
+    sizes = "(max-width: 992px) 100vw, (max-width: 1200px) 66.67vw, 50vw"
+
+[related]
+  includeNewer = true
+  threshold = 20
+  toLower = true
+  [[related.indices]]
+      applyFilter = false
+      cardinalityThreshold = 0
+      name = 'keywords'
+      pattern = ''
+      toLower = false
+      type = 'basic'
+      weight = 100
+  [[related.indices]]
+      applyFilter = false
+      cardinalityThreshold = 0
+      name = 'categories'
+      pattern = ''
+      toLower = false
+      type = 'basic'
+      weight = 100
+  [[related.indices]]
+      applyFilter = false
+      cardinalityThreshold = 0
+      name = 'date'
+      pattern = ''
+      toLower = false
+      type = 'basic'
+      weight = 10
+  [[related.indices]]
+      applyFilter = false
+      cardinalityThreshold = 0
+      name = 'tags'
+      pattern = ''
+      toLower = false
+      type = 'basic'
+      weight = 80
+  [[related.indices]]
+      applyFilter = false
+      cardinalityThreshold = 0
+      name = 'content'
+      pattern = ''
+      toLower = false
+      type = 'basic'
+      weight = 80

@@ -3,7 +3,6 @@ title: "Ansel"
 date: 2022-11-27T22:36:34+01:00
 draft: false
 description: "Ansel est un éditeur de photos brutes pour artistes"
-thumbnail: "https://user-images.githubusercontent.com/45535283/"
 tags: ["darktable", "ansel", "photo editing"]
 ---
 
@@ -12,35 +11,26 @@ tags: ["darktable", "ansel", "photo editing"]
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4"><em>Ansel</em> est un logiciel libre de traitement photo pour artistes digitaux, conçu pour vous aider à obtenir votre propre interprétation de photos numériques brutes.</p>
   </div>
-  <div class="overflow-hidden" style="max-height: 65vh;">
-    <div class="container my-5">
-      <img src="/main-screenshot-fr.jpg" class="img-fluid shadow-lg mb-4" alt="Ansel screenshot" width="1000" loading="lazy">
-    </div>
-  </div>
+<div class="my-5">
+{{< slideshow images="lighttable.jpg,darkroom.jpg" >}}
+</div>
 </div>
 
-{{% container %}}
+<div class="container">
 
-{{% row %}}
-{{% column %}}
-Il s'inscrit dans la lignée de <a href="https://wikipedia.org/wiki/Ansel_Adams">Ansel Adams</a>, pianiste et photographe, qui a poussé l'artisanat de la chambre noire comme jamais pour servir sa vision photographique.
-{{% /column %}}
-{{% column %}}
-<figure class="text-left">
-<blockquote class="blockquote">
-  <p>Le négatif est la partition, le tirage est l'interprétation.</p>
-</blockquote>
-<figcaption class="blockquote-footer">
-  <cite title="Ansel Adams">Ansel Adams</cite>
-</figcaption>
-</figure>
-{{% /column %}}
-{{% /row %}}
+{{< quote author="Ansel Adams" >}}
+Le négatif est la partition, le tirage est l'interprétation.</p>
+{{< /quote >}}
+
+<div class="lead">
+
+Presser le déclencheur de l'appareil photo démarre à peine un processus qui termine quand l'image à l'écran ressemble à celle que vous aviez en tête. _Ansel_ propose de remettre les artistes au centre du processus créatif en leur offrant une interface pour manipuler les images avec précision et nuance, en utilisant une science de la couleur de pointe et des contrôles de couleur indépendants.
+
+</div>
+
 {{< divider >}}
 
 ## Installer
-
-<hr>
 
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
@@ -49,19 +39,23 @@ Exécutable indépendant de la distribution
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
-Installeur Windows 10 & 11
+Installeur Windows 7 à 11
 {{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Télécharger ansel.exe" icon="download" >}}
 {{% /card %}}
 
-{{% card icon="terminal" title="Build from source" %}}
+{{% card icon="terminal" title="Compilation depuis les sources" %}}
 Les meilleurs performances pour votre matériel
 {{< button url="/en/doc/install" label="Instructions de compilation" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
 
 {{% row %}}
-{{% column p=true %}}
-<strong>Configuration minimale recommandée</strong> : <br> CPU Intel i5 (4 cœurs) / 8 GB RAM / GPU Nvidia GTX 850.
+{{% column  %}}
+
+{{< warning >}}
+__Ansel est en version alpha__. L'interface graphique est susceptible de changer et l'application peut crasher dans certaines circonstances.
+{{< /warning >}}
+
 {{% /column %}}
 {{% column p=true %}}
 Les liens ci-dessus pointent toujours vers la dernière compilation quotidienne de la branche « raisonnablement stable ». Si vous voulez une version particulière ou que vous voulez rétrograder, [vous pouvez trouver toutes les versions intermédiaires sur Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).
@@ -71,138 +65,154 @@ Les liens ci-dessus pointent toujours vers la dernière compilation quotidienne 
 {{< divider >}}
 
 ## Pourquoi Ansel ?
-<hr>
 
 {{% row %}}
-{{% column p=true %}}
-De nombreuses solutions existent pour produire des photographies prêtes à consommer pour les masses, des filtres de smartphones aux JPEG produits par les appareils photo, suivis récemment par la magie des IA appliquant des filtres jouets ~~caricaturaux~~ dramatiques. Tout ça rend la photographie plus facile que jamais, mais les images produites sont-elles réellement __vos__ images et, dans les cas, les images que __vous__ attendiez ?
-{{% /column %}}
-{{% column p=true %}}
-Appuyer sur le déclencheur de l'appareil photo a seulement démarré un processus se terminant quand l'image à l'écran ressemble à celle que vous aviez à l'esprit. _Ansel_ propose de remettre les artistes au centre du processus créatif et leur fournit une interface pour manipuler des images avec précision et nuance, en utilisant une science de la couleur à la pointe et des contrôles de couleur indépendants.
-{{% /column %}}
+{{% column %}}
 
+De nombreuses solutions existent pour produire des photographies prêtes à consommer pour les masses, des filtres de smartphones aux JPEG produits par les appareils photo, suivis récemment par la magie automatisée des filtres jouets par IA. Tout ça rend la photographie plus facile que jamais, mais les images produites sont-elles réellement __vos__ images et en tout cas, les images que __vous__ attendiez ?
+
+{{% /column %}}
+{{% column %}}
+
+_Ansel_ vous permet d'interpréter vos photos brutes comme un instrument de musique, là où la plupart des logiciels essaient de jouer la partition automatiquement à votre place. Il vise à être un outil peu excitant et ennuyeux, qui fait juste ce que vous lui demandez, sans se mettre en travers de votre chemin.
+{{% /column %}}
 {{% /row %}}
-<hr>
 
+<div class="text-center my-5">
+<span class="display-5">Émerveillez-vous de vos résultats</span><br />
+<span class="fs-4">Pas de vos jouets</span>
+</div>
 
 {{% row %}}
-<p class="no-hyphenation lead text-left mx-auto my-3 col-10"><em>Ansel</em> vous permet d'interpréter vos photos brutes comme un instrument de musique, là où la plupart des logiciels essaient de jouer la partition automatiquement à votre place, mais mécaniquement et sans âme.</p>
+{{% column %}}
+
+Si vous aimez la musique, vous avez le choix entre apprendre à jouer ou acheter des enregistrements. Acheter est plus facile, mais jouer est plus satisfaisant. Les applications de traitement photo ont menti aux utilisateurs pendant des décennies, en prétendant qu'ils pourraient jouer sans apprendre parce que le logiciel se chargerait des complexités techniques à leur place.
+
+{{% /column %}}
+{{% column %}}
+
+Il apparait en fait que les utilisateurs se battent contre des applications qu'ils comprennent de moins en moins, pour le contrôle de leurs résultats et pour récupérer les cas épineux où l'automatisation échoue. À mesure que le temps passe, attendez vous à perdre de plus en plus de temps à vous battre contre des IA pour obtenir des résultats naturels… manuellement. Pourquoi ne pas directement éliminer l'intermédiaire ?
+
+{{% /column %}}
 {{% /row %}}
+
+
 {{< divider >}}
 
 ## Que peut Ansel pour vous ?
-<hr>
 
 Ansel vous permet de gérer vos collections d'images, de traiter vos fichiers numériques bruts de capteur et vos pellicules numérisées, et d'exporter le résultat vers les formats de fichiers courants. Il stocke votre historique de traitement sous forme de texte et vous permet de remonter dans le temps à n'importe quelle étape de votre traitement, à tout moment.
 
 ### Travail sur la couleur
 
-Ansel embarque une science de la couleur récente et compatible HDR : l'adaptation chromatique CIE CAT 2016, l'espace de couleur HDR JzAzBz (2017) et l'espace de couleur perceptuel darktable UCS 2021, développé spécialement pour manipuler la saturation des couleurs en évitant l'effet fluo.
+Ansel embarque une science de la couleur récente et compatible HDR : l'adaptation chromatique CIE CAT 2016, l'espace de couleur HDR JzAzBz (2017) et l'espace de couleur perceptuel darktable UCS 2022, développé spécialement pour manipuler la saturation des couleurs en évitant l'effet fluo.
 
-{{% row %}}
+<div class="row">
 {{% column %}}
- ##### Calibration des couleurs
-{{< compare after="/calibration-after.jpg" before="/calibration-before.jpg" >}}
-Corrigez la balance des blancs et obtenez des couleurs haute fidélité en seulement quelques clics, en étalonnant les couleurs avec un Color Checker directement en chambre noire.
+<h5>Calibration des couleurs</h5>
+{{< compare after="calibration-after.jpg" before="calibration-before.jpg" cols="2" >}}
+Corrigez la balance des blancs et obtenez des couleurs __haute fidélité__ en seulement quelques clics, en étalonnant les couleurs avec un Color Checker directement en chambre noire.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
- ##### Gradation des couleurs
-{{< compare after="/grading-after.jpg" before="/grading-before.jpg" >}}
+<h5>Gradation des couleurs</h5>
+{{< compare after="grading-after.jpg" before="grading-before.jpg" cols="2" >}}
 Donnez ambiance et caractère à vos photos en polissant leur palette de couleur avec des contrôles nuancés et détaillés, dans les espaces de couleur RVB, Ych ou HSB, à des fins créatives ou correctives.
 {{</ compare >}}
 {{% /column %}}
-{{% /row %}}
+</div>
 
-{{% row %}}
+<div class="row">
 {{% column %}}
-##### Correspondance de couleur
-{{< compare after="/matching-after.jpg" before="/matching-before.jpg" >}}
+<h5>Correspondance de couleur</h5>
+{{< compare after="matching-after.jpg" before="matching-before.jpg" cols="2" >}}
 Forcez l'adaptation chromatique de sorte que n'importe quel objet sélectionné corresponde à une couleur prédéterminée, saisie à partir de ses coordonées CIE Lab (pour les logos ou les couleurs de marques commerciales), ou en échantillonnant la couleur du même objet dans une autre photo, pour obtenir un rendu des couleur uniforme sur une série.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Qualificateurs de teinte et fusion
-{{< compare after="/masking-after.jpg" before="/masking-before.jpg" >}}
+<h5>Qualificateurs de teinte et fusion</h5>
+{{< compare after="masking-after.jpg" before="masking-before.jpg" cols="2" >}}
 Utilisez les qualificateurs de teinte, chroma et luminosité pour définir rapidement des masques, et appliquer des effets sélectifs. Combinez les masques paramétriques avec des masques dessinés avec des opérations booléennes. Raffinez et détaillez les bords des masques par floutage ou détection de bords intelligente.
 {{</ compare >}}
 {{% /column %}}
-{{% /row %}}
-
+</div>
 
 ### Travail sur les tonalités
 
 Les méthodes de travail sur les tonalités sont conçues pour manipuler la luminance sans affecter la teinte ni la saturation, afin de respecter le travail sur la couleur, effectué à part.
 
-{{% row %}}
+<div class="row">
 {{% column %}}
-##### Mappage de ton HDR
-{{< compare after="/filmic-after.jpg" before="/filmic-before.jpg" >}}
+<h5>Mappage de ton HDR</h5>
+{{< compare after="filmic-after.jpg" before="filmic-before.jpg" cols="2" >}}
 Récupérez les ombres denses et compressez la plage dynamique tout en gardant la saturation et la teinte d'origine, avec un mappage de gamut pour garantir que les couleurs tiennent dans l'espace de couleur de sortie. _(Photo : Andreas Schneider)_
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Traitement basé sur le _zone system_
-{{< compare after="/toneeq-after.jpg" before="/toneeq-before.jpg" >}}
+<h5>Traitement basé sur le zone system</h5>
+{{< compare after="toneeq-after.jpg" before="toneeq-before.jpg" cols="2">}}
 Équilibrez les densités par zone de lumination, en préservant le contraste local grâce à un algorithme de détection des bords, et sélectionnez les zones de lumination à affecter directement dans l'image via le curseur interactif. _(Photo : Andreas Schneider)_
 {{</ compare >}}
 {{% /column %}}
-{{% /row %}}
+</div>
 
 ### Reconstruction d'image
 
-{{% row %}}
+<div class="row">
 {{% column %}}
-##### Défloutage d'objectif
-{{< compare after="/sharpen-after.jpg" before="/sharpen-before.jpg" >}}
+<h5>Défloutage d'objectif</h5>
+{{< compare after="sharpen-after.jpg" before="sharpen-before.jpg" cols="2" >}}
 Libérez le pouvoir de l'apprentissage machine basée sur l'analyse de gradients multi-échelle pour rajeunir les vieux objectifs, récupérer les erreurs de mise au point ou renforcer votre sujet, mais sans les artefacts de bord typiques, les bizarreries de sur-accentuation ou le bruit additionnel.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Désembuage
-{{< compare after="/dehaze-after.jpg" before="/dehaze-before.jpg" >}}
+<h5>Désembuage</h5>
+{{< compare after="dehaze-after.jpg" before="dehaze-before.jpg" cols="2" >}}
 Restaurez une certaine profondeur dans les clichés brumeux et flous en ramenant des textures et de la saturation dans les couleurs, sans pour autant sur-accentuer les détails déjà nets.
 {{</ compare >}}
 {{% /column %}}
-{{% /row %}}
+</div>
 
-{{% row %}}
+<div class="row">
 {{% column %}}
-##### Débruitage
-{{< compare after="/denoise-after.jpg" before="/denoise-before.jpg" >}}
+<h5>Débruitage</h5>
+{{< compare after="denoise-after.jpg" before="denoise-before.jpg" cols="2" >}}
 Supprimez le bruit chromatique, adoucissez et fusionnez le bruit de luminance.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Reconstruction des hautes lumières
-{{< compare after="/highlights-after.jpg" before="/highlights-before.jpg" >}}
+<h5>Reconstruction des hautes lumières</h5>
+{{< compare after="highlights-after.jpg" before="highlights-before.jpg" cols="2" >}}
 Sauvez à la fois la couleur et la texture dans les hautes lumières, récupérez les zones brûlées en propageant les gradients pendant que le gamut-mapping surveille vos arrières en garantissant que les hautes lumières saturées peuvent toujours être imprimées à leur teinte d'origine. Vous n'êtes plus obligé de délaver les hautes lumières pour cacher les problèmes.
 {{</ compare >}}
 {{% /column %}}
-{{% /row %}}
+</div>
 
 ### Fonctions spécialisées
 
-{{% row %}}
+<div class="row">
 {{% column %}}
-##### Correction automatique de la perspective
-{{< compare after="/perspective-after.jpg" before="/perspective-before.jpg" >}}
+<h5>Correction automatique de la perspective</h5>
+{{< compare after="perspective-after.jpg" before="perspective-before.jpg" cols="2" >}}
 Laissez l'apprentissage machine détecter automatiquement les lignes verticales et horizontales et calculer la meilleure correction géométrique pour pivoter, redresser et recadrer l'image, en tenant optionnellement compte du type d'objectif utilisé.
 {{</ compare >}}
 {{% /column %}}
 
 {{% column %}}
-##### Censurer
-{{< compare after="/censorize-after.jpg" before="/censorize-before.jpg" >}}
+<h5>Censurer</h5>
+{{< compare after="censorize-after.jpg" before="censorize-before.jpg" cols="2" >}}
 Anonymisez facilement des gens, plaques d'immatriculation, etc. et jouez avec les conditions d'utilisation des réseaux socialement prudes sans trop défigurer vos images.
 {{</ compare >}}
 {{% /column %}}
-{{% /row %}}
+</div>
+
+{{< divider >}}
+
 
 ## Compatibilité
 
@@ -227,30 +237,113 @@ Le logiciel est intégralement traduit en anglais, français et chinois simplifi
 
 {{% row %}}
 
-<p class="no-hyphenation lead text-left mx-auto my-3"><em>Ansel</em> est ce que Darktable 4.0 aurait pu être si ses développeurs n'étaient pas si occupés à la transformer en cauchemard d'utilisabilité. Ansel est une variante de Darktable 4.0 où 30 000 lignes de code mal écrit et de fonctionnalités à moité cassées ont été retirées, et 11 000 lignes ont été réécrites : il s'exécute plus vite, il est plus réactif, utilise moins de puissance et requiert moins de configuration. Appréciez une app qui met l'accent sur la tâche à accomplir et la stabilité.</p>
+{{% column %}}
 
+<div class="no-hyphenation lead">
+
+Ansel est ce que Darktable 4.0 aurait pu être s'il n'était pas mort de [feature creep](https://en.wikipedia.org/wiki/Feature_creep).
+
+</div>
+
+Entre 2020 et 2023, Darktable a souffert d'[additions massives de code pour des fonctionnalités périphériques](./news/darktable-dans-le-mur-au-ralenti/), souvent mal codées, mal conçues et pénalisant l'utilisabilité, la performance et la maintenance. Trop de solutions de contournement ont échoué à corriger des bugs, mais ont empilé de nouveaux problèmes par dessus du code ancien : bienvenue dans un cauchemar de maintenance.
+
+Sans gestion de projet ni planification des fonctionnalités, ce qui devait arriver a simplement fini par arriver. Darktable a toujours peiné à être plus qu'un pack de plugins individuels.
+
+{{% /column %}}
+{{% column %}}
+
+Le résultat est une application bizarre et frustrante, qui essaie de réinventer les paradigmes GUI dans son coin, en essayant de tout faire pour tout le monde, plus lent et moins stable qu'avant, et absolument terrible à débugger.
+
+Avec une interface centrée sur l'orienté scène, de nombreux modules fusionnés dans un menu global, un outil d'import réécrit et des recalculs du pipeline d'image plus économes, Ansel est une variante de Darktable 4.0 où 30 000 lignes de code mal écrit et de fonctionnalités à moité cassées ont été retirées, et 11 000 lignes ont été réécrites : __il s'exécute plus vite, il est plus réactif, utilise moins de puissance et requiert moins de configuration.__
+
+Avec une complexité réduite du code, la maintenance devrait aussi être plus facile à l'avenir.
+
+{{% /column %}}
 {{% /row %}}
 
 {{< divider >}}
 
-## Un logiciel par Aurélien Pierre
+## Au delà de la documentation
 
 {{% row %}}
-{{% column class="col col-12 col-lg-8" %}}
+{{% column %}}
 
-<img src="/Auto-portrait-0088-MLM_0774_01.jpg" class="rounded mx-auto d-block float-start me-4 mb-4" width="200"/>
+Le point de blocage typique et récurrent des projets logiciels open-source est la documentation. Quand il n'y a en pas, le utilisateurs s'en plaignent. Quand il y en a une, ils se plaignent qu'elle est trop longue, pas assez complète, ou qu'elle n'inclue pas d'exemples d'utilisation. Les développeurs s'attendent à ce que les utilisateurs fassent une lecture linéaire de la documentation du projet. Ça n'arrivera simplement pas, et les développeurs serviront de perroquets. Cela ne fait qu'alimenter la frustration des deux côtés. __La documentation ne suffit pas__.
 
-Sur l'image ci-contre, j'ai réalisé le stylisme, le maquillage, l'éclairage, la capture, le traitement, la retouche, les filtres de couleur logiciels, la documentation pour les utiliser, le site web pour en parler en 2 langues, et même l'espace de couleur pour l'ajustement de la saturation. Vous trouverez _très_ peu de gens ayant cette compréhension de la lumière et de la couleur sur toute la chaîne qui sont aussi capables d'écrire des programmes informatiques efficaces et de lire des articles académiques de recherche en mathématiques appliquées. Mais vous trouverez beaucoup d'applications de traitement d'image et beaucoup de gens qui s'essaient…
-
-J'ai donné 4 ans de ma vie au projet Darktable, juste pour le voir détruit par des geeks désemparés qui jouent à accumuler du code pendant leur temps libre, chacun poussant ses propres intentions sans aucun sens du design, dans un projet où personne n'est responsable de rien et où on travaille trop vite sur tout en même temps. Le dévelopment d'Ansel est motivé par les résultats et exécuté avec une science de la couleur propre à travers le pipeline des pixels. Les choses sont faites à un rythme permettant d'assurer la qualité du code. Le design est basé sur les retours utilisateurs que j'ai collecté en donnant des cours particuliers de retouche/traitement avec Darktable ces 3 dernières années, et sur les 2 enquêtes que j'ai menées en 2020 et 2022 sur les utilisateurs. Le logiciel est seulement un moyen vers un but et j'enrage quand il se met en travers de la créativité et de la productivité. Avoir __un__ concepteur dirigeant le projet et gérant les priorités devrait éviter ça.
-
-Le développement prend toujours une moyenne de 45 h/semaine pour moins que le salaire minimum, et si vous pensez que les options open-source d'imageries ont besoin d'être améliorées, et bien ça ne se fera pas tout seul (_et n'attendez pas de ceux qui ont créé les problèmes qu'ils soient ceux qui les réglent_).
-
-{{< button url="https://community.ansel.photos/donations-make" label="Soutenir le développement" icon="donate" class="text-center">}}
 {{% /column %}}
+{{% column %}}
 
-{{% column class="col col-12 col-lg-4" %}}
-{{< figure src="/Shoot Minh-Ly Hangar 2 - Rouge-0026-DSC_0560--WEB-LOW.jpg" class="img-fluid" style="width: 100%" />}}
+Chantal est un modèle de langage bilingue (français-anglais) entraîné spécifiquement pour le traitement d'image, la théorie de la couleur et la photographie, qui comprend le jargon technique, les synonymes et certaines traductions. __Son interface web permet de faire des recherches dans un index central__ composé de documentations de logiciels open-source, de rapport de bugs, de forums utilisateurs, de chaînes Youtube, de publications scientifiques et d'instances de standardisation (CIE, ICC, ACES).
+
+{{% /column %}}
+{{% /row %}}
+
+<div class="text-center my-5">
+<span class="display-5">Découvrez <a href="https://chantal.aurelienpierre.com" target="_blank">Chantal</a></span><br />
+<span class="fs-4">votre bibliothécaire IA pour traitement d'image</span>
+</div>
+
+{{% row %}}
+{{% column %}}
+
+<div class="no-hyphenation lead mx-auto">
+
+Chantal est l'infrastructure de connaissance d'Ansel :
+
+- trouvez rapidement des informations pertinentes parmi des sources fiables,
+- évitez de reposer des questions déjà traitées.
+
+</div>
+
+{{% /column %}}
+{{% column %}}
+
+<span class="no-hyphenation lead mx-auto">Conçu pour rendre les utilisateurs plus intelligents, au lieu de rendre le logiciel plus stupide.</span> L'intelligence artificielle vous procure du matériel d'apprentissage sur les sujets de votre choix. Investissez dans l'intelligence naturelle.
+
+{{% /column %}}
+{{% /row %}}
+
+{{< divider >}}
+
+
+## Il y a un concepteur à demeure ici
+
+{{% row %}}
+{{% column %}}
+
+<div class="d-grid float-start me-4">
+{{<figure src="Auto-portrait-0088-MLM_0774_01.jpg" style="width: 200px"/>}}
+{{< button url="https://photo.aurelienpierre.com/portfolio" label="Portfolio photographie" icon="image" class="text-center w-100 mt-3">}}
+{{< button url="https://eng.aurelienpierre.com" label="Blog d'ingénierie" icon="code" class="text-center w-100">}}
+</div>
+
+
+<div class="no-hyphenation lead">
+
+Ça ne serait pas génial si les logiciels open-source avaient des concepteurs à temps plein, capables de prendre le temps nécessaire pour comprendre les problèmes et trouver des solutions simples, plutôt qu'empiler des bricolages rapides et des stratégies d'évitements, dans une base de code qui ne fait que grossir ?
+
+</div>
+
+La conception n'est pas se jeter sur un éditeur de code et en écrire autant que possible dans le moins de temps possible. En fait, c'est réfléchir beaucoup pour coder aussi peu que possible, parce que plus de code signifie plus de bugs.
+
+Sur mes photos, je réalise le stylisme, le maquillage, l'éclairage, la capture, le traitement, la retouche, les filtres de couleur logiciels, la documentation pour les utiliser, le site web pour en parler en 2 langues, et même l'espace de couleur pour l'ajustement de la saturation. Vous trouverez _très_ peu de gens ayant cette compréhension de la lumière et de la couleur sur toute la chaîne qui sont aussi capables d'écrire des programmes informatiques efficaces et de lire des articles académiques de recherche en mathématiques appliquées. Pour une raison étrange, vous trouverez _beaucoup_ de gars essayant d'écrire des applications d'imagerie dans leur temps libre. Tirez-en vos propres conclusions.
+
+{{% /column %}}
+{{% column %}}
+
+J'ai donné 4 ans de ma vie au projet Darktable, juste pour le voir détruit par des geeks désemparés qui jouent à accumuler du code pendant le week-end, chacun poussant ses propres intentions sans aucun sens du design, dans un projet où personne n'est responsable de rien et où on travaille trop vite sur tout en même temps.
+
+Le dévelopment d'Ansel est fait à un rythme permettant d'assurer la qualité du code (backend) et de la conception (fontend). Le design est basé sur les retours utilisateurs que j'ai collecté en donnant des cours particuliers de retouche/traitement avec Darktable ces 3 dernières années, et sur les 2 enquêtes que j'ai menées en 2020 et 2022 sur les utilisateurs. Les priorités sont gérées considérant que le logiciel est un moyen d'exporter des images RAW, ce qui veut dire que la R&D est faite sur les sujets d'imagerie et que tout reste doit suivre les paradigmes courants d'interface graphique, sans se mettre en travers du chemin.
+
+
+<div class="bg-white rounded border border-light p-3 lead shadow-sm">
+
+Le développement d'Ansel prend une moyenne de 45 h/semaine pour moins que le salaire minimum. L'open-source a besoin de meilleures applications d'imagerie, ce qui requiert que quelqu'un ayant les compétences requises y mette le temps nécessaire. __Ansel a besoin de main d'œuvre et la main d'œuvre a besoin de payer ses factures__.
+
+{{< button url="https://community.ansel.photos/donations-make" label="Soutenir le développement" icon="donate" class="d-block text-center mx-auto btn">}}
+
+</div>
+
 {{% /column %}}
 {{% /row %}}
 
@@ -282,4 +375,4 @@ Copyright.
 
 {{% /row %}}
 
-{{% /container %}}
+</div>

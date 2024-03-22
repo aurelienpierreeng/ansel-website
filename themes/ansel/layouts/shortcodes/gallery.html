@@ -1,0 +1,12 @@
+{{ $has_caption := false }}
+{{ with .Get "caption" }}
+  {{ $has_caption = true }}
+{{ end }}
+{{ $p := .Page }}
+{{ $cols := int (.Get "cols") }}
+{{ .Page.Scratch.Set "columns" $cols }}
+<div class="gallery full-width {{ if $has_caption }}caption-figure{{ end }} gallery-cols-{{ $cols }} {{ .Get "class" }}">
+{{ .Inner | $p.RenderString  }}
+<!-- {{ with .Get "caption" }}<div class="gallery-caption"><p>{{ print . | $p.RenderString }}</p></div>{{ end }} -->
+</div>
+{{ .Page.Scratch.Delete "columns" }}

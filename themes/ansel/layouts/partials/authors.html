@@ -1,6 +1,6 @@
 
 {{ if .Param "authors" }}
-<section class="border-top border-dark mt-5 mb-0 pt-4">
+<section class="border-bottom border-secondary my-0 py-4">
 <h2>{{ i18n "author" (len (.Param "authors")) }}</h2>
 {{ range .Param "authors" }}
 	{{ $name := . }}

@@ -1,0 +1,22 @@
+{{- $src := .src -}}
+{{- $page := .Page }}
+
+{{- $image := "" -}}
+{{- if strings.HasPrefix $src "http" -}}
+  {{- $image = resources.GetRemote $src -}}
+{{- else -}}
+  {{- $image = resources.Get $src -}}
+  {{- if not $image -}}
+    {{- $image = .Page.Resources.Get $src -}}
+  {{- end -}}
+  {{- if and (not $image) .Page.File -}}
+    {{- $path := path.Join .Page.File.Dir $src -}}
+    {{- $image = resources.Get $path -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if not $image }}
+  {{- warnf "Resource %q not found from page %q." $src $page.File -}}
+{{- else -}}
+  {{- return $image -}}
+{{- end -}}}

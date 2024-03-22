@@ -1,1 +1,7 @@
-<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="text-left heading">{{ .Text | strings.FirstUpper | safeHTML }}<a href="#{{ .Anchor | safeURL }}" class="header-link link-secondary fs-5 px-2 align-middle" title="Permanent link to this section"><i class="fas fa-link"></i></a></h{{ .Level }}>
+</section>
+
+<section id="{{ .Anchor }}">
+<h{{ .Level }} class="text-left heading">
+  {{ .Text | safeHTML}}
+  {{ if eq .Level 2}}<span class="header-filet"></span>{{ end }}
+</h{{ .Level }}>

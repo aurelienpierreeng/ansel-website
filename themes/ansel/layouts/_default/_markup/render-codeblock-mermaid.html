@@ -1,4 +1,6 @@
-<div class="mermaid">
-  {{ .Inner }}
-</div>
-{{ .Page.Store.Set "hasMermaid" true }}
+<figure class="full-width">
+<pre class="mermaid">
+{{ .Inner | safeHTML }}
+</pre>
+</figure>
+{{- .Page.Store.Set "hasMermaid" true -}}
