@@ -1,4 +1,4 @@
-{{- $src := .src -}}
+{{- $src := index (split .src "#") 0 -}}
 {{- $page := .Page }}
 
 {{- $image := "" -}}
@@ -9,14 +9,21 @@
   {{- if not $image -}}
     {{- $image = .Page.Resources.Get $src -}}
   {{- end -}}
+  {{- if not $image -}}
+    {{- $image = .Resources.Get $src -}}
+  {{- end -}}
+  {{- if not $image -}}
+    {{ $path := (strings.TrimPrefix (print "./" .Page.File) $src) }}
+    {{- $image = .Page.Resources.Get $path -}}
+  {{- end }}
   {{- if and (not $image) .Page.File -}}
-    {{- $path := path.Join .Page.File.Dir $src -}}
+    {{- $path := path.Join .Page.File.Dir (strings.TrimPrefix "." $src) -}}
     {{- $image = resources.Get $path -}}
   {{- end -}}
 {{- end -}}
 
 {{- if not $image }}
-  {{- warnf "Resource %q not found from page %q." $src $page.File -}}
+  {{- warnf "Resource %q not found from page %q." $src $page.File.Path -}}
 {{- else -}}
   {{- return $image -}}
 {{- end -}}}
