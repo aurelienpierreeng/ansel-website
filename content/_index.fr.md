@@ -351,7 +351,7 @@ Le développement d'Ansel prend une moyenne de 45 h/semaine pour moins que le sa
 
 ## Code
 
-Le logiciel et la documentation d'Ansel sont publiés sous licence GNU/GPL v3 et versionnés avec Git. Le site web est sous copyright mais tout même visible. Les dépôts de travail sont hébergés sur Github et dupliqués sur des miroirs Gitlab pour sauvegarde.
+Le logiciel et la documentation d'Ansel sont publiés sous licence GNU/GPL v3 et versionnés avec Git. Le site web est sous copyright mais le code est visible. Les dépôts de travail sont hébergés sur Github et dupliqués sur des miroirs Gitlab pour sauvegarde.
 
 {{% row %}}
 

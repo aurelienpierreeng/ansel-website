@@ -377,15 +377,6 @@ pre.mermaid img {
   margin: 0!important;
 }
 
-@media screen and (max-width: 38rem) {
-  .main-column {
-    margin-left: -1rem!important;
-    margin-right: -1rem!important;
-    width: calc(100% + 2rem)!important;
-    max-width: none!important;
-  }
-}
-
 #toc_container,
 .colophon,
 #content-body p,

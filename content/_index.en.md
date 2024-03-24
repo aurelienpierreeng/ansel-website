@@ -101,7 +101,7 @@ It turns out that users have only been fighting applications they understand les
 
 {{< divider >}}
 
-## What can Ansel for you ?
+## What can Ansel do for you ?
 
 Ansel allows you to manage your collections of pictures, to edit your raw digital photographs and film scans non-destructively and to export the result to common file formats. It stores your editing histories as text and lets you go back in time at any editing step you like, anytime.
 
@@ -184,7 +184,7 @@ Restore some depth in foggy and hazy shots by bringing back textures and saturat
 {{% column %}}
 <h5>Denoising</h5>
 {{< compare after="denoise-after.jpg" before="denoise-before.jpg" cols="2">}}
-Remove chromatic noise, soften and blend lumaninance noise.
+Remove chromatic noise, soften and blend luminance noise.
 {{</ compare >}}
 {{% /column %}}
 
@@ -202,7 +202,7 @@ Salvage both color and texture in highlights, recover blown areas by propagating
 {{% column %}}
 <h5>Automatic perspective correction</h5>
 {{< compare after="perspective-after.jpg" before="perspective-before.jpg" cols="2" >}}
-Let the machine learning detect automatically vertical and horizontal lines and compute the best geometric correction to rotate, straighten and crop the picture, optionnaly taking into account the kind of lens used.
+Let the machine learning detect automatically vertical and horizontal lines and compute the best geometric correction to rotate, straighten and crop the picture, optionaly taking into account the kind of lens used.
 {{</ compare >}}
 {{% /column %}}
 
@@ -323,7 +323,7 @@ Chantal is Ansel's knowledge infrastructure :
 
 <div class="no-hyphenation lead">
 
-Wouldn't it be great if open-source software had full-time designers, able to took the necessary time to understand issues and to find simple solutions, instead of piling up quick hacks and workarounds, in an ever-growing codebase ?
+Wouldn't it be great if open-source software had full-time designers, able to take the necessary time to understand issues and to find simple solutions, instead of piling up quick hacks and workarounds, in an ever-growing codebase ?
 
 </div>
 
@@ -354,7 +354,7 @@ Developing Ansel takes an average of 45 h/week for not even minimal wage. Open-s
 
 ## Source code
 
-Ansel software and documentation are released under the GNU/GPL v3 license and versionned with Git. The website is copyrighted but still publicly visible. The work repositories are hosted on Github and are mirrored on Gitlab for backup.
+Ansel software and documentation are released under the GNU/GPL v3 license and versionned with Git. The website is copyrighted but publicly readable. The work repositories are hosted on Github and are mirrored on Gitlab for backup.
 
 {{% row %}}
 
