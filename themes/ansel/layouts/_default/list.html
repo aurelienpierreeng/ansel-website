@@ -41,7 +41,11 @@
         {{ end }}
 
         <div class="d-inline-flex flex-row flex-wrap gap-3" >
-        {{ range .Pages.ByPublishDate.Reverse }}
+        {{ $pages := .Pages.ByPublishDate.Reverse }}
+        {{ range .Translations }}
+            {{ $pages = $pages | lang.Merge .Pages }}
+        {{ end }}
+        {{ range $pages }}
             <article class="shadow-sm p-0 m-0 bg-body rounded justify-content-between row position-relative overflow-hidden flex-fill" >
                 {{ if .Params.thumbnail }}
                     <div class="col-12 col-lg-4 m-0 p-0">
