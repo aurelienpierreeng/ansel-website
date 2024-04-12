@@ -3,7 +3,7 @@
 
 {{ partial "header_thumb.html" . }}
 
-<div class="container-fluid">
+<div class="container-fluid mx-0 px-0">
 
 <div class="d-flex row mx-auto justify-content-between">
   <aside class="d-none d-lg-flex col-lg-4 col-xl-3 flex-column my-3">
@@ -20,8 +20,8 @@
     <section class="border-secondary">
       {{ partial "breadcrumb.html" . }}
     </section>
-  <article class="bg-white rounded expanded-bg mb-4" id="post-content">
-    <header class="border-secondary my-0 pb-4 pt-1 align-middle">
+  <article class="bg-white rounded expanded-bg mb-4 shadow-sm p-3" id="post-content">
+    <header class="border-secondary my-0 pb-4 pt-2 align-middle">
       <h1 class="entry-title my-3" property="title">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
     </header>
     <section class="meta">

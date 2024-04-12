@@ -2,7 +2,7 @@
 {{ $has_toc := (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
 {{ $content := .Content }}
 
-<div class="container-fluid">
+<div class="container-fluid mx-0 px-0">
 <div class="d-flex row mx-auto justify-content-between">
     <aside class="d-none d-lg-flex col-lg-4 col-xl-3 flex-column my-3">
         <div id="sidebar-left" class="sidebar">
@@ -16,7 +16,7 @@
         </section>
 
         {{ if $content }}
-        <article class="bg-white rounded bg-white rounded expanded-bg mb-4" id="post-content">
+        <article class="bg-white rounded bg-white rounded expanded-bg mb-4 shadow-sm p-3" id="post-content">
             <header class="border-secondary my-0 pb-4 pt-1 align-middle">
               <h1 class="entry-title my-3" property="title">{{ .Title | strings.FirstUpper | safeHTML }}</h1>
             </header>
@@ -63,7 +63,7 @@
                     </div>
                 {{ end }}
                 <div class="col my-3 px-3">
-                    <h2 class="my-4">
+                    <h2 class="mb-4 mt-2">
                         <a class="link-dark display-6 text-left text-decoration-none" href="{{ .Permalink }}">
                             {{ .Title }}
                         </a>
