@@ -42,7 +42,6 @@ There already is a fair deal of information around on Ansel's usage. As Ansel is
 {{% /card %}}
 {{% /row %}}
 
-
 1. Try to use the public channels above as much as possible, in order to leave archives that can be indexed by search engines and found later to help other people,
 2. Try to use search engines as much as possible because there are good chances that your problem already has a solution, for the aforementionned reason,
 3. As a last resort, if your pictures are personal or sensitive and you don't want to post them on the internet :
@@ -54,23 +53,11 @@ Please upload your files on my [private cloud](https://cloud.apmlt.net/s/YAdfYaj
 {{< /warning >}}
 
 
-## Getting premium user support
+## Individual user training
 
-Don't stay alone with your problems and directly book the developer to get personalized solutions. Support is given through video-conferencing with screen-sharing or on the premium group.
+Don't stay alone with your problems and directly book the developer to get personalized solutions. Support is given through video-conferencing with screen-sharing, using your owm photos.
 
-{{% row %}}
-{{% card title="Emergency support" icon="ambulance" %}}
-{{< button url="https://photo.aurelienpierre.com/private-lessons-on-retouching-with-darktable/?lang=en#book-me" icon="calendar-alt" label="Book an appointment" >}}
-{{% /card %}}
-
-{{% card title="Premium support" icon="question" %}}
-{{< button url="https://community.ansel.photos/view-group-profile/premium-support" icon="hands-helping" label="Get priority help" >}}
-{{% /card %}}
-
-{{% card title="Retouching classes" icon="chalkboard-teacher" %}}
-{{< button url="https://photo.aurelienpierre.com/private-lessons-on-retouching-with-darktable/?lang=en#book-me" icon="calendar-alt" label="Book an appointment" >}}
-{{% /card %}}
-{{% /row %}}
+{{< calcom "aurelien-pierre/darktable-ansel-editing-class-en" >}}
 
 ## Developer support
 
@@ -82,6 +69,6 @@ If you are considering joining forces for development and debugging, here is how
 {{% /card %}}
 
 {{% card title="Dev mentorship" icon="user-friends" %}}
-{{< button url="https://photo.aurelienpierre.com/private-lessons-on-retouching-with-darktable/?lang=en#book-me" icon="calendar-alt" label="Book an appointment" >}}
+{{< button url="https://cal.com/aurelien-pierre/developer-mentorship" icon="calendar-alt" label="Book an appointment" >}}
 {{% /card %}}
 {{% /row %}}

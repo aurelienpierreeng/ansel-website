@@ -34,7 +34,7 @@ Il y a déjà une quantité honorable d'informations sur l'utilisation d'Ansel. 
 {{% /card %}}
 
 {{% card title="Forum" icon="comments" %}}
-{{< button url="https://community.ansel.photos" icon="users" label="Discussions communautaires" >}}
+{{< button url="https://community.ansel.photos" icon="users" label="Discussions" >}}
 {{% /card %}}
 
 {{% card title="Chat" icon="comment-dots" %}}
@@ -53,25 +53,14 @@ Veuillez téléverser vos fichiers sur mon [cloud privé](https://cloud.apmlt.ne
 {{< /warning >}}
 
 
-## Obtenir de l'assistance utilisateur payante
+## Formation utilisateur individuelle
 
-Ne restez pas seul avec vos problèmes et prenez rendez-vous directement avec le développeur pour obtenir des solutions personnalisées. L'assistance est donnée par visio-conférence et partage d'écran.
+Ne restez pas seul avec vos problèmes et prenez rendez-vous directement avec le développeur pour obtenir des solutions personnalisées. L'assistance est donnée par visio-conférence et partage d'écran en utilisant vos propres photos.
 
-{{% row %}}
-{{% card title="Assistance urgente" icon="ambulance" %}}
-{{< button url="https://photo.aurelienpierre.com/cours-particuliers-de-retouche-sous-darktable/#book-me" icon="calendar-alt" label="Prendre RDV" >}}
-{{% /card %}}
+{{< calcom "aurelien-pierre/darktable-ansel-cours-de-retouche-fr" >}}
 
-{{% card title="Support premium" icon="question" %}}
-{{< button url="https://community.ansel.photos/view-group-profile/premium-support" icon="hands-helping" label="Obtenir de l'aide prioritaire" >}}
-{{% /card %}}
 
-{{% card title="Cours de retouche" icon="chalkboard-teacher" %}}
-{{< button url="https://photo.aurelienpierre.com/cours-particuliers-de-retouche-sous-darktable/#book-me" icon="calendar-alt" label="Prendre RDV" >}}
-{{% /card %}}
-{{% /row %}}
-
-## Soutien aux développeurs
+## Assistance aux développeurs
 
 Si vous envisagez de contribuer pour le développement et le débogage, voici comment je travaille.
 
@@ -81,6 +70,6 @@ Si vous envisagez de contribuer pour le développement et le débogage, voici co
 {{% /card %}}
 
 {{% card title="Tutorat en développement" icon="user-friends" %}}
-{{< button url="https://photo.aurelienpierre.com/cours-particuliers-de-retouche-sous-darktable/#book-me" icon="calendar-alt" label="Prendre RDV" >}}
+{{< button url="https://cal.com/aurelien-pierre/developer-mentorship" icon="calendar-alt" label="Prendre RDV" >}}
 {{% /card %}}
 {{% /row %}}

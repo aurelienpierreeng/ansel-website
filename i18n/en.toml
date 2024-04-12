@@ -31,3 +31,6 @@
 
 [find_related]
   other = "Find related pages"
+
+[training]
+  other = "Book a class"

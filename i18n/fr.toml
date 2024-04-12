@@ -43,3 +43,6 @@
 
 [find_related]
   other = "Trouver des pages similaires"
+
+[training]
+  other = "Réserver un cours"
