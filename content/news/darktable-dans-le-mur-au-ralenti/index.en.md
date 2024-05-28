@@ -553,7 +553,7 @@ Wouldn't you like to stop making habits pass as experience and mistaking fatalis
 
 Or I got mistaken since the beginning, and opensource is about giving over-complicated tools to geeks who don't really need them, while trying to convince the rest of the world that open-source is not an hyper-niche for developers ?
 
-## 4 years of work to get there
+## Four years of work to get there
 
 After 4 years of working on Darktable full-time for 70 % of minimal wage, and 2 years bearing the chronic dissatisfaction of staining my name by contributing to shit, I forked Ansel and will not go back.
 

@@ -553,7 +553,7 @@ Du coup on fait quoi pour régler le problème ? On soufre en silence ? On v
 
 Ou alors je me suis trompé depuis le début, et le logiciel libre, c'est donner des outils trop compliqués à des geeks qui n'en ont pas vraiment besoin, en essayant de convaincre le reste du monde que le libre n'est pas une hyper-niche pour développeur ???
 
-## 4 ans de travail pour en arriver là
+## Quatre ans de travail pour en arriver là
 
 Après 4 ans à avoir bossé sur Darktable à temps plus que plein pour une paie sous 70 % du salaire minimum, et 2 ans à subir l'insatisfaction chronique d'entacher mon nom en participant à faire de la merde, j'ai forké Ansel et je ne reviendrai pas en arrière.
 
