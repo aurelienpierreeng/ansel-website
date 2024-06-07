@@ -78,7 +78,7 @@
 
 <meta property="article:author" content="{{ index .Site.Author "url" }}">
 <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02" }}">
-<meta property='og:site_name' content='YOUR-SITE-NAME' />
+<meta property='og:site_name' content='{{ .Site.Title | safeHTML }}' />
 
 {{ if .Lastmod }}
 <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
