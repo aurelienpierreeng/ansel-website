@@ -16,13 +16,13 @@ while Ansel offers you this:
 {{< figure src="ansel-module-groups.png" />}}
 
 
-This is no accident, and tt's time to explain why, and why this will not be extended with customization options.
+This is no accident, and it's time to explain why, and why this will not be extended with customization options.
 
 ## Images are born from pipelines
 
 A pixel pipeline is a sequence of filters in which pixels are processed to end on a medium. Photoshop calls those filters [_layers_](https://helpx.adobe.com/photoshop/using/layer-basics.html), abiding by a methaphor inherited from paper and matte painting. Da Vinci Resolve, Blender, Natron, etc. calls them [_nodes_](https://filmmakingelements.com/everything-about-nodes-in-davinci-resolve/), abiding by a metaphor grounded in directed graphs and [flowcharts](https://en.wikipedia.org/wiki/Flowchart), best known to engineers. Both have a way of showing how those filters are organized, either with a layer stack or with the node graph (aka flowchart).
 
-The important part is, order matters.
+The important part is, __order matters__.
 
 ## A brief history of bad design
 
@@ -50,13 +50,17 @@ The cherry on the sunday is the groups are labelled by icons, for the sake of co
 
 ## Good workflows are pipeline-aware
 
-It's been 3 years that I'm paid by users to explain them the ins and outs of the software, and answering the same question over and over : where to start a workflow and how to unroll it. What still strikes me is that people with a master's degree, who read the doc and watched most of my videos, are still unable to start an image editing workflow by themselves. Either this is screaming bad design or most people with higher education are idiots. I'm verging on design here…
+It's been 3 years that I'm paid by users to explain them the ins and outs of the software, and answering the same question over and over : where to start a workflow and how to unroll it. What still strikes me is that people with a master's degree, who read the doc and watched most of my videos, are still unable to start an image editing workflow by themselves. Either this is screaming bad design or most people with higher education are idiots. Actually, even if people were idiots, it's easier to make the design idiot-proof[^3] than to expect them to grow a brain overnight, so either way the design is bad with regard to the target audience.
+
+[^3]: And I mean "idiot-proof" in a ["prevent pouring water into the acid"](https://www.youtube.com/watch?v=SH3a8ZQLA4I) way, not in a "cancel chemistry labs because acid can burn" way. It's not idiot-proof if the idiot is not allowed to do anything.
 
 If you open Photoshop, the layers stack upon each other pretty intuitively. We all worked with layers for art projects in primary school. It wouldn't strike you to start working on the bottom-most layer after you put some new stuff on top. Well, the 70-something modules of Darktable, organized in tabs by theme, in a way that doesn't account for the pipeline nor for the workflow, are guaranteed to deter the newcomers and to promote bad habits among the old-timers.
 
 Sane workflows are pipeline-aware, which means the order in which you tune the filters should be defined by where those filters sit in the pipeline. But I say pipeline-aware, and not pipeline-defined, because the beginning and the end of the pipeline (properties of the scene and of the display) should be set first, as to have a good look over what we do in-between. Especially if you are going to manipulate HDR signals on an SDR display, you need to put on your HDR sunglasses first to view your signal in SDR. But what you see is not what there is in your pipeline. Hence why the workflow doesn't follow 1:1 the pipeline, but still s pretty close to it.
 
-So how do you know when to drift from the pipeline order ? Well, you book a session with me for the demo. But there is another solution (more on that below)…
+Imagine you set a color cast in _color balance_ module, targeting highlights through the _gain_ setting. Then you find the picture too dark and brighten it with _exposure_ module. But _exposure_ comes (way) before _color balance_ in your pipe, so now you need to update the color cast setting because it will probably be too heavy on midtones. Now, convolve that with another intermediate module (or more) that would use a parametric mask on any metric of lightness or luminance… You are on for __circular editing__, a particularly unefficient kind of frustrating editing experience where any new setting invalidates the previous. Of course, there are those who think that, photography being an art, it's all a matter of opinion and preferences, so ultimately none of this matters. Art or not, a house of cards will fall entirely anytime you start messing with the lower stories, so ultimately it's about how much time you accept to waste, and this has nothing to do with opinions or preferences. I would also argue that week-end hobbyists are just as time-constrained as professional photographers : the latter for economical reasons, the former because week-ends only have 2 days and they will need to be back at the office on Monday morning with enough fun in their system to endure another week.
+
+So how do you know when to drift away from the pipeline order ? Well, you book a session with me for the demo. But there is another solution (more on that below)…
 
 In any case, offering users more options to customize the UI (and perhaps re-enforcing the initial misconception of modules being only GUI boxes) is not going to solve it. It's actually giving people more options to harm themselves. What you want and what is good for you…
 
@@ -64,17 +68,19 @@ In any case, offering users more options to customize the UI (and perhaps re-enf
 
 While Darktable has degraded into a playground for geeks where new means better and every problem calls for more funny code, Ansel is about solving simple problems the simple way, as to produce a reliable workhorse. So let's start again from the top.
 
-We have 70 modules. Though Ansel has deprecated a fair deal of them, there are still "too many", in the sense that they are all useful for some purpose but you don't need them all the time. Also the screen real-estate is limited and we can't have all of them displayed at the same time. And even if we could, presenting and Airbus dashboard to your average photographer wouldn't be nice.
+We have 70 modules. Though Ansel has deprecated a fair deal of them, there are still "too many", in the sense that they are all useful for some purpose but you don't need them all the time, and not all at the same time. Also the screen real-estate is limited and we definitely can't have all of them displayed at the same time. And even if we could, presenting and Airbus dashboard to your average photographer wouldn't be nice.
 
 So we need to chose what modules to display at what time. Emphasis on __time__.
 
 ## Unrolling the time axis
 
-It seems only natural that the time axis would be splitted into workflow steps. So the selection of all visible modules at a given time matches the ones that you will need right now and in the next minutes. Moving on to the next workflow step, you move on into the GUI and change the view. It's called a slideshow.
+Following on the idea of _just in time_, it seems only natural that the time axis would be splitted into workflow steps. So the selection of all visible modules at a given time matches the ones that you will need right now and in the next minutes. Moving on to the next workflow step, you move on into the GUI and change the view. It's called a slideshow.
 
 This draws a linear path to follow, to get some structure and guidance out of the apparent clutter. GUI are not only meant to expose controls, they are also meant to teach, communicate and advertise the available possibilities.
 
-So each tab is now a slide of our workflow slideshow. Neat, huh ?
+So each tab is now a slide of our workflow slideshow, which is closely tied to pipeline order. And structure appeared out of clutter.
+
+With some exceptions. For example, denoising modules have to happen early in the pipeline for signal consistency, yet they appear later in the workflow than, say, _color calibration_, because they work at pixel level and will generaly not change the global color cast (unless you have some serious noise damage that might shift the green/magenta axis, but that's typically above 8000 ISO). Same with sharpening algorithms : none of these will dramatically change lightness, hue or chroma as to invalidate previous (workflow-wise) global color and exposure settings, and the proper settings will also be subjected to how much you raised the picture exposure (thereby aggravating the visual strength of noise). Those exceptions to the rule are made clear by numerical analysis of the pixel filters, meaning that people who didn't read the sourcecode with prior signal processing knowledge will have no clue.
 
 ## Implementation
 
