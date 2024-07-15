@@ -28,7 +28,7 @@
             </div>
             </a>
             {{ if .HasChildren }}
-                <ul class="dropdown-menu mt-2 rounded-0" data-bs-theme="dark">
+                <ul class="dropdown-menu mt-2 rounded-0">
                 {{ range .Children }}
                   <li>
                     <a class="dropdown-item" href="{{ .URL | relLangURL }}" >
