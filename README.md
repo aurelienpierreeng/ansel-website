@@ -1,5 +1,7 @@
 ## Install
 
+You will need Hugo v0.123.x minimum to build. That's from January 2024, so you may have to install it manually because it probably isn't what you have in your distribution repository.
+
 ### This website
 
 ```bash
