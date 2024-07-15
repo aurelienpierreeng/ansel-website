@@ -13,6 +13,12 @@
 [community]
   other = "Communauté"
 
+[learn]
+  other = "Apprendre"
+
+[contributors]
+  other = "Contribuer"
+
 [before]
   other = "Avant"
 
@@ -46,3 +52,12 @@
 
 [training]
   other = "Réserver un cours"
+
+[donations]
+  other = "Dons"
+
+[donation_pitch]
+  other = "Le projet Ansel dépend de vos dons pour garder son développeur hors de l'eau pendant qu'il règle les problèmes créés par l'équipe de Darktable et son absence de gestion de projet/priorités."
+
+[donate]
+  other = "Donner"

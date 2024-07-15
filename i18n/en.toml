@@ -14,6 +14,12 @@
 [community]
   other = "Community"
 
+[learn]
+  other = "Learn"
+
+[contributors]
+  other = "Contribute"
+
 [onthispage]
   other = "On this page"
 
@@ -34,3 +40,12 @@
 
 [training]
   other = "Book a class"
+
+[donations]
+  other = "Donations"
+
+[donation_pitch]
+  other = "The Ansel project relies on your donations to keep his developer afloat while he fixes problems created by the Darktable team and its lack of project/priorities management."
+
+[donate]
+  other = "Donate"
