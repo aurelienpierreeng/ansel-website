@@ -4,6 +4,19 @@ date: 2024-07-15
 weight: 6
 ---
 
+The following assumes you pulled the Ansel source code locally, through :
+
+```bash
+$ git clone --depth 1 https://github.com/aurelienpierreeng/ansel.git
+$ cd ansel
+```
+
+This gives you a freshly initialized repository. Some days later, you will need to update it from upstream, using :
+
+```bash
+$ git pull
+```
+
 ## Update the po template file (`.pot`)
 
 This step is optional as you may directly use the `po/ansel.pot` file provided on the repository.
@@ -33,6 +46,10 @@ It will create a new `untitled.pot` file that you may rename `ansel.pot` if you 
 Open the `.po` file corresponding to your language in Poedit. In Poedit interface, go to "Translation -> Update from a POT file" and select either the `po/ansel.pot` file already on the repository or the `.pot` that you optionally generated at the previous step.
 
 Update the missing or fuzzy translations, save and send me the resulting `.po` file doing a pull request on Github or by email if you don't know how to Git.
+
+## Lost in translation ?
+
+If you have issues or questions, feel free to ask on the dedicated [Matrix translators channel](https://matrix.to/#/#ansel-translators:matrix.org).
 
 ## Notes to translators
 
