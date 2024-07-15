@@ -16,8 +16,8 @@
         {{- $currentPage := . -}}
         {{ range .Site.Menus.main -}}
           {{ $active := in $currentPage.RelPermalink .URL }}
-          <li class="nav-item md-rounded menu-item d-flex justify-content-between flex-grow">
-            <a class="nav-link {{ if $active }}active{{ end }}" href="{{ .URL | relLangURL }}" {{ if $active }} aria-current="page" {{ end }}>
+          <li class="nav-item md-rounded menu-item d-flex justify-content-between flex-grow {{ if .HasChildren }}dropdown{{ end }}">
+            <a class="nav-link {{ if $active }}active{{ end }} {{ if .HasChildren }}dropdown-toggle{{ end }}" href="{{ .URL | relLangURL }}" {{ if $active }} aria-current="page" {{ end }} {{ if .HasChildren }}role="button" data-bs-toggle="dropdown" aria-expanded="false"{{ end }}>
             {{ if .Pre }}
               <div class="menu-icon">
                 {{ printf "<i class=\"%s sys-icon\"></i>" .Pre | safeHTML }}
@@ -27,6 +27,24 @@
               {{ i18n .Identifier | default .Name }}
             </div>
             </a>
+            {{ if .HasChildren }}
+                <ul class="dropdown-menu mt-2 rounded-0" data-bs-theme="dark">
+                {{ range .Children }}
+                  <li>
+                    <a class="dropdown-item" href="{{ .URL | relLangURL }}" >
+                      {{ if .Pre }}
+                        <div class="menu-icon">
+                          {{ printf "<i class=\"%s sys-icon\"></i>" .Pre | safeHTML }}
+                        </div>
+                      {{ end }}
+                      <div class="menu-label">
+                        {{ i18n .Identifier | default .Name }}
+                      </div>
+                    </a>
+                  </li>
+                {{ end }}
+                </ul>
+            {{ end }}
           </li>
         {{ end }}
       </ul>
