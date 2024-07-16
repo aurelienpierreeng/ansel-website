@@ -4,6 +4,38 @@ date: 2024-07-14
 weight: 5
 ---
 
+## Values
+
+### Users should not have to read the manual
+
+_(Some restrictions apply)_
+
+Image processing is hard. It uses notions of optics and color "science". No matter if you shoot digital or analog, _illuminant_, _dynamic range_, _gamut_ and _chroma_ will affect your process, in ways you may not have foreseen, and it might be a good idea to understand what they mean and where they come at play. Digital has its own lot of issues, from _color spaces & management_ to _alpha compositing_. Not much we can do here, except providing documentation : you need the skills. But that is, at least, the core of what we do.
+
+Managing files and navigating in a graphical interface are things computer users have been doing for decades, using well-known paradigms that converged to pretty unified semantics. Users should not have to read a manual to discover why mouse scrolling is blocked, for example, or how to increase the opacity of a mask, or even what all those silly custom-drawn icons mean.
+
+Users should not have to read the manual because, anyway, they won't. Instead, they will annoy developers with questions already answered somewhere on the extensive docs, which are too long to read because they have to explain why too much standard stuff is not handled in a standard way.
+
+Acknowleging that, bad design loses the time of both users and developers, and it's time to cut the losses, for everybody's sake.
+
+### If it ain't broken, don't fix it
+
+Too much of Darktable "design" has started with "it would be cool if we could ...". I'll tell you what's cool : hanging good pictures of yours on your walls ASAP. Visual arts are not performing art (like music or theater), so only the result matters. Everything that comes before is overhead, and you typically want to keep it minimal. That's not to say that the process can't be enjoyed in itself. However, to enjoy the process, you need to master your tools and to bend them to __your__ will, otherwise you only fight them and the whole process amounts to frustration. Problem is, Darktable "design" puts too much effort into being different for the sake of it.
+
+In this process of adding "cool new stuff", Darktable has broken keyboard shortcuts and a lot of basic GUI behaviours, replacing clean code with spaghetti and adding more GUI clutter without ever pruning stuff.
+
+__Ansel__ has an [explicit](./design.md) design process that mandatorily starts with defined problems met by defined users. Turns out the quantity of code to write is inversely proportionnal to the amount of thinking you have done on your solution, typically to spot the root problem out of what users tell you, and find the simplest path to solution (which is often not even a software solution...).
+
+But bugs don't wait for you in the thinking, they wait only in the code you wrote. So, the more you think, the less you code, the less maintainance burden you create for yourself in the future. But of course... you need to have enough time to think things through. Essentially, that means bye bye to Saturday-afternoon, amateur-driven hacking !
+
+### Don't extend it if you can't simplify it first
+
+A lot of Darktable hacking has been done by copy-pasting code, from other parts of the software, or even from other projects, mostly because contributors don't have time nor skills to undertake large rewrites. This triggers code duplication and increases the length of functions, adding internal branching and introducing `if` and `switch case` nested sometimes on more than 4 levels, making the structure and logic more difficult to grasp and bugs more difficult (and frustrating) to chase, while being more likely to happen.
+
+In any case, when the code responsible for existing features is only growing (sometimes by a factor 10 over 4 years), it raises serious questions regarding future maintainablity, in a context where contributors stick around for no more than a couple of years, and developers have a limited time to invest. It's simply irresponsible, as it sacrifices long-term maintainability for shiny new things.
+
+Simplifying and generalizing code, through clean APIs, before adding new features is a must and Ansel only accepts code I personaly understand and have the skills to maintain. KISS.
+
 ## Basic coding logic
 
 Pull requests that don't match the minimum code quality requirements will not be accepted. These requirements aim at ensuring long-term maintainability and stability by enforcing clear, legible code structured with a simple logic.
