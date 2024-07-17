@@ -404,7 +404,7 @@ pre.mermaid img {
 .full-width,
 #content-body figure.full-width,
 #content-body table.full-width {
-  max-width: 100%;
+  max-width: 100%!important;
 }
 
 a[href^="#fn:"],
