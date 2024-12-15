@@ -393,6 +393,30 @@ pre.mermaid img {
   box-sizing: border-box;
 }
 
+#content-body blockquote {
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-left: 0.25rem solid #ddd;
+  font-size: 1.1em;
+}
+
+#content-body blockquote::before {
+  content: "“";
+  float: left;
+  font-size: 4rem;
+  line-height: 1rem;
+  margin-right: 0.5rem;
+  opacity: 0.5;
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+}
+
+#content-body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+
 #content-body ul,
 #content-body ol {
   max-width: 35rem; /* account for margins and padding */
