@@ -19,7 +19,7 @@ tags: ["darktable", "ansel", "photo editing"]
 <div class="container">
 
 {{< quote author="Ansel Adams" >}}
-Le négatif est la partition, le tirage est l'interprétation.</p>
+Le négatif est la partition, le tirage est l'interprétation.
 {{< /quote >}}
 
 <div class="lead">

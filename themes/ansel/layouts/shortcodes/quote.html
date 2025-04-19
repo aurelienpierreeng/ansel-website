@@ -1,5 +1,4 @@
 <blockquote class="col-12 col-md-6 border-secondary-subtle border-top border-bottom float-md-end my-3 my-md-1 ms-0 ms-md-3 p-2 d-flex flex-row floating-quote {{ with .Get "class" }}{{ . }}{{ end }}">
-  <div class="fs-1 align-self-start lh-sm ">&ldquo;</div>
   <div class="ps-2 py-3 quote-content">
     <span class="fs-5 lh-sm">{{ .Inner | markdownify }}</span>
     {{ with .Get "author" }}<span class="text-secondary fst-italic">— {{ . | markdownify }}</span>{{ end }}

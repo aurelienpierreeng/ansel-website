@@ -19,7 +19,7 @@ tags: ["darktable", "ansel", "photo editing"]
 <div class="container">
 
 {{< quote author="Ansel Adams" >}}
-The negative is the score, and the print is the performance.</p>
+The negative is the score, and the print is the performance.
 {{< /quote >}}
 
 <div class="lead">

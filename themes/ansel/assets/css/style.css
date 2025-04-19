@@ -446,7 +446,7 @@ pre.mermaid img {
   font-size: 1.1em;
 }
 
-#content-body blockquote::before {
+blockquote::before {
   content: "“";
   float: left;
   font-size: 4rem;

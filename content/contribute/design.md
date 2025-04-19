@@ -12,7 +12,7 @@ Design is a process by which you unroll a methodology to bring a technical solut
 
 {{< quote author="Louis Srygley" >}}
 Without requirements and design, programming is the art of adding bugs to an empty text file.
-{{< / quote >}}
+{{< /quote >}}
 
 1. __Design starts with an usecase__ : a defined task to achieve (on a picture), by a defined user, into a defined timeframe. If no usecase, then no problem to solve, then keep away from your code editor.
 2. __Design requires to know the target user__ : education/training, level of craftmanship/mastership, etc.
