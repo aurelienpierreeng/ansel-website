@@ -67,7 +67,7 @@ Free user support is typically assumed by other users.
 {{% /card %}}
 
 {{% card title="Chat" icon="comment-dots" %}}
-{{< button url="https://matrix.to/#/#r&darktable-en:matrix.org" icon="envelope" label="Matrix chat" >}}
+{{< button url="https://matrix.to/#/#ansel:matrix.org" icon="envelope" label="Matrix chat" >}}
 {{% /card %}}
 {{% /row %}}
 
@@ -77,7 +77,7 @@ Free user support is typically assumed by other users.
 {{% row %}}
 {{% card title="Bugs" icon="bug" %}}
 Everything that leads to the software crashing, producing invalid output or unusable core features is a bug.
-{{< button url="https://github.com/Aurelien-Pierre/Ansel/issues" icon="github fab" label="Bug tracker" >}}
+{{< button url="https://github.com/aurelienpierreeng/ansel/issues/" icon="github fab" label="Bug tracker" >}}
 {{% /card %}}
 {{% card title="Questions" icon="question" %}}
 If a feature seems to have been removed or to work differently, that might be a redesign, and there is always a reason behind.
@@ -92,7 +92,7 @@ If you are considering joining forces for development and debugging, here is how
 
 {{% row %}}
 {{% card title="Guidelines" icon="code-branch" %}}
-{{< button url="https://github.com/Aurelien-Pierre/Ansel/wiki" icon="github fab" label="Dev wiki" >}}
+{{< button url="/en/contribute" icon="github fab" label="Dev wiki" >}}
 {{% /card %}}
 
 {{% card title="Dev mentorship" icon="user-friends" %}}

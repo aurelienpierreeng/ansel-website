@@ -8,7 +8,7 @@ weight: 50
 
 <div class="lead my-4 ms-3">Whether you want personnalized help for your workflow and style, or you need pointers to get started with Ansel, don't stay alone with your issues.</div>
 
-Training sessions are given through video-conferencing with screen-sharing, using your own photos, and either Ansel or Darktable.
+Training sessions & editing classes are given through video-conferencing with screen-sharing, using your own photos, and either Ansel or Darktable.
 
 ## Appointments
 
@@ -65,7 +65,7 @@ I am the designer of the [scene-referred workflow](./workflows/scene-referred/) 
 
 I am trained in mechanical engineering, where I specialized in computer simulation of thermodynamics, hence my involvement in some of the most maths-heavy topics of image processing. [I play 3 music instruments](https://soundcloud.com/aurelien-pierre) (piano, nyckelharpa, Irish whistles), I compose, improvise and have taught on-and-off the piano for a decade.
 
-Music and photography share more than you would think : we operate a medium through technics, guided by theory, hoping to create something personal and touching at the end. From this, we should separate the goals from the means, learn to master the instruments through relentless training, and break free from the useless dichotomy between technics and arts. The point of mastering technics is to stop thinking about it and achieve the results we have in mind. Now, photography being non-performative, the lack of technical craftsmanship can be hidden by trial-and-errors processes and careful culling/editing, but that can end up being very unreliable and ultimately frustrating.
+Music and photography share more than you would think : we operate a medium through technics, guided by theory, hoping to create something personal and touching at the end. From this, we should separate the goals from the means, learn to master the instruments through relentless training, and break free from the useless dichotomy between technics and arts. The point of mastering technics is to stop thinking about it and achieve the results we have in mind. Now, photography being non-performative, the lack of technical craftsmanship can be hidden by trial-and-errors processes and careful culling/editing, but that can end up being very unreliable and the feeling of constantly battling against hardware and software can be very frustrating.
 
 I build Ansel as I would like my music instruments to be built : with state-of-the-art technics and science serving artistic expression, such that the creative process could focus on expressivity and get the technical concerns mostly out of the way.
 

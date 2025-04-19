@@ -136,6 +136,27 @@ FootnoteReturnLinkContents = "↩"
       target = 'content/doc/'
       lang= "fr"
 
+  # Deal with partially-translated sections
+  [[module.mounts]]
+    source = 'content/contribute/'
+    target = 'content/contribute/'
+    lang= "fr"
+
+  [[module.mounts]]
+    source = 'content/news/'
+    target = 'content/news/'
+    lang= "fr"
+
+  [[module.mounts]]
+    source = 'content/workflows/'
+    target = 'content/workflows/'
+    lang= "fr"
+
+  [[module.mounts]]
+    source = 'content/resources/'
+    target = 'content/resources/'
+    lang= "fr"
+
 [outputs]
   home = ["HTML", "JSON", "RSS"]
 
