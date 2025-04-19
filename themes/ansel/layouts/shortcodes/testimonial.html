@@ -1,0 +1,18 @@
+
+<div class="row align-items-center">
+  <div class="col-4 text-center">
+    <hr class="divider-reverse mt-0">
+    <i class="fa-user fas text-center mb-2 text-light-emphasis" style="font-size: 5em"></i>
+    <h5 class="text-center">{{ .Get "name" }}</h5>
+    <i class="fa-globe fas me-1"></i>{{ .Get "location" }}
+    {{ if .Get "url" }}
+    — <i class="fa-link fas me-1"></i><a href="{{ .Get "url" }}" target="_blank">{{  trim (.Get "url") "https://" }} </a>
+    {{ end }}
+    <hr class="divider mb-0">
+  </div>
+  <div class="col-8">
+    <div class="speech-bubble round l">
+      {{ .Inner }}
+    </div>
+  </div>
+</div>
