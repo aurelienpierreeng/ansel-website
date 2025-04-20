@@ -34,3 +34,23 @@ Mais il a également construit un dispositif complet pour effectuer la numérisa
 <div class="text-center">
 {{< button url="https://static.ansel.photos/article-lumiere-ponctuelle-32-4.pdf" label="Télécharger le livre numérique (PDF)" icon="download fas" class="">}}
 </div>
+
+
+## Résumé des réglages dans Ansel
+
+Ces réglages supposent que vous numérisez des négatifs N&B sous une lumière verte quasi-monochromatique avec un appareil photo numérique.
+
+- Télécharger le profil de couleur [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) et le placer dans `~./config/ansel/color/in`.
+- Ouvrir le scan de négatif N&B dans Ansel,
+- Régler le module _dématriçage_ en utilisant le mode VNG4,[^2]
+- Régler le module _profil de couleur d'entrée_ pour utiliser `IdentityRGB-elle-V2-g10.icc` comme profil d'entrée et comme profil de travail,
+- Régler le module _calibration des couleurs_:
+  - dans l'onglet _CAT_, régler l'adaptation sur _sans (contourner)_,
+  - dans l'onglet _N&B_, régler le canal vert à 1,0 et les canaux rouge/bleu à 0,0.
+- Se reporter au livre pour le réglage du module _diffusion ou netteté_.
+
+Ces réglages permettent d'éliminer toute possible diaphonie (_cross-talk_) entre canaux, aussi bien liée au dématriçage (pouvant utiliser des méthodes collaboratives entre canaux, pour les méthodes autres que VNG4) qu'aux conversions d'espace de couleur (dont la diaphonie est intégrée par construction dans le calcul matriciel effectué à l'application du profil). Ainsi, toute aberration chromatique liée à la réfraction optique variable suivant la longueur d'onde lumineuse est éliminée, et en scannant sous une lumière verte quasi-monochromatique, la netteté de la numérisation est maximale car seuls les photo-sites verts de l'appareil photo sont utilisés. En pratique, cela revient à supprimer la trichromie du pipeline graphique.
+
+Bien évidemment, cela ne fonctionnera pas pour des négatifs couleurs et des diapositives, qui demanderont une lumière blanche à spectre complet et une gestion trichromatique.
+
+[^2]: CHANG, Edward, CHEUNG, Shiufun, et PAN, Davis Y. Color filter array recovery using a threshold-based variable number of gradients. In : Sensors, Cameras, and Applications for Digital Photography. SPIE, 1999. p. 36-43. <https://doi.org/10.1117/12.342861>

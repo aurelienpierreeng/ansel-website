@@ -36,3 +36,23 @@ _Please note that Alain is a French speaker and this book was mostly translated 
 <div class="text-center">
 {{< button url="https://static.ansel.photos/article-lumiere-ponctuelle-en-compress.pdf" label="Download the eBook (PDF)" icon="download fas" class="">}}
 </div>
+
+
+## Summary of Ansel settings
+
+These settings assume you scan B&W negatives using quasi-monochromatic green light with a digital camera.
+
+- Download the color profile [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) and put it into `~./config/ansel/color/in`.
+- Open your film scan into Ansel,
+- Set the _demosaicing_ module to use VNG4[^2] mode,
+- Set the _input color profile_ module to use `IdentityRGB-elle-V2-g10.icc` as input profile and working profile,
+- Set _color calibration_ module :
+  - in the  _CAT_ tab, set the adaptation to _none (bypass)_,
+  - in the _B&W_ tab, set the green channel to 1,0 and the blue/red channels to 0,0.
+- See the book for settings of _diffuse or sharpen_.
+
+These settings allow to avoid any possible cross-talk between channels, either arising from demosaicing (that can use collaborative methods between channels, for methods other than VNG4) or from color spaces conversions (in which cross-talk is built-in by design into the matrix calculus). This way, any possible chromatic aberration linked to optical refraction, which varies depending on light wavelength, is removed and, if you scan under quasi-monochromatic green light, the sharpness of your scan will be maximum because only the green photosites of the camera sensor will be used. In practice, this is equivalent to completely removing trichromy from the graphic pipeline.
+
+This, of course, will not work for color negatives and slides, which will require a broad-spectrum white light and a trichromatic color management.
+
+[^2]: CHANG, Edward, CHEUNG, Shiufun, et PAN, Davis Y. Color filter array recovery using a threshold-based variable number of gradients. In : Sensors, Cameras, and Applications for Digital Photography. SPIE, 1999. p. 36-43. <https://doi.org/10.1117/12.342861>
