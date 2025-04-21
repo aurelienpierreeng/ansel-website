@@ -40,7 +40,13 @@ Mais il a également construit un dispositif complet pour effectuer la numérisa
 
 Ces réglages supposent que vous numérisez des négatifs N&B sous une lumière verte quasi-monochromatique avec un appareil photo numérique.
 
-- Télécharger le profil de couleur [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) et le placer dans `~./config/ansel/color/in`.
+- Télécharger le profil de couleur [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) :
+  - pour Linux/Mac :
+    - `~./config/ansel/color/in`
+    - `~./config/ansel/color/out`
+  - pour Windows :
+    - `./AppData/Local/ansel/Color/In`
+    - `./AppData/Local/ansel/Color/Out`
 - Ouvrir le scan de négatif N&B dans Ansel,
 - Régler le module _dématriçage_ en utilisant le mode VNG4,[^2]
 - Régler le module _profil de couleur d'entrée_ pour utiliser `IdentityRGB-elle-V2-g10.icc` comme profil d'entrée et comme profil de travail,

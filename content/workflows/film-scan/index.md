@@ -42,7 +42,13 @@ _Please note that Alain is a French speaker and this book was mostly translated 
 
 These settings assume you scan B&W negatives using quasi-monochromatic green light with a digital camera.
 
-- Download the color profile [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) and put it into `~./config/ansel/color/in`.
+- Download the color profile [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) and put it into both folders:
+  - for Linux/Mac:
+    - `~./config/ansel/color/in`
+    - `~./config/ansel/color/out`
+  - for Windows:
+    - `./AppData/Local/ansel/Color/In`
+    - `./AppData/Local/ansel/Color/Out`
 - Open your film scan into Ansel,
 - Set the _demosaicing_ module to use VNG4[^2] mode,
 - Set the _input color profile_ module to use `IdentityRGB-elle-V2-g10.icc` as input profile and working profile,
