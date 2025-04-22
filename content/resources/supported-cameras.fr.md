@@ -14,4 +14,6 @@ Légende de la prise en charge :
 - <span class='badge rounded-circle text-bg-warning square-badge'>?</span> État du support inconnu parce que des échantillons bruts sont manquants. Envisagez d'envoyer des images sur <https://raw.pixls.us>
 - <span class='badge rounded-circle text-bg-info square-badge'>+</span> Appareil et format supporté par le repli sur Libraw.
 
+_Ce tableau est généré automatiquement par analyse syntaxique du code source de Rawspeed et Libraw. Aucune vérification humaine n'est effectuée._
+
 {{< rawspeed >}}

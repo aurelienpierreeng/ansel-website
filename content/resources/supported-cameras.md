@@ -14,4 +14,6 @@ Support legend:
 - <span class='badge rounded-circle text-bg-warning square-badge'>?</span> Support state unknown because raw samples are missing. Consider submitting images to <https://raw.pixls.us>
 - <span class='badge rounded-circle text-bg-info square-badge'>+</span> Camera and format supported by Libraw fallback.
 
+_This table is automatically generated from parsing Rawspeed and Libraw source code. No human verification has been made_.
+
 {{< rawspeed >}}
