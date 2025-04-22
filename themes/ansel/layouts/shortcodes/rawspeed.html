@@ -95,7 +95,7 @@
 
     {{/* We handle support for each mode/format */}}
     {{ $modes := $previous.mode }}
-    {{ $current_mode := "Default format" }}
+    {{ $current_mode := "Default raw" }}
     {{ with (index . "-mode") }}
       {{ $current_mode = . }}
     {{ end }}
