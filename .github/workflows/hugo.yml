@@ -31,6 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.128.2
+    environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
