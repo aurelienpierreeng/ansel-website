@@ -772,3 +772,13 @@ details[open]>summary::marker {
   top: calc(50% - var(--arrow-w) - var(--border-size));
   right: calc(-1 * var(--arrow-h) * 2 - 2.5*var(--border-size));
 }
+
+.square-badge {
+  padding: 0;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1em;
+}

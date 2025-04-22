@@ -1,0 +1,118 @@
+
+{{ $data := dict }}
+
+{{ with resources.GetRemote "https://raw.githubusercontent.com/darktable-org/rawspeed/refs/heads/develop/data/cameras.xml" }}
+{{ $data = . | transform.Unmarshal }}
+{{ end }}
+
+{{ $libraw := dict }}
+{{ with resources.GetRemote "https://raw.githubusercontent.com/LibRaw/LibRaw/refs/heads/master/src/tables/cameralist.cpp" }}
+{{ $libraw = . }}
+{{ end }}
+
+{{ $libraw_cameras := strings.FindRESubmatch `"(.+?)",` $libraw.Content }}
+
+{{/*
+  Build the unique set of maker/model.
+  This is because each RAW mode is recorded as a new <camera> object,
+  but we want one object per camera where modes are concatenated.
+*/}}
+{{ $cameras := dict }}
+{{ with $data.Camera }}
+  {{ range . }}
+    {{ $maker := (index .ID "-make") | default (index . "-make") }}
+    {{ $model := (index .ID "-model") | default (index . "-model") }}
+    {{/*
+      Monkey business: some camera models have maker brand in their name, some don't.
+      Ensure all models have no maker, and makermodel always have both
+      */}}
+    {{ $model = replaceRE $maker "" $model }}
+    {{ $makermodel := printf "%s %s" $maker $model }}
+
+    {{ $previous := index $cameras $makermodel }}
+
+    {{/* Support is explicitly defined only if partial or non-existent */}}
+    {{ $value := "<span class='badge rounded-circle text-bg-success square-badge'>✓</span>" }}
+    {{ $try_libraw := false }}
+    {{ with (index . "-supported") }}
+      {{ if eq . "no" }}
+        {{ $value = "<span class='badge rounded-circle text-bg-danger square-badge'>✗</span>" }}
+        {{ $try_libraw = true }}
+      {{ else if strings.Contains . "no-samples"}}
+        {{ $value = "<span class='badge rounded-circle text-bg-warning square-badge'>?</span>" }}
+        {{ $try_libraw = true }}
+      {{ end }}
+    {{ end }}
+
+    {{ if $try_libraw }}
+      {{ range $libraw_cameras }}
+        {{ $cam := index . 1 }}
+        {{ if strings.Contains (upper $cam) (upper $makermodel) }}
+          {{/* printf "%s : %s || \n\n" $cam $makermodel */}}
+          {{ $value = "<span class='badge rounded-circle text-bg-info square-badge'>+</span>" }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ $modes := $previous.mode }}
+    {{ $current_mode := "Default format" }}
+    {{ with (index . "-mode") }}
+      {{ $current_mode = . }}
+    {{ end }}
+    {{ if $modes }}
+      {{ $modes = printf "%s<br />%s %s" $modes $value $current_mode }}
+    {{ else }}
+      {{ $modes = printf "%s %s" $value $current_mode }}
+    {{ end }}
+
+    {{ $aliases := $previous.aliases }}
+    {{ with .Aliases }}
+      {{ with .Alias }}
+        {{ $type := printf "%T" . }}
+        {{ $value = "" }}
+        {{ if eq $type "string" }}
+          {{ $value = . }}
+        {{ else if eq $type "[]interface {}" }}
+          {{ $list := slice }}
+          {{ range . }}
+            {{ $ttype := printf "%T" . }}
+            {{ if eq $ttype "map[string]interface {}" }}
+              {{ $list = $list | append (index . "-id") }}
+            {{ else if eq $ttype "string" }}
+              {{ $list = $list | append . }}
+            {{ end }}
+          {{ end }}
+          {{ $value = delimit $list ", " }}
+        {{ else if eq $type "map[string]interface {}" }}
+          {{ $value = (index . "-id") }}
+        {{ else }}
+          {{ print . $type }}
+        {{ end }}
+
+        {{ if $aliases }}
+          {{ $aliases = printf "%s, %s" $aliases $value }}
+        {{ else }}
+          {{ $aliases = $value }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ $cameras = merge $cameras (dict $makermodel (dict "make" $maker "model" $model "mode" $modes "aliases" $aliases) ) }}
+  {{ end }}
+{{ end }}
+
+{{ with $cameras }}
+<table class="table table-striped table-hover w-100 full-width">
+  <thead class="table-dark">
+    <th>Maker</th><th>Model</th><th>Commercial aliases</th><th>Format / Supported</th>
+  </thead>
+  {{ range . }}
+    <tr>
+      <td>{{ index . "make" }}</td>
+      <td>{{ index . "model" }}</td>
+      <td>{{ index . "aliases"  }}</td>
+      <td>{{ index . "mode" | safeHTML}}</td>
+    </tr>
+  {{ end }}
+</table>
+{{ end }}

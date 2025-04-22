@@ -226,7 +226,7 @@ Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to
 {{% /card %}}
 {{% card title="Cameras" icon="camera" %}}
 Ansel uses Rawspeed and Libraw to decode raw photographs. New cameras may need up to 24 months to be fully supported after their commercial release.
-{{< button url="https://aurelienpierreeng.github.io/rawspeed/CameraSupport.html" label="Supported cameras" icon="wrench" >}}
+{{< button url="/en/resources/supported-cameras" label="Supported cameras" icon="wrench" >}}
 {{% /card %}}
 {{% card title="Languages" icon="language" %}}
 The software is integrally translated in English, French, Italian and simplified Chinese. Partial translations are available in German, Spanish, Portugese, Ukranian, etc.

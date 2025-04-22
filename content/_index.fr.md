@@ -223,7 +223,7 @@ Ansel est basé sur darktable 4.0 et est entièrement compatible avec les XMP de
 {{% /card %}}
 {{% card title="Appareils photos" icon="camera" %}}
 Ansel utilise Rawspeed et Libraw pour décoder les photos brutes. Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le marché pour être entièrement supportés.
-{{< button url="https://aurelienpierreeng.github.io/rawspeed/CameraSupport.html" label="Appareils pris en charge" icon="wrench" >}}
+{{< button url="/fr/resources/supported-cameras" label="Appareils pris en charge" icon="wrench" >}}
 {{% /card %}}
 {{% card title="Langues" icon="language" %}}
 Le logiciel est intégralement traduit en anglais, français et chinois simplifié. Des traductions partielles sont disponibles en allemand, espagnol, portugais, ukrainien, etc.
