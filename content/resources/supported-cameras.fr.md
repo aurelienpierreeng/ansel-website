@@ -11,10 +11,10 @@ Ansel utilise la librairie [Rawspeed](https://darktable-org.github.io/rawspeed/)
 
 Légende de la prise en charge :
 
-- <span class='badge rounded-circle text-bg-success square-badge'>✓</span> Appareil et format supportés par Rawspeed. En cas de problème, soumettre un [rapport de bug](https://github.com/darktable-org/rawspeed/issues).
+- <span class='badge rounded-circle text-bg-success square-badge'>✓</span> Appareil et format supportés par Rawspeed. En cas de problème, soumettre un [rapport de bug](https://github.com/darktable-org/rawspeed/issues). Les appareils ayant tous leurs formats supportés ainsi que des profils de bruit peuvent être considérés comme ayant un support de haute qualité.
 - <span class='badge rounded-circle text-bg-danger square-badge'>✗</span> Appareil et format non supportés par Rawspeed et Libraw,
 - <span class='badge rounded-circle text-bg-warning square-badge'>?</span> État du support inconnu parce que des échantillons bruts sont manquants. Envisagez d'envoyer des images sur <https://raw.pixls.us>
-- <span class='badge rounded-circle text-bg-info square-badge'>+</span> Appareil et format supporté par le repli sur Libraw.
+- <span class='badge rounded-circle text-bg-info square-badge'>+</span> Appareil et format supporté via le repli sur Libraw. Ce repli peut être de plus ou moins bonne qualité.
 
 _Ce tableau est généré automatiquement par analyse syntaxique du code source de Rawspeed et Libraw. Aucune vérification humaine n'est effectuée._
 

@@ -11,10 +11,10 @@ Ansel uses [Rawspeed](https://darktable-org.github.io/rawspeed/) library to deco
 
 Support legend:
 
-- <span class='badge rounded-circle text-bg-success square-badge'>✓</span> Camera and format supported by Rawspeed. In case of problems, submit [bug reports](https://github.com/darktable-org/rawspeed/issues).
+- <span class='badge rounded-circle text-bg-success square-badge'>✓</span> Camera and format supported by Rawspeed. In case of problems, submit [bug reports](https://github.com/darktable-org/rawspeed/issues). Cameras that have all their formats supported and noise profiles can be considered as having high-quality support.
 - <span class='badge rounded-circle text-bg-danger square-badge'>✗</span> Camera and format unsupported by Rawspeed and Libraw,
 - <span class='badge rounded-circle text-bg-warning square-badge'>?</span> Support state unknown because raw samples are missing. Consider submitting images to <https://raw.pixls.us>
-- <span class='badge rounded-circle text-bg-info square-badge'>+</span> Camera and format supported by Libraw fallback.
+- <span class='badge rounded-circle text-bg-info square-badge'>+</span> Camera and format supported by Libraw fallback. This fallback can be higher or lower quality.
 
 _This table is automatically generated from parsing Rawspeed and Libraw source code. No human verification has been made_.
 
