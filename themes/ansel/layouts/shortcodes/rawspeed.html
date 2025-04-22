@@ -1,21 +1,19 @@
+{{/* Extract Libraw supported cameras from the .cpp file. They are declared as `"maker model",` */}}
+{{ $libraw_cameras := slice }}
+{{ with resources.GetRemote "https://raw.githubusercontent.com/LibRaw/LibRaw/refs/heads/master/src/tables/cameralist.cpp" }}
+{{ $libraw_cameras = strings.FindRESubmatch `"(.+?)",` .Content }}
+{{ end }}
 
+{{/* Get Rawspeed XML camera database */}}
 {{ $data := dict }}
-
 {{ with resources.GetRemote "https://raw.githubusercontent.com/darktable-org/rawspeed/refs/heads/develop/data/cameras.xml" }}
 {{ $data = . | transform.Unmarshal }}
 {{ end }}
 
-{{ $libraw := dict }}
-{{ with resources.GetRemote "https://raw.githubusercontent.com/LibRaw/LibRaw/refs/heads/master/src/tables/cameralist.cpp" }}
-{{ $libraw = . }}
-{{ end }}
-
-{{ $libraw_cameras := strings.FindRESubmatch `"(.+?)",` $libraw.Content }}
-
 {{/*
   Build the unique set of maker/model.
-  This is because each RAW mode is recorded as a new <camera> object,
-  but we want one object per camera where modes are concatenated.
+  This is because each RAW mode/format is recorded as a new <camera> object,
+  but we want one object per camera where modes/formats are concatenated.
 */}}
 {{ $cameras := dict }}
 {{ with $data.Camera }}
@@ -31,7 +29,7 @@
 
     {{ $previous := index $cameras $makermodel }}
 
-    {{/* Support is explicitly defined only if partial or non-existent */}}
+    {{/* Support is explicitly defined only if partial or non-existent, no news = good news */}}
     {{ $value := "<span class='badge rounded-circle text-bg-success square-badge'>✓</span>" }}
     {{ $try_libraw := false }}
     {{ with (index . "-supported") }}
@@ -44,6 +42,11 @@
       {{ end }}
     {{ end }}
 
+    {{/*
+      In case Rawspeed doesn't support the camera×format, try to find if Libraw handles it.
+      The caveat is Libraw doesn't reference cameras by the same name, and adds the possible hacky
+      methods used, so we can only use a fuzzy search and hope that the results are consistent.
+    */}}
     {{ if $try_libraw }}
       {{ range $libraw_cameras }}
         {{ $cam := index . 1 }}
@@ -54,6 +57,7 @@
       {{ end }}
     {{ end }}
 
+    {{/* We handle support for each mode/format */}}
     {{ $modes := $previous.mode }}
     {{ $current_mode := "Default format" }}
     {{ with (index . "-mode") }}
@@ -65,34 +69,40 @@
       {{ $modes = printf "%s %s" $value $current_mode }}
     {{ end }}
 
+    {{/*
+        Aliases are a monkey business again.
+        First, the are recalled in all camera objects, so there will be duplicates.
+        Then, they can be defined as string, dictionnary, list of dictionnaries, or list of strings.
+        Hugo doesn't have type checks so we need to use `printf "%T"` to find out what we are looking at.
+    */}}
     {{ $aliases := $previous.aliases }}
     {{ with .Aliases }}
       {{ with .Alias }}
+        {{ $list := slice }}
+
+        {{/* Handle all possible types */}}
         {{ $type := printf "%T" . }}
-        {{ $value = "" }}
-        {{ if eq $type "string" }}
-          {{ $value = . }}
-        {{ else if eq $type "[]interface {}" }}
-          {{ $list := slice }}
+        {{ if eq $type "string" }}<!-- string -->
+          {{ $list = $list | append . }}
+        {{ else if eq $type "map[string]interface {}" }}<!-- dictionnary -->
+          {{ $list = $list | append (index . "-id") }}
+        {{ else if eq $type "[]interface {}" }}<!-- list of something -->
           {{ range . }}
             {{ $ttype := printf "%T" . }}
-            {{ if eq $ttype "map[string]interface {}" }}
-              {{ $list = $list | append (index . "-id") }}
-            {{ else if eq $ttype "string" }}
+            {{ if eq $ttype "string" }}<!-- something is a string -->
               {{ $list = $list | append . }}
+            {{ else if eq $ttype "map[string]interface {}" }}<!-- something is a dictionnary -->
+              {{ $list = $list | append (index . "-id") }}
             {{ end }}
           {{ end }}
-          {{ $value = delimit $list ", " }}
-        {{ else if eq $type "map[string]interface {}" }}
-          {{ $value = (index . "-id") }}
-        {{ else }}
-          {{ print . $type }}
+        {{ else }}<!-- something else, not supported: will happen if Rawspeed changes its XML structure -->
+          {{ errorf "The alias type %q is unsupported for element %s" $type . }}
         {{ end }}
 
         {{ if $aliases }}
-          {{ $aliases = printf "%s, %s" $aliases $value }}
+          {{ $aliases = $aliases | append $list }}
         {{ else }}
-          {{ $aliases = $value }}
+          {{ $aliases = $list }}
         {{ end }}
       {{ end }}
     {{ end }}
@@ -110,7 +120,7 @@
     <tr>
       <td>{{ index . "make" }}</td>
       <td>{{ index . "model" }}</td>
-      <td>{{ index . "aliases"  }}</td>
+      <td>{{ delimit ( (index . "aliases") | uniq ) ", "  }}</td>
       <td>{{ index . "mode" | safeHTML}}</td>
     </tr>
   {{ end }}
