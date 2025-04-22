@@ -55,11 +55,15 @@
     {{ $model = replaceRE $maker "" $model }}
     {{ $makermodel := printf "%s %s" $maker $model }}
 
+    {{/* Recall the previous entry for this camera if any, we will merge info into it */}}
     {{ $previous := index $cameras $makermodel }}
+    {{ $support_fields := index $previous "support_fields" | default 0 }}
+    {{ $supported_fields := index $previous "supported_fields" | default 0 }}
 
     {{/* Support is explicitly defined only if partial or non-existent, no news = good news */}}
     {{ $value := "<span class='badge rounded-circle text-bg-success square-badge'>✓</span>" }}
     {{ $try_libraw := false }}
+    {{ $support_fields = add $support_fields 1 }}
     {{ with (index . "-supported") }}
       {{ if eq . "no" }}
         {{ $value = "<span class='badge rounded-circle text-bg-danger square-badge'>✗</span>" }}
@@ -68,6 +72,8 @@
         {{ $value = "<span class='badge rounded-circle text-bg-warning square-badge'>?</span>" }}
         {{ $try_libraw = true }}
       {{ end }}
+    {{ else }}
+      {{ $supported_fields = add $supported_fields 1 }}
     {{ end }}
 
     {{/*
@@ -80,7 +86,9 @@
         {{ $cam := index . 1 }}
         {{ if strings.Contains (upper $cam) (upper $makermodel) }}
           {{/* printf "%s : %s || \n\n" $cam $makermodel */}}
-          {{ $value = "<span class='badge rounded-circle text-bg-info square-badge'>+</span>" }}
+          {{ $value = "<span class='badge rounded-circle text-bg-info square-badge'>-</span>" }}
+          {{ $support_fields = add $support_fields 1 }}
+          {{ $supported_fields = add $supported_fields 1 }}
         {{ end }}
       {{ end }}
     {{ end }}
@@ -141,8 +149,9 @@
       {{ end }}
     {{ end }}
 
+    {{/* Fetch noise profile if any */}}
     {{ $noiseprofile := index $noiseprofiles $makermodel }}
-    {{ $cameras = merge $cameras (dict $makermodel (dict "make" $maker "model" $model "mode" $modes "aliases" $aliases "noise" $noiseprofile) ) }}
+    {{ $cameras = merge $cameras (dict $makermodel (dict "make" $maker "model" $model "mode" $modes "aliases" $aliases "noise" $noiseprofile "support_fields" $support_fields "supported_fields" $supported_fields)) }}
   {{ end }}
 {{ end }}
 
@@ -151,19 +160,35 @@
 <figcaption class="my-0 py-0">Generated on {{  now.Format "2006-01-02" }}</figcaption>
 <table class="table table-striped table-hover w-100 full-width">
   <thead class="table-dark">
-    <th>Maker</th><th>Model</th><th>Commercial aliases</th><th>Format / Supported</th><th>Noise profiles</th>
+    <th>{{ i18n "maker" }}</th><th>{{ i18n "model" }}</th><th>{{ i18n "aliases" }}</th><th>{{ i18n "format-supported" }}</th><th>{{ i18n "noiseprofiles" }}</th><th>{{ i18n "support-quality" }}</th>
   </thead>
   {{ range . }}
     <tr>
-      <td>{{ index . "make" }}</td>
-      <td>{{ index . "model" }}</td>
+      <td style="hyphens: none; text-wrap: nowrap;">{{ index . "make" }}</td>
+      <td style="hyphens: none; text-wrap: nowrap;">{{ index . "model" }}</td>
       <td>{{ delimit ( (index . "aliases") | uniq ) ", "  }}</td>
-      <td>{{ index . "mode" | safeHTML}}</td>
+      <td style="hyphens: none; text-wrap: nowrap;">{{ index . "mode" | safeHTML}}</td>
+
+      {{ $available_features := add (index . "support_fields") 1 }} <!-- noise profiles are added to features now -->
+      {{ $supported_features := index . "supported_fields" }}
 
       {{ with (index . "noise") }}
-        <td>{{ .min }}-{{ .max }} ISO</td>
+        <td>✓</td>
+        {{ $supported_features = add $supported_features 1 }}
       {{ else }}
         <td>✗</td>
+      {{ end }}
+
+      {{ if eq $supported_features 0 }}
+        <td>💩</td><!-- no support -->
+      {{ else if eq $available_features $supported_features }}
+        <td>🏆</td><!-- all supportable features are supported -->
+      {{ else if eq (sub $available_features $supported_features) 1 }}
+        <td>🥈</td><!-- 1 supportable feature is not supported, the rest are -->
+      {{ else if eq (sub $available_features $supported_features) 2 }}
+        <td>🥉</td><!-- 2 supportable features are not supported, the rest are -->
+      {{ else }}
+        <td>⁉️</td><!-- more than 2 features are not supported -->
       {{ end }}
     </tr>
   {{ end }}

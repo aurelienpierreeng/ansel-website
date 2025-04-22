@@ -49,3 +49,21 @@
 
 [donate]
   other = "Donate"
+
+[maker]
+  other = "Maker"
+
+[model]
+  other = "Model"
+
+[aliases]
+  other = "Aliases"
+
+[format-supported]
+  other = "RAW formats"
+
+[noiseprofiles]
+  other = "Noise profiles"
+
+[support-quality]
+  other = "Support quality"

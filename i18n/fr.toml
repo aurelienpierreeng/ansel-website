@@ -61,3 +61,21 @@
 
 [donate]
   other = "Donner"
+
+[maker]
+  other = "Fabricant"
+
+[model]
+  other = "Modèle"
+
+[aliases]
+  other = "Alias"
+
+[format-supported]
+  other = "Formats RAW"
+
+[noiseprofiles]
+  other = "Profils de bruit"
+
+[support-quality]
+  other = "Qualité du support"
