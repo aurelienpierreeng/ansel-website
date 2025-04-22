@@ -40,10 +40,16 @@
 {{ $cameras := dict }}
 {{ with $data.Camera }}
   {{ range . }}
+    {{/* Some cameras have a "pretty" name in their ID field. Some other don't. Use it when available */}}
     {{ $maker := (index .ID "-make") | default (index . "-make") }}
     {{ $model := (index .ID "-model") | default (index . "-model") }}
+
+    {{/* Some aliases are declared in the main name, separated by `/` */}}
+    {{ $dirty_aliases := split $model "/" }}
+    {{ $model = index $dirty_aliases 0 }}
+
     {{/*
-      Monkey business: some camera models have maker brand in their name, some don't.
+      Monkey business: some camera models have maker brand in their "not pretty" name, some don't.
       Ensure all models have no maker, and makermodel always have both
       */}}
     {{ $model = replaceRE $maker "" $model }}
@@ -98,6 +104,12 @@
         Hugo doesn't have type checks so we need to use `printf "%T"` to find out what we are looking at.
     */}}
     {{ $aliases := $previous.aliases }}
+    {{ if $aliases }}
+      {{ $aliases = $aliases | append (after 1 $dirty_aliases) }}
+    {{ else }}
+      {{ $aliases = (after 1 $dirty_aliases) }}
+    {{ end }}
+
     {{ with .Aliases }}
       {{ with .Alias }}
         {{ $list := slice }}
