@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.128.2
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Install Hugo CLI
         run: |
@@ -41,9 +43,6 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v2
       - name: Refresh modules
         run: |
           hugo mod get -u ./...
@@ -56,50 +55,27 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v2
       - name: Upload page artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-      - name: Upload folder artifact
-        uses: actions/upload-artifact@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Check HTML with HTMLProofer
+        uses: chabad360/htmlproofer@master
         with:
-          path: ./public
-
-  # Check broken links job
-  check:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          path: ./public
-      - name: List files
-        run: |
-          ls -R
+          directory: ./public
       - name: Check HTML with HTMLTest
         uses: wjdp/htmltest-action@master
         with:
-          config: ./public/artifact/.htmltest.yml
+          config: ./public/.htmltest.yml
       - name: Archive htmltest results
         uses: actions/upload-artifact@v4
         with:
           name: htmltest-report
           path: tmp/.htmltest/htmltest.log
           retention-days: 15 # Default is 90 days
-      - name: Check HTML with HTMLProofer
-        uses: chabad360/htmlproofer@master
-        with:
-          directory: ./public
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
