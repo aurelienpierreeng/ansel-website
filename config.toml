@@ -78,6 +78,47 @@ timeout = "360s"
     title = 'Ansel'
     languagename = "Français"
     weight = 2
+  [languages.de]
+    title = 'Ansel'
+    languagename = "Deutsch"
+    weight = 3
+  [languages.eo]
+    title = 'Ansel'
+    languageName = "Esperanto"
+    weight = 5
+  [languages.es]
+    title = 'Ansel'
+    languagename = "Español"
+    weight = 6
+  [languages.gl]
+    title = 'Ansel'
+    languagename = "Galician"
+    weight = 7
+  [languages.it]
+    title = 'Ansel'
+    languagename = "Italian"
+    weight = 8
+  [languages.pl]
+    title = 'Ansel'
+    languagename = "Polish"
+    weight = 9
+  [languages.pt_br]
+    title = 'Ansel'
+    languagename = "Português"
+    weight = 10
+  [languages.uk]
+    title = 'Ansel'
+    languagename = "Ukrainian"
+    weight = 11
+  [languages.nl]
+    title = 'Ansel'
+    languagename = "Dutch"
+    weight = 12
+  [languages.ja]
+    title = 'Ansel'
+    languagename = "Japanese"
+    weight = 13
+
 
 [markup]
   [markup.tableOfContents]
@@ -122,9 +163,18 @@ FootnoteReturnLinkContents = "↩"
     target = 'content'
   [[module.imports]]
     disable = false
-    ignoreConfig = true
+    ignoreConfig = false
     ignoreImports = true
     path = "github.com/aurelienpierreeng/ansel-doc"
+
+    # Get translations and auto-gen tools
+    [[module.imports.mounts]]
+      source = 'tools'
+      target = 'content/doc/tools'
+
+    [[module.imports.mounts]]
+      source = 'po'
+      target = 'content/doc/po'
 
     [[module.imports.mounts]]
       source = 'content/'
@@ -132,9 +182,59 @@ FootnoteReturnLinkContents = "↩"
       lang= "en"
 
     [[module.imports.mounts]]
-      source = 'content/'
+      source = '_gen/fr/content/'
       target = 'content/doc/'
       lang= "fr"
+
+    [[module.imports.mounts]]
+      source = '_gen/de/content/'
+      target = 'content/doc/'
+      lang= "de"
+
+    [[module.imports.mounts]]
+      source = '_gen/eo/content/'
+      target = 'content/doc/'
+      lang= "eo"
+
+    [[module.imports.mounts]]
+      source = '_gen/uk/content/'
+      target = 'content/doc/'
+      lang= "uk"
+
+    [[module.imports.mounts]]
+      source = '_gen/es/content/'
+      target = 'content/doc/'
+      lang= "es"
+
+    [[module.imports.mounts]]
+      source = '_gen/gl/content/'
+      target = 'content/doc/'
+      lang= "gl"
+
+    [[module.imports.mounts]]
+      source = '_gen/pt_br/content/'
+      target = 'content/doc/'
+      lang= "pt_br"
+
+    [[module.imports.mounts]]
+      source = '_gen/it/content/'
+      target = 'content/doc/'
+      lang= "it"
+
+    [[module.imports.mounts]]
+      source = '_gen/pl/content/'
+      target = 'content/doc/'
+      lang= "pl"
+
+    [[module.imports.mounts]]
+      source = '_gen/nl/content/'
+      target = 'content/doc/'
+      lang= "nl"
+
+    [[module.imports.mounts]]
+      source = '_gen/ja/content/'
+      target = 'content/doc/'
+      lang= "ja"
 
   # Deal with partially-translated sections
   [[module.mounts]]

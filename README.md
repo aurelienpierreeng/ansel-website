@@ -8,30 +8,44 @@ You will need Hugo v0.123.x minimum to build. That's from January 2024, so you m
 $ git clone https://github.com/aurelienpierreeng/ansel-website
 # Stored for example in /home/user/dev/ansel-website
 $ cd ansel-website
-$ hugo mod get -u ./...
-$ hugo server
+$ sh build-translations.sh
 ```
 
 ### Ansel doc
 
+Ansel Doc is an important part of the Ansel website, but since it's under a different license and forked from GNU/GPL dtdocs, it can't be on this repo. We want to edit both as a pack but we need to be able to commit them separately on different repositories. Here is the solution.
+
+Ansel doc is fetched automatically on your disk as part of the `build-translations.sh` above, which also auto-generates the translated pages through `.po` files. You will find it in the local folder of the website, under `_vendor/github.com/aurelienpierreeng/ansel-doc/_gen/LANG` (with `LANG`, the 2-letters language code). No file should be manually edited there, this is only for auto-generated content.
+
+To edit Ansel docs, do
+
 ```bash
 $ git clone https://github.com/aurelienpierreeng/ansel-doc
 # Stored for example in /home/user/dev/ansel-doc
+$ cd ansel-doc
 ```
 
-## Edit as a whole
+And then, edit the (English) content of `ansel-doc/content`. Once you finished editing, you can update translations by running `tools/generate-translations.sh --no-translations` from the directory of the doc, and regenerate the translations with `tools/generate-translations.sh --no-update`.
 
-Ansel Doc is an important part of the Ansel website, but since it's under a different license and forked from GNU/GPL dtdocs, it can't be on this repo. We want to edit both as a pack but we need to be able to commit them separately on different repositories. Here is the solution.
+## Interactive editing/Live preview
 
-### Symlink the doc into the website
+### Start the development server
 
-We can't import the whole `./ansel-doc` repo directly within `./ansel-website/content/doc` because it's a full website in its own right and the default Hugo folders (layouts, static, etc.) will be interpreted as sub-sections when Hugo builds HTML. Also it will mess-up Git history.
+Hugo lets you open a rendered version of the website, on a local server, to preview your changes into your web browser.
 
-Instead, create a folder symlink within `./ansel-website/content/doc` to the local folder `./ansel-doc` :
+If you only want to edit this website, run from `./ansel-website` directory:
+
 ```bash
-$ ln -s /home/user/dev/ansel-doc/content /home/user/dev/ansel-website/content/doc
+hugo server --disableFastRender
 ```
-It's important to not add trailing `/` to the folders names.
+
+If you want to edit the docs as part of this website, after you cloned the docs (see previous step), run from `./ansel-website` directory:
+
+```bash
+env HUGO_MODULE_REPLACEMENTS="github.com/aurelienpierreeng/ansel-doc -> ../../ansel-doc/" hugo server --disableFastRender
+```
+
+This trick will load the docs module from your local folder rather than from Github, which means the local changes done to the docs will immediately appear into the main website.
 
 ### Open Obsidian
 
@@ -39,9 +53,6 @@ Open `./ansel-website/content` as an Obsidian vault. Obsidian is able to resolve
 
 Working in Obsidian is significantly nicer than working in VS Code to edit "text" text (as opposed to code text in monospace), since the editor is less bloated and monospace fonts are eye-straining after a couple of hours for full paragraphs.
 
-### Tell Git to STFU
-
-In `.gitignore` of `./ansel-website`, add `content/doc` to not commit the symlink or even follow it.
 
 ### Start Hugo server in terminal
 
