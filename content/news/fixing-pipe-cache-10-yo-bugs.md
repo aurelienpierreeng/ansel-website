@@ -3,7 +3,8 @@ title: Fixing the pipeline cache and 10 years-old bugs
 date: 2024-07-07
 tags:
   - Development
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 ## Recap of the previous episodes

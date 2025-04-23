@@ -3,7 +3,8 @@ title: "Lectures en théorie de la couleur"
 date: 2023-03-20
 draft: false
 weight: 10
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 Quelles ressources peuvent être trouvées en ligne et dans les bibliothèques pour aider à comprendre _un peu_ de théorie de la couleur ?

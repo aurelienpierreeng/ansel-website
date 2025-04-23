@@ -2,7 +2,8 @@
 title: "Darktable : crashing into the wall in slow-motion"
 date: 2023-02-15T18:14:01+01:00
 draft: false
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 What happens when a gang of amateur photographers, turned into amateur developers, joined by a bunch of back-end developers who develop libraries for developers, decide to work without method nor structure on an industry software for end-users, which core competency (colorimetry and psychophysics) lies somewhere between a college degree in photography and a master's degree in applied sciences, while promising to deliver 2 releases each year without project management ? All that, of course, in a project where the founders and the first generation of developers moved on and fled ?

@@ -3,8 +3,8 @@ title: "Retouche de base"
 date: 2023-03-24
 draft: false
 toc: true
-tags: ['']
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 Voici comment démarrer avec la retouche dans Ansel, en passant par les étapes les plus basiques qui vous serviront fidèlement dans la plupart des cas.

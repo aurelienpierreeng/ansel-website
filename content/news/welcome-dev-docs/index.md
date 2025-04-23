@@ -3,7 +3,8 @@ title: Welcome, developer documentation !
 date: 2025-03-31
 tags:
   - Development
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 Back in December 2019, I asked that someone [took care of providing AppImages packages](https://github.com/darktable-org/darktable/issues/3925) for Darktable. The obvious benefit would have been enabling early testing, prior to release, from people who can't build the source code themselves, as to _hopefully_ provide early feedback and help debugging __before__ releasing. This has never been a priority, which means that it was ok to have a pre-release __and__ a post-release rush to fix bugs.

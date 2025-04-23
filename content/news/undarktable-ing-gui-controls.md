@@ -3,7 +3,8 @@ title: 'Un-darktable-ing GUI controls'
 date: 2023-11-25
 tags:
   - Development
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 Darktable has its own GUI widgets library, for sliders and comboboxes (aka drop-down menus or selection boxes), called Bauhaus (in the source code, it's in `src/bauhaus/bauhaus.c`). While they use Gtk as a backend, Bauhaus are custom objects. And like many things in Darktable, custom equals rotten.

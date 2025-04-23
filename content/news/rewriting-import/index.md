@@ -1,7 +1,8 @@
 ---
 title: "Rewriting the import tool"
 date: 2024-06-07
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 tags:
   - Development
   - Redesign

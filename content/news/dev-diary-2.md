@@ -3,7 +3,8 @@ title: 'Dev diary #2 : introducing Chantal'
 date: 2023-04-28
 tags:
   - Development
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 2022 was so bad in terms of junk emails and noise that I started the [Virtual Secretary](https://virtualsecretary.aurelienpierre.com/), a Python framework to write intelligent email filters by crossing information between several sources to guess what incoming emails are and whether they are important/urgent or not. When I'm talking about junk emails, it's also Github notifications, pings on pixls.us (thank God I closed my account on that stupid forum), YouTube, and direct emails from people hoping to get some help in private.

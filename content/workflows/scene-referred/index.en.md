@@ -4,9 +4,12 @@ date: 2022-12-01T13:12:15+01:00
 draft: false
 latex: true
 toc: true
-tags: ['Color science', 'Pipeline']
+tags:
+    - Color science
+    - Pipeline
 thumbnail: "hero-scene-referred.en.svg"
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 In this article, you will learn what the scene-referred workflow is, how Ansel uses it and why it benefits digital image processing at large.

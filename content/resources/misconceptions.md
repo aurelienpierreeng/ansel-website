@@ -3,7 +3,8 @@ title: "Common misconceptions"
 date: 2023-01-19
 draft: false
 weight: 10
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 This page addresses most of the mistakes and misconceptions about Ansel that can be found online.

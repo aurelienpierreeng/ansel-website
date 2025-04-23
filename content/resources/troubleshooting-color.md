@@ -1,7 +1,8 @@
 ---
 title: Troubleshooting color issues
 date: 2024-07-15
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 This will apply to upstream Darktable as to Ansel since they share most of their color pipeline. The following procedure will help you troubleshoot your color issues, whether it is inconsistent appearance between export vs. preview, or between screen vs. print, or between 2 apps.

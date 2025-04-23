@@ -3,7 +3,8 @@ title: "Explaining Ansel redesign of module groups"
 date: 2023-06-27
 tags:
   - Design
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 If you come from Darktable, you may be used to this in the darkroom:

@@ -3,7 +3,8 @@ title: 'Implementing kill-switch on pipeline'
 date: 2023-11-28
 tags:
   - Development
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 I have thought, for a very long time, that there was some kill-switch mechanism on the pixel pipeline. The use case is the following :

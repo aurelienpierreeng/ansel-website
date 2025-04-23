@@ -3,7 +3,8 @@ title: "Color theory readings"
 date: 2023-03-20
 draft: false
 weight: 10
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 What resources can be found online and in libraries to help understand _some_ color theory ?

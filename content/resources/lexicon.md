@@ -1,6 +1,7 @@
 ---
 title: "Color lexicon"
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 date: 2024-03-20
 type: large
 ---

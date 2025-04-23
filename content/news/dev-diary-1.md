@@ -3,7 +3,8 @@ title: "Dev diary #1"
 date: 2023-03-19
 tags:
   - Development
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 It's been roughly 3 months that I rebranded "R&Darktable" (that nobody seemed to get right), into "Ansel", then bought the domain name and created the website from scratch with Hugo (I had never programmed in Golang before, but it's mostly template code).

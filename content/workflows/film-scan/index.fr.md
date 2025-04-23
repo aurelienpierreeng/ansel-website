@@ -3,8 +3,11 @@ title: "Numérisation de négatifs"
 date: 2025-04-18
 draft: false
 toc: true
-tags: ['film', 'negative']
-authors: ["Aurélien Pierre"]
+tags:
+  - film
+  - negative
+authors:
+    - Aurélien Pierre
 thumbnail: "film-scan.jpg"
 ---
 

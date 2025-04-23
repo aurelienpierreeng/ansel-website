@@ -3,7 +3,8 @@ title: "Idées fausses répandues"
 date: 2023-01-19
 draft: false
 weight: 10
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 Cette page regroupe la plupart des erreurs et des idées fausses sur Ansel que l'on peut trouver sur internet.

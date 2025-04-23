@@ -1,7 +1,8 @@
 ---
 title: White balance(s)
 date: 2024-12-05
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 latex: true
 ---
 

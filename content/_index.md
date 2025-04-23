@@ -3,7 +3,10 @@ title: "Ansel"
 date: 2022-11-27T22:36:34+01:00
 draft: false
 description: "Ansel is an open-source raw photo editor for artists"
-tags: ["darktable", "ansel", "photo editing"]
+tags:
+  - darktable
+  - ansel
+  - photo editing
 ---
 
 <div class="pt-5 my-5 text-center">

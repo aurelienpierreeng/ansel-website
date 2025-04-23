@@ -4,8 +4,11 @@ date: 2023-03-24
 draft: false
 toc: true
 thumbnail: "toning-workflow-cyanotype-3.jpg"
-tags: ['film', 'monochrome']
-authors: ["Aurélien Pierre"]
+tags:
+  - film
+  - monochrome
+authors:
+    - Aurélien Pierre
 ---
 
 This article will demonstrate how to perform monochrome toning on digital images in Ansel, to emulate the color rendition of cyanotypes, platinotypes, sepia and split-toning developments.

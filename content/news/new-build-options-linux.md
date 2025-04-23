@@ -3,7 +3,8 @@ title: New build options for Linux
 date: 2023-06-16
 tags:
   - Development
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 I accidentally discovered that the Linux build script used a "package" build, meaning the CPU optimizations are limited to generic ones in order to produce portable binaries that can be installed on any x86-64 platform. By "using", I mean the package build was not explicitely disabled, so it was enabled by default.

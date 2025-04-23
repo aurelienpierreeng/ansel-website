@@ -3,8 +3,8 @@ title: "Printing"
 date: 2023-10-30
 draft: false
 toc: true
-tags: ['']
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 thumbnail: 'charte-noirs.jpg'
 ---
 

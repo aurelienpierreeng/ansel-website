@@ -2,7 +2,8 @@
 title: "Darktable : foncer dans le mur au ralenti"
 date: 2023-02-15T18:14:01+01:00
 draft: false
-authors: ["Aurélien Pierre"]
+authors:
+    - Aurélien Pierre
 ---
 
 Qu'est-ce qui se passe quand une bande de photographes amateurs, devenus développeurs amateurs, rejoints par une poignée de développeurs _back-end_ qui développent de la librairie pour développeurs, se décide à travailler sans méthode ni structure sur un logiciel métier pour utilisateur final dont le cœur de compétence (colorimétrie et psychophysique) se situe quelque part entre un BTS photo et un BAC+5 en sciences appliquées, tout en se promettant de sortir 2 versions par an sans gestion de projet ? Tout ça bien sûr dans un projet logiciel dont les fondateurs et la première génération de développeurs sont passés à autre chose ?
