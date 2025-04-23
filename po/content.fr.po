@@ -5,16 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2025-04-24 01:21+0200\n"
-"PO-Revision-Date: 2025-04-24 01:21+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-04-24 01:37+0200\n"
+"Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #. type: Yaml Front Matter Array Element: authors
 #: content/news/rewriting-import/index.md content/news/dev-diary-2.md
@@ -34,7 +35,7 @@ msgstr ""
 #: content/workflows/printing/index.md
 #, no-wrap
 msgid "Aurélien Pierre"
-msgstr ""
+msgstr "Aurélien Pierre"
 
 #. type: Yaml Front Matter Array Element: tags
 #: content/news/rewriting-import/index.md content/news/dev-diary-2.md
@@ -45,19 +46,19 @@ msgstr ""
 #: content/news/undarktable-ing-gui-controls.md
 #, no-wrap
 msgid "Development"
-msgstr ""
+msgstr "Dévelopement"
 
 #. type: Yaml Front Matter Array Element: tags
 #: content/news/rewriting-import/index.md
 #, no-wrap
 msgid "Redesign"
-msgstr ""
+msgstr "Redesign"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/rewriting-import/index.md
 #, no-wrap
 msgid "Rewriting the import tool"
-msgstr ""
+msgstr "Ré-écriture de l'outil d'importation"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md
@@ -4737,25 +4738,25 @@ msgstr ""
 #: content/resources/white-balances/index.md
 #, no-wrap
 msgid "White balance(s)"
-msgstr ""
+msgstr "Balance(s) des blancs"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md
 #, no-wrap
 msgid "We all know what \"white\" is. We can picture a white sheet of paper. We know it is white because we learned it. But if you put your paper sheet under a summer sun, or a cloudy sky, or at home with those warm living-room bulbs, that white will change color. It might disturb you for the first few seconds, then you will just forget about it: your brain will adapt. But adapt (to) what ?\n"
-msgstr ""
+msgstr "Nous savons tous ce qu'est le \"blanc\". On peut se représenter une feuille de papier. Nous savons qu'elle est blanche parce que nous l'avons appris. Mais si vous placez la feuille de papier sous un soleil d'été, ou sous un ciel nuageux, ou à la maison équipée d'ampoules domestiques chaudes, ce blanc va changer de couleur. Cela pourrait vous déranger pendant les premières secondes, puis vous oublieriez rapidement : votre cerveau va adapter. Mais (s')adapter (à) quoi ?\n"
 
 #. type: Title ###
 #: content/resources/white-balances/index.md
 #, no-wrap
 msgid "Terms"
-msgstr ""
+msgstr "Terminologie"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md
 #, no-wrap
 msgid "Let's start by defining some terms and accronyms that will be used and abused here. You may skip that for now and come back later when you find the terms used in the text.\n"
-msgstr ""
+msgstr "Commençons par définir certains termes et acronymes qui seront usés et abusés ici. Vous pouvez passer cette section pour l'instant et y revenir plus tard quand vous croiserez ces termes dans le texte.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md
