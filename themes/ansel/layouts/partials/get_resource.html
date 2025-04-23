@@ -2,28 +2,61 @@
 {{- $page := .Page }}
 
 {{- $image := "" -}}
+{{- $path := "" -}}
+{{- $rel_path := "" -}}
+{{- $abs_path := "" -}}
+
 {{- if strings.HasPrefix $src "http" -}}
   {{- $image = resources.GetRemote $src -}}
 {{- else -}}
-  {{- $image = resources.Get $src -}}
+  {{- $path = strings.TrimLeft "./" (strings.TrimPrefix (print "./" .Page.File "/") $src ) -}}
+  {{- $abs_path = path.Join .Page.File.Dir (strings.TrimLeft "./" $src ) -}}
+  {{- $rel_path = print "./" $path -}}
+
+  {{- if not $image -}}
+    {{- $image = resources.Get $src -}}
+  {{- end }}
+  {{- if not $image -}}
+    {{- $image = resources.Get $path -}}
+  {{- end }}
+  {{- if not $image -}}
+    {{- $image = resources.Get $rel_path -}}
+  {{- end -}}
+  {{- if not $image -}}
+    {{- $image = resources.Get $abs_path -}}
+  {{- end -}}
+
+  {{- if not $image -}}
+    {{- $image = .Resources.Get $src -}}
+  {{- end }}
+  {{- if not $image -}}
+    {{- $image = .Resources.Get $path -}}
+  {{- end }}
+  {{- if not $image -}}
+    {{- $image = .Resources.Get $abs_path -}}
+  {{- end }}
+  {{- if not $image -}}
+    {{- $image = .Resources.Get $rel_path -}}
+  {{- end -}}
+
   {{- if not $image -}}
     {{- $image = .Page.Resources.Get $src -}}
   {{- end -}}
   {{- if not $image -}}
-    {{- $image = .Resources.Get $src -}}
+    {{- $image = .Page.Resources.Get $path -}}
   {{- end -}}
   {{- if not $image -}}
-    {{ $path := (strings.TrimPrefix (print "./" .Page.File) $src) }}
-    {{- $image = .Page.Resources.Get $path -}}
+    {{- $image = .Page.Resources.Get $rel_path -}}
   {{- end }}
-  {{- if and (not $image) .Page.File -}}
-    {{- $path := path.Join .Page.File.Dir (strings.TrimPrefix "." $src) -}}
-    {{- $image = resources.Get $path -}}
+  {{- if not $image -}}
+    {{- $image = .Page.Resources.Get $abs_path -}}
   {{- end -}}
+
+
 {{- end -}}
 
 {{- if not $image }}
-  {{- warnf "Resource %q not found from page %q." $src $page.File.Path -}}
+  {{- warnf "Resource:\n%q\n%q\n%q\n%q\nnot found from page %q." $src $path $rel_path $abs_path $page.File.Path -}}
 {{- else -}}
   {{- return $image -}}
 {{- end -}}}

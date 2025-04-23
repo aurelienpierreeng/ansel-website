@@ -10,11 +10,11 @@ canonifyURLs = true
 removePathAccents = true
 timeout = "360s"
 
-
-[author]
-  name = 'Aurélien Pierre'
-  GitHubUser = 'aurelienpierre'
-  url = "https://aurelienpierre.com"
+[params]
+  [params.author]
+    name = 'Aurélien Pierre'
+    GitHubUser = 'aurelienpierre'
+    url = "https://aurelienpierre.com"
 
 [menu]
   [[menu.main]]
