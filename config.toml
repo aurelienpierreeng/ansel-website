@@ -1,6 +1,6 @@
 baseURL = 'https://ansel.photos/'
 defaultContentLanguage = 'en'
-copyright = '© Copyright 2022-2024 – Aurélien Pierre'
+copyright = '© Copyright 2022-2025 – Aurélien Pierre'
 title = 'Ansel'
 theme = 'ansel'
 
@@ -23,7 +23,6 @@ timeout = "360s"
     url = "/workflows/"
     weight = 3
     parent = "learn"
-
 
   [[menu.main]]
     identifier = "news"
@@ -161,6 +160,44 @@ FootnoteReturnLinkContents = "↩"
   [[module.mounts]]
     source = 'content'
     target = 'content'
+    lang = 'en'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'fr'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'de'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'es'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'gl'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'it'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'uk'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'ja'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'nl'
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+    lang = 'pl'
+    
   [[module.imports]]
     disable = false
     ignoreConfig = false
@@ -235,27 +272,6 @@ FootnoteReturnLinkContents = "↩"
       source = '_gen/ja/content/'
       target = 'content/doc/'
       lang= "ja"
-
-  # Deal with partially-translated sections
-  [[module.mounts]]
-    source = 'content/contribute/'
-    target = 'content/contribute/'
-    lang= "fr"
-
-  [[module.mounts]]
-    source = 'content/news/'
-    target = 'content/news/'
-    lang= "fr"
-
-  [[module.mounts]]
-    source = 'content/workflows/'
-    target = 'content/workflows/'
-    lang= "fr"
-
-  [[module.mounts]]
-    source = 'content/resources/'
-    target = 'content/resources/'
-    lang= "fr"
 
 [outputs]
   home = ["HTML", "JSON", "RSS"]
