@@ -56,8 +56,25 @@ for section in content; do
 
 EOF
     # for f in $section/*.md; do
-    for f in  $(find content -type f -name '*.md' ! -name '*.fr.md'); do
-	    echo "[type: markdown] $f \$lang:$(dirname $f)/$(basename $f .md).\$lang.md" >> $po4a_conf
+    for f in $(find content -type f -name '*.md'); do
+        filename=$(basename $f .md)
+        # Add only Git-tracked, non-French, .md files as translation source,
+        # assuming auto-generated translations will never be commited to Git.
+        if [[ $filename != *.fr ]] && [[ $(git ls-files $f) == $f ]]; then
+
+            # Because some files are already manually translated in .fr.md, we need
+            # to manually unroll which translations will be necessary to discard fr where relevant.
+            line="[type: markdown] $f"
+            for lang in $languages; do
+                translated="$(dirname $f)/$filename.$lang.md"
+
+                # po4a will only create translations that are not already tracked by Git
+                if [[ $(git ls-files $translated) != $translated ]]; then
+	                line="$line $lang:$translated"
+                fi
+            done
+            echo $line >> $po4a_conf
+        fi
     done
     po4a $1 --verbose $po4a_conf --keep 0 &
 done

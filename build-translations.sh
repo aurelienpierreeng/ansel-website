@@ -10,4 +10,4 @@ hugo mod vendor
 sh _vendor/github.com/aurelienpierreeng/ansel-doc/tools/generate-translations.sh --no-update
 
 # Auto-gen website translations
-#sh tools/generate-translations.sh --no-update
+sh tools/generate-translations.sh --no-update
