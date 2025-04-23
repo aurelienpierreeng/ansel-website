@@ -113,11 +113,6 @@ timeout = "360s"
     title = 'Ansel'
     languagename = "Dutch"
     weight = 12
-  [languages.ja]
-    title = 'Ansel'
-    languagename = "Japanese"
-    weight = 13
-
 
 [markup]
   [markup.tableOfContents]
@@ -140,6 +135,9 @@ timeout = "360s"
       unsafe = true
       xhtml = true
 
+  [markup.goldmark.renderhooks.image]
+    disableDefault = true
+
   [markup.highlight]
     anchorLineNos = true
     codeFences = true
@@ -160,44 +158,7 @@ FootnoteReturnLinkContents = "↩"
   [[module.mounts]]
     source = 'content'
     target = 'content'
-    lang = 'en'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'fr'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'de'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'es'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'gl'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'it'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'uk'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'ja'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'nl'
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-    lang = 'pl'
-    
+
   [[module.imports]]
     disable = false
     ignoreConfig = false
@@ -214,64 +175,12 @@ FootnoteReturnLinkContents = "↩"
       target = 'content/doc/po'
 
     [[module.imports.mounts]]
-      source = 'content/'
+      source = 'content'
       target = 'content/doc/'
-      lang= "en"
 
     [[module.imports.mounts]]
-      source = '_gen/fr/content/'
-      target = 'content/doc/'
-      lang= "fr"
-
-    [[module.imports.mounts]]
-      source = '_gen/de/content/'
-      target = 'content/doc/'
-      lang= "de"
-
-    [[module.imports.mounts]]
-      source = '_gen/eo/content/'
-      target = 'content/doc/'
-      lang= "eo"
-
-    [[module.imports.mounts]]
-      source = '_gen/uk/content/'
-      target = 'content/doc/'
-      lang= "uk"
-
-    [[module.imports.mounts]]
-      source = '_gen/es/content/'
-      target = 'content/doc/'
-      lang= "es"
-
-    [[module.imports.mounts]]
-      source = '_gen/gl/content/'
-      target = 'content/doc/'
-      lang= "gl"
-
-    [[module.imports.mounts]]
-      source = '_gen/pt_br/content/'
-      target = 'content/doc/'
-      lang= "pt_br"
-
-    [[module.imports.mounts]]
-      source = '_gen/it/content/'
-      target = 'content/doc/'
-      lang= "it"
-
-    [[module.imports.mounts]]
-      source = '_gen/pl/content/'
-      target = 'content/doc/'
-      lang= "pl"
-
-    [[module.imports.mounts]]
-      source = '_gen/nl/content/'
-      target = 'content/doc/'
-      lang= "nl"
-
-    [[module.imports.mounts]]
-      source = '_gen/ja/content/'
-      target = 'content/doc/'
-      lang= "ja"
+      source = 'assets'
+      target = 'assets'
 
 [outputs]
   home = ["HTML", "JSON", "RSS"]
