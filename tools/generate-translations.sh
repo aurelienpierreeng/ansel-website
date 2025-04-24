@@ -51,7 +51,7 @@ EOF
         # Add only Git-tracked, non-French, .md files as translation source,
         # assuming auto-generated translations will never be commited to Git.
         git ls-files $f
-        if [[ $filename != *.fr ]] && [ "$(git ls-files $f)" = "$f" ]; then
+        if [ $filename != "*.fr" ] && [ "$(git ls-files $f)" = "$f" ]; then
 
             # Because some files are already manually translated in .fr.md, we need
             # to manually unroll which translations will be necessary to discard fr where relevant.
@@ -67,11 +67,6 @@ EOF
             echo $line >> $po4a_conf
         fi
     done
-    po4a $1 --verbose $po4a_conf --keep 0
 done
-wait
 
-# no need to keep these around
-if test -f po/*.en.po; then
-    rm -f po/*.en.po
-fi
+po4a $1 --verbose $po4a_conf --keep 0
