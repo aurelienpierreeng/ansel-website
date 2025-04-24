@@ -50,7 +50,7 @@ EOF
         filename=$(basename $f .md)
         # Add only Git-tracked, non-French, .md files as translation source,
         # assuming auto-generated translations will never be commited to Git.
-        if [[ $filename" != *.fr ]] && [ "$(git ls-files $f)" = "$f" ]; then
+        if [[ $filename != *.fr ]] && [ "$(git ls-files $f)" = "$f" ]; then
 
             # Because some files are already manually translated in .fr.md, we need
             # to manually unroll which translations will be necessary to discard fr where relevant.
