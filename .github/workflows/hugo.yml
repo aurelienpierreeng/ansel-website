@@ -9,7 +9,14 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Can be triggered from a webhook from ansel-docs on new commits
   repository_dispatch:
+
+  # Update once a week at midnight on sundays
+  # This is only to maintain an up-to-date camera support table
+  # since it is read from Rawspeed/Libraw/Ansel source code at the time of building
+  schedule:
+    - cron: "0 0 * * SUN"
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
