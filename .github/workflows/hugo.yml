@@ -44,6 +44,9 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0 # needed for .LastMod using git module
+      - name: Install deps
+        run: |
+          sudo apt-get install po4a
       - name: Fetch modules and build translations
         run: |
           sh build-translations.sh
