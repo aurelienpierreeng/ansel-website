@@ -44,7 +44,7 @@ jobs:
           sudo apt-get install po4a
       - name: Fetch modules and build translations
         run: |
-          sh build-translations.sh
+          sh build-modules.sh
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules

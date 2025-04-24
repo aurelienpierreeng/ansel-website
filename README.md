@@ -8,14 +8,14 @@ You will need Hugo v0.124.x minimum to build. You may have to install it manuall
 $ git clone https://github.com/aurelienpierreeng/ansel-website
 # Stored for example in /home/user/dev/ansel-website
 $ cd ansel-website
-$ sh build-translations.sh
+$ sh build-modules.sh
 ```
 
 ### Ansel doc
 
 Ansel Doc is an important part of the Ansel website, but since it's under a different license and forked from GNU/GPL dtdocs, it can't be on this repo. We want to edit both as a pack but we need to be able to commit them separately on different repositories. Here is the solution.
 
-Ansel doc is fetched automatically on your disk as part of the `build-translations.sh` above, which also auto-generates the translated pages through `.po` files. You will find it in the local folder of the website, under `_vendor/github.com/aurelienpierreeng/ansel-doc/_gen/LANG` (with `LANG`, the 2-letters language code). No file should be manually edited there, this is only for auto-generated content.
+Ansel doc is fetched automatically as a module of this website on your disk as part of the `build-modules.sh` script above, which also auto-generates the translated pages through `.po` files. You will find it in the local folder of the website, under `_vendor/github.com/aurelienpierreeng/ansel-doc/`. No file should be manually edited there, this is only for auto-generated content.
 
 To edit Ansel docs, do
 
@@ -25,13 +25,13 @@ $ git clone https://github.com/aurelienpierreeng/ansel-doc
 $ cd ansel-doc
 ```
 
-And then, edit the (English) content of `ansel-doc/content`. Once you finished editing, you can update translations by running `tools/generate-translations.sh --no-translations` from the directory of the doc, and regenerate the translations with `tools/generate-translations.sh --no-update`.
+And then, edit the (English) content of `ansel-doc/content`.
 
 ## Interactive editing/Live preview
 
 ### Start the development server
 
-Hugo lets you open a rendered version of the website, on a local server, to preview your changes into your web browser.
+Hugo lets you open a rendered version of the website, on a local development server, to preview your changes into your web browser.
 
 If you only want to edit this website, run from `./ansel-website` directory:
 
@@ -39,13 +39,39 @@ If you only want to edit this website, run from `./ansel-website` directory:
 hugo server --disableFastRender
 ```
 
-If you want to edit the docs as part of this website, after you cloned the docs (see previous step), run from `./ansel-website` directory:
+If you want to edit the docs and see the results in realtime as part of this website, after you cloned the docs (see previous step), run from `./ansel-website` directory:
 
 ```bash
 env HUGO_MODULE_REPLACEMENTS="github.com/aurelienpierreeng/ansel-doc -> ../../ansel-doc/" hugo server --disableFastRender
 ```
 
-This trick will load the docs module from your local folder rather than from Github, which means the local changes done to the docs will immediately appear into the main website.
+This trick will dynamically load the docs module from your local folder rather than from Github, which means the local changes done to the docs will immediately appear into the main website through your development server.
+
+### Updating translations
+
+Both the docs module and the current website have scripts to auto-update translations, stored in their respective `tools/` folder, which means the procedure and the commands to call are the same for docs and website, you just need to call them from the right directory.
+
+To resynchronize English Markdown files with the `.pot` and `.po` files, run:
+
+```sh
+tools/update-translations.sh
+```
+
+To build translated Markdown files from `.po` files, run:
+
+```sh
+tools/build-translations.sh --add
+```
+
+To cleanup translated Markdown files, run:
+
+```sh
+tools/build-translations.sh --remove
+```
+
+Translated files should never be commited with Git, so the last command is useful to clean your working directory before committing.
+
+Translations should be made by opening the files `po/content.LANG.po`, for example with [Poedit](https://poedit.net/). Once you are done, save the `.po` and open a pull request here with the new file. 
 
 ### Open Obsidian
 
