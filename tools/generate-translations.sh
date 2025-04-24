@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Adapted from https://gitlab.com/fdroid/fdroid-website/-/raw/master/tools/i18n.sh
 # Requires po4a version 0.58 or higher.
