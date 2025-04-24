@@ -49,6 +49,8 @@ This trick will dynamically load the docs module from your local folder rather t
 
 ### Updating translations
 
+#### Resynchronizing .po and .md files
+
 Both the docs module and the current website have scripts to auto-update translations, stored in their respective `tools/` folder, which means the procedure and the commands to call are the same for docs and website, you just need to call them from the right directory.
 
 To resynchronize English Markdown files with the `.pot` and `.po` files, run:
@@ -71,7 +73,31 @@ tools/build-translations.sh --remove
 
 Translated files should never be commited with Git, so the last command is useful to clean your working directory before committing.
 
-Translations should be made by opening the files `po/content.LANG.po`, for example with [Poedit](https://poedit.net/). Once you are done, save the `.po` and open a pull request here with the new file. 
+#### Contributing translations
+
+Translations should be made by opening the files in `po/content.LANG.po`, for example with [Poedit](https://poedit.net/). Once you are done, save the `.po` and open a pull request here with the new file.
+
+#### Merging docs translations with Ansel software translations
+
+The docs translations can be merged with the software translations, which is a quick way to fill settings and options names.
+
+1. In Poedit, open the relevant `po/content.LNG.po` file from the docs,
+2. Go in the Poedit menu _Translation -> Update from a POT file_.
+3. In the file chooser, switch the file filter from `POT translation template files` to `PO translation files`, and open the [Ansel `.po` file](https://github.com/aurelienpierreeng/ansel/tree/master/po) of the corresponding language.
+4. In the Poedit menu _Translation -> Pre-translate_, allow the auto-translation of exact matches and do not remove unused translations.
+5. Run `./tools/update-translations.sh` to cleanup/validate.
+
+That's it.
+
+#### Translating images
+
+Images can be translated too, for example screenshots. Note that images are stored in `assets/` folder. If, for example, you want to translate the `assets/screenshot.jpg` for the language `LANG` (which is the ISO code of the language, like `de`, `nl`, `pt_br`, `zn_cn`, etc.):
+
+1. add and commit a new `assets/screenshot.LANG.jpg` image file to the docs or website Git repository,
+2. in the `content.LANG.po`, locate the entry containing the Markdown tag for the original image, which will be something like `![alt text](screenshot.jpg)`,
+3. translate the Markdown tag by replacing the URL of the image, like `![translated alt text](screenshot.LANG.jpg`,
+4. save and commit the `content.LANG.po`,
+5. create a pull request against Ansel website or Ansel docs repository.
 
 ### Open Obsidian
 
