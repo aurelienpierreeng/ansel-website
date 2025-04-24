@@ -20,11 +20,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
-# Default to bash
-defaults:
-  run:
-    shell: bash
-
 jobs:
   # Build job
   build:
