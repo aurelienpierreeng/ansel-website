@@ -16,11 +16,11 @@ if ! which po4a; then
 fi
 
 # Is the script argument correct
-if [ "$1" == "--no-update" ]; then
+if [ "$1" = "--no-update" ]; then
     echo "Generating the translated files."
-elif [ "$1" == "--no-translations" ]; then
+elif [ "$1" = "--no-translations" ]; then
     echo "Generating the POT and PO files."
-elif [ "$1" == "--rm-translations" ]; then
+elif [ "$1" = "--rm-translations" ]; then
     echo "Removing the translated files."
 else
     echo "The argument to this script must be one of '--no-update', '--no-translations', or '--rm-translations'."
