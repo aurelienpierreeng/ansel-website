@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-04-24 01:21+0200\n"
+"POT-Creation-Date: 2025-04-24 05:01+0200\n"
 "PO-Revision-Date: 2025-04-24 01:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -149,52 +149,18 @@ msgstr ""
 msgid "Be seated for the rest, you are not ready:\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/rewriting-import/index.md
 #, no-wrap
-msgid "The _folders_ thingy on the left column is actually a button: when you click it, that changes the order of appearance of those folders.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/rewriting-import/index.md
-#, no-wrap
-msgid "The _places_ frame tries to emulate the _favourite_ or _bookmarks_ from your OS desktop manager, but don't import them.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/rewriting-import/index.md
-#, no-wrap
-msgid "The _recursive directory_ checkbox is not an option, it's an action. But then it doesn't act on whatever you selected on the right column, because those are only pictures. What it does is take the folder selected on the left column, and populates the list of pictures by recursively crawling the selected folder and its children.\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/rewriting-import/index.md
-#, no-wrap
-msgid "The _select new pictures_ is, once again, not an option but an action, aka something that the rest of the world puts in a button.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/news/rewriting-import/index.md
-#, no-wrap
-msgid "The field _override today's date_ is a workaround for the fact that the picture `EXIF` date can't be used in folder patterns, so by default we use today's date. Except if this field is filled. But it needs to be filled with a datetime following ISO 8601 format. Which I didn't here, and the window is not complaining at all because form inputs validation is less fun than letting users find out at the next step that they have to start again from scratch because of bad datetime format. Boy, that's a lot of background knowledge to have to fill out a goddam date, I'm very lucky I learned all that from reading the source code.\n"
-msgstr ""
-
-#. type: Bullet: '6. '
-#: content/news/rewriting-import/index.md
-#, no-wrap
-msgid "The _keep original filename_ option is fully redundant with using the naming pattern `$(FILE_NAME).$FILE_EXTENSION)`,\n"
-msgstr ""
-
-#. type: Bullet: '7. '
-#: content/news/rewriting-import/index.md
-#, no-wrap
-msgid "The naming patterns use variables masks `$()` that get replaced at runtime by actual file's properties, but you need to know them to be able to use them. As if a guy named Houz didn't write a library circa 2011 to implement auto-completion in text inputs for those variables, that you can simply call in your code to make it work in 2 lines (it is used in export module).\n"
-msgstr ""
-
-#. type: Bullet: '8. '
-#: content/news/rewriting-import/index.md
-#, no-wrap
-msgid "The naming patterns found there are duplicated in Darktable's preferences popup because you might need to change them when you are not importing anything.\n"
+msgid ""
+"1. The _folders_ thingy on the left column is actually a button: when you click it, that changes the order of appearance of those folders.\n"
+"2. The _places_ frame tries to emulate the _favourite_ or _bookmarks_ from your OS desktop manager, but don't import them.\n"
+"3. The _recursive directory_ checkbox is not an option, it's an action. But then it doesn't act on whatever you selected on the right column, because those are only pictures. What it does is take the folder selected on the left column, and populates the list of pictures by recursively crawling the selected folder and its children.\n"
+"4. The _select new pictures_ is, once again, not an option but an action, aka something that the rest of the world puts in a button.\n"
+"5. The field _override today's date_ is a workaround for the fact that the picture `EXIF` date can't be used in folder patterns, so by default we use today's date. Except if this field is filled. But it needs to be filled with a datetime following ISO 8601 format. Which I didn't here, and the window is not complaining at all because form inputs validation is less fun than letting users find out at the next step that they have to start again from scratch because of bad datetime format. Boy, that's a lot of background knowledge to have to fill out a goddam date, I'm very lucky I learned all that from reading the source code.\n"
+"6. The _keep original filename_ option is fully redundant with using the naming pattern `$(FILE_NAME).$FILE_EXTENSION)`,\n"
+"7. The naming patterns use variables masks `$()` that get replaced at runtime by actual file's properties, but you need to know them to be able to use them. As if a guy named Houz didn't write a library circa 2011 to implement auto-completion in text inputs for those variables, that you can simply call in your code to make it work in 2 lines (it is used in export module).\n"
+"8. The naming patterns found there are duplicated in Darktable's preferences popup because you might need to change them when you are not importing anything.\n"
 msgstr ""
 
 #. type: Plain text
@@ -483,22 +449,13 @@ msgstr ""
 msgid "More (technical) info:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/dev-diary-2.md
 #, no-wrap
-msgid "[Websites suck](https://eng.aurelienpierre.com/2023/04/websites-suck./) : on the technical challenges of crawling and indexing HTML (and… PDF) webpages, in a time where people say big things like \"Web 4.0\" or \"Internet of Things\", but basic things like providing page sitemaps or putting the date of internet publications in standard formats is still too much to ask of webmasters and CMS,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/dev-diary-2.md
-#, no-wrap
-msgid "[Designing an AI search engine from scratch in the 2020's](https://eng.aurelienpierre.com/2024/03/designing-an-ai-search-engine-from-scratch-in-the-2020s/) : on how Chantal was built and how the Dumbrish synthetic language was created to generalize natural French and English, plus some regex bonanza,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/dev-diary-2.md
-#, no-wrap
-msgid "[Thoughts on Word2Vec AI for information retrieval applications](https://eng.aurelienpierre.com/2025/05/thoughts-on-word2vec/) : on how the input cleanup is by far the worst time-consuming step of designing an AI and language models that become too semantically accurate don't make better search engines.\n"
+msgid ""
+"- [Websites suck](https://eng.aurelienpierre.com/2023/04/websites-suck./) : on the technical challenges of crawling and indexing HTML (and… PDF) webpages, in a time where people say big things like \"Web 4.0\" or \"Internet of Things\", but basic things like providing page sitemaps or putting the date of internet publications in standard formats is still too much to ask of webmasters and CMS,\n"
+"- [Designing an AI search engine from scratch in the 2020's](https://eng.aurelienpierre.com/2024/03/designing-an-ai-search-engine-from-scratch-in-the-2020s/) : on how Chantal was built and how the Dumbrish synthetic language was created to generalize natural French and English, plus some regex bonanza,\n"
+"- [Thoughts on Word2Vec AI for information retrieval applications](https://eng.aurelienpierre.com/2025/05/thoughts-on-word2vec/) : on how the input cleanup is by far the worst time-consuming step of designing an AI and language models that become too semantically accurate don't make better search engines.\n"
 msgstr ""
 
 #. type: Yaml Front Matter Array Element: tags
@@ -579,22 +536,13 @@ msgstr ""
 msgid "I have also modified the internals of that script in order to automatically :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/new-build-options-linux.md
 #, no-wrap
-msgid "update the Lensfun database of lenses,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/new-build-options-linux.md
-#, no-wrap
-msgid "add a global system shortcut (.desktop file) so the software will be globally available from the app menus,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/new-build-options-linux.md
-#, no-wrap
-msgid "add a global system command so the ansel is globally available from the terminal.\n"
+msgid ""
+"- update the Lensfun database of lenses,\n"
+"- add a global system shortcut (.desktop file) so the software will be globally available from the app menus,\n"
+"- add a global system command so the ansel is globally available from the terminal.\n"
 msgstr ""
 
 #. type: Plain text
@@ -807,10 +755,10 @@ msgstr ""
 msgid "The cherry on the sunday is, one more time, we replaced [1306 lines of clear and structured code](https://github.com/darktable-org/darktable/blob/darktable-3.6.x/src/gui/accelerators.c) by a [monstruosity of close to 4400 lines](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/gui/accelerators.c), with gems like :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "the `while` loop of death ([source](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/gui/accelerators.c#L2898-L2918)) :\n"
+msgid "1. the `while` loop of death ([source](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/gui/accelerators.c#L2898-L2918)) :\n"
 msgstr ""
 
 #. type: Fenced code block (C)
@@ -839,10 +787,10 @@ msgid ""
 "  }\n"
 msgstr ""
 
-#. type: Bullet: '2. '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "The `switch` `case`  containing `if` nested on 2 levels ([source](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/gui/accelerators.c#L892-L954)) :\n"
+msgid "2. The `switch` `case`  containing `if` nested on 2 levels ([source](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/gui/accelerators.c#L892-L954)) :\n"
 msgstr ""
 
 #. type: Fenced code block (C)
@@ -914,10 +862,10 @@ msgid ""
 "  }\n"
 msgstr ""
 
-#. type: Bullet: '3. '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "The nested `switch` `case` of the demon, with additive clauses sneakily hidden ([source](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/bauhaus/bauhaus.c#L3339-L3415)) :\n"
+msgid "3. The nested `switch` `case` of the demon, with additive clauses sneakily hidden ([source](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/bauhaus/bauhaus.c#L3339-L3415)) :\n"
 msgstr ""
 
 #. type: Fenced code block (C)
@@ -1129,22 +1077,13 @@ msgstr ""
 msgid "In Darktable 2.6, we had __4193__ lines for the pack, which had only the filemanager, zoomable lighttable and fullscreen preview views, with only 2 modes of thumbnails overlays (always visible or visible on hover) :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "2634 lines [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/views/lighttable.c) for the lighttable and the thumbnail rendering,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "1124 lines in [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/libs/tools/filmstrip.c) for the filmstrip par, which partially duplicates the lighttable code for the thumbnail rendering,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "435 lines in [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/libs/tools/global_toolbox.c), for the button menu allowing to enable or disable thumbnails overlays.\n"
+msgid ""
+"* 2634 lines [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/views/lighttable.c) for the lighttable and the thumbnail rendering,\n"
+"* 1124 lines in [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/libs/tools/filmstrip.c) for the filmstrip par, which partially duplicates the lighttable code for the thumbnail rendering,\n"
+"* 435 lines in [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-2.6.x/src/libs/tools/global_toolbox.c), for the button menu allowing to enable or disable thumbnails overlays.\n"
 msgstr ""
 
 #. type: Plain text
@@ -1153,22 +1092,13 @@ msgstr ""
 msgid "After Darktable 3.0 and the addition of culling modes, we get __6731 lines__ :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "5149 lines [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/views/lighttable.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "1177 lines [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/filmstrip.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "405 lines [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/global_toolbox.c).\n"
+msgid ""
+"* 5149 lines [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/views/lighttable.c),\n"
+"* 1177 lines [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/filmstrip.c),\n"
+"* 405 lines [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.0.x/src/libs/tools/global_toolbox.c).\n"
 msgstr ""
 
 #. type: Plain text
@@ -1177,46 +1107,17 @@ msgstr ""
 msgid "After Darktable 3.2 and the additions of the 7 variants of highly-configurable overlays and some code refactoring, we get __8380 lines__ :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "1463 lines in [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/views/lighttable.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "1642 lines in [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/culling.c), where the culling view features were detached,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "2447 lines in [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbtable.c), where the thumbnails containers are managed for the lighttable and the filmstrip,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "1736 lines in [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail.c), where the thumbnails themselves are managed,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "169 lines in [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail_btn.c), where the specific thumbnails buttons are declared,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "115 lines in [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/filmstrip.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "808 lines in [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/global_toolbox.c).\n"
+msgid ""
+"* 1463 lines in [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/views/lighttable.c),\n"
+"* 1642 lines in [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/culling.c), where the culling view features were detached,\n"
+"* 2447 lines in [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbtable.c), where the thumbnails containers are managed for the lighttable and the filmstrip,\n"
+"* 1736 lines in [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail.c), where the thumbnails themselves are managed,\n"
+"* 169 lines in [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/dtgtk/thumbnail_btn.c), where the specific thumbnails buttons are declared,\n"
+"* 115 lines in [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/filmstrip.c),\n"
+"* 808 lines in [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-3.2.x/src/libs/tools/global_toolbox.c).\n"
 msgstr ""
 
 #. type: Plain text
@@ -1225,46 +1126,17 @@ msgstr ""
 msgid "In Darktable 4.2, after the correction of many bugs, we get to a total of __9264 lines__ :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "1348 lines in [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/views/lighttable.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "1828 lines in [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/culling.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "2698 lines in [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbtable.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "2093 lines in [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "166 lines in [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail_btn.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "109 lines in [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/filmstrip.c),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "1022 lines in [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/global_toolbox.c).\n"
+msgid ""
+"* 1348 lines in [views/lighttable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/views/lighttable.c),\n"
+"* 1828 lines in [dtgtk/culling.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/culling.c),\n"
+"* 2698 lines in [dtgtk/thumbtable.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbtable.c),\n"
+"* 2093 lines in [dtgtk/thumbnail.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail.c),\n"
+"* 166 lines in [dtgtk/thumbnail_btn.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/dtgtk/thumbnail_btn.c),\n"
+"* 109 lines in [libs/tools/filmstrip.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/filmstrip.c),\n"
+"* 1022 lines in [libs/tools/global_toolbox.c](https://github.com/darktable-org/darktable/blob/darktable-4.2.x/src/libs/tools/global_toolbox.c).\n"
 msgstr ""
 
 #. type: Plain text
@@ -1401,52 +1273,18 @@ msgstr ""
 msgid "It remains that, any time you move the cursor, a great number of useless recomputations are started for nothing. How bad is it ? I had the idea of measuring the CPU use of my system when idle, with the Linux tool `powertop`. The protocol is quite simple : a laptop (CPU Intel Xeon Mobile 6th generation), working on battery in powersave mode, backlighting set to minimum, open the app and touch nothing for 4 min, then monitor the global CPU consumption of the system as reported by `powertop` during the 5th minute :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "Base system (no app opened except for `powertop` runing in a terminal) : __3.0 to 3.5 % CPU__\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "Ansel :\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "opened on lighttable : __2.9 to 3.4 % CPU__,\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "opened on darkroom : __3.8 to 4.5 %__ (before reverting module groups to Darktable 3.2),\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "opened on darkroom : __3.0 to 3.5 %__ (after reverting module groups),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "Darktable :\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "opened on lightable : __6.6 to 7.1 % CPU__,\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "opened on darkroom : __30.9 to 44.9 % CPU__ _(no, it's not a coma mistake)_,\n"
+msgid ""
+"* Base system (no app opened except for `powertop` runing in a terminal) : __3.0 to 3.5 % CPU__\n"
+"* Ansel :\n"
+"  * opened on lighttable : __2.9 to 3.4 % CPU__,\n"
+"  * opened on darkroom : __3.8 to 4.5 %__ (before reverting module groups to Darktable 3.2),\n"
+"  * opened on darkroom : __3.0 to 3.5 %__ (after reverting module groups),\n"
+"* Darktable :\n"
+"  * opened on lightable : __6.6 to 7.1 % CPU__,\n"
+"  * opened on darkroom : __30.9 to 44.9 % CPU__ _(no, it's not a coma mistake)_,\n"
 msgstr ""
 
 #. type: Plain text
@@ -1582,28 +1420,14 @@ msgstr ""
 msgid "To make things easier to compare, let's annualize them :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "2019 : 1049 new issues, 66 closed, 88 k changes, +44 k lines,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "2020 : 2009 new issues, 208 closed, 166 k changes, +25 k lines,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "2021 : 1548 new issues, 555 closed, 143 k changes, +45 k lines,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "2022 : 1227 new issues, 183 closed, 84 k changes, +4 k lines.\n"
+msgid ""
+"- 2019 : 1049 new issues, 66 closed, 88 k changes, +44 k lines,\n"
+"- 2020 : 2009 new issues, 208 closed, 166 k changes, +25 k lines,\n"
+"- 2021 : 1548 new issues, 555 closed, 143 k changes, +45 k lines,\n"
+"- 2022 : 1227 new issues, 183 closed, 84 k changes, +4 k lines.\n"
 msgstr ""
 
 #. type: Plain text
@@ -1666,82 +1490,23 @@ msgstr ""
 msgid "In fact, Darktable suffers several issues :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "An hard core of rather mediocre developers who have a lot of free time on their hands to do random stuff, driven by the best intents in the world but oblivious of the damages they make, (mediocre people are always the more available)\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "The complacency of the maintainer, who lets dirty code through to be nice,\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "A critical lack of skills in pure mathematics, algorithmics, signal processing, color science and generally in abstract thinking, which are required beyond pixel processing code to simplify and factorize features,\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "A despicable habit of \"developing\" by copy-pasting code fetched elsewhere in the project or in other FLOSS projects that may used a different pipeline architecture but without adapting it accordingly (adapting implies understanding, and that's too much to ask…),\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "A fair and square refusal to prune features to make room to new ones and keep a certain balance,\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "A sampling bias, where the only users interacting with the development through Github are programmers and English-speaking. Fact is the general audience doesn't understand what a code forge is and it's difficult to encourage non-programmers to open a Github account to report bugs. We are talking of a users sample [made of more than 44 % of programmers](https://eng.aurelienpierre.com/2023/01/who-are-the-darktable-users/#Conclusion-of-this-part) and of more than 35 % of university-graduated people (they are respectively 6 % and 15 % in the general population).\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "A forced-march development style, without planning or dialogue, where every Github user can pollute discussions with a non-educated opinion on current work. Fact is image processing looks easy and is harmless, so much so that any person able to compute a logarithm feels competent. But the fundamental mistakes in Darkable colorimetry chain are there to remind us everday of the contrary.\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "A lack of project-wise priorities regarding what features to refactor, stabilize or extend : all projects are open at the same time, even if they conflicts with each other.\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "An amount of activity (emails and notifications) impossible to follow, between comments, off-topic discussions, bugs that are not, code change proposals, actual code changes that may impact your own work in progress, which means you have to be all over the place all the time ; there is a lot to read, very little to keep, discussion for the sake of discussion hinders productivity and the lack of working structure is the main cause of all that,\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "Non-blocking bugs hastily hidden before we are done understanding them, instead of fixing them for real and tackling them at their root, which moves or even aggravates issues long-term without leaving traces into any kind of documentation,\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "A release schedule that we keep no matter the price even when it's not realistic, whereas nobody imposes it upon ourselves,\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "Code changes that can happen anytime anywhere, meaning we work on quicksand and that we have to work as fast and as bad as the others to not be left behind the volume and frequency of the changes (_commits_),\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "New features that degrade usability and complicate usage without solving a definite problem, that serves as recreational projects to developers untrained in design/engineering.\n"
+msgid ""
+"1. An hard core of rather mediocre developers who have a lot of free time on their hands to do random stuff, driven by the best intents in the world but oblivious of the damages they make, (mediocre people are always the more available)\n"
+"1. The complacency of the maintainer, who lets dirty code through to be nice,\n"
+"1. A critical lack of skills in pure mathematics, algorithmics, signal processing, color science and generally in abstract thinking, which are required beyond pixel processing code to simplify and factorize features,\n"
+"1. A despicable habit of \"developing\" by copy-pasting code fetched elsewhere in the project or in other FLOSS projects that may used a different pipeline architecture but without adapting it accordingly (adapting implies understanding, and that's too much to ask…),\n"
+"1. A fair and square refusal to prune features to make room to new ones and keep a certain balance,\n"
+"1. A sampling bias, where the only users interacting with the development through Github are programmers and English-speaking. Fact is the general audience doesn't understand what a code forge is and it's difficult to encourage non-programmers to open a Github account to report bugs. We are talking of a users sample [made of more than 44 % of programmers](https://eng.aurelienpierre.com/2023/01/who-are-the-darktable-users/#Conclusion-of-this-part) and of more than 35 % of university-graduated people (they are respectively 6 % and 15 % in the general population).\n"
+"1. A forced-march development style, without planning or dialogue, where every Github user can pollute discussions with a non-educated opinion on current work. Fact is image processing looks easy and is harmless, so much so that any person able to compute a logarithm feels competent. But the fundamental mistakes in Darkable colorimetry chain are there to remind us everday of the contrary.\n"
+"1. A lack of project-wise priorities regarding what features to refactor, stabilize or extend : all projects are open at the same time, even if they conflicts with each other.\n"
+"1. An amount of activity (emails and notifications) impossible to follow, between comments, off-topic discussions, bugs that are not, code change proposals, actual code changes that may impact your own work in progress, which means you have to be all over the place all the time ; there is a lot to read, very little to keep, discussion for the sake of discussion hinders productivity and the lack of working structure is the main cause of all that,\n"
+"1. Non-blocking bugs hastily hidden before we are done understanding them, instead of fixing them for real and tackling them at their root, which moves or even aggravates issues long-term without leaving traces into any kind of documentation,\n"
+"1. A release schedule that we keep no matter the price even when it's not realistic, whereas nobody imposes it upon ourselves,\n"
+"1. Code changes that can happen anytime anywhere, meaning we work on quicksand and that we have to work as fast and as bad as the others to not be left behind the volume and frequency of the changes (_commits_),\n"
+"1. New features that degrade usability and complicate usage without solving a definite problem, that serves as recreational projects to developers untrained in design/engineering.\n"
 msgstr ""
 
 #. type: Plain text
@@ -1864,34 +1629,15 @@ msgstr ""
 msgid "I don't have time to be researcher, designer, on top of secretary, while doing technical baby-sitting for a team of Gaston Lagaffe who need both to be trained and to be watched because they are unable to :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "make a development planning with a list of priorities of new features to work on,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "provide a specicifications book of needs and issues, with a real use case, __before__ hurrying up on their code editor and doing whatever to develop a new feature in search for a problem to solve.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "evaluate the maintenance cost of the change before inventing the bionic bacon pump using reversed osmosis which only works on even days if Jupyter is out of phase with Saturn,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "limit the expenses and cut down the losses when they trap themselves into design one-ways introducing regressions worse than the hypothetical benefits expected,\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "take upon themselves and delay a release if the code is obviously not ready (or I didn't understand anything and the shareholders will ask for our heads if we release late ???).\n"
+msgid ""
+"1. make a development planning with a list of priorities of new features to work on,\n"
+"2. provide a specicifications book of needs and issues, with a real use case, __before__ hurrying up on their code editor and doing whatever to develop a new feature in search for a problem to solve.\n"
+"3. evaluate the maintenance cost of the change before inventing the bionic bacon pump using reversed osmosis which only works on even days if Jupyter is out of phase with Saturn,\n"
+"4. limit the expenses and cut down the losses when they trap themselves into design one-ways introducing regressions worse than the hypothetical benefits expected,\n"
+"5. take upon themselves and delay a release if the code is obviously not ready (or I didn't understand anything and the shareholders will ask for our heads if we release late ???).\n"
 msgstr ""
 
 #. type: Plain text
@@ -1960,52 +1706,18 @@ msgstr ""
 msgid "In 4 years, I brought to this software something that sorely lacked : an unified workflow, based on a set of modules __designed__ to work together, but acting each on a distinct aspect, where Darktable modules were rather a collection of disparate plugins. We are talking about :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "filmic,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "tone equalizer,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "the physically-accurate blurs module,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "both versions of the color balance,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "color calibration, including the GUI to profile with color checkers straight in darkroom and the white balancing using CIE standards,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "the negadoctor module to invert film negatives based on Kodak Cineon,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "the diffuse and sharpen module for addition and removal of blur based on thermal diffusion,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "the guided laplacian reconstruction of highlights.\n"
+msgid ""
+"* filmic,\n"
+"* tone equalizer,\n"
+"* the physically-accurate blurs module,\n"
+"* both versions of the color balance,\n"
+"* color calibration, including the GUI to profile with color checkers straight in darkroom and the white balancing using CIE standards,\n"
+"* the negadoctor module to invert film negatives based on Kodak Cineon,\n"
+"* the diffuse and sharpen module for addition and removal of blur based on thermal diffusion,\n"
+"* the guided laplacian reconstruction of highlights.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2014,40 +1726,16 @@ msgstr ""
 msgid "I also developed more fundamental tools providing bases for the previous modules :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "a 4th order anisotropic partial differential equations solver in wavelets space for diffuse and sharpen,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "an adaptation of the predious as the guided laplacian for RGB signal reconstruction by gradients propagation,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "a perceptual color appearance model taking the Helmholtz-Kohlrausch effect into account in the saturation computation, to limit the \"fluo\" effect that typically comes with intense saturation settings, in color balance,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "a theoritical help in developing the exposure-invariant guided filter (EIGF), in tone equalizer,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "a linear vector equations solver by Choleski method,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "various interpolation methods of order 2, 3 and radial-based.\n"
+msgid ""
+"* a 4th order anisotropic partial differential equations solver in wavelets space for diffuse and sharpen,\n"
+"* an adaptation of the predious as the guided laplacian for RGB signal reconstruction by gradients propagation,\n"
+"* a perceptual color appearance model taking the Helmholtz-Kohlrausch effect into account in the saturation computation, to limit the \"fluo\" effect that typically comes with intense saturation settings, in color balance,\n"
+"* a theoritical help in developing the exposure-invariant guided filter (EIGF), in tone equalizer,\n"
+"* a linear vector equations solver by Choleski method,\n"
+"* various interpolation methods of order 2, 3 and radial-based.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2056,22 +1744,13 @@ msgstr ""
 msgid "In the GUI, I notably did :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md
 #, no-wrap
-msgid "refactor style declaration, removing styling from C code to map them to the CSS stylesheet, allowing to have multiple themes for the UI, including user-defined ones,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "introduce the preview mode [focus-peaking](https://docs.darktable.org/usermanual/4.0/en/module-reference/utility-modules/shared/focus-peaking/) and [ISO 12 646 color assessment mode](https://docs.darktable.org/usermanual/4.0/en/module-reference/utility-modules/darkroom/color-assessment/),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/news/darktable-dans-le-mur-au-ralenti/index.md
-#, no-wrap
-msgid "introduce the color vocabulary [in the global color picker](https://docs.darktable.org/usermanual/4.0/en/module-reference/utility-modules/darkroom/global-color-picker/), allowing to name the picked color from its chromaticity coordinates, targetting color-blind photographers.\n"
+msgid ""
+"* refactor style declaration, removing styling from C code to map them to the CSS stylesheet, allowing to have multiple themes for the UI, including user-defined ones,\n"
+"* introduce the preview mode [focus-peaking](https://docs.darktable.org/usermanual/4.0/en/module-reference/utility-modules/shared/focus-peaking/) and [ISO 12 646 color assessment mode](https://docs.darktable.org/usermanual/4.0/en/module-reference/utility-modules/darkroom/color-assessment/),\n"
+"* introduce the color vocabulary [in the global color picker](https://docs.darktable.org/usermanual/4.0/en/module-reference/utility-modules/darkroom/global-color-picker/), allowing to name the picked color from its chromaticity coordinates, targetting color-blind photographers.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2128,28 +1807,14 @@ msgstr ""
 msgid "I have thought, for a very long time, that there was some kill-switch mechanism on the pixel pipeline. The use case is the following :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/implementing-kill-switch.md
 #, no-wrap
-msgid "you are changing a module parameter,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/implementing-kill-switch.md
-#, no-wrap
-msgid "the previews (the central darkroom one and the thumbnail in left panel, also used for histogram and color pickers) recompute their pipeline to account for that change,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/implementing-kill-switch.md
-#, no-wrap
-msgid "one of the previews finishes rendering before the other, and the result is obviously __not__ what you wanted,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/implementing-kill-switch.md
-#, no-wrap
-msgid "you change again the module parameter, without waiting for the recomputation to finish.\n"
+msgid ""
+"1. you are changing a module parameter,\n"
+"2. the previews (the central darkroom one and the thumbnail in left panel, also used for histogram and color pickers) recompute their pipeline to account for that change,\n"
+"3. one of the previews finishes rendering before the other, and the result is obviously __not__ what you wanted,\n"
+"4. you change again the module parameter, without waiting for the recomputation to finish.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2315,16 +1980,12 @@ msgstr ""
 msgid "We save/restore the pathes and keys associations to/from the `keyboardrc` file, and that's it. There is no window to define shortcuts in GUI at this time, but making one will only have to list (loop over) known pathes and their associated keys. When the shortcuts handler catches a known combination of keys:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/welcome-dev-docs/index.md
 #, no-wrap
-msgid "for the widget-attached actions, it will send an `activate` Gtk signal to the relevant widget, and that widget will do its own thing through a callback (which is the same as the callback handling clicks, so the code is uniform between clicks and keyboard activation),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/welcome-dev-docs/index.md
-#, no-wrap
-msgid "for the widget-less actions, it will directly call the declared callback function over the declared data.\n"
+msgid ""
+"- for the widget-attached actions, it will send an `activate` Gtk signal to the relevant widget, and that widget will do its own thing through a callback (which is the same as the callback handling clicks, so the code is uniform between clicks and keyboard activation),\n"
+"- for the widget-less actions, it will directly call the declared callback function over the declared data.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2375,34 +2036,15 @@ msgstr ""
 msgid "Recap of the previous episodes"
 msgstr ""
 
-#. type: Bullet: '0. '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "Between 2020 and 2022, [Darktable underwent a mass-destruction enterprise](./darktable-dans-le-mur-au-ralenti/index.en.md), by a handful of guys with more freetime and benevolence than actual skills,\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "In 2022, [I started noticing an annoying lag](https://github.com/aurelienpierreeng/ansel/issues/29) between GUI interactions with sliders controls and feedback/update of said sliders. For lack of feedback stating that the value change was recorded, users could change it again, thereby starting additionnal pipeline recomputes and effectively freezing their computer because stupid GUI never said \"got you, wait for a bit now\".\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "I discovered that pipeline recomputations orders were issued twice per click (once on \"button pushed\", once on \"button released\" events), and once again for each mouse motion, but also that the GUI states were updated seemingly after pipe recompute.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "I [fixed that](./undarktable-ing-gui-controls.md) by almost rewriting the custom GUI controls (Bauhaus lib). I thought that preventing reckless recompute orders was gonna solve the lag : it didn't. Then, I discovered that requesting a new pipeline recompute before the previous ended waited for the previous to end, despite a shutdown mechanism implemented many years ago that should have worked.\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "I [fixed that](./implementing-kill-switch.md) by implementing a kill-switch mechanism on pipelines, following comments in the code from the 2010's and internal utilities that may well have never worked. This did not always work because the kill order came often with a noticeable delay. Once again, the GUI lag was not fixed.\n"
+msgid ""
+"0. Between 2020 and 2022, [Darktable underwent a mass-destruction enterprise](./darktable-dans-le-mur-au-ralenti/index.en.md), by a handful of guys with more freetime and benevolence than actual skills,\n"
+"1. In 2022, [I started noticing an annoying lag](https://github.com/aurelienpierreeng/ansel/issues/29) between GUI interactions with sliders controls and feedback/update of said sliders. For lack of feedback stating that the value change was recorded, users could change it again, thereby starting additionnal pipeline recomputes and effectively freezing their computer because stupid GUI never said \"got you, wait for a bit now\".\n"
+"2. I discovered that pipeline recomputations orders were issued twice per click (once on \"button pushed\", once on \"button released\" events), and once again for each mouse motion, but also that the GUI states were updated seemingly after pipe recompute.\n"
+"3. I [fixed that](./undarktable-ing-gui-controls.md) by almost rewriting the custom GUI controls (Bauhaus lib). I thought that preventing reckless recompute orders was gonna solve the lag : it didn't. Then, I discovered that requesting a new pipeline recompute before the previous ended waited for the previous to end, despite a shutdown mechanism implemented many years ago that should have worked.\n"
+"4. I [fixed that](./implementing-kill-switch.md) by implementing a kill-switch mechanism on pipelines, following comments in the code from the 2010's and internal utilities that may well have never worked. This did not always work because the kill order came often with a noticeable delay. Once again, the GUI lag was not fixed.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2447,34 +2089,15 @@ msgstr ""
 msgid "This method has one merit : it's lazy coding. Then it has a shitload of drawbacks and issues :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "it's __not__ dev-friendly, especially in a software project were code greping and comments are all the doc we can dream of. It took many hours to understand the logic through program archaeology. If a command is issued, I want to read `command_issued()` in the right place in the code, because C is already difficult enough to follow without mixing riddles into debug.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "since `gtk_widget_queue_draw()` (called __twice__ in the worst-case scenario) is only added on the queue and processed asynchronously, it adds any lag that Gtk could suffer (while processing other bits of the GUI or previous frames) before any pipeline recompute is only started, which is unnecessary since the pipeline lives in its own thread in parallel,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "the great MIDI turducken, listening for pointing, keyboard and MIDI events to dispatch shortcuts, seemed to have overloaded the global GUI with listeners looping over all known shortcuts, which made Gtk lag to the point where it became noticeable,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "it prevents any kill-switch mechanism from being useful, both because of delays and because of flags readings were interleaved with thread locks (and race conditions). In addition, waiting to acquire the pipeline thread lock (mutex) would freeze the GUI thread during the corresponding time, which was probably one of the causes of the slider lag before updating its position,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "the chained calls to the `redraw` event callback, through `gtk_widget_queue_draw()`, promoted \"endless\" stuttering loops of (useless) intermediate redraws which seemed to hit people with slow computers more than those with power beasts. Those were particularly difficult to reproduce, depending on hardware performance, so you can find forums were people are convinced that Darktable is the slowest software ever while others report excellent performance.\n"
+msgid ""
+"1. it's __not__ dev-friendly, especially in a software project were code greping and comments are all the doc we can dream of. It took many hours to understand the logic through program archaeology. If a command is issued, I want to read `command_issued()` in the right place in the code, because C is already difficult enough to follow without mixing riddles into debug.\n"
+"2. since `gtk_widget_queue_draw()` (called __twice__ in the worst-case scenario) is only added on the queue and processed asynchronously, it adds any lag that Gtk could suffer (while processing other bits of the GUI or previous frames) before any pipeline recompute is only started, which is unnecessary since the pipeline lives in its own thread in parallel,\n"
+"2. the great MIDI turducken, listening for pointing, keyboard and MIDI events to dispatch shortcuts, seemed to have overloaded the global GUI with listeners looping over all known shortcuts, which made Gtk lag to the point where it became noticeable,\n"
+"3. it prevents any kill-switch mechanism from being useful, both because of delays and because of flags readings were interleaved with thread locks (and race conditions). In addition, waiting to acquire the pipeline thread lock (mutex) would freeze the GUI thread during the corresponding time, which was probably one of the causes of the slider lag before updating its position,\n"
+"4. the chained calls to the `redraw` event callback, through `gtk_widget_queue_draw()`, promoted \"endless\" stuttering loops of (useless) intermediate redraws which seemed to hit people with slow computers more than those with power beasts. Those were particularly difficult to reproduce, depending on hardware performance, so you can find forums were people are convinced that Darktable is the slowest software ever while others report excellent performance.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2483,22 +2106,13 @@ msgstr ""
 msgid "So I fixed the whole logic by :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "making the `redraw` callback stupid (drawing whatever pixmap buffer was available, unconditionnaly),\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "handling explicit pipeline recomputes in the module and history code, with the pipeline recomputes asking for a widget redraw upon pipeline completion, (yes, it's more code, and it is tedious, but now you can optimize recomputes manually — performance matters),\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "removing the special handling of \"duplicate\" history items (leading to some pollution when dealing with masks, this will need to be fixed later).\n"
+msgid ""
+"1. making the `redraw` callback stupid (drawing whatever pixmap buffer was available, unconditionnaly),\n"
+"2. handling explicit pipeline recomputes in the module and history code, with the pipeline recomputes asking for a widget redraw upon pipeline completion, (yes, it's more code, and it is tedious, but now you can optimize recomputes manually — performance matters),\n"
+"3. removing the special handling of \"duplicate\" history items (leading to some pollution when dealing with masks, this will need to be fixed later).\n"
 msgstr ""
 
 #. type: Plain text
@@ -2557,46 +2171,17 @@ msgstr ""
 msgid "We need to pause a bit here. Even a mechanical engineer with no proper programming education like myself knows what an [LRU cache](https://en.wikipedia.org/wiki/Cache_replacement_policies) is :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "you create a fixed list of slots (cache lines),\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "once you have something to cache, you allocate a memory buffer of previously-known size to one of those slots and assign it an unique identifier. That could be a a checksum, a random hash or even a timestamp, it just has to be cooked always the same way and lead to something unique,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "when you need data associated with some unique identifier, you query the list of slots and search if that ID is known :\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "if it is, you fetch its associated buffer,\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "if it is not :\n"
-msgstr ""
-
-#. type: Bullet: '      - '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "if you still have empty slots, you create the associated buffer and copy the data for later reuse,\n"
-msgstr ""
-
-#. type: Bullet: '      - '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "if you don't, you clear out the oldest slot and reuse it to host your new data.\n"
+msgid ""
+"1. you create a fixed list of slots (cache lines),\n"
+"2. once you have something to cache, you allocate a memory buffer of previously-known size to one of those slots and assign it an unique identifier. That could be a a checksum, a random hash or even a timestamp, it just has to be cooked always the same way and lead to something unique,\n"
+"3. when you need data associated with some unique identifier, you query the list of slots and search if that ID is known :\n"
+"    - if it is, you fetch its associated buffer,\n"
+"    - if it is not :\n"
+"      - if you still have empty slots, you create the associated buffer and copy the data for later reuse,\n"
+"      - if you don't, you clear out the oldest slot and reuse it to host your new data.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2665,28 +2250,14 @@ msgstr ""
 msgid "How did I solve the problem ?\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "When a new module history entry is added, the parameters checksum is computed, taking parameters, masks, blending options, instance number, order in pipeline, etc. into account. Meaning all pipelines share the same checksum/ID here (possible future use would be to save it into database),\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "Before a pipeline is computed, we compute the global checksum of all modules, from start to end, taking into account the mask display state, the checksum of previous modules, and the ROI (size and coordinates). This checksum can be directly accessed later, without additional computation.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "The cache deals with this global checksum, and only that. No ifs, no buts, no heuristics, no conditions, no workarounds.\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "Modules can request a cache bypass, for example when using color picker. This contaminates later modules in the pipeline before the pipe is computed, so the cacheless state is known early and doesn't affect upstream modules. That should only be a workaround before color pickers can actually use cache lines directly, and could be reused for future modules doing non-standard stuff (painting ?).\n"
+msgid ""
+"1. When a new module history entry is added, the parameters checksum is computed, taking parameters, masks, blending options, instance number, order in pipeline, etc. into account. Meaning all pipelines share the same checksum/ID here (possible future use would be to save it into database),\n"
+"2. Before a pipeline is computed, we compute the global checksum of all modules, from start to end, taking into account the mask display state, the checksum of previous modules, and the ROI (size and coordinates). This checksum can be directly accessed later, without additional computation.\n"
+"3. The cache deals with this global checksum, and only that. No ifs, no buts, no heuristics, no conditions, no workarounds.\n"
+"4. Modules can request a cache bypass, for example when using color picker. This contaminates later modules in the pipeline before the pipe is computed, so the cacheless state is known early and doesn't affect upstream modules. That should only be a workaround before color pickers can actually use cache lines directly, and could be reused for future modules doing non-standard stuff (painting ?).\n"
 msgstr ""
 
 #. type: Plain text
@@ -2695,34 +2266,15 @@ msgstr ""
 msgid "Benefits :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "The module-wise, internal, checksum is computed once for all pipelines,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "Because the pipeline-wise, global, checksum of each module is known before starting the pipeline recompute :\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "it can also be used for GUI synchronization, so I merged both Darktable checksums into one,\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "it is constant within the scope of the pipeline, allowing to share cache lines between several pipelines (for example, demosaicing and denoising) with limited thread locking issues[^2]\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "Modules doing weird things have an uniform and predictable way of requesting a cache bypass from GUI events, should they need it.\n"
+msgid ""
+"1. The module-wise, internal, checksum is computed once for all pipelines,\n"
+"2. Because the pipeline-wise, global, checksum of each module is known before starting the pipeline recompute :\n"
+"    - it can also be used for GUI synchronization, so I merged both Darktable checksums into one,\n"
+"    - it is constant within the scope of the pipeline, allowing to share cache lines between several pipelines (for example, demosaicing and denoising) with limited thread locking issues[^2]\n"
+"3. Modules doing weird things have an uniform and predictable way of requesting a cache bypass from GUI events, should they need it.\n"
 msgstr ""
 
 #. type: Link reference
@@ -2755,46 +2307,17 @@ msgstr ""
 msgid "Meanwhile in Darktable 4.8"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "Pipeline checksum is computed during pipeline runtime, so it's unknown outside,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "Because of that, they didn't deduplicate the GUI vs. pipeline checksums… good luck tracking inconsistencies between both in the future,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "[Their cache handling code](https://github.com/darktable-org/darktable/blob/master/src/develop/pixelpipe_cache.c) is more than twice as large as [mine](https://github.com/aurelienpierreeng/ansel/blob/master/src/develop/pixelpipe_cache.c) and uses heuristics (over the type of pipeline, kind of module, state of masks display, color picker use, and caching hints defined manually in modules) to work around issues. The cache is not content-agnostic anymore and good luck debugging these spaghetti.[^3]\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "They are still entirely computing the module parameters (internal) checksum twice, once for each pipeline,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "It took them almost 2 years to get there (since 4.0 release),\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "I would love to see their cache hits/misses stats (do I want to revive my PTSD by opening that soft ever again ? I'll pass, thanks).\n"
-msgstr ""
-
-#. type: Bullet: '6. '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "People who think having more monkeys waving their hands in the air guarantees better quality should stop thinking.\n"
+msgid ""
+"1. Pipeline checksum is computed during pipeline runtime, so it's unknown outside,\n"
+"2. Because of that, they didn't deduplicate the GUI vs. pipeline checksums… good luck tracking inconsistencies between both in the future,\n"
+"3. [Their cache handling code](https://github.com/darktable-org/darktable/blob/master/src/develop/pixelpipe_cache.c) is more than twice as large as [mine](https://github.com/aurelienpierreeng/ansel/blob/master/src/develop/pixelpipe_cache.c) and uses heuristics (over the type of pipeline, kind of module, state of masks display, color picker use, and caching hints defined manually in modules) to work around issues. The cache is not content-agnostic anymore and good luck debugging these spaghetti.[^3]\n"
+"4. They are still entirely computing the module parameters (internal) checksum twice, once for each pipeline,\n"
+"4. It took them almost 2 years to get there (since 4.0 release),\n"
+"5. I would love to see their cache hits/misses stats (do I want to revive my PTSD by opening that soft ever again ? I'll pass, thanks).\n"
+"6. People who think having more monkeys waving their hands in the air guarantees better quality should stop thinking.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2809,34 +2332,15 @@ msgstr ""
 msgid "There are still issues to fix :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md
 #, no-wrap
-msgid "the number of available cache lines is an user preference and doesn't check for available memory left on device,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "the histogram/scopes module is mostly broken by design, because it was handled through special heuristics (now removed) on a module that is invisible in GUI (`gamma.c`). The new logic makes it possible to force-cache it and to fetch the cache line from the GUI thread.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "internal module's histogram are not immediately drawn when going in darkroom,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "color-pickers handling could be simplified and made more elegant,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/fixing-pipe-cache-10-yo-bugs.md
-#, no-wrap
-msgid "history handling still have some corner cases.\n"
+msgid ""
+"- the number of available cache lines is an user preference and doesn't check for available memory left on device,\n"
+"- the histogram/scopes module is mostly broken by design, because it was handled through special heuristics (now removed) on a module that is invisible in GUI (`gamma.c`). The new logic makes it possible to force-cache it and to fetch the cache line from the GUI thread.\n"
+"- internal module's histogram are not immediately drawn when going in darkroom,\n"
+"- color-pickers handling could be simplified and made more elegant,\n"
+"- history handling still have some corner cases.\n"
 msgstr ""
 
 #. type: Plain text
@@ -2989,16 +2493,12 @@ msgstr ""
 msgid "The problem is Darktable has 2 kinds of modules :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/modules-groups-redesign/index.md
 #, no-wrap
-msgid "the lighttable modules (and the modules in the left panel of the darkroom), which are arbitrary toolboxes and therefore __purely GUI elements/frames__,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/modules-groups-redesign/index.md
-#, no-wrap
-msgid "the darkroom modules, which are both __a pixel filter__ located somewhere in the pipeline, and also __a GUI toolbox.__ (same as the previous modules).\n"
+msgid ""
+"1. the lighttable modules (and the modules in the left panel of the darkroom), which are arbitrary toolboxes and therefore __purely GUI elements/frames__,\n"
+"2. the darkroom modules, which are both __a pixel filter__ located somewhere in the pipeline, and also __a GUI toolbox.__ (same as the previous modules).\n"
 msgstr ""
 
 #. type: Plain text
@@ -3019,22 +2519,13 @@ msgstr ""
 msgid "That's 3 mistakes here :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/news/modules-groups-redesign/index.md
 #, no-wrap
-msgid "naming a GUI object by its technical implementation name instead of its functionnal purpose,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/news/modules-groups-redesign/index.md
-#, no-wrap
-msgid "naming and representing 2 conceptually-different objects the same way,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/news/modules-groups-redesign/index.md
-#, no-wrap
-msgid "failing to represent the order of the modules in a clear, hierarchical way.\n"
+msgid ""
+"1. naming a GUI object by its technical implementation name instead of its functionnal purpose,\n"
+"2. naming and representing 2 conceptually-different objects the same way,\n"
+"3. failing to represent the order of the modules in a clear, hierarchical way.\n"
 msgstr ""
 
 #. type: Plain text
@@ -3225,28 +2716,14 @@ msgstr ""
 msgid "__With the mouse__ and pointing devices, tabs can be navigated by:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/modules-groups-redesign/index.md
 #, no-wrap
-msgid "clicking the ones that are visible,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/modules-groups-redesign/index.md
-#, no-wrap
-msgid "clicking on the arrows to reveal the previous/next tabs (visible or hidden),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/modules-groups-redesign/index.md
-#, no-wrap
-msgid "right-clicking on any tab to reveal a contextual menu containing the list of all tabs,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/modules-groups-redesign/index.md
-#, no-wrap
-msgid "scrolling (with the mouse wheel) previous/back on the tabs bar to switch tabs. Once you reached the end, it will cycle back with an \"hard push\" ensuring it's really what you want to do.\n"
+msgid ""
+"- clicking the ones that are visible,\n"
+"- clicking on the arrows to reveal the previous/next tabs (visible or hidden),\n"
+"- right-clicking on any tab to reveal a contextual menu containing the list of all tabs,\n"
+"- scrolling (with the mouse wheel) previous/back on the tabs bar to switch tabs. Once you reached the end, it will cycle back with an \"hard push\" ensuring it's really what you want to do.\n"
 msgstr ""
 
 #. type: Plain text
@@ -3417,40 +2894,16 @@ msgstr ""
 msgid "‍List of improvements"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md
 #, no-wrap
-msgid "Cursor coordinates (in popups) are computed only at once place, then stored. That saves a lot of intermediate recomputations, some of them being inconsistent because the code was copy-pasted and duplicated instead of using [getters and setters](https://en.wikipedia.org/wiki/Mutator_method). Now, coordinates offsets and changes are handled through unified getters and setters, meaning any future change will need to happen only in one place, and the whole code uses that.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "New values (from sliders and comboboxes) are not dispatched anymore to the pixel pipeline during scrolling or drag-and-dropping, but only at the end. This relies on a machine-learned timeout recording the average time needed to compute a full pipeline. The GUI will wait for 20 ms to 2.5 s to dispatch changes to pipeline, avoiding to recompute at every scrolling or dragging step, which makes for useless and redundant, yet expensive, computations that only make the software lag. Similarly, they are now dispatched only on the button-released event, instead of button-pressed and button-released events (given that a typical mouse click sends both events). It should spare quite a lot of needless pipeline recomputes.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "Widgets are redrawn immediately on user events, before the new values are dispatched to the pixel pipeline. This ensures immediate user feedback, even though the actual pixel result may come later, and limit frustration on slow computers.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "Do not dispatch value-changed events if the widgets got user interaction but their value didn't actually change.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "Capture clicks on the comboboxes chevron (right arrow). Previously, you needed to click on the label to unroll the combobox drop-down menu, which was super frustrating if you came from software with a proper GUI. The chevron itself didn't respond to clicks.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "Do not scroll comboboxes drop-downs. That feature started like a cool project : having the currently-selected item aligned with the label. Problem is the drop-down popup positionning is ultimately handled by the desktop environment, we can only ask it politely to do what we wish, but there is no guarantee our wishes will be honoured. Also, it is possible to make the popup roll outside the viewport, nothing prevents it. All in all, it's brittle and random, better stick with default window positionning.\n"
+msgid ""
+"- Cursor coordinates (in popups) are computed only at once place, then stored. That saves a lot of intermediate recomputations, some of them being inconsistent because the code was copy-pasted and duplicated instead of using [getters and setters](https://en.wikipedia.org/wiki/Mutator_method). Now, coordinates offsets and changes are handled through unified getters and setters, meaning any future change will need to happen only in one place, and the whole code uses that.\n"
+"- New values (from sliders and comboboxes) are not dispatched anymore to the pixel pipeline during scrolling or drag-and-dropping, but only at the end. This relies on a machine-learned timeout recording the average time needed to compute a full pipeline. The GUI will wait for 20 ms to 2.5 s to dispatch changes to pipeline, avoiding to recompute at every scrolling or dragging step, which makes for useless and redundant, yet expensive, computations that only make the software lag. Similarly, they are now dispatched only on the button-released event, instead of button-pressed and button-released events (given that a typical mouse click sends both events). It should spare quite a lot of needless pipeline recomputes.\n"
+"- Widgets are redrawn immediately on user events, before the new values are dispatched to the pixel pipeline. This ensures immediate user feedback, even though the actual pixel result may come later, and limit frustration on slow computers.\n"
+"- Do not dispatch value-changed events if the widgets got user interaction but their value didn't actually change.\n"
+"- Capture clicks on the comboboxes chevron (right arrow). Previously, you needed to click on the label to unroll the combobox drop-down menu, which was super frustrating if you came from software with a proper GUI. The chevron itself didn't respond to clicks.\n"
+"- Do not scroll comboboxes drop-downs. That feature started like a cool project : having the currently-selected item aligned with the label. Problem is the drop-down popup positionning is ultimately handled by the desktop environment, we can only ask it politely to do what we wish, but there is no guarantee our wishes will be honoured. Also, it is possible to make the popup roll outside the viewport, nothing prevents it. All in all, it's brittle and random, better stick with default window positionning.\n"
 msgstr ""
 
 #. type: Title ##
@@ -3501,16 +2954,12 @@ msgstr ""
 msgid "Downloads"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md
 #, no-wrap
-msgid "[Ansel-57ed58d-x86_64.AppImage](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/Ansel-57ed58d-x86_64.AppImage)\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "[Ansel-57ed58d-win64.exe](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/ansel-57ed58d-win64.exe)\n"
+msgid ""
+"- [Ansel-57ed58d-x86_64.AppImage](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/Ansel-57ed58d-x86_64.AppImage)\n"
+"- [Ansel-57ed58d-win64.exe](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/ansel-57ed58d-win64.exe)\n"
 msgstr ""
 
 #. type: Title ##
@@ -3525,22 +2974,13 @@ msgstr ""
 msgid "The current changes have reduced :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md
 #, no-wrap
-msgid "cyclomatic complexity from 735 to 494\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "cognitive complexity from 796 to 432\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/news/undarktable-ing-gui-controls.md
-#, no-wrap
-msgid "technical debt from 1 day and 7 hours to 4 hours and 50 min.\n"
+msgid ""
+"- cyclomatic complexity from 735 to 494\n"
+"- cognitive complexity from 796 to 432\n"
+"- technical debt from 1 day and 7 hours to 4 hours and 50 min.\n"
 msgstr ""
 
 #. type: Plain text
@@ -3676,28 +3116,14 @@ msgstr ""
 msgid "My [videos](https://www.youtube.com/channel/UCmsSn3fujI81EKEr4NLxrcg) and my posts typically contain both the \"how to\" and the \"why/how\" part. The \"why/how\" is typically technical or even theoritical, and is there to justify the \"how to\". There are several reasons for which I give both :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/resources/misconceptions.md
 #, no-wrap
-msgid "The accurate technical explanations are really difficult to find on the internet, and I'm pretty much the only one to link theory and practice on video. On the other hand, it's easy to find wrong information in photography, from people slightly above the average who try to help, but actually mislead others.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/resources/misconceptions.md
-#, no-wrap
-msgid "I personaly hate gurus that drop instructions without bothering to justify them. Rules always have a reason and need to be broken as soon as this reason stops being valid. You see a lot of people continuing to follow old rules because \"the elders knew what they were doing\" — but don't remember why they did — while circumstances have changed.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/resources/misconceptions.md
-#, no-wrap
-msgid "Understanding how tools behave allows you to predict when they will fail (because they will all fail at some point), which enables you to solve problems even before they appear, and to be ready with a plan B when it happens,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/resources/misconceptions.md
-#, no-wrap
-msgid "Most pieces of advice I give are contextual to the desired result and the type of image being worked. Removing context would make them simply wrong in general.\n"
+msgid ""
+"1. The accurate technical explanations are really difficult to find on the internet, and I'm pretty much the only one to link theory and practice on video. On the other hand, it's easy to find wrong information in photography, from people slightly above the average who try to help, but actually mislead others.\n"
+"2. I personaly hate gurus that drop instructions without bothering to justify them. Rules always have a reason and need to be broken as soon as this reason stops being valid. You see a lot of people continuing to follow old rules because \"the elders knew what they were doing\" — but don't remember why they did — while circumstances have changed.\n"
+"3. Understanding how tools behave allows you to predict when they will fail (because they will all fail at some point), which enables you to solve problems even before they appear, and to be ready with a plan B when it happens,\n"
+"4. Most pieces of advice I give are contextual to the desired result and the type of image being worked. Removing context would make them simply wrong in general.\n"
 msgstr ""
 
 #. type: Plain text
@@ -3814,16 +3240,12 @@ msgstr ""
 msgid "Color theory has 2 aspects :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/resources/readings.md
 #, no-wrap
-msgid "a __scientific__ one, historically linked to light physics, but now related more closely to psychology, trying to link physical signals with perceptual stimuli,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/resources/readings.md
-#, no-wrap
-msgid "an __artistic__ one, studying color semantics (which are mostly cultural) and how they play in creating believable shadows in paintings or moody ambiance into photographs and movies.\n"
+msgid ""
+"* a __scientific__ one, historically linked to light physics, but now related more closely to psychology, trying to link physical signals with perceptual stimuli,\n"
+"* an __artistic__ one, studying color semantics (which are mostly cultural) and how they play in creating believable shadows in paintings or moody ambiance into photographs and movies.\n"
 msgstr ""
 
 #. type: Plain text
@@ -3832,34 +3254,15 @@ msgstr ""
 msgid "It is worth noting that the scientific side has been studied by artists too (like [Munsell](https://en.wikipedia.org/wiki/Munsell_color_system)). The field mixes notions of :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/resources/readings.md
 #, no-wrap
-msgid "physics (light spectrum, where everything begins),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/resources/readings.md
-#, no-wrap
-msgid "biology and medicine (retina cells, optical nerve and brain, that is the human sensor),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/resources/readings.md
-#, no-wrap
-msgid "psychology (color memory and afterimages),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/resources/readings.md
-#, no-wrap
-msgid "art history (color harmonies),\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/resources/readings.md
-#, no-wrap
-msgid "ethnology (cultural meaning of color).\n"
+msgid ""
+"* physics (light spectrum, where everything begins),\n"
+"* biology and medicine (retina cells, optical nerve and brain, that is the human sensor),\n"
+"* psychology (color memory and afterimages),\n"
+"* art history (color harmonies),\n"
+"* ethnology (cultural meaning of color).\n"
 msgstr ""
 
 #. type: Plain text
@@ -4210,28 +3613,14 @@ msgstr ""
 msgid "Support legend:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/resources/supported-cameras.md
 #, no-wrap
-msgid "<span class='badge rounded-circle text-bg-success square-badge'>✓</span> Camera and format supported by Rawspeed. In case of problems, submit [bug reports](https://github.com/darktable-org/rawspeed/issues).\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "<span class='badge rounded-circle text-bg-danger square-badge'>✗</span> Camera and format unsupported by Rawspeed and Libraw,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "<span class='badge rounded-circle text-bg-warning square-badge'>?</span> Support state unknown because raw samples are missing (see [get your camera supported](#get-your-camera-supported))\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "<span class='badge rounded-circle text-bg-info square-badge'>-</span> Camera and format supported by Libraw fallback. This fallback can be higher or lower quality.\n"
+msgid ""
+"- <span class='badge rounded-circle text-bg-success square-badge'>✓</span> Camera and format supported by Rawspeed. In case of problems, submit [bug reports](https://github.com/darktable-org/rawspeed/issues).\n"
+"- <span class='badge rounded-circle text-bg-danger square-badge'>✗</span> Camera and format unsupported by Rawspeed and Libraw,\n"
+"- <span class='badge rounded-circle text-bg-warning square-badge'>?</span> Support state unknown because raw samples are missing (see [get your camera supported](#get-your-camera-supported))\n"
+"- <span class='badge rounded-circle text-bg-info square-badge'>-</span> Camera and format supported by Libraw fallback. This fallback can be higher or lower quality.\n"
 msgstr ""
 
 #. type: Plain text
@@ -4240,34 +3629,15 @@ msgstr ""
 msgid "Support quality legend:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/resources/supported-cameras.md
 #, no-wrap
-msgid "🏆 fully-supported camera,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "🥈 partially-supported camera, usable with minor compromises,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "🥉 partially-supported camera, usable with compromises,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "⁉️ partially-supported camera, practical usability impossible to estimate,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "💩 unsupported camera.\n"
+msgid ""
+"- 🏆 fully-supported camera,\n"
+"- 🥈 partially-supported camera, usable with minor compromises,\n"
+"- 🥉 partially-supported camera, usable with compromises,\n"
+"- ⁉️ partially-supported camera, practical usability impossible to estimate,\n"
+"- 💩 unsupported camera.\n"
 msgstr ""
 
 #. type: Plain text
@@ -4324,16 +3694,12 @@ msgstr ""
 msgid "If your camera is not or partially supported:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/resources/supported-cameras.md
 #, no-wrap
-msgid "upload test raw files to <https://raw.pixls.us>,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "open a bug report [on Rawspeed tracker](https://github.com/darktable-org/rawspeed/issues) and [on Libraw tracker](https://github.com/LibRaw/LibRaw/issues/608).\n"
+msgid ""
+"- upload test raw files to <https://raw.pixls.us>,\n"
+"- open a bug report [on Rawspeed tracker](https://github.com/darktable-org/rawspeed/issues) and [on Libraw tracker](https://github.com/LibRaw/LibRaw/issues/608).\n"
 msgstr ""
 
 #. type: Plain text
@@ -4354,64 +3720,20 @@ msgstr ""
 msgid "Ansel supports the following file formats and extensions (while reading and writing):\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/resources/supported-cameras.md
 #, no-wrap
-msgid "JPEG: `.jpg`, `.jpeg` (mandatory),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "PNG: `.png` (mandatory),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "PFM: `.pfm` (mandatory),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "TIFF: `.tif`, `.tiff` (mandatory),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "OpenEXR: `.exr` (optional),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "WebP: `.wepb` (optional),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "AVIF: `.avif` (optional),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "HEIF: `.heif`, `.heic`, `.hif` (optional),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "JPEG2000: `.j2c`, `.j2k`, `.jp2`, `.jpc` (optional),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/supported-cameras.md
-#, no-wrap
-msgid "Through GraphicsMagick/ImageMagick: `.gif`, `.bmp`, `.dcm`, `.jng`, `.miff`, `.mng`, `.pbm`, `.ppm`, `.pgm` (optional)\n"
+msgid ""
+"- JPEG: `.jpg`, `.jpeg` (mandatory),\n"
+"- PNG: `.png` (mandatory),\n"
+"- PFM: `.pfm` (mandatory),\n"
+"- TIFF: `.tif`, `.tiff` (mandatory),\n"
+"- OpenEXR: `.exr` (optional),\n"
+"- WebP: `.wepb` (optional),\n"
+"- AVIF: `.avif` (optional),\n"
+"- HEIF: `.heif`, `.heic`, `.hif` (optional),\n"
+"- JPEG2000: `.j2c`, `.j2k`, `.jp2`, `.jpc` (optional),\n"
+"- Through GraphicsMagick/ImageMagick: `.gif`, `.bmp`, `.dcm`, `.jng`, `.miff`, `.mng`, `.pbm`, `.ppm`, `.pgm` (optional)\n"
 msgstr ""
 
 #. type: Plain text
@@ -4909,28 +4231,14 @@ msgstr ""
 msgid "What should we take from that ?\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/resources/white-balances/index.md
 #, no-wrap
-msgid "white is highly contextual to the illuminant,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "white is _cognitively_ related to the illuminant, through the brightest light emission/reflection in the visual field, which may be misleading when there is no actual white surface in the field,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "__but__ white is also somewhat contextual to the visual surrounding, aka dependent upon local color contrast,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "__but__ digital imaging pipelines pretend color is only about positive intensities, and don't deal with color differences. Meaning the white balance tooling doesn't exactly deal with what's truly happening, but deals with a rough approximation instead. Meaning complicated cases will need to be handled manually with care.\n"
+msgid ""
+"1. white is highly contextual to the illuminant,\n"
+"2. white is _cognitively_ related to the illuminant, through the brightest light emission/reflection in the visual field, which may be misleading when there is no actual white surface in the field,\n"
+"3. __but__ white is also somewhat contextual to the visual surrounding, aka dependent upon local color contrast,\n"
+"4. __but__ digital imaging pipelines pretend color is only about positive intensities, and don't deal with color differences. Meaning the white balance tooling doesn't exactly deal with what's truly happening, but deals with a rough approximation instead. Meaning complicated cases will need to be handled manually with care.\n"
 msgstr ""
 
 #. type: Title ###
@@ -5118,34 +4426,15 @@ msgid ""
 "{{</ compare >}}\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/resources/white-balances/index.md
 #, no-wrap
-msgid "you have no control over the medium white point, whether it is a screen backlighting or the paper tone: it is technically defined and you need to adapt to it.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "when printing with white borders, __you need to mind the clash of white points between image content and paper borders__. This applies too for digital images that will be displayed over white backgrounds on the web,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "you don't have a lot of latitude to de-neutralize your image white balance for artistic purposes before it starts visually clashing with paper white,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "you will have to darken the image white point, therefore reducing the printable dynamic range, if you want to make it non-neutral (non-achromatic). Failing to do that will create clipping artifacts in smooth gradients,\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "__peak luminance is expected to be achromatic__ for all typical media: this is what ties dynamic range (or, at least, its upper bound) to a medium white point (white balance).\n"
+msgid ""
+"1. you have no control over the medium white point, whether it is a screen backlighting or the paper tone: it is technically defined and you need to adapt to it.\n"
+"2. when printing with white borders, __you need to mind the clash of white points between image content and paper borders__. This applies too for digital images that will be displayed over white backgrounds on the web,\n"
+"3. you don't have a lot of latitude to de-neutralize your image white balance for artistic purposes before it starts visually clashing with paper white,\n"
+"4. you will have to darken the image white point, therefore reducing the printable dynamic range, if you want to make it non-neutral (non-achromatic). Failing to do that will create clipping artifacts in smooth gradients,\n"
+"5. __peak luminance is expected to be achromatic__ for all typical media: this is what ties dynamic range (or, at least, its upper bound) to a medium white point (white balance).\n"
 msgstr ""
 
 #. type: Title ##
@@ -5289,28 +4578,14 @@ msgstr ""
 msgid "Another, more accurate, step of white balancing was later added in [color calibration](../../doc/modules/processing-modules/color-calibration/), using chromatic adaptation transforms (CAT16, Bradford). It can be configured automatically by extracting a profile from a color checker chart. Empirical studies have shown that the lowest color deviation, after profiling from a color checker, was achieved with color calibration after a preliminary step of white balance, in the old module, so we have retained both:\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/resources/white-balances/index.md
 #, no-wrap
-msgid "the _white balance_ module will normalize sensor RGB such that D65 white that would have been captured on scene would record at $RGB = (1, 1, 1 )$. If the actual scene illuminant is anything else, it will be dealt with later.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "_input color profile_ module will convert sensor RGB to CIE XYZ 1931 color space, which acts as a glue for all later color spaces, assuming D65 illuminant (which is wrong in general),\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "_color calibration_ will convert CIE XYZ 1931 to CAT16 or Bradford \"RGB\" and will normalize any arbitrary scene illuminant (that is, if it's not D65) to the pipeline white point (D50, as per ICC workflow). [^5]\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "_color calibration_ can optionally apply a refinement step of the input color profile, using a channel mixer (aka a matrix color profile) whose parameters can be directly computed from a color checker in the module.\n"
+msgid ""
+"1. the _white balance_ module will normalize sensor RGB such that D65 white that would have been captured on scene would record at $RGB = (1, 1, 1 )$. If the actual scene illuminant is anything else, it will be dealt with later.\n"
+"2. _input color profile_ module will convert sensor RGB to CIE XYZ 1931 color space, which acts as a glue for all later color spaces, assuming D65 illuminant (which is wrong in general),\n"
+"3. _color calibration_ will convert CIE XYZ 1931 to CAT16 or Bradford \"RGB\" and will normalize any arbitrary scene illuminant (that is, if it's not D65) to the pipeline white point (D50, as per ICC workflow). [^5]\n"
+"4. _color calibration_ can optionally apply a refinement step of the input color profile, using a channel mixer (aka a matrix color profile) whose parameters can be directly computed from a color checker in the module.\n"
 msgstr ""
 
 #. type: Link reference
@@ -5476,28 +4751,14 @@ msgstr ""
 msgid "Let's explain that with an example. The picture below was shot mid-October, while the tree leaves were turning orange. We have an overhead of foliage, trees left and right, and grass on the ground:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/resources/white-balances/index.md
 #, no-wrap
-msgid "The green grass on the ground acted as a green reflector, bouncing light mostly under the chin: that's one virtual illuminant.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "The yellowish leaves overhead acted as a yellow reflector, bouncing light mostly on the cheeks and décolleté: that's another virtual illuminant.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "Then the direct sunlight pierced through the leaves, on the bright skin spots, which is the real illuminant (aka source of all photons on the scene).\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "Meanwhile, all the green background was likely confusing in-camera automatic white balance detection, and we can't sample any achromatic object for reference once in our photo editor.\n"
+msgid ""
+"- The green grass on the ground acted as a green reflector, bouncing light mostly under the chin: that's one virtual illuminant.\n"
+"- The yellowish leaves overhead acted as a yellow reflector, bouncing light mostly on the cheeks and décolleté: that's another virtual illuminant.\n"
+"- Then the direct sunlight pierced through the leaves, on the bright skin spots, which is the real illuminant (aka source of all photons on the scene).\n"
+"- Meanwhile, all the green background was likely confusing in-camera automatic white balance detection, and we can't sample any achromatic object for reference once in our photo editor.\n"
 msgstr ""
 
 #. type: Plain text
@@ -5553,28 +4814,14 @@ msgstr ""
 msgid "So the way to fix this picture is as follow:\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/resources/white-balances/index.md
 #, no-wrap
-msgid "shadows are expected to have an higher ratio of green bounce light, so turn the _shadows lift_ setting to magenta (always compensate with shifting to opponent color),\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "highlights are expected to have an higher ratio of yellow light (from autumn foliage), so turn the _highlights gain_ setting to blue,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "the final skin tone can be adjusted using the midtones power, in _color calibration_, to soften the magenta-red shift that will most likely result from the next 2 steps. This will happen by re-introducing some yellow.\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/resources/white-balances/index.md
-#, no-wrap
-msgid "the direct sunlight spots on the skin can be lazily desaturated to blend, since they are so much brighter than anything else, using _filmic_ saturation (_look_ tab) and/or _color balance_ highlights saturation (_master_ tab).\n"
+msgid ""
+"1. shadows are expected to have an higher ratio of green bounce light, so turn the _shadows lift_ setting to magenta (always compensate with shifting to opponent color),\n"
+"2. highlights are expected to have an higher ratio of yellow light (from autumn foliage), so turn the _highlights gain_ setting to blue,\n"
+"3. the final skin tone can be adjusted using the midtones power, in _color calibration_, to soften the magenta-red shift that will most likely result from the next 2 steps. This will happen by re-introducing some yellow.\n"
+"4. the direct sunlight spots on the skin can be lazily desaturated to blend, since they are so much brighter than anything else, using _filmic_ saturation (_look_ tab) and/or _color balance_ highlights saturation (_master_ tab).\n"
 msgstr ""
 
 #. type: Plain text
@@ -5667,40 +4914,16 @@ msgstr ""
 msgid "But he also built a complete apparatus to achieve the initial film scan and was kind enough to document and illustrate all of his process, from preparation to post-processing, translate it into English and allow me to publish it here. You get for free the very finest of what open-source has to give you:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/workflows/film-scan/index.md
 #, no-wrap
-msgid "50 years of experience from Alain,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "real-life examples and results,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "optical explanations of what's going on,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "complete schematics of the scanning apparatus in point light setting,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "physically-accurate modules from Ansel/Darktable pixel pipeline, and presets for _demosaicing_, _input color profile_ and _diffuse or sharpen_ modules to dial the grain up or down at post-processing,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "thoughts on the work and responsibility of a print lab technician, regarding heritage conservancy and exhibition quality.\n"
+msgid ""
+"- 50 years of experience from Alain,\n"
+"- real-life examples and results,\n"
+"- optical explanations of what's going on,\n"
+"- complete schematics of the scanning apparatus in point light setting,\n"
+"- physically-accurate modules from Ansel/Darktable pixel pipeline, and presets for _demosaicing_, _input color profile_ and _diffuse or sharpen_ modules to dial the grain up or down at post-processing,\n"
+"- thoughts on the work and responsibility of a print lab technician, regarding heritage conservancy and exhibition quality.\n"
 msgstr ""
 
 #. type: Plain text
@@ -5739,88 +4962,24 @@ msgstr ""
 msgid "These settings assume you scan B&W negatives using quasi-monochromatic green light with a digital camera.\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/workflows/film-scan/index.md
 #, no-wrap
-msgid "Download the color profile [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) and put it into both folders:\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "for Linux/Mac:\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "`~./config/ansel/color/in`\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "`~./config/ansel/color/out`\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "for Windows:\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "`./AppData/Local/ansel/Color/In`\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "`./AppData/Local/ansel/Color/Out`\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "Open your film scan into Ansel,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "Set the _demosaicing_ module to use VNG4[^2] mode,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "Set the _input color profile_ module to use `IdentityRGB-elle-V2-g10.icc` as input profile and working profile,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "Set _color calibration_ module :\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "in the  _CAT_ tab, set the adaptation to _none (bypass)_,\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "in the _B&W_ tab, set the green channel to 1,0 and the blue/red channels to 0,0.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/film-scan/index.md
-#, no-wrap
-msgid "See the book for settings of _diffuse or sharpen_.\n"
+msgid ""
+"- Download the color profile [IdentityRGB-elle-V2-g10.icc](https://github.com/ellelstone/elles_icc_profiles/blob/master/profiles/IdentityRGB-elle-V2-g10.icc) and put it into both folders:\n"
+"  - for Linux/Mac:\n"
+"    - `~./config/ansel/color/in`\n"
+"    - `~./config/ansel/color/out`\n"
+"  - for Windows:\n"
+"    - `./AppData/Local/ansel/Color/In`\n"
+"    - `./AppData/Local/ansel/Color/Out`\n"
+"- Open your film scan into Ansel,\n"
+"- Set the _demosaicing_ module to use VNG4[^2] mode,\n"
+"- Set the _input color profile_ module to use `IdentityRGB-elle-V2-g10.icc` as input profile and working profile,\n"
+"- Set _color calibration_ module :\n"
+"  - in the  _CAT_ tab, set the adaptation to _none (bypass)_,\n"
+"  - in the _B&W_ tab, set the green channel to 1,0 and the blue/red channels to 0,0.\n"
+"- See the book for settings of _diffuse or sharpen_.\n"
 msgstr ""
 
 #. type: Plain text
@@ -6093,52 +5252,18 @@ msgstr ""
 msgid "The proposed settings are (all hues set to 70°): \n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/workflows/monochrome-toning/index.md
 #, no-wrap
-msgid "_Global offset_:\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/workflows/monochrome-toning/index.md
-#, no-wrap
-msgid "chroma : 0.20%\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/workflows/monochrome-toning/index.md
-#, no-wrap
-msgid "luminance : 0.20%\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/workflows/monochrome-toning/index.md
-#, no-wrap
-msgid "_Shadows lift_:\n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/workflows/monochrome-toning/index.md
-#, no-wrap
-msgid "chroma: 10%\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/workflows/monochrome-toning/index.md
-#, no-wrap
-msgid "_Highlights gain_ : don't touch it (same as previously)\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/workflows/monochrome-toning/index.md
-#, no-wrap
-msgid "_Power_: \n"
-msgstr ""
-
-#. type: Bullet: '  * '
-#: content/workflows/monochrome-toning/index.md
-#, no-wrap
-msgid "chroma: 1.50%\n"
+msgid ""
+"* _Global offset_:\n"
+"  * chroma : 0.20%\n"
+"  * luminance : 0.20%\n"
+"* _Shadows lift_:\n"
+"  * chroma: 10%\n"
+"* _Highlights gain_ : don't touch it (same as previously)\n"
+"* _Power_: \n"
+"  * chroma: 1.50%\n"
 msgstr ""
 
 #. type: Plain text
@@ -6395,16 +5520,12 @@ msgstr ""
 msgid "Unfortunately, in most cases we can't just send this linear RGB to the computer display, even after correcting colors to match human vision, usually because :\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/workflows/scene-referred/index.md
 #, no-wrap
-msgid "the dynamic range that sensors can capture is much larger than what screens can render,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/workflows/scene-referred/index.md
-#, no-wrap
-msgid "to better use this dynamic range, camera manufacturers \"under-expose\" the scene by roughly 2/3 of EV, which will make the raw RGB appear quite dark.\n"
+msgid ""
+"1. the dynamic range that sensors can capture is much larger than what screens can render,\n"
+"2. to better use this dynamic range, camera manufacturers \"under-expose\" the scene by roughly 2/3 of EV, which will make the raw RGB appear quite dark.\n"
 msgstr ""
 
 #. type: Plain text
@@ -6866,58 +5987,19 @@ msgstr ""
 msgid "Adjusting black point without profiling the printer"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/workflows/printing/index.md
 #, no-wrap
-msgid "[Download the chart of blacks](charte-noirs.jpg download)\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "print it directly as an sRGB image, with no editing and no correction,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "on the print, note the darkest patch that you can visually tell apart from the pure black grid, and record its percent value,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "open the chart image in Ansel, and in Filmic module do the following :\n"
-msgstr ""
-
-#. type: Bullet: '   1. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "in _scene_ tab, click on the auto-tuner button,\n"
-msgstr ""
-
-#. type: Bullet: '   2. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "in _look_ tab, set the contrast to the minimum value (0.5),\n"
-msgstr ""
-
-#. type: Bullet: '   3. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "in _display_ tab, input the target black value you read on the patch previously,\n"
-msgstr ""
-
-#. type: Bullet: '   4. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "in _options_ tab, set the _contrast in shadows_ parameter to _safe_.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "export the corrected chart and print again to validate the settings.\n"
+msgid ""
+"1. [Download the chart of blacks](charte-noirs.jpg download)\n"
+"2. print it directly as an sRGB image, with no editing and no correction,\n"
+"3. on the print, note the darkest patch that you can visually tell apart from the pure black grid, and record its percent value,\n"
+"4. open the chart image in Ansel, and in Filmic module do the following :\n"
+"   1. in _scene_ tab, click on the auto-tuner button,\n"
+"   2. in _look_ tab, set the contrast to the minimum value (0.5),\n"
+"   3. in _display_ tab, input the target black value you read on the patch previously,\n"
+"   4. in _options_ tab, set the _contrast in shadows_ parameter to _safe_.\n"
+"5. export the corrected chart and print again to validate the settings.\n"
 msgstr ""
 
 #. type: Plain text
@@ -7100,28 +6182,14 @@ msgstr ""
 msgid "Filmic got more complex over years to transparently solve the problem that ICC failed to solve with the perceptual intent. Instead of relying on a LUT which existence is not certain, built we don't know how, assuming a rigid but undocumented source input color space, Filmic lets users parametrize themselves a perceptual intent by defining :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/workflows/printing/index.md
 #, no-wrap
-msgid "the black/white points of the input space (scene) and output space (display),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "the contrast curve for tone mapping,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "an optional normalization of colors through RGB norms preserving original saturation (similar to the saturation intent), or without normalization (similar to perceptual intent), or a mix of both (since version 7),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/workflows/printing/index.md
-#, no-wrap
-msgid "a gamut mapping to the output space by saturation soft-clipping at constant luminance and hue (since version 6).\n"
+msgid ""
+"- the black/white points of the input space (scene) and output space (display),\n"
+"- the contrast curve for tone mapping,\n"
+"- an optional normalization of colors through RGB norms preserving original saturation (similar to the saturation intent), or without normalization (similar to perceptual intent), or a mix of both (since version 7),\n"
+"- a gamut mapping to the output space by saturation soft-clipping at constant luminance and hue (since version 6).\n"
 msgstr ""
 
 #. type: Plain text
@@ -7387,88 +6455,24 @@ msgstr ""
 msgid "The course of the session can be adapted by mixing any of the following:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/booking.md
 #, no-wrap
-msgid "Ansel & post-processing matters :\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Lecture on image processing, signal processing, color science, etc.\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Demonstration of Ansel/Darktable on raw photos provided by the student,\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Reproduction of visual results (from another software or reference images),\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Retouch by the student analysed and commented, with advice for improvement,\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Eye training (color casts and mismatches detection),\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Mitigation strategies to recover damaged pictures (bad lighting, noise, out-of-focus),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/booking.md
-#, no-wrap
-msgid "General photography matters :\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Editing and culling series of pictures,\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Image reading and analysis (lighting, composition), artistic direction at post-processing time,\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Visual narration and photo essay projects building,\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Printing and framing advice (choosing paper, printing process, retouching for reflective media, etc.),\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Specialized retouching technics (beauty, HDR, monochrome, color-grading, etc.),\n"
-msgstr ""
-
-#. type: Bullet: '  - '
-#: content/booking.md
-#, no-wrap
-msgid "Custom-taylored and comprehensive scene-to-printer photographic workflow.\n"
+msgid ""
+"- Ansel & post-processing matters :\n"
+"  - Lecture on image processing, signal processing, color science, etc.\n"
+"  - Demonstration of Ansel/Darktable on raw photos provided by the student,\n"
+"  - Reproduction of visual results (from another software or reference images),\n"
+"  - Retouch by the student analysed and commented, with advice for improvement,\n"
+"  - Eye training (color casts and mismatches detection),\n"
+"  - Mitigation strategies to recover damaged pictures (bad lighting, noise, out-of-focus),\n"
+"- General photography matters :\n"
+"  - Editing and culling series of pictures,\n"
+"  - Image reading and analysis (lighting, composition), artistic direction at post-processing time,\n"
+"  - Visual narration and photo essay projects building,\n"
+"  - Printing and framing advice (choosing paper, printing process, retouching for reflective media, etc.),\n"
+"  - Specialized retouching technics (beauty, HDR, monochrome, color-grading, etc.),\n"
+"  - Custom-taylored and comprehensive scene-to-printer photographic workflow.\n"
 msgstr ""
 
 #. type: Plain text
@@ -7495,28 +6499,14 @@ msgstr ""
 msgid "With individual training, you get :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/booking.md
 #, no-wrap
-msgid "Advice adapted to your particular photographic practice, education, background and skills,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/booking.md
-#, no-wrap
-msgid "First-hand information about the software and how it is intended to work,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/booking.md
-#, no-wrap
-msgid "Technics adapted to your visual style,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/booking.md
-#, no-wrap
-msgid "Theoretical complements directly related to your practice, on a need-to-know basis.\n"
+msgid ""
+"- Advice adapted to your particular photographic practice, education, background and skills,\n"
+"- First-hand information about the software and how it is intended to work,\n"
+"- Technics adapted to your visual style,\n"
+"- Theoretical complements directly related to your practice, on a need-to-know basis.\n"
 msgstr ""
 
 #. type: Plain text
@@ -7525,28 +6515,14 @@ msgstr ""
 msgid "And then, I get :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/booking.md
 #, no-wrap
-msgid "Direct feedback regarding the application usability,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/booking.md
-#, no-wrap
-msgid "A better understanding of users needs and challenges,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/booking.md
-#, no-wrap
-msgid "GUI and documentation improving hints,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/booking.md
-#, no-wrap
-msgid "Ideas for new modules.\n"
+msgid ""
+"- Direct feedback regarding the application usability,\n"
+"- A better understanding of users needs and challenges,\n"
+"- GUI and documentation improving hints,\n"
+"- Ideas for new modules.\n"
 msgstr ""
 
 #. type: Title ##
@@ -7648,28 +6624,14 @@ msgstr ""
 msgid "Prerequisites"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/booking.md
 #, no-wrap
-msgid "Internet access allowing HD videoconferencing (minimum 1 Mb/s, ideally 4 Mb/s, up and down),\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/booking.md
-#, no-wrap
-msgid "Have photographs as raw files to edit,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/booking.md
-#, no-wrap
-msgid "Upload the pictures to edit on [my private cloud](https://cloud.apmlt.net/s/YAdfYajPkE5nLyW) at least 24 h in advance,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/booking.md
-#, no-wrap
-msgid "A working account for a videoconferencing service, among Skype, Jitsi Meet, Google Meet, Element call, Discord (your choice).\n"
+msgid ""
+"1. Internet access allowing HD videoconferencing (minimum 1 Mb/s, ideally 4 Mb/s, up and down),\n"
+"2. Have photographs as raw files to edit,\n"
+"3. Upload the pictures to edit on [my private cloud](https://cloud.apmlt.net/s/YAdfYajPkE5nLyW) at least 24 h in advance,\n"
+"4. A working account for a videoconferencing service, among Skype, Jitsi Meet, Google Meet, Element call, Discord (your choice).\n"
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: title
@@ -7750,58 +6712,19 @@ msgstr ""
 msgid "Pull requests that don't match the minimum code quality requirements will not be accepted. These requirements aim at ensuring long-term maintainability and stability by enforcing clear, legible code structured with a simple logic.\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/coding-style.md
 #, no-wrap
-msgid "Procedures need to be broken into unit, reusable functions, whenever possible. Exception to this are specialized linear procedures (no branching) doing tasks too specific to be reused anywhere, but in this case use comments to break down the procedures in \"chapters\" or steps that can be easily spotted and understood.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Functions should achieve only one task at a time. For example, GUI code should not be mixed with SQL or pixel-processing code. Getters and setters should be different functions.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Functions should have only one entry and one exit point (`return`). The only exceptions accepted are an early return if the memory buffer on which the function is supposed to operate is not initialized or if a thread mutex lock is already captured.\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Functions should have legible, explicit names and arguments name that advertise their purpose. Programs are meant to be read by humans, if you code for the machine, do it in binary.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Functions may only nest up to 2 `if` conditional structures. If more than 2 nested `if` are needed, the structure of your code needs to be reevaluated and probably broken down into more granular functions.\n"
-msgstr ""
-
-#. type: Bullet: '6. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "`if` should only test uniform cases like the state or the value of ideally one (but maybe more) variable(s) of the same type. If non-uniform cases need to be tested (like `IF user param IS value AND picture buffer IS initialized AND picture IS raw AND picture HAS embedded color profile AND color profile coeff[0] IS NOT NaN`), they should be deferred to a checking function returning a `gboolean` `TRUE` or `FALSE` and named properly so fellow developers understand the purpose of the check without ambiguity on cursory code reading, like `color_matrix_should_apply()`. The branching code will then be `if(color_matrix_should_apply()) pix_out = dot_product(pix_in, matrix);`\n"
-msgstr ""
-
-#. type: Bullet: '7. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Comments should mention why you did what you did, like your base assumptions, your reasons and any academic or doc reference you used as a base (DOI and URLs should be there). Your code should tell what you did explicitly. If you find yourself having to explain what your code is doing in comments, usually it's a sign that your code is badly structured, variables and functions are ill-named, etc.\n"
-msgstr ""
-
-#. type: Bullet: '8. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Quick workarounds that hide issues instead of tackling them at their root will not be accepted. If you are interested in those, you might consider contributing to upstream darktable instead. The only exceptions will be if the issues are blocking (make the soft crash) and no better solution has been found after some decent amount of time spent researching.\n"
-msgstr ""
-
-#. type: Bullet: '9. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Always remember that the best code is the most simple. KISS. To achieve this goal, it's usually better to write code from scratch rather than to try mix-and-matching bits of existing code through heavy copy-pasting.\n"
+msgid ""
+"1. Procedures need to be broken into unit, reusable functions, whenever possible. Exception to this are specialized linear procedures (no branching) doing tasks too specific to be reused anywhere, but in this case use comments to break down the procedures in \"chapters\" or steps that can be easily spotted and understood.\n"
+"2. Functions should achieve only one task at a time. For example, GUI code should not be mixed with SQL or pixel-processing code. Getters and setters should be different functions.\n"
+"3. Functions should have only one entry and one exit point (`return`). The only exceptions accepted are an early return if the memory buffer on which the function is supposed to operate is not initialized or if a thread mutex lock is already captured.\n"
+"4. Functions should have legible, explicit names and arguments name that advertise their purpose. Programs are meant to be read by humans, if you code for the machine, do it in binary.\n"
+"5. Functions may only nest up to 2 `if` conditional structures. If more than 2 nested `if` are needed, the structure of your code needs to be reevaluated and probably broken down into more granular functions.\n"
+"6. `if` should only test uniform cases like the state or the value of ideally one (but maybe more) variable(s) of the same type. If non-uniform cases need to be tested (like `IF user param IS value AND picture buffer IS initialized AND picture IS raw AND picture HAS embedded color profile AND color profile coeff[0] IS NOT NaN`), they should be deferred to a checking function returning a `gboolean` `TRUE` or `FALSE` and named properly so fellow developers understand the purpose of the check without ambiguity on cursory code reading, like `color_matrix_should_apply()`. The branching code will then be `if(color_matrix_should_apply()) pix_out = dot_product(pix_in, matrix);`\n"
+"7. Comments should mention why you did what you did, like your base assumptions, your reasons and any academic or doc reference you used as a base (DOI and URLs should be there). Your code should tell what you did explicitly. If you find yourself having to explain what your code is doing in comments, usually it's a sign that your code is badly structured, variables and functions are ill-named, etc.\n"
+"8. Quick workarounds that hide issues instead of tackling them at their root will not be accepted. If you are interested in those, you might consider contributing to upstream darktable instead. The only exceptions will be if the issues are blocking (make the soft crash) and no better solution has been found after some decent amount of time spent researching.\n"
+"9. Always remember that the best code is the most simple. KISS. To achieve this goal, it's usually better to write code from scratch rather than to try mix-and-matching bits of existing code through heavy copy-pasting.\n"
 msgstr ""
 
 #. type: Plain text
@@ -7917,22 +6840,12 @@ msgstr ""
 msgid "Patterns and structures"
 msgstr ""
 
-#. type: Bullet: '1. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "`for` loops are reserved for iterating over arrays of size known beforehand, so the number of looping steps is known. Stretching that logic, they can also be used to iterate over `GList *` items (which have no size property since they are dynamically allocated), although this checks if each item `(GList *)->next` is not `NULL`. `for` loops should generally not use `break` or `return` statements inside their control flow, unless the loop is looking for a specific item inside the array and returns is as soon as it is found. If your loop has a stopping condition, use `while`.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "C is not an object-oriented language, but you can and should use OO logic when relevant in C by using structures to store data and pointers to methods, then uniform [getters and setters](https://en.wikibooks.org/wiki/Object_Oriented_Programming/Getters_and_Setters) to define and access the data.\n"
-msgstr ""
-
 #. type: Plain text
 #: content/contribute/coding-style.md
 #, no-wrap
 msgid ""
+"1. `for` loops are reserved for iterating over arrays of size known beforehand, so the number of looping steps is known. Stretching that logic, they can also be used to iterate over `GList *` items (which have no size property since they are dynamically allocated), although this checks if each item `(GList *)->next` is not `NULL`. `for` loops should generally not use `break` or `return` statements inside their control flow, unless the loop is looking for a specific item inside the array and returns is as soon as it is found. If your loop has a stopping condition, use `while`.\n"
+"2. C is not an object-oriented language, but you can and should use OO logic when relevant in C by using structures to store data and pointers to methods, then uniform [getters and setters](https://en.wikibooks.org/wiki/Object_Oriented_Programming/Getters_and_Setters) to define and access the data.\n"
 "2. structures like `while`, `for`, `if`, or `switch` should not be nested over more than 3 (and preferably 2) levels. Use functions if that happens :\n"
 "    ```C\n"
 "    // Bad\n"
@@ -8178,22 +7091,12 @@ msgstr ""
 msgid "Best practices for auto-vectorization:\n"
 msgstr ""
 
-#. type: Bullet: '* '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "avoid branches in loops that change the control flow. Use inline statements like `absolute = (x > 0) ? x : -x;` so they can be converted to bytes masks in SIMD,\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "pixels should only be referenced from the base pointer of their array and the indices of the loops, such that you can predict what memory address is accessed only from the loop index,\n"
-msgstr ""
-
 #. type: Plain text
 #: content/contribute/coding-style.md
 #, no-wrap
 msgid ""
+"* avoid branches in loops that change the control flow. Use inline statements like `absolute = (x > 0) ? x : -x;` so they can be converted to bytes masks in SIMD,\n"
+"* pixels should only be referenced from the base pointer of their array and the indices of the loops, such that you can predict what memory address is accessed only from the loop index,\n"
 "* avoid carrying `struct` arguments in functions called in OpenMP loops, and unpack the `struct` members before the loop. Vectorization can't be performed on structures, but only on `float` and `int` scalars and arrays. For example:\n"
 "    ```lang-C\n"
 "    typedef struct iop_data_t\n"
@@ -8313,28 +7216,14 @@ msgstr ""
 msgid "Code formatting"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/coding-style.md
 #, no-wrap
-msgid "Use spaces instead of tabs,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Indentation uses 2 spaces,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "Remove trailing spaces,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "`{` and `}` go to their own line,\n"
+msgid ""
+"- Use spaces instead of tabs,\n"
+"- Indentation uses 2 spaces,\n"
+"- Remove trailing spaces,\n"
+"- `{` and `}` go to their own line,\n"
 msgstr ""
 
 #. type: Title ##
@@ -8343,28 +7232,14 @@ msgstr ""
 msgid "Guidelines"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/coding-style.md
 #, no-wrap
-msgid "**Do things you master** : yes, it's nice to learn new things, but Ansel is not a sandbox, it's a production software, and it's not the right place to get your training.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "**KISS and be lazy** : Ansel doesn't have 50 devs full-time on deck, being minimalistic both in features and in volume of code is reasonable and sane for current management, but also for future maintenance. *(KISS: keep it stupid simple)*.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "**Do like the rest of the world** : sure, if everybody is jumping out of the window, you have a right to not follow them, but most issues about software UI/UX have already been solved somewhere and in most cases, it makes sense to simply reuse those solutions, because most users will be familiar with them already.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/contribute/coding-style.md
-#, no-wrap
-msgid "**Programming is not the goal** : programming is a mean to an end, the end is to be able to process large volume of pictures in a short amount of time while reaching the desired look on each picture. Programming tasks are to be considered overhead and should be kept minimal, and the volume of code is a liability for any project.\n"
+msgid ""
+"1. **Do things you master** : yes, it's nice to learn new things, but Ansel is not a sandbox, it's a production software, and it's not the right place to get your training.\n"
+"2. **KISS and be lazy** : Ansel doesn't have 50 devs full-time on deck, being minimalistic both in features and in volume of code is reasonable and sane for current management, but also for future maintenance. *(KISS: keep it stupid simple)*.\n"
+"3. **Do like the rest of the world** : sure, if everybody is jumping out of the window, you have a right to not follow them, but most issues about software UI/UX have already been solved somewhere and in most cases, it makes sense to simply reuse those solutions, because most users will be familiar with them already.\n"
+"5. **Programming is not the goal** : programming is a mean to an end, the end is to be able to process large volume of pictures in a short amount of time while reaching the desired look on each picture. Programming tasks are to be considered overhead and should be kept minimal, and the volume of code is a liability for any project.\n"
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: title
@@ -8391,22 +7266,13 @@ msgstr ""
 msgid "Ansel expects its users to have\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/audience.md
 #, no-wrap
-msgid "an intermediate to advanced knowledge of __color theory__ (brightness vs. lightness vs. luminance, chroma vs. saturation, additive models, delta E, etc.), [^1]\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/audience.md
-#, no-wrap
-msgid "an intermediate to advanced knowledge of __cameras__ (ISO, dynamic range, exposure bias, etc.),[^2]\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/audience.md
-#, no-wrap
-msgid "an intermediate to advanced knowledge of __stage lighting__ (illuminant, CRI, cast shadows, inverse square law of lighting, etc.)\n"
+msgid ""
+"- an intermediate to advanced knowledge of __color theory__ (brightness vs. lightness vs. luminance, chroma vs. saturation, additive models, delta E, etc.), [^1]\n"
+"- an intermediate to advanced knowledge of __cameras__ (ISO, dynamic range, exposure bias, etc.),[^2]\n"
+"- an intermediate to advanced knowledge of __stage lighting__ (illuminant, CRI, cast shadows, inverse square law of lighting, etc.)\n"
 msgstr ""
 
 #. type: Link reference
@@ -8547,34 +7413,15 @@ msgstr ""
 msgid "This page is written for people helping triaging issues on the issue Github tracker.\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "Any project has limited resources, the difference between projects will be the threshold.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "Any project should have clear goals. For Ansel, it is to manage, edit and export collections of RAW images on a desktop computer by an end-user who is not a CLI user but puts visual image quality above all else.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "Any project has overhead, that is actions requested to meet the goals, although they are not directly the goal and therefore should stay minimal. For Ansel, it is the maintenance of the website, documentation, servers, nightly-built packages, code cleanups, debugging, regression tests, cross-OS support, issues triaging, etc.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "Goals and overhead should be expressed in terms of __tasks__ to perform in order to __solve problems__ (issues). If no problem to solve, then no work to do: status quo is great too, don't create work for the sake of it.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "because of resource limitation, tasks have to be ordered depending on their priority.\n"
+msgid ""
+"- Any project has limited resources, the difference between projects will be the threshold.\n"
+"- Any project should have clear goals. For Ansel, it is to manage, edit and export collections of RAW images on a desktop computer by an end-user who is not a CLI user but puts visual image quality above all else.\n"
+"- Any project has overhead, that is actions requested to meet the goals, although they are not directly the goal and therefore should stay minimal. For Ansel, it is the maintenance of the website, documentation, servers, nightly-built packages, code cleanups, debugging, regression tests, cross-OS support, issues triaging, etc.\n"
+"- Goals and overhead should be expressed in terms of __tasks__ to perform in order to __solve problems__ (issues). If no problem to solve, then no work to do: status quo is great too, don't create work for the sake of it.\n"
+"- because of resource limitation, tasks have to be ordered depending on their priority.\n"
 msgstr ""
 
 #. type: Plain text
@@ -8601,34 +7448,15 @@ msgstr ""
 msgid "Project management works better with SMART tasks. S.M.A.R.T. stands for:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "Specific _(ex: finding URI of pictures Ansel exported on the filesystem and open them)_\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "Measurable _(ex: number of clicks/steps required, CPU time to perform the task on some target platform)_\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "Actionnable/Achievable _(ex: can be integrated on current code base with only minor rewrites, needs only a few hundreds of lines of code)_\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "Relevant/Reasonable _(ex: is part of a fairly-general photography workflow, would be used by a signicative part of users)_\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "Time-bound _(ex: requires at most 70 man-hours)_.\n"
+msgid ""
+"- Specific _(ex: finding URI of pictures Ansel exported on the filesystem and open them)_\n"
+"- Measurable _(ex: number of clicks/steps required, CPU time to perform the task on some target platform)_\n"
+"- Actionnable/Achievable _(ex: can be integrated on current code base with only minor rewrites, needs only a few hundreds of lines of code)_\n"
+"- Relevant/Reasonable _(ex: is part of a fairly-general photography workflow, would be used by a signicative part of users)_\n"
+"- Time-bound _(ex: requires at most 70 man-hours)_.\n"
 msgstr ""
 
 #. type: Plain text
@@ -8649,34 +7477,15 @@ msgstr ""
 msgid "Bad issues are:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "too broad _(\"automatize workflow\", \"improve UX\")_,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "focusing on the means _(\"use neural network\", \"extend tone curve\")_ instead of the goal _(\"mask the sky out\", \"control saturation selectively\")_,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "out of scope _(\"port to Android\", \"switch to Qt\", \"switch to Vulkan\")_\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "affecting third-party libraries/projects _(Rawspeed, Libraw, Exiv2, Lensfun, GPhoto2, Gtk, etc.)_,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "too subjective _(\"please do things like that other software I used in the past and really like\")_. What user A likes will be disliked by user B, we can't work with that.\n"
+msgid ""
+"- too broad _(\"automatize workflow\", \"improve UX\")_,\n"
+"- focusing on the means _(\"use neural network\", \"extend tone curve\")_ instead of the goal _(\"mask the sky out\", \"control saturation selectively\")_,\n"
+"- out of scope _(\"port to Android\", \"switch to Qt\", \"switch to Vulkan\")_\n"
+"- affecting third-party libraries/projects _(Rawspeed, Libraw, Exiv2, Lensfun, GPhoto2, Gtk, etc.)_,\n"
+"- too subjective _(\"please do things like that other software I used in the past and really like\")_. What user A likes will be disliked by user B, we can't work with that.\n"
 msgstr ""
 
 #. type: Plain text
@@ -8715,22 +7524,13 @@ msgstr ""
 msgid "There is no definitive rule here, so you will have to use your best judgment, but there are some rules of thumbs:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "something recently broken (a regression) is easier to spot and fix sooner than later, so in the grand scheme of things, it might be less work overall to do it sooner,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "something that prevents the software from working at all (crash, corrupted output files, loss of data) is critical enough to take precedence over improvements and more cosmetic fixes,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "something that impacts a large number of users and where no work-around can be found will take precedence too.\n"
+msgid ""
+"- something recently broken (a regression) is easier to spot and fix sooner than later, so in the grand scheme of things, it might be less work overall to do it sooner,\n"
+"- something that prevents the software from working at all (crash, corrupted output files, loss of data) is critical enough to take precedence over improvements and more cosmetic fixes,\n"
+"- something that impacts a large number of users and where no work-around can be found will take precedence too.\n"
 msgstr ""
 
 #. type: Plain text
@@ -8745,28 +7545,14 @@ msgstr ""
 msgid "Ansel has 4 levels of priorities, set as issue tags:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "`priority: critical`: Affects basic and core functionnalities of the software in a way that prevents it to work at all,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "`priority: high`: Affects basic and core functionnalities of the software in a way that severly degrades usability,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "`priority: medium`: Affects basic and core functionnalities of the software in a way that mildly degrades usability (work-arounds available),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "`priority: low`: Affects optional and niche functionnalities\n"
+msgid ""
+"- `priority: critical`: Affects basic and core functionnalities of the software in a way that prevents it to work at all,\n"
+"- `priority: high`: Affects basic and core functionnalities of the software in a way that severly degrades usability,\n"
+"- `priority: medium`: Affects basic and core functionnalities of the software in a way that mildly degrades usability (work-arounds available),\n"
+"- `priority: low`: Affects optional and niche functionnalities\n"
 msgstr ""
 
 #. type: Title ##
@@ -8805,34 +7591,15 @@ msgstr ""
 msgid "Difficulty is directly related to the amount of work required by a task, that is:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "the number of lines of code to write,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "the number of files to change,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "the probability of breaking existing features, leading to extra testing work,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "the existence of similar features or written theory to achieve the task,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "the overhead of making changes and features work reliable across operating systems.\n"
+msgid ""
+"- the number of lines of code to write,\n"
+"- the number of files to change,\n"
+"- the probability of breaking existing features, leading to extra testing work,\n"
+"- the existence of similar features or written theory to achieve the task,\n"
+"- the overhead of making changes and features work reliable across operating systems.\n"
 msgstr ""
 
 #. type: Plain text
@@ -8853,52 +7620,18 @@ msgstr ""
 msgid "The nature of the issues is handled with labels. We have:\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "regressions (stuff that use to work but was broken by recent-ish changes),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "bugs (stuff that has never worked in the past years),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "enhancements (stuff that needs to be improved or added),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "wontfix (not a bug, but a feature or design choice or necessity imposed by third-party dependencies),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "question (should not be on Github, but on <https://community.ansel.photos>),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "duplicate (issue already reported),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "unclear (issue can't be understood),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "invalid (issue is \"bad\" according to the above definition of a good issue).\n"
+msgid ""
+"- regressions (stuff that use to work but was broken by recent-ish changes),\n"
+"- bugs (stuff that has never worked in the past years),\n"
+"- enhancements (stuff that needs to be improved or added),\n"
+"- wontfix (not a bug, but a feature or design choice or necessity imposed by third-party dependencies),\n"
+"- question (should not be on Github, but on <https://community.ansel.photos>),\n"
+"- duplicate (issue already reported),\n"
+"- unclear (issue can't be understood),\n"
+"- invalid (issue is \"bad\" according to the above definition of a good issue).\n"
 msgstr ""
 
 #. type: Title ##
@@ -8931,70 +7664,21 @@ msgstr ""
 msgid "The trade-off is to have triagers help prioritize obvious issues so developers only have to deal with the least-obvious issues and focus on coding.\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/triaging.md
 #, no-wrap
-msgid "label only issues you understand and you feel comfortable triaging. You don't have to do them all, it's fine if you don't know.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "for issues you understand:\n"
-msgstr ""
-
-#. type: Bullet: '   - '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "assign a priority label if you can,\n"
-msgstr ""
-
-#. type: Bullet: '   - '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "assign a nature label if you can,\n"
-msgstr ""
-
-#. type: Bullet: '   - '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "assign a milestone if you can,\n"
-msgstr ""
-
-#. type: Bullet: '   - '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "immediately close the issue if it is invalid or duplicate.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "for issues you don't understand:\n"
-msgstr ""
-
-#. type: Bullet: '   - '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "try asking more questions to the author,\n"
-msgstr ""
-
-#. type: Bullet: '   - '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "ensure authors fill all relevant info (OS, hardware, reproducing steps for bugs),\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "it's better if you do nothing than if you do it wrong: issues without labels are easier to spot than issues with wrong labels.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/contribute/triaging.md
-#, no-wrap
-msgid "don't hesitate to call-in video meetings: better sit together for 30 min to have a productive chat and adjust decisions than exchange endless threads of useless messages.\n"
+msgid ""
+"1. label only issues you understand and you feel comfortable triaging. You don't have to do them all, it's fine if you don't know.\n"
+"2. for issues you understand:\n"
+"   - assign a priority label if you can,\n"
+"   - assign a nature label if you can,\n"
+"   - assign a milestone if you can,\n"
+"   - immediately close the issue if it is invalid or duplicate.\n"
+"3. for issues you don't understand:\n"
+"   - try asking more questions to the author,\n"
+"   - ensure authors fill all relevant info (OS, hardware, reproducing steps for bugs),\n"
+"4. it's better if you do nothing than if you do it wrong: issues without labels are easier to spot than issues with wrong labels.\n"
+"5. don't hesitate to call-in video meetings: better sit together for 30 min to have a productive chat and adjust decisions than exchange endless threads of useless messages.\n"
 msgstr ""
 
 #. type: Plain text
@@ -9069,22 +7753,13 @@ msgstr ""
 msgid "User-level goal of Ansel"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/introduction.md
 #, no-wrap
-msgid "Allow to efficiently cull the photographs coming out of the camera/memory card, in order to pick only the ones worthy of being fully post-processed,\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "Allow to edit/retouch the culled photographs in the most direct way, with a minimal number of steps, using unit image controls that affect only one perceptual or optical property at a time,\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "Allow indexing and later retrieval of the processed photographs for archival purposes.\n"
+msgid ""
+"1. Allow to efficiently cull the photographs coming out of the camera/memory card, in order to pick only the ones worthy of being fully post-processed,\n"
+"2. Allow to edit/retouch the culled photographs in the most direct way, with a minimal number of steps, using unit image controls that affect only one perceptual or optical property at a time,\n"
+"3. Allow indexing and later retrieval of the processed photographs for archival purposes.\n"
 msgstr ""
 
 #. type: Title ##
@@ -9105,58 +7780,19 @@ msgstr ""
 msgid "Culling workflow"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/introduction.md
 #, no-wrap
-msgid "The user will mount the file system of the camera or the memory card using the OS tools (MTP/PTP protocols, FAT/exFAT file systems),\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "The user will import the pictures in individual directories named like `YEAR-MONTH-DAY-Job name`. The pictures will use unique names like `Job name-ID number.extension`. Those directories will be used in Ansel as the parent path for \"filmrolls\" and opened in lighttable once pictures are imported. Filmrolls may or may not contain the whole content of their associated directory.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "The user will proceed to the culling part. Images are imported with a rating of 0 star. Obviously bad pictures will be rejected (shortcut : <kbd>R</kbd>). 2 methods can then be used :\n"
-msgstr ""
-
-#. type: Bullet: '   1. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "negative : assign an high star-rating to all pictures, and gradually downgrade bad pictures, so only the keepers keep their high rating,\n"
-msgstr ""
-
-#. type: Bullet: '   2. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "positive : assign a 1-star-rating to all the seemingly-good pictures, then assign a 2-star rating only to the best of the 1-star-rated, and carry-on until reaching 5 stars or any rating where an appropriate amount of keepers is left,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "From there, the highest-rated images are considered keepers and may be edited. [Batch-editing features](https://docs.darktable.org/usermanual/4.0/en/guides-tutorials/batch-editing/) that may speed-up this step for series are presented on upstream darktable's manual.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "Tracking the state of pictures in the workflow can be made through the darktable internal tags `darktable|changed`, `darktable|exported`, `darktable|printed`, which are set automatically when these operations are done. Users needing more states, like those who edit in several steps (one step of basic editing, for better preview during culling, another step of full editing), may add more children tags to the `darktable` parent tag, like `darktable|edited` for pictures that are finished and ready to export.\n"
-msgstr ""
-
-#. type: Bullet: '6. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "The user may set color labels, tags and metadata in light table, after editing and before exporting, for better archiving.\n"
-msgstr ""
-
-#. type: Bullet: '7. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "The user may export and print the pictures. It is advised to keep a 16 bits TIFF export in Adobe RGB or ProPhotoRGB color spaces for archival purposes as soon as the edit is finished, to prevent any data loss that may incur with future versions of Ansel or upstream darktable (although everything is done to ensure future compatibility of the software with old edits, mistakes happened and will happen again).\n"
+msgid ""
+"1. The user will mount the file system of the camera or the memory card using the OS tools (MTP/PTP protocols, FAT/exFAT file systems),\n"
+"2. The user will import the pictures in individual directories named like `YEAR-MONTH-DAY-Job name`. The pictures will use unique names like `Job name-ID number.extension`. Those directories will be used in Ansel as the parent path for \"filmrolls\" and opened in lighttable once pictures are imported. Filmrolls may or may not contain the whole content of their associated directory.\n"
+"3. The user will proceed to the culling part. Images are imported with a rating of 0 star. Obviously bad pictures will be rejected (shortcut : <kbd>R</kbd>). 2 methods can then be used :\n"
+"   1. negative : assign an high star-rating to all pictures, and gradually downgrade bad pictures, so only the keepers keep their high rating,\n"
+"   2. positive : assign a 1-star-rating to all the seemingly-good pictures, then assign a 2-star rating only to the best of the 1-star-rated, and carry-on until reaching 5 stars or any rating where an appropriate amount of keepers is left,\n"
+"4. From there, the highest-rated images are considered keepers and may be edited. [Batch-editing features](https://docs.darktable.org/usermanual/4.0/en/guides-tutorials/batch-editing/) that may speed-up this step for series are presented on upstream darktable's manual.\n"
+"5. Tracking the state of pictures in the workflow can be made through the darktable internal tags `darktable|changed`, `darktable|exported`, `darktable|printed`, which are set automatically when these operations are done. Users needing more states, like those who edit in several steps (one step of basic editing, for better preview during culling, another step of full editing), may add more children tags to the `darktable` parent tag, like `darktable|edited` for pictures that are finished and ready to export.\n"
+"6. The user may set color labels, tags and metadata in light table, after editing and before exporting, for better archiving.\n"
+"7. The user may export and print the pictures. It is advised to keep a 16 bits TIFF export in Adobe RGB or ProPhotoRGB color spaces for archival purposes as soon as the edit is finished, to prevent any data loss that may incur with future versions of Ansel or upstream darktable (although everything is done to ensure future compatibility of the software with old edits, mistakes happened and will happen again).\n"
 msgstr ""
 
 #. type: Title ###
@@ -9213,34 +7849,15 @@ msgstr ""
 msgid "The scene-referred workflow is the standard in Ansel, as it proved to be faster and more reliable for users who allocated some time to understand it, and allows an unified treatment for HDR and SDR scenes alike. It relies on manipulating the image in a framework where pixel RGB is treated as a light emission for as long as possible, allowing accurate (de-)blurring, (de-)noising, illuminant correction and color-preserving brightening/darkening based on exposure compensations. When the last optically-bound image filter is applied, it then shifts to a perceptual framework where the pixel RGB is converted and handled as a 3D color object (hue, chroma or saturation, lightness or brightness) using color appearance models.\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/introduction.md
 #, no-wrap
-msgid "The user will setup the global exposure as to match the overall picture brightness to the desired level, in exposure module. This will usually consist into matching the average brightness or the brightness of the picture's subject to the brightness of the GUI background color (middle-grey by design),\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "The user will ensure the bounds of the scene dynamic range are properly remapped to the bounds of the display dynamic range, in filmic module. For typical SDR monitors, the default display settings will not need to be changed, but the scene white and black relative exposures will need to be adjusted for each image, either automatically (use the \"Auto tune levels\" button) or manually. Then, adjust the contrast (in \"look\" tab) to taste.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "The user will ensure the white balance is neutral (reminder : it's not an artistic choice) by setting the \"CAT\" tab properly, in color calibration module. The user may calibrate the colors directly from a color checker test shot too.\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "Any artistic color deviation, in hue or in saturation, may be applied in color balance module.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/contribute/introduction.md
-#, no-wrap
-msgid "Any other artistic change can then be made.\n"
+msgid ""
+"1. The user will setup the global exposure as to match the overall picture brightness to the desired level, in exposure module. This will usually consist into matching the average brightness or the brightness of the picture's subject to the brightness of the GUI background color (middle-grey by design),\n"
+"2. The user will ensure the bounds of the scene dynamic range are properly remapped to the bounds of the display dynamic range, in filmic module. For typical SDR monitors, the default display settings will not need to be changed, but the scene white and black relative exposures will need to be adjusted for each image, either automatically (use the \"Auto tune levels\" button) or manually. Then, adjust the contrast (in \"look\" tab) to taste.\n"
+"3. The user will ensure the white balance is neutral (reminder : it's not an artistic choice) by setting the \"CAT\" tab properly, in color calibration module. The user may calibrate the colors directly from a color checker test shot too.\n"
+"4. Any artistic color deviation, in hue or in saturation, may be applied in color balance module.\n"
+"5. Any other artistic change can then be made.\n"
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: title
@@ -9441,22 +8058,13 @@ msgstr ""
 msgid "La traduction de darktable comporte des bizarreries incompréhensibles pour quiconque utilise un ordinateur de bureau depuis plus de 10 ans. Voici une liste rapide des erreurs à corriger:\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/contribute/translating.md
 #, no-wrap
-msgid "\"set\" est traduit \"positionné\" mais sa traduction correcte est \"réglé\". C'est illogique car \"settings\" est correctement traduit \"réglages\". Dans Ansel, on ne positionne que des masques (ou leurs nœuds de contrôle) dans le plan 2D. Le reste, ce sont des réglages.\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/contribute/translating.md
-#, no-wrap
-msgid "\"reset\" est traduit \"repositionné\" mais sa traduction correcte est \"réinitialiser\".\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/contribute/translating.md
-#, no-wrap
-msgid "En anglais, un grand nombre de verbes ont la même graphie pour leur infinitif et leur participe-passé, voire même existent comme substantif (\"set\", dans l'exemple ci-dessus, peut être traduit \"réglé\" ou \"régler\" ou comme \"ensemble\" sous sa forme substantivée). Si une action (pas encore effectuée) est requise, l'infinitif doit être utilisé en français. Si une action est déjà effectuée, c'est le participe-passé qui doit être employé. Les choses se corsent pour les substantifs car l'anglais ne requiert pas toujours de déterminant devant, il faut donc le déduire du contexte. À surveiller : \"click\" (cliquer ou clic), \"type\" (type ou entrer/taper), etc.\n"
+msgid ""
+"* \"set\" est traduit \"positionné\" mais sa traduction correcte est \"réglé\". C'est illogique car \"settings\" est correctement traduit \"réglages\". Dans Ansel, on ne positionne que des masques (ou leurs nœuds de contrôle) dans le plan 2D. Le reste, ce sont des réglages.\n"
+"* \"reset\" est traduit \"repositionné\" mais sa traduction correcte est \"réinitialiser\".\n"
+"* En anglais, un grand nombre de verbes ont la même graphie pour leur infinitif et leur participe-passé, voire même existent comme substantif (\"set\", dans l'exemple ci-dessus, peut être traduit \"réglé\" ou \"régler\" ou comme \"ensemble\" sous sa forme substantivée). Si une action (pas encore effectuée) est requise, l'infinitif doit être utilisé en français. Si une action est déjà effectuée, c'est le participe-passé qui doit être employé. Les choses se corsent pour les substantifs car l'anglais ne requiert pas toujours de déterminant devant, il faut donc le déduire du contexte. À surveiller : \"click\" (cliquer ou clic), \"type\" (type ou entrer/taper), etc.\n"
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: title
@@ -9492,58 +8100,19 @@ msgid ""
 "{{< /quote >}}\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/design.md
 #, no-wrap
-msgid "__Design starts with an usecase__ : a defined task to achieve (on a picture), by a defined user, into a defined timeframe. If no usecase, then no problem to solve, then keep away from your code editor.\n"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: content/contribute/design.md
-#, no-wrap
-msgid "__Design requires to know the target user__ : education/training, level of craftmanship/mastership, etc.\n"
-msgstr ""
-
-#. type: Bullet: '3. '
-#: content/contribute/design.md
-#, no-wrap
-msgid "__Design requires to understand the needs__ : in the context of Ansel, that will often need some art history and darkroom photography knowledge,\n"
-msgstr ""
-
-#. type: Bullet: '4. '
-#: content/contribute/design.md
-#, no-wrap
-msgid "Once the problem and the user are understood, design requires to specify :\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/contribute/design.md
-#, no-wrap
-msgid "the expected functionnalities of the solution,\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/contribute/design.md
-#, no-wrap
-msgid "the scope of the solution (where in the lifecycle of an image does the solution stand ?),\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/contribute/design.md
-#, no-wrap
-msgid "the constraints and requirements of the solution (supporting some standard, allowing to process _n_ images per time unit, etc.),\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/contribute/design.md
-#, no-wrap
-msgid "a series of tests to complete that would validate the quality of the solution, as to limit unproductive opinions, biases and subjectivity in the validation process.\n"
-msgstr ""
-
-#. type: Bullet: '5. '
-#: content/contribute/design.md
-#, no-wrap
-msgid "__Only then__ can the mockups and brainstorming begin, followed be prototypes.\n"
+msgid ""
+"1. __Design starts with an usecase__ : a defined task to achieve (on a picture), by a defined user, into a defined timeframe. If no usecase, then no problem to solve, then keep away from your code editor.\n"
+"2. __Design requires to know the target user__ : education/training, level of craftmanship/mastership, etc.\n"
+"3. __Design requires to understand the needs__ : in the context of Ansel, that will often need some art history and darkroom photography knowledge,\n"
+"4. Once the problem and the user are understood, design requires to specify :\n"
+"    - the expected functionnalities of the solution,\n"
+"    - the scope of the solution (where in the lifecycle of an image does the solution stand ?),\n"
+"    - the constraints and requirements of the solution (supporting some standard, allowing to process _n_ images per time unit, etc.),\n"
+"    - a series of tests to complete that would validate the quality of the solution, as to limit unproductive opinions, biases and subjectivity in the validation process.\n"
+"5. __Only then__ can the mockups and brainstorming begin, followed be prototypes.\n"
 msgstr ""
 
 #. type: Title ##
@@ -9558,34 +8127,15 @@ msgstr ""
 msgid "Design does not deal with :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/design.md
 #, no-wrap
-msgid "vague requirements of an undefined, future, or fantasized user,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "\"it would be cool if…\" (that's how you create inconsistent plugins collections),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "what people like (for everything someone likes, you will find someone to hate it),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "what people think they want (it's often not what they need),\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "magic tech buzzwords that \"are the future\" and, as such, need to be plugged everywhere, regardless of their relevance or feasibility (yes, I'm talking about AI, NFT, blockchain, etc.)\n"
+msgid ""
+"- vague requirements of an undefined, future, or fantasized user,\n"
+"- \"it would be cool if…\" (that's how you create inconsistent plugins collections),\n"
+"- what people like (for everything someone likes, you will find someone to hate it),\n"
+"- what people think they want (it's often not what they need),\n"
+"- magic tech buzzwords that \"are the future\" and, as such, need to be plugged everywhere, regardless of their relevance or feasibility (yes, I'm talking about AI, NFT, blockchain, etc.)\n"
 msgstr ""
 
 #. type: Title ##
@@ -9600,46 +8150,17 @@ msgstr ""
 msgid "Good design is :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/design.md
 #, no-wrap
-msgid "minimalistic,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "robust,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "future-proof,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "generic and generalized,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "maintainable with limited resources,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "informed by science,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/design.md
-#, no-wrap
-msgid "compatible/interoperable with industry standards.\n"
+msgid ""
+"- minimalistic,\n"
+"- robust,\n"
+"- future-proof,\n"
+"- generic and generalized,\n"
+"- maintainable with limited resources,\n"
+"- informed by science,\n"
+"- compatible/interoperable with industry standards.\n"
 msgstr ""
 
 #. type: Plain text
@@ -9957,40 +8478,16 @@ msgstr ""
 msgid "As many \"bugs\" report show, insufficiently-trained users have wrong expectations, and if you take their feature requests too seriously, you end up with crippled software duplicating features and CPU load. Those need to be solved at the root : with teaching.\n"
 msgstr ""
 
-#. type: Bullet: '1. '
+#. type: Plain text
 #: content/contribute/organization.md
 #, no-wrap
-msgid "The community forum has a place to post links to [video tutorials](https://community.ansel.photos/videos-home),\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "The community forum has a place for users to write educational [blog posts](https://community.ansel.photos/posts-home),\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "The [documentation](../doc) is meant to provide usage information closely tied to the software GUI, so users could learn about the features in linear order of GUI appearance.\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "The main website [workflow](../workflows/) section is meant to provide usage information tied to a specific task to achieve, so users could learn \"how to\".\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "The main website [resources](../resources/) section is meant to provide background theoritical information to help building a deeper understanding of color and photography, and empower users to troubleshoot retouching issues themselves.\n"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "Users can [book 1-on-1 training sessions](https://cal.com/aurelien-pierre/darktable-ansel-editing-class-en) (classes) with Aurélien Pierre, for faster and more focused training.\n"
+msgid ""
+"1. The community forum has a place to post links to [video tutorials](https://community.ansel.photos/videos-home),\n"
+"1. The community forum has a place for users to write educational [blog posts](https://community.ansel.photos/posts-home),\n"
+"1. The [documentation](../doc) is meant to provide usage information closely tied to the software GUI, so users could learn about the features in linear order of GUI appearance.\n"
+"1. The main website [workflow](../workflows/) section is meant to provide usage information tied to a specific task to achieve, so users could learn \"how to\".\n"
+"1. The main website [resources](../resources/) section is meant to provide background theoritical information to help building a deeper understanding of color and photography, and empower users to troubleshoot retouching issues themselves.\n"
+"1. Users can [book 1-on-1 training sessions](https://cal.com/aurelien-pierre/darktable-ansel-editing-class-en) (classes) with Aurélien Pierre, for faster and more focused training.\n"
 msgstr ""
 
 #. type: Title ##
@@ -10053,34 +8550,15 @@ msgstr ""
 msgid "In pull requests and issues, whether on Github or on the [Community forum](https://community.ansel.photos) please try to stay concise and on-point :\n"
 msgstr ""
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: content/contribute/organization.md
 #, no-wrap
-msgid "Technical details (like OS, use of OpenCL, screen size, etc.) should make use of bullet-point lists.\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "Screenshots and drawings can go a long way.\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "If you are replying to a particular point or person, quote the section of text you are replying to.\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "Break your text into paragraphs of roughly 4 to 8 lines, but avoid sending each sentence to a new paragraph.\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "Keep in mind everybody speaks English but very few people are native speakers, so try to stick to basic [Globish](https://en.wikipedia.org/wiki/Globish_(Nerri%C3%A8re)).\n"
+msgid ""
+"* Technical details (like OS, use of OpenCL, screen size, etc.) should make use of bullet-point lists.\n"
+"* Screenshots and drawings can go a long way.\n"
+"* If you are replying to a particular point or person, quote the section of text you are replying to.\n"
+"* Break your text into paragraphs of roughly 4 to 8 lines, but avoid sending each sentence to a new paragraph.\n"
+"* Keep in mind everybody speaks English but very few people are native speakers, so try to stick to basic [Globish](https://en.wikipedia.org/wiki/Globish_(Nerri%C3%A8re)).\n"
 msgstr ""
 
 #. type: Plain text
@@ -10101,58 +8579,19 @@ msgstr ""
 msgid "Many centralized and automated ways are offered to keep track of what's new in the project :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/contribute/organization.md
 #, no-wrap
-msgid "The main website has a central RSS feed, where new and updated page goes :\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "[Global English RSS](/en/index.xml),\n"
-msgstr ""
-
-#. type: Bullet: '    - '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "[Global French RSS](/fr/index.xml).\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "For more granularity, each section of the website (News, Doc, Workflows, etc.) has its own RSS feed too. The <i class=\"fas fa-rss-square\"></i> icon you find on section index pages and on every page links to that RSS feed in the current language.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "The Community website has a [central public RSS feed](https://community.ansel.photos/m/timeline/rss/public/) too (truncated to the 25 most recent events).\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "Code changes can be tracked from commits index on [Github](https://github.com/aurelienpierreeng/ansel/commits/master/), or using the [Github Atom feed](https://github.com/aurelienpierreeng/ansel/commits/master.atom) (truncated to the 20 most recent commits). Commit messages are usually quite verbose and should explain well enough what was changed and why.\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "New commits, Github issues updates (created, edited, closed), new community posts and new website pages are all posted to a [dedicated Matrix chat](https://matrix.to/#/#ansel-dev:matrix.org).\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "Nightly builds packages are posted to a [dedicated Matrix chat](https://matrix.to/#/#ansel-builds:matrix.org). They are also listed on the [Github pre-release page](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/contribute/organization.md
-#, no-wrap
-msgid "Open and closed project/issues can be seen on the Github [Kanban board](https://github.com/orgs/aurelienpierreeng/projects/1).\n"
+msgid ""
+"- The main website has a central RSS feed, where new and updated page goes :\n"
+"    - [Global English RSS](/en/index.xml),\n"
+"    - [Global French RSS](/fr/index.xml).\n"
+"- For more granularity, each section of the website (News, Doc, Workflows, etc.) has its own RSS feed too. The <i class=\"fas fa-rss-square\"></i> icon you find on section index pages and on every page links to that RSS feed in the current language.\n"
+"- The Community website has a [central public RSS feed](https://community.ansel.photos/m/timeline/rss/public/) too (truncated to the 25 most recent events).\n"
+"- Code changes can be tracked from commits index on [Github](https://github.com/aurelienpierreeng/ansel/commits/master/), or using the [Github Atom feed](https://github.com/aurelienpierreeng/ansel/commits/master.atom) (truncated to the 20 most recent commits). Commit messages are usually quite verbose and should explain well enough what was changed and why.\n"
+"- New commits, Github issues updates (created, edited, closed), new community posts and new website pages are all posted to a [dedicated Matrix chat](https://matrix.to/#/#ansel-dev:matrix.org).\n"
+"- Nightly builds packages are posted to a [dedicated Matrix chat](https://matrix.to/#/#ansel-builds:matrix.org). They are also listed on the [Github pre-release page](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
+"- Open and closed project/issues can be seen on the Github [Kanban board](https://github.com/orgs/aurelienpierreeng/projects/1).\n"
 msgstr ""
 
 #. type: Plain text
@@ -10688,16 +9127,12 @@ msgstr ""
 msgid "Chantal is Ansel's knowledge infrastructure :\n"
 msgstr ""
 
-#. type: Bullet: '- '
+#. type: Plain text
 #: content/_index.md
 #, no-wrap
-msgid "quickly find relevant information among trusted sources,\n"
-msgstr ""
-
-#. type: Bullet: '- '
-#: content/_index.md
-#, no-wrap
-msgid "avoid asking questions already answered.\n"
+msgid ""
+"- quickly find relevant information among trusted sources,\n"
+"- avoid asking questions already answered.\n"
 msgstr ""
 
 #. type: Plain text
