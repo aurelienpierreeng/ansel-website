@@ -43,10 +43,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          fetch-depth: 0
-      - name: Refresh modules
+          fetch-depth: 0 # needed for .LastMod using git module
+      - name: Fetch modules and build translations
         run: |
-          hugo mod get -u ./...
+          sh build-translations.sh
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
