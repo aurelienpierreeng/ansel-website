@@ -15,16 +15,6 @@ if ! which po4a; then
     exit 1
 fi
 
-# Is po4a new enough?
-function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
-
-required_version='0.58'
-current_version=$(po4a --version | sed -En 's,po4a version ([0-9][0-9.]+[0-9]).*,\1,p')
-if version_gt $required_version $current_version; then
-    echo "ERROR: po4a v0.58 or higher required."
-    exit 1
-fi
-
 # Is the script argument correct
 if [ "$1" == "--no-update" ]; then
     echo "Generating the translated files."
@@ -76,7 +66,7 @@ EOF
             echo $line >> $po4a_conf
         fi
     done
-    po4a $1 --verbose $po4a_conf --keep 0 &
+    po4a $1 --verbose $po4a_conf --keep 0
 done
 wait
 
