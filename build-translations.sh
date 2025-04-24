@@ -7,7 +7,7 @@ hugo mod get -u
 hugo mod vendor
 
 # Auto-gen doc translations from module disk cache
-sh _vendor/github.com/aurelienpierreeng/ansel-doc/tools/generate-translations.sh --no-update
+./_vendor/github.com/aurelienpierreeng/ansel-doc/tools/generate-translations.sh --no-update
 
 # Auto-gen website translations
-sh tools/generate-translations.sh --no-update
+./tools/generate-translations.sh --no-update
