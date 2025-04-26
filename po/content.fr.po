@@ -3394,54 +3394,60 @@ msgid ""
 "- Capture clicks on the comboboxes chevron (right arrow). Previously, you needed to click on the label to unroll the combobox drop-down menu, which was super frustrating if you came from software with a proper GUI. The chevron itself didn't respond to clicks.\n"
 "- Do not scroll comboboxes drop-downs. That feature started like a cool project : having the currently-selected item aligned with the label. Problem is the drop-down popup positionning is ultimately handled by the desktop environment, we can only ask it politely to do what we wish, but there is no guarantee our wishes will be honoured. Also, it is possible to make the popup roll outside the viewport, nothing prevents it. All in all, it's brittle and random, better stick with default window positionning.\n"
 msgstr ""
+"- Les coordonnées du curseur (dans les popup) sont calculées à un seul endroit, puis stockées. Cela permet d'économiser de nombreux recalculs intermédiaires, certains étant incohérents car le code avait été copié-collé et dupliqué au lieu d'utiliser [les accesseurs](https://en.wikipedia.org/wiki/Mutator_method). Désormais, les décalages et changements de coordonnées sont gérés par des accesseurs unifiés, ce qui signifie que tout changement futur ne devra se produire qu'à un seul endroit, et le code entier l'utilisera.\n"
+"- Les nouvelles valeurs (provenant des curseurs et des listes déroulantes) ne sont plus dispatchées dans le pipeline de pixels pendant le défilement ou le glisser-déposer, mais uniquement à la fin. Cela repose sur un délai d'apprentissage machine enregistrant le temps moyen nécessaire pour calculer un pipeline complet. L'interface utilisateur attendra de 20 ms à 2,5 s pour dispatcher les changements au pipeline, évitant de recalculer à chaque étape de défilement ou de glisser, ce qui entraîne des calculs inutiles et redondants mais coûteux qui ralentissent le logiciel. De même, ils ne sont désormais dispatchés que lors de l'événement de relâchement du bouton, au lieu des événements de pression et de relâchement du bouton (étant donné qu'un clic de souris typique envoie les deux événements). Cela devrait éviter pas mal de recalculs inutiles du pipeline.\n"
+"- Les widgets sont redessinés immédiatement lors des événements utilisateur, avant que les nouvelles valeurs ne soient dispatchées vers le pipeline de pixels. Cela garantit un retour immédiat à l'utilisateur, même si le résultat final en pixels peut survenir plus tard, et limite la frustration sur les ordinateurs lents.\n"
+"- Ne pas dispatcher d'événements de changement de valeur si les widgets ont reçu une interaction de l'utilisateur mais que leur valeur n'a pas réellement changé.\n"
+"- Capturer les clics sur le chevron (flèche droite) des listes déroulantes. Auparavant, il fallait cliquer sur l'étiquette pour dérouler le menu déroulant de la liste, ce qui était très frustrant si vous veniez d'un logiciel avec une interface utilisateur correcte. Le chevron lui-même ne répondait pas aux clics.\n"
+"- Ne pas faire défiler les listes déroulantes. Cette fonctionnalité a commencé comme un projet cool : aligner l'élément actuellement sélectionné avec l'étiquette. Le problème est que le positionnement des fenêtres déroulantes est finalement géré par l'environnement de bureau, nous ne pouvons que lui demander poliment de faire ce que nous souhaitons, mais rien ne garantit que nos souhaits seront honorés. De plus, il est possible de faire rouler la fenêtre contextuelle hors du viewport, rien ne l'empêche. Tout compte fait, c'est fragile et aléatoire, mieux vaut rester avec le positionnement par défaut des fenêtres.\n"
 
 #. type: Title ##
 #: content/news/undarktable-ing-gui-controls.md:31
 #, no-wrap
 msgid "Deprecated features"
-msgstr ""
+msgstr "Fonctionnalités obsolètes"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:34
 #, no-wrap
 msgid "The ability to assign keyboard shorcuts to sliders and comboboxes is for now removed. Sliders and comboboxes are anyway linked to arrow keys and mouse scroll __once they get the focus__[^1], and it is still possible to assign focus capturing to a keyboard shortcut. The current logic is therefore to request focus through keyboard shortcuts, then edit the value using arrow keys. Focus requests also automatically make the widget visible in GUI, scrolling the sidebar if needed.\n"
-msgstr ""
+msgstr "La possibilité d'assigner des raccourcis clavier aux curseurs et aux listes déroulantes est pour l'instant supprimée. Les curseurs et les listes déroulantes sont de toute façon liés aux touches fléchées et au défilement de la souris __une fois qu'ils ont le focus__[^1], et il est toujours possible d'assigner la capture de focus à un raccourci clavier. La logique actuelle est donc de demander le focus via des raccourcis clavier, puis de modifier la valeur à l'aide des touches fléchées. Les demandes de focus rendent également automatiquement le widget visible dans l'interface utilisateur, en défilant la barre latérale si nécessaire.\n"
 
 #. type: Link reference
 #: content/news/undarktable-ing-gui-controls.md:35
 #, no-wrap
 msgid "[^1]: In GUI programming, a widget has the focus when it is the one recording keyboard events. Text entries are the most obvious example, but Darktable hacked that concept to generalize to pretty much every widget."
-msgstr ""
+msgstr "[^1]: En programmation d'interface utilisateur, un widget a le focus lorsqu'il est celui enregistrant les événements clavier. Les entrées de texte sont l'exemple le plus évident, mais Darktable a détourné ce concept pour le généraliser à pratiquement tous les widgets."
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:38
 #, no-wrap
 msgid "Anyway, the current shortcuts system will have to be entirely replaced by native Gtk accelerators, which are already used for the global menu (and were used in Darktable prior to 2021). Currently, we have both systems, one of which being a monstruosity of complexity and probably responsible for slow-downs. KISS.\n"
-msgstr ""
+msgstr "De toute façon, le système de raccourcis actuel devra être entièrement remplacé par des accélérateurs natifs de Gtk, qui sont déjà utilisés pour le menu global (et ont été utilisés dans Darktable avant 2021). Actuellement, nous avons deux systèmes, l'un d'eux étant une monstruosité de complexité et probablement responsable de ralentissements. KISS.\n"
 
 #. type: Title ##
 #: content/news/undarktable-ing-gui-controls.md:39
 #, no-wrap
 msgid "Caveats"
-msgstr ""
+msgstr "Avertissements"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:42
 #, no-wrap
 msgid "The \"format\" combobox in export module doesn't initialize its value properly. This is a non-standard Bauhaus widget that needs extra care. For the time being, you will need to refresh the storage option or to reload a preset.\n"
-msgstr ""
+msgstr "Le combobox «format» dans le module d'exportation n'initialise pas correctement sa valeur. Il s'agit d'un widget Bauhaus non standard qui nécessite une attention particulière. Pour l'instant, vous devrez actualiser l'option de stockage ou recharger un préréglage.\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:44
 #, no-wrap
 msgid "Whenever you remove the flaky old paint that held the rusty walls, you risk doing collateral damages. Be careful with Ansel when using AppImage and Win EXE tagged Ansel-57ed58d from tonight and report anything weird.\n"
-msgstr ""
+msgstr "Chaque fois que vous supprimez l'ancienne peinture écaillée qui tenait les murs rouillés, vous risquez de faire des dommages collatéraux. Soyez prudent avec Ansel lors de l'utilisation du fichier AppImage et Win EXE étiqueté Ansel-57ed58d de ce soir et signalez tout ce qui semble étrange.\n"
 
 #. type: Title ##
 #: content/news/undarktable-ing-gui-controls.md:45
 #, no-wrap
 msgid "Downloads"
-msgstr ""
+msgstr "Téléchargements"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:49
@@ -3450,18 +3456,20 @@ msgid ""
 "- [Ansel-57ed58d-x86_64.AppImage](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/Ansel-57ed58d-x86_64.AppImage)\n"
 "- [Ansel-57ed58d-win64.exe](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/ansel-57ed58d-win64.exe)\n"
 msgstr ""
+"- [Ansel-57ed58d-x86_64.AppImage](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/Ansel-57ed58d-x86_64.AppImage)\n"
+"- [Ansel-57ed58d-win64.exe](https://github.com/aurelienpierreeng/ansel/releases/download/v0.0.0/ansel-57ed58d-win64.exe)\n"
 
 #. type: Title ##
 #: content/news/undarktable-ing-gui-controls.md:50
 #, no-wrap
 msgid "Geeky details"
-msgstr ""
+msgstr "Détails techniques"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:53
 #, no-wrap
 msgid "The current changes have reduced :\n"
-msgstr ""
+msgstr "Les changements actuels ont permis de réduire :\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:57
@@ -3471,18 +3479,21 @@ msgid ""
 "- cognitive complexity from 796 to 432\n"
 "- technical debt from 1 day and 7 hours to 4 hours and 50 min.\n"
 msgstr ""
+"- la complexité cyclomatique de 735 à 494\n"
+"- la complexité cognitive de 796 à 432\n"
+"- la dette technique de 1 jour et 7 heures à 4 heures et 50 minutes.\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:59
 #, no-wrap
 msgid "[More details](https://sonarcloud.io/component_measures?metric=cognitive_complexity&selected=aurelienpierreeng_ansel%3Asrc%2Fbauhaus%2Fbauhaus.c&view=list&id=aurelienpierreeng_ansel)\n"
-msgstr ""
+msgstr "[Plus de détails](https://sonarcloud.io/component_measures?metric=cognitive_complexity&selected=aurelienpierreeng_ansel%3Asrc%2Fbauhaus%2Fbauhaus.c&view=list&id=aurelienpierreeng_ansel)\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:60
 #, no-wrap
 msgid "If you are no programmer, these metric just mean that the code will be easier and less time-consuming to maintain in the future, and probably less bug-prone.\n"
-msgstr ""
+msgstr "Si vous n'êtes pas programmeur, ces métriques signifient simplement que le code sera plus facile et moins chronophage à maintenir à l'avenir, et probablement moins sujet aux bogues.\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/resources/lexicon.md:1
@@ -3574,12 +3585,91 @@ msgid ""
 "        curves\n"
 "      white balance\n"
 msgstr ""
+"mindmap\n"
+"  racine((COULEUR))\n"
+"    modèle d'apparence de couleur\n"
+"      espace couleur uniforme\n"
+"        chromaticité\n"
+"          U, V\n"
+"          a, b\n"
+"        luminosité\n"
+"          L\n"
+"        delta E\n"
+"      transformation d'adaptation chromatique\n"
+"        illuminant\n"
+"          indice de reproduction des couleurs\n"
+"          température de couleur\n"
+"      éclairage ambiant\n"
+"      luminosité de fond\n"
+"    dimensions\n"
+"      Munsell\n"
+"        teinte\n"
+"        chroma\n"
+"        valeur\n"
+"      système de couleur naturel\n"
+"        noirceur\n"
+"        saturation\n"
+"        teinte\n"
+"      CIE\n"
+"        luminosité\n"
+"        éclat\n"
+"        saturation\n"
+"        chroma\n"
+"        colorimétrie\n"
+"        teinte\n"
+"    mesure\n"
+"      colorimétrie\n"
+"        trichromie\n"
+"          capteur\n"
+"            critère Luther-Ives\n"
+"            métamérisme\n"
+"            plage dynamique\n"
+"            bruit\n"
+"            mosaïquage\n"
+"              Bayer\n"
+"              XTrans\n"
+"              artefacts en fermeture éclair\n"
+"          espaces\n"
+"            rvb(RVB)\n"
+"              TSF\n"
+"              TSV\n"
+"            LMS\n"
+"              Yrg\n"
+"            XYZ\n"
+"              Yxy\n"
+"                Yuv\n"
+"                  Ych\n"
+"            CYM\n"
+"              CYMK\n"
+"            primaires\n"
+"              cellules coniques\n"
+"              LED\n"
+"                ITU BT.Rec 709\n"
+"                ITU BT.Rec 2020\n"
+"                DCI P3\n"
+"              encres\n"
+"      spectrométrie\n"
+"        spectre lumineux\n"
+"          longueurs d'onde\n"
+"          énergie\n"
+"      photométrie\n"
+"        luminance\n"
+"    correction\n"
+"      profil\n"
+"        matrice\n"
+"        table de correspondance\n"
+"        fonction de transfert\n"
+"      étalonnage des couleurs\n"
+"        ASC CDL\n"
+"        mélangeur de canaux\n"
+"        courbes\n"
+"      balance des blancs\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/resources/misconceptions.md:1
 #, no-wrap
 msgid "Common misconceptions"
-msgstr ""
+msgstr "Idées fausses communes"
 
 #. type: Plain text
 #: content/resources/misconceptions.md:11
@@ -3591,7 +3681,7 @@ msgstr "Cette page regroupe la plupart des erreurs et des idées fausses sur Ans
 #: content/resources/misconceptions.md:13 content/resources/readings.md:13
 #, no-wrap
 msgid "<!--more-->\n"
-msgstr ""
+msgstr "<!--plus-->\n"
 
 #. type: Title ##
 #: content/resources/misconceptions.md:14
@@ -3721,7 +3811,7 @@ msgstr "Quelles ressources peuvent être trouvées en ligne et dans les biblioth
 #: content/resources/readings.md:14 content/contribute/triaging.md:9
 #, no-wrap
 msgid "Preamble"
-msgstr ""
+msgstr "Préambule"
 
 #. type: Title ###
 #: content/resources/readings.md:16
@@ -3897,13 +3987,13 @@ msgstr "Références"
 #: content/resources/readings.md:73 content/workflows/scene-referred/index.md:1
 #, no-wrap
 msgid "Color science"
-msgstr ""
+msgstr "Science des couleurs"
 
 #. type: Plain text
 #: content/resources/readings.md:76
 #, no-wrap
 msgid "_Fundamentals, concepts and terminology of colo(u)r._\n"
-msgstr ""
+msgstr "_Fondamentaux, concepts et terminologie de la couleur._\n"
 
 #. type: Plain text
 #: content/resources/readings.md:79
@@ -3912,6 +4002,8 @@ msgid ""
 "Color Appearance Models, 3rd Edition. Mark D. Fairchild. 2013.\n"
 ": Mark Fairchild is professor at the Rochester Institute of Technology (closely tied to Munsell legacy and located in the neighbourhood of the Eastman Kodak company). The  Chapters 1 to 9 list the different aspects of vision and adaptation, along with the parameters affecting it and the color terminology. The 9 central chapters detail the typical industry-ready color appearance models, with implementation details that will only interest engineers. The last 3 chapters treat matters such as color management and color reproduction that may interest any graphic artist. [Publisher website](https://www.wiley.com/en-us/Color+Appearance+Models%2C+3rd+Edition-p-9781119967033)\n"
 msgstr ""
+"Color Appearance Models, 3rd Edition. Mark D. Fairchild. 2013.\n"
+": Mark Fairchild est professeur à l'Institut de technologie de Rochester (étroitement lié à l'héritage de Munsell et situé à proximité de l'entreprise Eastman Kodak). Les chapitres 1 à 9 listent les différents aspects de la vision et de l'adaptation, ainsi que les paramètres qui l'affectent et la terminologie de la couleur. Les 9 chapitres centraux détaillent les modèles d'apparence de couleurs typiques prêts pour l'industrie, avec des détails d'implémentation qui n'intéresseront que les ingénieurs. Les 3 derniers chapitres traitent de questions telles que la gestion des couleurs et la reproduction des couleurs qui peuvent intéresser tout artiste graphique. [Site de l'éditeur](https://www.wiley.com/en-us/Color+Appearance+Models%2C+3rd+Edition-p-9781119967033)\n"
 
 #. type: Plain text
 #: content/resources/readings.md:82
@@ -3920,6 +4012,8 @@ msgid ""
 "Colour : sense and measurement. Richard Kirk. 2022.\n"
 ": Richard Kirk holds a PhD in physics and has worked at Filmlight UK research and development since the 1980's. Filmlight is best known for its film digitization workflow (software and hardware) and its Baselight color grading software, used by most Hollywood movie productions to fine-tune the color look. Kirk is the co-author of the color-grading \"tRGB\" space used in Ansel [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) module and presented in the book (p. 79). The book itself is made available free of charge, as a PDF, so I will not expand on its content here : have a look for yourself. Just know that it is fairly accessible to non-technical people, well illustrated, and covers both film and digital imaging, with their relationships. [Download the PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
 msgstr ""
+"Colour : sens et mesure. Richard Kirk. 2022.\n"
+": Richard Kirk est titulaire d'un doctorat en physique et a travaillé à la recherche et au développement chez Filmlight UK depuis les années 1980. Filmlight est surtout connu pour son flux de travail de numérisation de films (logiciel et matériel) et son logiciel d'étalonnage des couleurs Baselight, utilisé par la plupart des productions cinématographiques hollywoodiennes pour peaufiner l'apparence des couleurs. Kirk est le co-auteur de l'espace « tRGB » utilisé dans le module [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) d'Ansel et présenté dans le livre (p. 79). Le livre lui-même est mis à disposition gratuitement, sous forme de PDF, je ne développerai donc pas davantage son contenu ici : jetez-y un œil vous-même. Sachez simplement qu'il est assez accessible aux personnes non techniques, bien illustré, et couvre à la fois l'image cinématographique et numérique, avec leurs relations. [Télécharger le PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
 
 #. type: Plain text
 #: content/resources/readings.md:85
@@ -3928,18 +4022,20 @@ msgid ""
 "The dimensions of color. David Briggs. [Website 1](http://www.huevaluechroma.com/). [Website 2](https://sites.google.com/site/djcbriggs/life-drawings-2).\n"
 ": David Briggs is a member of the Colour Society of Australia and teacher at the National Art School and University of Technology in Sydney. As a drawer and painter, his publications give an useful insight on the interconnections between color theory and pigments mixing practice.\n"
 msgstr ""
+"Les dimensions de la couleur. David Briggs. [Site 1](http://www.huevaluechroma.com/). [Site 2](https://sites.google.com/site/djcbriggs/life-drawings-2).\n"
+": David Briggs est membre de la Colour Society of Australia et enseignant à la National Art School et à l'Université de Technologie de Sydney. En tant que dessinateur et coloriste, ses publications offrent un aperçu utile des interconnexions entre la théorie des couleurs et la pratique du mélange des pigments.\n"
 
 #. type: Title ###
 #: content/resources/readings.md:86
 #, no-wrap
 msgid "Color pipelines"
-msgstr ""
+msgstr "Pipelines de couleur"
 
 #. type: Plain text
 #: content/resources/readings.md:89
 #, no-wrap
 msgid "_How digital images are handled in your computer from start to finish_\n"
-msgstr ""
+msgstr "_Comment les images numériques sont-elles traitées dans votre ordinateur du début à la fin_\n"
 
 #. type: Plain text
 #: content/resources/readings.md:92
@@ -3948,6 +4044,8 @@ msgid ""
 "The Hitchhiker's Guide to Digital colour. Troy Sobotka. [Website](https://hg2dc.com/)\n"
 ": I have worked with Troy for years — he has basically helped most open-source software projects to unfuck their color pipelines in the past decade (at least the ones who accepted they had a problem whether or not they saw it) — and he is the original author of Filmic for Blender. We share the same passion for calling bullshit bullshit and idiots idiots. The HG2DC website is a step-by-step walk through computer graphics with lots of pictures and video animations explaining where, why and what happens to your RGB pixels.\n"
 msgstr ""
+"Le guide du voyageur galactique de la couleur numérique. Troy Sobotka. [Site](https://hg2dc.com/)\n"
+": Je travaille avec Troy depuis des années — il a essentiellement aidé la plupart des projets de logiciels open-source à désamorcer leurs pipelines de couleurs au cours de la dernière décennie (du moins ceux qui ont accepté qu’ils avaient un problème, qu’ils le voient ou non) — et il est l'auteur original de Filmic pour Blender. Le site HG2DC est une visite guidée pas à pas de l'infographie avec de nombreuses images et animations vidéo expliquant où, pourquoi et que se passe-t-il avec vos pixels RVB.\n"
 
 #. type: Plain text
 #: content/resources/readings.md:95
@@ -3956,18 +4054,20 @@ msgid ""
 "The Computer Graphics Cinematography Book. Chris Brejon. [Website](https://chrisbrejon.com/cg-cinematography/)\n"
 ": Chris has worked at 5 of the most prominent movie studios in the world, over the past 13 years, as a lighting and compositing artist. Although the book focuses on cinematography, the chapters on color management, composition, lighting and color theory apply directly to photography as well (though the workflow changes a bit).\n"
 msgstr ""
+"Le livre de cinématographie en graphisme informatique. Chris Brejon. [Site](https://chrisbrejon.com/cg-cinematography/)\n"
+": Chris a travaillé dans 5 des studios de cinéma les plus prestigieux du monde au cours des 13 dernières années, en tant qu'artiste d'éclairage et de composition. Bien que le livre se concentre sur la cinématographie, les chapitres sur la gestion des couleurs, la composition, l'éclairage et la théorie des couleurs s'appliquent directement à la photographie (même si le flux de travail change un peu).\n"
 
 #. type: Title ###
 #: content/resources/readings.md:96
 #, no-wrap
 msgid "2D painting and 3D rendering"
-msgstr ""
+msgstr "Peinture 2D et rendu 3D"
 
 #. type: Plain text
 #: content/resources/readings.md:99
 #, no-wrap
 msgid "_Constructing images from scratch_\n"
-msgstr ""
+msgstr "_Créer des images à partir de zéro_\n"
 
 #. type: Plain text
 #: content/resources/readings.md:102
@@ -3976,18 +4076,20 @@ msgid ""
 "Marco Bucci's YouTube channel. [Website](https://www.youtube.com/channel/UCsDxB-CSMQ0Vu_hTag7-2UQ)\n"
 ": Marco Bucci is a painter and shows how he constructs his paintings, most importantly how he shades subjects to give depth to 2D paintings. This is highly interesting because photographers just capture what is there, and can afford to never bother about the \"true\", \"desired\" and \"believable\" colors of a shadow. Since painters (and 3D artists) create everything from scratch, they have to ask themselves what color it should be. Give a good binge to his channel, I promise you will never look at a drop shadow the same way. _(You may need to discard some of his color theory explanations though, they are often inaccurate)_.\n"
 msgstr ""
+"Chaîne YouTube de Marco Bucci. [Site](https://www.youtube.com/channel/UCsDxB-CSMQ0Vu_hTag7-2UQ)\n"
+": Marco Bucci est un peintre et montre comment il construit ses peintures, surtout comment il ombre les sujets pour donner de la profondeur aux peintures en 2D. C'est très intéressant car les photographes ne capturent que ce qui est là, et peuvent se permettre de ne jamais se soucier des couleurs «vraies», «désirées» et «crédibles» d'une ombre. Étant donné que les peintres (et les artistes 3D) créent tout à partir de zéro, ils doivent se demander quelle couleur elle devrait être. Donnez un bon visionnage à sa chaîne, je vous promets que vous ne verrez plus jamais une ombre portée de la même manière. _(Vous devrez peut-être écarter certaines de ses explications sur la théorie des couleurs, elles sont souvent inexactes)._ \n"
 
 #. type: Title ###
 #: content/resources/readings.md:103
 #, no-wrap
 msgid "Visual illusions"
-msgstr ""
+msgstr "Illusions visuelles"
 
 #. type: Plain text
 #: content/resources/readings.md:106
 #, no-wrap
 msgid "_Witnessing the gullibility of our own perceptual system is key to anticipating problems in real-world applications_\n"
-msgstr ""
+msgstr "_Être témoin de la crédulité de notre propre système perceptuel est essentiel pour anticiper les problèmes dans des applications du monde réel_\n"
 
 #. type: Plain text
 #: content/resources/readings.md:109
@@ -3996,6 +4098,8 @@ msgid ""
 "The illusory staircase Gelb effect. [Website](http://www.psy.ritsumei.ac.jp/~akitaoka/illgelbe.html)\n"
 ": Repeating the same grey or colored patch over a gradient changes the percieved color of the patch, in addition of the typical Mach banding effect (see below).\n"
 msgstr ""
+"L'effet Gelb de l'escalier illusoire. [Site](http://www.psy.ritsumei.ac.jp/~akitaoka/illgelbe.html)\n"
+": Répéter la même nuance grise ou colorée sur un dégradé modifie la couleur perçue de la nuance, en plus de l'effet typique de banding de Mach (voir ci-dessous).\n"
 
 #. type: Plain text
 #: content/resources/readings.md:112
@@ -4004,6 +4108,8 @@ msgid ""
 "Color and Contrast. Nate Baldwin. [Website](https://colorandcontrast.com/)\n"
 ": Many visual effects and illusions demonstrated, involving local contrast illusions. The website focuses on user interface design and aims at demonstrating the origin of best practices, but the demonstrations are relevant for any audience.\n"
 msgstr ""
+"Couleur et contraste. Nate Baldwin. [Site](https://colorandcontrast.com/)\n"
+": De nombreux effets visuels et illusions démontrés, impliquant des illusions de contraste local. Le site se concentre sur la conception d'interfaces utilisateurs et vise à démontrer l'origine des meilleures pratiques, mais les démonstrations sont pertinentes pour tout public.\n"
 
 #. type: Plain text
 #: content/resources/readings.md:115
@@ -4012,18 +4118,20 @@ msgid ""
 "Optical Illusions. R. Beau Lotto. [Website](https://www.echalk.co.uk/amusements/OpticalIllusions/colourPerception/colourPerception.html)\n"
 ": Witness the impact of different surround brightness and hue on color patches that are exactly similar.\n"
 msgstr ""
+"Illusions d'optique. R. Beau Lotto. [Site](https://www.echalk.co.uk/amusements/OpticalIllusions/colourPerception/colourPerception.html)\n"
+": Assistez à l'impact des différentes luminosités et teintes de l'environnement sur des nuances de couleur qui sont exactement similaires.\n"
 
 #. type: Title ###
 #: content/resources/readings.md:117
 #, no-wrap
 msgid "Color-grading"
-msgstr ""
+msgstr "Color-grading"
 
 #. type: Plain text
 #: content/resources/readings.md:120
 #, no-wrap
 msgid "_Correcting or introducing color shifts to ensure consistent look between pictures and create some ambiance_\n"
-msgstr ""
+msgstr "_Corriger ou introduire des décalages de couleur pour assurer une apparence cohérente entre les images et créer une ambiance_\n"
 
 #. type: Plain text
 #: content/resources/readings.md:123
@@ -4032,18 +4140,20 @@ msgid ""
 "Color Correction Handbook (vol. 1) / Color Correction Look Book (vol 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)\n"
 ": These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.\n"
 msgstr ""
+"Manuel de Correction de Couleur (vol. 1) / Livre de Looks de Correction de Couleur (vol. 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)\n"
+": Ces livres ont une place spéciale dans l'histoire de Darktable/Ansel parce que je les ai utilisés comme référence pour repenser les fonctionnalités du module [color balance](/en/doc/modules/processing-modules/color-balance-rgb/). Bien qu'ils se concentrent sur l'étalonnage des couleurs pour le cinéma, ils sont indépendants des logiciels (montrant comment faire les choses dans différentes applications), et utilisent des outils de couleur tels que les courbes RGB, la balance des couleurs, le mélangeur de canaux et les LUT 3D qui sont tous disponibles dans Ansel. Ils contiennent des informations précieuses sur la manière (et pourquoi) de créer des looks de couleur dans les images, pour mettre la forme au service du contenu. Je vous recommande d'obtenir des copies numériques car elles contiennent de nombreuses illustrations qui seront rendues à l'écran mieux que ce que permet l'impression sur papier.\n"
 
 #. type: Title ###
 #: content/resources/readings.md:124
 #, no-wrap
 msgid "News and insights"
-msgstr ""
+msgstr "Actualités et aperçus"
 
 #. type: Plain text
 #: content/resources/readings.md:127
 #, no-wrap
 msgid "_Staying up-to-date with color stuff, technical analyses and other myths debunking about color_\n"
-msgstr ""
+msgstr "_Rester à jour avec les actualités des couleurs, les analyses techniques et autres mythes débunking sur la couleur_\n"
 
 #. type: Plain text
 #: content/resources/readings.md:129
@@ -4052,12 +4162,14 @@ msgid ""
 "Colour science library, blog. [Website](https://www.colour-science.org/blog/)\n"
 ": The colour-science project provides a Python library with many color models and other numeric tools for engineers and researchers working on color and vision. I use it extensively, in particular to create color sweeps and other graphs on this website. While this will not interest end-users, the blog of the project contains well-documented and useful insights on matters like color calibration and lighting.\n"
 msgstr ""
+"Bibliothèque des sciences de la couleur, blog. [Site](https://www.colour-science.org/blog/)\n"
+": Le projet de science des couleurs fournit une bibliothèque Python avec de nombreux modèles de couleurs et d'autres outils numériques pour les ingénieurs et chercheurs travaillant sur la couleur et la vision. Je l'utilise beaucoup, en particulier pour créer des balayages de couleurs et d'autres graphiques sur ce site web. Bien que cela n'intéresse pas les utilisateurs finaux, le blog du projet contient des aperçus bien documentés et utiles sur des sujets tels que la calibration des couleurs et l'éclairage.\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/resources/supported-cameras.md:1
 #, no-wrap
 msgid "Supported cameras and formats"
-msgstr ""
+msgstr "Appareils photo et formats supportés"
 
 #. type: Plain text
 #: content/resources/supported-cameras.md:7
@@ -4270,55 +4382,55 @@ msgstr "Notez que les formats optionnels sont activés seulement si Ansel est co
 #: content/resources/_index.md:1
 #, no-wrap
 msgid "Resources"
-msgstr ""
+msgstr "Ressources"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/resources/troubleshooting-color.md:1
 #, no-wrap
 msgid "Troubleshooting color issues"
-msgstr ""
+msgstr "Dépannage des problèmes de couleur"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:9
 #, no-wrap
 msgid "This will apply to upstream Darktable as to Ansel since they share most of their color pipeline. The following procedure will help you troubleshoot your color issues, whether it is inconsistent appearance between export vs. preview, or between screen vs. print, or between 2 apps.\n"
-msgstr ""
+msgstr "Cela s'appliquera à Darktable en amont comme à Ansel car ils partagent la majeure partie de leur pipeline de couleurs. La procédure suivante vous aidera à résoudre vos problèmes de couleur, qu'il s'agisse d'une apparence incohérente entre l'exportation et l'aperçu, ou entre écran et imprimé, ou entre 2 applications.\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:10
 #, no-wrap
 msgid "Setup your desktop properly"
-msgstr ""
+msgstr "Configurer correctement votre bureau"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:13
 #, no-wrap
 msgid "The inherent problem of color is it exists only as a perception, and that perception is highly contextual and fluid. If I take any color patch and display it over a white, middle-grey or black background, it will not appear the same even though a colorimeter would confirm it's the exact same color. I have built a little web animation to showcase this effect, displaying sRGB gamut slices at constant hue, over user-defined background lightness : [the sRGB book of color](https://eng.aurelienpierre.com/2021/04/the-srgb-book-of-color/).\n"
-msgstr ""
+msgstr "Le problème inhérent de la couleur est qu'elle n'existe que comme une perception, et cette perception est très contextuelle et fluide. Si je prends n'importe quelle nuance de couleur et que je l'affiche sur un fond blanc, gris moyen ou noir, elle n'apparaîtra pas de la même manière, même si un colorimètre confirmerait que c'est exactement la même couleur. J'ai créé une petite animation web pour illustrer cet effet, affichant des tranches du gamut sRGB avec une teinte constante, sur une luminosité de fond définie par l'utilisateur : [le livre sRGB de couleur](https://eng.aurelienpierre.com/2021/04/le-livre-srgb-de-couleur/).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:15
 #, no-wrap
 msgid "Now, if you add on top the lighting discrepancy, it will also look different lit by a powerful 120 W halogen bulb or by a weak nightstand lamp. Finally, the color temperature of the light will also come into play : of course, a \"cold white\" D50 (5000 K) bulb or a \"warm\" 3200 K bulb will shift hues in a print, but the cold white will also make colors in the blue-violet region appear more colorful (compared to the others), as the warm white bulb will make colors in the red-orange region appear more colorful.\n"
-msgstr ""
+msgstr "Maintenant, si vous ajoutez par-dessus la disparité d'éclairage, cela paraîtra également différent s'il est éclairé par une puissante ampoule halogène de 120 W ou par une faible lampe de chevet. Enfin, la température de couleur de la lumière entrera également en jeu : bien sûr, une ampoule \"blanc froid\" D50 (5000 K) ou une ampoule \"chaude\" 3200 K décalera les teintes dans un tirage, mais le blanc froid rendra également les couleurs dans la région bleu-violet plus colorées (comparé aux autres), tandis que l'ampoule blanc chaud rendra les couleurs dans la région rouge-orange plus colorées.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:17
 #, no-wrap
 msgid "In all this, your physiological perceptual system will adapt real-time, because it's great piece of biology, but it's specifically what makes our retoucher's like miserable: the perceptual system has no standard (reference) perception. Instead, and because of that, we need to work in standard viewing conditions.\n"
-msgstr ""
+msgstr "Dans tout cela, votre système perceptuel physiologique s'adaptera en temps réel, car c'est une pièce de biologie exceptionnelle, mais c'est précisément ce qui rend notre vie de retoucheur misérable : le système perceptuel n'a pas de perception de référence (standard). Au lieu de cela, et à cause de cela, nous devons travailler dans des conditions d'observation standard.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:19
 #, no-wrap
 msgid "The lighting in your editing room should be as constant as possible across the day. Pick a room with a window exposed to the North (in the Northern hemisphere) so the light doesn't change much over the day, and cover it with cold white opaque sheets to diffuse it (yes, that will be cotton bleached with nasty chemicals to be white, natural cotton is beige-ish).\n"
-msgstr ""
+msgstr "L'éclairage dans votre salle de montage doit être aussi constant que possible tout au long de la journée. Choisissez une pièce avec une fenêtre exposée au Nord (dans l'hémisphère Nord) pour que la lumière change peu tout au long de la journée, et recouvrez-la de feuilles opaques blanches froides pour la diffuser (oui, ce sera du coton blanchi avec des produits chimiques agressifs pour être blanc, le coton naturel est beige).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:21
 #, no-wrap
 msgid "You should never edit in the dark or in a dim room (even if that makes the screen more legible — it's a trap). For night editing, try to find high quality D65 bulbs (or, next best option : D55 – this is more available and mainstream) having a Color Rendering Index (CRI) of at least 92, ideally more than 95 (if you find more than 98, it's probably a scam – in any case, the theoritical max is 100). I don't recommend editing in full artificial lighting because natural light has a built-in 100 CRI (since it's actually the reference for all CRI). Stay away from the energy-saving fluorescent bulbs, they have terrible CRI and need a variable heating time to reach their full potential (which is not much).\n"
-msgstr ""
+msgstr "Vous ne devez jamais éditer dans le noir ou dans une pièce faiblement éclairée (même si cela rend l'écran plus lisible — c'est un piège). Pour le montage de nuit, essayez de trouver des ampoules D65 de haute qualité (ou, meilleure option suivante : D55 — plus disponible et courante) ayant un indice de rendu des couleurs (IRC) d'au moins 92, idéalement plus de 95 (si vous trouvez plus de 98, c'est probablement une arnaque - en tout cas, le maximum théorique est 100). Je ne recommande pas de monter sous un éclairage entièrement artificiel car la lumière naturelle a un IRC intégré de 100 (puisqu'elle est en fait la référence pour tous les IRC). Éloignez-vous des ampoules fluorescentes économes en énergie, elles ont un IRC terrible et ont besoin d'un temps de chauffage variable pour atteindre leur plein potentiel (qui n'est pas important).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:25
@@ -4328,36 +4440,39 @@ msgid ""
 "Editing late at night under D55 or D65 light will deeply mess-up your sleep pattern, you should turn those lights off at very least 2h before going to bed, otherwise you won't sleep.\n"
 "{{< /warning >}}\n"
 msgstr ""
+"{{< avertissement >}}\n"
+"Rémanter tard le soir sous la lumière D55 ou D65 perturbera profondément votre rythme de sommeil, vous devriez éteindre ces lumières au moins 2 heures avant d'aller vous coucher, sinon vous ne dormirez pas.\n"
+"{{< /avertissement >}}\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:27
 #, no-wrap
 msgid "Keep in mind that everything in your visual field will have an impact on your color perception. The wall behind your screen should be painted matte white. Some people recommend middle-grey, but \"middle-grey\" paint is not easy to find, and still… it will need a proper lighting to appear actually at 20% of the luminance of a white sheet displayed under your lighting. Since nobody cares about lighting their wall, a white paint poorly lit will be closer to middle-grey and anyway, brighter will cause fewer issues than darker.\n"
-msgstr ""
+msgstr "Gardez à l'esprit que tout ce qui se trouve dans votre champ de vision aura un impact sur votre perception des couleurs. Le mur derrière votre écran doit être peint en blanc mat. Certains recommandent le gris moyen, mais la peinture \"gris moyen\" n'est pas facile à trouver, et encore… elle nécessitera un éclairage approprié pour apparaître en fait à 20 % de la luminance d'une feuille blanche affichée sous votre éclairage. Comme presque personne ne se soucie d'éclairer son mur, une peinture blanche mal éclairée s'approchera plus du gris milieu, et de toute façon, plus lumineuse causera moins de problèmes que plus sombre.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:29
 #, no-wrap
 msgid "The backlighting of your screen should be set such that a 100% white frame displayed on your screen appears at the same brightness as a white sheet of paper next to your screen (that is, lit by your room lighting). You may have heard to set your screen white luminance to 90 Cd/m², but that's only to compare the screen rendering with a physical print displayed in a (standard) proofing booth, and not really for general editing. In any case, it is more important that your screen backlighting matches your actual room surround lighting than some arbitrary value, since human vision reacts only to contrast (so, basically, even the room surround with your screen, both in color temperature and in brightness, to avoid creating any artificial contrast).\n"
-msgstr ""
+msgstr "Le rétroéclairage de votre écran doit être réglé de manière à ce qu'un cadre blanc à 100 % affiché sur votre écran apparaisse à la même luminosité qu'une feuille de papier blanc à côté de votre écran (c'est-à-dire éclairée par l'éclairage de votre pièce). Vous avez peut-être déjà entendu parler de régler la luminance blanche de votre écran à 90 Cd/m², mais c'est uniquement pour comparer le rendu de l'écran avec un tirage physique affiché dans une cabine de vérification (standard), et pas vraiment pour le montage général. Dans tous les cas, il est plus important que le rétroéclairage de votre écran corresponde à votre éclairage ambiant que de respecter une valeur arbitraire, puisque la vision humaine ne réagit qu'au contraste (donc, en gros, équilibrer l'ambiance de la pièce avec votre écran, à la fois en température de couleur et en luminosité, pour éviter de créer un contraste artificiel).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:31
 #, no-wrap
 msgid "Only use middle-grey GUI in all your editing software. Yes, the darker GUI look slicker, but they will tamper with your perceptions and you will get bad surprises when printing.\n"
-msgstr ""
+msgstr "N'utilisez que des interfaces utilisateur de couleur gris moyen dans tous vos logiciels de montage. Oui, les interfaces sombres ont un look élégant, mais elles influenceront vos perceptions et vous aurez de mauvaises surprises lors de l'impression.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:33
 #, no-wrap
 msgid "The general idea behind all these pieces of advice is your screen should look as close as possible as a print displayed next to it : whites should have the same brightness and temperature, and then… for blacks, it's a bit more complicated.\n"
-msgstr ""
+msgstr "L'idée générale derrière tous ces conseils est que votre écran devrait ressembler autant que possible à un tirage affiché à côté : les blancs devraient avoir la même luminosité et température, et ensuite… pour les noirs, c'est un peu plus compliqué.\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:34
 #, no-wrap
 msgid "Undo your manual color management"
-msgstr ""
+msgstr "Annuler votre gestion des couleurs manuelle"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:35
@@ -4365,25 +4480,25 @@ msgstr ""
 #: content/contribute/introduction.md:7
 #, no-wrap
 msgid "Context"
-msgstr ""
+msgstr "Contexte"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:38
 #, no-wrap
 msgid "The vast majority of photographers don't understand how color management work. As a result, they believe in the magic of the \"ICC profile\", they will buy a calibration device (Datacolor Spyder or Xrite), bake a custom color profile and hope think that it magically fixed all their problems. It didn't.\n"
-msgstr ""
+msgstr "La grande majorité des photographes ne comprennent pas comment fonctionne la gestion des couleurs. En conséquence, ils croient en la magie du \"profil ICC\", ils achètent un dispositif de calibration (Datacolor Spyder ou Xrite), créent un profil de couleur personnalisé et pensent espérer que cela a résolu tous leurs problèmes. Cela ne l'a pas fait.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:40
 #, no-wrap
 msgid "Color profiles can be good or bad, and you need to check their quality by doing another step of characterization after the calibration/profiling.\n"
-msgstr ""
+msgstr "Les profils de couleurs peuvent être bons ou mauvais, et vous devez vérifier leur qualité en effectuant une étape supplémentaire de caractérisation après la calibration/profilage.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:42
 #, no-wrap
 msgid "Strictly speaking, calibration is an hardware operation by which you set the backlighting, contrast and brightness settings of your monitor by using the knobs (so it doesn't apply to laptops). Then, profiling is achieved by recording the color deviation (error) of the display device by measuring how standard (previously-known) color patches render on the device, then computing the corrections that should annihilate such deviations. Finally, the characterization will compute the residual error that remains **after** the profile is applied, because unfortunately, that profile will not make color perfectly accurate. That residual error is expressed as a delta E, typically using the CIE 2000 dE formula, and the average delta E should absolutely be below 2, with a max delta E ideally below 2.3.\n"
-msgstr ""
+msgstr "Stricto sensu, la calibration est une opération matérielle par laquelle vous réglez le rétroéclairage, le contraste et les réglages de luminosité de votre moniteur en utilisant les boutons (donc cela ne s'applique pas aux ordinateurs portables). Ensuite, le profilage est effectué en enregistrant la déviation colorimétrique (erreur) de l'appareil d'affichage en mesurant comment des échantillons de couleur standard (préalablement connus) s'affichent sur l'appareil, puis en calculant les corrections qui devraient annuler ces déviations. Enfin, la caractérisation calculera l'erreur résiduelle restante **après** l'application du profil, car malheureusement, ce profil ne rendra pas la couleur parfaitement exacte. Cette erreur résiduelle est exprimée en delta E, généralement en utilisant la formule CIE 2000 dE, et le delta E moyen devrait absolument être en dessous de 2, avec un delta E maximal idéalement en dessous de 2,3.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:46
@@ -4393,42 +4508,45 @@ msgid ""
 "If the profile characterization shows an average delta E higher than 2, your custom profile might actually be worse than using no profile at all. Quality control matters. Custom profile doesn't automatically imply higher quality.\n"
 "{{< /warning >}}\n"
 msgstr ""
+"{{< avertissement >}}\n"
+"Si la caractérisation du profil montre un delta E moyen supérieur à 2, votre profil personnalisé pourrait en fait être pire que l'utilisation d'aucun profil du tout. Le contrôle de la qualité est important. Un profil personnalisé n'implique pas automatiquement une qualité supérieure.\n"
+"{{< /avertissement >}}\n"
 
 #. type: Title ###
 #: content/resources/troubleshooting-color.md:47
 #, no-wrap
 msgid "Reset everything to sRGB"
-msgstr ""
+msgstr "Réinitialiser tout à sRGB"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:50
 #, no-wrap
 msgid "In your OS/desktop environment color manager (aka **not** in Ansel), set the global color profile to generic sRGB. In Ansel, set the display color profile to sRGB too. Then, export your files as sRGB. If that fixes issues, then you have a faulty ICC profile somewhere in the pipeline. \"Faulty\" can either be a profile meant for some device and improperly used for another device (profiles are **not** portable, reusable, or else), or a bad profile (wrong profiling options when doing it, or old profile that doesn't match the screen rendering anymore).\n"
-msgstr ""
+msgstr "Dans votre gestionnaire de couleurs OS/environnement de bureau (c'est-à-dire **pas** dans Ansel), définissez le profil de couleur global à sRGB générique. Dans Ansel, définissez le profil de couleur d'affichage également à sRGB. Ensuite, exportez vos fichiers en sRGB. Si cela résout les problèmes, il y a alors un profil ICC défectueux quelque part dans le pipeline. \"Défectueux\" peut être soit un profil destiné à un appareil et utilisé de manière incorrecte pour un autre appareil (les profils ne sont **pas** portables, réutilisables, etc.), soit un mauvais profil (mauvaises options de profilage lors de sa création, ou ancien profil ne correspondant plus au rendu de l'écran).\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:51
 #, no-wrap
 msgid "Profiling the right way"
-msgstr ""
+msgstr "Profilage de la bonne à la bonne manière"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:54
 #, no-wrap
 msgid "**Never use LUT profiles**. Yes, they are theoretically more accurate, but they are also a lot less forgiving to user mistakes, and it would require a solid 4h course to teach you everything you need to know to use LUT-based profiles without harming yourself. Also, LUT-based profiles can generally not be inverted, so they come with technical limitations too. Just forget about them.\n"
-msgstr ""
+msgstr "**N'utilisez jamais de profils LUT**. Oui, ils sont théoriquement plus précis, mais ils sont également beaucoup moins indulgents envers les erreurs de l'utilisateur, et il faudrait un cours intensif de 4 heures pour vous apprendre tout ce que vous devez savoir pour utiliser des profils basés sur LUT sans vous nuire. De plus, les profils basés sur LUT ne peuvent généralement pas être inversés, donc ils ont aussi des limitations techniques. Oubliez-les simplement.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:56
 #, no-wrap
 msgid "In 99% of the use cases, for your screen, you need to use a matrix + 1D curve kind of profile. The 1D curve is essentially a tone curve that will linearize the brightness of your screen and will be applied to the 3 RGB channels the same. Even though LED and LCD screens are *mostly* linear already, they might need some local corrections near black, so the 1D curve deals with that. White point will be set to \"native\" (aka as-is), with D65 color temperature, and black point will be set to \"native\" too. If available, use the \"Bradford\" chromatic adaptation and avoid the CAM02. Use ICC v2 profiles instead of v4, the v4 brings no improvement for us here and is not as widely supported.\n"
-msgstr ""
+msgstr "Dans 99 % des cas d'utilisation, pour votre écran, vous devez utiliser un type de profil matrix + courbe 1D. La courbe 1D est essentiellement une courbe de tonalité qui linéarisera la luminosité de votre écran et sera appliquée aux 3 canaux RVB de la même manière. Même si les écrans LED et LCD sont *majoritairement* linéaires, ils peuvent nécessiter des corrections locales près du noir, donc la courbe 1D s'en charge. Le point blanc sera réglé sur \"natif\" (c'est-à-dire tel quel), avec une température de couleur D65, et le point noir sera réglé sur \"natif\" également. Si disponible, utilisez l'adaptation chromatique \"Bradford\" et évitez le CAM02. Utilisez des profils ICC v2 au lieu de v4, v4 n'apporte aucune amélioration ici pour nous et n'est pas aussi largement supporté.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:58
 #, no-wrap
 msgid "If, and only if, the matrix + 1D curve does not yield proper results, you may try matrix + 3D curves (aka one curve per RGB channel). However, DisplayCal has a hardtime ensuring white-balance consistency across the black-to-white range in this setting, and you should check that shadows will not be significatively colder or warmer (in color temperature) than highlights. This is a last-resort attempt. If you need to go that way, I recommend you build your profile with proprietary Xrite or Spyder software, because DisplayCal has issues there.\n"
-msgstr ""
+msgstr "Si, et seulement si, la matrice + courbe 1D ne donne pas de résultats corrects, vous pouvez essayer la matrice + courbes 3D (c'est-à-dire une courbe par canal RGB). Cependant, DisplayCal a du mal à garantir la cohérence de la balance des blancs sur la plage du noir au blanc dans ce réglage, et vous devriez vérifier que les ombres ne seront pas significativement plus froides ou plus chaudes (en température de couleur) que les hautes lumières. C'est une tentative de dernier recours. Si vous devez emprunter cette voie, je vous recommande de construire votre profil avec le logiciel propriétaire Xrite ou Spyder, car DisplayCal a des problèmes ici.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:60
