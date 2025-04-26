@@ -1,5 +1,5 @@
 ---
-title: "Color lexicon"
+title: Color lexicon
 authors:
     - Aurélien Pierre
 date: 2024-03-20

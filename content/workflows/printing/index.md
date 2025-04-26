@@ -1,5 +1,5 @@
 ---
-title: "Printing"
+title: Printing
 date: 2023-10-30
 draft: false
 toc: true

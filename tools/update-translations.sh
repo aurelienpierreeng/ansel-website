@@ -24,17 +24,16 @@ touch $po4a_conf
 > $po4a_conf
 
 # Populate languages with what we found in po/ folder
-echo "[po_directory] po" > $po4a_conf
-echo "[po4a_langs] $languages" > $po4a_conf
+echo "[po4a_langs] $languages" >> $po4a_conf
 echo "[po4a_paths] po/content.pot \$lang:po/content.\$lang.po" >> $po4a_conf
 
 # Parsing options
 # opt:"--option neverwrap" and opt:"--option nobullets" ensure Markdown bullet lists don't get separated by an extra newline that would break them
 cat >> $po4a_conf <<EOF
 
-[options] opt:"--addendum-charset=UTF-8" opt:"--localized-charset=UTF-8" opt:"--master-charset=UTF-8" opt:"--msgmerge-opt='--no-wrap'" opt:"--porefs=file" opt:"--wrap-po=no" opt:"--master-language=en_US"
+[options] opt:"--addendum-charset=UTF-8" opt:"--localized-charset=UTF-8" opt:"--master-charset=UTF-8" opt:"--msgmerge-opt='--no-wrap'" opt:"--porefs=full" opt:"--wrap-po=no" opt:"--master-language=en_US"
 
-[po4a_alias:markdown] text opt:"--option markdown" opt:"--option yfm_keys=title" opt:"--addendum-charset=UTF-8" opt:"--localized-charset=UTF-8" opt:"--master-charset=UTF-8" opt:"--option neverwrap" opt:"--option nobullets"
+[po4a_alias:markdown] text opt:"--option markdown" opt:"--option yfm_keys=title,thumbnail,tags,aliases"  opt:"--addendum-charset=UTF-8" opt:"--localized-charset=UTF-8" opt:"--master-charset=UTF-8" opt:"--option neverwrap" opt:"--option nobullets"
 
 EOF
 

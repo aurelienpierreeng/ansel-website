@@ -1,5 +1,5 @@
 ---
-title: "Film scanning"
+title: Film scanning
 date: 2025-04-18
 draft: false
 toc: true

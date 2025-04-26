@@ -1,5 +1,5 @@
 ---
-title: "Monochrome toning"
+title: Monochrome toning
 date: 2023-03-24
 draft: false
 toc: true

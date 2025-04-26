@@ -1,5 +1,5 @@
 ---
-title: "Darktable : crashing into the wall in slow-motion"
+title: 'Darktable : crashing into the wall in slow-motion'
 date: 2023-02-15T18:14:01+01:00
 draft: false
 authors:

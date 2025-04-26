@@ -1,5 +1,5 @@
 ---
-title: "Book a training session"
+title: Book a training session
 date: 2025-04-19
 draft: false
 weight: 50

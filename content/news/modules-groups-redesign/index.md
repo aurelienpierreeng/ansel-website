@@ -1,5 +1,5 @@
 ---
-title: "Explaining Ansel redesign of module groups"
+title: Explaining Ansel redesign of module groups
 date: 2023-06-27
 tags:
   - Design

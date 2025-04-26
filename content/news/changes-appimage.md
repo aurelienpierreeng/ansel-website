@@ -1,5 +1,5 @@
 ---
-title: "Changes in distribution support for Linux AppImage package"
+title: Changes in distribution support for Linux AppImage package
 date: 2023-11-18
 tags:
   - Announcement

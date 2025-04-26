@@ -1,5 +1,5 @@
 ---
-title: "Color theory readings"
+title: Color theory readings
 date: 2023-03-20
 draft: false
 weight: 10

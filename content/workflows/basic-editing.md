@@ -1,5 +1,5 @@
 ---
-title: "Basic Editing"
+title: Basic Editing
 date: 2023-03-24
 draft: false
 toc: true
