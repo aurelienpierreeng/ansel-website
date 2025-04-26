@@ -4552,151 +4552,151 @@ msgstr "Si, et seulement si, la matrice + courbe 1D ne donne pas de résultats c
 #: content/resources/troubleshooting-color.md:60
 #, no-wrap
 msgid "Keep in mind that the 1D curve is generally not linear, this means that it will not scale with your backlighting setting. You need to check the kind of curve it yields (Display Cal can generate a full HTML report that is very useful if you know how to read it), and if it is far from a straight \"identity\" line, which means you are in for problems. In that case, you may want to produce display color profiles at 100% and 50% backlighting intensity, and switch between those depending on your screen setting. (Yes, it is tedious).\n"
-msgstr ""
+msgstr "Gardez à l'esprit que la courbe 1D n'est généralement pas linéaire, ce qui signifie qu'elle ne s'ajustera pas avec votre réglage de rétroéclairage. Vous devez vérifier le type de courbe qu'elle donne (Display Cal peut générer un rapport HTML complet qui est très utile si vous savez le lire), et si elle est loin d'une droite \"identité\", cela signifie que vous êtes confronté à des problèmes. Dans ce cas, vous pourriez vouloir produire des profils de couleur d'affichage à 100% et 50% d'intensité de rétroéclairage, et basculer entre ceux-ci selon le réglage de votre écran. (Oui, c'est fastidieux).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:62
 #, no-wrap
 msgid "If you absolutely need to compare physical prints next to your screen (though I have no idea why you would want to do that unless you own a photo lab), you will need to calibrate for D50 white at 90 Cd/m² and for a contrast (white luminance / black luminance) of 250:1 (that's black at 0.36 Cd/m²). Note that D50 is not the native white point of LED screen and, except for the expensive Eizo displays, distorting the white point by that much will result in a substantial loss of gamut.\n"
-msgstr ""
+msgstr "Si vous avez absolument besoin de comparer des impressions physiques à côté de votre écran (même si je n'ai aucune idée de pourquoi vous voudriez faire cela à moins de posséder un laboratoire photo), vous devrez calibrer pour un blanc D50 à 90 Cd/m² et pour un contraste (luminance des blancs / luminance des noirs) de 250:1 (ce qui correspond à du noir à 0.36 Cd/m²). Notez que D50 n'est pas le point blanc natif de l'écran LED et, sauf pour les écrans Eizo coûteux, déformer le point blanc à ce point entraînera une perte substantielle de gamme.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:64
 #, no-wrap
 msgid "If you profile a printer, keep in mind that any color profile is valid **only** for a particular triplet { printer driver + paper + ink cartridges }. In any case, I personally think that printing at home is a not worth the trouble and way too expensive for an amateur, unless you print at least several times a week. Indeed, when you start your printer again after some time unused, it will clean its nozzles first, and will do so with good ink from the cardridges – not only will it not be available for the next 15 min, but half or more of your expensive ink will actually end up being used as detergent.\n"
-msgstr ""
+msgstr "Si vous profilez une imprimante, gardez à l'esprit que tout profil de couleur n'est valide que pour un triplet particulier { pilote d'impression + papier + cartouches d'encre }. En tout cas, je pense personnellement que l'impression à domicile ne vaut pas la peine et est bien trop coûteuse pour un amateur, à moins que vous n'imprimiez au moins plusieurs fois par semaine. En effet, lorsque vous redémarrez votre imprimante après un certain temps inutilisé, elle nettoiera d'abord ses buses, et le fera avec de l'encre de bonne qualité provenant des cartouches – non seulement elle ne sera pas disponible pendant les 15 minutes suivantes, mais la moitié ou plus de votre encre coûteuse finira par être utilisée comme détergent.\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:65
 #, no-wrap
 msgid "Remove local contrast modifiers"
-msgstr ""
+msgstr "Supprimez les modificateurs de contraste local"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:68
 #, no-wrap
 msgid "There **is** an expected discrepancy though, between full resolution exports, and lower resolutions/cropped image exports : the local contrast modifiers. Those are the modules : *local contrast*, *contrast equalizer*, *blurs*, *low-pass*, *diffuse or sharpen*, *sharpen*, *highlights reconstruction* (in *guided laplacian* mode), the *tone equalizer* if used with the internal guided filter for local contrast preservation, and the *details mask* (in parametric masks options).\n"
-msgstr ""
+msgstr "Il **existe** cependant un écart attendu entre les exports en pleine résolution et les exports en résolutions inférieures/croppés : les modificateurs de contraste local. Il s'agit des modules : *contraste local*, *égaliseur de contraste*, *flous*, *passe-bas*, *diffusion ou accentuation*, *accentuation*, *reconstruction des hautes lumières* (en mode *laplacien guidé*), l'*égaliseur de ton* s'il est utilisé avec le filtre dirigé interne pour préserver le contraste local, et le *masque de détails* (dans les options de masques paramétriques).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:72
 #, no-wrap
 msgid "All those filters rely on some amount of neighbouring pixels for their output. So, if you crop the image, you change the neighbourhood. But if you downsize it, first of all you remove sharp details (so, for example, sharpening will act on the coarser details instead of the finer), and then there might be rounding errors (say your filter does stuff by grabbing all pixels within a 3 px distance when zoomed 1:1 — zoom at 1:2, that makes it a 1.5 px distance, but there is no such thing as an half pixel, so that will be rounded to either 1 px or 2 px, and that's a 33% error).\n"
-msgstr ""
+msgstr "Tous ces filtres reposent sur une certaine quantité de pixels voisins pour leur sortie. Donc, si vous recadrez l'image, vous modifiez le voisinage. Mais si vous la réduisez, vous supprimez d'abord les détails nets (donc, par exemple, l'accentuation agira sur les détails plus grossiers au lieu des plus fins), et ensuite, il peut y avoir des erreurs d'arrondi (disons que votre filtre fait des choses en saisissant tous les pixels à moins de 3 px lorsque vous zoomez 1:1 — en zoom 1:2, cela devient une distance de 1.5 px, mais il n'existe pas de demi-pixel, alors cela sera arrondi soit à 1 px, soit à 2 px, et c'est une erreur de 33%).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:74
 #, no-wrap
 msgid "There are tricks and mitigating solutions that try to make the output of these filters visually consistent from afar, no matter the zooming level you are using, but they work until they don't, precisely because of the integer nature of pixels that will necessarily introduce rounding errors.\n"
-msgstr ""
+msgstr "Il existe des astuces et des solutions d'atténuation qui tentent de rendre la sortie de ces filtres visuellement cohérente de loin, quel que soit le niveau de zoom que vous utilisez, mais elles fonctionnent jusqu'à ce qu'elles ne fonctionnent plus, précisément à cause de la nature entière des pixels qui introduira nécessairement des erreurs d'arrondi.\n"
 
 #. type: Title ###
 #: content/resources/troubleshooting-color.md:75
 #, no-wrap
 msgid "Export and preview at 1:1"
-msgstr ""
+msgstr "Exportez et prévisualisez à 1:1"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:78
 #, no-wrap
 msgid "Exporting can be done using 2 strategies : process the full-resolution image, then downsize last (if needed), or downsize first, then process the low-resolution image. The first option will be slower and may introduce aliasing artifacts (due to the fact that we interpolate non-linear RGB with high-frequencies), but neighbourhood filters will behave as expected. The second option will be faster, but neighbourhood filters can show significantly different output. Choose your poison.\n"
-msgstr ""
+msgstr "L'exportation peut se faire selon 2 stratégies : traiter l'image en pleine résolution, puis réduire en dernier (si nécessaire), ou réduire d'abord, puis traiter l'image en basse résolution. La première option sera plus lente et peut introduire des artefacts de moiré (du fait que nous interpolons des RGB non linéaires avec des hautes fréquences), mais les filtres de voisinage se comporteront comme prévu. La seconde option sera plus rapide, mais les filtres de voisinage peuvent montrer une sortie nettement différente. Choisissez votre poison.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:80
 #, no-wrap
 msgid "In darkroom, you can also preview at 1:1 but it has one more shortcoming : any guided filter (either in *tone equalizer* or in the masking *feathering*) will only see the currently displayed region (possibly cropped to fit in the screen), instead of the full image. This is of course faster to process, but may generate some discrepancies for very large filters.\n"
-msgstr ""
+msgstr "Dans la chambre noire, vous pouvez également prévisualiser à 1:1 mais cela a un inconvénient supplémentaire : tout filtre dirigé (soit dans l'*égaliseur de ton* soit dans le *masquage par lissage*) ne verra que la région actuellement affichée (possiblement recadrée pour rentrer sur l'écran), au lieu de l'image complète. Cela est évidemment plus rapide à traiter, mais peut générer des écarts pour des filtres très larges.\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:81
 #, no-wrap
 msgid "Don't upgrade your OpenCL drivers"
-msgstr ""
+msgstr "N'améliorez pas vos pilotes OpenCL"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:84
 #, no-wrap
 msgid "OpenCL drivers are notoriously bad, and it has nothing to do with any particular OS/platform or vendor (though AMD tends to be consistently shitty in the 2020's). It happens regularly that some driver update makes OpenCL entirely or subtly broken.\n"
-msgstr ""
+msgstr "Les pilotes OpenCL sont notoirement mauvais, et cela n'a rien à voir avec un quelconque système d'exploitation/plateforme ou vendeur particulier (bien qu'AMD tende à être constamment mauvais dans les années 2020). Il arrive régulièrement qu'une mise à jour du pilote rende OpenCL entièrement ou subtilement cassé.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:86
 #, no-wrap
 msgid "Check **when** your drivers are updated, and don't hesitate to roll back to the previously working version if anything breaks. If you don't have time to deal with that nonsense, simply avoid any driver upgrade once you found the one that worked for you.\n"
-msgstr ""
+msgstr "Vérifiez **quand** vos pilotes sont mis à jour, et n'hésitez pas à revenir à la version précédemment fonctionnelle si quelque chose casse. Si vous n'avez pas le temps de gérer ces bêtises, évitez simplement toute mise à jour de pilote une fois que vous avez trouvé celle qui a fonctionné pour vous.\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:87
 #, no-wrap
 msgid "Is your image viewer color-managed ?"
-msgstr ""
+msgstr "Votre visionneuse d'images est-elle gérée par des couleurs ?"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:90
 #, no-wrap
 msgid "Ansel is properly color-managed. This part of the code has been consistently working and tested for the past 10 years, and I have checked it myself several times. Problem is, many image viewers and web browsers are not. So, in case of a disagreement between Ansel's internal color and whatever you see in another image viewer, try to assess first if that app is doing the right thing.\n"
-msgstr ""
+msgstr "Ansel est correctement géré par des couleurs. Cette partie du code a fonctionné et été testée de manière constante au cours des 10 dernières années, et je l'ai vérifiée moi-même plusieurs fois. Le problème est que de nombreux visionneuses d'images et navigateurs web ne le sont pas. Donc, en cas de désaccord entre la couleur interne d'Ansel et ce que vous voyez dans une autre visionneuse d'images, essayez d'abord d'évaluer si cette application fait ce qu'il faut.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:92
 #, no-wrap
 msgid "Also, note that the default Windows 10 image viewer has \"image enhancements\" enabled by default, and you need to find that option to disable it, because it will sharpen and resaturate your picture without asking you.\n"
-msgstr ""
+msgstr "Notez également que le visionneur d'images par défaut de Windows 10 a les \"améliorations d'image\" activées par défaut, et vous devez trouver cette option pour la désactiver, car elle va accentuer et ressaturer votre image sans vous le demander.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:94
 #, no-wrap
 msgid "Similarly, pictures exported to Instagram and some other websites from Mozilla Firefox are re-encoded in a weird way (color will look less saturated), compared to exports through Chromium/Google Chrome (which will look as in Ansel).\n"
-msgstr ""
+msgstr "De même, les images exportées sur Instagram et certains autres sites web à partir de Mozilla Firefox sont réencodées de manière étrange (la couleur paraîtra moins saturée), par rapport aux exports via Chromium/Google Chrome (qui apparaîtront comme dans Ansel).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:96
 #, no-wrap
 msgid "There is a common belief that images for the web should be only exported in sRGB, and that's partly wrong. Ansel will put the color profile used to export the image in its metadata, such that any color-managed app can use it and convert the color to whatever display space is being used. So you can technically export pictures in whatever color space you choose. However, there is a common practice that consists in stripping the metadata of the pictures entirely, in websites and CMS, to save some bandwidth. If the image file doesn't provide its color space, then any color management system is supposed to assume it is sRGB (as per ICC recommendations), so if the metadata stripping was done without pre-converting the colors to sRGB, then your picture will be wrongly taken as sRGB all the time. So exporting to sRGB for web is the safe thing to do, but if the images are posted under your control and you know metadata are kept, then do as you please.\n"
-msgstr ""
+msgstr "Il y a une croyance commune selon laquelle les images pour le web devraient être exportées uniquement en sRGB, et c'est en partie faux. Ansel mettra le profil de couleur utilisé pour exporter l'image dans ses métadonnées, de manière à ce que toute application gérée par des couleurs puisse l'utiliser et convertir la couleur vers l'espace d'affichage utilisé. Vous pouvez donc techniquement exporter des images dans n'importe quel espace colorimétrique de votre choix. Cependant, il existe une pratique courante qui consiste à supprimer entièrement les métadonnées des images, sur les sites web et CMS, pour économiser de la bande passante. Si le fichier image ne fournit pas son espace colorimétrique, alors tout système de gestion des couleurs est censé supposer qu'il est sRGB (selon les recommandations de l'ICC), donc si la suppression des métadonnées a été faite sans pré-conversion des couleurs en sRGB, alors votre image sera systématiquement prise pour sRGB. Ainsi, exporter vers sRGB pour le web est la chose sûre à faire, mais si les images sont publiées sous votre contrôle et que vous savez que les métadonnées sont conservées, alors faites comme bon vous semble.\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:97
 #, no-wrap
 msgid "Softproofing may not be what you think it is"
-msgstr ""
+msgstr "La simulation d'épreuvage peut ne pas être ce que vous pensez que c'est"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:100
 #, no-wrap
 msgid "Softproofing is a process that tries to emulate on screen the final appearance of a print. It's full of challenges and not great, because the screen is emissive and the print is reflective, so that doesn't start well. But there is worse.\n"
-msgstr ""
+msgstr "La simulation d'épreuvage est un processus qui tente d'émuler sur écran l'apparence finale d'une impression. C'est plein de défis et ce n'est pas génial, car l'écran est émissif et l'impression est réfléchissante, donc cela ne commence pas bien. Mais il y a pire.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:102
 #, no-wrap
 msgid "Typical screens have a contrast ratio (white luminance / black luminance) of at least 300:1, and sometimes much more. Inkjet prints on matte paper have a contrast ratio of 50:1, and on glossy paper, maybe 100:1. That's a third to a sixth of what you see on a typical screen.\n"
-msgstr ""
+msgstr "Les écrans typiques ont un rapport de contraste (luminance des blancs / luminance des noirs) d'au moins 300:1, et parfois bien plus. Les impressions jet d'encre sur papier mat ont un rapport de contraste de 50:1, et sur papier glacé, peut-être 100:1. C'est un tiers à un sixième de ce que vous voyez sur un écran typique.\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:104
 #, no-wrap
 msgid "To emulate the print contrast, the ICC way is to anchor whites (the screen white and the paper white) to the same luminance value (typically, 90 Cd/m²). The adjustment variable will then be black, which means that the softproofing will brighten the blacks on screen as to reproduce the same contrast ratio as the print. This gives a \"veiled\", \"washed\" and \"milky\" black that most people don't expect and call an \"artifact\", but it is absolutely what should be seen. You can read more on that in the [Printing](../workflows/printing/) workflow page.\n"
-msgstr ""
+msgstr "Pour émuler le contraste d'impression, la méthode ICC est d'ancrer les blancs (le blanc de l'écran et le blanc du papier) à la même valeur de luminance (typiquement, 90 Cd/m²). La variable d'ajustement sera alors le noir, ce qui signifie que la simulation d'épreuvage éclairera les noirs à l'écran pour reproduire le même rapport de contraste que l'impression. Cela donne un noir \"voilé\", \"décoloré\" et \"laité\" que la plupart des gens ne s'attendent pas à voir et appellent un \"artefact\", mais c'est absolument ce qui doit être vu. Vous pouvez en lire plus à ce sujet dans la page [Impression](../workflows/printing/).\n"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:106
 #, no-wrap
 msgid "Note that reduced (global) contrast (that is, the contrast ratio) will result in a reduced perceived sharpness, because we don't perceive sharpness at all, but it is the local contrast that we associate with sharpness. Changes in global contrast affect local contrast too, and therefore trick us into thinking optical the sharpness is better/worse while it didn't change, and it is, again, just an illusion.\n"
-msgstr ""
+msgstr "Notez que le contraste réduit (global) (c'est-à-dire, le rapport de contraste) entraînera une netteté perçue réduite, car nous ne percevons pas la netteté du tout, mais c'est le contraste local que nous associons à la netteté. Les changements de contraste global affectent également le contraste local, et nous trompent donc en pensant que la netteté optique est meilleure/pire sans qu'elle n'ait changé, et c'est, encore une fois, juste une illusion.\n"
 
 #. type: Title ##
 #: content/resources/troubleshooting-color.md:107
 #, no-wrap
 msgid "Colorimetric intents don't work"
-msgstr ""
+msgstr "Les intentions colorimétriques ne fonctionnent pas"
 
 #. type: Plain text
 #: content/resources/troubleshooting-color.md:109
 #, no-wrap
 msgid "They simply don't. Try loading any ICC profile and changing those intents, the outcome will not change one bit. I'm not sure what LittleCMS2 does with these, but consider them broken.\n"
-msgstr ""
+msgstr "Elles ne fonctionnent simplement pas. Essayez de charger un profil ICC quelconque et de changer ces intentions, le résultat ne changera pas d'un iota. Je ne suis pas sûr de ce que LittleCMS2 fait avec ceux-ci, mais considérez-les brisés.\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/resources/white-balances/index.md:1
@@ -4729,6 +4729,8 @@ msgid ""
 "CIE\n"
 ": [Commission Internationale de l'Éclairage](https://en.wikipedia.org/wiki/International_Commission_on_Illumination) (_International commission on illumination_). International authority for standardization of technical appliances, methods and workflows regarding lighting and color reproduction.\n"
 msgstr ""
+"CIE\n"
+": [Commission Internationale de l'Éclairage](https://fr.wikipedia.org/wiki/Commission_internationale_de_l%27%C3%A9clairage) (_Commission internationale de l'éclairage_). Autorité internationale pour la normalisation des appareils techniques, méthodes et flux de travail concernant l'éclairage et la reproduction des couleurs.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:22
@@ -4737,6 +4739,8 @@ msgid ""
 "ICC\n"
 ": [International Color Consortium](https://en.wikipedia.org/wiki/International_Color_Consortium). Professional association of imaging appliances vendors aiming at defining color reproduction workflows across the digital graphic chain, as to ensure color consistency between various output media (screen, paper, etc.). Color profiles respecting ICC specifications are usually dubbed \"ICC profiles\", which may hide the fact that non-ICC profiles exist too.\n"
 msgstr ""
+"ICC\n"
+": [International Color Consortium](https://fr.wikipedia.org/wiki/International_Color_Consortium). Association professionnelle de vendeurs d'appareils d'imagerie visant à définir les flux de travail de reproduction des couleurs tout au long de la chaîne graphique numérique, afin d'assurer la cohérence des couleurs entre divers médias de sortie (écran, papier, etc.). Les profils de couleur respectant les spécifications ICC sont généralement appelés \"profils ICC\", ce qui peut masquer le fait que des profils non-ICC existent également.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:25
@@ -4745,6 +4749,8 @@ msgid ""
 "Color profile\n"
 ": Computer file describing the color conversion between an arbitrary RGB space and a reference color space (usually, [CIE XYZ 1931](https://en.wikipedia.org/wiki/CIE_1931_color_space) for the 2° observer). It is often misunderstood that a color profile is not a program or an application in itself, but only a \"cooking recipe\" to be read and applied discretionary by a color management system (CMS — _which is a computer program_), that may be implemented in various image applications (viewers, editors, file browsers)… or not.\n"
 msgstr ""
+"Profil de couleur\n"
+": Fichier informatique décrivant la conversion des couleurs entre un espace RGB arbitraire et un espace colorimétrique de référence (généralement, [CIE XYZ 1931](https://fr.wikipedia.org/wiki/Espace_colorim%C3%A9trique_CIE_XYZ_1931) pour l'observateur de 2°). Il est souvent mal compris qu'un profil de couleur n'est pas un programme ou une application en soi, mais seulement une \"recette de cuisine\" à lire et appliquer discrétionnairement par un système de gestion des couleurs (SGC — _qui est un programme informatique_), qui peut être implémenté dans diverses applications d'imagerie (visualiseurs, éditeurs, explorateurs de fichiers)… ou non.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:28
@@ -4763,6 +4769,10 @@ msgid ""
 ": CAT are used automatically before applying a color profile, if the destination color space has a different white point than the target color space. For example, Ansel (and ICC) pipeline uses D50 white point but all desktop monitors use D65 white point, so CAT is used to map D50 to D65 prior to applying an output color profile.\n"
 ": CAT can be used manually to perform white balance, in a more accurate way than basic RGB rescaling, under some conditions. In that case, they become a special case of WB.\n"
 msgstr ""
+"CAT\n"
+": Transformée d'adaptation chromatique. Méthode numérique permettant de convertir les couleurs pour tenir compte d'un changement de point blanc, d'une manière qui préserve la perception des couleurs.\n"
+": Les CAT sont utilisées automatiquement avant d'appliquer un profil de couleur, si l'espace colorimétrique destination a un point blanc différent de l'espace cible. Par exemple, le pipeline Ansel (et ICC) utilise le point blanc D50 mais tous les moniteurs de bureau utilisent le point blanc D65, donc le CAT est utilisé pour mapper D50 à D65 avant d'appliquer un profil de couleur de sortie.\n"
+": Les CAT peuvent être utilisées manuellement pour effectuer une balance des blancs, de manière plus précise que le redimensionnement de RGB basique, sous certaines conditions. Dans ce cas, ils deviennent un cas spécial de WB.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:36
@@ -4771,109 +4781,111 @@ msgid ""
 "Illuminant\n"
 ": Direct light source emitting the photons (aka, light) bouncing on the reflective surfaces of the scene. It is worth noting that graphic pipelines always assume one single illuminant per scene, which is not the reality faced by photographers. Sometimes, scene have more than one light source. Almost always, 3D objects will get a mix of light from the illuminant(s) and from other surfaces reflections around. Non-white surfaces bouncing light on an object can be seen as virtual illuminants that will tint typically shadows and will trigger the need for selective white balancing.\n"
 msgstr ""
+"Illuminant\n"
+": Source lumineuse directe émettant les photons (alias, la lumière) rebondissant sur les surfaces réfléchissantes de la scène. Il est intéressant de noter que les pipelines graphiques supposent toujours un seul illuminant par scène, ce qui n'est pas la réalité à laquelle sont confrontés les photographes. Parfois, la scène a plus d'une source de lumière. Presque toujours, les objets 3D recevront un mélange de lumière des illuminants et des réflexions d'autres surfaces autour. Les surfaces non blanches renvoyant de la lumière sur un objet peuvent être considérées comme des illuminants virtuels qui teinteront généralement les ombres et déclencheront le besoin de balances des blancs sélectives.\n"
 
 #. type: Title ###
 #: content/resources/white-balances/index.md:37
 #, no-wrap
 msgid "The problem of \"white\""
-msgstr ""
+msgstr "Le problème du \"blanc\""
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:40
 #, no-wrap
 msgid "Color scientists and software programmers alike, love to think of color as a 3D object (R/G/B, hue/saturation/brightness, etc.), expressed as 3 intensive and positive coordinates. While this has some merits in terms of light additivity (an LED screen is very much an RGB additive light scheme, by technological construction), it doesn't account for all the contextual corrections that happen in human perception: human vision is better described in terms of contrast, that is by difference between objects (or surfaces) and their neighbourhood.\n"
-msgstr ""
+msgstr "Les scientifiques de la couleur et les programmeurs de logiciels aiment penser la couleur comme un objet 3D (R/G/B, teinte/saturation/luminosité, etc.), exprimé comme 3 coordonnées intensives et positives. Bien que cela ait quelques mérites en termes d'additivité de la lumière (un écran LED est très certainement un schéma d'éclairage additif RGB, par construction technologique), cela ne tient pas compte de toutes les corrections contextuelles qui se produisent dans la perception humaine : la vision humaine est mieux décrite en termes de contraste, c'est-à-dire par différence entre les objets (ou les surfaces) et leur voisinage.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:42
 #, no-wrap
 msgid "For instance, see this color checker:\n"
-msgstr ""
+msgstr "Par exemple, voyez ce vérificateur de couleur :\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:44
 #, no-wrap
 msgid "![](SpyderCheckr.jpg)\n"
-msgstr ""
+msgstr "![](SpyderCheckr.jpg)\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:46
 #, no-wrap
 msgid "Now, here is the reproduction of this color checker, shot on film, where something went wrong at developing time. Stare at it for some time:\n"
-msgstr ""
+msgstr "Maintenant, voici la reproduction de ce vérificateur de couleur, prise sur film, où quelque chose a mal tourné au moment du développement. Regardez-le pendant un certain temps :\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:48
 #, no-wrap
 msgid "![](color-checker-green.jpeg \"© Guillaume Stutin\")\n"
-msgstr ""
+msgstr "![](color-checker-green.jpeg \"© Guillaume Stutin\")\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:50
 #, no-wrap
 msgid "You would swear that the red patch is still red, even though the whole picture is shifted to green, right ? Worse, the \"white\" patch, feels white.  Well, let's see the vectorscope of this image:\n"
-msgstr ""
+msgstr "Vous jureriez que la tache rouge est toujours rouge, même si toute l'image est décalée vers le vert, n'est-ce pas ? Pire encore, la tache \"blanche\" semble blanche. Eh bien, voyons le vecteurscope de cette image :\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:52
 #, no-wrap
 msgid "![](color-checker-vectorscope.jpg)\n"
-msgstr ""
+msgstr "![](color-checker-vectorscope.jpg)\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:54
 #, no-wrap
 msgid "Aside from some blueish noise, the whole image is fully contained within ~6° of hue centered in green. In any case, there is zero red pixel in here. If we see red, it is only because our brain does not really care about red as an absolute chromaticity, but rather extracts color patches, \"computes\" their differences with the neighbourhood, and then tries to make sense of these differences from a cognitive standpoint.\n"
-msgstr ""
+msgstr "À part un bruit légèrement bleuté, toute l'image est entièrement contenue dans ~6° de teinte centrée sur le vert. En tout cas, il n'y a pas de pixel rouge ici. Si nous voyons du rouge, c'est seulement parce que notre cerveau ne se soucie pas vraiment du rouge en tant que chromaticité absolue, mais extrait plutôt des taches de couleur, \"calcule\" leurs différences avec le voisinage, puis essaie de donner un sens à ces différences d'un point de vue cognitif.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:56
 #, no-wrap
 msgid "__This is where we need to define white for an illuminant and for a surface.__ When you coat an object with a couple of layers of white paint, you make it white. This means that, if you light it with any kind of light, the white surface will reflect and bounce the light spectrum \"as-is\", without favouring any band of the spectrum. Of course, it will absorb some light, only a perfect mirror would reflect close to 100 % of incoming light, but that absorption will be uniformingly scaled over all wavelengths of the spectrum, so the bounce light will be exactly the illuminant light, only less intense. The opposite would be a colored surface: this would selectively attenuate some bands of the spectrum, through [subtractive color synthesis](https://en.wikipedia.org/wiki/Subtractive_color).\n"
-msgstr ""
+msgstr "__C'est ici que nous devons définir le blanc pour un illuminant et pour une surface.__ Lorsque vous enduisez un objet avec quelques couches de peinture blanche, vous le rendez blanc. Cela signifie que, si vous l'éclairez avec n'importe quel type de lumière, la surface blanche reflétera et renverra le spectre lumineux \"tel quel\", sans favoriser une bande spécifique du spectre. Bien sûr, elle absorbera un peu de lumière, seul un miroir parfait refléterait près de 100 % de la lumière entrante, mais cette absorption sera uniformément répartie sur toutes les longueurs d'onde du spectre, donc la lumière reflétée sera exactement la lumière de l'illuminant, seulement moins intense. L'opposé serait une surface colorée : cela atténuerait sélectivement certaines bandes du spectre, par [synthèse soustractive des couleurs](https://fr.wikipedia.org/wiki/Synth%C3%A8se_soustractive).\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:58
 #, no-wrap
 msgid "The illuminant is the primary light source blasting photons on a scene (flash, light bulb, sun, clouds, etc.), including on white surfaces. So, given that a white surface reflects everything it gets, the illuminant projects its own color on a white surface. Therefore, this is as white as our scene (and subsequent image) will ever get, meaning the color of our white surface will change if we light it with daylight or with an orange bulb.\n"
-msgstr ""
+msgstr "L'illuminant est la source lumineuse primaire projetant des photons sur une scène (flash, ampoule, soleil, nuages, etc.), y compris sur les surfaces blanches. Donc, étant donné qu'une surface blanche reflète tout ce qu'elle reçoit, l'illuminant projette sa propre couleur sur une surface blanche. Par conséquent, c'est aussi blanc que notre scène (et image ultérieure) le sera jamais, ce qui signifie que la couleur de notre surface blanche changera si nous l'éclairons avec la lumière du jour ou avec une ampoule orange.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:60
 #, no-wrap
 msgid "So, we tend to expect __the color of the brightest surface in a scene or in a picture__ to be the contextual \"white\" (contextually to our visual field), and our perceptual system uses it as a reference to make sense of all other colors around, by comparing them to that \"white\" reference.\n"
-msgstr ""
+msgstr "Ainsi, nous avons tendance à nous attendre à __la couleur de la surface la plus lumineuse d'une scène ou d'une image__ comme étant le \"blanc\" contextuel (contexte de notre champ de vision), et notre système de perception l'utilise comme référence pour donner un sens à toutes les autres couleurs autour, en les comparant à cette référence de \"blanc\".\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:62
 #, no-wrap
 msgid "Now, what happens if I make the achromatic patches manually achromatic (with regard to your current display) ?\n"
-msgstr ""
+msgstr "Maintenant, que se passe-t-il si je rends les taches achromatiques manuellement (et en rapport avec votre affichage actuel) ?\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:64
 #, no-wrap
 msgid "![](color-checker-green-frame.jpeg)\n"
-msgstr ""
+msgstr "![](color-checker-green-frame.jpeg)\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:66
 #, no-wrap
 msgid "The red patch now feels a bit less saturated and more orange, because we compare it to actual white and not green. But the context is still so overwhelmingly green, that even having true white (with regard to your display medium) within and all around the image, we still percieve that \"less green\" color of the red patch as somewhat red.\n"
-msgstr ""
+msgstr "La tache rouge semble maintenant un peu moins saturée et plus orange, car nous la comparons à du blanc réel et non à du vert. Mais le contexte est toujours tellement vert, que même avec du blanc véritable (en rapport avec votre support d'affichage) à l'intérieur et tout autour de l'image, nous percevons toujours cette couleur \"moins verte\" de la tache rouge comme quelque peu rouge.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:68
 #, no-wrap
 msgid "Also, the achromatic patches start feeling increasingly magenta as they get darker, again because of the overwhelmingly green surround. So, there is more to \"white\" than just being the \"brightest light emission in visual field\" either: immediate context. While normalizing images for the brightest light emission (aka _illuminant_) is supported in all color appearance models (CAM), through the chromatic adaptation transforms (CAT), accounting for local discrepancies (local contrast) is completly overlooked by color maths, since all CAM so far treat chromaticity as 3 positive coordinates. This will need manual tweaking to fill the gap to _perceptually-accurate_ color reproduction (see [below](#real-life-pictures-have-more-than-one-illuminant)).\n"
-msgstr ""
+msgstr "De plus, les patchs achromatiques commencent à sembler de plus en plus magenta à mesure qu'ils deviennent plus sombres, encore une fois à cause de l'entourage excessivement vert. Ainsi, il y a plus à dire sur le \"blanc\" que simplement être la \"plus forte émission lumineuse dans le champ visuel\" : le contexte immédiat. Tandis que la normalisation des images pour l'émission lumineuse la plus forte (alias _illuminant_) est prise en charge dans tous les modèles d'apparence de couleur (MAC), par les transformations d'adaptation chromatique (CAT), la prise en compte des écarts locaux (contraste local) est complètement négligée par les mathématiques des couleurs, puisque tous les MAC jusqu'à présent traitent la chromaticité comme 3 coordonnées positives. Cela nécessitera des ajustements manuels pour combler l'écart vers une reproduction des couleurs _perceptuellement précise_ (voir [ci-dessous](#real-life-pictures-have-more-than-one-illuminant)).\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:70
 #: content/resources/white-balances/index.md:205
 #, no-wrap
 msgid "What should we take from that ?\n"
-msgstr ""
+msgstr "Que devons-nous tirer de cela ?\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:75
@@ -4884,36 +4896,40 @@ msgid ""
 "3. __but__ white is also somewhat contextual to the visual surrounding, aka dependent upon local color contrast,\n"
 "4. __but__ digital imaging pipelines pretend color is only about positive intensities, and don't deal with color differences. Meaning the white balance tooling doesn't exactly deal with what's truly happening, but deals with a rough approximation instead. Meaning complicated cases will need to be handled manually with care.\n"
 msgstr ""
+"1. le blanc est fortement contextualisé à l'illuminant,\n"
+"2. le blanc est _cognitivement_ lié à l'illuminant, via l'émission/réflexion lumineuse la plus forte dans le champ visuel, ce qui peut être trompeur lorsque aucune surface véritablement blanche n'est présente dans le champ,\n"
+"3. __mais__ le blanc est également quelque peu contextualisé à l'environnement visuel, soit dépendant du contraste local des couleurs,\n"
+"4. __mais__ les pipelines d'imagerie numérique prétendent que la couleur ne concerne que les intensités positives, et gèrent les différences de couleur. Autrement dit, l'outil de balance des blancs ne traite pas exactement de ce qui se passe véritablement, mais traite d'une approximation grossière. Les cas complexes devront être gérés manuellement avec soin.\n"
 
 #. type: Title ###
 #: content/resources/white-balances/index.md:76
 #, no-wrap
 msgid "No rights, no wrongs, really ?"
-msgstr ""
+msgstr "Ni droits ni torts, vraiment ?"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:79
 #, no-wrap
 msgid "Before diving further into the hows and whys of white balancing, we should address the elephant in the room:\n"
-msgstr ""
+msgstr "Avant d'aller plus loin dans les comment et pourquoi de la balance des blancs, nous devrions aborder l'éléphant dans la pièce :\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:81
 #, no-wrap
 msgid "> But I like my pictures slightly warm, why should I neutralize the white balance and make whites achromatic ? It's an artistic choice, after all.\n"
-msgstr ""
+msgstr "> Mais j'aime mes images légèrement chaudes, pourquoi devrais-je neutraliser la balance des blancs et rendre les blancs achromatiques ? C'est un choix artistique, après tout.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:83
 #, no-wrap
 msgid "No, it isn't. I mean, not in the way you think. Artistic choices are always limited by technical constraints, because art is about shaping a material medium, so the rules of physics apply at every step on said medium whether you like it or not. Now, not _knowing_ the technical constraints at play will give you a wrong sense of freedom that will turn into profound frustration when things stop going your way, that is especially when images have more than one illuminant. Bad workflows can work in nice and easy situations. Good workflows give you provisions to deal with difficult situations.\n"
-msgstr ""
+msgstr "Non, ce n'est pas. Je veux dire, pas de la manière dont vous le pensez. Les choix artistiques sont toujours limités par des contraintes techniques, car l'art consiste à façonner un médium matériel, de sorte que les lois de la physique s'appliquent à chaque étape sur ce médium, que vous le vouliez ou non. Maintenant, ne pas connaître les contraintes techniques en jeu vous donnera un faux sentiment de liberté qui se transformera en frustration profonde lorsque les choses cesseront d'aller dans votre sens, notamment lorsque les images contiennent plus d'un illuminant. Les mauvais flux de travail peuvent fonctionner dans des situations agréables et faciles. Les bons flux de travail vous prévoient des solutions pour gérer les situations difficiles.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:85
 #, no-wrap
 msgid "The digital imaging world would largely benefit from seeing the image making process as remapping process, instead of trying to find some absolute description of images that will never have a material existence. More specifically, we can represent the remapping flowchart as follow:\n"
-msgstr ""
+msgstr "Le monde de l'imagerie numérique bénéficierait largement de la perception du processus de création d'image comme un processus de remappage, plutôt que d'essayer de trouver une description absolue d'images qui n'auront jamais d'existence matérielle. Plus spécifiquement, nous pouvons représenter le diagramme de flux de remappage comme suit :\n"
 
 #. type: Fenced code block (mermaid)
 #: content/resources/white-balances/index.md:86
@@ -4964,12 +4980,56 @@ msgid ""
 "Stickers\n"
 "...`\"]\n"
 msgstr ""
+"---\n"
+"title : Fonctionnement réel du montage d'images numériques\n"
+"---\n"
+"%%{init: {\"flowchart\": {\"htmlLabels\": false, \"htmlEdgeLabels\": false}} }%%\n"
+"flowchart TD;\n"
+"Scène((\"`__Scène__\n"
+"_Illuminant_ : N.C.\n"
+"_Gamme Dynamique_ : N.C\n"
+"_Espace colorimétrique_ : spectral`\"))\n"
+" --> Capteur[\"`__Capteur__\n"
+"_Point blanc_ : N.C\n"
+"_Gamme Dynamique_ : 8-14 IL\n"
+"_Espace colorimétrique_ : capteur RGB`\"]\n"
+"Capteur -- \"`WB,\n"
+"profil d'entrée,\n"
+"CAT`\" --> Pipeline[\"`__Pipeline de Montage__\n"
+"_Point blanc_ : D50 (ICC)\n"
+"_Gamme Dynamique_ : virtuellement infinie\n"
+"_Espace colorimétrique_ : ITU BT.Rec 2020, CIE Lab 1976`\"]\n"
+"Pipeline --\"`cartographie de tons,\n"
+"cartographie de gamut,\n"
+"profil de sortie`\" --> Écran[\"`__Écran du retoucheur__\n"
+"alias __Vue de Surveillance__\n"
+"_Point blanc_ : D65\n"
+"_Gamme Dynamique_ : 10-12 IL\n"
+"_Espace colorimétrique_ : sRGB, DCI P3, Adobe RGB`\"]\n"
+"Pipeline -- \"`cartographie de ton,\n"
+"cartographie de gamut,\n"
+"profil de sortie`\" --> ÉcranC[\"`__Écran de l'utilisateur__\n"
+"_Point blanc_ : D65\n"
+"_Gamme Dynamique_ : 10-12 IL\n"
+"_Espace colorimétrique_ : sRGB, DCI P3`\"]\n"
+"Pipeline -- \"`cartographie de ton,\n"
+"cartographie de gamut,\n"
+"profil de sortie`\" --> Papier[\"`__Impression Papier__\n"
+"_Point blanc_ : D50-D55\n"
+"_Gamme Dynamique_ : 5-6 IL\n"
+"_Espace colorimétrique_ : N.C.`\"]\n"
+"Pipeline --\"`cartographie de ton,\n"
+"cartographie de gamut,\n"
+"profil de sortie`\" --> T[\"`T-Shirts\n"
+"Mugs\n"
+"Autocollants\n"
+"...`\"]\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:134
 #, no-wrap
 msgid "But, most people still (and wrongly) think it is:\n"
-msgstr ""
+msgstr "Mais, la plupart des gens (à tort) pensent que c'est :\n"
 
 #. type: Fenced code block (mermaid)
 #: content/resources/white-balances/index.md:135
@@ -5014,24 +5074,62 @@ msgid ""
 "Stickers\n"
 "...`\"]\n"
 msgstr ""
+"---\n"
+"title : Comment les gens mal informés pensent que le montage d'images numériques fonctionne\n"
+"---\n"
+"%%{init: {\"flowchart\": {\"htmlLabels\": false}} }%%\n"
+"flowchart TD;\n"
+"Scène((\"`__Scène__\n"
+"_Illuminant_ : N.C.\n"
+"_Gamme Dynamique_ : N.C\n"
+"_Espace colorimétrique_ : spectral`\"))\n"
+" --> Capteur[\"`__Capteur__\n"
+"_Point blanc_ : N.C\n"
+"_Gamme Dynamique_ : 8-14 IL\n"
+"_Espace colorimétrique_ : capteur RGB`\"]\n"
+"Capteur --\"`WB,\n"
+"profil d'entrée,\n"
+"CAT`\" --> Pipeline[\"`__Pipeline de Montage__\n"
+"_Point blanc_ : D50 (ICC)\n"
+"_Gamme Dynamique_ : virtuellement infinie\n"
+"_Espace colorimétrique_ : ITU BT.Rec 2020, CIE Lab 1976`\"]\n"
+"Pipeline --\"`cartographie de ton,\n"
+"cartographie de gamut,\n"
+"profil de sortie`\" --> Écran[\"`__Écran du retoucheur__\n"
+"alias __Vérité visible__\n"
+"_Point blanc_ : D65\n"
+"_Gamme Dynamique_ : 10-12 IL\n"
+"_Espace colorimétrique_ : sRGB, DCI P3, Adobe RGB`\"]\n"
+"Écran -- direct --> ÉcranC[\"`__Écran de l'utilisateur__\n"
+"_Point blanc_ : D65\n"
+"_Gamme Dynamique_ : 10-12 IL\n"
+"_Espace colorimétrique_ : sRGB, DCI P3`\"]\n"
+"Écran -- magie --> Papier[\"`__Impression Papier__\n"
+"_Point blanc_ : D50-D55\n"
+"_Gamme Dynamique_ : 5-6 IL\n"
+"_Espace colorimétrique_ : N.C.`\"]\n"
+"Écran -- magie --> T[\"`T-Shirts\n"
+"Mugs\n"
+"Autocollants\n"
+"...`\"]\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:177
 #, no-wrap
 msgid "And that last flowchart is completely wrong because the retoucher's screen is not a more important medium than any other: it's no reference, no standard, it bears no truth. Output media exist in parallel, not in sequence, and the conversion between pipeline and output media are completely fluid because each have their own optical properties.\n"
-msgstr ""
+msgstr "Et ce dernier diagramme est complètement erroné car l'écran du retoucheur n'est pas un médium plus important qu'un autre : ce n'est pas une référence, pas une norme, il ne porte aucune vérité. Les médias de sortie existent en parallèle, pas en séquence, et la conversion entre le pipeline et les médias de sortie est complètement fluide car chacun a ses propres propriétés optiques.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:179
 #, no-wrap
 msgid "In any case, each arrow in both flowcharts represent a remapping step, while each non-rounded rectangle represents a medium, trying to reproduce the scene. A remapping is a general conversion, that can be fully or partially automated but usually requires some user to drive trade-offs, which will aim at adapting the image content for some display medium or intermediate working step. In particular, we need to remap the dynamic range (or contrast ratio), the color space gamut, and the white point, because we want to retain a consistent look throughout media that have vastly varying display abilities and properties.\n"
-msgstr ""
+msgstr "Dans tous les cas, chaque flèche dans les deux diagrammes de flux représente une étape de remappage, tandis que chaque rectangle non arrondi représente un médium, essayant de reproduire la scène. Un remappage est une conversion générale, qui peut être entièrement ou partiellement automatisée, mais nécessite habituellement qu'un utilisateur conduise les compromis, ce qui visera à adapter le contenu de l'image pour un support d'affichage ou une étape de travail intermédiaire. En particulier, nous devons remapper la gamme dynamique (ou rapport de contraste), le gamut de l'espace colorimétrique et le point blanc, car nous voulons conserver une apparence cohérente à travers des médias ayant des capacités d'affichage et des propriétés très variables.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:181
 #, no-wrap
 msgid "For any display medium (paper, screen, diapositives, coffee mug, …), maximum luminance is reached only for a very special achromatic color: white. Think of paper… White is a built-in property of the paper (a mix of core fibers and surface coating optics), in terms of tint. As far as your inkjet printer is concerned, \"white\" means \"don't spray ink there\". Say you want your picture to look slightly warmer and you settle for amber white… You will need to coat all visible paper surface with at least _some_ yellow and red inks. Doing so will result in darkening the peak luminance, that is your \"amber white\" will be darker than native medium white, because of the subtractive light scheme of dyes and pigments, so you will reduce the already limited dynamic range paper can offer (5 EV for typical inkjets prints). But how do you instruct your printer to do so ? Input RGB will be clipped at 1 or 100% (or 255 if encoded as 8 bits unsigned integers), and $RGB = ( 1, 1, 1 )$ means medium white by definition of the color space (aka by design). If you try to reach \"amber white\" by pushing white to $RGB = ( 1.2, 1.2, 1 )$, RGB will get clipped at 1 anyway, so you might get amber gradients that break to medium white at some point. Or, if you know what you are doing, you will push white to $RGB = ( 1, 1, 0.83 )$, and therefore… reduce its luminance. This is how dynamic range connects, in an usually overlooked way, to the medium white point because the peak luminance is __always__ achromatic with regard to a medium.\n"
-msgstr ""
+msgstr "Pour tout médium d'affichage (papier, écran, diapositives, mug, etc.), la luminance maximale n'est atteinte que pour une couleur très spéciale achromatique : le blanc. Pensez au papier… Le blanc est une propriété intrinsèque du papier (un mélange de fibres de base et d'optique de revêtement de surface), en termes de teinte. En ce qui concerne votre imprimante à jet d'encre, \"blanc\" signifie \"ne pas vaporiser d'encre là-bas\". Dites que vous voulez que votre image ait l'air légèrement plus chaude et vous optez pour un blanc ambré… Vous devrez alors recouvrir toute la surface visible du papier avec au moins un peu d'encres jaune et rouge. En faisant cela, vous assombrissez la luminance maximale, c'est-à-dire que votre \"blanc ambré\" sera plus sombre que le blanc natif du médium, à cause du schéma de lumière soustractive des colorants et pigments, vous réduirez donc la gamme dynamique déjà limitée que le papier peut offrir (5IL pour les impressions à jet d'encre typiques). Mais comment instruisez-vous votre imprimante de faire cela ? Le RGB d'entrée sera limité à 1 ou 100% (ou 255, si encodé en entiers non signés de 8 bits), et $RGB = ( 1, 1, 1 )$ signifie le blanc du médium par définition de l'espace colorimétrique (c'est-à-dire par conception). Si vous essayez d'atteindre un \"blanc ambré\" en poussant le blanc à $RGB = ( 1.2, 1.2, 1 )$, le RGB sera coupé à 1 de toute façon, alors vous pourriez obtenir des dégradés d'ambre qui se transforment en blanc du médium à un certain point. Ou, si vous savez ce que vous faites, vous pousserez le blanc à $RGB = ( 1, 1, 0.83 )$, et donc… réduirez sa luminance. C'est ainsi que la gamme dynamique se connecte, d'une manière généralement négligée, au point blanc du médium car la luminance maximale est __toujours__ achromatique vis-à-vis d'un médium.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:188
@@ -5044,6 +5142,12 @@ msgid ""
 "Photo licensed under Creative Commons by Andreas Schneider.\n"
 "{{</ compare >}}\n"
 msgstr ""
+"{{< compare after=\"WB-warm-4341K.jpg\" before=\"WB-neutral-3832K.jpg\" >}}\n"
+"__Avant__ : balance des blancs normalisée pour des blancs presque achromatiques (illuminant : lumière du jour 3832 K).\\\n"
+"__Après__ : balance des blancs gardée chaude pour \"raisons artistiques\" (illuminant : lumière du jour 4341 K).\\\n"
+"Le point blanc est gardé le même entre les deux images. Notez comment le dégradé à l'intérieur du disque solaire se brise brutalement en blanc pur à un certain point, près du centre, dans l'interprétation chaude, à cause du découpage RGB. Je proposerai 2 corrections possibles pour cela ci-dessous.\\\n"
+"Photo sous licence Creative Commons par Andreas Schneider.\n"
+"{{</ compare >}}\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:196
@@ -5057,6 +5161,13 @@ msgid ""
 "Photo licensed under Creative Commons by Andreas Schneider.\n"
 "{{</ compare >}}\n"
 msgstr ""
+"{{< compare after=\"WB-warm-4341K-minus-half-ev.jpg\" before=\"WB-warm-4341K-minus-half-saturation.jpg\">}}\n"
+"Corrections tentées pour la rupture du dégradé du disque solaire dans l'interprétation chaude ci-dessus.\\\n"
+"__Avant__ : réduction de la saturation des hautes lumières de 50 %\\\n"
+"__Après__ : réduction de la luminance du point blanc de 0.5 IL\\\n"
+"Notez que la stratégie de désaturation revient partiellement à neutraliser les blancs pour les rendre achromatiques, mais sans adapter les couleurs dans les ombres et les tons moyens de manière perceptuelle.\\\n"
+"Photo sous licence Creative Commons par Andreas Schneider.\n"
+"{{</ compare >}}\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:203
@@ -5069,6 +5180,12 @@ msgid ""
 "The warm interpretation has the image illuminant (Sun disc) severely clashing with the medium white, looking like an aged picture. The conflicting whites references between \"paper\" and image content makes it look like a clumsy amateur shot.\n"
 "{{</ compare >}}\n"
 msgstr ""
+"{{< compare after=\"WB-warm-4341K-framed.jpg\" before=\"WB-neutral-3832K-framed.jpg\">}}\n"
+"Ici, nous essayons de voir comment le contenu de l'image se fond dans un cadre blanc généreux utilisant le point blanc du médium. Cela simule une impression sur papier avec des bordures blanches.\\\n"
+"__Avant__ : balance des blancs normalisée pour des blancs presque achromatiques (illuminant : lumière du jour 3832 K) avec point blanc assombri.\\\n"
+"__Après__ : balance des blancs gardée chaude pour \"raisons artistiques\" (illuminant : lumière du jour 4341 K) avec point blanc assombri.\\\n"
+"L'interprétation chaude a l'illuminant de l'image (disque solaire) qui entre en conflit avec le blanc du médium, ressemblant à une photo ancienne. Les références contradictoires de blancs entre le \"papier\" et le contenu de l'image la rendent semblable à une image maladroite d'un amateur.\n"
+"{{</ compare >}}\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:211
@@ -5080,48 +5197,53 @@ msgid ""
 "4. you will have to darken the image white point, therefore reducing the printable dynamic range, if you want to make it non-neutral (non-achromatic). Failing to do that will create clipping artifacts in smooth gradients,\n"
 "5. __peak luminance is expected to be achromatic__ for all typical media: this is what ties dynamic range (or, at least, its upper bound) to a medium white point (white balance).\n"
 msgstr ""
+"1. vous n'avez aucun contrôle sur le point blanc du médium, qu'il s'agisse d'un rétroéclairage de l'écran ou de la teinte du papier : il est défini techniquement et vous devez vous y adapter.\n"
+"2. lors de l'impression avec des bordures blanches, __vous devez faire attention au conflit des points blancs entre le contenu de l'image et les bordures du papier__. Ceci s'applique également aux images numériques qui seront affichées sur des fonds blancs sur le web,\n"
+"3. vous n'avez pas beaucoup de latitude pour dé-neutraliser la balance des blancs de votre image pour des raisons artistiques avant que cela ne commence à entrer en conflit visuel avec le blanc du papier,\n"
+"4. vous devrez assombrir le point blanc de l'image, réduisant donc la gamme dynamique imprimable, si vous souhaitez le rendre non neutre (non achromatique). Ne pas le faire créera des artefacts de découpage sur les dégradés lisses,\n"
+"5. __la luminance maximale est censée être achromatique__ pour tous les médias typiques : c'est ce qui lie la gamme dynamique (ou, du moins, sa limite supérieure) à un point blanc de médium (balance des blancs).\n"
 
 #. type: Title ##
 #: content/resources/white-balances/index.md:212
 #, no-wrap
 msgid "How to white balance ?"
-msgstr ""
+msgstr "Comment équilibrer les blancs ?"
 
 #. type: Title ###
 #: content/resources/white-balances/index.md:214
 #, no-wrap
 msgid "The maths of white balance"
-msgstr ""
+msgstr "Les mathématiques de la balance des blancs"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:217
 #, no-wrap
 msgid "Applying a white balance is surprinsingly simple when you look at the equations: one per-channel division, one per-channel multiplication. But it's so deeply buried under misunderstood concepts and obfuscated GUI (more on this [below](http://localhost:1313/en/resources/white-balances/#gui-obfuscating-white-with-temperature)), that people got completely side-tracked by the technical distractions. So it is a great example of how 3 equations can undo the havoc that software and GUI have wrecked in user's minds over the past decades, by trying to be \"intuitive\".\n"
-msgstr ""
+msgstr "Appliquer une balance des blancs est étonnamment simple lorsque vous regardez les équations : une division par canal, une multiplication par canal. Mais c'est tellement profondément enfoui sous des concepts mal compris et une interface GUI obfusquée (plus sur cela [ci-dessous](http://localhost:1313/en/resources/white-balances/#gui-obfuscating-white-with-temperature)), que les gens ont été complètement détournés par les distractions techniques. C'est donc un excellent exemple de comment 3 équations peuvent défaire les ravages que les logiciels et les GUIs ont fait dans l'esprit des utilisateurs depuis des décennies, en essayant d'être \"intuitifs\".\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:220
 #, no-wrap
 msgid "Let's say you are in some RGB space, for example camera sensor RGB. You need to find the chromatic coordinates of your scene illuminant in this RGB space. Let's call them $R_w, G_w, B_w$. Conveniently, if you know nothing about the scene illuminant, simply getting the arithmetic mean of $R, G, B$ values of all pixels in the picture will get you fairly close. [^1] In other words, you need to know the color of the illuminant, and convert its chromaticity as RGB coordinates in your working RGB space.\n"
-msgstr ""
+msgstr "Disons que vous êtes dans un certain espace RGB, par exemple le capteur RGB de la caméra. Vous devez trouver les coordonnées chromatiques de votre illuminant de scène dans cet espace RGB. Appelons-les $R_w, G_w, B_w$. Convenablement, si vous ne savez rien sur l'illuminant de la scène, simplement obtenir la moyenne arithmétique des valeurs $R, G, B$ de tous les pixels de l'image vous rapprochera assez. [^1] En d'autres termes, vous devez connaître la couleur de l'illuminant, et convertir sa chromaticité en coordonnées RGB dans votre espace RGB de travail.\n"
 
 #. type: Link reference
 #: content/resources/white-balances/index.md:221
 #, no-wrap
 msgid "[^1]: This is called the \"grey world assumption\". It is actually how cameras detect white balance, though nowadays they might choose to do so in some well-chosen areas of interest instead of doing it blindly on the whole image."
-msgstr ""
+msgstr "[^1] : C'est ce qu'on appelle l'hypothèse du \"monde gris\". C'est en fait la façon dont les caméras détectent la balance des blancs, bien que de nos jours, elles pourraient choisir de le faire dans certaines zones d'intérêt bien choisies au lieu de le faire aveuglément sur l'image entière."
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:224
 #, no-wrap
 msgid "Then, you need to do the same for the expected (reference) white point of your RGB space. Let's call those coordinates $R_{wr}, G_{wr}, B_{wr}$.\n"
-msgstr ""
+msgstr "Ensuite, vous devez faire de même pour le point blanc attendu (de référence) de votre espace RGB. Appelons ces coordonnées $R_{wr}, G_{wr}, B_{wr}$.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:226
 #, no-wrap
 msgid "Finally, white-balancing the picture is as simple as normalizing each pixel RGB with the scene illuminant RGB and rescaling (denormalizing) it with the target illuminant (or white point) RGB:\n"
-msgstr ""
+msgstr "Enfin, l'équilibrage blanc de l'image est aussi simple que de normaliser chaque pixel RGB avec le RGB de l'illuminant de scène et de le redimensionner avec le RGB de l'illuminant cible (ou point blanc) :\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:234
@@ -5135,18 +5257,25 @@ msgid ""
 "\\end{cases}\n"
 "$$\n"
 msgstr ""
+"$$\n"
+"\\begin{cases}\n"
+"R_{out} &= R_{in} * \\dfrac{R_{wr}}{R_w}\\\\\\\\\n"
+"G_{out} &= G_{in} * \\dfrac{G_{wr}}{G_w}\\\\\\\\\n"
+"B_{out} &= B_{in} * \\dfrac{B_{wr}}{B_w}\\\\\\\\\n"
+"\\end{cases}\n"
+"$$\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:236
 #, no-wrap
 msgid "See, no need for kelvin temperatures ! Those are only to confuse you in GUI. It's just rescaling pixel RGB with carefully-chosen factors.\n"
-msgstr ""
+msgstr "Voyez, pas besoin de températures kelvin ! Ceux-ci ne servent qu'à vous embrouiller dans l'interface GUI. C'est juste redimensionner le RGB des pixels avec des facteurs soigneusement choisis.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:238
 #, no-wrap
 msgid "If we apply these operations on sensor RGB, we have [input color profiles](../../doc/modules/processing-modules/input-color-profile/) that expect a D65 illuminant to be encoded with certain RGB values: $R_{wr}G_{wr}B_{rw} = (1, 1, 1)$, by design. The $R_{w}G_{w}B_{r}$ values are then derived from the input color profile. This makes the computation even simpler:\n"
-msgstr ""
+msgstr "Si nous appliquons ces opérations sur le capteur RGB, nous avons des [profils de couleur d'entrée](../../doc/modules/processing-modules/input-color-profile/) qui attendent qu'un illuminant D65 soit encodé avec certaines valeurs RGB: $R_{wr}G_{wr}B_{rw} = (1, 1, 1)$, par conception. Les valeurs $R_{w}G_{w}B_{r}$ sont ensuite dérivés du profil de couleur d'entrée. Cela rend le calcul encore plus simple :\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:246
@@ -5160,36 +5289,43 @@ msgid ""
 "\\end{cases}\n"
 "$$\n"
 msgstr ""
+"$$\n"
+"\\begin{cases}\n"
+"R_{out} &= \\dfrac{R_{in}}{R_w}\\\\\\\\\n"
+"G_{out} &= \\dfrac{G_{in}}{G_w}\\\\\\\\\n"
+"B_{out} &= \\dfrac{B_{in}}{B_w}\\\\\\\\\n"
+"\\end{cases}\n"
+"$$\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:248
 #, no-wrap
 msgid "That's what we do in Ansel's old [white balance](../../doc/modules/processing-modules/white-balance/) module.\n"
-msgstr ""
+msgstr "C'est ce que nous faisons dans l'ancien module de [balance des blancs](../../doc/modules/processing-modules/white-balance/) d'Ansel.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:250
 #, no-wrap
 msgid "Now, the camera sensor RGB is vastly different from our cone cells RGB. In practice, attempting to white-balance in sensor RGB gives poor results, especially for illuminants for from D65, and special \"RGB\" spaces have been developed to improve the perceptual consistency of the operation over the whole color range. The Bradford, CAT02, CAT16 etc. chromatic adaptation transforms (CAT) apply the same operations but in special spaces. You can [learn more about them](https://acorn.stanford.edu/psych221/projects/2010/JasonSu/adaptation.html), their differences and specifics are beyond the scope of this article.\n"
-msgstr ""
+msgstr "Maintenant, le RGB du capteur de la caméra est très différent du RGB de nos cellules coniques. En pratique, essayer d'équilibrer les blancs en RGB du capteur donne de mauvais résultats, surtout pour les illuminants éloignés de D65, et des espaces \"RGB\" spéciaux ont été développés pour améliorer la cohérence perceptuelle de l'opération sur toute la plage de couleurs. Les transformations d'adaptation chromatique (CAT16, CAT02, Bradford, etc.) appliquent les mêmes opérations mais dans des espaces spéciaux. Vous pouvez en [apprendre plus sur elles](https://acorn.stanford.edu/psych221/projects/2010/JasonSu/adaptation.html), leurs différences et spécificités dépassent le cadre de cet article.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:252
 #, no-wrap
 msgid "White-balancing through CAT happens in Ansel's [color calibration](../../doc/modules/processing-modules/color-calibration/) module.\n"
-msgstr ""
+msgstr "Le équilibrage blanc à travers CAT se produit dans le module [calibration des couleurs](../../doc/modules/processing-modules/color-calibration/) d'Ansel.\n"
 
 #. type: Title ###
 #: content/resources/white-balances/index.md:254
 #, no-wrap
 msgid "White balance in Ansel"
-msgstr ""
+msgstr "Balance des blancs dans Ansel"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:257
 #, no-wrap
 msgid "If we do a partial pipeline flowchart of the default Ansel's editing pipeline order, we get the following modules:\n"
-msgstr ""
+msgstr "Si nous faisons un schéma de flux de pipeline partiel de l'ordre de montage par défaut d'Ansel, nous obtenons les modules suivants :\n"
 
 #. type: Fenced code block (mermaid)
 #: content/resources/white-balances/index.md:258
@@ -5203,24 +5339,31 @@ msgid ""
 "  cc --> filmic\n"
 "  filmic --> op[output color profile]\n"
 msgstr ""
+"flowchart TD;\n"
+"  brut(RAW) --> wb[balance des blancs]\n"
+"  wb --> mosaïquage\n"
+"  mosaïquage --> pe[profil de couleur d'entrée]\n"
+"  pe --> cc[calibrage des couleurs]\n"
+"  cc --> filmique\n"
+"  filmique --> ps[profil de couleur de sortie]\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:269
 #, no-wrap
 msgid "For Fuji XTrans sensors, the Markesteijn demosacing algorithm relies on a luma/chroma separation, which requires at least a rough white balancing step to happen earlier. This is the old [white balance](../../doc/modules/processing-modules/white-balance/) module. But we know the result is not accurate, especially for illuminants far away from D65 (especially for low-quality artifical lighting).\n"
-msgstr ""
+msgstr "Pour les capteurs Fuji XTrans, l'algorithme de mosaïquage de Markesteijn repose sur une séparation de luminance/chroma, qui nécessite au moins une étape de balance des blancs préliminaire à être effectuée plus tôt. C'est l'ancien module de [balance des blancs](../../doc/modules/processing-modules/white-balance/). Mais nous savons que le résultat n'est pas précis, principalement pour les illuminants éloignés de D65 (surtout pour un éclairage artificiel de mauvaise qualité).\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:271
 #, no-wrap
 msgid "The quality of the input color profile also relies on having RGB already normalized to D65. But we already know this can't be accurate either. Some Adobe products now use dual-illuminant DNG profiles, which have one input profile for D65 illuminant and one for illuminant A (incandescent bulb), and the final profile used is computed as a mix of both depending of the color temperature of the scene illuminant. Those fix the issue for daylight-ish illuminants, but still don't address the issue of colored stage lights and other energy-saving light bulbs with terrible color-rendering index (CRI).\n"
-msgstr ""
+msgstr "La qualité du profil de couleur d'entrée repose également sur le fait d'avoir des RGB déjà normalisés sur D65. Mais nous savons déjà que cela ne peut pas être précis non plus. Certains produits Adobe utilisent désormais des profils DNG à double illuminant, qui disposent d'un profil d'entrée pour l'illuminant D65 et un autre pour l'illuminant A (ampoule incandescente), et le profil final utilisé est calculé comme un mélange des deux selon la température de couleur de l'illuminant de la scène. Ceux-ci corrigent le problème pour les illuminants diurnes, mais ne traitent toujours pas le problème des lumières de scène colorées et d'autres ampoules économes en énergie avec un indice de rendu des couleurs (IRC) terrible.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:273
 #, no-wrap
 msgid "Another, more accurate, step of white balancing was later added in [color calibration](../../doc/modules/processing-modules/color-calibration/), using chromatic adaptation transforms (CAT16, Bradford). It can be configured automatically by extracting a profile from a color checker chart. Empirical studies have shown that the lowest color deviation, after profiling from a color checker, was achieved with color calibration after a preliminary step of white balance, in the old module, so we have retained both:\n"
-msgstr ""
+msgstr "Une autre étape de balance des blancs, plus précise, a plus tard été ajoutée dans le module [calibrage des couleurs](../../doc/modules/processing-modules/color-calibration/), utilisant des transformées d'adaptation chromatique (CAT16, Bradford). Elle peut être configurée automatiquement en extrayant un profil d'une charte de vérification des couleurs. Des études empiriques ont montré que la déviation de couleur la plus faible, après profilage d'une charte de vérification des couleurs, a été obtenue avec un calibrage des couleurs après une étape préliminaire de balance des blancs, dans l'ancien module, donc nous avons retenu les deux :\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:278
@@ -5231,36 +5374,40 @@ msgid ""
 "3. _color calibration_ will convert CIE XYZ 1931 to CAT16 or Bradford \"RGB\" and will normalize any arbitrary scene illuminant (that is, if it's not D65) to the pipeline white point (D50, as per ICC workflow). [^5]\n"
 "4. _color calibration_ can optionally apply a refinement step of the input color profile, using a channel mixer (aka a matrix color profile) whose parameters can be directly computed from a color checker in the module.\n"
 msgstr ""
+"1. le module _balance des blancs_ normalisera le RGB du capteur de sorte que le blanc D65 qui aurait été capturé sur scène apparaîtra à $RGB = (1, 1, 1)$. Si l'illuminant de scène réel est autre, il sera traité par la suite.\n"
+"2. le module _profil de couleur d'entrée_ convertira le RGB du capteur en l'espace colorimétrique CIE XYZ 1931,"
+"3. le _calibrage des couleurs_ convertira CIE XYZ 1931 en CAT16 ou Bradford \"RGB\" et normalisera tout illuminant de scène arbitraire (autrement dit, si ce n'est pas D65) au point blanc du pipeline (D50, selon le flux de travail ICC). [^5]\n"
+"4. le _calibrage des couleurs_ peut appliquer facultativement une étape de raffinement du profil de couleur d'entrée, en utilisant un mélangeur de canaux (c'est-à-dire un profil de couleur matriciel) dont les paramètres peuvent être directement calculés à partir d'une charte de vérification des couleurs dans le module.\n"
 
 #. type: Link reference
 #: content/resources/white-balances/index.md:279
 #, no-wrap
 msgid "[^5]: It is worth noting than we can't directly convert sensor RGB to CAT16 or Bradford without going through CIE XYZ 1931, so we need the input color profiles to be applied first. But we know the input color profile, and therefore the conversion from sensor RGB to CIE XYZ 1931, will be wrong in general because it relies on having whatever scene \"white\" balanced to $(1, 1, 1)$ already. In an ideal world, we would have one input profile for each scene illuminant, but that's technically impossible. So this is why the channel mixing in _color calibration_ comes as a nice refinement step."
-msgstr ""
+msgstr "[^5] : Il est intéressant de noter que nous ne pouvons pas convertir directement le RGB du capteur en CAT16 ou Bradford sans passer par CIE XYZ 1931, nous avons donc besoin que les profils de couleur d'entrée soient appliqués en premier. Mais nous savons que le profil de couleur d'entrée, et donc la conversion du RGB du capteur en CIE XYZ 1931, sera faux en général car il repose sur le fait d'avoir ce que définit le \"blanc\" de la scène équilibré à $(1, 1, 1)$ déjà. Dans un monde idéal, nous aurions un profil d'entrée pour chaque illuminant de scène, mais c'est techniquement impossible. C'est pourquoi le mélange de canaux dans le _calibrage des couleurs_ vient comme une belle étape de raffinement."
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:282
 #, no-wrap
 msgid "This dual step of white balancing is somewhat confusing for users, but has proven to yield the most accurate colors. The _color calibration_ has a diagnostic mode allowing to compute the color deviation after profiling, as a [delta E](https://en.wikipedia.org/wiki/Color_difference), from a color checker chart, you can check for yourself.\n"
-msgstr ""
+msgstr "Cette double étape de balance des blancs est quelque peu déroutante pour les utilisateurs, mais s'est avérée donner les couleurs les plus précises. Le _calibrage des couleurs_ a un mode de diagnostic permettant de calculer la déviation de couleur après profilage, sous forme de [delta E](https://fr.wikipedia.org/wiki/Diff%C3%A9rence_de_couleur), à partir d'une charte de vérification des couleurs, vous pouvez vérifier vous-même.\n"
 
 #. type: Title ##
 #: content/resources/white-balances/index.md:283
 #, no-wrap
 msgid "GUI: obfuscating white with temperature"
-msgstr ""
+msgstr "GUI : Obfuscation du blanc avec la température"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:286
 #, no-wrap
 msgid "In _any_ software around, you will see a white balance setting using a temperature slider (actually, [correlated color temperature](https://en.wikipedia.org/wiki/Correlated_color_temperature)), and then tint. But you saw in the actual equation that white balance internally doesn't deal with anything else than the RGB coordinates of the illuminant, albeit projected in the special RGB space in which we perform the scaling. So, why bother with that confusing kelvin (K) temperature ? Well, there is no reason anymore except legacy.\n"
-msgstr ""
+msgstr "Dans _n'importe_ quel logiciel, vous verrez un réglage de balance des blancs utilisant un curseur de température (en fait, [température de couleur corrélée](https://fr.wikipedia.org/wiki/Temp%C3%A9rature_de_couleur_corr%C3%A9l%C3%A9e)), puis une teinte. Mais vous avez vu dans l'équation réelle que la balance des blancs ne traite en interne rien d'autre que les coordonnées RGB de l'illuminant, bien qu'elles soient projetées dans l'espace RGB spécial dans lequel nous effectuons le redimensionnement. Alors, pourquoi s'embêter avec cette température en kelvin (K) déroutante ? Eh bien, il n'y a plus de raison maintenant, sauf héritage.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:288
 #, no-wrap
 msgid "Physicists have a special radiator, called a [black body](https://en.wikipedia.org/wiki/Black-body_radiation). It's an idealized object which, once heated at a certain temperature, will emit a known light spectrum. More interestingly, the shape of light spectrum can be _entirely predicted_ by the temperature of the black body. Remember how [RGB is a 3D reduction of a light spectrum](../../workflows/scene-referred/index.en.md) ? Here, it's a 1D reduction, even better ! Meaning one single number suffices to describe unambiguously a full spectrum.\n"
-msgstr ""
+msgstr "Les physiciens ont un radiateur spécial, appelé [corps noir](https://fr.wikipedia.org/wiki/Radiateur_corp_noir). C'est un objet idéalisé qui, une fois chauffé à une certaine température, émettra un spectre lumineux connu. Plus intéressant encore, la forme du spectre lumineux peut être _entièrement prédite_ par la température du corps noir. Souvenez-vous comment [RGB est une réduction 3D d'un spectre lumineux](../../workflows/scene-referred/index.en.md) ? Ici, c'est une réduction 1D, encore mieux ! Cela signifie qu'un seul nombre suffit pour décrire sans ambiguïté un spectre complet.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:293
@@ -5271,12 +5418,16 @@ msgid ""
 "By <a href=\"//commons.wikimedia.org/wiki/User:Darth_Kule\" title=\"User:Darth Kule\">Darth Kule</a> - <span class=\"int-own-work\" lang=\"en\">Own work</span>, Public Domain, <a href=\"https://commons.wikimedia.org/w/index.php?curid=10555337\">Link</a>\n"
 "{{< /figure >}}\n"
 msgstr ""
+"{{< figure src=\"Black_body.svg.png\" >}}\n"
+"Spectres de lumière (courbes bleue, rouge, verte) pour les températures du corps noir entre 3000 et 5000 K.\n"
+"Par <a href=\"//commons.wikimedia.org/wiki/User:Darth_Kule\" title=\"User:Darth Kule\">Darth Kule</a> - <span class=\"int-own-work\" lang=\"en\">Travail personnel</span>, Domaine Public, <a href=\"https://commons.wikimedia.org/w/index.php?curid=10555337\">Lien</a>\n"
+"{{< /figure >}}\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:295
 #, no-wrap
 msgid "The cool property here is, until the 1990's, (home) light bulbs were all incandescent tungsten filament, which are a black body at 2855 K, standardized as _Illuminant A_ by the CIE. Then, daylight falls very close to black bodies spectra between 3000 K (sunset) and 8000 K (cloudy day). So we could reduce illuminant color to a single temperature value, which makes for a simpler GUI, although good luck explaining to the layman why color got suddently reduced to a temperature… Very few photographers understand what's going on there, so much for an \"intuitive\" GUI…\n"
-msgstr ""
+msgstr "La propriété intéressante ici est que, jusqu'aux années 1990, les ampoules (domestiques) étaient toutes à filament de tungstène incandescent, qui est un corps noir à 2855 K, standardisé comme _Illuminant A_ par le CIE. Ensuite, la lumière du jour tombe très près des spectres des corps noirs entre 3000 K (coucher du soleil) et 8000 K (jour nuageux). Nous pouvions donc réduire la couleur de l'illuminant à une seule valeur de température, ce qui simplifie l'interface GUI, bien que bonne chance pour expliquer au profane pourquoi la couleur est subitement réduite à une température… Très peu de photographes comprennent ce qui se passe là-dedans, tant pis pour une interface GUI \"intuitive\"…\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:300
@@ -5288,12 +5439,16 @@ msgid ""
 "By <a href=\"//commons.wikimedia.org/wiki/User:Bhutajata\" title=\"User:Bhutajata\">Bhutajata</a> - <span class=\"int-own-work\" lang=\"en\">Own work</span>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\" title=\"Creative Commons Attribution-Share Alike 4.0\">CC BY-SA 4.0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=44144928\">Link</a>\n"
 "{{< /figure >}}\n"
 msgstr ""
+"{{< figure src=\"Color_temperature_black_body_800-12200K.svg.png\">}}\n"
+"Couleur de l'illuminant associée à la température du corps noir (adaptée pour le blanc moyen D65).\n"
+"Par <a href=\"//commons.wikimedia.org/wiki/User:Bhutajata\" title=\"User:Bhutajata\">Bhutajata</a> - <span class=\"int-own-work\" lang=\"en\">Travail personnel</span>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\" title=\"Creative Commons Attribution-Share Alike 4.0\">CC BY-SA 4.0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=44144928\">Lien</a>\n"
+"{{< /figure >}}\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:302
 #, no-wrap
 msgid "Problems happened, first with tinted lights (stage lights & gels), second with cheap high-power bulbs (sodium vapour, halogens), then with more recent light bulbs (fluorescent, LED), which light spectrum has peaks and valleys, far from the expected smoothness of a black body spectrum. Those can't be accurately described as a single temperature value.\n"
-msgstr ""
+msgstr "Des problèmes sont survenus, d'abord avec des lumières teintées (lumières de scène et gels), ensuite avec des ampoules haute puissance bon marché (vapeur de sodium, halogènes), puis avec des ampoules plus récentes (fluorescentes, LED), dont le spectre lumineux présente des pics et des vallées, loin de la douceur attendue d'un spectre de corps noir. Ceux-ci ne peuvent pas être décrits avec précision par une seule valeur de température.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:307
@@ -5304,12 +5459,16 @@ msgid ""
 "By <a href=\"//commons.wikimedia.org/wiki/User:Ellande\" title=\"User:Ellande\">Ellande</a> — <span class=\"int-own-work\" lang=\"fr\">Personal work</span>, <a href=\"http://creativecommons.org/publicdomain/zero/1.0/deed.en\" title=\"Creative Commons Zero, Public Domain Dedication\">CC0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=147285708\">Link</a>\n"
 "{{< /figure >}}\n"
 msgstr ""
+"{{< figure src=\"FL3.15.png\" >}}\n"
+"Spectre lumineux d'un simulateur fluorescent D65, standardisé comme illuminant CIE F3.15. Les pics nets ne sont pas attendus dans un spectre de corps noir à 6500 K.\n"
+"Par <a href=\"//commons.wikimedia.org/wiki/User:Ellande\" title=\"User:Ellande\">Ellande</a> — <span class=\"int-own-work\" lang=\"fr\">Travail personnel</span>, <a href=\"http://creativecommons.org/publicdomain/zero/1.0/deed.en\" title=\"Creative Commons Zero, Public Domain Dedication\">CC0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=147285708\">Lien</a>\n"
+"{{< /figure >}}\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:309
 #, no-wrap
 msgid "To account for deviations from pure black body spectrum, another \"tint\" setting was added, making the description of our illuminant 2D instead of 1D. While the temperature roams the Planckian locus in a curved way, the tint allows to move away from it orthogonally.\n"
-msgstr ""
+msgstr "Pour tenir compte des écarts par rapport au spectre de corps noir pur, un autre réglage de \"teinte\" a été ajouté, rendant la description de notre illuminant 2D au lieu de 1D. Tandis que la température parcourt la trajectoire planckienne de manière courbée, la teinte permet de s'en éloigner orthogonalement.\n"
 
 #. type: Plain text
 #: content/resources/white-balances/index.md:314
