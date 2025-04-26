@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2025-04-26 16:21+0200\n"
-"PO-Revision-Date: 2025-04-26 14:32+0200\n"
+"PO-Revision-Date: 2025-04-26 22:47+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -95,61 +95,61 @@ msgstr "![](darktable-import-module.jpg \"Le module d'importation dans Lighttabl
 #: content/news/rewriting-import/index.md:22
 #, no-wrap
 msgid "Many forum posts have been lost on explaining times and times again what the difference was between _add to library_ and _import and copy_ (_import_ actually means _add to library_). It is also worth mentionning that the _mounting camera_ button does nothing more than what any system-wide [PTP](https://en.wikipedia.org/wiki/Picture_Transfer_Protocol) or [MTP](https://en.wikipedia.org/wiki/Media_Transfer_Protocol) driver does for you: mounting the internal SD card as an external USB storage, through the USB port of the camera. On Windows this requires installing a custom USB driver that will prevent your camera to work with the rest of the OS. On Linux, depending whether your OS has \"auto-mount\" enabled, you might have to dismount the camera from your desktop file browser first, otherwise it will lock the link. On all OS, this requires listening to new devices in background all the time so the application can react to hot-plugging, whether or not you are going to use the feature.\n"
-msgstr ""
+msgstr "De nombreux messages sur les forums ont été perdus à expliquer encore et encore quelle était la différence entre _ajouter à la bibliothèque_ et _importer et copier_ (_importer_ signifie en fait _ajouter à la bibliothèque_). Il convient également de mentionner que le bouton _montage caméra_ ne fait rien de plus que ce que n'importe quel pilote [PTP](https://fr.wikipedia.org/wiki/Picture_Transfer_Protocol) ou [MTP](https://fr.wikipedia.org/wiki/Media_Transfer_Protocol) à l'échelle du système fait pour vous : monter la carte SD interne comme un stockage USB externe, via le port USB de la caméra. Sous Windows, cela nécessite d'installer un pilote USB personnalisé qui empêchera votre caméra de fonctionner avec le reste du système d'exploitation. Sous Linux, en fonction de la configuration d'« auto-mount » de votre OS, vous devrez peut-être démonter la caméra depuis votre explorateur de fichiers de bureau d'abord, sinon elle verrouillera le lien. Sous tous les OS, cela nécessite d'écouter les nouveaux appareils en arrière-plan tout le temps pour que l'application puisse réagir au hot-plugging, que vous utilisiez ou non la fonctionnalité.\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:24
 #, no-wrap
 msgid "And then, there is the _parameters_. Since 2022, the Darktable team has fell madly in love with those collapsible trays that hide the bloat under more bloat. And the bloat you can find in there does nothing more than hitting <kbd>Ctrl+A</kbd> (select all pictures), and then <kbd>0</kbd> or <kbd>1</kbd> (to assign an initial rating of 0 or 1 star) or filling the metadata info (in batch) in the eponymous module, which stands in the lighttable GUI whether you like it or not, and supports presets in case you always reuse the same metadata. The reason why adding these parameters there was even a requirement in the first place is beyond me. Someone, somewhere, is probably sparing 0.5 s per import session, which the rest of the world is losing by scrolling more height.\n"
-msgstr ""
+msgstr "Et puis, il y a les _paramètres_. Depuis 2022, l'équipe Darktable est tombée folle amoureuse de ces plateaux rétractables qui cachent le superflu sous plus de superflu. Et le superflu que vous pouvez y trouver ne fait rien de plus que d'appuyer sur <kbd>Ctrl+A</kbd> (sélectionner toutes les photos), puis sur <kbd>0</kbd> ou <kbd>1</kbd> (pour attribuer une note initiale de 0 ou 1 étoile) ou de remplir les infos des métadonnées (en lot) dans le module éponyme, qui se trouve dans l'interface de la table lumineuse que vous le vouliez ou non, et prend en charge les presets au cas où vous réutiliseriez toujours les mêmes métadonnées. La raison pour laquelle l'ajout de ces paramètres était même initialement requis m'échappe. Quelqu'un, quelque part, épargne probablement 0,5 s par session d'importation, que le reste du monde perd en défilant plus de hauteur.\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:26
 #, no-wrap
 msgid "So, provided you understood the differences between all those options, now you click _import and copy_, which is probably the most used since any photographer needs to empty the SD cards to a more permanent stofrage. And then…\n"
-msgstr ""
+msgstr "Donc, à condition de comprendre les différences entre toutes ces options, maintenant vous cliquez sur _importer et copier_, qui est probablement le plus utilisé car tout photographe a besoin de vider les cartes SD sur un stockage plus permanent. Et puis...\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:28
 #, no-wrap
 msgid "![](darktable-wtf.jpg \"Did you pass your file-copying exam before using this feature ?\")\n"
-msgstr ""
+msgstr "![](darktable-wtf.jpg \"Avez-vous passé votre examen de copie de fichiers avant d'utiliser cette fonctionnalité ?\")\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:30
 #, no-wrap
 msgid "This is basically admitting that the design is so terrible that it's verging on unsable without reading the doc. But wait, what are we doing again ? We are copying pictures. We are copying pictures ? So did you pass your picture-copying exam and got your picture-copying degree ? If you didn't, you should. Watch out, they might turn this into a quizz in a future version and disable the feature if you fail it.\n"
-msgstr ""
+msgstr "C'est essentiellement admettre que la conception est si terrible que c'est à la limite de l'inutilisable sans lire la documentation. Mais attendez, que faisons-nous encore ? Nous copions des images. Nous copions des images ? Alors avez-vous passé votre examen de copie d'images et obtenu votre diplôme de copie d'images ? Si ce n'est pas le cas, vous devriez le faire. Attention, ils pourraient en faire un quiz dans une future version et désactiver la fonctionnalité si vous échouez.\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:32
 #, no-wrap
 msgid "So you click on that ominious button saying that you take full responsibility for whatever harm may happen from copying pictures. Or you don't, given that it looks kinda scary. But let's say you do…\n"
-msgstr ""
+msgstr "Donc vous cliquez sur ce bouton ominieux disant que vous assumez l'entière responsabilité de tout dommage pouvant résulter de la copie des images. Ou pas, étant donné que cela semble un peu effrayant. Mais disons que vous le faites...\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:34
 #, no-wrap
 msgid "![](darktable-import-window.jpg \"All I wanted was pictures…\")\n"
-msgstr ""
+msgstr "![](darktable-import-window.jpg \"Tout ce que je voulais, c'était des images...\")\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:36
 #, no-wrap
 msgid "Wait, where are the pictures ? Is that a log reader ? Throw a 12 dice, and if you do an 8, you will figure out that those eyes icon are responsive and, once clicked, display a thumbnail. Hell, if you click on the eye in the column header, it will show all thumbnails at once. And mess up the row spacing, but we run for the chocolate medal here, so it's fair enough:\n"
-msgstr ""
+msgstr "Attendez, où sont les images ? Est-ce un lecteur de journal ? Lancez un dé à 12 faces, et si vous faites un 8, vous découvrirez que ces icônes d'yeux sont réactives et, une fois cliquées, affichent une vignette. Bon sang, si vous cliquez sur l'œil dans l'en-tête de colonne, cela affichera toutes les vignettes d'un coup. Et perturbera l'espacement des lignes, mais nous courons pour la médaille en chocolat ici, donc c'est assez juste :\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:38
 #, no-wrap
 msgid "![](darktable-import-images.jpg)\n"
-msgstr ""
+msgstr "![](darktable-import-images.jpg)\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:40
 #, no-wrap
 msgid "Be seated for the rest, you are not ready:\n"
-msgstr ""
+msgstr "Restez assis pour la suite, vous n'êtes pas prêt :\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:49
@@ -164,90 +164,98 @@ msgid ""
 "7. The naming patterns use variables masks `$()` that get replaced at runtime by actual file's properties, but you need to know them to be able to use them. As if a guy named Houz didn't write a library circa 2011 to implement auto-completion in text inputs for those variables, that you can simply call in your code to make it work in 2 lines (it is used in export module).\n"
 "8. The naming patterns found there are duplicated in Darktable's preferences popup because you might need to change them when you are not importing anything.\n"
 msgstr ""
+"1. Le machin _dossiers_ sur la colonne de gauche est en fait un bouton : lorsque vous cliquez dessus, cela change l'ordre d'apparition de ces dossiers.\n"
+"2. Le cadre _lieux_ essaie d'émuler les _favoris_ ou les _signets_ de votre gestionnaire de bureau OS, mais ne les importe pas.\n"
+"3. La case à cocher _répertoire récursif_ n'est pas une option, c'est une action. Mais elle n'agit pas sur ce que vous avez sélectionné dans la colonne de droite, car ce ne sont que des images. Ce qu'elle fait, c'est prendre le dossier sélectionné dans la colonne de gauche, et remplir la liste des images en parcourant de manière récursive le dossier sélectionné et ses enfants.\n"
+"4. La sélection de _nouvelles images_ n'est, encore une fois, pas une option mais une action, c'est-à-dire quelque chose que le reste du monde met dans un bouton.\n"
+"5. Le champ _remplacer la date d'aujourd'hui_ est un contournement du fait que la date EXIF ​​​​de l'image ne peut pas être utilisée dans les modèles de dossiers, donc par défaut nous utilisons la date d'aujourd'hui. Sauf si ce champ est rempli. Mais il doit être rempli avec une date et une heure suivant le format ISO 8601. Ce que je n'ai pas fait ici, et la fenêtre ne se plaint pas du tout parce que valider les entrées de formulaire est moins amusant que de laisser les utilisateurs découvrir à l'étape suivante qu'ils doivent recommencer à zéro à cause d'un mauvais format de date-heure. Garçon, c'est beaucoup de connaissances préalables à avoir pour remplir une fichue date, j'ai beaucoup de chance d'avoir appris tout ça en lisant le code source.\n"
+"6. L'option _conserver le nom de fichier d'origine_ est totalement redondante avec l'utilisation du schéma de dénomination `$(FILE_NAME).$FILE_EXTENSION)`.\n"
+"7. Les schémas de dénomination utilisent des masques de variables `$()` qui sont remplacés à l'exécution par les propriétés réelles du fichier, mais vous devez les connaître pour pouvoir les utiliser. Comme si un type nommé Houz n'avait pas écrit une bibliothèque vers 2011 pour implémenter l'auto-complétion dans les entrées de texte pour ces variables, que vous pouvez simplement appeler dans votre code pour le faire fonctionner en 2 lignes (elle est utilisée dans le module export).\n"
+"8. Les schémas de dénomination trouvés là sont dupliqués dans la fenêtre des préférences de Darktable car vous pourriez avoir besoin de les changer quand vous n'importez rien.\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:51
 #, no-wrap
 msgid "This is made of the material of frustration. What is truly amazing is how many persons have worked on this feature over the years to get there. Some would call it [collective intelligence](https://en.wikipedia.org/wiki/Collective_intelligence), but it's actually called [design by commitee](https://en.wikipedia.org/wiki/Design_by_committee).\n"
-msgstr ""
+msgstr "C'est fait de la matière de la frustration. Ce qui est vraiment incroyable, c'est combien de personnes ont travaillé sur cette fonctionnalité au fil des années pour en arriver là. Certains l'appelleraient intelligence collective, mais en réalité c'est ce qu'on appelle conception par comité.\n"
 
 #. type: Title ##
 #: content/news/rewriting-import/index.md:52
 #, no-wrap
 msgid "A new take, or erasing scruffiness out of step 0"
-msgstr ""
+msgstr "Une nouvelle approche, ou effacer les doutes dès l'étape 0"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:55
 #, no-wrap
 msgid "Importing images is truly the step 0 of working with any image editing application. It's unacceptable to lose users so early, especially since we expect so much from them later, when it comes to understanding light and color. But I will argue that light and color are the bread and butter of any graphic artist, and it seems fair to expect from photo-editing users to master the basics of their craft at some point.[^4] On the other side, asking users to get their master's degree in file copying is unacceptable.\n"
-msgstr ""
+msgstr "L'importation d'images est vraiment l'étape 0 du travail avec n'importe quelle application d'édition d'images. Il est inacceptable de perdre des utilisateurs si tôt, surtout depuis que nous attendons beaucoup d'eux plus tard, lorsqu'il s'agit de comprendre la lumière et la couleur. Mais je dirais que la lumière et la couleur sont le pain et le beurre de tout artiste graphique, et il semble juste de s'attendre à ce que les utilisateurs de logiciels de retouche photo maîtrisent les bases de leur métier à un moment donné.[^4] D'un autre côté, demander aux utilisateurs d'obtenir leur diplôme en copie de fichiers est inacceptable.\n"
 
 #. type: Link reference
 #: content/news/rewriting-import/index.md:56
 #, no-wrap
 msgid "[^4]: Yes, I know it's already too much to ask in most cases."
-msgstr ""
+msgstr "[^4] : Oui, je sais, c'est déjà trop demander dans la plupart des cas."
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:59
 #, no-wrap
 msgid "Guillaume Stutin and myself have therefore rewritten the import tool entirely, first the front-end and then the back-end. Here is the result.\n"
-msgstr ""
+msgstr "Guillaume Stutin et moi avons donc complètement réécrit l'outil d'importation, d'abord le front-end et ensuite le back-end. Voici le résultat.\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:61
 #, no-wrap
 msgid "![](ansel-import-menu.jpg \"The import window is opened from the global menu, optionally with the shortcut\")\n"
-msgstr ""
+msgstr "![](ansel-import-menu.jpg \"La fenêtre d'importation est ouverte depuis le menu global, éventuellement avec le raccourci\")\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:63
 #, no-wrap
 msgid "The option to directly mount cameras memory card from GPhoto2 has been removed entirely, since OS can handle this step directly if needed. There is only one entry point to import. Then you get the filechooser window:\n"
-msgstr ""
+msgstr "L'option de monter directement les cartes mémoire des appareils photo depuis GPhoto2 a été entièrement supprimée, puisque les OS peuvent gérer cette étape directement si nécessaire. Il n'y a qu'un seul point d'entrée pour importer. Puis, vous obtenez la fenêtre de sélection de fichiers :\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:65
 #, no-wrap
 msgid "![](ansel-import-window.jpg \"The import window is a vanilla Gtk filechooser\")\n"
-msgstr ""
+msgstr "![](ansel-import-window.jpg \"La fenêtre d'importation est un sélecteur de fichiers Gtk standard\")\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:67
 #, no-wrap
 msgid "The file browser is a native Gtk filechooser widget, meaning the OS bookmarks (and even here the Nextcloud synchronized folders) are automatically imported from the desktop environment. The picture preview has been extended with EXIF metadata as to better identify images. A look-up into the library database shows whether or not the picture was already imported into Ansel or Darktable, and where.[^1]\n"
-msgstr ""
+msgstr "Le navigateur de fichiers est un widget sélecteur de fichiers Gtk natif, ce qui signifie que les signets du système d'exploitation (et même ici les dossiers synchronisés Nextcloud) sont automatiquement importés depuis l'environnement de bureau. L'aperçu de l'image a été étendu avec les métadonnées EXIF pour mieux identifier les images. Une recherche dans la base de données de la bibliothèque montre si l'image a déjà été importée dans Ansel ou Darktable, et où.[^1]\n"
 
 #. type: Link reference
 #: content/news/rewriting-import/index.md:68
 #, no-wrap
 msgid "[^1]: This reuses the Darktable code but with a clearer display."
-msgstr ""
+msgstr "[^1] : Cela réutilise le code de Darktable mais avec un affichage plus clair."
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:71
 #, no-wrap
 msgid "Image types (raw, non-raw or all) are filtered using native Gtk filters and the full list of files to import is built straight in the GUI, without second-guessing in the back-end. When folders are selected, their content is automatically crawled recursively and the first image of the collection is shown. The final number of images detected is displayed below the file chooser:\n"
-msgstr ""
+msgstr "Les types d'images (raw, non-raw ou tous) sont filtrés à l'aide de filtres Gtk natifs et la liste complète des fichiers à importer est construite directement dans l'interface graphique, sans seconde conjecture en backend. Lorsqu'un dossier est sélectionné, son contenu est automatiquement exploré de manière récursive et la première image de la collection est affichée. Le nombre final d'images détectées est affiché sous le sélecteur de fichiers :\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:73
 #, no-wrap
 msgid "![](ansel-import-recursive.jpg)\n"
-msgstr ""
+msgstr "![](ansel-import-recursive.jpg)\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:75
 #, no-wrap
 msgid "Many sorting and display options are natively handled by the Gtk filechooser, including search (through <kbd>Ctrl+F</kbd>), without additional work:\n"
-msgstr ""
+msgstr "De nombreuses options de tri et d'affichage sont gérées nativement par le sélecteur de fichiers Gtk, y compris la recherche (via <kbd>Ctrl+F</kbd>), sans travail supplémentaire :\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:77
 #, no-wrap
 msgid "![](ansel-import-search.jpg)\n"
-msgstr ""
+msgstr "![](ansel-import-search.jpg)\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:79
@@ -259,7 +267,7 @@ msgstr "L'option de gestion des fichiers permet l'importation avec ou sans copie
 #: content/news/rewriting-import/index.md:81
 #, no-wrap
 msgid "![](ansel-import-copy.jpg)\n"
-msgstr ""
+msgstr "![](ansel-import-copy.jpg)\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:83
@@ -276,6 +284,10 @@ msgid ""
 "![](ansel-import-date-validation.jpg)\n"
 "{{</ gallery >}}\n"
 msgstr ""
+"{{< gallery cols=\"2\" >}}\n"
+"![](ansel-import-calendar.jpg)\n"
+"![](ansel-import-date-validation.jpg)\n"
+"{{</ gallery >}}\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:90
@@ -293,7 +305,7 @@ msgstr "Les modèles de nommage des dossiers et fichiers prennent en charge l'au
 #: content/news/rewriting-import/index.md:94
 #, no-wrap
 msgid "![](ansel-import-autocompletion.jpg)\n"
-msgstr ""
+msgstr "![](ansel-import-autocompletion.jpg)\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:96
@@ -305,7 +317,7 @@ msgstr "Enfin, une fonctionnalité demandée par les utilisateurs : la possibili
 #: content/news/rewriting-import/index.md:98
 #, no-wrap
 msgid "![](ansel-import-pattern.jpg)\n"
-msgstr ""
+msgstr "![](ansel-import-pattern.jpg)\n"
 
 #. type: Plain text
 #: content/news/rewriting-import/index.md:100
@@ -380,6 +392,9 @@ msgid ""
 "The new importer is available for Ansel build versions > 0.0.0+780.\n"
 "{{</ note >}}\n"
 msgstr ""
+"{{< note >}}\n"
+"Le nouvel importateur est disponible pour les versions d'Ansel > 0.0.0+780.\n"
+"{{</ note >}}\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/dev-diary-2.md:1
@@ -391,67 +406,67 @@ msgstr "Journal de développement #2 : présentation de Chantal"
 #: content/news/dev-diary-2.md:11
 #, no-wrap
 msgid "2022 was so bad in terms of junk emails and noise that I started the [Virtual Secretary](https://virtualsecretary.aurelienpierre.com/), a Python framework to write intelligent email filters by crossing information between several sources to guess what incoming emails are and whether they are important/urgent or not. When I'm talking about junk emails, it's also Github notifications, pings on pixls.us (thank God I closed my account on that stupid forum), YouTube, and direct emails from people hoping to get some help in private.\n"
-msgstr ""
+msgstr "2022 a été si mauvaise en termes de courriels indésirables et de bruit que j'ai commencé la [Secrétaire Virtuelle](https://virtualsecretary.aurelienpierre.com/), un cadre Python pour écrire des filtres de courriels intelligents en croisant des informations provenant de plusieurs sources pour deviner ce que sont les courriels entrants et s'ils sont importants/urgents ou non. Quand je parle de courriels indésirables, il s'agit aussi des notifications Github, des pings sur pixls.us (heureusement, j'ai fermé mon compte sur ce forum stupide), YouTube et des courriels directs de personnes espérant obtenir de l'aide en privé.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:13
 #, no-wrap
 msgid "Having become \"the face\" of darktable, mostly because I'm one of the few to bother providing user education and training instead of just pissing code, I didn't see that coming, and I wasn't prepared. A lot of people now mistake me with the front desk, which doesn't help abstract thinking on coding matters, let alone taking time to actually produce art. The problem is all the time lost dealing with info/noise/input is not spent solving problems, and time is the only thing for which you cannot get a refund.\n"
-msgstr ""
+msgstr "Étant devenu \"le visage\" de darktable, principalement parce que je suis l'un des rares à m'embêter à offrir une éducation et une formation aux utilisateurs au lieu de simplement développer du code, je ne l'avais pas vu venir, et je n'étais pas préparé. Beaucoup de gens me confondent maintenant avec le comptoir d'accueil, ce qui n'aide pas à la réflexion abstraite sur les questions de programmation, encore moins à prendre le temps de produire réellement de l'art. Le problème est que tout le temps perdu à gérer les infos/bruit/entrées n'est pas passé à résoudre des problèmes, et le temps est la seule chose pour laquelle vous ne pouvez pas obtenir de remboursement.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:15
 #, no-wrap
 msgid "After a while, I figured it would be nice to extend the Virtual Secretary with a machine-learning classifier, which would guess in what folder incoming emails should go, by extracting the content of the emails already in said folder. It's actually much easier to implement than what I thought, but the time-consuming bit is to write text filters to clean-up the input (because garbage in, garbage out, especially for spam emails which are generally improperly formatted).\n"
-msgstr ""
+msgstr "Après un certain temps, j'ai pensé que ce serait bien d'étendre la Secrétaire Virtuelle avec un classificateur d'apprentissage automatique, qui devinerait dans quel dossier les courriels entrants devraient aller, en extrayant le contenu des courriels déjà dans ledit dossier. C'est en fait beaucoup plus facile à mettre en œuvre que ce que je pensais, mais la partie chronophage est d'écrire des filtres texte pour nettoyer l'entrée (parce que des ordures en entrée, des ordures en sortie, surtout pour les courriels de spam qui sont généralement mal formatés).\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:17
 #, no-wrap
 msgid "But the ultimate goal, in my wildest dreams, was to build an autoresponder for people asking questions already answered on one of the many websites I have contributed to over the years. It's a constant frustration to see that all the pages of doc I have written over the years are lost in Internet limbo. On FLOSS-centric forums, benevolent guys also tend to experience the same kind of fatigue : repeating again and again the same info, linking the same pages, to never-ending hords of newbies who don't know what to look for. Just look at Reddit darktable : every 14 days, someone else asks why the lighttable thumbnails don't look like the darkroom preview. Even discarding the amount of frustration and angryness here, the number of man-hours lost in repeating is outstanding. Just because information is lost.\n"
-msgstr ""
+msgstr "Mais l'objectif ultime, dans mes rêves les plus fous, était de créer un répondeur automatique pour les personnes posant des questions déjà répondues sur l'un des nombreux sites Web auxquels j'ai contribué au fil des ans. C'est une frustration constante de voir que toutes les pages de doc que j'ai écrites au fil des ans sont perdues dans les limbes d'Internet. Sur les forums centrés sur le FLOSS, les gars bienveillants ont aussi tendance à éprouver le même genre de fatigue : répéter encore et encore les mêmes infos, lier les mêmes pages, à des hordes sans fin de nouveaux venus qui ne savent pas quoi chercher. Regardez simplement Reddit darktable : tous les 14 jours, quelqu'un d'autre demande pourquoi les vignettes de la table lumineuse ne ressemblent pas à l'aperçu de la chambre noire. Même en écartant la quantité de frustration et de colère ici, le nombre d'heures-homme perdues à répéter est impressionnant. simplement parce que l'information est perdue.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:19
 #, no-wrap
 msgid "The true problem of search engines is you need to know what keywords to look for. Which is circling back to the fact that newbies don't know the slang. So they don't know what to look for. They don't have any entry point in the matrix. Except other humans. Which sucks for the ones having to do the work, usually for free.\n"
-msgstr ""
+msgstr "Le véritable problème des moteurs de recherche est que vous devez savoir quels mots clés rechercher. Ce qui revient au fait que les débutants ne connaissent pas le jargon. Ils ne savent donc pas quoi chercher. Ils n'ont pas de point d'entrée dans la matrice. Sauf les autres humains. Ce qui est ennuyeux pour ceux qui doivent faire le travail, généralement gratuitement.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:21
 #, no-wrap
 msgid "After merging a neural layer of word2vec word embedding (big words to say it's unsupervised machine learning finding how words are contextually related in sentences, that is finding syntactical structures, synonyms and the likes), as a first step in my email classifier (which is now up to 92 % accuracy), I wondered if this wouldn't been usable to build a context-aware and synonym-aware search engine, able to look past exact keywords.\n"
-msgstr ""
+msgstr "Après avoir fusionné une couche neuronale d'incorporation de mots word2vec (de grands mots pour dire que c'est de l'apprentissage automatique non supervisé trouvant comment les mots sont contextuellement liés dans les phrases, c'est-à-dire trouvant des structures syntaxiques, des synonymes et autres), comme première étape dans mon classificateur de courriels (qui atteint maintenant une précision de 92 %), je me suis demandé si cela ne pourrait pas être utilisé pour construire un moteur de recherche sensible au contexte et aux synonymes, capable de passer outre les mots clés exacts.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:23
 #, no-wrap
 msgid "Turns out a couple of guys from Bing had the same idea in 2016, and published their maths, so I implemented them. Then proceeded to add a web interface on top. That gave birth to [Chantal](https://chantal.aurelienpierre.com), the AI you are kindly asked to bother before bothering me. The current version is trained against 101.000 internet pages from my own websites, darktable & Ansel docs, along with some reliable color-science ressources. It indexes 15.500 pages in French and English and can process search queries in either or both of these languages. One of its mean features is to propose you a list of keywords associated to your query, so you can refine/reorient/try things you wouldn't have thought of before.\n"
-msgstr ""
+msgstr "Il s'avère qu'une paire de gars de Bing avait la même idée en 2016 et a publié leurs maths, alors je les ai implémentées. Puis j'ai procédé à l'ajout d'une interface Web par-dessus. Cela a donné naissance à [Chantal](https://chantal.aurelienpierre.com), l'IA que vous êtes gentiment prié de déranger avant de me déranger. La version actuelle est formée contre 101.000 pages internet de mes propres sites, des docs darktable et Ansel, ainsi que des ressources fiables sur la science des couleurs. Elle indexe 15.500 pages en français et en anglais et peut traiter des requêtes de recherche dans l'une ou les deux langues. Une de ses principales fonctionnalités est de vous proposer une liste de mots-clés associés à votre requête, afin que vous puissiez affiner/orienter/essayer des choses auxquelles vous n'auriez pas pensé auparavant.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:25
 #, no-wrap
 msgid "Hope that helps.\n"
-msgstr ""
+msgstr "J'espère que cela vous aide.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:27
 #, no-wrap
 msgid "That work showed me how poorly indexable many websites are. To account for the lack of XML sitemap on forums.darktable.fr and color.org, I had to write a recursive crawler. But even then, many pages don't have description meta tags and a proper date tag. It means you need to use regular expressions and indirect methods trying to identify the metadata, and manually tune the HTML parser to extract the actual content part of the webpage (discarding sidebars, menus, asides and advertising if any).\n"
-msgstr ""
+msgstr "Cela m'a montré à quel point de nombreux sites Web sont mal indexables. Pour tenir compte de l'absence de plan de site XML sur forums.darktable.fr et color.org, j'ai dû écrire un robot d'exploration récursif. Mais même alors, de nombreuses pages n'ont pas de balises méta de description et une balise de date appropriée. Cela signifie que vous devez utiliser des expressions régulières et des méthodes indirectes pour essayer d'identifier les métadonnées, et ajuster manuellement l'analyseur HTML pour extraire la partie réelle du contenu de la page Web (en délaissant les barres latérales, menus, à-côtés et publicités si c'est le cas).\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:29
 #, no-wrap
 msgid "Then, you get to love Q&A forums like Stack Overflow, where proper questions start a thread, proper answers follow, and the best answers are selected by the community. \"Thank you\" and \"me too\" messages are explicitly forbidden in the conditions of use. On forums like pixls.us or forums.darktable.fr, proper technical information gets lost in the middle of semi-technical rambling, life stories and bros bonding over tales of software, in a continuous thread where nothing distinguishes relevant from irrelevant, accurate from inaccurate, and gross misunderstandings of color theory. From a machine crawling perspective, there is very little to exploit here, and investing time on such platform is a dry loss.\n"
-msgstr ""
+msgstr "Ensuite, vous en venez à aimer les forums de questions-réponses comme Stack Overflow, où les questions appropriées commencent un fil, des réponses appropriées suivent, et les meilleures réponses sont sélectionnées par la communauté. Les messages de \"merci\" et \"moi aussi\" sont explicitement interdits dans les conditions d'utilisation. Sur les forums comme pixls.us ou forums.darktable.fr, les informations techniques appropriées se perdent au milieu des divagations semi-techniques, des histoires de vie et des frères qui se lient d'amitié autour des récits de logiciels, dans un fil continu où rien ne distingue le pertinent de l'irrélevant, l'exact de l'inexact, et le malentendu flagrant de la théorie des couleurs. D'un point de vue de l'exploration par machine, il y a très peu à exploiter ici, et investir du temps sur une telle plateforme est une pure perte.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:31
 #, no-wrap
 msgid "More (technical) info:\n"
-msgstr ""
+msgstr "Plus d'infos (techniques) :\n"
 
 #. type: Plain text
 #: content/news/dev-diary-2.md:34
@@ -461,6 +476,9 @@ msgid ""
 "- [Designing an AI search engine from scratch in the 2020's](https://eng.aurelienpierre.com/2024/03/designing-an-ai-search-engine-from-scratch-in-the-2020s/) : on how Chantal was built and how the Dumbrish synthetic language was created to generalize natural French and English, plus some regex bonanza,\n"
 "- [Thoughts on Word2Vec AI for information retrieval applications](https://eng.aurelienpierre.com/2025/05/thoughts-on-word2vec/) : on how the input cleanup is by far the worst time-consuming step of designing an AI and language models that become too semantically accurate don't make better search engines.\n"
 msgstr ""
+"- [Les sites Web sont nuls](https://eng.aurelienpierre.com/2023/04/websites-suck./) : Sur les défis techniques de l'exploration et de l'indexation des pages HTML (et... PDF), à une époque où les gens prononcent de grandes choses comme \"Web 4.0\" ou \"Internet des objets\", mais où des choses basiques comme fournir des plans de site de page ou mettre la date des publications internet dans des formats standard est encore trop demander aux webmasters et CMS, \n"
+"- [Concevoir un moteur de recherche IA from scratch dans les années 2020](https://eng.aurelienpierre.com/2024/03/designing-an-ai-search-engine-from-scratch-in-the-2020s/) : sur la manière dont Chantal a été construite et comment le langage synthétique Dumbrish a été créé pour généraliser le français et l'anglais naturels, et quelques prodiges de regex, \n"
+"- [Réflexions sur l'IA Word2Vec pour les applications de recherche d'information](https://eng.aurelienpierre.com/2025/05/thoughts-on-word2vec/) : sur la façon dont le nettoyage des entrées est de loin la tâche la plus chronophage de la conception d'une IA et comment les modèles de langage devenant trop précis sémantiquement ne font pas de meilleurs moteurs de recherche.\n"
 
 #. type: Yaml Front Matter Array Element: tags
 #: content/news/changes-appimage.md:1
@@ -478,67 +496,67 @@ msgstr "Changements dans la prise en charge des distributions pour le paquet Lin
 #: content/news/changes-appimage.md:11
 #, no-wrap
 msgid "Rawspeed (the library providing the decoders for camera raw files) has deprecated support for GCC < 12. As a result, I can no longer build the AppImage on Ubuntu 20.04 (using Github runners) but I have to build it on 22.04.\n"
-msgstr ""
+msgstr "Rawspeed (la bibliothèque fournissant les décodeurs pour les fichiers raw des appareils photo) a déprécié le support pour GCC < 12. En conséquence, je ne peux plus construire le AppImage sur Ubuntu 20.04 (en utilisant Github runners) mais je dois le construire sur 22.04.\n"
 
 #. type: Plain text
 #: content/news/changes-appimage.md:12
 #, no-wrap
 msgid "It means any Linux distribution having libc older than 2.35 will not be able to start the new AppImages starting today. That should not affect most users running distributions upgraded in 2021 or more recently. Ubuntu 20.04 and other LTS/old stable distributions (Debian stable) may be affected.\n"
-msgstr ""
+msgstr "Cela signifie que toute distribution Linux ayant une libc antérieure à 2.35 ne pourra pas démarrer les nouveaux AppImages à partir d'aujourd'hui. Cela ne devrait pas affecter la plupart des utilisateurs exécutant des distributions mises à jour en 2021 ou plus récemment. Ubuntu 20.04 et d'autres distributions LTS/stables anciennes (Debian stable) pourraient être affectées.\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/new-build-options-linux.md:1
 #, no-wrap
 msgid "New build options for Linux"
-msgstr ""
+msgstr "Nouvelles options de build pour Linux"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:11
 #, no-wrap
 msgid "I accidentally discovered that the Linux build script used a \"package\" build, meaning the CPU optimizations are limited to generic ones in order to produce portable binaries that can be installed on any x86-64 platform. By \"using\", I mean the package build was not explicitely disabled, so it was enabled by default.\n"
-msgstr ""
+msgstr "J'ai découvert par accident que le script de build Linux utilisait un `package` build, ce qui signifiait que les optimisations CPU étaient limitées à des optimisations génériques afin de produire des binaires portables pouvant être installés sur n'importe quelle plateforme x86-64. Par 'utiliser', je veux dire que le build package n'était pas explicitement désactivé, donc il était activé par défaut.\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:13
 #, no-wrap
 msgid "Anyway, this is now disabled by default, since the actual packages (.exe and .appimage) are not built through that script, which is primarily meant to help end-users. To get the previous behaviour back, you would need to run:\n"
-msgstr ""
+msgstr "De toute façon, cela est maintenant désactivé par défaut, puisque les packages réels (.exe et .appimage) ne sont pas construits via ce script, qui est principalement destiné à aider les utilisateurs finaux. Pour revenir à l'ancien comportement, vous devrez exécuter :\n"
 
 #. type: Fenced code block
 #: content/news/new-build-options-linux.md:14
 #, no-wrap
 msgid "$ sh build.sh --build-package --install --sudo\n"
-msgstr ""
+msgstr "$ sh build.sh --build-package --install --sudo\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:19
 #, no-wrap
 msgid "Not using the package build option may increase performance on CPU by 20 to 30 % depending on your hardware, thanks to platform-specific optimizations.\n"
-msgstr ""
+msgstr "Ne pas utiliser l'option de build package peut accroître les performances sur CPU de 20 à 30 % selon votre matériel, grâce aux optimisations spécifiques à la plateforme.\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:21
 #, no-wrap
 msgid "I have also introduced a new argument that will launch the Git updating commands that users seem to forget all the time. There is a caveat, though : updating the source code by calling Git from within the script doesn't update the script for the current run, so this method doesn't work when the script itself is modified. Fortunately, we don't change this script often.\n"
-msgstr ""
+msgstr "J'ai également introduit un nouvel argument qui lancera les commandes de mise à jour Git que les utilisateurs oublient tout le temps. Il y a un hic, cependant : mettre à jour le code source en appelant Git depuis le script ne met pas à jour le script pour l'exécution en cours, donc cette méthode ne fonctionne pas lorsque le script lui-même est modifié. Heureusement, nous ne modifions pas souvent ce script.\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:23
 #, no-wrap
 msgid "The argument to update the source code and the submodules (Rawspeed, Libraw) :\n"
-msgstr ""
+msgstr "L'argument pour mettre à jour le code source et les sous-modules (Rawspeed, Libraw) :\n"
 
 #. type: Fenced code block
 #: content/news/new-build-options-linux.md:24
 #, no-wrap
 msgid "$ sh build.sh --update --install --sudo\n"
-msgstr ""
+msgstr "$ sh build.sh --update --install --sudo\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:29
 #, no-wrap
 msgid "I have also modified the internals of that script in order to automatically :\n"
-msgstr ""
+msgstr "J'ai également modifié les internes de ce script pour :\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:33
@@ -548,36 +566,39 @@ msgid ""
 "- add a global system shortcut (.desktop file) so the software will be globally available from the app menus,\n"
 "- add a global system command so the ansel is globally available from the terminal.\n"
 msgstr ""
+"- mettre à jour la base de données Lensfun des objectifs,\n"
+"- ajouter un raccourci système global (.desktop file) afin que le logiciel soit globalement disponible depuis les menus des applications,\n"
+"- ajouter une commande système globale afin que Ansel soit globalement disponible depuis le terminal.\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:35
 #, no-wrap
 msgid "The goal of all these changes is obviously to make it more user-friendly to use a self-built version of the software, allowing to improve performance, especially for computers without GPU. The one-pit-stop command would be :\n"
-msgstr ""
+msgstr "Le but de tous ces changements est évidemment de rendre plus convivial l'utilisation d'une version auto-construite du logiciel, permettant d'améliorer les performances, notamment pour les ordinateurs sans GPU. La commande unique serait :\n"
 
 #. type: Fenced code block
 #: content/news/new-build-options-linux.md:36
 #, no-wrap
 msgid "$ sh build.sh --update --install --sudo --clean-all\n"
-msgstr ""
+msgstr "$ sh build.sh --update --install --sudo --clean-all\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:41
 #, no-wrap
 msgid "But of course, you will need to run the Git update manually one last time before, to update the script itself :\n"
-msgstr ""
+msgstr "Mais bien sûr, vous devrez exécuter la mise à jour Git manuellement une dernière fois avant, pour mettre à jour le script lui-même :\n"
 
 #. type: Fenced code block
 #: content/news/new-build-options-linux.md:42
 #, no-wrap
 msgid "$ git pull --recurse-submodule\n"
-msgstr ""
+msgstr "$ git pull --recurse-submodule\n"
 
 #. type: Plain text
 #: content/news/new-build-options-linux.md:46
 #, no-wrap
 msgid "Alternatively, you can directly download the build script, and replace the old build.sh one at the root of the source code directory.\n"
-msgstr ""
+msgstr "Alternativement, vous pouvez télécharger directement le script de build, et remplacer l'ancienne build.sh à la racine du répertoire du code source.\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md:1
@@ -2100,13 +2121,13 @@ msgstr "Avec Ansel, je veux un moyen de finir ce travail sereinement pour que le
 #: content/news/implementing-kill-switch.md:1
 #, no-wrap
 msgid "Implementing kill-switch on pipeline"
-msgstr ""
+msgstr "Implémentation du bouton d'arrêt sur le pipeline"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:11
 #, no-wrap
 msgid "I have thought, for a very long time, that there was some kill-switch mechanism on the pixel pipeline. The use case is the following :\n"
-msgstr ""
+msgstr "J'ai pensé, pendant très longtemps, qu'il y avait un mécanisme de bouton d'arrêt sur le pipeline de pixels. Le cas d'utilisation est le suivant :\n"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:16
@@ -2117,42 +2138,46 @@ msgid ""
 "3. one of the previews finishes rendering before the other, and the result is obviously __not__ what you wanted,\n"
 "4. you change again the module parameter, without waiting for the recomputation to finish.\n"
 msgstr ""
+"1. vous modifiez un paramètre de module,\n"
+"2. les aperçus (celui de la chambre noire central et la vignette dans le panneau de gauche, également utilisé pour l'histogramme et les sélecteurs de couleurs) reconstruisent leur pipeline pour tenir compte de ce changement,\n"
+"3. l'un des aperçus finit de se rendre avant l'autre, et le résultat n'est évidemment pas celui que vous vouliez,\n"
+"4. vous modifiez à nouveau le paramètre du module, sans attendre la fin de la recomputation.\n"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:18
 #, no-wrap
 msgid "In that case, you want to kill all active pipelines because their output will not be used, and start recomputing everything immediately with new parameters. Except Darktable doesn't do that, it lets the pipeline finish before restarting it, and looking at the comments in the source code, it seems to be a fairly recent regression and not the originally intended behaviour.\n"
-msgstr ""
+msgstr "Dans ce cas, vous souhaitez annuler tous les pipelines actifs car leur résultat ne sera pas utilisé, et commencer immédiatement à tout recalculer avec les nouveaux paramètres. Sauf que Darktable ne fait pas ça, il laisse le pipeline se terminer avant de le redémarrer, et en regardant les commentaires dans le code source, il semble que ce soit une régression assez récente et non le comportement initialement prévu.\n"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:20
 #, no-wrap
 msgid "I have (re)implemented this feature in Ansel, but it's tricky because we are dealing with different threads (GUI, editing history and pipeline on CPU/OpenCL) and we need to synchronize them properly.\n"
-msgstr ""
+msgstr "J'ai (re)implémenté cette fonction dans Ansel, mais c'est délicat car nous avons affaire à différents threads (GUI, historique d'édition et pipeline sur CPU/OpenCL) et nous devons les synchroniser correctement.\n"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:22
 #, no-wrap
 msgid "If this goes bad, you may experience garbled previews from inconsistent cache states. This is a GUI issue only, and the mitigation strategy is to go to the global menu -> Run -> Invalidate all caches.\n"
-msgstr ""
+msgstr "Si cela tourne mal, vous risquez de rencontrer des aperçus déformés à cause d'états de cache incohérents. C'est uniquement un problème de GUI, et la stratégie d'atténuation consiste à aller dans le menu global -> Exécuter -> Invalider tous les caches.\n"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:24
 #, no-wrap
 msgid "To debug, you may start Ansel with :\n"
-msgstr ""
+msgstr "Pour déboguer, vous pouvez démarrer Ansel avec :\n"
 
 #. type: Fenced code block
 #: content/news/implementing-kill-switch.md:25
 #, no-wrap
 msgid "$ ansel -d perf\n"
-msgstr ""
+msgstr "$ ansel -d perf\n"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:30
 #, no-wrap
 msgid "When interacting with sliders and comboboxes in GUI (for example here in exposure module), you will get :\n"
-msgstr ""
+msgstr "Lorsque vous interagissez avec les curseurs et les comboboxes dans le GUI (par exemple ici dans le module d'exposition), vous obtiendrez :\n"
 
 #. type: Fenced code block
 #: content/news/implementing-kill-switch.md:31
@@ -2166,12 +2191,19 @@ msgid ""
 "100,563703 [dev_pixelpipe] took 0,005 secs (0,008 CPU) processed `unbreak input profile` on GPU, blended on GPU [full]\n"
 "...\n"
 msgstr ""
+"100,407003 [dev_process_all] envoyer un signal d'arrêt sur les pipelines en cours a pris 0,000 secondes (0,000 CPU)\n"
+"100,509816 [dev_pixelpipe] a pris 0,011 secondes (0,023 CPU) traité `exposition` sur le GPU, mélangé sur le GPU [complet]\n"
+"100,510498 [dev_pixelpipe] a pris 0,019 secondes (0,035 CPU) traité `exposition` sur le GPU, mélangé sur le GPU [aperçu]\n"
+"100,533228 [dev_pixelpipe] a pris 0,023 secondes (0,061 CPU) traité `correction de l'objectif` sur le GPU, mélangé sur le GPU [complet]\n"
+"100,558939 [dev_pixelpipe] a pris 0,026 secondes (0,129 CPU) traité `équaliseur de tonalité` sur le CPU, mélangé sur le CPU [complet]\n"
+"100,563703 [dev_pixelpipe] a pris 0,005 secondes (0,008 CPU) traité `profil d'entrée en surbrillance` sur le GPU, mélangé sur le GPU [complet]\n"
+"...\n"
 
 #. type: Plain text
 #: content/news/implementing-kill-switch.md:41
 #, no-wrap
 msgid "Normal behaviour is the `[dev_process_all] sending killswitch signal` line should appear at the time of your interaction, and should be followed by a recomputation starting at the module you interacted with (not the one before, not the one after), up to the end (display encoding module).\n"
-msgstr ""
+msgstr "Le comportement normal est que la ligne `[dev_process_all] envoyer un signal d'arrêt` devrait apparaître au moment de votre interaction, et devrait être suivie par une recomputation commençant au module avec lequel vous avez interagi (pas celui d'avant, pas celui d'après), jusqu'à la fin (module d'encodage d'affichage).\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/welcome-dev-docs/index.md:1
@@ -2183,103 +2215,103 @@ msgstr "Bienvenue à la documentation développeurs !"
 #: content/news/welcome-dev-docs/index.md:11
 #, no-wrap
 msgid "Back in December 2019, I asked that someone [took care of providing AppImages packages](https://github.com/darktable-org/darktable/issues/3925) for Darktable. The obvious benefit would have been enabling early testing, prior to release, from people who can't build the source code themselves, as to _hopefully_ provide early feedback and help debugging __before__ releasing. This has never been a priority, which means that it was ok to have a pre-release __and__ a post-release rush to fix bugs.\n"
-msgstr ""
+msgstr "En décembre 2019, j'ai demandé à quelqu'un de [s'occuper de fournir des packages AppImages](https://github.com/darktable-org/darktable/issues/3925) pour Darktable. Le bénéfice évident aurait été de permettre des tests anticipés, avant la sortie, de la part de personnes qui ne peuvent pas construire le code source elles-mêmes, afin de fournir __espérons-le__ des retours précoces et aider à déboguer __avant__ la publication. Cela n'a jamais été une priorité, ce qui signifie qu'il était acceptable d'avoir une ruée __avant__ et __après__ la sortie pour corriger les bugs.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:13
 #, no-wrap
 msgid "I was not joking when I said that Darktable was a burn-out factory, managed like the worst start-ups, except nobody will do an exit and it's basically a dry loss for everybody involved. I'm all the more angry about it that a lot of man-hours have been wasted on cluttering the UI with cosmetics, while having nightly builds for general use would have improved both the quality of the software, but also the comfort and quality of life of its maintainers. These goals obviously didn't matter.\n"
-msgstr ""
+msgstr "Je ne plaisantais pas quand j'ai dit que Darktable était une usine de burn-out, gérée comme les pires start-ups, sauf que personne ne fera un exit et c'est en gros une perte sèche pour tout le monde impliqué. Je suis d'autant plus en colère que beaucoup d'heures-homme ont été gaspillées à encombrer l'interface utilisateur avec des cosmétiques, alors que d'avoir des builds nocturnes à usage général aurait amélioré à la fois la qualité du logiciel ainsi que le confort et la qualité de vie de ses mainteneurs. Ces objectifs n'avaient évidemment pas d'importance.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:15
 #, no-wrap
 msgid "So, since one is never better served than by his own bugs, [I had to do it myself](https://github.com/aurelienpierreeng/ansel/commit/3852b1ba2c0be84c5130d4c21844f3199b3624b2), and in mid-December 2022, Ansel got AppImage nightly builds scripts that Darktable re-used a month later. With the cohorts of IT guys \"with no pixel math skills\" roaming around Darktable's hype and asking how they could help, of course, the best possible resource management was to divert man-hours from one of the very few math-able guys available on a purely IT task. That only took me something around 50 hours, because having a locally-working script is really not the same as whispering [YAML scripts](https://en.wikipedia.org/wiki/YAML) to Github Action's ears, and I had to learn it as I was doing it. Since Ansel takes 20 to 30 minutes to build (or fail) on Github Action instances, your working day is a long stuttering session of inefficient multi-tasking, while waiting for your script changes to yield a remote result. I hate programming, and I make do for maths and physics, but that kind of menial server configuration is really the worst kind of programming there is, insofar that it is neither creative nor cognitively challenging, it's only a time-consuming way of working around the design limitations of third-party APIs.\n"
-msgstr ""
+msgstr "Donc, puisque on n'est jamais mieux servi que par ses propres bugs, [j'ai dû le faire moi-même](https://github.com/aurelienpierreeng/ansel/commit/3852b1ba2c0be84c5130d4c21844f3199b3624b2), et mi-décembre 2022, Ansel a obtenu des scripts de builds AppImage nocturnes que Darktable a réutilisés un mois plus tard. Avec les cohortes de gars en IT \"sans compétences en mathématisation des pixels\" rôdant autour de la hype de Darktable et demandant comment ils pourraient aider, bien sûr, la meilleure gestion des ressources possibles était de détourner des heures-homme de l'un des très rares gars mathématiquement dispos à disposition sur une tâche purement IT. Cela ne m'a pris qu'environ 50 heures, car avoir un script fonctionnant localement n'est vraiment pas la même chose que murmurer des scripts [YAML](https://fr.wikipedia.org/wiki/YAML) aux oreilles de Github Action, et j'ai dû l'apprendre au fur et à mesure que je le faisais. Puisque Ansel prend 20 à 30 minutes pour se construire (ou échouer) sur les instances Github Action, votre journée de travail est une longue session de bégaiement de multi-tâches inefficace, en attendant que vos changements de script donnent un résultat à distance. Je déteste programmer, et je m'en sors pour les maths et la physique, mais ce genre de configuration de serveur banal est vraiment le pire genre de programmation qui soit, dans la mesure où ce n'est ni créatif ni cognitivement stimulant, c'est juste une manière chronophage de contourner les limitations de conception des API tierces.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:17
 #, no-wrap
 msgid "So, finally, Ansel was a semi-organized software project, able to include an userbase larger than just the die-hard geeks who look down on everyone unable to get GCC and CMake in building order, with a big \"download\" button on the [front page](/) that would always point to the latest build, without users having to figure out what the latest one was. Because a photo editor software should not filter out users based on their computer litteracy, whether or not it comes from the Linux world (which really is no excuse), or there is a memo from the free software Fundation that I didn' get.\n"
-msgstr ""
+msgstr "Donc, finalement, Ansel était un projet logiciel semi-organisé, capable d'inclure une base d'utilisateurs plus large que simplement les geeks endurcis qui méprisent tous ceux qui ne peuvent pas mettre GCC et CMake en ordre de build, avec un gros bouton \"télécharger\" sur la [page d'accueil](/) qui pointerait toujours vers le build le plus récent, sans que les utilisateurs aient à déterminer lequel était le plus récent. Parce qu'un logiciel de retouche photo ne devrait pas filtrer les utilisateurs en fonction de leur culture informatique, qu'elle vienne ou non du monde Linux (ce qui n'est vraiment pas une excuse), ou il y a un mémo de la Fondation du logiciel libre que je n'ai pas reçu.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:19
 #, no-wrap
 msgid "But the last major issue was the lack of a developer documentation. Back in 2018, when I started contributing to Darktable, I had a very hard time grasping how the internals were wired, from just reading the code. 7 years later, even with all my experience, I still have to reverse-engineer my way through the code, using as much [`grep`](https://en.wikipedia.org/wiki/Grep) as my intuition, because the code is not modular, few places use APIs, comments are lacking, and line-by-line [Git blame](https://git-scm.com/docs/git-blame) doesn't always allow to go back in the history of design changes when someone committed (useless) code formatting changes.\n"
-msgstr ""
+msgstr "Mais le dernier problème majeur était l'absence de documentation pour les développeurs. En 2018, lorsque je commençais à contribuer à Darktable, j'avais beaucoup de mal à comprendre comment les internes étaient câblés, rien qu'en lisant le code. 7 ans plus tard, même avec toute mon expérience, je dois encore rétro-ingénier mon chemin à travers le code, utilisant autant de [`grep`](https://fr.wikipedia.org/wiki/Grep) que mon intuition, car le code n'est pas modulaire, peu d'endroits utilisent des API, les commentaires manquent, et la ligne par ligne [Git blame](https://git-scm.com/docs/git-blame) ne permet pas toujours de remonter dans l'historique des changements de conception lorsque quelqu'un a commis des (inutiles) modifications de mise en forme de code.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:21
 #, no-wrap
 msgid "That lack of developer documentation led to many features being implemented more than once, in several places, by several developers (and sometimes even by the same, over the years). At the time of writing, there are still 4 or 5 different ways, in Ansel, to write a picture history from library database to a sidecar XMP file. Some of these ways are rarely used, thus barely tested, and bugs there could go unnoticed for years, until someone reports the super-peculiar bug hidden in the forest of options. Then, for the maintainer in charge, it's a silly game of figuring out why XMP fail only in a some circumstances, which requires archaeology into the code base to figure out that it doesn't use the main XMP writing method. XMP are a specific, and still current, example, but there were many others. You get the idea.\n"
-msgstr ""
+msgstr "Ce manque de documentation pour les développeurs a conduit à de nombreuses fonctionnalités être implémentées plus d'une fois, à plusieurs endroits, par plusieurs développeurs (et parfois même par le même, au fil des ans). Au moment d'écrire ces lignes, il y a encore 4 ou 5 façons différentes, dans Ansel, d'écrire l'historique d'une image de la base de données de la bibliothèque à un fichier sidecar XMP. Certaines de ces méthodes sont rarement utilisées, donc peu testées, et les bugs peuvent passer inaperçus pendant des années, jusqu'à ce que quelqu'un signale le bug super-particulier caché dans la forêt d'options. Ensuite, pour le mainteneur en charge, c'est un stupide jeu de deviner pourquoi XMP échoue uniquement dans certaines circonstances, ce qui nécessite des fouilles archéologiques dans le code source pour découvrir qu'il n'utilise pas la méthode principale d'écriture XMP. Les XMP sont un exemple spécifique et toujours d'actualité, mais il y en avait d'autres. Vous comprenez l'idée.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:23
 #, no-wrap
 msgid "I had noted for several years that (old) Darktable C header files had pretty much all [Doxygen docstrings](https://www.doxygen.nl/manual/docblocks.html). This is a very lazy way of doing documentation: run the command `doxygen -g <config-file>` against your source code directory, and Doxygen will build you an HTML static website of all APIs. Then you can dump all HTML files to a webserver directory, and call that your dev docs : the only tedious bit is to write the configuration file, which you do only once. So I did that: [dev.ansel.photos](https://dev.ansel.photos). API that I have rewritten (like [`selection.h`](https://dev.ansel.photos/selection_8h.html)) are documented as I made progress. Higher-level descriptions of the software architecture are incoming.\n"
-msgstr ""
+msgstr "J'avais noté depuis plusieurs années que les fichiers d'en-tête C (anciens) de Darktable avaient à peu près tous des [docstrings Doxygen](https://www.doxygen.nl/manual/docblocks.html). C'est une manière très paresseuse de faire de la documentation : exécutez la commande `doxygen -g <config-file>` contre votre répertoire de code source, et Doxygen vous construira un site Web statique HTML de toutes les API. Ensuite, vous pouvez déposer tous les fichiers HTML dans un répertoire de serveur Web, et appeler ça votre doc de dev : la seule partie fastidieuse est d'écrire le fichier de configuration, que vous faites seulement une fois. Donc je l'ai fait : [dev.ansel.photos](https://dev.ansel.photos). L'API que j'ai réécrite (comme [`selection.h`](https://dev.ansel.photos/selection_8h.html)) est documentée à mesure que j'avance. Des descriptions de haut niveau de l'architecture logicielle sont à venir.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:25
 #, no-wrap
 msgid "The great thing about Doxygen is it also produces dependency graphs of \"modules\" and APIs. And that's where you can actually see why I call Darktable's code spaghetti. This is the dependency graph of `accelerators.h`, the keyboard and MIDI shortcuts backend:\n"
-msgstr ""
+msgstr "Le gros avantage de Doxygen est qu'il produit également des graphes de dépendance des \"modules\" et API. Et c'est là que vous pouvez vraiment voir pourquoi j'appelle le code de Darktable des spaghettis. Voici le graphe de dépendance de `accelerators.h`, la partie backend pour les raccourcis clavier et MIDI :\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:27
 #, no-wrap
 msgid "![](accelerators-before.jpg)\n"
-msgstr ""
+msgstr "![](accelerators-before.jpg)\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:29
 #, no-wrap
 msgid "That shows you that the accelerators backend is absolutely not modular: it inherits the whole software. So any change elsewhere may have unforseen effects in there, and the other way around. Which is all the more concerning since this file has the [highest cyclomatic complexity of the whole software](https://sonarcloud.io/component_measures?id=aurelienpierre_darktable&metric=complexity&view=list), which makes it the most challenging file to maintain (I don't even dare to say _extend_, at that point it would be irresponsible). But it's also completely twisted in terms of direction of includes : shortcuts are a basic block that should __be included__ (aka _inherited_) in the GUI places that will implement shortcuts (darkroom/lighttable views, sliders and comboboxes, modules). Instead, the graph (and the file `#include` header) shows that shortcuts are also including (_inheriting_) their \"children\", so we have a double dependency and that's the worst possible way of doing it.\n"
-msgstr ""
+msgstr "Cela montre que le backend des accélérateurs n'est absolument pas modulaire : il hérite de l'ensemble du logiciel. Donc, tout changement ailleurs peut avoir des effets imprévus là-bas, et vice versa. Ce qui est d'autant plus préoccupant puisque ce fichier a la [complexité cyclomatique la plus élevée de tout le logiciel](https://sonarcloud.io/component_measures?id=aurelienpierre_darktable&metric=complexity&view=list), ce qui en fait le fichier le plus difficile à maintenir (je n'ose même pas dire _étendre_, à ce stade, ce serait irresponsable). Mais c'est aussi complètement tordu en termes de direction des inclusions : les raccourcis sont un bloc de base qui devrait __être inclus__ (alias _hérité_) dans les endroits de l'GUI qui implémenteront les raccourcis (vues chambre noire/table lumineuse, curseurs et comboboxes, modules). Au lieu de cela, le graphe (et l'en-tête du fichier `#include`) montre que les raccourcis incluent également (_héritent_) de leurs \"enfants\", donc nous avons une double dépendance et c'est la pire façon possible de le faire.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:31
 #, no-wrap
 msgid "It's like building a house : the house should be aware of its walls, the walls should be aware of their bricks. Why ? Because the house is _made of_ walls, and the walls are _made of_ bricks, so every sub-component determines the nature and behaviour of the assembly, therefore the assembly has to know its immediate components. You don't make bricks aware of the house, because they won't change their nature depending on the assembly they belong to, and that would be a terribly flawed design. Same as it's an unnecessary level of micro-management to make the house aware of the bricks: once it's aware of its walls, it's up to the walls to account for the behaviour of their bricks, and maybe dispatch relevant info to the house. Object-oriented languages have builtin (and mandatory) ways of dealing with all that cleanly. But it's C, so you can do whatever the fuck you want to do. Doesn't mean it's a good idea, doesn't mean you should. And, well, C __not__ being an intrisincally object-oriented language is not an obstacle to using object patterns, inheritance and modularity. It's just that the developer will get no help from the language syntax to do so.\n"
-msgstr ""
+msgstr "C'est comme construire une maison : la maison devrait être consciente de ses murs, les murs devraient être conscients de leurs briques. Pourquoi ? Parce que la maison est __faite de__ murs, et les murs sont __faits de__ briques, donc chaque sous-composant détermine la nature et le comportement de l'assemblage, donc l'assemblage doit connaître ses composants immédiats. Vous ne faites pas que les briques soient conscientes de la maison, car elles ne changeront pas de nature en fonction de l'assemblée à laquelle elles appartiennent, et ce serait un design terriblement défaillant. De même qu'il s'agit d'un niveau de micro-gestion inutile de faire en sorte que la maison soit consciente des briques : une fois qu'elle est consciente de ses murs, c'est aux murs de rendre compte du comportement de leurs briques, et peut-être de distribuer l'info pertinente à la maison. Les langages orientés objet ont des moyens intégrés (et obligatoires) de gérer tout cela proprement. Mais c'est C, donc vous pouvez faire ce que bon vous semble. Cela ne signifie pas que c'est une bonne idée, cela ne signifie pas que vous devriez. Et, bien, le C __n'étant__ pas un langage intrinsèquement orienté objet n'est pas un obstacle à l'utilisation des modèles d'objet, de l'héritage et de la modularité. C'est juste que le développeur n'aura aucune aide de la syntaxe du langage pour le faire.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:33
 #, no-wrap
 msgid "This is the same file after my complete rewrite of the shortcuts backend:\n"
-msgstr ""
+msgstr "Voici le même fichier après ma réécriture complète du backend des raccourcis :\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:35
 #, no-wrap
 msgid "![](accelerators-after.jpg)\n"
-msgstr ""
+msgstr "![](accelerators-after.jpg)\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:37
 #, no-wrap
 msgid "That clearly shows that the new shortcuts handler is a thin wrapper over Gtk native shortcuts, it doesn't know the rest of the software and doesn't care. We can look at the `accelerators.c` file too:\n"
-msgstr ""
+msgstr "Cela montre clairement que le nouveau gestionnaire de raccourcis est un mince emballeur sur les raccourcis natifs de Gtk, il ne connaît pas le reste du logiciel et s'en moque. Nous pouvons regarder le fichier `accelerators.c` aussi :\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:39
 #, no-wrap
 msgid "![](accelerators-after-2.jpg)\n"
-msgstr ""
+msgstr "![](accelerators-after-2.jpg)\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:41
 #, no-wrap
 msgid "Now, there are lots of includes there from `darktable.h`, which is used only to get the debug helpers (they should be refactored away from that file), and includes a lot of unneeded crap too. Anyway, `accelerators.c` is aware only of Gtk/Gdk, which means it is a real module: it's completly isolated from the rest of the software. GUI widgets that implement shortcuts will declare their shortcut path, like `Ansel/Global/Menu/File/Import`, their default keys, and a reference (pointer) to themselves. Widget-less actions that have shortcuts will declare a callback function and input data to the shortcuts handler, instead of a pointer to a widget.\n"
-msgstr ""
+msgstr "Maintenant, il y a beaucoup d'inclusions là-bas depuis `darktable.h`, qui est utilisé uniquement pour obtenir les aides au débogage (elles devraient être refactorisées loin de ce fichier), et inclut beaucoup de bazar inutile aussi. Quoi qu'il en soit, `accelerators.c` est conscient uniquement de Gtk/Gdk, ce qui signifie qu'il s'agit d'un vrai module : il est complètement isolé du reste du logiciel. Les widgets d'interface graphique qui implémentent des raccourcis déclareront leur chemin de raccourci, comme `Ansel/Global/Menu/File/Import`, leurs touches par défaut et une référence (pointeur) vers eux-mêmes. Les actions sans widget qui ont des raccourcis déclareront une fonction de rappel et des données d'entrée au gestionnaire de raccourcis, plutôt qu'un pointeur vers un widget.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:43
 #, no-wrap
 msgid "We save/restore the pathes and keys associations to/from the `keyboardrc` file, and that's it. There is no window to define shortcuts in GUI at this time, but making one will only have to list (loop over) known pathes and their associated keys. When the shortcuts handler catches a known combination of keys:\n"
-msgstr ""
+msgstr "Nous sauvegardons/restaurons les chemins et associations de clés vers/depuis le fichier `keyboardrc`, et c'est tout. Il n'y a pas de fenêtre pour définir des raccourcis dans le GUI à ce moment-là, mais en créer une ne fera que lister (boucler sur) les chemins connus et leurs touches associées. Lorsque le gestionnaire de raccourcis capture une combinaison de touches connue :\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:46
@@ -2288,54 +2320,56 @@ msgid ""
 "- for the widget-attached actions, it will send an `activate` Gtk signal to the relevant widget, and that widget will do its own thing through a callback (which is the same as the callback handling clicks, so the code is uniform between clicks and keyboard activation),\n"
 "- for the widget-less actions, it will directly call the declared callback function over the declared data.\n"
 msgstr ""
+"- pour les actions attachées au widget, il enverra un signal `activate` Gtk au widget concerné, et ce widget fera sa propre chose via un callback (ce qui est le même que le callback gérant les clics, donc le code est uniforme entre les clics et l'activation via clavier),\n"
+"- pour les actions sans widget, il appellera directement la fonction callback déclarée sur les données déclarées.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:48
 #, no-wrap
 msgid "Both ways, the `accelerators` module communicates with the rest of the application through an interface exchanging 4 data fields, in a completely opaque way. As long as the interface doesn't change, changes can be made everywhere: they will stay enclosed into their module. With proper skills, this logic _could have_ been extended to MIDI devices support. But that's the difference between engineering and prototyping proof of concepts that should never make it into production.\n"
-msgstr ""
+msgstr "Dans les deux cas, le module `accelerators` communique avec le reste de l'application via une interface échangeant 4 champs de données, de manière complètement opaque. Tant que l'interface ne change pas, les changements peuvent être effectués partout : ils resteront enfermés dans leur module. Avec des compétences appropriées, cette logique __aurait__ pu être étendue au support des appareils MIDI. Mais c'est la différence entre l'ingénierie et les preuves de concept de prototypage qui ne devraient jamais se retrouver en production.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:50
 #, no-wrap
 msgid "This is unfortunately a trademark of the Darktable's way of doing things: GUI code is incrusted everywhere, even in SQL code. The other way around, SQL code is found in many GUI places (lighttable, history management, image tagging, etc.). Dependency graphs, embedded in Doxygen, are a very nice side-effect that shows the depth of the problem and make the spaghetti very obvious, because, apparently, problems don't exist until you actually see them yourself.\n"
-msgstr ""
+msgstr "C'est malheureusement une marque de fabrique de la manière de faire de Darktable : le code de l'GUI est incrusté partout, même dans le code SQL. À l'inverse, le code SQL se retrouve dans de nombreux endroits de l' GUI (table lumineuse, gestion de l'historique, étiquetage des images, etc.). Les graphes de dépendance, intégrés dans Doxygen, sont un effet secondaire très sympa qui montre la profondeur du problème et rend les spaghettis très évidents, car, apparemment, les problèmes n'existent pas tant que vous ne les voyez pas vous-même.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:52
 #, no-wrap
 msgid "But it doesn't stop there. As I was writing my own Doxygen config file, I got an error: Doxygen reported 2 config files and was confused. It turns out that Darktable had everything wired for automated developer documentation generation [since 2010](https://github.com/darktable-org/darktable/commits/master/doc/doxygen.conf). Why it was never put into production, and actually hosted on some server, is not merely wrong priorities: it's negligence.\n"
-msgstr ""
+msgstr "Mais cela ne s'arrête pas là. En écrivant mon propre fichier de configuration Doxygen, j'ai obtenu une erreur : Doxygen a signalé 2 fichiers de config et était confus. Il s'avère que Darktable avait tout câblé pour la génération automatisée de documentation de développeur [depuis 2010](https://github.com/darktable-org/darktable/commits/master/doc/doxygen.conf). Pourquoi cela n'a jamais été mis en production, et réellement hébergé sur un serveur, n'est pas simplement des priorités erronées : c'est de la négligence.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:54
 #, no-wrap
 msgid "Of course, it doesn't help that the guy owning the `darktable.org` domain is not the same as the one managing the server where it's actually hosted. And the guy having actual commit rights over the `darktable.org` website is yet another one. The most pressing thing to do, when you are an open-source project making zero dollar of income, is to reproduce __all__ the mistakes of the corporate world, from the pressure to release half-baked shit at an irresponsible frequency, to the scattering of responsibilities between \"services\" that don't really communicate with each other (or with great delays). Because, in software (whether opensource or not), mistakes are meant to be reproduced. And since software has taken over the world, even in places that didn't need it, that says a lot about the world we live in.\n"
-msgstr ""
+msgstr "Bien sûr, cela n'aide pas que le type possédant le domaine `darktable.org` ne soit pas le même que celui qui gère le serveur où il est réellement hébergé. Et celui qui a tous les droits de commit sur le site Web `darktable.org` est encore un autre. La chose la plus urgente à faire, lorsque vous êtes un projet open-source sans aucun revenu, c'est de reproduire __toutes__ les erreurs du monde de l'entreprise, de la pression pour publier des choses à moitié finies à une fréquence irresponsable, à la dispersion des responsabilités entre les \"services\" qui ne communiquent pas vraiment entre eux (ou avec de grands délais).Parce qu'en logiciel (que ce soit open-source ou non), les erreurs sont faites pour être reproduites. Et comme le logiciel a pris le monde d'assaut, même dans des endroits qui n'avaient pas besoin de lui, cela en dit long sur le monde dans lequel nous vivons.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:56
 #, no-wrap
 msgid "The one thing I still truly don't get, though is : why the urgency ? Why keep working that badly given that there is no pressure nor financial incentive to do so ? Open-source is (could have been) the one place where we could actually work properly and take the necessary time to produce long-term quality. And even there, the shortsightedness of capitalism has taken over.\n"
-msgstr ""
+msgstr "La seule chose que je ne comprends toujours pas vraiment, cependant, c'est : pourquoi l'urgence ? Pourquoi continuer à travailler aussi mal alors qu'il n'y a ni pression ni incitation financière à le faire ? L'open-source est (aurait pu être) le seul endroit où nous pourrions vraiment bien travailler et prendre le temps nécessaire pour produire de la qualité à long terme. Et même là, la myopie du capitalisme a pris le dessus.\n"
 
 #. type: Plain text
 #: content/news/welcome-dev-docs/index.md:57
 #, no-wrap
 msgid "_If only users knew the state of deep shit this project fell into and how all the man-hours invested on it are actively making it worse…_\n"
-msgstr ""
+msgstr "_Si seulement les utilisateurs connaissaient l'état de marasme dans lequel ce projet est tombé et comment toutes les heures-homme investies en lui contribuent activement à l'aggraver..._\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:1
 #, no-wrap
 msgid "Fixing the pipeline cache and 10 years-old bugs"
-msgstr ""
+msgstr "Correction du cache de pipeline et des bugs vieux de 10 ans"
 
 #. type: Title ##
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:10
 #, no-wrap
 msgid "Recap of the previous episodes"
-msgstr ""
+msgstr "Récapitulatif des épisodes précédents"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:17
@@ -2347,48 +2381,53 @@ msgid ""
 "3. I [fixed that](./undarktable-ing-gui-controls.md) by almost rewriting the custom GUI controls (Bauhaus lib). I thought that preventing reckless recompute orders was gonna solve the lag : it didn't. Then, I discovered that requesting a new pipeline recompute before the previous ended waited for the previous to end, despite a shutdown mechanism implemented many years ago that should have worked.\n"
 "4. I [fixed that](./implementing-kill-switch.md) by implementing a kill-switch mechanism on pipelines, following comments in the code from the 2010's and internal utilities that may well have never worked. This did not always work because the kill order came often with a noticeable delay. Once again, the GUI lag was not fixed.\n"
 msgstr ""
+"0. Entre 2020 et 2022, [Darktable a subi une entreprise de destruction massive ](./darktable-dans-le-mur-au-ralenti/index.en.md), par une poignée de gars avec plus de temps libre et de bienveillance que de réelles compétences,\n"
+"1. En 2022, [j'ai commencé à remarquer un décalage ennuyeux](https://github.com/aurelienpierreeng/ansel/issues/29) entre les interactions GUI avec les curseurs et feedback/ mise à jour de ces curseurs. En l'absence de feedback indiquant que le changement de valeur était enregistré, les utilisateurs pouvaient le changer à nouveau, lançant ainsi des recomputes supplémentaires de pipeline et gelant effectivement leur ordinateur car le GUI stupide n'a jamais dit \"je t'ai eu, attends un peu maintenant\".\n"
+"2. J'ai découvert que les ordres de recompte de pipelines étaient émis deux fois par clic (une fois sur les événements \"bouton enfoncé\", une fois sur les événements \"bouton relâché\"), et encore une fois pour chaque mouvement de souris, mais aussi que les états GUI étaient mis à jour apparemment après le recomputée de pipeline.\n"
+"3. J'ai [corrigé cela](./undarktable-ing-gui-controls.md) en réécrivant presque complètement les contrôles GUI personnalisés (lib Bauhaus). Je pensais que la prévention des ordres de recomputation inconsidérés allait résoudre le décalage : ce n'était pas le cas. Ensuite, j'ai découvert que la demande d'une nouvelle recompte de pipeline avant la fin de la précédente attendait que la précédente se termine, malgré un mécanisme d'arrêt mis en œuvre il y a de nombreuses années qui aurait dû fonctionner.\n"
+"4. J'ai [corrigé cela](./implementing-kill-switch.md) en mettant en œuvre un mécanisme de bouton d'arrêt sur les pipelines, suivant les commentaires dans le code datant des années 2010 et des fonctions internes qui n'ont peut-être jamais fonctionné. Cela ne fonctionnait pas toujours car l'ordre d'arrêt venait souvent avec un délai notable. Encore une fois, le décalage GUI n'était pas corrigé.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:19
 #, no-wrap
 msgid "…\n"
-msgstr ""
+msgstr "…\n"
 
 #. type: Title ##
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:21
 #, no-wrap
 msgid "Episode 5 : paying the technical debt"
-msgstr ""
+msgstr "Épisode 5 : payer la dette technique"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:24
 #, no-wrap
 msgid "What I discovered should really make it to the manuals of computer science in the chapter about what __not__ to do if you want to write a semi-reliable application.\n"
-msgstr ""
+msgstr "Ce que j'ai découvert devrait vraiment figurer dans les manuels d'informatique au chapitre sur ce qu'il __ne faut pas__ faire si vous voulez écrire une application semi-fiable.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:26
 #, no-wrap
 msgid "So, whenever an image-processing parameter was changed in a module, a request was sent to add a new history entry into the database (often more than once per interaction, as shown above). History entries are nothing more than a snapshot of one module's internal parameters (including masks). If a change was detected compared to the previous history entry, a `PIPELINE_STATE` flag was set to the value `DIRTY` to indicate that the pipe would need a recompute and a `gtk_widget_queue_draw()` was sent which, as the name suggests, asks Gtk to redraw the main darkroom preview and the navigation thumbnail, but __in an asynchronous way__ (understand : whenever it finds the time, after everything previously started completes). This will have its importance later.\n"
-msgstr ""
+msgstr "Donc, chaque fois qu'un paramètre de traitement d'image était modifié dans un module, une demande était envoyée pour ajouter une nouvelle entrée d'historique dans la base de données (souvent plus d'une fois par interaction, comme indiqué ci-dessus). Les entrées d'historique ne sont rien d'autre qu'un instantané des paramètres internes d'un module (y compris les masques). Si un changement était détecté par rapport à l'entrée d'historique précédente, un indicateur `PIPELINE_STATE` était défini sur la valeur `DIRTY` pour indiquer que le pipeline nécessiterait une recompte et un `gtk_widget_queue_draw()` était envoyé ce qui, comme le nom le suggère, demande à Gtk de redessiner l'aperçu principal de la chambre noire et la vignette de navigation, mais __de manière asynchrone__ (comprenez : chaque fois qu'il trouve le temps, après que tout ce qui a été démarré précédemment soit terminé). Cela aura son importance plus tard.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:28
 #, no-wrap
 msgid "It took me a __very long time__ to figure out how the pipeline was actually started, because none of the code attached to modules and pipeline contained anything saying \"go compute that\". In other words, none of the module code contained any explicit recompute instruction.\n"
-msgstr ""
+msgstr "Il m'a fallu un __très long temps__ pour comprendre comment le pipeline était réellement lancé, car aucun des codes attachés aux modules et au pipeline ne contenait quoi que ce soit disant \"aller calculer ça\". En d'autres termes, aucun des codes de module ne contenait d'instruction explicite de recompte.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:30
 #, no-wrap
 msgid "I had to reverse-engineer the pipeline code from the other end, looking for how the pipeline __could__ be started and greping each option, until I figured out the unspeakable : the first generation of Darktable's devs had wired a callback function to the `redraw` event on the darkroom main preview and navigation thumbnail, but in a completely unrelated place in the code. In that __GUI__ callback, the value of the `PIPELINE_STATE` flag was checked, and either sent the backbuffer pixmap directly to the widget if the flag was `VALID` or asked for a pipe recompute if the flag was `DIRTY`, and that recompute __itself requested a `gtk_widget_queue_draw()`__ upon completion.\n"
-msgstr ""
+msgstr "J'ai dû rétro-ingénérer le code de pipeline depuis l'autre extrémité, à la recherche de la manière dont le pipeline __pourrait__ être démarré et en essayant chaque option, jusqu'à ce que je comprenne l'indicible : la première génération de développeurs de Darktable avait câblé une fonction de rappel au événement `redraw` sur l'aperçu principal de la chambre noire et la vignette de navigation, mais dans un endroit complètement sans rapport dans le code. Dans ce rappel __GUI__, la valeur de l'indicateur `PIPELINE_STATE` était vérifiée, et soit envoyait le pixmap du tampon de fond directement au widget si l'indicateur était `VALID` soit demandait un recompte du pipeline si l'indicateur était `DIRTY`, et cette recompte __elle-même demandait un `gtk_widget_queue_draw()`__ à l'achèvement.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:32
 #, no-wrap
 msgid "This method has one merit : it's lazy coding. Then it has a shitload of drawbacks and issues :\n"
-msgstr ""
+msgstr "Cette méthode a un mérite : c'est un codage paresseux. Ensuite, elle a une quantité astronomique d'inconvénients et de problèmes :\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:38
@@ -2400,12 +2439,17 @@ msgid ""
 "3. it prevents any kill-switch mechanism from being useful, both because of delays and because of flags readings were interleaved with thread locks (and race conditions). In addition, waiting to acquire the pipeline thread lock (mutex) would freeze the GUI thread during the corresponding time, which was probably one of the causes of the slider lag before updating its position,\n"
 "4. the chained calls to the `redraw` event callback, through `gtk_widget_queue_draw()`, promoted \"endless\" stuttering loops of (useless) intermediate redraws which seemed to hit people with slow computers more than those with power beasts. Those were particularly difficult to reproduce, depending on hardware performance, so you can find forums were people are convinced that Darktable is the slowest software ever while others report excellent performance.\n"
 msgstr ""
+"1. elle n'est __pas__ favorable aux développeurs, surtout dans un projet logiciel où la recherche de code et les commentaires sont toute la doc que nous pouvons espérer. Cela a pris de nombreuses heures pour comprendre la logique à travers l'archéologie des programmes. Si une commande est émise, je veux lire `command_issued()` au bon endroit dans le code, car le C est déjà suffisamment difficile à suivre sans ajouter des devinettes dans le débogage.\n"
+"2. puisque `gtk_widget_queue_draw()` (appelé __deux fois__ dans le pire des cas) n'est ajouté que dans la file d'attente et traité de manière asynchrone, cela ajoute le retard que Gtk pourrait souffrir (tout en traitant d'autres morceaux de l'interface graphique ou des cadres précédents) avant qu'un recompte du pipeline ne soit seulement commencé, ce qui est inutile puisque le pipeline vit dans son propre thread en parallèle,\n"
+"2. le formidable gratin MIDI, écoutant pour les événements de pointage, de claviers et MIDI pour distribuer les raccourcis, semblait avoir surchargé le GUI global avec des écouteurs parcourant toutes les combinaisons de raccourcis connues, ce qui rendait Gtk tellement à la traîne qu'il est devenu perceptible,\n"
+"3. cela empêche tout mécanisme d'arrêt d'être utile, à la fois en raison des délais et parce que les lectures de drapeaux étaient croisées avec des verrouillages de threads (et des conditions de course). De plus, attendre de récupérer le verrou (mutex) de thread du pipeline bloquerait le thread GUI pendant le temps correspondant, ce qui était probablement l'une des causes du décalage du curseur avant la mise à jour de sa position,\n"
+"4. les appels enchaînés au rappel `redraw` par `gtk_widget_queue_draw()`, ont promu des boucles de hoquet \"sans fin\" de redessins (inutiles) intermédiaires qui semblaient toucher davantage les personnes avec des ordinateurs lents que celles avec des bêtes puissantes. Celles-ci étaient particulièrement difficiles à reproduire, en fonction de la performance matérielle, alors vous pouvez trouver des forums où des gens sont convaincus que Darktable est le logiciel le plus lent jamais tandis que d'autres rapportent une excellente performance.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:40
 #, no-wrap
 msgid "So I fixed the whole logic by :\n"
-msgstr ""
+msgstr "J'ai donc corrigé toute la logique :\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:44
@@ -2415,42 +2459,45 @@ msgid ""
 "2. handling explicit pipeline recomputes in the module and history code, with the pipeline recomputes asking for a widget redraw upon pipeline completion, (yes, it's more code, and it is tedious, but now you can optimize recomputes manually — performance matters),\n"
 "3. removing the special handling of \"duplicate\" history items (leading to some pollution when dealing with masks, this will need to be fixed later).\n"
 msgstr ""
+"1. en rendant le rappel `redraw` stupide (dessin de n'importe quel tampon pixmap disponible, inconditionnellement),\n"
+"2. en gérant explicitement les recomptes de pipeline dans le code du module et de l'historique, avec les recomptes de pipeline demandant un redessinement du widget à l'achèvement du pipeline (oui, c'est plus de code, et c'est fastidieux, mais maintenant vous pouvez optimiser manuellement les recomptes — les performances comptent),\n"
+"3. en supprimant le traitement spécial des \"doublons\" d'éléments d'historique (menant à une certaine pollution lors de la gestion des masques, cela devra être corrigé plus tard).\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:46
 #, no-wrap
 msgid "You might think that was a problem solved and a job well done, but that's leaving Darktable's geniuses out of the equation.\n"
-msgstr ""
+msgstr "Vous pourriez penser que c'était un problème résolu et un travail bien fait, mais c'est laisser de côté les génies de Darktable.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:48
 #, no-wrap
 msgid "See, the _crop_ and _perspective_ modules are special modules : opening them enables an \"editing mode\" that disables any cropping to show the full image. This is needed to drag the cropping frame (or adjust other positionnings) from the main preview, over the full original image. Problem is, there was no explicit way of asking for a pipe recompute… other than adding a new history item. So the modules added a fake history item (later reverted) only to invalidate the pipe and call the `gtk_widget_queue_draw()` function. But then, that polluted the history stack with \"empty\" steps, so another guy added a special handling case that merged history steps if no parameter changes happened. But then, the history stack (from the _history_ module, as stored in database) does not follow the _undo/redo_ history stack, leading users to misunderstandings regarding what _undo/redo_ really does.\n"
-msgstr ""
+msgstr "Voyez, les modules _crop_ et _perspective_ sont des modules spéciaux : les ouvrir active un \"mode d'édition\" qui désactive toute découpe afin d'afficher l'image complète. Cela est nécessaire pour déplacer le cadre de découpe (ou ajuster d'autres positionnements) depuis l'aperçu principal, sur l'image originale complète. Le problème était qu'il n'y avait aucun moyen explicite de demander un recalcul de la chaîne de traitement… à part ajouter un nouvel élément d'historique. Ainsi, les modules ajoutaient un faux élément d'historique (plus tard rétabli) uniquement pour invalider la chaîne et appeler la fonction `gtk_widget_queue_draw()`. Mais cela polluait alors la pile d'historique avec des étapes \"vides\", de sorte qu'une autre personne a ajouté un traitement spécial qui fusionnait les étapes de l'historique si aucun changement de paramètre ne se produisait. Cependant, la pile d'historique (du module _historique_, telle que stockée dans la base de données) ne suit pas la pile d'historique _annuler/rétablir_, entraînant une confusion chez les utilisateurs quant à ce que _annuler/réparer_ fait réellement.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:50
 #, no-wrap
 msgid "__And this, ladies and gentlemen, is how shitty design is promoting more shittier design in an endless sprawl of madness.__\n"
-msgstr ""
+msgstr "__Et voici, mesdames et messieurs, comment un mauvais design incite à un design encore pire dans une expansion incessante de folie.__\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:52
 #, no-wrap
 msgid "Remember that all that stems from the need to make the pipe kill-switch work, so you can interrupt a recompute in the middle when you know its output will be discarded anyway. So for that I had to move the recompute request out of Gtk code, and call it everywhere required. But then I had to rewire the pipeline updating logic in _crop_, _perspective and rotation_, _liquify_ and _borders_ modules, and I still have to fix _retouch_ (which is the worse PITA of the lot).\n"
-msgstr ""
+msgstr "Souvenez-vous que tout cela découle de la nécessité de faire fonctionner le commutateur d'arrêt d'urgence de la chaîne de traitement, pour que vous puissiez interrompre un recalcul en milieu de processus lorsque vous savez que son résultat sera de toute façon ignoré. J'ai donc dû déplacer la demande de recalcul hors du code Gtk et l'appeler partout où c'était nécessaire. Mais ensuite, j'ai dû reconfigurer la logique de mise à jour de la chaîne de traitement dans les modules _crop_, _perspective et rotation_, _liquéfier_ et _borders_, et je dois encore réparer _retouche_ (qui est le pire casse-tête du lot).\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:54
 #, no-wrap
 msgid "Other than making it clearer to read, and possible to optimize the calls, the current logic also starts the pipe outside of the GUI thread, without waiting for Gtk to _please_ find the time to redraw the frame. As usual, people with crazy CPU will notice little to no benefit, performance-wise, which is probably why this is a non-issue in the Darktable team in the first place.\n"
-msgstr ""
+msgstr "Outre la clarté de lecture et la possibilité d'optimiser les appels, la logique actuelle démarre également la chaîne en dehors du thread GUI, sans attendre que Gtk trouve le temps de redessiner le cadre. Comme d'habitude, les personnes avec un CPU de folie ne remarqueront que peu ou pas d'avantages en termes de performance, ce qui est probablement la raison pour laquelle c'est un non-problème pour l'équipe de Darktable en premier lieu.\n"
 
 #. type: Title ##
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:55
 #, no-wrap
 msgid "Episode 6 : paying the back interests on the technical debt"
-msgstr ""
+msgstr "Épisode 6 : payer les intérêts de retard de la dette technique"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:59
@@ -2459,18 +2506,24 @@ msgid ""
 "So, at that point, I had made pipeline recomputes explicit from the modules and GUI controls, and dispatched them sparingly (which is the benefit of dispatching them explicitely). And still, I noticed that playing with modules coming late in the pipe was slow. In fact, launching `ansel -d perf` showed that\n"
 "all the pipeline, starting at the _demosaicing_ module, was recomputed even though I was interacting with a late module that took its input from _color balance_.\n"
 msgstr ""
+"À ce stade, j'avais rendu les recalculs de la chaîne explicites depuis les modules et les contrôles GUI, et les avais distribués avec parcimonie (ce qui est l'avantage de les dispatcher explicitement). Et pourtant, j'ai remarqué que jouer avec des modules arrivant tard dans la chaîne était lent. En fait, lancer `ansel -d perf` a montré que\n"
+"toute la chaîne de traitement, à partir du module _démoisaillage_, était recalculée même si j'interagissais avec un module tardif prenant son entrée de _équilibre des couleurs_.\n"
+"À ce stade, j'avais rendu les recalculs de la chaîne explicites depuis les modules et les contrôles GUI, et les avais distribués avec parcimonie (ce qui est l'avantage de les dispatcher explicitement). Et pourtant, j'ai remarqué que jouer avec des modules arrivant tard dans la chaîne était lent. En fait, lancer `ansel -d perf` a montré que\n"
+"toute la chaîne de traitement, à partir du module _démoisaillage_, était recalculée même si j'interagissais avec un module tardif prenant son entrée de _équilibre des couleurs_.\n"
+"À ce stade, j'avais rendu les recalculs de la chaîne explicites depuis les modules et les contrôles GUI, et les avais distribués avec parcimonie (ce qui est l'avantage de les dispatcher explicitement). Et pourtant, j'ai remarqué que jouer avec des modules arrivant tard dans la chaîne était lent. En fait, lancer `ansel -d perf` a montré que\n"
+"toute la chaîne de traitement, à partir du module _démoisaillage_, était recalculée même si j'interagissais avec un module tardif prenant son entrée de _équilibre des couleurs_.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:61
 #, no-wrap
 msgid "Darktable has had a pixel cache forever. It basically stores the intermediate states of the picture, in-between modules. So, having pipe recomputes starting from much below the current module meant it was mostly useless. It turned out that the cache used only 8 cache lines, which is really under-using today's crazy amounts of RAM. But increasing that to 64 didn't help with cache misses : the cache was still mostly useless, and the most part of the pipe was still recomputed.\n"
-msgstr ""
+msgstr "Darktable a toujours eu un cache de pixels. Il stocke essentiellement les états intermédiaires de l'image, entre les modules. Ainsi, commencer des recalculs de la chaîne bien en dessous du module actuel signifiait qu'il était principalement inutile. Il s'est avéré que le cache n'utilisait que 8 lignes de cache, ce qui est vraiment un sous-emploi des quantités folles de RAM d'aujourd'hui. Mais passer à 64 n'a pas aidé avec les échecs de cache : le cache était toujours principalement inutile, et la plupart de la chaîne était encore recalculée.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:63
 #, no-wrap
 msgid "We need to pause a bit here. Even a mechanical engineer with no proper programming education like myself knows what an [LRU cache](https://en.wikipedia.org/wiki/Cache_replacement_policies) is :\n"
-msgstr ""
+msgstr "Nous devons faire une pause ici. Même un ingénieur mécanicien sans formation en programmation comme moi sait ce qu'est un [cache LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies) :\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:71
@@ -2484,72 +2537,93 @@ msgid ""
 "      - if you still have empty slots, you create the associated buffer and copy the data for later reuse,\n"
 "      - if you don't, you clear out the oldest slot and reuse it to host your new data.\n"
 msgstr ""
+"1. vous créez une liste fixe d'emplacements (lignes de cache),\n"
+"2. une fois que vous avez quelque chose à mettre en cache, vous allouez un tampon mémoire de taille prédéfinie à l'un de ces emplacements et lui attribuez un identifiant unique. Cela pourrait être un checksum, un hash aléatoire ou même un horodatage, il suffit juste de le cuisiner de la même manière pour obtenir quelque chose d'unique,\n"
+"3. lorsque vous avez besoin des données associées à un identifiant unique, vous interrogez la liste des emplacements et recherchez si cet ID est connu :\n"
+"    - si c'est le cas, vous récupérez son tampon associé,\n"
+"    - si ce n'est pas le cas :\n"
+"      - si vous avez encore des emplacements vides, vous créez le tampon associé et copiez les données pour une réutilisation ultérieure,\n"
+"      - sinon, vous videz l'emplacement le plus ancien et le réutilisez pour héberger vos nouvelles données.\n"
+"1. vous créez une liste fixe d'emplacements (lignes de cache),\n"
+"2. une fois que vous avez quelque chose à mettre en cache, vous allouez un tampon mémoire de taille prédéfinie à l'un de ces emplacements et lui attribuez un identifiant unique. Cela pourrait être un checksum, un hash aléatoire ou même un horodatage, il suffit juste de le cuisiner de la même manière pour obtenir quelque chose d'unique,\n"
+"3. lorsque vous avez besoin des données associées à un identifiant unique, vous interrogez la liste des emplacements et recherchez si cet ID est connu :\n"
+"    - si c'est le cas, vous récupérez son tampon associé,\n"
+"    - si ce n'est pas le cas :\n"
+"      - si vous avez encore des emplacements vides, vous créez le tampon associé et copiez les données pour une réutilisation ultérieure,\n"
+"      - sinon, vous videz l'emplacement le plus ancien et le réutilisez pour héberger vos nouvelles données.\n"
+"1. vous créez une liste fixe d'emplacements (lignes de cache),\n"
+"2. une fois que vous avez quelque chose à mettre en cache, vous allouez un tampon mémoire de taille prédéfinie à l'un de ces emplacements et lui attribuez un identifiant unique. Cela pourrait être un checksum, un hash aléatoire ou même un horodatage, il suffit juste de le cuisiner de la même manière pour obtenir quelque chose d'unique,\n"
+"3. lorsque vous avez besoin des données associées à un identifiant unique, vous interrogez la liste des emplacements et recherchez si cet ID est connu :\n"
+"    - si c'est le cas, vous récupérez son tampon associé,\n"
+"    - si ce n'est pas le cas :\n"
+"      - si vous avez encore des emplacements vides, vous créez le tampon associé et copiez les données pour une réutilisation ultérieure,\n"
+"      - sinon, vous videz l'emplacement le plus ancien et le réutilisez pour héberger vos nouvelles données.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:73
 #, no-wrap
 msgid "In that process, you only need to know the size of the buffers and the IDs. It's very general, you can cache anything, even different objects, your cache doesn't have to be aware of the content, not even how the IDs are generated. It's clean, it's elegant, it's unassuming, it's generic, I would trust it with my life because it's far more robust than whatever security system you find in modern cars.\n"
-msgstr ""
+msgstr "Dans ce processus, vous n'avez besoin de connaître que la taille des tampons et les IDs. C'est très général, vous pouvez mettre en cache n'importe quoi, même des objets différents, votre cache n'a pas à être conscient du contenu, ni même de la manière dont les IDs sont générés. C'est propre, c'est élégant, c'est modeste, c'est générique, je lui confierais ma vie car c'est bien plus robuste que n'importe quel système de sécurité que vous trouvez dans les voitures modernes.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:75
 #, no-wrap
 msgid "So when something __that__ simple doesn't work, it's usually because someone tried something \"clever\" and failed. What the Darktable team typically does in that case, is `switch case` their way through all pathological corner-cases and make it into something even more complicated (by handling all exceptions manually with heuristics), just to ensure no one later has a chance to find the root cause of the error.\n"
-msgstr ""
+msgstr "Donc, quand quelque chose __d'aussi__ simple ne fonctionne pas, c'est généralement parce que quelqu'un a essayé quelque chose de \"intelligent\" et a échoué. Ce que l'équipe de Darktable fait généralement dans ce cas, c'est parcourir toutes les cas particuliers pathologiques et en faire quelque chose d'encore plus compliqué (en traitant toutes les exceptions manuellement avec des heuristiques), juste pour s'assurer que personne plus tard n'ait la chance de trouver la cause profonde de l'erreur.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:77
 #, no-wrap
 msgid "For example, there were attempts at reweighting the priority of the cache lines to ensure the module before the one currently edited in GUI was cached. Not only did it not work, but it re-inforced the ties between pipeline code and GUI code, in a way that was not even thread-safe (which is why it didn't work). GUI stuff should happen at the input and at the output of the pipeline computations, not in-between, because _again_, different threads, but also it violates the modularity principle (keep program layers separated and enclosed as much as possible), and this software __needs to stop__ making everything depend on everything.\n"
-msgstr ""
+msgstr "Par exemple, il y a eu des tentatives de réévaluation de la priorité des lignes de cache pour s'assurer que le module avant celui actuellement édité dans l'interface graphique soit mis en cache. Non seulement cela n'a pas fonctionné, mais cela a renforcé les liens entre le code de la chaîne et le code GUI, d'une manière qui n'était même pas thread-safe (c'est pourquoi cela n'a pas fonctionné). Les éléments GUI devraient se produire à l'entrée et à la sortie des calculs de la chaîne, pas entre les deux, car _encore une fois_, différents threads, mais cela viole également le principe de modularité (garder les couches de programme séparées et cloisonnées autant que possible), et ce logiciel __doit cesser__ de faire dépendre tout de tout.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:79
 #, no-wrap
 msgid "Again, it took me 8 months, including mandatory breaks from that utter shitshow, to get to bottom of the problem in a way that leads to a __simplifying solution__. And I will present the findings in a linear way, like a story, but keep in mind I started discovering things in a fuzzy and random way because it's all scattered in the sourcecode, so it will look less messy than it truly was.\n"
-msgstr ""
+msgstr "Encore une fois, cela m'a pris 8 mois, y compris des pauses obligatoires de ce spectacle d'horreur, pour aller au fond du problème d'une manière qui mène à une __solution simplificatrice__. Et je vais présenter les résultats de manière linéaire, comme une histoire, mais gardez à l'esprit que j'ai commencé à découvrir des choses de manière floue et aléatoire car tout est éparpillé dans le code source, donc cela semblera moins désordonné qu'il ne l'était vraiment.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:81
 #, no-wrap
 msgid "We start with the unique ID. What truly represents a module's state in an unique fashion ? Well, a \"cryptographic\" checksum of its internal parameters. Cool, so Darktable had that implemented for a long time. Except it didn't account for the module instance number, and dealt with all kinds of `if` in the process. Not complete, not robust, not even needed. Hash everything, the hash will represent the state of variables.\n"
-msgstr ""
+msgstr "Nous commençons avec l'ID unique. Qu'est-ce qui représente vraiment l'état d'un module de manière unique ? Eh bien, un checksum \"cryptographique\" de ses paramètres internes. Cool, donc Darktable avait cela implémenté depuis longtemps. Sauf qu'il ne tenait pas compte du numéro d'instance du module, et était truffé de toutes sortes de `if` dans le processus. Pas complet, pas robuste, même pas nécessaire. Hashez tout, le hash représentera l'état des variables.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:83
 #, no-wrap
 msgid "Yeah, but modules can be reordered, so how do we take care of pipeline order ? Well, you take all the hashes of all modules, in pipeline order, and start accumulating linearly. Great. Except Darktable actually had 2 of those, one for GUI purposes that started from the end of the pipeline (so, in reverse order), one for pipeline purposes, in the pipeline order but unaccessible from GUI (for example… to get an histogram), and again, both mixing that with all sorts of checks to handle special cases (color picker, mask preview, etc.).\n"
-msgstr ""
+msgstr "Oui, mais les modules peuvent être réordonnés, alors comment prendre en compte l'ordre de la chaîne ? Eh bien, vous prenez tous les hashs de tous les modules, dans l'ordre de la chaîne, et commencez à accumuler linéairement. Excellent. Sauf que Darktable en avait en fait 2 de ceux-là, un pour les besoins GUI qui commençait depuis la fin de la chaîne (donc, dans un ordre inverse), un pour les besoins de la chaîne, dans l'ordre de la chaîne mais inaccessible depuis le GUI (par exemple… pour obtenir un histogramme), et encore une fois, tous deux mélangeant cela avec toutes sortes de vérifications pour gérer des cas particuliers (pipette de couleur, aperçu du masque, etc.).\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:85
 #, no-wrap
 msgid "Not to mention, the module internal state does not vary whether you are in the full preview or in the navigation thumbnail, in darkroom. And yet, the checksum was fully recomputed twice, once for each pipeline. Actually, make that four times, since there is also the GUI checksum (used mostly for _perspective_ and _retouch_ modules)\n"
-msgstr ""
+msgstr "Sans parler du fait que l'état interne du module ne varie pas que vous soyez dans l'aperçu complet ou dans la miniature de navigation, en chambre noire. Et pourtant, le checksum était entièrement recalculé deux fois, une fois pour chaque chaîne. En réalité, faites cela quatre fois, car il y a aussi le checksum GUI (principalement utilisé pour les modules _perspective_ et _retouche_)\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:87
 #, no-wrap
 msgid "And, last but not least, when zoomed-in in darkroom, only the visible portion of the image (the _Region Of Interest_, aka ROI) is computed, meaning we need to keep track of where we are in the picture in our caching mechanism. But that was completely left out of the checksum. Big bug here, and old.\n"
-msgstr ""
+msgstr "Et, enfin, lorsque vous êtes zoomé en chambre noire, seule la portion visible de l'image (la _Région d'Intérêt_, alias ROI) est calculée, ce qui signifie que nous devons garder une trace de notre position dans l'image dans notre mécanisme de cache. Mais cela était complètement omis du calcul du checksum. Gros bug ici, et vieux.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:89
 #, no-wrap
 msgid "So, how did Darktable _still manage to \"work\"_, you ask ?\n"
-msgstr ""
+msgstr "Alors, comment Darktable __parvient encore à \"fonctionner\"__, me demandez-vous ?\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:91
 #, no-wrap
 msgid "Well, by flushing more or less entirely the cache on any pathological operation : zoom, pan, mask preview, color picker, enabling/disabling _crop_ and _perspective_ modules editing state. That's a way of dealing with consistency without dealing with consistency : torch it. Making it mostly useless, as the very low cache hits stats show (just start `ansel -d dev` to show it).\n"
-msgstr ""
+msgstr "Eh bien, en vidant plus ou moins complètement le cache sur toute opération pathologique : zoomer, déplacer, prévisualiser un masque, utiliser une pipette de couleur, activer/désactiver les états d'édition des modules _crop_ et _perspective_. C'est une manière d'assurer la cohérence sans régler la cohérence : brûlez-le. Rendant le tout principalement inutile, comme le montrent les statistiques de frappes du cache (il suffit de lancer `ansel -d dev` pour le montrer).\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:93
 #, no-wrap
 msgid "How did I solve the problem ?\n"
-msgstr ""
+msgstr "Comment ai-je résolu le problème ?\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:98
@@ -2560,12 +2634,24 @@ msgid ""
 "3. The cache deals with this global checksum, and only that. No ifs, no buts, no heuristics, no conditions, no workarounds.\n"
 "4. Modules can request a cache bypass, for example when using color picker. This contaminates later modules in the pipeline before the pipe is computed, so the cacheless state is known early and doesn't affect upstream modules. That should only be a workaround before color pickers can actually use cache lines directly, and could be reused for future modules doing non-standard stuff (painting ?).\n"
 msgstr ""
+"1. Lorsque un nouvel élément d'historique de module est ajouté, le checksum des paramètres est calculée, prenant en compte les paramètres, les masques, les options de fusion, le numéro d'instance, l'ordre dans la chaîne, etc. Cela signifie que toutes les chaînes partagent le même checksum/ID ici (une utilisation future potentielle serait de le stocker dans la base de données),\n"
+"2. Avant qu'une chaîne ne soit calculée, nous calculons le checksum global de tous les modules, de début à la fin, en tenant compte de l'état d'affichage du masque, du checksum des modules précédents, et du ROI (taille et coordonnées). Ce checksum peut être directement accessible par la suite, sans calcul supplémentaire.\n"
+"3. Le cache gère ce checksum global, et seulement cela. Pas de si, pas de mais, pas d'heuristiques, pas de conditions, pas de solutions de contournement.\n"
+"4. Les modules peuvent demander un contournement du cache, par exemple en utilisant une pipette de couleur. Cela contamine les modules ultérieurs dans la chaîne avant que la chaîne ne soit calculée, de sorte que l'état sans cache est connu tôt et n'affecte pas les modules en amont. Cela devrait seulement être une solution de contournement avant que les pipettes de couleur puissent réellement utiliser les lignes de cache directement, et pourrait être réutilisé pour les futurs modules effectuant des choses non standard (peinture ?).\n"
+"1. Lorsque un nouvel élément d'historique de module est ajouté, le checksum des paramètres est calculée, prenant en compte les paramètres, les masques, les options de fusion, le numéro d'instance, l'ordre dans la chaîne, etc. Cela signifie que toutes les chaînes partagent le même checksum/ID ici (une utilisation future potentielle serait de le stocker dans la base de données),\n"
+"2. Avant qu'une chaîne ne soit calculée, nous calculons le checksum global de tous les modules, de début à la fin, en tenant compte de l'état d'affichage du masque, du checksum des modules précédents, et du ROI (taille et coordonnées). Ce checksum peut être directement accessible par la suite, sans calcul supplémentaire.\n"
+"3. Le cache gère ce checksum global, et seulement cela. Pas de si, pas de mais, pas d'heuristiques, pas de conditions, pas de solutions de contournement.\n"
+"4. Les modules peuvent demander un contournement du cache, par exemple en utilisant une pipette de couleur. Cela contamine les modules ultérieurs dans la chaîne avant que la chaîne ne soit calculée, de sorte que l'état sans cache est connu tôt et n'affecte pas les modules en amont. Cela devrait seulement être une solution de contournement avant que les pipettes de couleur puissent réellement utiliser les lignes de cache directement, et pourrait être réutilisé pour les futurs modules effectuant des choses non standard (peinture ?).\n"
+"1. Lorsque un nouvel élément d'historique de module est ajouté, le checksum des paramètres est calculée, prenant en compte les paramètres, les masques, les options de fusion, le numéro d'instance, l'ordre dans la chaîne, etc. Cela signifie que toutes les chaînes partagent le même checksum/ID ici (une utilisation future potentielle serait de le stocker dans la base de données),\n"
+"2. Avant qu'une chaîne ne soit calculée, nous calculons le checksum global de tous les modules, de début à la fin, en tenant compte de l'état d'affichage du masque, du checksum des modules précédents, et du ROI (taille et coordonnées). Ce checksum peut être directement accessible par la suite, sans calcul supplémentaire.\n"
+"3. Le cache gère ce checksum global, et seulement cela. Pas de si, pas de mais, pas d'heuristiques, pas de conditions, pas de solutions de contournement.\n"
+"4. Les modules peuvent demander un contournement du cache, par exemple en utilisant une pipette de couleur. Cela contamine les modules ultérieurs dans la chaîne avant que la chaîne ne soit calculée, de sorte que l'état sans cache est connu tôt et n'affecte pas les modules en amont. Cela devrait seulement être une solution de contournement avant que les pipettes de couleur puissent réellement utiliser les lignes de cache directement, et pourrait être réutilisé pour les futurs modules effectuant des choses non standard (peinture ?).\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:100
 #, no-wrap
 msgid "Benefits :\n"
-msgstr ""
+msgstr "Bénéfices :\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:106
@@ -2577,36 +2663,51 @@ msgid ""
 "    - it is constant within the scope of the pipeline, allowing to share cache lines between several pipelines (for example, demosaicing and denoising) with limited thread locking issues[^2]\n"
 "3. Modules doing weird things have an uniform and predictable way of requesting a cache bypass from GUI events, should they need it.\n"
 msgstr ""
+"1. Le checksum interne, par module, est calculée une fois pour toutes les chaînes,\n"
+"2. Parce que le checksum global, par chaîne, de chaque module est connu avant de commencer la recomputation de la chaîne :\n"
+"    - il peut également être utilisé pour la synchronisation GUI, donc j'ai fusionné les deux checksums Darktable en un,\n"
+"    - il est constant dans le cadre de la chaîne, permettant de partager les lignes de cache entre plusieurs chaînes (par exemple, démosaillage et réduction de bruit) avec des problèmes de verrouillage de threads limités[^2]\n"
+"3. Les modules effectuant des opérations étranges ont une manière uniforme et prévisible de demander un contournement de cache depuis les événements GUI, si jamais ils en avaient besoin.\n"
+"1. Le checksum interne, par module, est calculée une fois pour toutes les chaînes,\n"
+"2. Parce que le checksum global, par chaîne, de chaque module est connu avant de commencer la recomputation de la chaîne :\n"
+"    - il peut également être utilisé pour la synchronisation GUI, donc j'ai fusionné les deux checksums Darktable en un,\n"
+"    - il est constant dans le cadre de la chaîne, permettant de partager les lignes de cache entre plusieurs chaînes (par exemple, démosaillage et réduction de bruit) avec des problèmes de verrouillage de threads limités[^2]\n"
+"3. Les modules effectuant des opérations étranges ont une manière uniforme et prévisible de demander un contournement de cache depuis les événements GUI, si jamais ils en avaient besoin.\n"
+"1. Le checksum interne, par module, est calculée une fois pour toutes les chaînes,\n"
+"2. Parce que le checksum global, par chaîne, de chaque module est connu avant de commencer la recomputation de la chaîne :\n"
+"    - il peut également être utilisé pour la synchronisation GUI, donc j'ai fusionné les deux checksums Darktable en un,\n"
+"    - il est constant dans le cadre de la chaîne, permettant de partager les lignes de cache entre plusieurs chaînes (par exemple, démosaillage et réduction de bruit) avec des problèmes de verrouillage de threads limités[^2]\n"
+"3. Les modules effectuant des opérations étranges ont une manière uniforme et prévisible de demander un contournement de cache depuis les événements GUI, si jamais ils en avaient besoin.\n"
 
 #. type: Link reference
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:107
 #, no-wrap
 msgid "[^2]: The source code actually has a 10-years-old `TODO` comment detailing how to do that."
-msgstr ""
+msgstr "[^2]: Le code source a en fait un commentaire `TODO` vieux de 10 ans détaillant comment faire cela."
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:110
 #, no-wrap
 msgid "This logic is not only more efficient (fewer computations), it's also simpler and can be extended for interesting features. From the cache perspective, we deal with nothing else than a checksum, every module state of interest is convolved in it.\n"
-msgstr ""
+msgstr "Cette logique est non seulement plus efficace (moins de calculs), elle est aussi plus simple et peut être étendue pour des fonctionnalités intéressantes. Du point de vue du cache, nous ne gérons rien d'autre qu'un checksum, chaque état de module d'intérêt est enroulé dedans.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:112
 #, no-wrap
 msgid "But, more importantly, the cache is finally useful, especially when going back-and-forth in editing history, using undo/redo, or enabling/disabling modules. Overall responsiveness of the GUI is much better.\n"
-msgstr ""
+msgstr "Mais, plus important encore, le cache est enfin utile, en particulier lors des retours en arrière et des avant-après dans l'historique des modifications, de l'utilisation d'annulations/refaire, ou de l'activation/désactivation des modules. La réactivité globale du GUI est bien meilleure.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:114
 #, no-wrap
 msgid "I'm sure there are undiscovered caveats and details that I forgot to re-wire to the new logic, and the _retouch_ module is still mostly broken, but adapting to something that simple should be doable.\n"
-msgstr ""
+msgstr "Je suis sûr qu'il y a des pièges encore inconnus et des détails que j'ai oubliés de reconfigurer avec la nouvelle logique, et le module _retouche_ est toujours principalement cassé, mais s'adapter à quelque chose d'aussi simple devrait être faisable.\n"
 
 #. type: Title ##
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:115
 #, no-wrap
 msgid "Meanwhile in Darktable 4.8"
-msgstr ""
+msgstr "Pendant ce temps dans Darktable 4.8"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:124
@@ -2620,18 +2721,39 @@ msgid ""
 "5. I would love to see their cache hits/misses stats (do I want to revive my PTSD by opening that soft ever again ? I'll pass, thanks).\n"
 "6. People who think having more monkeys waving their hands in the air guarantees better quality should stop thinking.\n"
 msgstr ""
+"1. Le checksum de la chaîne est calculé pendant l'exécution de la chaîne, il est donc inconnu à l'extérieur,\n"
+"2. À cause de cela, ils n'ont pas dédupliqué les checksums GUI par rapport à ceux de la chaîne… bonne chance pour suivre les incohérences entre les deux à l'avenir,\n"
+"3. [Leur code de gestion des caches](https://github.com/darktable-org/darktable/blob/master/src/develop/pixelpipe_cache.c) est plus de deux fois plus large que [le mien](https://github.com/aurelienpierreeng/ansel/blob/master/src/develop/pixelpipe_cache.c) et utilise des heuristiques (sur le type de chaîne, le type de module, l'état d'affichage des masques, l'utilisation de pipette de couleur et des indices de mise en cache définis manuellement dans les modules) pour contourner les problèmes. Le cache n'est plus indépendant du contenu et bonne chance pour déboguer ces spaghettis.[^3]\n"
+"4. Ils calculent toujours intégralement le checksum des paramètres (internes) des modules deux fois, une pour chaque chaîne,\n"
+"4. Cela leur a pris presque 2 ans pour le faire (depuis la sortie de la version 4.0),\n"
+"5. J'aimerais voir leurs statistiques de frappes/ratés de cache (est-ce que je veux rouvrir ce logiciel et raviver mon PTSD ? Je passe, merci).\n"
+"6. Les gens qui pensent que le fait d'avoir plus de singes agitant leurs mains en l'air garantit une meilleure qualité devraient cesser de penser.\n"
+"1. Le checksum de la chaîne est calculé pendant l'exécution de la chaîne, il est donc inconnu à l'extérieur,\n"
+"2. À cause de cela, ils n'ont pas dédupliqué les checksums GUI par rapport à ceux de la chaîne… bonne chance pour suivre les incohérences entre les deux à l'avenir,\n"
+"3. [Leur code de gestion des caches](https://github.com/darktable-org/darktable/blob/master/src/develop/pixelpipe_cache.c) est plus de deux fois plus large que [le mien](https://github.com/aurelienpierreeng/ansel/blob/master/src/develop/pixelpipe_cache.c) et utilise des heuristiques (sur le type de chaîne, le type de module, l'état d'affichage des masques, l'utilisation de pipette de couleur et des indices de mise en cache définis manuellement dans les modules) pour contourner les problèmes. Le cache n'est plus indépendant du contenu et bonne chance pour déboguer ces spaghettis.[^3]\n"
+"4. Ils calculent toujours intégralement le checksum des paramètres (internes) des modules deux fois, une pour chaque chaîne,\n"
+"4. Cela leur a pris presque 2 ans pour le faire (depuis la sortie de la version 4.0),\n"
+"5. J'aimerais voir leurs statistiques de frappes/ratés de cache (est-ce que je veux rouvrir ce logiciel et raviver mon PTSD ? Je passe, merci).\n"
+"6. Les gens qui pensent que le fait d'avoir plus de singes agitant leurs mains en l'air garantit une meilleure qualité devraient cesser de penser.\n"
+"1. Le checksum de la chaîne est calculé pendant l'exécution de la chaîne, il est donc inconnu à l'extérieur,\n"
+"2. À cause de cela, ils n'ont pas dédupliqué les checksums GUI par rapport à ceux de la chaîne… bonne chance pour suivre les incohérences entre les deux à l'avenir,\n"
+"3. [Leur code de gestion des caches](https://github.com/darktable-org/darktable/blob/master/src/develop/pixelpipe_cache.c) est plus de deux fois plus large que [le mien](https://github.com/aurelienpierreeng/ansel/blob/master/src/develop/pixelpipe_cache.c) et utilise des heuristiques (sur le type de chaîne, le type de module, l'état d'affichage des masques, l'utilisation de pipette de couleur et des indices de mise en cache définis manuellement dans les modules) pour contourner les problèmes. Le cache n'est plus indépendant du contenu et bonne chance pour déboguer ces spaghettis.[^3]\n"
+"4. Ils calculent toujours intégralement le checksum des paramètres (internes) des modules deux fois, une pour chaque chaîne,\n"
+"4. Cela leur a pris presque 2 ans pour le faire (depuis la sortie de la version 4.0),\n"
+"5. J'aimerais voir leurs statistiques de frappes/ratés de cache (est-ce que je veux rouvrir ce logiciel et raviver mon PTSD ? Je passe, merci).\n"
+"6. Les gens qui pensent que le fait d'avoir plus de singes agitant leurs mains en l'air garantit une meilleure qualité devraient cesser de penser.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:129
 #, no-wrap
 msgid "The amount of time spent and recently-broken shit to fix to get there was properly unbearable, but it was made worse by code scattered in a non-modular fashion without a clear distinction between what belongs to the (G)UI, what belongs to the backend, what belongs to  module histories and what belongs to pipeline nodes. The cache thing only took 8 months, mostly archaelogy and reverse-engineering, on top of what was already done in GUI controls and explicit pipeline recomputes.\n"
-msgstr ""
+msgstr "La quantité de temps passé et de merdes récemment cassées à réparer pour en arriver là était bien insupportable, mais a été aggravé par le code disséminé de manière non modulaire sans distinction claire entre ce qui appartient à l'UI(G), ce qui appartient au backend, ce qui appartient aux histoires de modules et ce qui appartient aux nœuds de la chaîne. La chose cache n'a pris que 8 mois, principalement d'archéologie et d'ingénierie inverse, en plus de ce qui a été déjà fait dans les contrôles GUI et les recalculs explicites de la chaîne.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:131
 #, no-wrap
 msgid "There are still issues to fix :\n"
-msgstr ""
+msgstr "Il y a encore des problèmes à corriger :\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:137
@@ -2643,156 +2765,171 @@ msgid ""
 "- color-pickers handling could be simplified and made more elegant,\n"
 "- history handling still have some corner cases.\n"
 msgstr ""
+"- le nombre de lignes de cache disponibles est une préférence de l'utilisateur et ne vérifie pas la mémoire disponible restante sur l'appareil,\n"
+"- le module histogrammes/jauges est principalement cassé par conception, car il était géré par des heuristiques spéciales (maintenant supprimées) sur un module invisible dans le GUI (`gamma.c`). La nouvelle logique permet de le forcer-imposer et de récupérer la ligne de cache depuis le fil GUI.\n"
+"- les histogrammes internes des modules ne sont pas immédiatement tracés lorsqu'ils entrent en chambre noire,\n"
+"- la gestion des pipettes de couleur pourrait être simplifiée et conçue de manière plus élégante,\n"
+"- la gestion de l'historique comporte encore quelques cas d'angle.\n"
+"- le nombre de lignes de cache disponibles est une préférence de l'utilisateur et ne vérifie pas la mémoire disponible restante sur l'appareil,\n"
+"- le module histogrammes/jauges est principalement cassé par conception, car il était géré par des heuristiques spéciales (maintenant supprimées) sur un module invisible dans le GUI (`gamma.c`). La nouvelle logique permet de le forcer-imposer et de récupérer la ligne de cache depuis le fil GUI.\n"
+"- les histogrammes internes des modules ne sont pas immédiatement tracés lorsqu'ils entrent en chambre noire,\n"
+"- la gestion des pipettes de couleur pourrait être simplifiée et conçue de manière plus élégante,\n"
+"- la gestion de l'historique comporte encore quelques cas d'angle.\n"
+"- le nombre de lignes de cache disponibles est une préférence de l'utilisateur et ne vérifie pas la mémoire disponible restante sur l'appareil,\n"
+"- le module histogrammes/jauges est principalement cassé par conception, car il était géré par des heuristiques spéciales (maintenant supprimées) sur un module invisible dans le GUI (`gamma.c`). La nouvelle logique permet de le forcer-imposer et de récupérer la ligne de cache depuis le fil GUI.\n"
+"- les histogrammes internes des modules ne sont pas immédiatement tracés lorsqu'ils entrent en chambre noire,\n"
+"- la gestion des pipettes de couleur pourrait être simplifiée et conçue de manière plus élégante,\n"
+"- la gestion de l'historique comporte encore quelques cas d'angle.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:139
 #, no-wrap
 msgid "However, since I'm refusing to \"fix\" anything if my fix doesn't make things more simple, that strategy is starting to pay because the code is a lot more linear, with fewer cases to test, and ultimately sligthly faster. As I make progress, it's slowly becoming more readable and more fixable. Then, of course, shaking the core of the software to that extent is bound to break things (which shouldn't break if the code was modular).\n"
-msgstr ""
+msgstr "Cependant, puisque je refuse de \"réparer\" quoi que ce soit si ma réparation ne rend pas les choses plus simples, cette stratégie commence à payer car le code est beaucoup plus linéaire, avec moins de cas à tester, et finalement légèrement plus rapide. À mesure que les progrès avancent, cela devient lentement plus lisible et plus réparable. Ensuite, bien sûr, ébranler le cœur du logiciel à ce point est voué à casser des choses (qui ne devraient pas être cassées si le code était modulaire).\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:141
 #, no-wrap
 msgid "There comes the legitimate question asking : why bother fixing Ansel/Darktable ugly legacy and not move on to something better, faster and shinier (like Vkdt) ? Well, Vkdt (or anything else new) will stay a rough prototype, competing with other rough prototypes (that's _Open Source_ in a nutshell), years away from a generally-usable product. Adding another unfinished/half-assed prototype to the landscape will do no good. It would be nice to have something __not__ scruffy and fairly finished, for a change. Besides, the (very) old code of Darktable is clean and sturdy (well, for the most part), it's only the past few years that have taken a turn for the shittiest. `git blame` always shows the same 3 names on the really shitty lines, to a point where I sometimes find myself automatically deleting the corresponding lines when I saw who wrote them, out of habit.\n"
-msgstr ""
+msgstr "La question légitime se pose donc : pourquoi s'embêter à réparer l'héritage moche d'Ansel/Darktable et ne pas passer à quelque chose de mieux, plus rapide et plus brillant (comme Vkdt) ? Eh bien, Vkdt (ou tout autre nouveau projet) restera un prototype brut, en concurrence avec d'autres prototypes bruts (c'est _Open Source_ en résumé), à des années de distance d'un produit généralement utilisable. Ajouter un autre prototype inachevé/d'à moitié fait au paysage ne servira à rien. Ce serait agréable d'avoir quelque chose de fini __pas__ à moitié et juste assez bien fini, pour changer. En outre, le code (très) ancien de Darktable est propre et solide (eh bien, pour la plupart), ce sont seulement ces dernières années qui ont pris un tournant pour le pire. `git blame` montre toujours les mêmes 3 noms sur les lignes vraiment mauvaises, au point où je me retrouve parfois à supprimer automatiquement les lignes correspondantes quand je vois qui les a écrites, par habitude.\n"
 
 #. type: Plain text
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:143
 #, no-wrap
 msgid "There is also the fear that, no matter how fast Vulkan makes Vkdt, what really makes Darktable shitty is bad decisions, bad priorities, programming mistakes, lessons not learned, and if those mistakes are reproduced over Vkdt, it might take longer to realize the consequences with more horsepower, but ultimately things will go the same way. Having more resources makes it more affordable to be stupid… until it doesn't and you realize how trapped you are.\n"
-msgstr ""
+msgstr "Il y a aussi la crainte que, peu importe à quel point Vulkan rend Vkdt rapide, ce qui rend vraiment Darktable mauvais sont de mauvaises décisions, de mauvaises priorités, des erreurs de programmation, des leçons non retenues, et si ces erreurs se reproduisent sur Vkdt, cela pourrait prendre plus de temps pour réaliser les conséquences avec plus de puissance, mais au final les choses iront dans la même direction. Avoir plus de ressources rend plus abordable d'être stupide… jusqu'à ce que ce ne soit plus le cas et que vous réalisiez à quel point vous êtes piégé.\n"
 
 #. type: Link reference
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:144
 #, no-wrap
 msgid "[^3]: It should be noted that \"my\" cache code is actualy pretty much how Roman Lebedev and Johannes Hanika wrote it 10 years ago. I simplified a couple of things, mostly removing stuff added since then, and added nothing of my own, because it's a Garbage In/Garbage Out situation where you should rather clean your input rather than trying to handle any corner case internally through unlegible heuristics."
-msgstr ""
+msgstr "[^3]: Il convient de noter que le code de \"mon\" cache est en fait à peu près comment Roman Lebedev et Johannes Hanika l'ont écrit il y a 10 ans. J'ai simplifié certaines choses, en retirant principalement des choses ajoutées depuis, et n'ai rien ajouté de moi-même, car c'est une situation Garbage In/Garbage Out où vous devriez plutôt nettoyer votre entrée au lieu d'essayer de gérer n'importe quel cas particulier en interne."
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/dev-diary-1.md:1
 #, no-wrap
 msgid "Dev diary"
-msgstr ""
+msgstr "Journal de développement"
 
 #. type: Plain text
 #: content/news/dev-diary-1.md:11
 #, no-wrap
 msgid "It's been roughly 3 months that I rebranded \"R&Darktable\" (that nobody seemed to get right), into \"Ansel\", then bought the domain name and created the website from scratch with Hugo (I had never programmed in Golang before, but it's mostly template code).\n"
-msgstr ""
+msgstr "Cela fait environ 3 mois que j'ai rebrandé \"R&Ddarktable\" (ce que personne ne semble comprendre), en \"Ansel\", puis acheté le nom de domaine et créé le site web de zéro avec Hugo (je n'avais jamais programmé en Golang auparavant, mais il s'agit principalement de code de modèle).\n"
 
 #. type: Plain text
 #: content/news/dev-diary-1.md:13
 #, no-wrap
 msgid "Then I spent a total 70 h on making the nightly packages builds for Windows and Linux work for continuous delivery, something that Darktable never got right (\"you can build yourself, it's not difficult\"), only to see the bug tracker blow up after release (nothing better than chaining the pre-release sprint with a post-release one to reduce your life expectancy).\n"
-msgstr ""
+msgstr "Il me reste alors un total de 70 heures pour faire fonctionner les builds packaуs nocturnes pour Windows et Linux pour une livraison continue, ce que Darktоrque n'a jamais bien fais (« tu peux compléter toi-même, ce n'est pas difficile »), seulement pour voir le traqueur de bugs exploser après la sortie (rien de mieux que de chaîner le sprint pré-sortie avec un sprint post-sortie pour réduire votre espérance de vie.)\n"
 
 #. type: Plain text
 #: content/news/dev-diary-1.md:15
 #, no-wrap
 msgid "People keep asking for a Mac build because they have no notion of the amount of work it requires while the Brew package manager breaks lib dependencies on a weekly basis when you are not lucky. Mac OS simply requires an unreasonable amount of care, which becomes a dry loss when you know that not even 9 % of Darktable users run it. Also, for the last time, Github (actually, the Microsoft Azure instances providing Github actions runners) has no ARM system, so anyway a nightly Mac build would necessarily be on AMD64 architecture, that is old MacBook from before Apple decided once again to go full Apple on its own island. Don't expect 90 % of the free world to scurry over a tech nobody needed and barely anybody uses.\n"
-msgstr ""
+msgstr "Les gens continuent de demander une version Mac car ils n'ont aucune notion de la quantité de travail que cela implique tandis que le gestionnaire de paquets Brew casse les dépendances de lib chaque semaine lorsque vous n'avez pas de chance. Mac OS nécessite simplement une quantité déraisonnable de soin, ce qui devient une perte sèche quand vous savez que même pas 9 % des utilisateurs de Darktable l'exécute. D'ailleurs, pour la dernière fois, Github (en réalité, les instances Microsoft Azure fournissant des runners d'actions Github) ne disposent d'aucun système ARM, donc de toute façon un build Mac nocturne serait nécessairement sur l'architecture AMD64, ce qui est l'ancien MacBook d'avant Apple décide une fois de plus d'aller à fond Apple sur son propre îlot. Ne vous attendez pas à ce que 90 % du monde libre se précipite vers une technologie que personne ne jugeait nécessaire et que peu de gens utilisent.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-1.md:17
 #, no-wrap
 msgid "From then, I have optimized the local laplacian in highlights reconstruction with a stupid trick : processing a downsized image instead of the full-resolution one. I had this idea in the back of my mind for a long time but feared the detrimental side-effects. But since clipped areas are signal-less anyway, processing a slightly blurrier version is almost invisible. Also, the shoulder of your typical S/filmic tone curve will anyway compress everything close to white, so it reduces percieved sharpness by reducing contrast in highlights no matter what. We are talking 96 % speed-up on CPU (mostly because we can process the image at once with no tiling).\n"
-msgstr ""
+msgstr "À partir de là, j'ai optimisé la laparoscopie locale dans la reconstruction de highlights avec une astuce stupide : traiter une image redimensionnée au lieu de celle en haute résolution. J'avais cette idée dans un coin de ma tête depuis longtemps mais craignait les effets secondaires préjudiciables. Mais puisque les zones coupées sont de toute façon sans signal, traiter une version légèrement floutée est presque invisible. De plus, l'épaule de votre typique courbe en S/filmic comprimera tout près du blanc, donc cela réduit la netteté perçue en réduisant le contraste dans les highlights quoi qu'il arrive. Nous parlons de 96 % de gain de vitesse sur CPU (principalement parce que nous pouvons traiter l'image d'un coup sans tuilage).\n"
 
 #. type: Plain text
 #: content/news/dev-diary-1.md:19
 #, no-wrap
 msgid "Using that, I developed an experimental noise and chromatic aberrations pre-filter re-using multi-scale guided laplacians. It's not bad, but again quite slow.\n"
-msgstr ""
+msgstr "En utilisant cela, j'ai développé un pré-filtre expérimental de bruit et d'aberrations chromatiques réutilisant des laplaciens guidés multi-échelle. Ce n'est pas mal, mais encore une fois assez lent.\n"
 
 #. type: Plain text
 #: content/news/dev-diary-1.md:20
 #, no-wrap
 msgid "Since February, most of the work has been spent on cleaning up the GUI by moving collections of buttons, either the full-text ones or the weird icon ones, to the global menu and rewiring the keyboard shortcuts to that. It makes feature more discoverable while reducing screen real estate.\n"
-msgstr ""
+msgstr "Depuis février, la plus grande partie du travail a été consacrée à nettoyer l'interface graphique en déplaçant des collections de boutons, soit en texte intégral, soit des icônes bizarres, vers le menu global et en reconfigurant les raccourcis clavier pour cela. Cela rend la fonctionnalité plus découvrable tout en réduisant l'encombrement de l'écran.\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/_index.md:1
 #, no-wrap
 msgid "News"
-msgstr ""
+msgstr "Nouveautés"
 
 #. type: Yaml Front Matter Array Element: tags
 #: content/news/modules-groups-redesign/index.md:1
 #, no-wrap
 msgid "Design"
-msgstr ""
+msgstr "Design"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/modules-groups-redesign/index.md:1
 #, no-wrap
 msgid "Explaining Ansel redesign of module groups"
-msgstr ""
+msgstr "Explication de la refonte de groupes de modules d'Ansel"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:11
 #, no-wrap
 msgid "If you come from Darktable, you may be used to this in the darkroom:\n"
-msgstr ""
+msgstr "Si vous venez de Darktable, vous vous attendez peut-être à cela dans la chambre noire :\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:13
 #, no-wrap
 msgid "{{< figure src=\"organization.png\" />}}\n"
-msgstr ""
+msgstr "{{< figure src=\"organization.png\" />}}\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:16
 #, no-wrap
 msgid "while Ansel offers you this:\n"
-msgstr ""
+msgstr "tandis qu'Ansel vous offre ceci :\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:18
 #, no-wrap
 msgid "{{< figure src=\"ansel-module-groups.png\" />}}\n"
-msgstr ""
+msgstr "{{< figure src=\"ansel-module-groups.png\" />}}\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:21
 #, no-wrap
 msgid "This is no accident, and it's time to explain why, and why this will not be extended with customization options.\n"
-msgstr ""
+msgstr "Ce n'est pas un accident, et il est temps d'expliquer pourquoi, et pourquoi cela ne sera pas étendu avec des options de personnalisation.\n"
 
 #. type: Title ##
 #: content/news/modules-groups-redesign/index.md:22
 #, no-wrap
 msgid "Images are born from pipelines"
-msgstr ""
+msgstr "Les images naissent des pipelines"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:25
 #, no-wrap
 msgid "A pixel pipeline is a sequence of filters in which pixels are processed to end on a medium. Photoshop calls those filters [_layers_](https://helpx.adobe.com/photoshop/using/layer-basics.html), abiding by a methaphor inherited from paper and matte painting. Da Vinci Resolve, Blender, Natron, etc. calls them [_nodes_](https://filmmakingelements.com/everything-about-nodes-in-davinci-resolve/), abiding by a metaphor grounded in directed graphs and [flowcharts](https://en.wikipedia.org/wiki/Flowchart), best known to engineers. Both have a way of showing how those filters are organized, either with a layer stack or with the node graph (aka flowchart).\n"
-msgstr ""
+msgstr "Un pipeline de pixels est une séquence de filtres dans laquelle les pixels sont traités pour aboutir sur un support. Photoshop appelle ces filtres [_couches_](https://helpx.adobe.com/photoshop/using/layer-basics.html), se conformant à une métaphore héritée du papier et de la peinture matte. Da Vinci Resolve, Blender, Natron, etc. les appellent [_nœuds_](https://filmmakingelements.com/everything-about-nodes-in-davinci-resolve/), se conformant à une métaphore enracinée dans les graphes orientés et les [organigrammes](https://en.wikipedia.org/wiki/Flowchart), mieux connus des ingénieurs. Les deux ont une manière de montrer comment ces filtres sont organisés, soit avec une pile de couches soit avec le graphe de nœuds (alias organigramme).\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:27
 #, no-wrap
 msgid "The important part is, __order matters__.\n"
-msgstr ""
+msgstr "La partie importante est, l'ordre __importe__.\n"
 
 #. type: Title ##
 #: content/news/modules-groups-redesign/index.md:28
 #, no-wrap
 msgid "A brief history of bad design"
-msgstr ""
+msgstr "Un bref historique de la mauvaise conception"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:31
 #, no-wrap
 msgid "Darktable calls those filters modules. But \"modules\" refers to the [modular programming logic](https://en.wikipedia.org/wiki/Modular_programming) : each module is coded separately, using an uniform API, and doesn't know about the other modules. The pipeline itself doesn't know anything about the internals of modules, it only wires the inputs and the outputs. It's a clean way of developing, but it's completely irrelevant to the end-user.\n"
-msgstr ""
+msgstr "Darktable appelle ces filtres modules. Mais \"modules\" fait référence à la [logique de programmation modulaire](https://en.wikipedia.org/wiki/Modular_programming) : chaque module est codé séparément, en utilisant une API uniforme, et ne sait rien des autres modules. La chaîne elle-même ne sait rien de l'intérieur des modules, elle ne fait que connecter les entrées et les sorties. C'est une manière propre de développer, mais c'est complètement irrelevant pour l'utilisateur final.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:33
 #, no-wrap
 msgid "The problem is Darktable has 2 kinds of modules :\n"
-msgstr ""
+msgstr "Le problème est que Darktable a 2 types de modules :\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:36
@@ -2801,24 +2938,30 @@ msgid ""
 "1. the lighttable modules (and the modules in the left panel of the darkroom), which are arbitrary toolboxes and therefore __purely GUI elements/frames__,\n"
 "2. the darkroom modules, which are both __a pixel filter__ located somewhere in the pipeline, and also __a GUI toolbox.__ (same as the previous modules).\n"
 msgstr ""
+"1. les modules de la table lumineuse (et les modules du panneau de gauche de la chambre noire), qui sont des boîtes à outils arbitraires et donc __purement des éléments/cadres GUI_,\n"
+"2. les modules de la chambre noire, qui sont à la fois __un filtre de pixels__ situé quelque part dans la chaîne, et également __une boîte à outils GUI.__ (comme les modules précédents).\n"
+"1. les modules de la table lumineuse (et les modules du panneau de gauche de la chambre noire), qui sont des boîtes à outils arbitraires et donc __purement des éléments/cadres GUI_,\n"
+"2. les modules de la chambre noire, qui sont à la fois __un filtre de pixels__ situé quelque part dans la chaîne, et également __une boîte à outils GUI.__ (comme les modules précédents).\n"
+"1. les modules de la table lumineuse (et les modules du panneau de gauche de la chambre noire), qui sont des boîtes à outils arbitraires et donc __purement des éléments/cadres GUI_,\n"
+"2. les modules de la chambre noire, qui sont à la fois __un filtre de pixels__ situé quelque part dans la chaîne, et également __une boîte à outils GUI.__ (comme les modules précédents).\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:38
 #, no-wrap
 msgid "And those different modules, on top of being named the same, look exactly the same…\n"
-msgstr ""
+msgstr "Et ces différents modules, en plus d'être nommés de la même manière, se ressemblent exactement...\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:40
 #, no-wrap
 msgid "{{< figure src=\"ansel-lighttable-modules.png\" />}}\n"
-msgstr ""
+msgstr "{{< figure src=\"ansel-lighttable-modules.png\" />}}\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:42
 #, no-wrap
 msgid "That's 3 mistakes here :\n"
-msgstr ""
+msgstr "C'est 3 erreurs ici :\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:46
@@ -2828,132 +2971,141 @@ msgid ""
 "2. naming and representing 2 conceptually-different objects the same way,\n"
 "3. failing to represent the order of the modules in a clear, hierarchical way.\n"
 msgstr ""
+"1. nommer un objet GUI par son nom d'implémentation technique au lieu de son objectif fonctionnel,\n"
+"2. nommer et représenter de la même manière 2 objets conceptuellement différents,\n"
+"3. ne pas réussir à représenter l'ordre des modules de manière claire et hiérarchique.\n"
+"1. nommer un objet GUI par son nom d'implémentation technique au lieu de son objectif fonctionnel,\n"
+"2. nommer et représenter de la même manière 2 objets conceptuellement différents,\n"
+"3. ne pas réussir à représenter l'ordre des modules de manière claire et hiérarchique.\n"
+"1. nommer un objet GUI par son nom d'implémentation technique au lieu de son objectif fonctionnel,\n"
+"2. nommer et représenter de la même manière 2 objets conceptuellement différents,\n"
+"3. ne pas réussir à représenter l'ordre des modules de manière claire et hiérarchique.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:49
 #, no-wrap
 msgid "As a result, many users still consider all modules to be arbitrary toolboxes, and have asked for years ways to reorder them arbitrarily in the window, which a spineless (lack of) technical leadership gave to them, in the shape of a terribly-coded (3500 lines of code, subtly broken) and overcomplicated module group, eating 3 % of your CPU even when you don't interact with the application, for as long as your darkroom sits idle.\n"
-msgstr ""
+msgstr "En conséquence, de nombreux utilisateurs considèrent encore tous les modules comme des boîtes à outils arbitraires et ont demandé pendant des années des moyens de les réorganiser arbitrairement dans la fenêtre, ce qu'un manque de leadership technique a autorisé, sous la forme d'un groupe de modules terriblement codé (3500 lignes de code, subtilement cassé) et surcomplexifié, consommant 3 % de votre CPU même lorsque vous n'interagissez pas avec l'application, tant que votre chambre noire reste inactive.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:51
 #, no-wrap
 msgid "The cherry on the sunday is the groups are labelled by icons, for the sake of compactness, but those icons are absolutely cryptic and only the long-time users pretend to know what they represent (I have drawn the one representing light rays going through a thin lens, that people take for an UFO – I learned from that mistake).\n"
-msgstr ""
+msgstr "La cerise sur le gâteau est que les groupes sont étiquetés par des icônes, à des fins de compacité, mais ces icônes sont absolument cryptiques et seuls les utilisateurs de longue date font semblant de savoir ce qu'elles représentent (j'ai dessiné celle représentant les rayons de lumière traversant une lentille mince, que les gens prennent pour un OVNI – j'ai appris de cette erreur).\n"
 
 #. type: Title ##
 #: content/news/modules-groups-redesign/index.md:52
 #, no-wrap
 msgid "Good workflows are pipeline-aware"
-msgstr ""
+msgstr "Les bons workflows sont conscients du pipeline"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:55
 #, no-wrap
 msgid "It's been 3 years that I'm paid by users to explain them the ins and outs of the software, and answering the same question over and over : where to start a workflow and how to unroll it. What still strikes me is that people with a master's degree, who read the doc and watched most of my videos, are still unable to start an image editing workflow by themselves. Either this is screaming bad design or most people with higher education are idiots. Actually, even if people were idiots, it's easier to make the design idiot-proof[^3] than to expect them to grow a brain overnight, so either way the design is bad with regard to the target audience.\n"
-msgstr ""
+msgstr "Ça fait 3 ans que je suis payé par les utilisateurs pour leur expliquer les tenants et aboutissants du logiciel, et pour répondre à la même question encore et encore : où commencer un workflow et comment le dérouler. Ce qui me frappe encore, c'est que les gens avec un master, qui ont lu la doc et regardé la plupart de mes vidéos, sont encore incapables de démarrer un workflow d'édition d'image par eux-mêmes. Soit c'est un design criant de manière erronée, soit la plupart des gens avec une éducation supérieure sont idiots. En fait, même si les gens étaient idiots, il est plus facile de faire un design à l'épreuve des idiots[^3] que de s'attendre à ce qu'ils se développent un cerveau du jour au lendemain, donc de toute façon le design est mauvais par rapport au public cible.\n"
 
 #. type: Link reference
 #: content/news/modules-groups-redesign/index.md:56
 #, no-wrap
 msgid "[^3]: And I mean \"idiot-proof\" in a [\"prevent pouring water into the acid\"](https://www.youtube.com/watch?v=SH3a8ZQLA4I) way, not in a \"cancel chemistry labs because acid can burn\" way. It's not idiot-proof if the idiot is not allowed to do anything."
-msgstr ""
+msgstr "[^3]: Et par \"à l'épreuve des idiots\" je veux dire dans un sens [ \"empêcher de verser de l'eau dans l'acide\"](https://www.youtube.com/watch?v=SH3a8ZQLA4I), pas dans un sens \"annuler les labos de chimie parce que l'acide peut brûler\". Ce n'est pas anti-idiot si l'idiot n'est pas autorisé à faire quelque chose."
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:59
 #, no-wrap
 msgid "If you open Photoshop, the layers stack upon each other pretty intuitively. We all worked with layers for art projects in primary school. It wouldn't strike you to start working on the bottom-most layer after you put some new stuff on top. Well, the 70-something modules of Darktable, organized in tabs by theme, in a way that doesn't account for the pipeline nor for the workflow, are guaranteed to deter the newcomers and to promote bad habits among the old-timers.\n"
-msgstr ""
+msgstr "Si vous ouvrez Photoshop, les couches s'empilent intuitivement. Nous avons tous travaillé avec des couches pour des projets artistiques à l'école primaire. Cela ne vous viendrait pas à l'esprit de commencer à travailler sur la couche la plus basse après avoir mis de nouvelles choses au-dessus. Eh bien, les 70 autres modules de Darktable, organisés dans des onglets par thème, d'une manière qui ne tient pas compte de la chaîne ni du workflow, sont garantis de décourager les nouveaux venus et de promouvoir de mauvaises habitudes chez les anciens.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:61
 #, no-wrap
 msgid "Sane workflows are pipeline-aware, which means the order in which you tune the filters should be defined by where those filters sit in the pipeline. But I say pipeline-aware, and not pipeline-defined, because the beginning and the end of the pipeline (properties of the scene and of the display) should be set first, as to have a good look over what we do in-between. Especially if you are going to manipulate HDR signals on an SDR display, you need to put on your HDR sunglasses first to view your signal in SDR. But what you see is not what there is in your pipeline. Hence why the workflow doesn't follow 1:1 the pipeline, but still s pretty close to it.\n"
-msgstr ""
+msgstr "Les workflows sains sont conscients du pipeline, ce qui signifie que l'ordre dans lequel vous ajustez les filtres devrait être défini par l'endroit où ces filtres se trouvent dans la chaîne de traitement. Mais je dis conscients du pipeline, et non définis par la chaîne, car le début et la fin de la chaîne (propriétés de la scène et de l'affichage) devraient être configurés en premier, afin d'avoir une bonne vision d'ensemble sur ce que nous faisons entre les deux. Notamment si vous allez manipuler des signaux HDR sur un écran SDR, vous devez mettre vos lunettes de soleil HDR pour voir votre signal en SDR. Mais ce que vous voyez n'est pas ce qu'il y a dans votre chaîne. C'est pourquoi le workflow ne suit pas 1:1 la chaîne, mais reste assez proche de celle-ci.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:63
 #, no-wrap
 msgid "Imagine you set a color cast in _color balance_ module, targeting highlights through the _gain_ setting. Then you find the picture too dark and brighten it with _exposure_ module. But _exposure_ comes (way) before _color balance_ in your pipe, so now you need to update the color cast setting because it will probably be too heavy on midtones. Now, convolve that with another intermediate module (or more) that would use a parametric mask on any metric of lightness or luminance… You are on for __circular editing__, a particularly unefficient kind of frustrating editing experience where any new setting invalidates the previous. Of course, there are those who think that, photography being an art, it's all a matter of opinion and preferences, so ultimately none of this matters. Art or not, a house of cards will fall entirely anytime you start messing with the lower stories, so ultimately it's about how much time you accept to waste, and this has nothing to do with opinions or preferences. I would also argue that week-end hobbyists are just as time-constrained as professional photographers : the latter for economical reasons, the former because week-ends only have 2 days and they will need to be back at the office on Monday morning with enough fun in their system to endure another week.\n"
-msgstr ""
+msgstr "Imaginez que vous définissiez une teinte dans le module _équilibre des couleurs_, ciblant les hauteurs de teinte à travers le paramètre _gain_. Ensuite, vous trouvez l'image trop sombre et l'éclaircissez avec le module _exposition_. Mais _exposition_ vient (bien) avant _équilibre des couleurs_ dans votre chaîne, donc maintenant vous devez mettre à jour le réglage de la teinte car il sera probablement trop fort sur les demi-teintes. Maintenant, convolver cela avec un autre module intermédiaire (ou plus) qui utiliserait un masque paramétrique sur n'importe quelle métrique de la luminosité ou de la luminance... Vous êtes parti pour une __édition circulaire__, une expérience d'édition particulièrement inefficace et frustrante où chaque nouveau réglage invalide le précédent. Bien sûr, il y a ceux qui pensent que la photographie étant un art, tout est une question d'opinion et de préférences, donc finalement rien de tout cela n'a d'importance. Art ou pas, un château de cartes tombera entièrement chaque fois que vous commencerez à jouer avec les niveaux inférieurs, donc finalement c'est une question de combien de temps vous êtes prêt à perdre, et cela n'a rien à voir avec les opinions ou les préférences. Je serais aussi d'avis que les amateurs du week-end sont tout aussi pressés par le temps que les photographes professionnels : ces derniers pour des raisons économiques, les premiers parce que le week-end ne dure que 2 jours et ils devront être de retour au bureau le lundi matin avec assez de plaisir dans leur système pour supporter une autre semaine.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:65
 #, no-wrap
 msgid "So how do you know when to drift away from the pipeline order ? Well, you book a session with me for the demo. But there is another solution (more on that below)…\n"
-msgstr ""
+msgstr "Alors comment savez-vous quand vous éloigner de l'ordre de la chaîne ? Eh bien, vous réservez une session avec moi pour la démo. Mais il existe une autre solution (plus d'informations plus bas)...\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:67
 #, no-wrap
 msgid "In any case, offering users more options to customize the UI (and perhaps re-enforcing the initial misconception of modules being only GUI boxes) is not going to solve it. It's actually giving people more options to harm themselves. What you want and what is good for you…\n"
-msgstr ""
+msgstr "Dans tous les cas, offrir aux utilisateurs plus d'options pour personnaliser l'interface utilisateur (et peut-être renforcer la fausse impression initiale que les modules ne sont que des boîtes GUI) ne va pas le résoudre. C'est en fait donner aux gens plus d'options pour se nuir. Ce que vous voulez et ce qui est bon pour vous...\n"
 
 #. type: Title ##
 #: content/news/modules-groups-redesign/index.md:68
 #, no-wrap
 msgid "Re-examining the problem"
-msgstr ""
+msgstr "Réexaminer le problème"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:71
 #, no-wrap
 msgid "While Darktable has degraded into a playground for geeks where new means better and every problem calls for more funny code, Ansel is about solving simple problems the simple way, as to produce a reliable workhorse. So let's start again from the top.\n"
-msgstr ""
+msgstr "Alors que Darktable s'est dégradé en un terrain de jeu pour les geeks où nouveau signifie mieux et où chaque problème appelle plus de code amusant, Ansel est là pour résoudre les problèmes simples de manière simple, en vue de produire un cheval de travail fiable. Alors repartons du sommet.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:73
 #, no-wrap
 msgid "We have 70 modules. Though Ansel has deprecated a fair deal of them, there are still \"too many\", in the sense that they are all useful for some purpose but you don't need them all the time, and not all at the same time. Also the screen real-estate is limited and we definitely can't have all of them displayed at the same time. And even if we could, presenting and Airbus dashboard to your average photographer wouldn't be nice.\n"
-msgstr ""
+msgstr "Nous avons 70 modules. Bien qu'Ansel ait déprécié une bonne partie d'entre eux, il y a encore «trop», au sens où ils sont tous utiles pour certaines fins mais vous n'en avez pas besoin tout le temps, et pas tous en même temps. De plus, l'espace d'écran est limité et nous ne pouvons vraiment pas présenter tous les modules en même temps. Et même si nous le pouvions, présenter un tableau de bord Airbus à votre photographe moyen ne serait pas gentil.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:75
 #, no-wrap
 msgid "So we need to chose what modules to display at what time. Emphasis on __time__.\n"
-msgstr ""
+msgstr "Nous devons donc choisir quels modules afficher à quel moment. Emphase sur __moment__.\n"
 
 #. type: Title ##
 #: content/news/modules-groups-redesign/index.md:76
 #, no-wrap
 msgid "Unrolling the time axis"
-msgstr ""
+msgstr "Dérouler l'axe temporel"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:79
 #, no-wrap
 msgid "Following on the idea of _just in time_, it seems only natural that the time axis would be splitted into workflow steps. So the selection of all visible modules at a given time matches the ones that you will need right now and in the next minutes. Moving on to the next workflow step, you move on into the GUI and change the view. It's called a slideshow.\n"
-msgstr ""
+msgstr "En suivant l'idée du _juste à temps_, il semble naturel que l'axe temporel soit scindé en étapes de workflow. Ainsi, la sélection de tous les modules visibles à un moment donné correspond à ceux dont vous aurez besoin maintenant et dans les prochaines minutes. En passant à la prochaine étape de workflow, vous passez dans l'interface GUI et changez la vue. C'est pour ainsi dire un diaporama.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:81
 #, no-wrap
 msgid "This draws a linear path to follow, to get some structure and guidance out of the apparent clutter. GUI are not only meant to expose controls, they are also meant to teach, communicate and advertise the available possibilities.\n"
-msgstr ""
+msgstr "Cela dessine un chemin linéaire à suivre, pour obtenir une structure et un guidage à partir de l'encombrement apparent. Les GUI ne sont pas seulement destinés à exposer des contrôles, ils sont également là pour enseigner, communiquer et faire connaître les possibilités disponibles.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:83
 #, no-wrap
 msgid "So each tab is now a slide of our workflow slideshow, which is closely tied to pipeline order. And structure appeared out of clutter.\n"
-msgstr ""
+msgstr "Ainsi, chaque onglet est désormais une diapositive de notre diaporama de workflow, qui est étroitement lié à l'ordre de la chaîne. Et de la structure est apparue de l'encombrement.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:85
 #, no-wrap
 msgid "With some exceptions. For example, denoising modules have to happen early in the pipeline for signal consistency, yet they appear later in the workflow than, say, _color calibration_, because they work at pixel level and will generaly not change the global color cast (unless you have some serious noise damage that might shift the green/magenta axis, but that's typically above 8000 ISO). Same with sharpening algorithms : none of these will dramatically change lightness, hue or chroma as to invalidate previous (workflow-wise) global color and exposure settings, and the proper settings will also be subjected to how much you raised the picture exposure (thereby aggravating the visual strength of noise). Those exceptions to the rule are made clear by numerical analysis of the pixel filters, meaning that people who didn't read the sourcecode with prior signal processing knowledge will have no clue.\n"
-msgstr ""
+msgstr "Avec quelques exceptions. Par exemple, les modules de débruitage doivent se produire tôt dans la chaîne pour la cohérence du signal, mais ils apparaissent plus tard dans le workflow que, disons, la _calibration des couleurs_, car ils fonctionnent au niveau pixel et ne changeront pas généralement la teinte globale (à moins que vous ne rencontriez de graves dommages de bruit qui pourraient décaler l'axe vert/magenta, mais cela est typiquement au-dessus de 8000 ISO). Même chose avec les algorithmes de mise au point : aucun de ceux-ci ne changera de manière spectaculaire la luminosité, la teinte ou la chrominance de manière à invalider les réglages précédents (dans le sens du workflow) concernant les réglages globaux de couleur et d'exposition, et mes réglages appropriés dépendront également de combien vous avez monté l'exposition de l'image (aggravant ainsi la force visuelle du bruit). Ces exceptions à la règle sont expliquées par l'analyse numérique des filtres de pixels, ce qui signifie que les personnes qui n'ont pas lu le code source avec leur connaissance antérieure du traitement du signal n'auront aucune idée.\n"
 
 #. type: Title ##
 #: content/news/modules-groups-redesign/index.md:86
 #, no-wrap
 msgid "Implementation"
-msgstr ""
+msgstr "Mise en œuvre"
 
 #. type: Title ###
 #: content/news/modules-groups-redesign/index.md:88
 #, no-wrap
 msgid "Principle"
-msgstr ""
+msgstr "Principe"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:92
@@ -2962,6 +3114,12 @@ msgid ""
 "Workflow steps == module tabs.\n"
 ": Those tabs have textual names, which might take more GUI space but you don't have to read a doc and/or guess what they mean : it's written on the label.\n"
 msgstr ""
+"Étapes du workflow == onglets de module.\n"
+": Ces onglets portent des noms textuels, ce qui peut prendre plus de place dans le GUI mais vous n'avez pas besoin de lire une doc et/ou deviner leurs significations : c'est écrit sur l'étiquette.\n"
+"Étapes du workflow == onglets de module.\n"
+": Ces onglets portent des noms textuels, ce qui peut prendre plus de place dans le GUI mais vous n'avez pas besoin de lire une doc et/ou deviner leurs significations : c'est écrit sur l'étiquette.\n"
+"Étapes du workflow == onglets de module.\n"
+": Ces onglets portent des noms textuels, ce qui peut prendre plus de place dans le GUI mais vous n'avez pas besoin de lire une doc et/ou deviner leurs significations : c'est écrit sur l'étiquette.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:95
@@ -2970,6 +3128,12 @@ msgid ""
 "The first and last tabs are special\n"
 ": They show respectively the list of enabled modules (pipeline) and the whole list of available modules (all).\n"
 msgstr ""
+"Les premiers et derniers onglets sont spéciaux\n"
+": Ils affichent respectivement la liste des modules activés (chaîne) et la liste complète des modules disponibles (tout).\n"
+"Les premiers et derniers onglets sont spéciaux\n"
+": Ils affichent respectivement la liste des modules activés (chaîne) et la liste complète des modules disponibles (tout).\n"
+"Les premiers et derniers onglets sont spéciaux\n"
+": Ils affichent respectivement la liste des modules activés (chaîne) et la liste complète des modules disponibles (tout).\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:98
@@ -2978,6 +3142,12 @@ msgid ""
 "Not all tabs are immediately visible\n"
 ": Depending on sidepanel width, some tabs will be hidden, which is fine because you are going to follow them from left to right in sequence, so you don't really need to know what's coming after\n"
 msgstr ""
+"Tous les onglets ne sont pas immédiatement visibles\n"
+": Selon la largeur du panneau latéral, certains onglets seront cachés, ce qui est bien car vous allez les suivre de gauche à droite en séquence, donc vous n'avez pas vraiment besoin de savoir ce qui suit\n"
+"Tous les onglets ne sont pas immédiatement visibles\n"
+": Selon la largeur du panneau latéral, certains onglets seront cachés, ce qui est bien car vous allez les suivre de gauche à droite en séquence, donc vous n'avez pas vraiment besoin de savoir ce qui suit\n"
+"Tous les onglets ne sont pas immédiatement visibles\n"
+": Selon la largeur du panneau latéral, certains onglets seront cachés, ce qui est bien car vous allez les suivre de gauche à droite en séquence, donc vous n'avez pas vraiment besoin de savoir ce qui suit\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:101
@@ -2986,36 +3156,42 @@ msgid ""
 "Inside tabs, modules are organized as layers in the pipeline order\n"
 ": That is from bottom to top. That's how you should set them. So the stack of modules represents the stack of effects/filters/layers on top of the raw image.\n"
 msgstr ""
+"Dans les onglets, les modules sont organisés comme des couches dans l'ordre de la chaîne\n"
+": C'est-à-dire de bas en haut. C'est ainsi que vous devriez les définir. Donc, la pile de modules représente la pile d'effets/filtres/couches au-dessus de l'image brute.\n"
+"Dans les onglets, les modules sont organisés comme des couches dans l'ordre de la chaîne\n"
+": C'est-à-dire de bas en haut. C'est ainsi que vous devriez les définir. Donc, la pile de modules représente la pile d'effets/filtres/couches au-dessus de l'image brute.\n"
+"Dans les onglets, les modules sont organisés comme des couches dans l'ordre de la chaîne\n"
+": C'est-à-dire de bas en haut. C'est ainsi que vous devriez les définir. Donc, la pile de modules représente la pile d'effets/filtres/couches au-dessus de l'image brute.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:103
 #, no-wrap
 msgid "TL;DR: __follow GUI order from left to right, and bottom to top (because it's layers), and you have your workflow without tedious doc reading.__\n"
-msgstr ""
+msgstr "Résumé : __suivez l'ordre GUI de gauche à droite, et de bas en haut (car ce sont des couches), et vous avez votre workflow sans lecture fastidieuse de la doc.__\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:105
 #, no-wrap
 msgid "The darkroom modules can be reordered in any tab by holding <kbd>Ctrl+Shift</kbd>[^2] while doing a drag-and-drop with the mouse, over the module headers. Be aware that this reorders modules in the pipeline too, it is not to be used as a GUI convenience. It is best to this in the \"pipeline\" or \"all\" tabs, where you have a full look over the pipeline content.\n"
-msgstr ""
+msgstr "Les modules de la chambre noire peuvent être réordonnés dans n'importe quel onglet en maintenant <kbd>Ctrl+Shift</kbd>[^2] tout en effectuant un glisser-déposer avec la souris, sur les en-têtes de module. Soyez conscient que cela réorganise également les modules dans la chaîne, ce n'est pas à utiliser comme une commodité GUI. Il est préférable de le faire dans les onglets \"chaîne\" ou \"tout\", où vous avez un aperçu complet du contenu de la chaîne.\n"
 
 #. type: Link reference
 #: content/news/modules-groups-redesign/index.md:106
 #, no-wrap
 msgid "[^2]: It's shitty but that's because Gtk's way of handling drag and drop events sucks."
-msgstr ""
+msgstr "[^2]: C'est de la merde mais c'est parce que la méthode de manipulation des événements de glisser-déposer par Gtk est nulle également."
 
 #. type: Title ###
 #: content/news/modules-groups-redesign/index.md:108
 #, no-wrap
 msgid "Linear navigation"
-msgstr ""
+msgstr "Navigation linéaire"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:111
 #, no-wrap
 msgid "__With the mouse__ and pointing devices, tabs can be navigated by:\n"
-msgstr ""
+msgstr "__Avec la souris__ et les dispositifs de pointage, les onglets peuvent être navigués par:\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:116
@@ -3026,174 +3202,186 @@ msgid ""
 "- right-clicking on any tab to reveal a contextual menu containing the list of all tabs,\n"
 "- scrolling (with the mouse wheel) previous/back on the tabs bar to switch tabs. Once you reached the end, it will cycle back with an \"hard push\" ensuring it's really what you want to do.\n"
 msgstr ""
+"- en cliquant sur ceux qui sont visibles,\n"
+"- en cliquant sur les flèches pour révéler les onglets précédents/suivants (visibles ou cachés),\n"
+"- en cliquant avec le bouton droit sur tout onglet pour révéler un menu contextuel contenant la liste de tous les onglets,\n"
+"- en faisant défiler (avec la molette de la souris) les onglets avants/arrières sur la barre des onglets pour changer d'onglet. Une fois que vous avez atteint la fin, elle se recyclera avec une \"poussée dure\" pour vous assurer que c'est vraiment ce que vous voulez faire.\n"
+"- en cliquant sur ceux qui sont visibles,\n"
+"- en cliquant sur les flèches pour révéler les onglets précédents/suivants (visibles ou cachés),\n"
+"- en cliquant avec le bouton droit sur tout onglet pour révéler un menu contextuel contenant la liste de tous les onglets,\n"
+"- en faisant défiler (avec la molette de la souris) les onglets avants/arrières sur la barre des onglets pour changer d'onglet. Une fois que vous avez atteint la fin, elle se recyclera avec une \"poussée dure\" pour vous assurer que c'est vraiment ce que vous voulez faire.\n"
+"- en cliquant sur ceux qui sont visibles,\n"
+"- en cliquant sur les flèches pour révéler les onglets précédents/suivants (visibles ou cachés),\n"
+"- en cliquant avec le bouton droit sur tout onglet pour révéler un menu contextuel contenant la liste de tous les onglets,\n"
+"- en faisant défiler (avec la molette de la souris) les onglets avants/arrières sur la barre des onglets pour changer d'onglet. Une fois que vous avez atteint la fin, elle se recyclera avec une \"poussée dure\" pour vous assurer que c'est vraiment ce que vous voulez faire.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:118
 #, no-wrap
 msgid "Then modules can be navigated by scrolling them in the sidebar, the scroll event is captured by sliders only after a previous interaction was done with them. Unfolding modules automatically scrolls the bar if needed, as to display them in full if possible, or at least to align their upper border with the viewport.\n"
-msgstr ""
+msgstr "Ensuite, les modules peuvent être navigués en les faisant défiler dans la barre latérale, l'événement de défilement est capturé par les curseurs seulement après qu'une interaction précédente ait été effectuée avec eux. Le déroulement des modules fait automatiquement défiler la barre si nécessaire, afin de les afficher complètement si possible, ou au moins d'aligner leur bord supérieur avec la fenêtre.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:120
 #, no-wrap
 msgid "__With the keyboard__, tabs can be navigated by <kbd>Ctrl+Tab</kbd> and <kbd>Ctrl+Shift+Tab</kbd> to switch between next/previous tabs, as you would expect in any web browser. This will also cycle back when you reached the end of tabs.\n"
-msgstr ""
+msgstr "__Avec le clavier__, les onglets peuvent être navigués par <kbd>Ctrl+Tab</kbd> et <kbd>Ctrl+Shift+Tab</kbd> pour passer aux onglets suivants/précédents, comme vous le feriez dans n'importe quel navigateur web. Cela se recyclera aussi lorsque vous aurez atteint la fin des onglets.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:122
 #, no-wrap
 msgid "Then, within a tab, modules can be navigated with <kbd>Page Up/Down</kbd> to move to previous/next module, vertically in the stack. This automatically unfolds each selected module while folding all the others, and aligns the current module vertically as to try and fit it entirely in the screen.\n"
-msgstr ""
+msgstr "Ensuite, dans un onglet, les modules peuvent être navigués avec <kbd>Page Up/Down</kbd> pour passer au module précédent/suivant, verticalement dans la pile. Cela déplie automatiquement chaque module sélectionné tout en repliant tous les autres, et aligne le module actuel verticalement pour essayer de l'adapter entièrement à l'écran.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:124
 #, no-wrap
 msgid "This sequential way of accessing next/previous module is meant to solve the terrible UX of Darktable where you have to assign exactly one shortcut per module to unfold it, and then have to remember all those special shortcuts while being unable to re-use them in other parts of the software.\n"
-msgstr ""
+msgstr "Cette manière séquentielle d'accéder aux modules précédents/suivants est conçue pour résoudre la terrible UX de Darktable où vous devez assigner exactement un raccourci par module pour le dérouler, puis essayer de vous souvenir de tous ces raccourcis spéciaux tout en étant incapable de les réutiliser dans d'autres parties du logiciel.\n"
 
 #. type: Title ###
 #: content/news/modules-groups-redesign/index.md:125
 #, no-wrap
 msgid "Transversal navigation"
-msgstr ""
+msgstr "Navigation transversale"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:128
 #, no-wrap
 msgid "If you have already been trapped in an Ikea store, you know the benefits of finding transverse pathes instead of following the intended path.\n"
-msgstr ""
+msgstr "Si vous avez déjà été pris au piège dans un magasin Ikea, vous savez les bénéfices de trouver des chemins transversaux au lieu de suivre l'itinéraire prévu.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:130
 #, no-wrap
 msgid "You can search modules by their names or internal aliases with the search box, which responds to the <kbd>Ctrl+F</kbd> shortcut. The search results can also be navigated in sequential order by <kbd>Page Up/Down</kbd> keys.\n"
-msgstr ""
+msgstr "Vous pouvez rechercher des modules par leurs noms ou alias internes avec la boîte de recherche, qui répond au raccourci <kbd>Ctrl+F</kbd>. Les résultats de recherche peuvent également être navigués dans l'ordre séquentiel par les touches <kbd>Page Up/Down</kbd>.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:132
 #, no-wrap
 msgid "Remember that the first tab shows the whole pipeline in its order of application.\n"
-msgstr ""
+msgstr "Souvenez-vous que le premier onglet montre l'ensemble de la chaîne dans son ordre d'application.\n"
 
 #. type: Title ###
 #: content/news/modules-groups-redesign/index.md:133
 #, no-wrap
 msgid "Replacing favourite modules"
-msgstr ""
+msgstr "Remplacement des modules favoris"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:136
 #, no-wrap
 msgid "The current design has no way to define favourite modules in a special tab. I don't see the point of adding more bloat to solve the issue of having bloat initially.\n"
-msgstr ""
+msgstr "La conception actuelle n'a pas de moyen de définir des modules favoris dans un onglet spécial. Je ne vois pas l'intérêt d'ajouter plus de fioritures pour résoudre le problème d'avoir initialement des fioritures.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:138
 #, no-wrap
 msgid "For those special modules, you can assign shortcuts to the \"show\" (aka open, show, display, unfold) or \"enable\" events (aka activate). Go to the Edit menu, then at the bottom click Keyboard shortcuts, then with the special cursor you got, click on your soon-to-be favorite module header (on its name). Example here with the exposure module :\n"
-msgstr ""
+msgstr "Pour ces modules spéciaux, vous pouvez attribuer des raccourcis aux événements \"afficher\" (alias ouvrir, afficher, déplier) ou \"activer\" (alias activer). Allez dans le menu Modifier, puis en bas cliquez sur Raccourcis clavier, puis avec le curseur spécial que vous avez, cliquez sur votre futur module préféré en-tête (sur son nom). Exemple ici avec le module d'exposition :\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:140
 #, no-wrap
 msgid "{{< figure src=\"shortcuts.png\" />}}\n"
-msgstr ""
+msgstr "{{< figure src=\"shortcuts.png\" />}}\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:142
 #, no-wrap
 msgid "By default, you will be prompted with the \"show\" event, in the element column (another label I should change). You can change it for the \"enable\" or \"instance\" (aka instanciate) event. The effect doesn't matter for this one, I haven't tested in which case it is used and the whole thing is a tangled mess anyway.\n"
-msgstr ""
+msgstr "Par défaut, vous serez invité avec l'événement \"afficher\", dans la colonne des éléments (un autre label que je devrais changer). Vous pouvez le modifier pour l'événement \"activer\" ou \"instance\" (alias instancier). L'effet n'a pas d'amplitude pour celui-ci, je n'ai pas testé dans quel cas il est utilisé et l'ensemble est un gâchis comprimé de toute façon.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:144
 #, no-wrap
 msgid "In any case, these shortcuts will instantly bring you to your favourite modules without polluting more GUI real-estate.\n"
-msgstr ""
+msgstr "Dans tous les cas, ces raccourcis vous amèneront instantanément à vos modules préférés sans polluer davantage l'espace GUI.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:148
 #, no-wrap
 msgid "This doesn't solve the issue of modules beeing called something that don't interest users, and of image processing modules looking the same as non-image processing ones. I have some ideas regarding this, but that will be for another time.\n"
-msgstr ""
+msgstr "Cela ne résout pas le problème des modules appelés quelque chose d'inintéressant pour les utilisateurs, et des modules de traitement d'image ayant la même apparence que ceux non destinés au traitement image. J'ai quelques idées à ce sujet, mais ce sera pour une autre fois.\n"
 
 #. type: Title ##
 #: content/news/modules-groups-redesign/index.md:149
 #, no-wrap
 msgid "Sidenotes"
-msgstr ""
+msgstr "Notes de côté"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:152
 #, no-wrap
 msgid "Many other tools previously hidden in cryptic icon-buttons have been merged into the global menu. This menu can be unfolded by hitting <kbd>Alt</kbd> followed by the mnemonic letter of the menu (which will get underscored once hitting <kbd>Alt</kbd>). Once unfolded, the menu are navigable with arrow keys.\n"
-msgstr ""
+msgstr "De nombreux autres outils précédemment cachés dans des boutons-icônes cryptiques ont été fusionnés dans le menu global. Ce menu peut être déplié en appuyant sur <kbd>Alt</kbd> suivi de la lettre mnémonique du menu (qui sera soulignée après avoir appuyé sur <kbd>Alt</kbd>). Une fois dépliés, les menus peuvent être navigués avec les touches fléchées.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:154
 #, no-wrap
 msgid "Return to the lighttable is now mapped to the <kbd>Escape/Return</kbd> key. In lighttable, the picture text search is also mapped to <kbd>Ctrl+F</kbd> (as you would expect). Browsing pictures can be done with <kbd>Arrow</kbd> keys, selection with <kbd>Space</kbd> key, and opening a picture in darkroom can be done by hitting <kbd>Enter</kbd> key.\n"
-msgstr ""
+msgstr "Retourner à la table lumineuse est maintenant mappé sur la touche <kbd>Échap/Retour</kbd>. Dans la table lumineuse, la recherche de texte pour image est également mappée sur <kbd>Ctrl+F</kbd> (comme on pourrait s'y attendre). Parcourir les images peut se faire avec les touches <kbd>Flèche</kbd>, la sélection avec la touche <kbd>Espace</kbd>, et ouvrir une image en chambre noire peut être fait en appuyant sur la touche <kbd>Entrer</kbd>.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:156
 #, no-wrap
 msgid "This means the application is now almost entirely navigable with the keyboard without having to remember shortcuts. Those shurtcuts are displayed anyway in the menu, right of the entries.\n"
-msgstr ""
+msgstr "Cela signifie que l'application est maintenant presque entièrement navigable avec le clavier sans avoir à se rappeler les raccourcis. Ces raccourcis sont affichés de toute façon dans le menu, à droite des entrées.\n"
 
 #. type: Plain text
 #: content/news/modules-groups-redesign/index.md:157
 #, no-wrap
 msgid "The table of all shortcuts can now be found in the Help menu, previously it was only accessible… through a shortcut.\n"
-msgstr ""
+msgstr "Le tableau de tous les raccourcis peut maintenant être trouvé dans le menu Aide, précédemment il n'était accessible que… via un raccourci.\n"
 
 #. type: Yaml Front Matter Hash Value: title
 #: content/news/undarktable-ing-gui-controls.md:1
 #, no-wrap
 msgid "Un-darktable-ing GUI controls"
-msgstr ""
+msgstr "Dé-darktable-isation des contrôles GUI"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:11
 #, no-wrap
 msgid "Darktable has its own GUI widgets library, for sliders and comboboxes (aka drop-down menus or selection boxes), called Bauhaus (in the source code, it's in `src/bauhaus/bauhaus.c`). While they use Gtk as a backend, Bauhaus are custom objects. And like many things in Darktable, custom equals rotten.\n"
-msgstr ""
+msgstr "Darktable a sa propre bibliothèque d'objets GUI, pour les curseurs et les comboboxes (alias menus déroulants ou boîtes de sélection), appelée Bauhaus (dans le code source, c'est dans `src/bauhaus/bauhaus.c`). Bien qu'ils utilisent Gtk en tant que moteur arrière, les objets Bauhaus sont des objets personnalisés. Et comme beaucoup de choses dans Darktable, personnaliser signifie pourri.\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:13
 #, no-wrap
 msgid "In 2022, ‍I noticed [parasite redrawings and lags](https://github.com/aurelienpierreeng/ansel/issues/29), when using them, leading to a frustrating user experience : the widget redrawing seemed to wait for pipeline recomputations to complete, which meant that users were not really sure their value change was recorded, which could lead them to try again, starting another cycle of expensive recomputation, and effectively freezing their computer for several very frustrating minutes of useless intermediate pipeline recomputations.\n"
-msgstr ""
+msgstr "En 2022, ‍j'ai remarqué des [redessinages parasites et des lenteurs](https://github.com/aurelienpierreeng/ansel/issues/29), lors de leur utilisation, conduisant à une expérience utilisateur frustrante : le redessinage des widgets semblait attendre la conclusion des recalculs de la chaîne, ce qui signifiait que les utilisateurs n'étaient pas vraiment sûrs que leur changement de valeur était pris en compte, ce qui pouvait les amener à réessayer, déclenchant un autre cycle de recalcul coûteux, et gelant effectivement leur ordinateur pendant plusieurs minutes frustrantes d'intermédiaires coûteux recalculs de la chaîne.\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:15
 #, no-wrap
 msgid "As it happens, static code analysis tools find that the Bauhaus library is also the [4th most complex sourcecode file](https://sonarcloud.io/component_measures?metric=complexity&selected=aurelienpierre_darktable%3Asrc%2Fbauhaus%2Fbauhaus.c&view=list&id=aurelienpierre_darktable) in the whole Darktable software in terms of cyclomatic complexity, with a score of 735 and a technical debt estimated to 1 day and 7 hours. If you are no programmer, cyclomatic complexity measures the number of different paths the code can take, and high values make it not only more difficult to understand (hence to debug), but also more prone to edge-cases, bugs and contextually-dependent weird issues. [Cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity) is an indirect metric of the probablity that this code will blow up in your face when you least expect it, something to take into account when the most prolific \"developers\" in your team are a primary school teacher, a pediatrician and a banking consultant.\n"
-msgstr ""
+msgstr "Comme cela arrive, les outils d'analyse de code statique trouve que la bibliothèque Bauhaus trouve le [4e plus complexe fichier source du code](https://sonarcloud.io/component_measures?metric=complexity&selected=aurelienpierre_darktable%3Asrc%2Fbauhaus%2Fbauhaus.c&view=list&id=aurelienpierre_darktable) dans tout le logiciel Darktable en termes de complexité cyclomatique, avec un score de 735 et une dette technique estimée à 1 jour et 7 heures. Si vous n'êtes pas programmeur, la complexité cyclomatique mesure le nombre de chemins différents que le code peut prendre, et les valeurs élevées le rendent non seulement plus difficile à comprendre ( et donc à déboguer), mais aussi plus susceptible d'avoir des cas limites, des bugs et des problèmes bizarres dépendants du contexte. [La complexité cyclomatique](https://en.wikipedia.org/wiki/Cyclomatic_complexity) est une métrique indirecte de la probabilité que ce code explose en votre visage lorsque vous vous y attendez le moins, quelque chose à prendre en compte lorsque les \"développeurs\" les plus prolifiques dans votre équipe sont un enseignant du primaire, un pédiatre et un consultant bancaire.\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:17
 #, no-wrap
 msgid "What's particularly frustrating is I already worked to simplify this file, back in 2019. 3 years later, it was as if I did nothing, thanks to [feature creep](https://en.wikipedia.org/wiki/Feature_creep) and MIDI/gamepad support. When the parasite redrawings showed up, I was left with unintelligible [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code) that I was properly unable to fix. A first attempt to correct wrong stuff lead to a dead-end, back in August 2022, and got me discouraged. Trying to work around it was not going to cut it.\n"
-msgstr ""
+msgstr "Ce qui est particulièrement frustrant, c'est que j'ai déjà travaillé pour simplifier ce fichier, en 2019. 3 ans plus tard, c'était comme si je n'avais rien fait, grâce au [feature creep](https://en.wikipedia.org/wiki/Feature_creep) et au support MIDI/joystick. Lorsque les redessinages parasites sont apparus, je me suis retrouvé avec un [code spaghetti](https://en.wikipedia.org/wiki/Spaghetti_code) complètement indéchiffrable que j'étais proprement incapable de corriger. Une première tentative de correction de mauvaises choses a conduit à une impasse, en août 2022, et m'a découragé. Essayons de contourner le problème n'allait pas suffire.\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:19
 #, no-wrap
 msgid "So I had to rewrite it almost completely, which was no fun and took me a crazy amount of hours (I stopped counting at 3 weeks, full-time, and that was for the second attempt in August-November 2023).\n"
-msgstr ""
+msgstr "J'ai donc dû le réécrire presque complètement, ce qui n'était pas amusant et m'a pris une quantité de temps folle (j'ai arrêté de compter à 3 semaines, à temps plein, et c'était pour la deuxième tentative d'août à novembre 2023).\n"
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:21
 #, no-wrap
 msgid "Did you know that, once a combobox had the focus (either because you clicked on it or gave it focus via a keyboard shortcut), you could start typing the first letters of the label you wanted to select and it would automatically select the closest item in the list ? Neither did I before undertaking this task, because it's documented nowhere. As were many hidden features in there, added to comply with deviant and marginal use cases, but complexifying the code structure for everybody. (Spoiler alert : I kept this particular feature, but removed others).\n"
-msgstr ""
+msgstr "Saviez-vous qu'une fois qu'une liste déroulante avait le focus (soit parce que vous avez cliqué dessus, soit parce que vous lui avez donné le focus via un raccourci clavier), vous pouviez commencer à taper les premières lettres de l'étiquette que vous vouliez sélectionner et elle sélectionnait automatiquement l'élément le plus proche de la liste ? Moi non plus avant d'entreprendre cette tâche, car c'est documenté nulle part. Comme beaucoup de fonctionnalités cachées là-bas, ajoutées pour se conformer aux cas d'utilisation déviants et marginaux, mais complexifiant la structure de code pour tout le monde. (Spoiler alert : j'ai gardé cette fonctionnalité particulière, mais en ai supprimé d'autres).\n"
 
 #. type: Title ##
 #: content/news/undarktable-ing-gui-controls.md:22
 #, no-wrap
 msgid "‍List of improvements"
-msgstr ""
+msgstr "‍Liste des améliorations\""
 
 #. type: Plain text
 #: content/news/undarktable-ing-gui-controls.md:30
