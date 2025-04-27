@@ -65,8 +65,9 @@ for f in  $(find content -type f -name '*.md'); do
               # Create the footer addendum containing contributors for that lang for that file
               footer="po/footers/${f//\//.}.$lang.add"
               ./tools/build_page_contributors.sh "$f" "$footer" "po/content.$lang.po"
-
-              line="$line add_$lang:$footer"
+              if test -f "$footer"; then
+                line="$line add_$lang:$footer"
+              fi
             fi
         done
 
