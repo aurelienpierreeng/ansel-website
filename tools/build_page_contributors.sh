@@ -44,10 +44,10 @@ fi
 mkdir -p "$(dirname "$addendum")"
 
 # ────────────────────────────────────────────────────────────────────────────
-# 1. Try explicit `#. TRANSLATOR …` tags
+# 1. Try explicit `# TRANSLATOR …` tags
 readarray -t contributors < <(
-  grep -Eho '^#\. TRANSLATOR .*$' "${po_files[@]}" \
-    | sed 's/^#\. TRANSLATOR[[:space:]]*//' \
+  grep -Eho '^# TRANSLATOR .*$' "${po_files[@]}" \
+    | sed 's/^# TRANSLATOR[[:space:]]*//' \
     | sort -u)
 
 # 2.  Fallback → Last‑Translator header (name only)
