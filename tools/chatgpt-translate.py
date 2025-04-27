@@ -41,8 +41,9 @@ tokens = 0
 
 # ChatGPT token limit per minute for gpt-4o for a single API request
 # is 10000 in input AND in output.
-# So to be sure to have complete outputs, give it some headroom
-TOKEN_LIMIT = 9500
+# So to be sure to have complete outputs, give it some headroom.
+# And even then, seems German can't deal with long text
+TOKEN_LIMIT = 8000
 API_KEY = ""
 
 with open(".chatgpt.api_key", "r") as f:
@@ -117,6 +118,8 @@ with open(os.path.join("po", f"content.{LANG}.generated.txt"), "w", encoding="ut
         source='en',
         target=LANG,
         model='gpt-4o').translate_file(file)
+    # gpt-4o is the only model handling Markdown/HTML and Gettext formatting kinda properly
+    #
     o.write(content + "\n")
 
 line_pattern = re.compile(r"\[(\d+)\]: (.*)")
@@ -134,32 +137,39 @@ with open(os.path.join("po", f"content.{LANG}.generated.txt"), "r", encoding="ut
                 msgid_list = []
                 msgstr_list = []
                 for match in line_pattern.findall(o):
-                    #print("match:", match)
                     line_id = match[0]
                     # ChatGPT may insert spaces betwen [line ID] and :
                     target_pattern = re.compile(rf"\[{line_id}\] ?: (.*)\n")
-                    #print(target_pattern)
                     t_set = target_pattern.findall(trans)
                     if len(t_set) == 1:
-                        #print(t_set)
                         msgid_list.append(match[1])
                         msgstr_list.append(unescaped_doublequote.sub("\"", t_set[0]))
                     elif len(t_set) == 0:
                         print("line", line_id, "not found")
                     else:
                         print("line", line_id, "has more than 1 entry")
-                    #print(match[0], ":", match[1], t_set[0])
 
-                template_src = "msgid " + "\n".join(msgid_list) + "\n" + "msgstr \"\""
-                template_dest = "#, fuzzy\n" + "msgid " + "\n".join(msgid_list) + "\n" + "msgstr " + "\n".join(msgstr_list)
+                if len(msgid_list) == len(msgstr_list):
+                    # Ensure original and translation both end (or both don't end) with newline
+                    # otherwise po4a breaks on critical error. It's critical for Markdown syntax.
+                    for i, (a, b) in enumerate(zip(msgid_list, msgstr_list)):
+                        if a.endswith('\\n"') and not b.endswith('\\n"'):
+                            b = b.rstrip('"') + '\n"'
+                            msgstr_list[i] = b
+                        elif not a.endswith('\\n"') and b.endswith('\\n"'):
+                            b = b.rstrip('\\n"') + '"'
+                            msgstr_list[i] = b
 
-                if(content.find(template_src) > -1):
-                    content = content.replace(template_src, template_dest)
+                    template_src = "msgid " + "\n".join(msgid_list) + "\n" + "msgstr \"\""
+                    template_dest = "# Translated by ChatGPT\n" + "msgid " + "\n".join(msgid_list) + "\n" + "msgstr " + "\n".join(msgstr_list)
+
+                    if(content.find(template_src) > -1):
+                        content = content.replace(template_src, template_dest)
+                    else:
+                        print("did not find", template_src)
                 else:
-                    print(template_src)
+                    print("translation number of lines mismatch original")
 
-# Merge double comment lines starting with `#,` otherwise the second is removed
-content = re.sub(r"#, (.+)?\n#, (.*)", r"#, \1, \2", content)
 
 with open(os.path.join("po", f"content.{LANG}.po"), "w", encoding="utf-8") as f:
     f.write(content)
