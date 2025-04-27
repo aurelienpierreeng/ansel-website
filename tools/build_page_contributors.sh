@@ -46,12 +46,16 @@ readarray -t contributors < <(
     | sed 's/^#\. TRANSLATOR[[:space:]]*//' \
     | sort -u)
 
-# 2. If none, fall back to the PO header’s Last‑Translator field(s)
+# 2.  Fallback → Last‑Translator header (name only)
 if [ ${#contributors[@]} -eq 0 ]; then
-  readarray -t contributors < <(
-    grep -Eho '^"Last-Translator:[^"]+"' "${po_files[@]}" \
-      | sed -E 's/^"Last-Translator:[[:space:]]*([^<"]*<[^>"]*>).*$/\1/' \
-      | sort -u)
+  mapfile -t contributors < <(
+    grep -Eho '^"Last-Translator:[^"\\]+' "${po_files[@]}" |
+    sed -E 's/^"Last-Translator:[[:space:]]*//' |
+    sed -E 's/[[:space:]]*<[^>]*>//' |
+    sed -E 's/\\n$//' |
+    sed -E 's/[[:space:]]+$//' |
+    sort -u
+  )
 fi
 
 # 3. Nothing at all?  Remove the addendum and exit – po4a will ignore it.
@@ -59,6 +63,11 @@ if [ ${#contributors[@]} -eq 0 ]; then
   rm -f "$addendum" 2>/dev/null || true
   exit 0
 fi
+
+# Join contributors with ,
+joined=$(printf '%s, ' "${contributors[@]}")
+# Remove the trailing ,
+joined=${joined%, }
 
 # ────────────────────────────────────────────────────────────────────────────
 # Write the footer.  Each translator ends up on its own line (<br/>) so the
@@ -68,6 +77,6 @@ fi
   printf '\n\n'
   printf '<!-- Translators of %s -->\n' "$master_doc"
   printf '{{< translators >}}\n'
-  printf '%s, ' "${contributors[@]}"
+  printf '%s' "$joined"
   printf '\n{{</ translators >}}\n'
 } > "$addendum"
