@@ -1,5 +1,6 @@
-<div class="bg-text-secondary border-top border-dark-subtle pt-2 fst-italic text-body-secondary">
+<div class="bg-text-secondaryfst-italic text-body-secondary">
+<hr>
 Translated from English by :
-<span class="fst-normal">{{ .Inner | replaceRE `, (?:$|\n)` "" }}.</span>
+<span class="fst-normal">{{ .Inner | replaceRE `[, ]*?(?:$|\n)` "" }}.</span>
 In case of conflict, inconsistency or error, the English version shall prevail.
 </div>
