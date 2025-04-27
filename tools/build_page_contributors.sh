@@ -24,6 +24,10 @@
 #   docs/$(PAGE) $lang:build/$(PAGE:%.adoc=%).$lang.adoc add_$lang:?@$(ADDEND)
 # ---------------------------------------------------------------------------
 
+# go to project root
+PROJECT_ROOT="$(cd `dirname $0`/..; pwd -P)"
+cd "$PROJECT_ROOT"
+
 set -euo pipefail
 
 master_doc=$1   # shown in the comment of the footer
