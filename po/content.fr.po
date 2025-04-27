@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2025-04-26 16:21+0200\n"
-"PO-Revision-Date: 2025-04-27 23:49+0200\n"
+"PO-Revision-Date: 2025-04-28 00:10+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#. type: Yaml Front Matter Array Element: authors
 # TRANSLATOR Aurélien Pierre
+#. type: Yaml Front Matter Array Element: authors
 #: content/news/rewriting-import/index.md:1 content/news/dev-diary-2.md:1
 #: content/news/changes-appimage.md:1 content/news/new-build-options-linux.md:1
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md:1
@@ -39,8 +39,8 @@ msgstr ""
 msgid "Aurélien Pierre"
 msgstr "Aurélien Pierre"
 
-#. type: Yaml Front Matter Array Element: tags
 # TRANSLATOR Aurélien Pierre
+#. type: Yaml Front Matter Array Element: tags
 #: content/news/rewriting-import/index.md:1 content/news/dev-diary-2.md:1
 #: content/news/new-build-options-linux.md:1
 #: content/news/implementing-kill-switch.md:1
@@ -7293,19 +7293,19 @@ msgstr ""
 "    A((fa:fa-sun Scène)) --> B([Lecture brute du capteur]);\n"
 "    B --> C;\n"
 "\n"
-"    sous-graphie Software;\n"
-"      C[\"(Linéaire) Profilage des couleurs\"];\n"
-"      C --> D[Traitement faisant référence à la scène];\n"
-"      D --> E[\"(Non-linéaire) Transformation d'affichage\"];\n"
-"      E --> I[Traitement faisant référence à l'affichage];\n"
+"    subgraph Logiciel;\n"
+"      C[\"Profilage des couleurs (Linéaire) \"];\n"
+"      C --> D[Traitement relatif à la scène];\n"
+"      D --> E[\"Transformation d'affichage (Non-linéaire) \"];\n"
+"      E --> I[Traitement relatif à l'affichage];\n"
 "      I --> G[Système de gestion de la couleur];\n"
 "    end;\n"
 "\n"
-"    G --> H([Tampon d'affichage]);\n"
+"    G --> H([Buffer d'affichage]);\n"
 "    H --> J((fa:fa-lightbulb Affichage));\n"
 "\n"
-"    style D remplissage:#BAFFD2;\n"
-"    style I remplissage:#FFB7B5;\n"
+"    style D fill:#BAFFD2;\n"
+"    style I fill:#FFB7B5;\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
