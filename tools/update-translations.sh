@@ -60,14 +60,16 @@ for f in  $(find content -type f -name '*.md'); do
 
             # po4a will only create translations that are not already tracked by Git
             if [ "$(git ls-files $translated)" != "$translated" ]; then
-              line="$line $lang:$translated"
+                line="$line $lang:$translated"
 
-              # Create the footer addendum containing contributors for that lang for that file
-              footer="po/footers/${f//\//.}.$lang.add"
-              ./tools/build_page_contributors.sh "$f" "$footer" "po/content.$lang.po"
-              if test -f "$footer"; then
-                line="$line add_$lang:$footer"
-              fi
+                if [ "$(basename "$f")" != "_index.md" ]; then
+                    # Create the footer addendum containing contributors for that lang for that file
+                    footer="po/footers/${f//\//.}.$lang.add"
+                    ./tools/build_page_contributors.sh "$f" "$footer" "po/content.$lang.po"
+                    if test -f "$footer"; then
+                        line="$line add_$lang:$footer"
+                    fi
+                fi
             fi
         done
 
