@@ -58,9 +58,12 @@ if [ ${#contributors[@]} -eq 0 ]; then
   )
 fi
 
-# 3. Nothing at all?  Remove the addendum and exit – po4a will ignore it.
+# 3.  Nothing → write header-only addendum so po4a 0.69 is happy.
 if [ ${#contributors[@]} -eq 0 ]; then
-  rm -f "$addendum" 2>/dev/null || true
+  {
+    echo 'PO4A-HEADER: mode=eof'
+    echo '<!-- no translators declared -->'
+  } > "$addendum"
   exit 0
 fi
 
