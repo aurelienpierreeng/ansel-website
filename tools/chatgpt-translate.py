@@ -153,15 +153,15 @@ with open(os.path.join("po", f"content.{LANG}.generated.txt"), "r", encoding="ut
                     # Ensure original and translation both end (or both don't end) with newline
                     # otherwise po4a breaks on critical error. It's critical for Markdown syntax.
                     for i, (a, b) in enumerate(zip(msgid_list, msgstr_list)):
-                        if a.endswith('\\n"') and not b.endswith('\\n"'):
-                            b = b.rstrip('"') + '\n"'
+                        if a.endswith('\n"') and not b.endswith('\n"'):
+                            b = b.rstrip('"') + '\\n"'
                             msgstr_list[i] = b
-                        elif not a.endswith('\\n"') and b.endswith('\\n"'):
+                        elif not a.endswith('\n"') and b.endswith('\n"'):
                             b = b.rstrip('\\n"') + '"'
                             msgstr_list[i] = b
 
                     template_src = "msgid " + "\n".join(msgid_list) + "\n" + "msgstr \"\""
-                    template_dest = "# Translated by ChatGPT\n" + "msgid " + "\n".join(msgid_list) + "\n" + "msgstr " + "\n".join(msgstr_list)
+                    template_dest = "# TRANSLATOR ChatGPT\n" + "msgid " + "\n".join(msgid_list) + "\n" + "msgstr " + "\n".join(msgstr_list)
 
                     if(content.find(template_src) > -1):
                         content = content.replace(template_src, template_dest)
