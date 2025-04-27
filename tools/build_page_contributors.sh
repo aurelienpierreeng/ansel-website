@@ -40,18 +40,23 @@ fi
 mkdir -p "$(dirname "$addendum")"
 
 # ────────────────────────────────────────────────────────────────────────────
-# Gather all translator tags, one per array element.
-# Using readarray/mapfile avoids word‑splitting on spaces inside a name.
+# 1. Try explicit `#. TRANSLATOR …` tags
 readarray -t contributors < <(
-  grep -Eho '^# TRANSLATOR .*$' "${po_files[@]}" \
-    | sed 's/^# TRANSLATOR[[:space:]]*//' \
-    | sort -u
-)
+  grep -Eho '^#\. TRANSLATOR .*$' "${po_files[@]}" \
+    | sed 's/^#\. TRANSLATOR[[:space:]]*//' \
+    | sort -u)
 
-# If no contributors found, still create an empty addendum so po4a finds the
-# file, but leave it blank.
+# 2. If none, fall back to the PO header’s Last‑Translator field(s)
 if [ ${#contributors[@]} -eq 0 ]; then
-  : > "$addendum"   # touch + truncate to 0 bytes
+  readarray -t contributors < <(
+    grep -Eho '^"Last-Translator:[^"]+"' "${po_files[@]}" \
+      | sed -E 's/^"Last-Translator:[[:space:]]*([^<"]*<[^>"]*>).*$/\1/' \
+      | sort -u)
+fi
+
+# 3. Nothing at all?  Remove the addendum and exit – po4a will ignore it.
+if [ ${#contributors[@]} -eq 0 ]; then
+  rm -f "$addendum" 2>/dev/null || true
   exit 0
 fi
 
@@ -60,7 +65,6 @@ fi
 # list keeps formatting in HTML, AsciiDoc, Markdown, POD (etc.).
 {
   echo "PO4A-HEADER: mode=eof"
-
   printf '\n\n'
   printf '<!-- Translators of %s -->\n' "$master_doc"
   printf '{{< translators >}}\n'
