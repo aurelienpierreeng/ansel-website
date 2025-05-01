@@ -17,8 +17,11 @@ __The Ansel project does not have any control over the list of supported cameras
 
 Noise profiles are used by the [_denoise (profiled)_](../../doc/modules/processing-modules/denoise-profiled) module. Cameras without noise profiles will still be usable, only denoising at high ISO might be of subpar quality because it will use generic noise stats.
 
+### Raw file formats support
 
-### Support table
+Ansel accepts raw file formats among the following list: `3FR, ARI, ARW, BAY, BMQ, CAP, CINE, CR2, CR3, CRW, CS1, DC2, DCR, DNG, GPR, ERF, FFF, EXR, IA, IIQ, JPEG, JPG, K25, KC2, KDC, MDC, MEF, MOS, MRW, NEF, NRW, ORF, PEF, PFM, PNG, PXN, QTK, RAF, RAW, RDC, RW1, RW2, SR2, SRF, SRW, STI, TIF, TIFF, X3F`. This means that the application will allow [importing](../doc/getting-started/import.md) them. To be completely supported (read, decoded), either Rawspeed or Libraw, and Exiv2 will need to support them too.
+
+### Camera support table
 
 Support legend:
 
@@ -56,18 +59,21 @@ If your camera is not or partially supported:
 - upload test raw files to <https://raw.pixls.us>,
 - open a bug report [on Rawspeed tracker](https://github.com/darktable-org/rawspeed/issues) and [on Libraw tracker](https://github.com/LibRaw/LibRaw/issues/608).
 
-
 If your camera does not have noise profiles, you can [generate them yourself](https://pixls.us/articles/how-to-create-camera-noise-profiles-for-darktable/) and submit them to Ansel bug tracker.
-
 
 ## Non-raw codecs
 
 Ansel supports the following file formats and extensions (while reading and writing):
 
 - JPEG: `.jpg`, `.jpeg` (mandatory),
-- PNG: `.png` (mandatory),
-- PFM: `.pfm` (mandatory),
-- TIFF: `.tif`, `.tiff` (mandatory),
+- PNG: `.png` (mandatory):
+    - 8/16 bits
+    - transparent background unsupported,
+- HDR: `.pfm` (Portable Float Map format) and `.hdr` (RGBE format) (mandatory),
+- TIFF: `.tif`, `.tiff` (mandatory) :
+    - 8/16 bits integer,
+    - 16/32 bits floating point,
+    - supports exporting blending masks into layers,
 - OpenEXR: `.exr` (optional),
 - WebP: `.wepb` (optional),
 - AVIF: `.avif` (optional),
