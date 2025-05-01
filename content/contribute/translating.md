@@ -94,6 +94,20 @@ This will update the `.pot` file using the source code of the project. You will 
 6. Commit all `.pot` and `.po` files and open a pull request against the relevant Github repository. Never commit translated `.md` (Markdown) files.
 
 
+## Translating images
+
+_The following applies to the website and documentation only._
+
+Images can be translated too, for example application screenshots. Images are stored in the `assets/` folder if they are re-used on several pages (global assets), otherwise they are stored in the same folder as the Mardown file using them (local assets). Whether global or local, the translation process is the same, only the base folder changes.
+
+If, for example, you want to translate the `assets/screenshot.jpg` for the language `LANG` (which is the ISO code of the language, like `de`, `nl`, `pt_br`, `zn_cn`, etc.):
+
+1. add and commit a new `assets/screenshot.LANG.jpg` image file to the documentation or website Git repository,
+2. in the `content.LANG.po`, locate the entry containing the Markdown tag for the original image, which will be something like `![alt text](screenshot.jpg)`,
+3. translate the Markdown tag by replacing the URL of the image, like `![translated alt text](screenshot.LANG.jpg`,
+4. save and commit the `content.LANG.po` file,
+5. create a pull request against Ansel website or Ansel docs repository.
+
 ## Auto-tools and helper scripts
 
 ### Init documentation translation with software one
@@ -120,9 +134,9 @@ where `LANG` is the target language code (de, fr, pt_br, etc.). This will proces
 - send `po/content.LANG.txt` file to ChatGPT and get the response in `po/content.LANG.generated.txt`
 - fix most common formatting inconsistencies that ChatGPT can introduce and inject the translations back into `po/content.LANG.po`,
 - build translated Markdown files (following the `page.LANG.md` naming convention),
-- build the website.
+- build the website with Hugo.
 
-If all these step complete without error, then you are good to run the script again to process the next batch until completion. If errors are shown, you will need to fix them. We run only one batch at each call to let user the opportunity to find errors while there are not too many changes to inspect.
+If all these steps complete without error, then you are good to run the script again to process the next batch until completion. If errors are shown, you will need to fix them. We run only one batch at each call to let user the opportunity to find errors while there are not too many changes to inspect.
 
 __Common errors__:
 
