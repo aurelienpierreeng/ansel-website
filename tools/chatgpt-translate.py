@@ -123,7 +123,27 @@ with open(os.path.join("po", f"content.{LANG}.generated.txt"), "w", encoding="ut
     o.write(content + "\n")
 
 line_pattern = re.compile(r"\[(\d+)\]: (.*)")
-unescaped_doublequote = re.compile(r"(?!(msgstr ))\"(?!\n)")
+
+# Select single- or multiple-line Gettext strings, discarding comments
+dq_line = re.compile(
+    r'^(?:msgid|msgstr) (.*)$'
+    r'|^(?!#)(.+)$', re.MULTILINE,
+)
+
+lines = re.compile(r'"(.+)"')
+
+def cleanup_quotes(line: str) -> str:
+    # Brutally remove all enclosing (final/terminal) quotes, whether escaped or not
+    new_line = line.strip('\"\\"')
+
+    # In case we have a mix of escaped and unescaped double quotes, in the line inner content,
+    # brutally unescape all of them, and then re-escape them all.
+    # This prevents double escaping or special/contextual handling preventing it.
+    new_line = new_line.replace('\\"', '"').replace('"', '\\"')
+
+    # Enclose the final result within non-espaced double quotes
+    return f'"{new_line}"'
+
 
 content = ""
 with open(os.path.join("po", f"content.{LANG}.generated.txt"), "r", encoding="utf-8") as translated:
@@ -143,7 +163,7 @@ with open(os.path.join("po", f"content.{LANG}.generated.txt"), "r", encoding="ut
                     t_set = target_pattern.findall(trans)
                     if len(t_set) == 1:
                         msgid_list.append(match[1])
-                        msgstr_list.append(unescaped_doublequote.sub("\"", t_set[0]))
+                        msgstr_list.append(cleanup_quotes(t_set[0]))
                     elif len(t_set) == 0:
                         print("line", line_id, "not found")
                     else:
@@ -153,10 +173,10 @@ with open(os.path.join("po", f"content.{LANG}.generated.txt"), "r", encoding="ut
                     # Ensure original and translation both end (or both don't end) with newline
                     # otherwise po4a breaks on critical error. It's critical for Markdown syntax.
                     for i, (a, b) in enumerate(zip(msgid_list, msgstr_list)):
-                        if a.endswith('\n"') and not b.endswith('\n"'):
+                        if a.endswith('\\n"') and not b.endswith('\\n"'):
                             b = b.rstrip('"') + '\\n"'
                             msgstr_list[i] = b
-                        elif not a.endswith('\n"') and b.endswith('\n"'):
+                        elif not a.endswith('\\n"') and b.endswith('\\n"'):
                             b = b.rstrip('\\n"') + '"'
                             msgstr_list[i] = b
 
