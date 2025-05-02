@@ -34,3 +34,7 @@ github.com/aurelienpierreeng/ansel-doc v0.0.0-20250424210315-e11ee24a5223 h1:UWU
 github.com/aurelienpierreeng/ansel-doc v0.0.0-20250424210315-e11ee24a5223/go.mod h1:q18gWl3xKqLmZu/AXC8DGKX2j2DKmiujFDYCsipyUW4=
 github.com/aurelienpierreeng/ansel-doc v0.0.0-20250502014423-f5c150071879 h1:NmRNXyGJytRC8fUrpNtXpwQZmKXDydOVn8NKxcgWm28=
 github.com/aurelienpierreeng/ansel-doc v0.0.0-20250502014423-f5c150071879/go.mod h1:4rpnT4wsbDlOQjCKdBqoftSr+pK/J3hSw7PwXdwYYTI=
+github.com/aurelienpierreeng/ansel-doc v0.0.0-20250502140318-86d984abe4ef h1:ZJYDuJRFLiHQ4TZO3YLx2astt0/6pROxoswxCaNoRks=
+github.com/aurelienpierreeng/ansel-doc v0.0.0-20250502140318-86d984abe4ef/go.mod h1:4rpnT4wsbDlOQjCKdBqoftSr+pK/J3hSw7PwXdwYYTI=
+github.com/aurelienpierreeng/ansel-doc v0.0.0-20250502140606-b5c6d991d52e h1:LjOZj6/mquNVb3+FF0H57nxopbVCx24I+FoQJdkqykY=
+github.com/aurelienpierreeng/ansel-doc v0.0.0-20250502140606-b5c6d991d52e/go.mod h1:4rpnT4wsbDlOQjCKdBqoftSr+pK/J3hSw7PwXdwYYTI=

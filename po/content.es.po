@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-02 14:20+0200\n"
+"POT-Creation-Date: 2025-05-02 16:13+0200\n"
 "PO-Revision-Date: 2025-05-01 15:37+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
@@ -2174,8 +2174,9 @@ msgstr "¡Ve a ver el código! Compara la rama `darktable-2.6.x` with `darktable
 # TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md:546
-#, no-wrap
-msgid "All I have heard so far are canned sentences like \"it's like many other opensource projects\" and \"there is nothing we can do about it\". People are afraid by the amount of work that a fork is (I got emails trying to convince me it was dividing productivity), without realizing the amount of resources currently wasted by the Darktable project and the permanent stress of having to base your work on an unstable code base shaken up all the time. So far, Ansel cost me less fatigue [and I solved a significant number of problems](/en/doc/special-topics/from-darktable/) among which some were reported since 2016 without signs of interest from the bloody \"community\".\n"
+#, fuzzy, no-wrap
+#| msgid "All I have heard so far are canned sentences like \"it's like many other opensource projects\" and \"there is nothing we can do about it\". People are afraid by the amount of work that a fork is (I got emails trying to convince me it was dividing productivity), without realizing the amount of resources currently wasted by the Darktable project and the permanent stress of having to base your work on an unstable code base shaken up all the time. So far, Ansel cost me less fatigue [and I solved a significant number of problems](/en/doc/special-topics/from-darktable/) among which some were reported since 2016 without signs of interest from the bloody \"community\".\n"
+msgid "All I have heard so far are canned sentences like \"it's like many other opensource projects\" and \"there is nothing we can do about it\". People are afraid by the amount of work that a fork is (I got emails trying to convince me it was dividing productivity), without realizing the amount of resources currently wasted by the Darktable project and the permanent stress of having to base your work on an unstable code base shaken up all the time. So far, Ansel cost me less fatigue [and I solved a significant number of problems](/doc/special-topics/from-darktable/) among which some were reported since 2016 without signs of interest from the bloody \"community\".\n"
 msgstr "Todo lo que he escuchado hasta ahora son frases preparadas como \"es como muchos otros proyectos de código abierto\" y \"no hay nada que podamos hacer al respecto\". La gente tiene miedo de la cantidad de trabajo que es un fork (recibí correos electrónicos tratando de convencerme de que dividía la productividad), sin darse cuenta de la cantidad de recursos que actualmente desperdicia el proyecto Darktable y el estrés permanente de tener que basar tu trabajo en una base de código inestable que se remueve todo el tiempo. Hasta ahora, Ansel me costó menos fatiga [y solucioné un número significativo de problemas](/en/doc/special-topics/from-darktable/) entre los cuales algunos fueron reportados desde 2016 sin señales de interés de la maldita \"comunidad\".\n"
 
 # TRANSLATOR ChatGPT
@@ -4388,10 +4389,13 @@ msgstr ""
 # TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/resources/readings.md:82
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid ""
+#| "Colour : sense and measurement. Richard Kirk. 2022.\n"
+#| ": Richard Kirk holds a PhD in physics and has worked at Filmlight UK research and development since the 1980's. Filmlight is best known for its film digitization workflow (software and hardware) and its Baselight color grading software, used by most Hollywood movie productions to fine-tune the color look. Kirk is the co-author of the color-grading \"tRGB\" space used in Ansel [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) module and presented in the book (p. 79). The book itself is made available free of charge, as a PDF, so I will not expand on its content here : have a look for yourself. Just know that it is fairly accessible to non-technical people, well illustrated, and covers both film and digital imaging, with their relationships. [Download the PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
 msgid ""
 "Colour : sense and measurement. Richard Kirk. 2022.\n"
-": Richard Kirk holds a PhD in physics and has worked at Filmlight UK research and development since the 1980's. Filmlight is best known for its film digitization workflow (software and hardware) and its Baselight color grading software, used by most Hollywood movie productions to fine-tune the color look. Kirk is the co-author of the color-grading \"tRGB\" space used in Ansel [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) module and presented in the book (p. 79). The book itself is made available free of charge, as a PDF, so I will not expand on its content here : have a look for yourself. Just know that it is fairly accessible to non-technical people, well illustrated, and covers both film and digital imaging, with their relationships. [Download the PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
+": Richard Kirk holds a PhD in physics and has worked at Filmlight UK research and development since the 1980's. Filmlight is best known for its film digitization workflow (software and hardware) and its Baselight color grading software, used by most Hollywood movie productions to fine-tune the color look. Kirk is the co-author of the color-grading \"tRGB\" space used in Ansel [color balance](/doc/modules/processing-modules/color-balance-rgb/) module and presented in the book (p. 79). The book itself is made available free of charge, as a PDF, so I will not expand on its content here : have a look for yourself. Just know that it is fairly accessible to non-technical people, well illustrated, and covers both film and digital imaging, with their relationships. [Download the PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
 msgstr ""
 "Color: sentido y medida. Richard Kirk. 2022.\n"
 ": Richard Kirk tiene un doctorado en física y ha trabajado en Filmlight UK en investigación y desarrollo desde los '80s. Filmlight es mejor conocido por su flujo de trabajo de digitalización de películas (software y hardware) y su software de gradación de color Baselight, utilizado por la mayoría de las producciones de películas de Hollywood para ajustar el aspecto del color. Kirk es coautor del espacio de gradación de color \"tRGB\" usado en el módulo de [balance de color](/en/doc/modules/processing-modules/color-balance-rgb/) de Ansel y presentado en el libro (p. 79). El libro en sí está disponible gratuitamente, como un PDF, por lo que no me explayaré sobre su contenido aquí: échale un vistazo tú mismo. Solo sabe que es bastante accesible para personas no técnicas, bien ilustrado y cubre tanto la imagen cinematográfica como la digital, con sus relaciones. [Descarga el PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
@@ -4532,10 +4536,13 @@ msgstr "_Corregir o introducir cambios de color para asegurar una apariencia con
 # TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/resources/readings.md:123
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid ""
+#| "Color Correction Handbook (vol. 1) / Color Correction Look Book (vol 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)\n"
+#| ": These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.\n"
 msgid ""
 "Color Correction Handbook (vol. 1) / Color Correction Look Book (vol 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)\n"
-": These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/en/doc/modules/processing-modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.\n"
+": These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/doc/modules/processing-modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.\n"
 msgstr ""
 "Manual de Corrección de Color (vol. 1) / Libro de Aspecto de Corrección de Color (vol. 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)\n"
 ": Estos libros tienen un lugar especial en la historia de Darktable/Ansel porque los utilicé como referencia para rediseñar las características del módulo de [balance de color](/en/doc/modules/processing-modules/color-balance-rgb/). Aunque se centran en la coloración de películas, son agnósticos del software (mostrando cómo hacer las cosas en diferentes aplicaciones) y hacen uso de herramientas de color como curvas RGB, equilibrio de color, mezclador de canales y LUTs 3D que están disponibles en Ansel. Contienen valiosa información sobre cómo y por qué crear apariencias de color en imágenes, para poner la forma al servicio del contenido. Recomiendo que obtengas copias digitales de ellos porque tienen muchas ilustraciones que se verán mejor en pantalla de lo que permite el papel impreso.\n"
@@ -5987,8 +5994,9 @@ msgstr "En _cualquier_ software disponible, verás una configuración de balance
 # TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/resources/white-balances/index.md:288
-#, no-wrap
-msgid "Physicists have a special radiator, called a [black body](https://en.wikipedia.org/wiki/Black-body_radiation). It's an idealized object which, once heated at a certain temperature, will emit a known light spectrum. More interestingly, the shape of light spectrum can be _entirely predicted_ by the temperature of the black body. Remember how [RGB is a 3D reduction of a light spectrum](../../workflows/scene-referred/index.en.md) ? Here, it's a 1D reduction, even better ! Meaning one single number suffices to describe unambiguously a full spectrum.\n"
+#, fuzzy, no-wrap
+#| msgid "Physicists have a special radiator, called a [black body](https://en.wikipedia.org/wiki/Black-body_radiation). It's an idealized object which, once heated at a certain temperature, will emit a known light spectrum. More interestingly, the shape of light spectrum can be _entirely predicted_ by the temperature of the black body. Remember how [RGB is a 3D reduction of a light spectrum](../../workflows/scene-referred/index.en.md) ? Here, it's a 1D reduction, even better ! Meaning one single number suffices to describe unambiguously a full spectrum.\n"
+msgid "Physicists have a special radiator, called a [black body](https://en.wikipedia.org/wiki/Black-body_radiation). It's an idealized object which, once heated at a certain temperature, will emit a known light spectrum. More interestingly, the shape of light spectrum can be _entirely predicted_ by the temperature of the black body. Remember how [RGB is a 3D reduction of a light spectrum](../../workflows/scene-referred/index.md) ? Here, it's a 1D reduction, even better ! Meaning one single number suffices to describe unambiguously a full spectrum.\n"
 msgstr "Los físicos tienen un radiador especial, llamado [cuerpo negro](https://en.wikipedia.org/wiki/Black-body_radiation). Es un objeto idealizado que, una vez calentado a cierta temperatura, emitirá un espectro de luz conocido. Más interesante aún, la forma del espectro de luz puede ser _totalmente predicho_ por la temperatura del cuerpo negro. ¿Recuerdas cómo [RGB es una reducción 3D de un espectro de luz](../../workflows/scene-referred/index.en.md)? Aquí, es una reducción 1D, ¡aún mejor! Lo que significa que un solo número es suficiente para describir inequívocamente un espectro completo.\n"
 
 # TRANSLATOR ChatGPT
@@ -15298,12 +15306,20 @@ msgstr "Se ofrecen muchas formas centralizadas y automatizadas para mantenerse a
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/organization.md:112
-#, no-wrap
+#: content/contribute/organization.md:110
+#, fuzzy, no-wrap
+#| msgid ""
+#| "- The main website has a central RSS feed, where new and updated page goes :\n"
+#| "    - [Global English RSS](/en/index.xml),\n"
+#| "    - [Global French RSS](/fr/index.xml).\n"
+#| "- For more granularity, each section of the website (News, Doc, Workflows, etc.) has its own RSS feed too. The <i class=\"fas fa-rss-square\"></i> icon you find on section index pages and on every page links to that RSS feed in the current language.\n"
+#| "- The Community website has a [central public RSS feed](https://community.ansel.photos/m/timeline/rss/public/) too (truncated to the 25 most recent events).\n"
+#| "- Code changes can be tracked from commits index on [Github](https://github.com/aurelienpierreeng/ansel/commits/master/), or using the [Github Atom feed](https://github.com/aurelienpierreeng/ansel/commits/master.atom) (truncated to the 20 most recent commits). Commit messages are usually quite verbose and should explain well enough what was changed and why.\n"
+#| "- New commits, Github issues updates (created, edited, closed), new community posts and new website pages are all posted to a [dedicated Matrix chat](https://matrix.to/#/#ansel-dev:matrix.org).\n"
+#| "- Nightly builds packages are posted to a [dedicated Matrix chat](https://matrix.to/#/#ansel-builds:matrix.org). They are also listed on the [Github pre-release page](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
+#| "- Open and closed project/issues can be seen on the Github [Kanban board](https://github.com/orgs/aurelienpierreeng/projects/1).\n"
 msgid ""
-"- The main website has a central RSS feed, where new and updated page goes :\n"
-"    - [Global English RSS](/en/index.xml),\n"
-"    - [Global French RSS](/fr/index.xml).\n"
+"- The main website has a central RSS feed, where new and updated page goes : [global RSS](../index.xml),\n"
 "- For more granularity, each section of the website (News, Doc, Workflows, etc.) has its own RSS feed too. The <i class=\"fas fa-rss-square\"></i> icon you find on section index pages and on every page links to that RSS feed in the current language.\n"
 "- The Community website has a [central public RSS feed](https://community.ansel.photos/m/timeline/rss/public/) too (truncated to the 25 most recent events).\n"
 "- Code changes can be tracked from commits index on [Github](https://github.com/aurelienpierreeng/ansel/commits/master/), or using the [Github Atom feed](https://github.com/aurelienpierreeng/ansel/commits/master.atom) (truncated to the 20 most recent commits). Commit messages are usually quite verbose and should explain well enough what was changed and why.\n"
@@ -15323,7 +15339,7 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/organization.md:115
+#: content/contribute/organization.md:113
 #, no-wrap
 msgid ""
 "{{< note >}}\n"

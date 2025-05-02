@@ -6,6 +6,7 @@ theme = 'ansel'
 
 enableGitInfo = true
 defaultContentLanguageInSubdir = true
+refLinksErrorLevel = 'warning'
 canonifyURLs = true
 removePathAccents = true
 timeout = "360s"
