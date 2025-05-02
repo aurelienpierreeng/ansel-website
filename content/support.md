@@ -9,7 +9,7 @@ weight: 40
 
 ## General info
 
-Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated was automated for the developer's sanity, and you are asked to use the online resources first everytime it is possible.
+Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated [was automated](./contribute/workflows.md) for the developer's sanity, and you are asked to use the online resources first everytime it is possible.
 
 {{< warning >}}
 When you submit a bug report or book a training session, please upload your attachment files on my [private cloud](https://cloud.apmlt.net/s/YAdfYajPkE5nLyW) instead of using third-party hosting services with an expiration date : there is no guaranty I will download the files in time and it keeps things tidy for me.
@@ -37,6 +37,13 @@ Chantal is a __bilingual AI language model__ trained specifically for open-sour
 It acts as your virtual librarian and can greatly improve access to information when you are __not sure of the exact terms__ to look for because __it understands synonyms__ and context.
 
 {{< button url="https://chantal.aurelienpierre.com" icon="search" label="Search" >}}
+{{% /card %}}
+
+{{% card title="Ansel GPT" icon="search" %}}
+Ansel GPT is a custom ChatGPT model trained with all the content of the Ansel website and documentation, plus other color science resources. It can answer many questions and help you build and configure Ansel on your system. It has access to significantly fewer resources than Chantal but can form full explanations.
+
+It is available to _ChatGPT Plus_ subscribers only (as per OpenAI limitations).
+{{< button url="https://chatgpt.com/g/g-680d2f861a608191a0f7549eadd40f2e-ansel-gpt" icon="search" label="Search" >}}
 {{% /card %}}
 {{% /row %}}
 
