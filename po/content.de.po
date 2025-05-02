@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-02 16:13+0200\n"
+"POT-Creation-Date: 2025-05-02 16:59+0200\n"
 "PO-Revision-Date: 2025-04-27 23:48+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
@@ -9029,167 +9029,220 @@ msgstr ""
 msgid "Internal links"
 msgstr "Interne Links"
 
-# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:147
 #, no-wrap
-msgid "Internal links should use relative paths from the current file. The upstream darktable-doc is a huge mess in that regard: trying to follow internal links locally in an IDE leads to non-existing files most of the time (typically, they have one `../` too many). For some reason, Hugo is still able to resolve them. Ideally, links should work both in source Markdown (Ctrl + Click on the path, in most IDEs) as in the compiled HTML.\n"
-msgstr "Interne Links sollten relative Pfade von der aktuellen Datei verwenden. Das vorgelagerte darktable-doc ist in dieser Hinsicht ein großes Durcheinander: Der Versuch, interne Links lokal in einer IDE zu folgen, führt die meiste Zeit zu nicht vorhandenen Dateien (normalerweise haben sie ein `../` zu viel). Aus irgendeinem Grund ist Hugo trotzdem in der Lage, sie aufzulösen. Idealweise sollten Links sowohl im Quell-Markdown (Strg + Klick auf den Pfad, in den meisten IDEs) als auch im kompilierten HTML funktionieren.\n"
+msgid "Internal links should use relative paths from the current file whenever possible, which is not Hugo default behaviour. The purpose is to be able to follow relative links on the local file system from any modern text editor, like in any `README.md` file. We use our own code to reconnect those relative links to files with Hugo website structure (after compilation).\n"
+msgstr ""
 
-# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:149
 #, no-wrap
-msgid "Example of internal link:\n"
+msgid "When building the website, internal links are checked and a critical error (aborting compilation) will be thrown if a page can't be found from internal links. You need to watch them out. Non-critical errors (aka `WARNING [languages] REF_NOT_FOUND`) can also be shown in a console because we twist the Hugo linker in a non-standard way, but those can be disregarded.\n"
+msgstr ""
+
+# TRANSLATOR ChatGPT
+#. type: Plain text
+#: content/contribute/website/index.md:151
+#, fuzzy, no-wrap
+#| msgid "Example of internal link:\n"
+msgid "Example of internal links:\n"
 msgstr "Beispiel eines internen Links:\n"
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (markdown)
-#: content/contribute/website/index.md:150
-#, no-wrap
-msgid "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
+#: content/contribute/website/index.md:152
+#, fuzzy, no-wrap
+#| msgid "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
+msgid ""
+"[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
+"[Filmic](./filmic-rgb.md)\n"
+"[Some page](./section/index.md)\n"
 msgstr "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
 
-# TRANSLATOR ChatGPT
-#. type: Plain text
-#: content/contribute/website/index.md:155
-#, no-wrap
-msgid "If you make links to page anchors, like `/my-post.md#some-heading`, be sure to __not__ insert a slash `/` between the page slug and the hashtag `#` in your Markdown code, or else the file will be taken for a directory and not found.\n"
-msgstr "Wenn Sie Links zu Seitenankern erstellen, wie `/my-post.md#some-heading`, stellen Sie sicher, dass zwischen dem Seiten-Slug und dem Hashtag `#` kein Schrägstrich `/` in Ihrem Markdown-Code eingefügt wird, oder sonst wird die Datei als ein Verzeichnis genommen und nicht gefunden.\n"
-
-# TRANSLATOR ChatGPT
-#. type: Plain text
-#: content/contribute/website/index.md:157
-#, no-wrap
-msgid "Also, always link to the Markdown files, like `/my-post.md`, instead of `/my-post`. If you need to link to sections, like `/doc/` (_although you should use relative pathes there_), always link to their Markdown index, like `/doc/_index.md`. While `/my-post` and `/doc` are technically valid URLs __once the website is compiled to HTML__, text editors, IDEs, file browsers as well as Hugo at compilation stage are not aware of these URL and only know local text files. Using links to actual text files solves many issues, helps debugging and ensures the robustness of the HTML build.\n"
-msgstr "Außerdem, immer zu den Markdown-Dateien, wie `/my-post.md`, anstelle von `/my-post` verlinken. Wenn Sie zu Sektionen wie `/doc/` verlinken müssen (_obwohl Sie dort relative Pfade verwenden sollten_), verlinken Sie immer zu ihrem Markdown-Index, wie `/doc/_index.md`. Während `/my-post` und `/doc` technisch gültige URLs __nachdem die Website zu HTML kompiliert ist__ sind, sind Texteditoren, IDEs, Dateibrowser sowie Hugo zum Kompilierungszeitpunkt über diese URL nicht informiert und kennen nur lokale Textdateien. Links zu tatsächlichen Textdateien verwenden löst viele Probleme, hilft beim Debuggen und sorgt für die Robustheit des HTML-Builds.\n"
-
-# TRANSLATOR ChatGPT
-#. type: Title ###
+#. type: Title ####
 #: content/contribute/website/index.md:158
 #, no-wrap
-msgid "External links"
-msgstr "Externe Links"
+msgid "Page anchors"
+msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:161
 #, no-wrap
-msgid "Many external websites will return HTML codes different than `200` (200 = everything fine) because the CI bot checking broken links is… a bot, and some websites block bots. The affected URLs can be added to the ignored list in [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) to prevent false-negative. Anything returning a `404` code (page not found error) should be fixed.\n"
-msgstr "Viele externe Websites geben HTML-Codes zurück, die ungleich 200 sind (200 = alles in Ordnung), da der CI-Bot, der defekte Links überprüft, ein … Bot ist, und einige Websites blockieren Bots. Die betroffenen URLs können zur Ignorierliste in [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) hinzugefügt werden, um Fehlalarme zu verhindern. Alles, was einen `404`-Code (Seite nicht gefunden Fehler) zurückgibt, sollte behoben werden.\n"
+msgid "If you make links to page anchors, like `/my-post.md#some-heading`, be sure to __not__ insert a slash `/` between the page slug and the hashtag `#` in your Markdown code, or else the file will be taken for a directory and not found.\n"
+msgstr "Wenn Sie Links zu Seitenankern erstellen, wie `/my-post.md#some-heading`, stellen Sie sicher, dass zwischen dem Seiten-Slug und dem Hashtag `#` kein Schrägstrich `/` in Ihrem Markdown-Code eingefügt wird, oder sonst wird die Datei als ein Verzeichnis genommen und nicht gefunden.\n"
+
+#. type: Title ####
+#: content/contribute/website/index.md:162
+#, no-wrap
+msgid "Absolute links"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:165
+#, no-wrap
+msgid "Say you want to link to the [support](../../support.md) page. Here are all the possibilitie to create a link to that page:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:170
+#, no-wrap
+msgid ""
+"- `[support](/support/)` -> valid for Hugo, but works only after the website is compiled, so it can't be debugged easily in code editor. __please avoid__\n"
+"- `[support](/support.md)` -> invalid for Hugo, will work as a side-effect of our custom link processing, but can't be debugged at all in code editor. __please avoid__\n"
+"- `[support](./support.md)` -> invalid for Hugo, works as intended by our custom link processing if called from the index page, for example. __please use this__\n"
+"- `[support](../support.md)` -> invalid for Hugo, works as intended by our custom link processing if called from a subfolder of the site, like `/contribute`. __please use this__\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:172
+#, no-wrap
+msgid "If a page is in what Hugo calls a [page or section bundle](https://gohugo.io/content-management/page-bundles/), please use the link to its `index.md` or `_index.md` file.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:179
+#, no-wrap
+msgid ""
+"Do:\n"
+":   ```markdown\n"
+"    [user manual](/doc/_index.md)\n"
+"    [user manual](./doc/_index.md)\n"
+"    [user manual](../../doc/_index.md)\n"
+"    ```\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:185
+#, no-wrap
+msgid ""
+"Don't (even if it technically works):\n"
+":   ```markdown\n"
+"    [user manual](/doc)\n"
+"    [user manual](/doc/)\n"
+"    ```\n"
+msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:162
+#: content/contribute/website/index.md:187
+#, no-wrap
+msgid "External links"
+msgstr "Externe Links"
+
+#. type: Plain text
+#: content/contribute/website/index.md:190
+#, no-wrap
+msgid "External links are not checked because that would take too much time at building, and building may happen without network access anyway. Always use `https://` in the external URLs when possible.\n"
+msgstr ""
+
+# TRANSLATOR ChatGPT
+#. type: Title ###
+#: content/contribute/website/index.md:191
 #, no-wrap
 msgid "Titles (headings)"
 msgstr "Header (Überschriften)"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:165
+#: content/contribute/website/index.md:194
 #, no-wrap
 msgid "H1 titles (encoded `# Title` in Markdown) are reserved for page titles and each page should have exactly one H1. darktable-doc messed up big time here by using H1 as section titles, this is both a SEO and an accessibility mistake. The web is semantic because it's designed for crawlers and screen readers just as much as for humans.\n"
 msgstr "H1-Überschriften (codiert `# Titel` in Markdown) sind für Seitentitel reserviert und jede Seite sollte genau ein H1 haben. Darktable-doc hat sich hier schwer vertan, indem sie H1 als Abschnittstitel verwendet haben, dies ist sowohl ein SEO- als auch ein Barrierefreiheitsfehler. Das Web ist semantisch, weil es sowohl für Crawler als auch für Screenreader genauso entworfen wurde wie für Menschen.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:167
+#: content/contribute/website/index.md:196
 #, no-wrap
 msgid "Be aware that Hugo automatically generates anchor links for headings, using the text of the heading. Thus, refrain from using symbols in headings, especially (back)slashes, which will mess-up the anchor links.\n"
 msgstr "Beachten Sie, dass Hugo automatisch Ankerlinks für Überschriften generiert, basierend auf dem Text der Überschrift. Verzichten Sie daher auf die Verwendung von Symbolen in Überschriften, insbesondere (Back-)Slashes, die die Ankerlinks durcheinander bringen.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:170
-#, no-wrap
-msgid ""
-"Also be aware that these headings anchors may be used in other pages\n"
-"to make direct links. Changing the text of an heading will break its anchor and may break external links. Fortunately, the [broken links CI bot](https://github.com/aurelienpierreeng/ansel-doc/actions/workflows/hugo.yml) also checks for internal anchors, so you just have to keep mind its output.\n"
+#: content/contribute/website/index.md:198
+#, fuzzy, no-wrap
+#| msgid ""
+#| "Also be aware that these headings anchors may be used in other pages\n"
+#| "to make direct links. Changing the text of an heading will break its anchor and may break external links. Fortunately, the [broken links CI bot](https://github.com/aurelienpierreeng/ansel-doc/actions/workflows/hugo.yml) also checks for internal anchors, so you just have to keep mind its output.\n"
+msgid "Also be aware that these headings anchors may be used in other pages to make direct links. Changing the text of an heading will break its anchor and may break external links. To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
 msgstr ""
 "Beachten Sie auch, dass diese Überschriftenanker in anderen Seiten verwendet werden können,\n"
 "um direkte Links zu erstellen. Durch Ändern des Textes einer Überschrift wird deren Anker gebrochen und können externe Links brechen. Glücklicherweise überprüft der [gebrochene Links CI-Bot](https://github.com/aurelienpierreeng/ansel-doc/actions/workflows/hugo.yml) auch interne Anker, sodass Sie nur den Ausgabe im Auge behalten müssen.\n"
 
 # TRANSLATOR ChatGPT
-#. type: Plain text
-#: content/contribute/website/index.md:172
-#, no-wrap
-msgid "To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
-msgstr "Um das Brechen von Ankern in externen Links zu vermeiden, können Sie den Text der Überschrift ändern, aber ihre ID auf die vorherige setzen, wie folgt:\n"
-
-# TRANSLATOR ChatGPT
 #. type: Fenced code block (markdown)
-#: content/contribute/website/index.md:173
+#: content/contribute/website/index.md:199
 #, no-wrap
 msgid "### My New Heading {#my-old-heading}\n"
 msgstr "### Meine neue Überschrift {#mein-alter-anker}\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:178
+#: content/contribute/website/index.md:204
 #, no-wrap
 msgid "This will preserve external links to `/my-post/#my-old-heading`. [See the details…](https://www.markdownguide.org/extended-syntax/#heading-ids)\n"
 msgstr "Dies bewahrt externe Links auf `/mein-post/#mein-alter-anker`. [Siehe die Details…](https://www.markdownguide.org/extended-syntax/#heading-ids)\n"
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:179
+#: content/contribute/website/index.md:205
 #, no-wrap
 msgid "Embedding images"
 msgstr "Einbetten von Bildern"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:182
+#: content/contribute/website/index.md:208
 #, no-wrap
 msgid "Hugo treats images as page assets. There are global assets, for images reused on several pages, stored in an `assets/` subfolder of the main source code folder, and local assets, stored in the same folder as the page using them.\n"
 msgstr "Hugo behandelt Bilder als Seiten-Assets. Es gibt globale Assets, für Bilder, die auf mehreren Seiten wiederverwendet werden, die in einem `assets/` Unterordner im Hauptquellcodeordner gespeichert sind, und lokale Assets, die im selben Ordner wie die Seite, die sie verwendet, gespeichert sind.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:184
+#: content/contribute/website/index.md:210
 #, no-wrap
 msgid "As for internal links, everything needs to be linked relatively to the source code as hosted on the local filesystem, not relatively to the compiled HTML.\n"
 msgstr "Wie bei internen Links muss alles relativ zum Quellcode als auf dem lokalen Dateisystem gehostet verlinkt werden, nicht relativ zum kompilierten HTML.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:186
+#: content/contribute/website/index.md:212
 #, no-wrap
 msgid "See [how to translate images](../translating.md#translating-images).\n"
 msgstr "Siehe [wie man Bilder übersetzt](../translating.md#translating-images).\n"
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:187
+#: content/contribute/website/index.md:213
 #, no-wrap
 msgid "Screenshots"
 msgstr "Screenshots"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:190
+#: content/contribute/website/index.md:216
 #, no-wrap
 msgid "Screenshots are the basics of any front-end software documentation. The darktable-doc maintainers refuse them on the ground that they can't be translated and they will be soon be obsolete given the frequency of GUI hanges, but it's a huge pedagogic mistake. Even in the wrong language, screenshots help to see what to look for in the window. Use them. They will get obsolete and may not be translated, just as the rest of the text.\n"
 msgstr "Screenshots sind die Grundlagen jeder Front-End-Softwaredokumentation. Die Darktable-doc-Bearbeiter lehnen sie ab, weil sie nicht übersetzt werden können und aufgrund der Häufigkeit von GUI-Änderungen bald veraltet sein werden, aber das ist ein großer pädagogischer Fehler. Selbst in der falschen Sprache helfen Screenshots, zu sehen, wonach man im Fenster suchen sollte. Verwenden Sie sie. Sie werden veraltet und möglicherweise nicht übersetzt, genauso wie der Rest des Textes.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:191
+#: content/contribute/website/index.md:217
 #, no-wrap
 msgid "Info, Warnings, Alerts"
 msgstr "Info, Warnungen, Alarme"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:194
+#: content/contribute/website/index.md:220
 #, no-wrap
 msgid "The Ansel theme from the main website provides shortcodes to create alerts and info boxes using Hugo templating system. Here is the code:\n"
 msgstr "Das Ansel-Thema von der Hauptwebsite bietet Shortcodes, um Warnungen und Informationskästen mithilfe des Hugo-Templating-Systems zu erstellen. Hier ist der Code:\n"
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:195
+#: content/contribute/website/index.md:221
 #, no-wrap
 msgid ""
 "{{</* warning */>}}\n"
@@ -9202,7 +9255,7 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:201
+#: content/contribute/website/index.md:227
 #, no-wrap
 msgid ""
 "{{</* note */>}}\n"
@@ -9215,7 +9268,7 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:207
+#: content/contribute/website/index.md:233
 #, no-wrap
 msgid ""
 "{{</* advice */>}}\n"
@@ -9228,7 +9281,7 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:213
+#: content/contribute/website/index.md:239
 #, no-wrap
 msgid ""
 "{{</* danger */>}}\n"
@@ -9241,28 +9294,28 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:220
+#: content/contribute/website/index.md:246
 #, no-wrap
 msgid "The content of the boxes can use Markdown too.\n"
 msgstr "Der Inhalt der Kästen kann auch Markdown verwenden.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:222
+#: content/contribute/website/index.md:248
 #, no-wrap
 msgid "Before/after sliders"
 msgstr "Vorher/Nachher-Schieberegler"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:225
+#: content/contribute/website/index.md:251
 #, no-wrap
 msgid "Again, using Hugo templating system, you can display before/after sliders where both images are overlayed. This resembles the Ansel & darktable darkroom snapshot feature and can efficiently explain the effect of modules and settings in a way that users can reproduce in the GUI. Both before and after images need to have the same size in pixels.\n"
 msgstr "Erneut können Sie mithilfe des Hugo-Templating-Systems Vorher/Nachher-Schieberegler anzeigen, bei denen beide Bilder überlagert sind. Dies ähnelt der Snapshot-Funktion von Ansel & Darktable-Dunkelkammer und kann effizient den Effekt von Modulen und Einstellungen erklären, in einer Weise, dass Benutzer sie in der GUI reproduzieren können. Sowohl das Vorher- als auch Nachher-Bild müssen dieselbe Größe in Pixel haben.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:226
+#: content/contribute/website/index.md:252
 #, no-wrap
 msgid ""
 "{{</* compare after=\"./img-after.jpg\" before=\"./img-before.jpg\" */>}}\n"
@@ -9275,42 +9328,42 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:232
+#: content/contribute/website/index.md:258
 #, no-wrap
 msgid "Maths"
 msgstr "Mathematik"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:235
+#: content/contribute/website/index.md:261
 #, no-wrap
 msgid "The docs support MathJax configured for LaTeX syntax support. Though the goal is not to write scientific litterature, there are some algorithms made of multiplications and additions that are more easily shown as equations rather than writing blocks of texts.\n"
 msgstr "Die Dokumentation unterstützt MathJax, konfiguriert für LaTeX-Syntaxunterstützung. Obwohl das Ziel nicht darin besteht, wissenschaftliche Literatur zu schreiben, gibt es einige Algorithmen, die besser als Gleichungen gezeigt werden, anstatt Textblöcke zu schreiben.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:237
+#: content/contribute/website/index.md:263
 #, no-wrap
 msgid "Inline LaTeX should be enclosed in `$`, block equations enclosed in `$$`. If you use LaTeX, you need to notify Hugo to append the Mathjax script on the page by setting `latex: true` in the header/frontmatter of the Markdown page.\n"
 msgstr "Inline-LaTeX sollte in `$` eingeschlossen werden, Blockgleichungen in `$$`. Wenn Sie LaTeX verwenden, müssen Sie Hugo benachrichtigen, das Mathjax-Skript auf der Seite anzuhängen, indem Sie `latex: true` im Header/Frontmatter der Markdown-Seite einstellen.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:238
+#: content/contribute/website/index.md:264
 #, no-wrap
 msgid "Mermaid graphs"
 msgstr "Mermaid-Diagramme"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:241
+#: content/contribute/website/index.md:267
 #, no-wrap
 msgid "Ansel makes an heavy use of pipelines, and those are best described with flowcharts. Mermaid.js is now supported natively on Github and within Visual Studio Code and is great for that purpose. You can [try it visually here](https://mermaid.live/edit#pako:eNpVkE1rhDAQhv9KmFML-gc8FLra7sXSQvdU9TDVcRPWfBBHlkX97002FNqcQp73mQzvCr0dCAo4e3RSnKrWiHCem1J6NbPGuRN5_rQdiYW2hm6bODwcrZildU6Z82PKH2JIlGsdYyRYKnPZEyrv_ruhTVRNjY6t6_6S09Vu4qVRHzKM_0-kp2C9NiMWI-Y9elGi7yADTV6jGsLaaxRaYEmaWijC1dDCHqcWsoTGyV57iZ4jXtP8FiTrqcZvmuZksV-CH2lYew9f4ML282Z6KCLKYHEDMlUKQ1H695EGxda_pQbvRWbg0HxZGyIjTjPtPxIKcek) and copy-paste the code of the graphs within Markdown code blocks like this:\n"
 msgstr "Ansel macht einen schweren Einsatz von Pipelines, und diese werden am besten mit Flussdiagrammen beschrieben. Mermaid.js wird jetzt nativ auf Github und in Visual Studio Code unterstützt und ist großartig für diesen Zweck. Sie können es [hier visuell ausprobieren](https://mermaid.live/edit#pako:eNpVkE1rhDAQhv9KmFML-gc8FLra7sXSQvdU9TDVcRPWfBBHlkX97002FNqcQp73mQzvCr0dCAo4e3RSnKrWiHCem1J6NbPGuRN5_rQdiYW2hm6bODwcrZildU6Z82PKH2JIlGsdYyRYKnPZEyrv_ruhTVRNjY6t6_6S09Vu4qVRHzKM_0-kp2C9NiMWI-Y9elGi7yADTV6jGsLaaxRaYEmaWijC1dDCHqcWsoTGyV57iZ4jXtP8FiTrqcZvmuZksV-CH2lYew9f4ML282Z6KCLKYHEDMlUKQ1H695EGxda_pQbvRWbg0HxZGyIjTjPtPxIKcek) und den Code der Diagramme innerhalb von Markdown-Codeblöcken wie folgt kopieren und einfügen:\n"
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (markdown)
-#: content/contribute/website/index.md:242
+#: content/contribute/website/index.md:268
 #, no-wrap
 msgid ""
 "    ```mermaid\n"
@@ -9333,14 +9386,15 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:254
-#, no-wrap
-msgid "On Github, this renders:\n"
+#: content/contribute/website/index.md:280
+#, fuzzy, no-wrap
+#| msgid "On Github, this renders:\n"
+msgid "This renders:\n"
 msgstr "Auf Github wird dies gerendert:\n"
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (mermaid)
-#: content/contribute/website/index.md:255
+#: content/contribute/website/index.md:281
 #, no-wrap
 msgid ""
 "graph TD\n"
@@ -9359,35 +9413,36 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:265
+#: content/contribute/website/index.md:291
 #, no-wrap
 msgid "Icons from [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) are supported by Ansel main website and documentation, using the syntax `fa:fa-YOUR-ICON-CODE` as shown in the example above. Use [Font Awesome v5 search engine](https://fontawesome.com/v5/search?o=r&m=free&s=solid) to get the `fa-` code of the icons you may use.\n"
 msgstr "Symbole aus [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) werden von der Ansel-Hauptwebsite und Dokumentation unterstützt, mithilfe der Syntax `fa:fa-IHR-SYMBOL-CODE`, wie im obigen Beispiel gezeigt. Verwenden Sie die [Font Awesome v5-Suchmaschine](https://fontawesome.com/v5/search?o=r&m=free&s=solid), um den `fa-` Code der von Ihnen verwendeten Symbole zu erhalten.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:267
-#, no-wrap
-msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed.\n"
+#: content/contribute/website/index.md:293
+#, fuzzy, no-wrap
+#| msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed.\n"
+msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed. Github can also render Mermaid graphs natively, when displaying Markdown files.\n"
 msgstr "Mermaid-Diagramme werden beim Anzeigen in SVG clientseseitig gerendert und können als Text übersetzt werden. Hugo ist konfiguriert, um diese Diagramme automatisch zu erkennen und die Javascript-Bibliothek nur bei Bedarf zu laden.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:269
+#: content/contribute/website/index.md:295
 #, no-wrap
 msgid "Changing pages URL"
 msgstr "Ändern von Seiten-URLs"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:272
+#: content/contribute/website/index.md:298
 #, no-wrap
 msgid "Sometimes, it makes sense to reorganize the content and to changes the path of some pages. To not break external links, you must record the old url of the new page as an alias, in the frontmatter of the new page like so:\n"
 msgstr "Manchmal ergibt es Sinn, den Inhalt neu zu organisieren und die Pfade einiger Seiten zu ändern. Um keine externen Links zu brechen, müssen Sie die alte URL der neuen Seite als Alias im Frontmatter der neuen Seite wie folgt aufzeichnen:\n"
 
 # TRANSLATOR ChatGPT
 #. type: Fenced code block (toml)
-#: content/contribute/website/index.md:273
+#: content/contribute/website/index.md:299
 #, no-wrap
 msgid ""
 "aliases:\n"
@@ -9400,28 +9455,28 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Title ##
-#: content/contribute/website/index.md:279
+#: content/contribute/website/index.md:305
 #, no-wrap
 msgid "Notes"
 msgstr "Notizen"
 
 # TRANSLATOR ChatGPT
 #. type: Title ###
-#: content/contribute/website/index.md:281
+#: content/contribute/website/index.md:307
 #, no-wrap
 msgid "RSS feed"
 msgstr "RSS-Feed"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:284
+#: content/contribute/website/index.md:310
 #, no-wrap
 msgid "The documentation has an RSS localized feed, for now :\n"
 msgstr "Die Dokumentation hat einen lokalisierten RSS-Feed, bisher:\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:287
+#: content/contribute/website/index.md:313
 #, no-wrap
 msgid ""
 "- https://ansel.photos/en/doc/index.xml,\n"
@@ -9432,14 +9487,14 @@ msgstr ""
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:289
+#: content/contribute/website/index.md:315
 #, no-wrap
 msgid "This is unusual and is meant to help users keep track of changes and evolutions, by subscribing to the RSS feed or by connecting it with bots.\n"
 msgstr "Dies ist ungewöhnlich und soll den Benutzern helfen, Änderungen und Entwicklungen nachzuverfolgen, indem sie den RSS-Feed abonnieren oder ihn mit Bots verbinden.\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/website/index.md:290
+#: content/contribute/website/index.md:316
 #, no-wrap
 msgid "The date of the documentation pages set in the RSS feed is the `lastmod` parameter, aka the time of last modification. Since RSS doesn't have a `jast modified date`, it's the best I have found for the time being.\n"
 msgstr "Das Datum der Dokumentationsseiten, das im RSS-Feed gesetzt wird, ist der Parameter `lastmod`, also die Zeit der letzten Änderung. Da RSS kein `zuletzt geändertes Datum` hat, ist das bisher das beste, was ich gefunden habe.\n"
@@ -13441,6 +13496,26 @@ msgstr ""
 "{{< button url=\"https://github.com/aurelienpierreeng/ansel-website\" label=\"Github (Original)\" icon=\"github fab\">}}\n"
 "{{< button url=\"https://gitlab.com/aurelienpierreeng/ansel-website\" label=\"Gitlab (Spiegel)\" icon=\"gitlab fab\">}}\n"
 "{{% /card %}}\n"
+
+# TRANSLATOR ChatGPT
+#, no-wrap
+#~ msgid "Internal links should use relative paths from the current file. The upstream darktable-doc is a huge mess in that regard: trying to follow internal links locally in an IDE leads to non-existing files most of the time (typically, they have one `../` too many). For some reason, Hugo is still able to resolve them. Ideally, links should work both in source Markdown (Ctrl + Click on the path, in most IDEs) as in the compiled HTML.\n"
+#~ msgstr "Interne Links sollten relative Pfade von der aktuellen Datei verwenden. Das vorgelagerte darktable-doc ist in dieser Hinsicht ein großes Durcheinander: Der Versuch, interne Links lokal in einer IDE zu folgen, führt die meiste Zeit zu nicht vorhandenen Dateien (normalerweise haben sie ein `../` zu viel). Aus irgendeinem Grund ist Hugo trotzdem in der Lage, sie aufzulösen. Idealweise sollten Links sowohl im Quell-Markdown (Strg + Klick auf den Pfad, in den meisten IDEs) als auch im kompilierten HTML funktionieren.\n"
+
+# TRANSLATOR ChatGPT
+#, no-wrap
+#~ msgid "Also, always link to the Markdown files, like `/my-post.md`, instead of `/my-post`. If you need to link to sections, like `/doc/` (_although you should use relative pathes there_), always link to their Markdown index, like `/doc/_index.md`. While `/my-post` and `/doc` are technically valid URLs __once the website is compiled to HTML__, text editors, IDEs, file browsers as well as Hugo at compilation stage are not aware of these URL and only know local text files. Using links to actual text files solves many issues, helps debugging and ensures the robustness of the HTML build.\n"
+#~ msgstr "Außerdem, immer zu den Markdown-Dateien, wie `/my-post.md`, anstelle von `/my-post` verlinken. Wenn Sie zu Sektionen wie `/doc/` verlinken müssen (_obwohl Sie dort relative Pfade verwenden sollten_), verlinken Sie immer zu ihrem Markdown-Index, wie `/doc/_index.md`. Während `/my-post` und `/doc` technisch gültige URLs __nachdem die Website zu HTML kompiliert ist__ sind, sind Texteditoren, IDEs, Dateibrowser sowie Hugo zum Kompilierungszeitpunkt über diese URL nicht informiert und kennen nur lokale Textdateien. Links zu tatsächlichen Textdateien verwenden löst viele Probleme, hilft beim Debuggen und sorgt für die Robustheit des HTML-Builds.\n"
+
+# TRANSLATOR ChatGPT
+#, no-wrap
+#~ msgid "Many external websites will return HTML codes different than `200` (200 = everything fine) because the CI bot checking broken links is… a bot, and some websites block bots. The affected URLs can be added to the ignored list in [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) to prevent false-negative. Anything returning a `404` code (page not found error) should be fixed.\n"
+#~ msgstr "Viele externe Websites geben HTML-Codes zurück, die ungleich 200 sind (200 = alles in Ordnung), da der CI-Bot, der defekte Links überprüft, ein … Bot ist, und einige Websites blockieren Bots. Die betroffenen URLs können zur Ignorierliste in [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) hinzugefügt werden, um Fehlalarme zu verhindern. Alles, was einen `404`-Code (Seite nicht gefunden Fehler) zurückgibt, sollte behoben werden.\n"
+
+# TRANSLATOR ChatGPT
+#, no-wrap
+#~ msgid "To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
+#~ msgstr "Um das Brechen von Ankern in externen Links zu vermeiden, können Sie den Text der Überschrift ändern, aber ihre ID auf die vorherige setzen, wie folgt:\n"
 
 # TRANSLATOR ChatGPT
 #, no-wrap

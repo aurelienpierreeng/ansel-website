@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-02 16:13+0200\n"
+"POT-Creation-Date: 2025-05-02 16:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7022,139 +7022,191 @@ msgstr ""
 #. type: Plain text
 #: content/contribute/website/index.md:147
 #, markdown-text, no-wrap
-msgid "Internal links should use relative paths from the current file. The upstream darktable-doc is a huge mess in that regard: trying to follow internal links locally in an IDE leads to non-existing files most of the time (typically, they have one `../` too many). For some reason, Hugo is still able to resolve them. Ideally, links should work both in source Markdown (Ctrl + Click on the path, in most IDEs) as in the compiled HTML.\n"
+msgid "Internal links should use relative paths from the current file whenever possible, which is not Hugo default behaviour. The purpose is to be able to follow relative links on the local file system from any modern text editor, like in any `README.md` file. We use our own code to reconnect those relative links to files with Hugo website structure (after compilation).\n"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/website/index.md:149
 #, markdown-text, no-wrap
-msgid "Example of internal link:\n"
+msgid "When building the website, internal links are checked and a critical error (aborting compilation) will be thrown if a page can't be found from internal links. You need to watch them out. Non-critical errors (aka `WARNING [languages] REF_NOT_FOUND`) can also be shown in a console because we twist the Hugo linker in a non-standard way, but those can be disregarded.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:151
+#, markdown-text, no-wrap
+msgid "Example of internal links:\n"
 msgstr ""
 
 #. type: Fenced code block (markdown)
-#: content/contribute/website/index.md:150
+#: content/contribute/website/index.md:152
 #, no-wrap
-msgid "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
+msgid ""
+"[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
+"[Filmic](./filmic-rgb.md)\n"
+"[Some page](./section/index.md)\n"
 msgstr ""
 
-#. type: Plain text
-#: content/contribute/website/index.md:155
-#, markdown-text, no-wrap
-msgid "If you make links to page anchors, like `/my-post.md#some-heading`, be sure to __not__ insert a slash `/` between the page slug and the hashtag `#` in your Markdown code, or else the file will be taken for a directory and not found.\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/website/index.md:157
-#, markdown-text, no-wrap
-msgid "Also, always link to the Markdown files, like `/my-post.md`, instead of `/my-post`. If you need to link to sections, like `/doc/` (_although you should use relative pathes there_), always link to their Markdown index, like `/doc/_index.md`. While `/my-post` and `/doc` are technically valid URLs __once the website is compiled to HTML__, text editors, IDEs, file browsers as well as Hugo at compilation stage are not aware of these URL and only know local text files. Using links to actual text files solves many issues, helps debugging and ensures the robustness of the HTML build.\n"
-msgstr ""
-
-#. type: Title ###
+#. type: Title ####
 #: content/contribute/website/index.md:158
 #, markdown-text, no-wrap
-msgid "External links"
+msgid "Page anchors"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/website/index.md:161
 #, markdown-text, no-wrap
-msgid "Many external websites will return HTML codes different than `200` (200 = everything fine) because the CI bot checking broken links is… a bot, and some websites block bots. The affected URLs can be added to the ignored list in [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) to prevent false-negative. Anything returning a `404` code (page not found error) should be fixed.\n"
+msgid "If you make links to page anchors, like `/my-post.md#some-heading`, be sure to __not__ insert a slash `/` between the page slug and the hashtag `#` in your Markdown code, or else the file will be taken for a directory and not found.\n"
 msgstr ""
 
-#. type: Title ###
+#. type: Title ####
 #: content/contribute/website/index.md:162
 #, markdown-text, no-wrap
-msgid "Titles (headings)"
+msgid "Absolute links"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/website/index.md:165
 #, markdown-text, no-wrap
-msgid "H1 titles (encoded `# Title` in Markdown) are reserved for page titles and each page should have exactly one H1. darktable-doc messed up big time here by using H1 as section titles, this is both a SEO and an accessibility mistake. The web is semantic because it's designed for crawlers and screen readers just as much as for humans.\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/website/index.md:167
-#, markdown-text, no-wrap
-msgid "Be aware that Hugo automatically generates anchor links for headings, using the text of the heading. Thus, refrain from using symbols in headings, especially (back)slashes, which will mess-up the anchor links.\n"
+msgid "Say you want to link to the [support](../../support.md) page. Here are all the possibilitie to create a link to that page:\n"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/website/index.md:170
 #, markdown-text, no-wrap
 msgid ""
-"Also be aware that these headings anchors may be used in other pages\n"
-"to make direct links. Changing the text of an heading will break its anchor and may break external links. Fortunately, the [broken links CI bot](https://github.com/aurelienpierreeng/ansel-doc/actions/workflows/hugo.yml) also checks for internal anchors, so you just have to keep mind its output.\n"
+"- `[support](/support/)` -> valid for Hugo, but works only after the website is compiled, so it can't be debugged easily in code editor. __please avoid__\n"
+"- `[support](/support.md)` -> invalid for Hugo, will work as a side-effect of our custom link processing, but can't be debugged at all in code editor. __please avoid__\n"
+"- `[support](./support.md)` -> invalid for Hugo, works as intended by our custom link processing if called from the index page, for example. __please use this__\n"
+"- `[support](../support.md)` -> invalid for Hugo, works as intended by our custom link processing if called from a subfolder of the site, like `/contribute`. __please use this__\n"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/website/index.md:172
 #, markdown-text, no-wrap
-msgid "To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
-msgstr ""
-
-#. type: Fenced code block (markdown)
-#: content/contribute/website/index.md:173
-#, no-wrap
-msgid "### My New Heading {#my-old-heading}\n"
+msgid "If a page is in what Hugo calls a [page or section bundle](https://gohugo.io/content-management/page-bundles/), please use the link to its `index.md` or `_index.md` file.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:178
-#, markdown-text, no-wrap
-msgid "This will preserve external links to `/my-post/#my-old-heading`. [See the details…](https://www.markdownguide.org/extended-syntax/#heading-ids)\n"
-msgstr ""
-
-#. type: Title ###
 #: content/contribute/website/index.md:179
 #, markdown-text, no-wrap
-msgid "Embedding images"
+msgid ""
+"Do:\n"
+":   ```markdown\n"
+"    [user manual](/doc/_index.md)\n"
+"    [user manual](./doc/_index.md)\n"
+"    [user manual](../../doc/_index.md)\n"
+"    ```\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:182
+#: content/contribute/website/index.md:185
 #, markdown-text, no-wrap
-msgid "Hugo treats images as page assets. There are global assets, for images reused on several pages, stored in an `assets/` subfolder of the main source code folder, and local assets, stored in the same folder as the page using them.\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/website/index.md:184
-#, markdown-text, no-wrap
-msgid "As for internal links, everything needs to be linked relatively to the source code as hosted on the local filesystem, not relatively to the compiled HTML.\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/website/index.md:186
-#, markdown-text, no-wrap
-msgid "See [how to translate images](../translating.md#translating-images).\n"
+msgid ""
+"Don't (even if it technically works):\n"
+":   ```markdown\n"
+"    [user manual](/doc)\n"
+"    [user manual](/doc/)\n"
+"    ```\n"
 msgstr ""
 
 #. type: Title ###
 #: content/contribute/website/index.md:187
 #, markdown-text, no-wrap
-msgid "Screenshots"
+msgid "External links"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/website/index.md:190
 #, markdown-text, no-wrap
-msgid "Screenshots are the basics of any front-end software documentation. The darktable-doc maintainers refuse them on the ground that they can't be translated and they will be soon be obsolete given the frequency of GUI hanges, but it's a huge pedagogic mistake. Even in the wrong language, screenshots help to see what to look for in the window. Use them. They will get obsolete and may not be translated, just as the rest of the text.\n"
+msgid "External links are not checked because that would take too much time at building, and building may happen without network access anyway. Always use `https://` in the external URLs when possible.\n"
 msgstr ""
 
 #. type: Title ###
 #: content/contribute/website/index.md:191
 #, markdown-text, no-wrap
-msgid "Info, Warnings, Alerts"
+msgid "Titles (headings)"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/website/index.md:194
 #, markdown-text, no-wrap
+msgid "H1 titles (encoded `# Title` in Markdown) are reserved for page titles and each page should have exactly one H1. darktable-doc messed up big time here by using H1 as section titles, this is both a SEO and an accessibility mistake. The web is semantic because it's designed for crawlers and screen readers just as much as for humans.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:196
+#, markdown-text, no-wrap
+msgid "Be aware that Hugo automatically generates anchor links for headings, using the text of the heading. Thus, refrain from using symbols in headings, especially (back)slashes, which will mess-up the anchor links.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:198
+#, markdown-text, no-wrap
+msgid "Also be aware that these headings anchors may be used in other pages to make direct links. Changing the text of an heading will break its anchor and may break external links. To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
+msgstr ""
+
+#. type: Fenced code block (markdown)
+#: content/contribute/website/index.md:199
+#, no-wrap
+msgid "### My New Heading {#my-old-heading}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:204
+#, markdown-text, no-wrap
+msgid "This will preserve external links to `/my-post/#my-old-heading`. [See the details…](https://www.markdownguide.org/extended-syntax/#heading-ids)\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:205
+#, markdown-text, no-wrap
+msgid "Embedding images"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:208
+#, markdown-text, no-wrap
+msgid "Hugo treats images as page assets. There are global assets, for images reused on several pages, stored in an `assets/` subfolder of the main source code folder, and local assets, stored in the same folder as the page using them.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:210
+#, markdown-text, no-wrap
+msgid "As for internal links, everything needs to be linked relatively to the source code as hosted on the local filesystem, not relatively to the compiled HTML.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:212
+#, markdown-text, no-wrap
+msgid "See [how to translate images](../translating.md#translating-images).\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:213
+#, markdown-text, no-wrap
+msgid "Screenshots"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:216
+#, markdown-text, no-wrap
+msgid "Screenshots are the basics of any front-end software documentation. The darktable-doc maintainers refuse them on the ground that they can't be translated and they will be soon be obsolete given the frequency of GUI hanges, but it's a huge pedagogic mistake. Even in the wrong language, screenshots help to see what to look for in the window. Use them. They will get obsolete and may not be translated, just as the rest of the text.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:217
+#, markdown-text, no-wrap
+msgid "Info, Warnings, Alerts"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:220
+#, markdown-text, no-wrap
 msgid "The Ansel theme from the main website provides shortcodes to create alerts and info boxes using Hugo templating system. Here is the code:\n"
 msgstr ""
 
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:195
+#: content/contribute/website/index.md:221
 #, no-wrap
 msgid ""
 "{{</* warning */>}}\n"
@@ -7163,7 +7215,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:201
+#: content/contribute/website/index.md:227
 #, no-wrap
 msgid ""
 "{{</* note */>}}\n"
@@ -7172,7 +7224,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:207
+#: content/contribute/website/index.md:233
 #, no-wrap
 msgid ""
 "{{</* advice */>}}\n"
@@ -7181,7 +7233,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:213
+#: content/contribute/website/index.md:239
 #, no-wrap
 msgid ""
 "{{</* danger */>}}\n"
@@ -7190,25 +7242,25 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:220
+#: content/contribute/website/index.md:246
 #, markdown-text, no-wrap
 msgid "The content of the boxes can use Markdown too.\n"
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/website/index.md:222
+#: content/contribute/website/index.md:248
 #, markdown-text, no-wrap
 msgid "Before/after sliders"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:225
+#: content/contribute/website/index.md:251
 #, markdown-text, no-wrap
 msgid "Again, using Hugo templating system, you can display before/after sliders where both images are overlayed. This resembles the Ansel & darktable darkroom snapshot feature and can efficiently explain the effect of modules and settings in a way that users can reproduce in the GUI. Both before and after images need to have the same size in pixels.\n"
 msgstr ""
 
 #. type: Fenced code block (html)
-#: content/contribute/website/index.md:226
+#: content/contribute/website/index.md:252
 #, no-wrap
 msgid ""
 "{{</* compare after=\"./img-after.jpg\" before=\"./img-before.jpg\" */>}}\n"
@@ -7217,37 +7269,37 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/website/index.md:232
+#: content/contribute/website/index.md:258
 #, markdown-text, no-wrap
 msgid "Maths"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:235
+#: content/contribute/website/index.md:261
 #, markdown-text, no-wrap
 msgid "The docs support MathJax configured for LaTeX syntax support. Though the goal is not to write scientific litterature, there are some algorithms made of multiplications and additions that are more easily shown as equations rather than writing blocks of texts.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:237
+#: content/contribute/website/index.md:263
 #, markdown-text, no-wrap
 msgid "Inline LaTeX should be enclosed in `$`, block equations enclosed in `$$`. If you use LaTeX, you need to notify Hugo to append the Mathjax script on the page by setting `latex: true` in the header/frontmatter of the Markdown page.\n"
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/website/index.md:238
+#: content/contribute/website/index.md:264
 #, markdown-text, no-wrap
 msgid "Mermaid graphs"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:241
+#: content/contribute/website/index.md:267
 #, markdown-text, no-wrap
 msgid "Ansel makes an heavy use of pipelines, and those are best described with flowcharts. Mermaid.js is now supported natively on Github and within Visual Studio Code and is great for that purpose. You can [try it visually here](https://mermaid.live/edit#pako:eNpVkE1rhDAQhv9KmFML-gc8FLra7sXSQvdU9TDVcRPWfBBHlkX97002FNqcQp73mQzvCr0dCAo4e3RSnKrWiHCem1J6NbPGuRN5_rQdiYW2hm6bODwcrZildU6Z82PKH2JIlGsdYyRYKnPZEyrv_ruhTVRNjY6t6_6S09Vu4qVRHzKM_0-kp2C9NiMWI-Y9elGi7yADTV6jGsLaaxRaYEmaWijC1dDCHqcWsoTGyV57iZ4jXtP8FiTrqcZvmuZksV-CH2lYew9f4ML282Z6KCLKYHEDMlUKQ1H695EGxda_pQbvRWbg0HxZGyIjTjPtPxIKcek) and copy-paste the code of the graphs within Markdown code blocks like this:\n"
 msgstr ""
 
 #. type: Fenced code block (markdown)
-#: content/contribute/website/index.md:242
+#: content/contribute/website/index.md:268
 #, no-wrap
 msgid ""
 "    ```mermaid\n"
@@ -7261,13 +7313,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:254
+#: content/contribute/website/index.md:280
 #, markdown-text, no-wrap
-msgid "On Github, this renders:\n"
+msgid "This renders:\n"
 msgstr ""
 
 #. type: Fenced code block (mermaid)
-#: content/contribute/website/index.md:255
+#: content/contribute/website/index.md:281
 #, no-wrap
 msgid ""
 "graph TD\n"
@@ -7279,31 +7331,31 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:265
+#: content/contribute/website/index.md:291
 #, markdown-text, no-wrap
 msgid "Icons from [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) are supported by Ansel main website and documentation, using the syntax `fa:fa-YOUR-ICON-CODE` as shown in the example above. Use [Font Awesome v5 search engine](https://fontawesome.com/v5/search?o=r&m=free&s=solid) to get the `fa-` code of the icons you may use.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:267
+#: content/contribute/website/index.md:293
 #, markdown-text, no-wrap
-msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed.\n"
+msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed. Github can also render Mermaid graphs natively, when displaying Markdown files.\n"
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/website/index.md:269
+#: content/contribute/website/index.md:295
 #, markdown-text, no-wrap
 msgid "Changing pages URL"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:272
+#: content/contribute/website/index.md:298
 #, markdown-text, no-wrap
 msgid "Sometimes, it makes sense to reorganize the content and to changes the path of some pages. To not break external links, you must record the old url of the new page as an alias, in the frontmatter of the new page like so:\n"
 msgstr ""
 
 #. type: Fenced code block (toml)
-#: content/contribute/website/index.md:273
+#: content/contribute/website/index.md:299
 #, no-wrap
 msgid ""
 "aliases:\n"
@@ -7312,25 +7364,25 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: content/contribute/website/index.md:279
+#: content/contribute/website/index.md:305
 #, markdown-text, no-wrap
 msgid "Notes"
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/website/index.md:281
+#: content/contribute/website/index.md:307
 #, markdown-text, no-wrap
 msgid "RSS feed"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:284
+#: content/contribute/website/index.md:310
 #, markdown-text, no-wrap
 msgid "The documentation has an RSS localized feed, for now :\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:287
+#: content/contribute/website/index.md:313
 #, markdown-text, no-wrap
 msgid ""
 "- https://ansel.photos/en/doc/index.xml,\n"
@@ -7338,13 +7390,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:289
+#: content/contribute/website/index.md:315
 #, markdown-text, no-wrap
 msgid "This is unusual and is meant to help users keep track of changes and evolutions, by subscribing to the RSS feed or by connecting it with bots.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/website/index.md:290
+#: content/contribute/website/index.md:316
 #, markdown-text, no-wrap
 msgid "The date of the documentation pages set in the RSS feed is the `lastmod` parameter, aka the time of last modification. Since RSS doesn't have a `jast modified date`, it's the best I have found for the time being.\n"
 msgstr ""
