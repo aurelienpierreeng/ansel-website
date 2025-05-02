@@ -59,10 +59,10 @@ jobs:
           # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
+          #--baseURL "${{ steps.pages.outputs.base_url }}/"
         run: |
           hugo \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --minify
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
