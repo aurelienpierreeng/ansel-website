@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-04-26 23:40+0200\n"
+"POT-Creation-Date: 2025-05-02 02:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3606,19 +3606,31 @@ msgid "Noise profiles are used by the [_denoise (profiled)_](../../doc/modules/p
 msgstr ""
 
 #. type: Title ###
-#: content/resources/supported-cameras.md:21
+#: content/resources/supported-cameras.md:20
 #, markdown-text, no-wrap
-msgid "Support table"
+msgid "Raw file formats support"
 msgstr ""
 
 #. type: Plain text
+#: content/resources/supported-cameras.md:23
+#, markdown-text, no-wrap
+msgid "Ansel accepts raw file formats among the following list: `3FR, ARI, ARW, BAY, BMQ, CAP, CINE, CR2, CR3, CRW, CS1, DC2, DCR, DNG, GPR, ERF, FFF, EXR, IA, IIQ, JPEG, JPG, K25, KC2, KDC, MDC, MEF, MOS, MRW, NEF, NRW, ORF, PEF, PFM, PNG, PXN, QTK, RAF, RAW, RDC, RW1, RW2, SR2, SRF, SRW, STI, TIF, TIFF, X3F`. This means that the application will allow [importing](../doc/getting-started/import.md) them. To be completely supported (read, decoded), either Rawspeed or Libraw, and Exiv2 will need to support them too.\n"
+msgstr ""
+
+#. type: Title ###
 #: content/resources/supported-cameras.md:24
+#, markdown-text, no-wrap
+msgid "Camera support table"
+msgstr ""
+
+#. type: Plain text
+#: content/resources/supported-cameras.md:27
 #, markdown-text, no-wrap
 msgid "Support legend:\n"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:29
+#: content/resources/supported-cameras.md:32
 #, markdown-text, no-wrap
 msgid ""
 "- <span class='badge rounded-circle text-bg-success square-badge'>✓</span> Camera and format supported by Rawspeed. In case of problems, submit [bug reports](https://github.com/darktable-org/rawspeed/issues).\n"
@@ -3628,13 +3640,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:31
+#: content/resources/supported-cameras.md:34
 #, markdown-text, no-wrap
 msgid "Support quality legend:\n"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:37
+#: content/resources/supported-cameras.md:40
 #, markdown-text, no-wrap
 msgid ""
 "- 🏆 fully-supported camera,\n"
@@ -3645,61 +3657,61 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:39
+#: content/resources/supported-cameras.md:42
 #, markdown-text, no-wrap
 msgid "_This table is automatically generated from parsing Rawspeed, Libraw and Ansel source code. No human verification has been made_.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:41
+#: content/resources/supported-cameras.md:44
 #, markdown-text, no-wrap
 msgid "{{< rawspeed >}}\n"
 msgstr ""
 
 #. type: Title ###
-#: content/resources/supported-cameras.md:42
+#: content/resources/supported-cameras.md:45
 #, markdown-text, no-wrap
 msgid "Get your camera supported"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:45
+#: content/resources/supported-cameras.md:48
 #, markdown-text, no-wrap
 msgid "Users who are not able to perform command-line operations in a terminal will be unable to help getting their cameras supported. They should buy cameras currently supported or stick to proprietary software. There is no guaranty that a brand-new camera will one day be supported, and no indication regarding when it will be. Camera support is a entirely based on an unpaid community effort, limited by everyone's availability.\n"
 msgstr ""
 
 #. type: Title ####
-#: content/resources/supported-cameras.md:46
+#: content/resources/supported-cameras.md:49
 #, markdown-text, no-wrap
 msgid "The case of Canon CR3 / ISOBMFF files"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:49
+#: content/resources/supported-cameras.md:52
 #, markdown-text, no-wrap
 msgid "Canon `.CR3` files belong to a new type of ISOBMFF containers. These require specific decoders, from Rawspeed, Libraw and Exiv2. This specific decoder is not available in Rawspeed, so _temporary_ and partial support for Libraw has been introduced in Darktable circa 2020. Ansel inherit it, but, as of 2025, Rawspeed still does not support `.CR3`.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:51
+#: content/resources/supported-cameras.md:54
 #, markdown-text, no-wrap
 msgid "But Ansel requires more than Libraw to actually handle `.CR3` : it needs Exiv2 built with ISOBMFF support too, for metadata. ISOBMFF support is optional in Exiv2 for (mostly invented) copyright & legal reasons, and some Linux distributions (Fedora) package this library with ISOBMFF disabled. Users that use Ansel pre-built packages from such distributions, or who build it using the Exiv2 library from the distribution repository, will never have complete `.CR3` support.\n"
 msgstr ""
 
 #. type: Title ####
-#: content/resources/supported-cameras.md:52
+#: content/resources/supported-cameras.md:55
 #, markdown-text, no-wrap
 msgid "Helping support"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:55
+#: content/resources/supported-cameras.md:58
 #, markdown-text, no-wrap
 msgid "If your camera is not or partially supported:\n"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:58
+#: content/resources/supported-cameras.md:61
 #, markdown-text, no-wrap
 msgid ""
 "- upload test raw files to <https://raw.pixls.us>,\n"
@@ -3707,31 +3719,36 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:61
+#: content/resources/supported-cameras.md:63
 #, markdown-text, no-wrap
 msgid "If your camera does not have noise profiles, you can [generate them yourself](https://pixls.us/articles/how-to-create-camera-noise-profiles-for-darktable/) and submit them to Ansel bug tracker.\n"
 msgstr ""
 
 #. type: Title ##
-#: content/resources/supported-cameras.md:63
+#: content/resources/supported-cameras.md:64
 #, markdown-text, no-wrap
 msgid "Non-raw codecs"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:66
+#: content/resources/supported-cameras.md:67
 #, markdown-text, no-wrap
 msgid "Ansel supports the following file formats and extensions (while reading and writing):\n"
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:77
+#: content/resources/supported-cameras.md:83
 #, markdown-text, no-wrap
 msgid ""
 "- JPEG: `.jpg`, `.jpeg` (mandatory),\n"
-"- PNG: `.png` (mandatory),\n"
-"- PFM: `.pfm` (mandatory),\n"
-"- TIFF: `.tif`, `.tiff` (mandatory),\n"
+"- PNG: `.png` (mandatory):\n"
+"    - 8/16 bits\n"
+"    - transparent background unsupported,\n"
+"- HDR: `.pfm` (Portable Float Map format) and `.hdr` (RGBE format) (mandatory),\n"
+"- TIFF: `.tif`, `.tiff` (mandatory) :\n"
+"    - 8/16 bits integer,\n"
+"    - 16/32 bits floating point,\n"
+"    - supports exporting blending masks into layers,\n"
 "- OpenEXR: `.exr` (optional),\n"
 "- WebP: `.wepb` (optional),\n"
 "- AVIF: `.avif` (optional),\n"
@@ -3741,7 +3758,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/resources/supported-cameras.md:78
+#: content/resources/supported-cameras.md:84
 #, markdown-text, no-wrap
 msgid "Note that the optional formats are enabled only if Ansel is built with the corresponding options enabled and if the libraries providing the codecs are found on the system building it. Pre-built binaries provided by the Ansel project enable them all but third-party packagers may choose otherwise.\n"
 msgstr ""
@@ -6642,6 +6659,680 @@ msgid ""
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: title
+#: content/contribute/website/index.md:1
+#, no-wrap
+msgid "Websites"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:7
+#, markdown-text, no-wrap
+msgid "Ansel website is built using [Hugo 0.146](https://github.com/gohugoio/hugo/releases/tag/v0.146.7). This is a static website generator that allows to build very fast website from Markdown files. A custom template and a lot of custom shortcodes have been built for Ansel. You will need to [install Hugo extended version](https://gohugo.io/installation/) on your computer first, although minor changes can be made directly to the Markdown files without building the whole website.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/website/index.md:8
+#, markdown-text, no-wrap
+msgid "Getting the source code"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:10
+#, markdown-text, no-wrap
+msgid "This website"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: content/contribute/website/index.md:12
+#, no-wrap
+msgid ""
+"$ git clone https://github.com/aurelienpierreeng/ansel-website\n"
+"# Stored for example in /home/user/dev/ansel-website\n"
+"$ cd ansel-website\n"
+"$ sh build-modules.sh\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:19
+#, markdown-text, no-wrap
+msgid "Ansel doc"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:22
+#, markdown-text, no-wrap
+msgid "Ansel Doc is an important part of the Ansel website, but since it's under a different license and forked from GNU/GPL dtdocs, it can't be on this repo. We want to edit both as a pack but we need to be able to commit them separately on different repositories. Here is the solution.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:24
+#, markdown-text, no-wrap
+msgid "Ansel doc is fetched automatically as a module of this website on your disk as part of the `build-modules.sh` script above, which also auto-generates the translated pages through `.po` files. You will find it in the local folder of the website, under `_vendor/github.com/aurelienpierreeng/ansel-doc/`. No file should be manually edited there, this is only for auto-generated content.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:26
+#, markdown-text, no-wrap
+msgid "To edit Ansel docs, do\n"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: content/contribute/website/index.md:27
+#, no-wrap
+msgid ""
+"$ git clone https://github.com/aurelienpierreeng/ansel-doc\n"
+"# Stored for example in /home/user/dev/ansel-doc\n"
+"$ cd ansel-doc\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:34
+#, markdown-text, no-wrap
+msgid "And then, edit the (English) content of `ansel-doc/content`.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/website/index.md:35
+#, markdown-text, no-wrap
+msgid "Interactive editing/Live preview"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:37
+#, markdown-text, no-wrap
+msgid "Start the development server"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:40
+#, markdown-text, no-wrap
+msgid "Hugo lets you open a rendered version of the website, on a local development server, to preview your changes into your web browser.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:42
+#, markdown-text, no-wrap
+msgid "If you only want to edit this website, run from `./ansel-website` directory:\n"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: content/contribute/website/index.md:43
+#, no-wrap
+msgid "hugo server --disableFastRender\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:48
+#, markdown-text, no-wrap
+msgid "If you want to edit the docs and see the results in realtime as part of this website, after you cloned the docs (see previous step), run from `./ansel-website` directory:\n"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: content/contribute/website/index.md:49
+#, no-wrap
+msgid "env HUGO_MODULE_REPLACEMENTS=\"github.com/aurelienpierreeng/ansel-doc -> ../../ansel-doc/\" hugo server --disableFastRender\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:54
+#, markdown-text, no-wrap
+msgid "This trick will dynamically load the docs module from your local folder rather than from Github, which means the local changes done to the docs will immediately appear into the main website through your development server.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:55
+#, markdown-text, no-wrap
+msgid "Updating websites translations"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:58
+#, markdown-text, no-wrap
+msgid "See [Translating](../translating.md).\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/website/index.md:59
+#, markdown-text, no-wrap
+msgid "Editing files"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:61
+#, markdown-text, no-wrap
+msgid "Open Obsidian"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:64
+#, markdown-text, no-wrap
+msgid "Open `./ansel-website/content` as an Obsidian vault. Obsidian is able to resolve folder symlinks as if they were local folders, so we basically see the website as a whole, which makes it easier to make internal links between doc and website in the editor.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:66
+#, markdown-text, no-wrap
+msgid "Working in Obsidian is significantly nicer than working in VS Code to edit \"text\" text (as opposed to code text in monospace), since the editor is less bloated and monospace fonts are eye-straining after a couple of hours for full paragraphs.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:71
+#, markdown-text, no-wrap
+msgid ""
+"- Hugo Markdown doesn't support [Obsidian call-outs](https://help.obsidian.md/How+to/Use+callouts). You have to use the alerts boxes shown above as Hugo shortcodes, but they will not render in Obsidian,\n"
+"- Hugo doesn't support [Obsidian wikilinks](https://help.obsidian.md/How+to/Internal+link), so you will have to stick to usual Markdown links with relative pathes. That said, Obsidian provides paths auto-completion for those.\n"
+"- Obsidian doesn't support [Markdown definition lists](https://www.markdownguide.org/extended-syntax/#definition-lists), but you can still use them (they will just not be rendered in previews),\n"
+"- Obsidian doesn't support [Markdown headings IDs](https://www.markdownguide.org/extended-syntax/#heading-ids),\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:73
+#, markdown-text, no-wrap
+msgid "However:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:76
+#, markdown-text, no-wrap
+msgid ""
+"- Obsidian supports Hugo tags in Yaml frontmatter, and implements them in a much nicer way that gives a lot more sense to horizontal content linking,\n"
+"- Obsidian supports Hugo [aliases](https://help.obsidian.md/How+to/Add+aliases+to+note) for pages redirection,\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:77
+#, markdown-text, no-wrap
+msgid "Dealing with broken links"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:80
+#, markdown-text, no-wrap
+msgid "There is an extension for that : https://github.com/graydon/obsidian-dangling-links. Once installed, it shows the links that point to no existing file throughout the whole vault, including main website and doc :\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:82
+#, markdown-text, no-wrap
+msgid "![](obsidian-screenshots-broken-links.jpg)\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:84
+#, markdown-text, no-wrap
+msgid "In the node graph view, broken links also appear by their path `../../stuff.md` instead of appearing by their filename.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:86
+#, markdown-text, no-wrap
+msgid "In each page editor, it is possible to see what pages are linking the page currently opened, including the headings anchor, which is useful before changing headings and therefore destroying internal links :\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:88
+#, markdown-text, no-wrap
+msgid "![](obsidian-screenshots-external-links.jpg)\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:90
+#, markdown-text, no-wrap
+msgid "Improving content meshing"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:93
+#, markdown-text, no-wrap
+msgid "Horizontal linking, through tags and internal links, is just as important as vertical linking, following hierarchical trees.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:95
+#, markdown-text, no-wrap
+msgid "Obsidian can show the vault-wise available tags for reuse:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:97
+#, markdown-text, no-wrap
+msgid "![](obsidian-screenshots-available-tags.jpg)\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:99
+#, markdown-text, no-wrap
+msgid "It can also show the best candidate internal links for each keyword in the page, under the \"Unlinked mentions\" collapsible:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:101
+#, markdown-text, no-wrap
+msgid "![](obsidian-screenshots-available-links.jpg)\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:103
+#, markdown-text, no-wrap
+msgid "Checking content organization"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:106
+#, markdown-text, no-wrap
+msgid "It's often hard to follow the chaining of headings in a Markdown page, when using a typical code editor. Obsidian has an \"outline\" widget that allows to keep the table of contents in sight when writing, to ensure the hierarchy of headings is consistent :\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:108
+#, markdown-text, no-wrap
+msgid "![](obsidian-screenshots-document-outline.jpg)\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/website/index.md:110
+#: content/contribute/coding-style.md:360
+#, markdown-text, no-wrap
+msgid "Guidelines"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:113
+#, markdown-text, no-wrap
+msgid "The documentation is not a manual or a course. It should answer the questions :\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:117
+#, markdown-text, no-wrap
+msgid ""
+"- \"what is the GUI doing ?\"\n"
+"- \"how can I configure the software ?\"\n"
+"- \"what are the bottlenecks, caveats, limitations and traps ?\".\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:119
+#, markdown-text, no-wrap
+msgid "The documentation expects the reader to know **what** to do and will explain **how** to do it. Start-to-end workflows, tutorials, scientific background etc., aka the **what** and the **why** go on the website ([resources](../../resources/_index.md), [workflows](../../workflows/_index.md)).\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:120
+#, markdown-text, no-wrap
+msgid "Content folder"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:123
+#, markdown-text, no-wrap
+msgid "The content folder is located in the `content/` directory and the structure of folders and sub-folders will produce the structure of sections and sub-sections on the website. Files are written in Markdown and end with `.md` extension. Each file should have the following header (frontmatter):\n"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: content/contribute/website/index.md:124
+#, no-wrap
+msgid ""
+"---\n"
+"title: This page title\n"
+"date: 2022-12-04T02:19:02+01:00\n"
+"lastmod: 2022-12-31\n"
+"draft: false\n"
+"weight: 120\n"
+"tags:\n"
+"    - color science\n"
+"    - pipeline\n"
+"---\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:142
+#, markdown-text, no-wrap
+msgid ""
+"- The title is mandatory. Please use initial capitals, like in real language.\n"
+"- The date is set once for all at the creation of the page and should never change after.\n"
+"- Update the `lastmod` date with today's date everytime you update a file, and add it if not present. On the internet, every content is perishable and this helps readers to guess wether the page is still relevant at the time of reading or not.\n"
+"- `draft` set to `true` means the page will be on the repository (in the source code) but will not appear on the website front-end. Set to `false`, the page is visible on front-end.\n"
+"- `tags` are optional but welcome. The content is, by default, organized vertically (hierarchically). Tags help to create horizontal (thematic) links between pages. Relevant tags could be \"film processing\", \"HDR\", \"monochrome\", etc. Reuse existing tags in priority. Tags should always be a list, even when there is only one (otherwise Hugo build breaks).\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:144
+#, markdown-text, no-wrap
+msgid "Internal links"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:147
+#, markdown-text, no-wrap
+msgid "Internal links should use relative paths from the current file. The upstream darktable-doc is a huge mess in that regard: trying to follow internal links locally in an IDE leads to non-existing files most of the time (typically, they have one `../` too many). For some reason, Hugo is still able to resolve them. Ideally, links should work both in source Markdown (Ctrl + Click on the path, in most IDEs) as in the compiled HTML.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:149
+#, markdown-text, no-wrap
+msgid "Example of internal link:\n"
+msgstr ""
+
+#. type: Fenced code block (markdown)
+#: content/contribute/website/index.md:150
+#, no-wrap
+msgid "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:155
+#, markdown-text, no-wrap
+msgid "If you make links to page anchors, like `/my-post.md#some-heading`, be sure to __not__ insert a slash `/` between the page slug and the hashtag `#` in your Markdown code, or else the file will be taken for a directory and not found.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:157
+#, markdown-text, no-wrap
+msgid "Also, always link to the Markdown files, like `/my-post.md`, instead of `/my-post`. If you need to link to sections, like `/doc/` (_although you should use relative pathes there_), always link to their Markdown index, like `/doc/_index.md`. While `/my-post` and `/doc` are technically valid URLs __once the website is compiled to HTML__, text editors, IDEs, file browsers as well as Hugo at compilation stage are not aware of these URL and only know local text files. Using links to actual text files solves many issues, helps debugging and ensures the robustness of the HTML build.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:158
+#, markdown-text, no-wrap
+msgid "External links"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:161
+#, markdown-text, no-wrap
+msgid "Many external websites will return HTML codes different than `200` (200 = everything fine) because the CI bot checking broken links is… a bot, and some websites block bots. The affected URLs can be added to the ignored list in [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) to prevent false-negative. Anything returning a `404` code (page not found error) should be fixed.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:162
+#, markdown-text, no-wrap
+msgid "Titles (headings)"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:165
+#, markdown-text, no-wrap
+msgid "H1 titles (encoded `# Title` in Markdown) are reserved for page titles and each page should have exactly one H1. darktable-doc messed up big time here by using H1 as section titles, this is both a SEO and an accessibility mistake. The web is semantic because it's designed for crawlers and screen readers just as much as for humans.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:167
+#, markdown-text, no-wrap
+msgid "Be aware that Hugo automatically generates anchor links for headings, using the text of the heading. Thus, refrain from using symbols in headings, especially (back)slashes, which will mess-up the anchor links.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:170
+#, markdown-text, no-wrap
+msgid ""
+"Also be aware that these headings anchors may be used in other pages\n"
+"to make direct links. Changing the text of an heading will break its anchor and may break external links. Fortunately, the [broken links CI bot](https://github.com/aurelienpierreeng/ansel-doc/actions/workflows/hugo.yml) also checks for internal anchors, so you just have to keep mind its output.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:172
+#, markdown-text, no-wrap
+msgid "To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
+msgstr ""
+
+#. type: Fenced code block (markdown)
+#: content/contribute/website/index.md:173
+#, no-wrap
+msgid "### My New Heading {#my-old-heading}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:178
+#, markdown-text, no-wrap
+msgid "This will preserve external links to `/my-post/#my-old-heading`. [See the details…](https://www.markdownguide.org/extended-syntax/#heading-ids)\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:179
+#, markdown-text, no-wrap
+msgid "Embedding images"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:182
+#, markdown-text, no-wrap
+msgid "Hugo treats images as page assets. There are global assets, for images reused on several pages, stored in an `assets/` subfolder of the main source code folder, and local assets, stored in the same folder as the page using them.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:184
+#, markdown-text, no-wrap
+msgid "As for internal links, everything needs to be linked relatively to the source code as hosted on the local filesystem, not relatively to the compiled HTML.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:186
+#, markdown-text, no-wrap
+msgid "See [how to translate images](../translating.md#translating-images).\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:187
+#, markdown-text, no-wrap
+msgid "Screenshots"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:190
+#, markdown-text, no-wrap
+msgid "Screenshots are the basics of any front-end software documentation. The darktable-doc maintainers refuse them on the ground that they can't be translated and they will be soon be obsolete given the frequency of GUI hanges, but it's a huge pedagogic mistake. Even in the wrong language, screenshots help to see what to look for in the window. Use them. They will get obsolete and may not be translated, just as the rest of the text.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:191
+#, markdown-text, no-wrap
+msgid "Info, Warnings, Alerts"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:194
+#, markdown-text, no-wrap
+msgid "The Ansel theme from the main website provides shortcodes to create alerts and info boxes using Hugo templating system. Here is the code:\n"
+msgstr ""
+
+#. type: Fenced code block (html)
+#: content/contribute/website/index.md:195
+#, no-wrap
+msgid ""
+"{{</* warning */>}}\n"
+"This is where you say what users should be aware of, because what may sound like a good idea in general may be really bad in some circumstances.\n"
+"{{</* /warning */>}}\n"
+msgstr ""
+
+#. type: Fenced code block (html)
+#: content/contribute/website/index.md:201
+#, no-wrap
+msgid ""
+"{{</* note */>}}\n"
+"Your side note here.\n"
+"{{</* /note */>}}\n"
+msgstr ""
+
+#. type: Fenced code block (html)
+#: content/contribute/website/index.md:207
+#, no-wrap
+msgid ""
+"{{</* advice */>}}\n"
+"Your friendly advice here.\n"
+"{{</* /advice */>}}\n"
+msgstr ""
+
+#. type: Fenced code block (html)
+#: content/contribute/website/index.md:213
+#, no-wrap
+msgid ""
+"{{</* danger */>}}\n"
+"This is where you remind users that they are free to do shit but there will be consequences.\n"
+"{{</* /danger */>}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:220
+#, markdown-text, no-wrap
+msgid "The content of the boxes can use Markdown too.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:222
+#, markdown-text, no-wrap
+msgid "Before/after sliders"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:225
+#, markdown-text, no-wrap
+msgid "Again, using Hugo templating system, you can display before/after sliders where both images are overlayed. This resembles the Ansel & darktable darkroom snapshot feature and can efficiently explain the effect of modules and settings in a way that users can reproduce in the GUI. Both before and after images need to have the same size in pixels.\n"
+msgstr ""
+
+#. type: Fenced code block (html)
+#: content/contribute/website/index.md:226
+#, no-wrap
+msgid ""
+"{{</* compare after=\"./img-after.jpg\" before=\"./img-before.jpg\" */>}}\n"
+"Your slider legend goes here.\n"
+"{{</* /compare */>}}\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:232
+#, markdown-text, no-wrap
+msgid "Maths"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:235
+#, markdown-text, no-wrap
+msgid "The docs support MathJax configured for LaTeX syntax support. Though the goal is not to write scientific litterature, there are some algorithms made of multiplications and additions that are more easily shown as equations rather than writing blocks of texts.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:237
+#, markdown-text, no-wrap
+msgid "Inline LaTeX should be enclosed in `$`, block equations enclosed in `$$`. If you use LaTeX, you need to notify Hugo to append the Mathjax script on the page by setting `latex: true` in the header/frontmatter of the Markdown page.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:238
+#, markdown-text, no-wrap
+msgid "Mermaid graphs"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:241
+#, markdown-text, no-wrap
+msgid "Ansel makes an heavy use of pipelines, and those are best described with flowcharts. Mermaid.js is now supported natively on Github and within Visual Studio Code and is great for that purpose. You can [try it visually here](https://mermaid.live/edit#pako:eNpVkE1rhDAQhv9KmFML-gc8FLra7sXSQvdU9TDVcRPWfBBHlkX97002FNqcQp73mQzvCr0dCAo4e3RSnKrWiHCem1J6NbPGuRN5_rQdiYW2hm6bODwcrZildU6Z82PKH2JIlGsdYyRYKnPZEyrv_ruhTVRNjY6t6_6S09Vu4qVRHzKM_0-kp2C9NiMWI-Y9elGi7yADTV6jGsLaaxRaYEmaWijC1dDCHqcWsoTGyV57iZ4jXtP8FiTrqcZvmuZksV-CH2lYew9f4ML282Z6KCLKYHEDMlUKQ1H695EGxda_pQbvRWbg0HxZGyIjTjPtPxIKcek) and copy-paste the code of the graphs within Markdown code blocks like this:\n"
+msgstr ""
+
+#. type: Fenced code block (markdown)
+#: content/contribute/website/index.md:242
+#, no-wrap
+msgid ""
+"    ```mermaid\n"
+"    graph TD\n"
+"        A[Christmas] -->|Get money| B(Go shopping)\n"
+"        B --> C{Let me think}\n"
+"        C -->|One| D[Laptop]\n"
+"        C -->|Two| E[iPhone]\n"
+"        C -->|Three| F[fa:fa-car Car]\n"
+"    ```\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:254
+#, markdown-text, no-wrap
+msgid "On Github, this renders:\n"
+msgstr ""
+
+#. type: Fenced code block (mermaid)
+#: content/contribute/website/index.md:255
+#, no-wrap
+msgid ""
+"graph TD\n"
+"    A[Christmas] -->|Get money| B(Go shopping)\n"
+"    B --> C{Let me think}\n"
+"    C -->|One| D[Laptop]\n"
+"    C -->|Two| E[iPhone]\n"
+"    C -->|Three| F[fa:fa-car Car]\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:265
+#, markdown-text, no-wrap
+msgid "Icons from [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) are supported by Ansel main website and documentation, using the syntax `fa:fa-YOUR-ICON-CODE` as shown in the example above. Use [Font Awesome v5 search engine](https://fontawesome.com/v5/search?o=r&m=free&s=solid) to get the `fa-` code of the icons you may use.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:267
+#, markdown-text, no-wrap
+msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:269
+#, markdown-text, no-wrap
+msgid "Changing pages URL"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:272
+#, markdown-text, no-wrap
+msgid "Sometimes, it makes sense to reorganize the content and to changes the path of some pages. To not break external links, you must record the old url of the new page as an alias, in the frontmatter of the new page like so:\n"
+msgstr ""
+
+#. type: Fenced code block (toml)
+#: content/contribute/website/index.md:273
+#, no-wrap
+msgid ""
+"aliases:\n"
+"    - /my-old-url/\n"
+"    - /another-even-older-url\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/website/index.md:279
+#, markdown-text, no-wrap
+msgid "Notes"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/website/index.md:281
+#, markdown-text, no-wrap
+msgid "RSS feed"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:284
+#, markdown-text, no-wrap
+msgid "The documentation has an RSS localized feed, for now :\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:287
+#, markdown-text, no-wrap
+msgid ""
+"- https://ansel.photos/en/doc/index.xml,\n"
+"- https://ansel.photos/fr/doc/index.xml.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:289
+#, markdown-text, no-wrap
+msgid "This is unusual and is meant to help users keep track of changes and evolutions, by subscribing to the RSS feed or by connecting it with bots.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/website/index.md:290
+#, markdown-text, no-wrap
+msgid "The date of the documentation pages set in the RSS feed is the `lastmod` parameter, aka the time of last modification. Since RSS doesn't have a `jast modified date`, it's the best I have found for the time being.\n"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
 #: content/contribute/coding-style.md:1
 #, no-wrap
 msgid "Coding style"
@@ -7233,12 +7924,6 @@ msgid ""
 "- `{` and `}` go to their own line,\n"
 msgstr ""
 
-#. type: Title ##
-#: content/contribute/coding-style.md:360
-#, markdown-text, no-wrap
-msgid "Guidelines"
-msgstr ""
-
 #. type: Plain text
 #: content/contribute/coding-style.md:365
 #, markdown-text, no-wrap
@@ -7406,6 +8091,137 @@ msgstr ""
 #: content/contribute/audience.md:59
 #, markdown-text, no-wrap
 msgid "I believe that keeping doors open to deepen user's understanding of image processing matters is a virtuous and empowering circle, even though it has a cognitive price to pay. Therefore, technics will not be hidden or renamed in GUI for the sake of being less frightening.\n"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
+#: content/contribute/workflows.md:1
+#, no-wrap
+msgid "Automated workflows"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:7
+#, markdown-text, no-wrap
+msgid "Because Ansel is mostly a one-person operation, everything that could be automated was automated. This page keeps track of everything that should be maintained in the future, and where.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/workflows.md:8
+#, markdown-text, no-wrap
+msgid "Software"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/workflows.md:10 content/contribute/organization.md:24
+#, markdown-text, no-wrap
+msgid "Nightly builds"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:13
+#, markdown-text, no-wrap
+msgid "Nightly builds prepare a compiled and packaged version of the software, every night at 6am UTC, for:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:17
+#, markdown-text, no-wrap
+msgid ""
+"- [Linux](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/lin-nightly.yml),\n"
+"- [Windows](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/win-nightly.yml),\n"
+"- MacOS is currently disabled.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:19
+#, markdown-text, no-wrap
+msgid "The newest binary files are automatically added to the [pre-release](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0) assets, are posted on a [Matrix channel](https://matrix.to/#/#ansel-builds:matrix.org) so users can subscribe to updates, and can be downloaded through (constantly up-to-date) permalinks at:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:22
+#, markdown-text, no-wrap
+msgid ""
+"- <https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip> for the Linux AppImage,\n"
+"- <https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip> for the Windows AppImage.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/workflows.md:23
+#, markdown-text, no-wrap
+msgid "Developer documentation"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:26
+#, markdown-text, no-wrap
+msgid "The dev docs are [automatically built](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/docs.yml) from the source code with Doxygen, every Sunday at 00:00 UTC, then uploaded to <https://dev.ansel.photos>, which is hosted on Github Pages attached to the Ansel (software) repository.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/workflows.md:27
+#, markdown-text, no-wrap
+msgid "Commits and issues"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:30
+#, markdown-text, no-wrap
+msgid "Github new commits and issues are [automatically posted](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/matrix.yml) to a [Matrix channel](https://matrix.to/#/#ansel-dev:matrix.org) for updates.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/workflows.md:31 content/contribute/organization.md:42
+#, markdown-text, no-wrap
+msgid "Website"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:34
+#, markdown-text, no-wrap
+msgid "The Hugo static website is [automatically built](https://github.com/aurelienpierreeng/ansel-website/blob/master/.github/workflows/hugo.yml) on every new commit to the source code and ever Sunday at 00:00 UTC. This auto-update is intended for [camera support](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/layouts/shortcodes/rawspeed.html) which re-parses Libraw, Rawspeed and Ansel source code straight from Github, and dynamically generates the camera support table. It is uploaded to <https://ansel.photos>, which is hosted on Github Pages attached te the Ansel Website repository.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/workflows.md:35 content/contribute/organization.md:50
+#, markdown-text, no-wrap
+msgid "Documentation"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:38
+#, markdown-text, no-wrap
+msgid "The documentation is imported into the website as a Go/Git module ([see _website_](./website/index.md)). Every new commit to the documentation [fires a workflow dispatch](https://github.com/aurelienpierreeng/ansel-doc/blob/master/.github/workflows/hugo.yml) to the main website to rebuild and update it.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/workflows.md:39
+#, markdown-text, no-wrap
+msgid "Forum"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:42
+#, markdown-text, no-wrap
+msgid "New posts on the forum are posted through an RSS bot to the [Matrix channel](https://matrix.to/#/#ansel-dev:matrix.org) for updates.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/workflows.md:43
+#, markdown-text, no-wrap
+msgid "Chantal"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:46
+#, markdown-text, no-wrap
+msgid "The page crawler for Chantal search engine database does not yet run automated and needs manual updating.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:47
+#, markdown-text, no-wrap
+msgid "Converting web pages to their vector representation, through the language model, will probably remain too heavy for any public server and will need to be done on a powerful private server.\n"
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: title
@@ -7894,179 +8710,397 @@ msgstr ""
 #. type: Plain text
 #: content/contribute/translating.md:8
 #, markdown-text, no-wrap
-msgid "The following assumes you pulled the Ansel source code locally, through :\n"
-msgstr ""
-
-#. type: Fenced code block (bash)
-#: content/contribute/translating.md:9
-#, no-wrap
-msgid ""
-"$ git clone --depth 1 https://github.com/aurelienpierreeng/ansel.git\n"
-"$ cd ansel\n"
+msgid "Ansel uses [Gettext](https://www.gnu.org/software/gettext/) to translate all parts of the project:\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:15
+#: content/contribute/translating.md:12
 #, markdown-text, no-wrap
-msgid "This gives you a freshly initialized repository. Some days later, you will need to update it from upstream, using :\n"
+msgid ""
+"- The software application (written in C),\n"
+"- The website (Hugo templates and Markdown content),\n"
+"- The documentation/user manual, inserted into the website as a module (Hugo templates and Markdown content too).\n"
 msgstr ""
 
-#. type: Fenced code block (bash)
-#: content/contribute/translating.md:16
-#, no-wrap
-msgid "$ git pull\n"
+#. type: Plain text
+#: content/contribute/translating.md:14
+#, markdown-text, no-wrap
+msgid "This ensures the same workflow can be used to translate all files, but also that some translated strings can be shared (for example, the translated GUI controls from the applications can be inserted directly into the documentation).\n"
 msgstr ""
 
 #. type: Title ##
-#: content/contribute/translating.md:20
+#: content/contribute/translating.md:15
 #, markdown-text, no-wrap
-msgid "Update the po template file (`.pot`)"
+msgid "Organization of translation files"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:18
+#, markdown-text, no-wrap
+msgid "The source code of the website, documentation and software all contain an immediate `po/` subfolder, containing:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:21
+#, markdown-text, no-wrap
+msgid ""
+"- one `.pot` file that holds all the available, translatable strings in their original language (in English),\n"
+"- many `.po` files matching translatable strings in their original language with their translation (in one language per file).\n"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/translating.md:23
 #, markdown-text, no-wrap
-msgid "This step is optional as you may directly use the `po/ansel.pot` file provided on the repository.\n"
+msgid "Translations files are all named following the convention `language-code.po`. For example:\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:25
+#: content/contribute/translating.md:32
 #, markdown-text, no-wrap
-msgid "You need first to build the project because the files `data/anselconfig.dtd` and `data/anselconfig.xml.in` are not properly defined for `intltool` to extract strings, so we will fetch them directly from `build/bin/conf_gen.h` and `build/bin/preferences_gen.h`. That's an ugly workaround inherited from upstream darktable.\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/translating.md:27
-#, markdown-text, no-wrap
-msgid "To find out if any source file (`.c`, `.h`, `.sh`) might be missing to the list of translatable files, run :\n"
-msgstr ""
-
-#. type: Fenced code block (sh)
-#: content/contribute/translating.md:28
-#, no-wrap
 msgid ""
-"$ cd po\n"
-"$ intltool-update -m\n"
+"- for German,\n"
+"  - the software translation is `de.po`,\n"
+"  - the website translation is `content.de.po`,\n"
+"  - the documentation translation is `content.de.po`,\n"
+"- for Brazilian Portuguese,\n"
+"  - the software translation is `pt_BR.po`,\n"
+"  - the website translation is `content.pt_br.po`,\n"
+"  - the documentation translation is `content.pt_br.po`.\n"
 msgstr ""
 
-#. type: Plain text
-#: content/contribute/translating.md:34
+#. type: Title ##
+#: content/contribute/translating.md:33
 #, markdown-text, no-wrap
-msgid "This outputs some false-positives, so no need to care about files that have been there for a long time. It's only new files that will need to be added to `po/POTFILES.in`.\n"
+msgid "Translating when you can't use CLI/Git"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/translating.md:36
 #, markdown-text, no-wrap
-msgid "To update strings from the source code changes into the `.pot` file, run:\n"
+msgid "You will need to locate the relevant `.po` file for your language for the part of the project you want to translate:\n"
 msgstr ""
 
-#. type: Fenced code block (sh)
-#: content/contribute/translating.md:37
-#, no-wrap
+#. type: Plain text
+#: content/contribute/translating.md:40
+#, markdown-text, no-wrap
 msgid ""
-"$ cd po # optional, only if you didn't run the previous command\n"
-"$ intltool-update -pot\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/translating.md:43
-#, markdown-text, no-wrap
-msgid "It will create a new `untitled.pot` file that you may rename `ansel.pot` if you like, in the `po/` folder.\n"
-msgstr ""
-
-#. type: Title ##
-#: content/contribute/translating.md:44
-#, markdown-text, no-wrap
-msgid "Translate the missing strings"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/translating.md:47
-#, markdown-text, no-wrap
-msgid "Open the `.po` file corresponding to your language in Poedit. In Poedit interface, go to \"Translation -> Update from a POT file\" and select either the `po/ansel.pot` file already on the repository or the `.pot` that you optionally generated at the previous step.\n"
+"- the software : <https://github.com/aurelienpierreeng/ansel/tree/master/po>\n"
+"- the website : <https://github.com/aurelienpierreeng/ansel-website/tree/master/po>\n"
+"- the documentation : <https://github.com/aurelienpierreeng/ansel-doc/tree/master/po>\n"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/translating.md:49
 #, markdown-text, no-wrap
-msgid "Update the missing or fuzzy translations, save and send me the resulting `.po` file doing a pull request on Github or by email if you don't know how to Git.\n"
+msgid ""
+"1. Download this file and open it with [Poedit](https://poedit.net/),\n"
+"2. Make the corrections and editions you need,\n"
+"3. Add your name in a comment for the strings you translate if you want to be credited on the page :\n"
+"    - Automatically-translated strings will have `TRANSLATOR ChatGPT` there, once you verify those strings, please remove this line,\n"
+"    - Then add a comment containing `TRANSLATOR Your Name` on a new line. Keep other (non-ChatGPT) contributors there, if any.\n"
+"4. Save the file and:\n"
+"    - __Alternative 1__ _(easier for contributor, more steps for maintainer)_: drop it [on my private cloud](https://cloud.apmlt.net/s/YAdfYajPkE5nLyW),\n"
+"    - __Aternative 2__ _(more steps for contributor, easier for maintainer)_: commit it with Git and open a pull request against the proper Github repository.\n"
 msgstr ""
 
 #. type: Title ##
 #: content/contribute/translating.md:50
 #, markdown-text, no-wrap
-msgid "Lost in translation ?"
+msgid "Translating for power users"
 msgstr ""
 
 #. type: Plain text
 #: content/contribute/translating.md:53
 #, markdown-text, no-wrap
+msgid "This will update the `.pot` file using the source code of the project. You will need to have `Git` installed, and [Hugo 0.146](https://github.com/gohugoio/hugo/releases/tag/v0.146.7) installed on your computer.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:95
+#, markdown-text, no-wrap
+msgid ""
+"1. Clone the source code of the relevant project:\n"
+"    - the software :\n"
+"      ```bash\n"
+"      $ git clone --depth 1 \\\n"
+"        https://github.com/aurelienpierreeng/ansel.git\n"
+"      $ cd ansel\n"
+"      ```\n"
+"    - the website :\n"
+"      ```bash\n"
+"      $ git clone --depth 1 \\\n"
+"        https://github.com/aurelienpierreeng/ansel-website.git\n"
+"      $ cd ansel-website\n"
+"      ```\n"
+"    - the documentation :\n"
+"      ```bash\n"
+"      $ git clone --depth 1 \\\n"
+"        https://github.com/aurelienpierreeng/ansel-doc.git\n"
+"      $ cd ansel-doc\n"
+"      ```\n"
+"    Later, you will update the repository using :\n"
+"    ```bash\n"
+"    $ git pull\n"
+"    ```\n"
+"2. Update the `.pot` and all `.po` files from the source code (this step works the same for all 3 projects):\n"
+"    ```bash\n"
+"    $ sh tools/update-translations.sh\n"
+"    ```\n"
+"3. Translate the relevant `.po` file using Poedit or directly in a text editor (see [_Translating when you can't use CLI/Git_](#translating-when-you-cant-use-cligit)),\n"
+"4. Test & review your translation :\n"
+"    - For the software, you will need to build Ansel on your OS. Please see [the documentation](../doc/install/_index.md).\n"
+"    - For the website and the documentation, you can run :\n"
+"      ```bash\n"
+"      sh build-modules.sh\n"
+"      hugo\n"
+"      ```\n"
+"    Watch out for any critical error from po4a, especially for mismatching `\\n` characters, and errors from Hugo, especially regarding shortcodes syntax.\n"
+"5. For the website and documentation, cleanup the translated Markdown files (automatically-generated by po4a using the `.po` file) before commiting, using :\n"
+"    ```bash\n"
+"    sh tools/build-translations.sh --remove\n"
+"    ```\n"
+"6. Commit all `.pot` and `.po` files and open a pull request against the relevant Github repository. Never commit translated `.md` (Markdown) files.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/translating.md:97
+#, markdown-text, no-wrap
+msgid "Translating images"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:100
+#, markdown-text, no-wrap
+msgid "_The following applies to the website and documentation only._\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:102
+#, markdown-text, no-wrap
+msgid "Images can be translated too, for example application screenshots. Images are stored in the `assets/` folder if they are re-used on several pages (global assets), otherwise they are stored in the same folder as the Mardown file using them (local assets). Whether global or local, the translation process is the same, only the base folder changes.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:104
+#, markdown-text, no-wrap
+msgid "If, for example, you want to translate the `assets/screenshot.jpg` for the language `LANG` (which is the ISO code of the language, like `de`, `nl`, `pt_br`, `zn_cn`, etc.):\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:110
+#, markdown-text, no-wrap
+msgid ""
+"1. add and commit a new `assets/screenshot.LANG.jpg` image file to the documentation or website Git repository,\n"
+"2. in the `content.LANG.po`, locate the entry containing the Markdown tag for the original image, which will be something like `![alt text](screenshot.jpg)`,\n"
+"3. translate the Markdown tag by replacing the URL of the image, like `![translated alt text](screenshot.LANG.jpg`,\n"
+"4. save and commit the `content.LANG.po` file,\n"
+"5. create a pull request against Ansel website or Ansel docs repository.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/translating.md:111
+#, markdown-text, no-wrap
+msgid "Auto-tools and helper scripts"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/translating.md:113
+#, markdown-text, no-wrap
+msgid "Init documentation translation with software one"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:116
+#, markdown-text, no-wrap
+msgid "Because the documentation and the software share the same strings for the GUI controls, you can lazily init the documentation strings from the software ones if they exactly match (including casing). This needs a Python interpeter and the `regex` package (install with `pip install -U regex`). From the source code of the documentation, you can call :\n"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: content/contribute/translating.md:117
+#, no-wrap
+msgid "$ python tools/merge-translations.py path/to/software path/to/doc\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/translating.md:121
+#, markdown-text, no-wrap
+msgid "Auto-translate documentation and website with ChatGPT"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:124
+#, markdown-text, no-wrap
+msgid "ChatGPT-4o does a very fair job at translating Markdown-formatted text from English, although not in every language. You will need a private API key to store in the folder of the documentation or website in a `.chatgpt.api_key` file. Then, calls to the ChatGPT API are not free, and the minimal payment of 5 US$ will roughly get you the website fully translated into 4 languages.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:126
+#, markdown-text, no-wrap
+msgid "The all-in-one script can be called using :\n"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: content/contribute/translating.md:127
+#, no-wrap
+msgid "$ sh auto-translate.sh LANG\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:132
+#, markdown-text, no-wrap
+msgid "where `LANG` is the target language code (de, fr, pt_br, etc.). This will process the translation in batches of 90 to 120 strings to comply with ChatGPT API limitations and thresholding. This will :\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:138
+#, markdown-text, no-wrap
+msgid ""
+"- parse the original `po/content.LANG.po` file and export the batch to translate into a temporary `po/content.LANG.txt` file,\n"
+"- send `po/content.LANG.txt` file to ChatGPT and get the response in `po/content.LANG.generated.txt`\n"
+"- fix most common formatting inconsistencies that ChatGPT can introduce and inject the translations back into `po/content.LANG.po`,\n"
+"- build translated Markdown files (following the `page.LANG.md` naming convention),\n"
+"- build the website with Hugo.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:140
+#, markdown-text, no-wrap
+msgid "If all these steps complete without error, then you are good to run the script again to process the next batch until completion. If errors are shown, you will need to fix them. We run only one batch at each call to let user the opportunity to find errors while there are not too many changes to inspect.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:142
+#, markdown-text, no-wrap
+msgid "__Common errors__:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:148
+#, markdown-text, no-wrap
+msgid ""
+"- nothing will be translated : check ChatGPT answer within `po/content.LANG.generated.txt`, sometimes it is unable to understand its mission. You can try again, sometimes it works on the 3rd call. But often, there is nothing to do and some languages/strings can't be translated at all.\n"
+"- when building the website with Hugo, some shortcode can't be found. This is because shortcodes are declared like so : `{{</* shortcode_name */>}}`. Sometimes, ChatGPT will try to translate `shortcode_name` and the shortcode won't work again. The solution is to bring back the English name for the shortcode and its attributes,\n"
+"- same with [Mermaid](https://mermaid.js.org/) graphs, ChatGPT can try to translate commands and properties that shouldn't be translated,\n"
+"- original strings end with the newline character `\\n` and the translated strings don't (or the other way around). The script tries to sanitize that, but some corner cases are not handled. Original strings `msgid` and their translation `msgstr` in the `.po` file should have the same number of `\\n` characters at the same place,\n"
+"- improperly escaped double quotes : the `msgid` and `msgstr` Gettext strings should be delimited by unescaped double quotes `\"` at each extremity of the string. Any other double quote, within the Gettext string, should be escaped using `\\\"`.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:150
+#, markdown-text, no-wrap
+msgid "The best way to fix errors is to open the relevant `.po` file in a text editor. If you can't find the error and solve it, you can try opening the file into Poedit, but when saving, it will usually completly erase the faulty strings without fixing them, so translation will need to be started again from scratch.\n"
+msgstr ""
+
+#. type: Title ###
+#: content/contribute/translating.md:151
+#, markdown-text, no-wrap
+msgid "Build translated Markdown files"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:154
+#, markdown-text, no-wrap
+msgid "For the website and documentation, [Hugo](https://gohugo.io/) handles the translations of any given page `new_page.md` using the naming convention `new_page.LANG.md`, where `LANG` is the language code. Hugo natively supports manually writing these translated files in the same folder as their original, however, here we generate them using the `.po` translation file and the program `po4a`. The `build-modules.sh` and `tools/auto-translate.sh` scripts handle this internally, but you may want to generate those file manually :\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:167
+#, markdown-text, no-wrap
+msgid ""
+"1. Update the `.pot` and `.po` files with the source code :\n"
+"    ```bash\n"
+"    $ sh tools/update-translations.sh\n"
+"    ```\n"
+"2. Create the translated `.md` files :\n"
+"    ```bash\n"
+"    $ sh tools/build-translations.sh --add\n"
+"    ```\n"
+"2. Cleanup the translated `.md` files :\n"
+"    ```bash\n"
+"    $ sh tools/build-translations.sh --remove\n"
+"    ```\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:169
+#, markdown-text, no-wrap
+msgid "It is important to never commit the translated `.md` files with Git, as they are regenerated only from that script when building the website. This is only for repositiory hygiene, there is no technical drawback. Cleaning up the translated `.md` before committing ensures no mistakes.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/translating.md:170
+#, markdown-text, no-wrap
+msgid "Lost in translation ?"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/translating.md:173
+#, markdown-text, no-wrap
 msgid "If you have issues or questions, feel free to ask on the dedicated [Matrix translators channel](https://matrix.to/#/#ansel-translators:matrix.org).\n"
 msgstr ""
 
 #. type: Title ##
-#: content/contribute/translating.md:54
+#: content/contribute/translating.md:174
 #, markdown-text, no-wrap
 msgid "Notes to translators"
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/translating.md:56
+#: content/contribute/translating.md:176
 #, markdown-text, no-wrap
 msgid "Policy on capitals"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:59
+#: content/contribute/translating.md:179
 #, markdown-text, no-wrap
 msgid "The darktable project made a priority to put everything in lower case, which makes the GUI difficult to read, especially for tooltips having several sentences. Capitals anchor visually the beginning of sentences and other important text, like buttons, controls etc. It's no accident if all languages converged to using them (though German has its particular way of putting them everywhere), they help legibility whether you like their aesthetic or not.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:61
+#: content/contribute/translating.md:181
 #, markdown-text, no-wrap
 msgid "Ansel source code reuses most of darktable's labels and adds an initial capital in most places where they are needed (module headers, buttons). This is done by a bit of code using the C function `g_unichar_toupper()` from Gtk Glib, such that the original English text stays in lower case to keep compatibility with translations.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:63
+#: content/contribute/translating.md:183
 #, markdown-text, no-wrap
 msgid "This programmatic fix works for non-accented characters, no matter the language used (default strings in English, or translations). However, it does not work for initial accented characters, which will not be capitalized. In this case, translators are asked to force their translation to use initial capitalized accented characters whenever they are grammatically correct in their language.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:65
+#: content/contribute/translating.md:185
 #, markdown-text, no-wrap
 msgid "New labels or old labels recently changed (which would break translations anyway) will get initial capitals from now on, in the source code (English version), so this should progressively be fixed.\n"
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/translating.md:66
+#: content/contribute/translating.md:186
 #, markdown-text, no-wrap
 msgid "Translating technical terms"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:69
+#: content/contribute/translating.md:189
 #, markdown-text, no-wrap
 msgid "Technical terms related to color theory and colorimetry need to be translated exactly from English, with extra care because these terms can exist also in common language (aka non-technical) but with a different meaning. The [International Electrotechnical Commission](https://www.electropedia.org/iev/iev.nsf/welcome) provides a search-engine where you can search for the English technical terms and get the accurate translations in different languages, including the main European ones as well as Arabian and Chinese.\n"
 msgstr ""
 
 #. type: Title ###
-#: content/contribute/translating.md:70
+#: content/contribute/translating.md:190
 #, markdown-text, no-wrap
 msgid "Notes aux traducteurs francophones"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:73
+#: content/contribute/translating.md:193
 #, markdown-text, no-wrap
 msgid "La traduction de darktable comporte des bizarreries incompréhensibles pour quiconque utilise un ordinateur de bureau depuis plus de 10 ans. Voici une liste rapide des erreurs à corriger:\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/translating.md:76
+#: content/contribute/translating.md:196
 #, markdown-text, no-wrap
 msgid ""
 "* \"set\" est traduit \"positionné\" mais sa traduction correcte est \"réglé\". C'est illogique car \"settings\" est correctement traduit \"réglages\". Dans Ansel, on ne positionne que des masques (ou leurs nœuds de contrôle) dans le plan 2D. Le reste, ce sont des réglages.\n"
@@ -8374,12 +9408,6 @@ msgstr ""
 msgid "News about development projects closed or milestones are published on the [blog](/news). A dedicated [Matrix chat](https://matrix.to/#/#ansel-dev:matrix.org) centralizes all updates and notifications from new commits, Github issues, new blog posts and new community forum posts.\n"
 msgstr ""
 
-#. type: Title ###
-#: content/contribute/organization.md:24
-#, markdown-text, no-wrap
-msgid "Nightly builds"
-msgstr ""
-
 #. type: Plain text
 #: content/contribute/organization.md:27
 #, markdown-text, no-wrap
@@ -8425,12 +9453,6 @@ msgid ""
 "{{</ note >}}\n"
 msgstr ""
 
-#. type: Title ###
-#: content/contribute/organization.md:42
-#, markdown-text, no-wrap
-msgid "Website"
-msgstr ""
-
 #. type: Plain text
 #: content/contribute/organization.md:45
 #, markdown-text, no-wrap
@@ -8447,12 +9469,6 @@ msgstr ""
 #: content/contribute/organization.md:49
 #, markdown-text, no-wrap
 msgid "Changes to the website have to use the typical Git + Pull Request (on Github) workflow, which can deter non-programmers, but it's the least shitty way of remote-collaborating on somethng text-based, while ensuring reversible versionning and backups.\n"
-msgstr ""
-
-#. type: Title ###
-#: content/contribute/organization.md:50
-#, markdown-text, no-wrap
-msgid "Documentation"
 msgstr ""
 
 #. type: Plain text

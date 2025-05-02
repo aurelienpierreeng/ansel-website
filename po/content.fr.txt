@@ -1,0 +1,22 @@
+
+[11830]: "The best way to fix errors is to open the relevant `.po` file in a text editor. If you can't find the error and solve it, you can try opening the file into Poedit, but when saving, it will usually completly erase the faulty strings without fixing them, so translation will need to be started again from scratch.\n"
+
+[11836]: "Build translated Markdown files"
+
+[11842]: "For the website and documentation, [Hugo](https://gohugo.io/) handles the translations of any given page `new_page.md` using the naming convention `new_page.LANG.md`, where `LANG` is the language code. Hugo natively supports manually writing these translated files in the same folder as their original, however, here we generate them using the `.po` translation file and the program `po4a`. The `build-modules.sh` and `tools/auto-translate.sh` scripts handle this internally, but you may want to generate those file manually :\n"
+
+[11848]: ""
+[11849]: "1. Update the `.pot` and `.po` files with the source code :\n"
+[11850]: "    ```bash\n"
+[11851]: "    $ sh tools/update-translations.sh\n"
+[11852]: "    ```\n"
+[11853]: "2. Create the translated `.md` files :\n"
+[11854]: "    ```bash\n"
+[11855]: "    $ sh tools/build-translations.sh --add\n"
+[11856]: "    ```\n"
+[11857]: "2. Cleanup the translated `.md` files :\n"
+[11858]: "    ```bash\n"
+[11859]: "    $ sh tools/build-translations.sh --remove\n"
+[11860]: "    ```\n"
+
+[11866]: "It is important to never commit the translated `.md` files with Git, as they are regenerated only from that script when building the website. This is only for repositiory hygiene, there is no technical drawback. Cleaning up the translated `.md` before committing ensures no mistakes.\n"
