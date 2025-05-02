@@ -1,43 +1,96 @@
 {{- $link := strings.Replace .Destination "_index.md" "" -}}
 {{- $isRemote := strings.HasPrefix $link "http" -}}
+{{- $isAnchor := strings.HasPrefix $link "#" -}}
 {{- $isWikipedia := strings.Contains $link "wikipedia.org" -}}
 {{- $isNetwork := strings.Contains $link "ansel.photos" -}}
 {{- $isDownload := eq (lower .Title) "download" -}}
 {{- $title := .Title -}}
+{{- $page := .Page -}}
+
 {{- if and $isWikipedia (not $title) -}}
-{{- $title = "Wikipedia link" -}}
+  {{- $title = "Wikipedia link" -}}
 {{- end -}}
+
 {{- if and $isRemote (and (not $isNetwork) (not $title)) -}}
-{{- $title = "External link" -}}
+  {{- $title = "External link" -}}
 {{- end -}}
-{{- if not $isRemote -}}
+
+{{- if and (not $isRemote) (not $isAnchor) -}}
+  {{/*
+    For local links, we want writers to use relative links to (mostly .md) files, as much as possible.
+    These links can be followed in modern text editors on the file system, without building the website.
+    But Hugo needs links to be relative to the generated website structure, and the conversion is not straight-forward,
+    especially with translations.
+  */}}
   {{- $url := urls.Parse $link -}}
   {{- if $url.Path -}}
     {{- $fragment := printf "%s" $url.Fragment -}}
     {{- $link = $url.Path -}}
-    {{- with .Page.GetPage $link -}}
-      {{- $link = .RelPermalink -}}
-    {{- else -}}
+
+    {{- $output := "" -}}
+    {{- if strings.HasSuffix $link ".xml" -}}
+      {{- $output = "rss" -}}
+      {{- $link = strings.Replace $link ".xml" "" -}}
+    {{- else if strings.HasSuffix $link ".md" -}}
+      {{- $output = "html" -}}
       {{- $link = strings.Replace $link ".md" "" -}}
     {{- end -}}
-    {{- /* Append the anchor and trailing / if needed */ -}}
-    {{- if not (strings.HasSuffix $link "/") -}}
-      {{- $link = printf "%s/" $link -}}
+
+    {{- $got_it := false -}}
+
+    {{/* This works as-is only for relative links to pages from the same section/branch bundle */}}
+    {{- with $page.GetPage $link -}}
+      {{- $link = .RelPermalink -}}
+      {{- $got_it = true -}}
+    {{- end }}
+
+    {{/* This works only for relative links pointing to pages outside the current section/branch bundle
+         and if the current page is NOT IN a page boundle.
+         see https://gohugo.io/content-management/page-bundles/
+    */}}
+    {{- if not $got_it -}}
+      {{- $opts := dict "path" $link "lang" .Page.Lang "outputFormat" $output }}
+      {{- with try (ref .Page $opts) -}}
+        {{ with $page.GetPage .Value }}
+          {{- $link = .RelPermalink -}}
+          {{- $got_it = true -}}
+        {{ end }}
+      {{- end }}
     {{- end -}}
+
+    {{/* This works only for relative links pointing to pages outside the current section/branch bundle
+         and if the current page is IN a page boundle.
+         see https://gohugo.io/content-management/page-bundles/
+    */}}
+    {{- if not $got_it -}}
+      {{- $opts := dict "path" (strings.TrimPrefix "../" $link) "lang" .Page.Lang "outputFormat" $output }}
+      {{- with try (ref .Page $opts) -}}
+        {{ with $page.GetPage .Value }}
+          {{- $link = .RelPermalink -}}
+          {{- $got_it = true -}}
+        {{ end }}
+      {{- end }}
+    {{- end -}}
+
+    {{- if not $got_it -}}
+      {{- errorf "Internal link %q (%q) NOT FOUND from page %q." $link .Destination .Page -}}
+    {{- end -}}
+
     {{- if $fragment -}}
       {{- $link = printf "%s#%s" $link $fragment -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
+
 <a href="{{ $link | safeURL }}" title="{{ $title | safeHTML }}" {{ if $isRemote }}target="_blank"{{ end }} {{ if and $isRemote (not $isNetwork) }}rel="noopener noreferrer nofollow"{{ else }}rel="dofollow"{{ end }} {{ if $isDownload }}download{{ end }} >{{ .Text | safeHTML }}
 {{- if $isDownload -}}
 &thinsp;<sup class="icon"><i class="fa fa-download"></i></sup>
 {{- else if $isRemote -}}
-{{- if $isWikipedia -}}
-&thinsp;<sup class="icon"><i class="fab fa-wikipedia-w"></i></sup>
-{{- else if not $isNetwork -}}
-&thinsp;<sup class="icon"><i class="fa fa-external-link-alt"></i></sup>
-{{- end }}
+  {{- if $isWikipedia -}}
+  &thinsp;<sup class="icon"><i class="fab fa-wikipedia-w"></i></sup>
+  {{- else if not $isNetwork -}}
+  &thinsp;<sup class="icon"><i class="fa fa-external-link-alt"></i></sup>
+  {{- end }}
 {{- end -}}
 </a>
 {{- "" -}}
