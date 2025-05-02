@@ -46,8 +46,8 @@
 
 {{- define "item" -}}
 <item>
-  <title>{{ .Title | humanize }}</title>
-  <link>{{ .Permalink }}</link>
+  <title>{{ .Title }}</title>
+  <link>{{ .Permalink | safeHTML }}</link>
   <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
   <updated>{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</updated>
   {{ with .Site.Params.Author.email }}<author>{{.}}{{ with $.Site.Params.Author.name }} ({{.}}){{end}}</author>{{end}}
