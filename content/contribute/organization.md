@@ -100,9 +100,7 @@ Good principles on issues/tickets interactions can be found [here](https://www.y
 
 Many centralized and automated ways are offered to keep track of what's new in the project :
 
-- The main website has a central RSS feed, where new and updated page goes :
-    - [Global English RSS](/en/index.xml),
-    - [Global French RSS](/fr/index.xml).
+- The main website has a central RSS feed, where new and updated page goes : [global RSS](../index.xml),
 - For more granularity, each section of the website (News, Doc, Workflows, etc.) has its own RSS feed too. The <i class="fas fa-rss-square"></i> icon you find on section index pages and on every page links to that RSS feed in the current language.
 - The Community website has a [central public RSS feed](https://community.ansel.photos/m/timeline/rss/public/) too (truncated to the 25 most recent events).
 - Code changes can be tracked from commits index on [Github](https://github.com/aurelienpierreeng/ansel/commits/master/), or using the [Github Atom feed](https://github.com/aurelienpierreeng/ansel/commits/master.atom) (truncated to the 20 most recent commits). Commit messages are usually quite verbose and should explain well enough what was changed and why.
