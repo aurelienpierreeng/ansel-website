@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-02 02:26+0200\n"
-"PO-Revision-Date: 2025-04-28 00:10+0200\n"
+"POT-Creation-Date: 2025-05-02 14:20+0200\n"
+"PO-Revision-Date: 2025-05-02 14:29+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -4724,27 +4724,26 @@ msgstr "__Le projet Ansel n'a aucun contrôle sur la liste d'appareils photos et
 msgid "Noise profiles are used by the [_denoise (profiled)_](../../doc/modules/processing-modules/denoise-profiled) module. Cameras without noise profiles will still be usable, only denoising at high ISO might be of subpar quality because it will use generic noise stats.\n"
 msgstr "Les profils de bruits sont utilisés par le module [_débruitage (profilé)_](../../doc/modules/processing-modules/denoise-profiled). Les appareils qui n'ont pas de profil de bruit seront tout de même utilisables, seul le débruitage à hauts ISO peut être de qualité inférieure car il utilisera des statistiques de bruit génériques.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/resources/supported-cameras.md:20
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Raw file formats support"
 msgstr "Support des formats de fichiers bruts"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/resources/supported-cameras.md:23
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Ansel accepts raw file formats among the following list: `3FR, ARI, ARW, BAY, BMQ, CAP, CINE, CR2, CR3, CRW, CS1, DC2, DCR, DNG, GPR, ERF, FFF, EXR, IA, IIQ, JPEG, JPG, K25, KC2, KDC, MDC, MEF, MOS, MRW, NEF, NRW, ORF, PEF, PFM, PNG, PXN, QTK, RAF, RAW, RDC, RW1, RW2, SR2, SRF, SRW, STI, TIF, TIFF, X3F`. This means that the application will allow [importing](../doc/getting-started/import.md) them. To be completely supported (read, decoded), either Rawspeed or Libraw, and Exiv2 will need to support them too.\n"
 msgstr "Ansel accepte les formats de fichiers bruts parmi la liste suivante : `3FR, ARI, ARW, BAY, BMQ, CAP, CINE, CR2, CR3, CRW, CS1, DC2, DCR, DNG, GPR, ERF, FFF, EXR, IA, IIQ, JPEG, JPG, K25, KC2, KDC, MDC, MEF, MOS, MRW, NEF, NRW, ORF, PEF, PFM, PNG, PXN, QTK, RAF, RAW, RDC, RW1, RW2, SR2, SRF, SRW, STI, TIF, TIFF, X3F`. Cela signifie que l'application permettra de [les importer](../doc/getting-started/import.md). Pour être complètement pris en charge (lecture, décodage), Rawspeed ou Libraw, et Exiv2 devront également les supporter.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/resources/supported-cameras.md:24
-#, fuzzy, no-wrap
-#| msgid "Support table"
+#, no-wrap
 msgid "Camera support table"
-msgstr "Tableau de prise en charge"
+msgstr "Tableau de prise en charge des appareils"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
@@ -4890,18 +4889,7 @@ msgstr "Ansel prend en charge les formats de fichiers et extensions suivant (en 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/resources/supported-cameras.md:83
-#, fuzzy, no-wrap
-#| msgid ""
-#| "- JPEG: `.jpg`, `.jpeg` (mandatory),\n"
-#| "- PNG: `.png` (mandatory),\n"
-#| "- PFM: `.pfm` (mandatory),\n"
-#| "- TIFF: `.tif`, `.tiff` (mandatory),\n"
-#| "- OpenEXR: `.exr` (optional),\n"
-#| "- WebP: `.wepb` (optional),\n"
-#| "- AVIF: `.avif` (optional),\n"
-#| "- HEIF: `.heif`, `.heic`, `.hif` (optional),\n"
-#| "- JPEG2000: `.j2c`, `.j2k`, `.jp2`, `.jpc` (optional),\n"
-#| "- Through GraphicsMagick/ImageMagick: `.gif`, `.bmp`, `.dcm`, `.jng`, `.miff`, `.mng`, `.pbm`, `.ppm`, `.pgm` (optional)\n"
+#, no-wrap
 msgid ""
 "- JPEG: `.jpg`, `.jpeg` (mandatory),\n"
 "- PNG: `.png` (mandatory):\n"
@@ -4921,8 +4909,13 @@ msgid ""
 msgstr ""
 "- JPEG: `.jpg`, `.jpeg` (obligatoire),\n"
 "- PNG: `.png` (obligatoire),\n"
-"- PFM: `.pfm` (obligatoire),\n"
+"    - 8/16 bits\n"
+"    - fond transparent non supporté,\n"
+"- PFM: `.pfm` (format Portable Float Map) et `.hdr` (format RGBE) (obligatoire),\n"
 "- TIFF: `.tif`, `.tiff` (obligatoire),\n"
+"    - 8/16 bits en nombres entiers,\n"
+"    - 16/32 bits en virgule flottante\n"
+"    - prend en charge l'export des masques de fusions en tant que calques,\n"
 "- OpenEXR: `.exr` (optionnel),\n"
 "- WebP: `.wepb` (optionnel),\n"
 "- AVIF: `.avif` (optionnel),\n"
@@ -8129,8 +8122,8 @@ msgstr "Informations générales"
 #. type: Plain text
 #: content/support.md:13
 #, no-wrap
-msgid "Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated was automated for the developer's sanity, and you are asked to use the online resources first everytime it is possible.\n"
-msgstr "Ansel est principalement opéré par une seule personne. C'est une bonne nouvelle s'agissant de garder le développement proche des attentes et besoins des utilisateurs, ça l'est moins s'agissant d'équilibrer la charge de travail. Tout ce qui a pu être automatisé l'a été, pour la santé mentale du développeur, et vous êtes invité à utiliser en priorité les resources en ligne à chaque fois que c'est possible.\n"
+msgid "Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated [was automated](./contribute/workflows.md) for the developer's sanity, and you are asked to use the online resources first everytime it is possible.\n"
+msgstr "Ansel est principalement opéré par une seule personne. C'est une bonne nouvelle s'agissant de garder le développement proche des attentes et besoins des utilisateurs, ça l'est moins s'agissant d'équilibrer la charge de travail. Tout ce qui a pu être automatisé [l'a été](./contribute/workflows.md), pour la santé mentale du développeur, et vous êtes invité à utiliser en priorité les resources en ligne à chaque fois que c'est possible.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
@@ -8211,34 +8204,56 @@ msgstr "Cette IA agit comme un bibliothécaire virtuel et peut grandement amél
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:42
+#: content/support.md:41
 #, no-wrap
 msgid ""
 "{{< button url=\"https://chantal.aurelienpierre.com\" icon=\"search\" label=\"Search\" >}}\n"
 "{{% /card %}}\n"
-"{{% /row %}}\n"
 msgstr ""
 "{{< button url=\"https://chantal.aurelienpierre.com\" icon=\"search\" label=\"Rechercher\" >}}\n"
+"{{% /card %}}\n"
+
+#. type: Plain text
+#: content/support.md:44
+#, no-wrap
+msgid ""
+"{{% card title=\"Ansel GPT\" icon=\"search\" %}}\n"
+"Ansel GPT is a custom ChatGPT model trained with all the content of the Ansel website and documentation, plus other color science resources. It can answer many questions and help you build and configure Ansel on your system. It has access to significantly fewer resources than Chantal but can form full explanations.\n"
+msgstr ""
+"{{% card title=\"Ansel GPT\" icon=\"search\" %}}\n"
+"Ansel GPT est un modèle ChatGPT entraîné avec tout le contenu du site web d'Ansel et de sa documentation, plus d'autres sources en sciences de la couleur. Il peut répondre à de nombreuses questions et vous aide à compiler et configurer Ansel sur votre système. Il a accès à significativement moins de sources que Chantal mais peut former des réponses complètes.\n"
+
+#. type: Plain text
+#: content/support.md:49
+#, no-wrap
+msgid ""
+"It is available to _ChatGPT Plus_ subscribers only (as per OpenAI limitations).\n"
+"{{< button url=\"https://chatgpt.com/g/g-680d2f861a608191a0f7549eadd40f2e-ansel-gpt\" icon=\"search\" label=\"Search\" >}}\n"
+"{{% /card %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+"Il est disponible seulement aux abonnés _ChatGPT Plus_ (dû aux limites imposées par OpenAI).\n"
+"{{< button url=\"https://chatgpt.com/g/g-680d2f861a608191a0f7549eadd40f2e-ansel-gpt\" icon=\"search\" label=\"Search\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/support.md:43
+#: content/support.md:50
 #, no-wrap
 msgid "Support and training with the developer"
 msgstr "Assistance et formation avec le développeur"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:46
+#: content/support.md:53
 #, no-wrap
 msgid "Getting a chance to learn how to use the tools directly with their developer is a pretty rare opportunity as far as software goes. Ansel gives it to you, with 1-on-1 personalized assistance through video-conferencing.\n"
 msgstr "Avoir une chance d'apprendre comment utiliser les outils directement avec leur développeur est une opportunité plutôt rare dans le domaine logiciel. Ansel vous l'offre, avec de l'assistance personnalisée par visio-conférence.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:52
+#: content/support.md:59
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -8255,7 +8270,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:58
+#: content/support.md:65
 #, no-wrap
 msgid ""
 "{{% card title=\"Emergency support\" icon=\"ambulance\" %}}\n"
@@ -8272,21 +8287,21 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/support.md:60
+#: content/support.md:67
 #, no-wrap
 msgid "Community support"
 msgstr "Assistance de la communauté"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:63
+#: content/support.md:70
 #, no-wrap
 msgid "Free user support is typically assumed by other users.\n"
 msgstr "L'assistance utilisateur gratuite est typiquement effectée par d'autres utilisateurs.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:68
+#: content/support.md:75
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -8301,7 +8316,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:73
+#: content/support.md:80
 #, no-wrap
 msgid ""
 "{{% card title=\"Chat\" icon=\"comment-dots\" %}}\n"
@@ -8316,14 +8331,14 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/support.md:75
+#: content/support.md:82
 #, no-wrap
 msgid "Bugs and oddities"
 msgstr "Bugs et comportement étranges"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:87
+#: content/support.md:94
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -8350,21 +8365,21 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/support.md:89
+#: content/support.md:96
 #, no-wrap
 msgid "Developer support"
 msgstr "Assistance aux développeurs"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:92
+#: content/support.md:99
 #, no-wrap
 msgid "If you are considering joining forces for development and debugging, here is how I work.\n"
 msgstr "Si vous envisagez de contribuer pour le développement et le débogage, voici comment je travaille.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:97
+#: content/support.md:104
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -8379,7 +8394,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/support.md:101
+#: content/support.md:108
 #, no-wrap
 msgid ""
 "{{% card title=\"Dev mentorship\" icon=\"user-friends\" %}}\n"
@@ -8684,37 +8699,35 @@ msgstr ""
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Hash Value: title
 #: content/contribute/website/index.md:1
-#, fuzzy, no-wrap
-#| msgid "Website"
+#, no-wrap
 msgid "Websites"
-msgstr "Site Internet"
+msgstr "Sites internet"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:7
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Ansel website is built using [Hugo 0.146](https://github.com/gohugoio/hugo/releases/tag/v0.146.7). This is a static website generator that allows to build very fast website from Markdown files. A custom template and a lot of custom shortcodes have been built for Ansel. You will need to [install Hugo extended version](https://gohugo.io/installation/) on your computer first, although minor changes can be made directly to the Markdown files without building the whole website.\n"
 msgstr "Le site web d'Ansel est construit à l'aide de [Hugo 0.146](https://github.com/gohugoio/hugo/releases/tag/v0.146.7). C'est un générateur de sites web statiques qui permet de créer des sites très rapides à partir de fichiers Markdown. Un modèle personnalisé et beaucoup de shortcodes personnalisés ont été développés pour Ansel. Vous devrez d'abord [installer la version étendue de Hugo](https://gohugo.io/installation/) sur votre ordinateur, bien que de petits changements puissent être effectués directement dans les fichiers Markdown sans reconstruire l'ensemble du site.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/website/index.md:8
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Getting the source code"
 msgstr "Obtenir le code source"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/website/index.md:10
-#, fuzzy, no-wrap
-#| msgid "Website"
+#, no-wrap
 msgid "This website"
-msgstr "Site Internet"
+msgstr "Ce site"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (bash)
 #: content/contribute/website/index.md:12
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "$ git clone https://github.com/aurelienpierreeng/ansel-website\n"
 "# Stored for example in /home/user/dev/ansel-website\n"
@@ -8729,158 +8742,153 @@ msgstr ""
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/website/index.md:19
-#, fuzzy, no-wrap
-#| msgid "Ansel"
+#, no-wrap
 msgid "Ansel doc"
-msgstr "Ansel"
+msgstr "Doc d'Ansel"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:22
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Ansel Doc is an important part of the Ansel website, but since it's under a different license and forked from GNU/GPL dtdocs, it can't be on this repo. We want to edit both as a pack but we need to be able to commit them separately on different repositories. Here is the solution.\n"
 msgstr "Ansel Doc est une partie importante du site web d'Ansel, mais comme il est sous une licence différente et dérivé des dtdocs GNU/GPL, il ne peut pas être sur ce dépôt. Nous voulons modifier les deux en tant que pack mais nous devons être en mesure de les soumettre séparément sur différents dépôts. Voici la solution.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:24
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Ansel doc is fetched automatically as a module of this website on your disk as part of the `build-modules.sh` script above, which also auto-generates the translated pages through `.po` files. You will find it in the local folder of the website, under `_vendor/github.com/aurelienpierreeng/ansel-doc/`. No file should be manually edited there, this is only for auto-generated content.\n"
 msgstr "Ansel Doc est récupéré automatiquement en tant que module de ce site web sur votre disque dans le cadre du script `build-modules.sh` ci-dessus, qui génère également automatiquement les pages traduites via des fichiers `.po`. Vous le trouverez dans le dossier local du site web, sous `_vendor/github.com/aurelienpierreeng/ansel-doc/`. Aucun fichier ne doit être modifié manuellement à cet endroit, il s'agit uniquement de contenu auto-généré.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:26
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "To edit Ansel docs, do\n"
 msgstr "Pour modifier les documents Ansel, faites\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Fenced code block (bash)
 #: content/contribute/website/index.md:27
-#, fuzzy, no-wrap
-#| msgid ""
-#| "$ git clone --depth 1 https://github.com/aurelienpierreeng/ansel.git\n"
-#| "$ cd ansel\n"
+#, no-wrap
 msgid ""
 "$ git clone https://github.com/aurelienpierreeng/ansel-doc\n"
 "# Stored for example in /home/user/dev/ansel-doc\n"
 "$ cd ansel-doc\n"
 msgstr ""
-"$ git clone --depth 1 https://github.com/aurelienpierreeng/ansel.git\n"
-"$ cd ansel\n"
+"$ git clone https://github.com/aurelienpierreeng/ansel-doc\n"
+"# Stocké par exemple dans in /home/user/dev/ansel-doc\n"
+"$ cd ansel-doc\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:34
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "And then, edit the (English) content of `ansel-doc/content`.\n"
 msgstr "Et ensuite, modifiez le contenu (en anglais) de `ansel-doc/content`.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/website/index.md:35
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Interactive editing/Live preview"
 msgstr "Édition interactive/Aperçu en direct"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/website/index.md:37
-#, fuzzy, no-wrap
-#| msgid "Software development"
+#, no-wrap
 msgid "Start the development server"
-msgstr "Développement logiciel"
+msgstr "Démarrer le serveur de développement"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:40
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Hugo lets you open a rendered version of the website, on a local development server, to preview your changes into your web browser.\n"
 msgstr "Hugo vous permet d'ouvrir une version rendue du site web sur un serveur de développement local, pour prévisualiser vos modifications dans votre navigateur web.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:42
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "If you only want to edit this website, run from `./ansel-website` directory:\n"
 msgstr "Si vous voulez uniquement modifier ce site web, exécutez depuis le répertoire `./ansel-website` :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (bash)
 #: content/contribute/website/index.md:43
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "hugo server --disableFastRender\n"
 msgstr "hugo server --disableFastRender\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:48
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "If you want to edit the docs and see the results in realtime as part of this website, after you cloned the docs (see previous step), run from `./ansel-website` directory:\n"
 msgstr "Si vous voulez modifier les documents et voir les résultats en temps réel en tant que partie de ce site web, après avoir cloné les documents (voir l'étape précédente), exécutez depuis le répertoire `./ansel-website` :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (bash)
 #: content/contribute/website/index.md:49
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "env HUGO_MODULE_REPLACEMENTS=\"github.com/aurelienpierreeng/ansel-doc -> ../../ansel-doc/\" hugo server --disableFastRender\n"
 msgstr "env HUGO_MODULE_REPLACEMENTS=\"github.com/aurelienpierreeng/ansel-doc -> ../../ansel-doc/\" hugo server --disableFastRender\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:54
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "This trick will dynamically load the docs module from your local folder rather than from Github, which means the local changes done to the docs will immediately appear into the main website through your development server.\n"
 msgstr "Cette astuce chargera dynamiquement le module de documents depuis votre dossier local plutôt que depuis Github, ce qui signifie que les modifications locales apportées aux documents apparaîtront immédiatement dans le site principal via votre serveur de développement.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/website/index.md:55
-#, fuzzy, no-wrap
-#| msgid "Notes to translators"
+#, no-wrap
 msgid "Updating websites translations"
-msgstr "Notes aux traducteurs"
+msgstr "Mettre à jour la traduction des sites web"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:58
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "See [Translating](../translating.md).\n"
 msgstr "Voir [Traduire](../translating.md).\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/website/index.md:59
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Editing files"
 msgstr "Modifier les fichiers"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:61
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Open Obsidian"
 msgstr "Ouvrir Obsidian"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:64
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Open `./ansel-website/content` as an Obsidian vault. Obsidian is able to resolve folder symlinks as if they were local folders, so we basically see the website as a whole, which makes it easier to make internal links between doc and website in the editor.\n"
 msgstr "Ouvrez `./ansel-website/content` en tant que coffre fort dans Obsidian. Obsidian est capable de résoudre les liens symboliques de dossiers comme s'il s'agissait de dossiers locaux, donc on voit essentiellement le site web dans son ensemble, ce qui facilite la création de liens internes entre le document et le site web dans l'éditeur.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:66
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Working in Obsidian is significantly nicer than working in VS Code to edit \"text\" text (as opposed to code text in monospace), since the editor is less bloated and monospace fonts are eye-straining after a couple of hours for full paragraphs.\n"
 msgstr "Travailler dans Obsidian est nettement plus agréable que de travailler dans VS Code pour éditer du texte \"texte\" (par opposition au texte de code en monospace), car l'éditeur est moins encombré et les polices monospace fatiguent les yeux après quelques heures pour des paragraphes entiers.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:71
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- Hugo Markdown doesn't support [Obsidian call-outs](https://help.obsidian.md/How+to/Use+callouts). You have to use the alerts boxes shown above as Hugo shortcodes, but they will not render in Obsidian,\n"
 "- Hugo doesn't support [Obsidian wikilinks](https://help.obsidian.md/How+to/Internal+link), so you will have to stick to usual Markdown links with relative pathes. That said, Obsidian provides paths auto-completion for those.\n"
@@ -8892,17 +8900,17 @@ msgstr ""
 "- Obsidian ne prend pas en charge les [listes de définition Markdown](https://www.markdownguide.org/extended-syntax/#definition-lists), mais vous pouvez toujours les utiliser (elles ne seront tout simplement pas rendues en prévisualisation),\n"
 "- Obsidian ne supporte pas les [Identifiants de titres Markdown](https://www.markdownguide.org/extended-syntax/#heading-ids),\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:73
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "However:\n"
 msgstr "Cependant :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:76
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- Obsidian supports Hugo tags in Yaml frontmatter, and implements them in a much nicer way that gives a lot more sense to horizontal content linking,\n"
 "- Obsidian supports Hugo [aliases](https://help.obsidian.md/How+to/Add+aliases+to+note) for pages redirection,\n"
@@ -8910,110 +8918,108 @@ msgstr ""
 "- Obsidian prend en charge les balises Hugo dans le frontmatter Yaml, et les implémente de manière beaucoup plus élégante qui donne beaucoup plus de sens au lien horizontal de contenu,\n"
 "- Obsidian prend en charge les [alias Hugo](https://help.obsidian.md/How+to/Add+aliases+to+note) pour la redirection des pages,\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:77
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Dealing with broken links"
 msgstr "Gérer les liens brisés"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:80
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "There is an extension for that : https://github.com/graydon/obsidian-dangling-links. Once installed, it shows the links that point to no existing file throughout the whole vault, including main website and doc :\n"
 msgstr "Il existe une extension pour cela : https://github.com/graydon/obsidian-dangling-links. Une fois installée, elle montre les liens qui pointent vers aucun fichier existant à travers tout le coffre, y compris le site web principal et le document :\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/contribute/website/index.md:82
-#, fuzzy, no-wrap
-#| msgid "![](shortcuts-broken.png)\n"
+#, no-wrap
 msgid "![](obsidian-screenshots-broken-links.jpg)\n"
-msgstr "![](shortcuts-broken.png)\n"
+msgstr "![](obsidian-screenshots-broken-links.jpg)\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:84
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "In the node graph view, broken links also appear by their path `../../stuff.md` instead of appearing by their filename.\n"
 msgstr "Dans la vue du graphe de nœud, les liens brisés apparaissent également par leur chemin `../../stuff.md` au lieu d'apparaître par leur nom de fichier.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:86
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "In each page editor, it is possible to see what pages are linking the page currently opened, including the headings anchor, which is useful before changing headings and therefore destroying internal links :\n"
 msgstr "Dans chaque éditeur de page, il est possible de voir quelles pages renvoient à la page actuellement ouverte, y compris l'ancre des titres, ce qui est utile avant de changer de titres et ainsi détruire les liens internes :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:88
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "![](obsidian-screenshots-external-links.jpg)\n"
 msgstr "![](obsidian-screenshots-external-links.jpg)\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:90
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Improving content meshing"
 msgstr "Améliorer la connexion du contenu"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:93
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Horizontal linking, through tags and internal links, is just as important as vertical linking, following hierarchical trees.\n"
 msgstr "Les liens horizontaux, par des balises et des liens internes, sont tout aussi importants que les liens verticaux, suivant des arbres hiérarchiques.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:95
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Obsidian can show the vault-wise available tags for reuse:\n"
 msgstr "Obsidian peut afficher les balises disponibles dans l'ensemble du coffre pour être réutilisées :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:97
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "![](obsidian-screenshots-available-tags.jpg)\n"
 msgstr "![](obsidian-screenshots-available-tags.jpg)\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:99
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "It can also show the best candidate internal links for each keyword in the page, under the \"Unlinked mentions\" collapsible:\n"
 msgstr "Il peut également afficher les meilleurs candidats de liens internes pour chaque mot-clé de la page, sous la section \"Mentions non liées\" repliable :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:101
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "![](obsidian-screenshots-available-links.jpg)\n"
 msgstr "![](obsidian-screenshots-available-links.jpg)\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/website/index.md:103
-#, fuzzy, no-wrap
-#| msgid "Project organization"
+#, no-wrap
 msgid "Checking content organization"
-msgstr "Organisation du projet"
+msgstr "Vérifier l'organisation du contenu"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:106
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "It's often hard to follow the chaining of headings in a Markdown page, when using a typical code editor. Obsidian has an \"outline\" widget that allows to keep the table of contents in sight when writing, to ensure the hierarchy of headings is consistent :\n"
 msgstr "Il est souvent difficile de suivre la liaison des titres dans une page Markdown, lors de l'utilisation d'un éditeur de code typique. Obsidian a un widget \"outline\" qui permet de garder la table des matières en vue lors de la rédaction, pour assurer que la hiérarchie des titres est cohérente :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:108
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "![](obsidian-screenshots-document-outline.jpg)\n"
 msgstr "![](obsidian-screenshots-document-outline.jpg)\n"
 
@@ -9025,17 +9031,17 @@ msgstr "![](obsidian-screenshots-document-outline.jpg)\n"
 msgid "Guidelines"
 msgstr "Lignes directrices"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:113
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The documentation is not a manual or a course. It should answer the questions :\n"
 msgstr "La documentation n'est pas un manuel ou un cours. Elle doit répondre aux questions :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:117
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- \"what is the GUI doing ?\"\n"
 "- \"how can I configure the software ?\"\n"
@@ -9045,32 +9051,31 @@ msgstr ""
 "- \"comment puis-je configurer le logiciel ?\"\n"
 "- \"quels sont les goulots d'étranglement, les mises en garde, les limites et les pièges ?\".\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:119
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The documentation expects the reader to know **what** to do and will explain **how** to do it. Start-to-end workflows, tutorials, scientific background etc., aka the **what** and the **why** go on the website ([resources](../../resources/_index.md), [workflows](../../workflows/_index.md)).\n"
 msgstr "La documentation suppose que le lecteur sait **quoi** faire et expliquera **comment** le faire. Les flux de travail de bout en bout, les tutoriels, le contexte scientifique, etc., c'est-à-dire le **quoi** et le **pourquoi** vont sur le site web ([ressources](../../resources/_index.md), [flux de travail](../../workflows/_index.md)).\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/website/index.md:120
-#, fuzzy, no-wrap
-#| msgid "Contents"
+#, no-wrap
 msgid "Content folder"
-msgstr "Contenu"
+msgstr "Répertoire du contenu"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:123
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The content folder is located in the `content/` directory and the structure of folders and sub-folders will produce the structure of sections and sub-sections on the website. Files are written in Markdown and end with `.md` extension. Each file should have the following header (frontmatter):\n"
 msgstr "Le dossier de contenu se trouve dans le répertoire `content/` et la structure des dossiers et sous-dossiers produira la structure des sections et sous-sections sur le site web. Les fichiers sont écrits en Markdown et se terminent par l'extension `.md`. Chaque fichier doit avoir l'en-tête suivant (frontmatter) :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (yaml)
 #: content/contribute/website/index.md:124
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "---\n"
 "title: This page title\n"
@@ -9094,10 +9099,10 @@ msgstr ""
 "    - pipeline\n"
 "---\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:142
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- The title is mandatory. Please use initial capitals, like in real language.\n"
 "- The date is set once for all at the creation of the page and should never change after.\n"
@@ -9111,87 +9116,87 @@ msgstr ""
 "- `draft` mis à `true` signifie que la page sera dans le dépôt (dans le code source) mais n'apparaîtra pas sur l'interface du site web. Mis à `false`, la page est visible sur l'interface.\n"
 "- Les `tags` sont optionnels mais bienvenus. Le contenu est, par défaut, organisé verticalement (hiérarchiquement). Les tags aident à créer des liens horizontaux (thématiques) entre les pages. Les tags pertinents pourraient être \"traitement de film\", \"HDR\", \"monochrome\", etc. Réutilisez les tags existants en priorité. Les tags devraient toujours être une liste, même lorsqu'il n'y en a qu'un (sinon la construction de Hugo échoue).\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:144
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Internal links"
 msgstr "Liens internes"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:147
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Internal links should use relative paths from the current file. The upstream darktable-doc is a huge mess in that regard: trying to follow internal links locally in an IDE leads to non-existing files most of the time (typically, they have one `../` too many). For some reason, Hugo is still able to resolve them. Ideally, links should work both in source Markdown (Ctrl + Click on the path, in most IDEs) as in the compiled HTML.\n"
 msgstr "Les liens internes doivent utiliser des chemins relatifs du fichier actuel. Le darktable-doc d'amont est un gros désordre à cet égard : essayer de suivre les liens internes localement dans un IDE mène à des fichiers inexistants la plupart du temps (typiquement, ils ont un `../` de trop). Pour une raison quelconque, Hugo est toujours capable de les résoudre. Idéalement, les liens devraient fonctionner à la fois dans le Markdown source (Ctrl + Clic sur le chemin, dans la plupart des IDE) comme dans le HTML compilé.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:149
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Example of internal link:\n"
 msgstr "Exemple de lien interne :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (markdown)
 #: content/contribute/website/index.md:150
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
 msgstr "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:155
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "If you make links to page anchors, like `/my-post.md#some-heading`, be sure to __not__ insert a slash `/` between the page slug and the hashtag `#` in your Markdown code, or else the file will be taken for a directory and not found.\n"
 msgstr "Si vous faites des liens vers des ancres de page, comme `/my-post.md#some-heading`, assurez-vous de __ne pas__ insérer de barre oblique `/` entre le slug de la page et le hashtag `#` dans votre code Markdown, sinon le fichier sera pris pour un répertoire et ne sera pas trouvé.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:157
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Also, always link to the Markdown files, like `/my-post.md`, instead of `/my-post`. If you need to link to sections, like `/doc/` (_although you should use relative pathes there_), always link to their Markdown index, like `/doc/_index.md`. While `/my-post` and `/doc` are technically valid URLs __once the website is compiled to HTML__, text editors, IDEs, file browsers as well as Hugo at compilation stage are not aware of these URL and only know local text files. Using links to actual text files solves many issues, helps debugging and ensures the robustness of the HTML build.\n"
 msgstr "De plus, liez toujours aux fichiers Markdown, comme `/my-post.md`, au lieu de `/my-post`. Si vous devez faire des liens vers des sections, comme `/doc/` (_bien que vous devriez utiliser des chemins relatifs là_), liez toujours à leur index Markdown, comme `/doc/_index.md`. Bien que `/my-post` et `/doc` soient techniquement des URL valides __une fois le site web compilé en HTML__, les éditeurs de texte, les IDE, les explorateurs de fichiers ainsi que Hugo au stade de la compilation ne connaissent pas ces URL et ne connaissent que les fichiers texte locaux. Utiliser des liens vers des fichiers texte réels résout de nombreux problèmes, aide au débogage et assure la robustesse de la construction HTML.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:158
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "External links"
 msgstr "Liens externes"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:161
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Many external websites will return HTML codes different than `200` (200 = everything fine) because the CI bot checking broken links is… a bot, and some websites block bots. The affected URLs can be added to the ignored list in [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) to prevent false-negative. Anything returning a `404` code (page not found error) should be fixed.\n"
 msgstr "De nombreux sites web externes renverront des codes HTML différents de `200` (200 = tout va bien) parce que le bot CI vérifiant les liens brisés est… un bot, et certains sites web bloquent les bots. Les URL affectées peuvent être ajoutées à la liste ignorée dans [.htmltest.yml](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/static/.htmltest.yml) pour éviter les faux négatifs. Tout ce qui renvoie un code `404` (erreur de page non trouvée) doit être corrigé.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:162
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Titles (headings)"
 msgstr "Titres (intitulés)"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:165
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "H1 titles (encoded `# Title` in Markdown) are reserved for page titles and each page should have exactly one H1. darktable-doc messed up big time here by using H1 as section titles, this is both a SEO and an accessibility mistake. The web is semantic because it's designed for crawlers and screen readers just as much as for humans.\n"
 msgstr "Les titres H1 (encodés `# Titre` en Markdown) sont réservés aux titres de page et chaque page doit avoir exactement un H1. darktable-doc a sérieusement échoué ici en utilisant les H1 comme titres de section, c'est à la fois une erreur de SEO et d'accessibilité. Le web est sémantique car il est conçu pour les robots d'exploration et les lecteurs d'écran autant que pour les humains.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:167
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Be aware that Hugo automatically generates anchor links for headings, using the text of the heading. Thus, refrain from using symbols in headings, especially (back)slashes, which will mess-up the anchor links.\n"
 msgstr "Soyez conscient que Hugo génère automatiquement des liens d'ancrage pour les intitulés, en utilisant le texte de l'intitulé. Par conséquent, abstenez-vous d'utiliser des symboles dans les intitulés, en particulier les barres (inverses) qui perturberont les liens d'ancrage.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:170
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "Also be aware that these headings anchors may be used in other pages\n"
 "to make direct links. Changing the text of an heading will break its anchor and may break external links. Fortunately, the [broken links CI bot](https://github.com/aurelienpierreeng/ansel-doc/actions/workflows/hugo.yml) also checks for internal anchors, so you just have to keep mind its output.\n"
@@ -9199,87 +9204,87 @@ msgstr ""
 "Soyez également conscient que ces ancres d'en-tête peuvent être utilisées dans d'autres pages\n"
 "pour créer des liens directs. Changer le texte d'un intitulé cassera son ancre et pourrait casser des liens externes. Heureusement, le [bot CI des liens brisés](https://github.com/aurelienpierreeng/ansel-doc/actions/workflows/hugo.yml) vérifie aussi les ancres internes, alors gardez simplement à l'esprit ses résultats.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:172
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
 msgstr "Pour éviter de casser les ancres dans les liens externes, vous pouvez changer le texte de l'intitulé mais forcer leur ID à l'ancien, comme ceci :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (markdown)
 #: content/contribute/website/index.md:173
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "### My New Heading {#my-old-heading}\n"
 msgstr "### Mon Nouveau Titre {#mon-ancien-titre}\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:178
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "This will preserve external links to `/my-post/#my-old-heading`. [See the details…](https://www.markdownguide.org/extended-syntax/#heading-ids)\n"
 msgstr "Cela préservera les liens externes vers `/mon-post/#mon-ancien-titre`. [Voir les détails…](https://www.markdownguide.org/extended-syntax/#heading-ids)\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:179
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Embedding images"
 msgstr "Incorporer des images"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:182
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Hugo treats images as page assets. There are global assets, for images reused on several pages, stored in an `assets/` subfolder of the main source code folder, and local assets, stored in the same folder as the page using them.\n"
 msgstr "Hugo traite les images comme des ressources de pages. Il existe des ressources globales, pour les images réutilisées sur plusieurs pages, stockées dans un sous-dossier `assets/` du dossier principal du code source, et des ressources locales, stockées dans le même dossier que la page qui les utilise.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:184
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "As for internal links, everything needs to be linked relatively to the source code as hosted on the local filesystem, not relatively to the compiled HTML.\n"
 msgstr "Comme pour les liens internes, tout doit être lié relativement au code source tel qu'hébergé sur le système de fichiers local, et non relativement au HTML compilé.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:186
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "See [how to translate images](../translating.md#translating-images).\n"
 msgstr "Voir [comment traduire des images](../translating.md#translating-images).\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:187
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Screenshots"
 msgstr "Captures d'écran"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:190
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Screenshots are the basics of any front-end software documentation. The darktable-doc maintainers refuse them on the ground that they can't be translated and they will be soon be obsolete given the frequency of GUI hanges, but it's a huge pedagogic mistake. Even in the wrong language, screenshots help to see what to look for in the window. Use them. They will get obsolete and may not be translated, just as the rest of the text.\n"
 msgstr "Les captures d'écran sont la base de toute documentation de logiciel frontal. Les mainteneurs de darktable-doc les refusent au motif qu'elles ne peuvent pas être traduites et qu'elles seront bientôt obsolètes étant donné la fréquence des changements d'interface graphique, mais c'est une énorme erreur pédagogique. Même dans la mauvaise langue, les captures d'écran aident à voir ce qu'il faut rechercher dans la fenêtre. Utilisez-les. Elles deviendront obsolètes et peuvent ne pas être traduites, tout comme le reste du texte.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:191
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Info, Warnings, Alerts"
 msgstr "Infos, Avertissements, Alertes"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:194
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The Ansel theme from the main website provides shortcodes to create alerts and info boxes using Hugo templating system. Here is the code:\n"
 msgstr "Le thème Ansel du site web principal fournit des shortcodes pour créer des boîtes d'alerte et d'info à l'aide du système de modélisation de Hugo. Voici le code :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
 #: content/contribute/website/index.md:195
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "{{</* warning */>}}\n"
 "This is where you say what users should be aware of, because what may sound like a good idea in general may be really bad in some circumstances.\n"
@@ -9289,10 +9294,10 @@ msgstr ""
 "C'est là où vous dites ce que les utilisateurs doivent savoir, car ce qui peut sembler une bonne idée en général peut être vraiment mauvais dans certaines circonstances.\n"
 "{{</* /warning */>}}\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
 #: content/contribute/website/index.md:201
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "{{</* note */>}}\n"
 "Your side note here.\n"
@@ -9302,10 +9307,10 @@ msgstr ""
 "Votre note ici.\n"
 "{{</* /note */>}}\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
 #: content/contribute/website/index.md:207
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "{{</* advice */>}}\n"
 "Your friendly advice here.\n"
@@ -9315,10 +9320,10 @@ msgstr ""
 "Votre conseil amical ici.\n"
 "{{</* /advice */>}}\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
 #: content/contribute/website/index.md:213
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "{{</* danger */>}}\n"
 "This is where you remind users that they are free to do shit but there will be consequences.\n"
@@ -9328,31 +9333,31 @@ msgstr ""
 "C'est là où vous rappelez aux utilisateurs qu'ils sont libres de faire des bêtises mais qu'il y aura des conséquences.\n"
 "{{</* /danger */>}}\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:220
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The content of the boxes can use Markdown too.\n"
 msgstr "Le contenu des boîtes peut également utiliser Markdown.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:222
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Before/after sliders"
 msgstr "Curseurs avant/après"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:225
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Again, using Hugo templating system, you can display before/after sliders where both images are overlayed. This resembles the Ansel & darktable darkroom snapshot feature and can efficiently explain the effect of modules and settings in a way that users can reproduce in the GUI. Both before and after images need to have the same size in pixels.\n"
 msgstr "Encore une fois, utilisant le système de modélisation de Hugo, vous pouvez afficher des curseurs avant/après où les deux images sont superposées. Cela ressemble à la fonctionnalité d'instantané Ansel & darktable darkroom et peut efficacement expliquer l'effet des modules et des paramètres d'une manière que les utilisateurs peuvent reproduire dans l'interface graphique. Les images avant et après doivent avoir la même taille en pixels.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (html)
 #: content/contribute/website/index.md:226
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "{{</* compare after=\"./img-after.jpg\" before=\"./img-before.jpg\" */>}}\n"
 "Your slider legend goes here.\n"
@@ -9362,45 +9367,45 @@ msgstr ""
 "Votre légende de curseur va ici.\n"
 "{{</* /compare */>}}\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:232
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Maths"
 msgstr "Maths"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:235
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The docs support MathJax configured for LaTeX syntax support. Though the goal is not to write scientific litterature, there are some algorithms made of multiplications and additions that are more easily shown as equations rather than writing blocks of texts.\n"
 msgstr "Les documentations prennent en charge MathJax configuré pour le support de la syntaxe LaTeX. Bien que le but ne soit pas d'écrire de la littérature scientifique, certains algorithmes faits de multiplications et d'additions sont plus facilement montrés sous forme d'équations plutôt que d'écrire des blocs de texte.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:237
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Inline LaTeX should be enclosed in `$`, block equations enclosed in `$$`. If you use LaTeX, you need to notify Hugo to append the Mathjax script on the page by setting `latex: true` in the header/frontmatter of the Markdown page.\n"
 msgstr "Le LaTeX en ligne doit être encadré par `$`, les équations en bloc encadrées par `$$`. Si vous utilisez LaTeX, vous devez informer Hugo d'ajouter le script Mathjax sur la page en définissant `latex: true` dans l'en-tête/frontmatter de la page Markdown.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:238
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Mermaid graphs"
 msgstr "Graphiques Mermaid"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:241
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Ansel makes an heavy use of pipelines, and those are best described with flowcharts. Mermaid.js is now supported natively on Github and within Visual Studio Code and is great for that purpose. You can [try it visually here](https://mermaid.live/edit#pako:eNpVkE1rhDAQhv9KmFML-gc8FLra7sXSQvdU9TDVcRPWfBBHlkX97002FNqcQp73mQzvCr0dCAo4e3RSnKrWiHCem1J6NbPGuRN5_rQdiYW2hm6bODwcrZildU6Z82PKH2JIlGsdYyRYKnPZEyrv_ruhTVRNjY6t6_6S09Vu4qVRHzKM_0-kp2C9NiMWI-Y9elGi7yADTV6jGsLaaxRaYEmaWijC1dDCHqcWsoTGyV57iZ4jXtP8FiTrqcZvmuZksV-CH2lYew9f4ML282Z6KCLKYHEDMlUKQ1H695EGxda_pQbvRWbg0HxZGyIjTjPtPxIKcek) and copy-paste the code of the graphs within Markdown code blocks like this:\n"
 msgstr "Ansel fait un usage intensif des pipelines, et ceux-ci sont mieux décrits avec des organigrammes. Mermaid.js est maintenant supporté nativement sur Github et au sein de Visual Studio Code et est parfait pour cela. Vous pouvez [l'essayer visuellement ici](https://mermaid.live/edit#pako:eNpVkE1rhDAQhv9KmFML-gc8FLra7sXSQvdU9TDVcRPWfBBHlkX97002FNqcQp73mQzvCr0dCAo4e3RSnKrWiHCem1J6NbPGuRN5_rQdiYW2hm6bODwcrZildU6Z82PKH2JIlGsdYyRYKnPZEyrv_ruhTVRNjY6t6_6S09Vu4qVRHzKM_0-kp2C9NiMWI-Y9elGi7yADTV6jGsLaaxRaYEmaWijC1dDCHqcWsoTGyV57iZ4jXtP8FiTrqcZvmuZksV-CH2lYew9f4ML282Z6KCLKYHEDMlUKQ1H695EGxda_pQbvRWbg0HxZGyIjTjPtPxIKcek) et copier-coller le code des graphiques dans des blocs de code Markdown comme ceci :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (markdown)
 #: content/contribute/website/index.md:242
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "    ```mermaid\n"
 "    graph TD\n"
@@ -9420,17 +9425,17 @@ msgstr ""
 "        C -->|Trois| F[fa:fa-car Voiture]\n"
 "    ```\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:254
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "On Github, this renders:\n"
 msgstr "Sur Github, cela se rend :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (mermaid)
 #: content/contribute/website/index.md:255
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "graph TD\n"
 "    A[Christmas] -->|Get money| B(Go shopping)\n"
@@ -9446,38 +9451,38 @@ msgstr ""
 "    C -->|Deux| E[iPhone]\n"
 "    C -->|Trois| F[fa:fa-car Voiture]\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:265
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Icons from [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) are supported by Ansel main website and documentation, using the syntax `fa:fa-YOUR-ICON-CODE` as shown in the example above. Use [Font Awesome v5 search engine](https://fontawesome.com/v5/search?o=r&m=free&s=solid) to get the `fa-` code of the icons you may use.\n"
 msgstr "Les icônes de [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) sont prises en charge par le site web principal et la documentation Ansel, utilisant la syntaxe `fa:fa-CODE-DE-VOTRE-ICONE` comme montré dans l'exemple ci-dessus. Utilisez le [moteur de recherche Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) pour obtenir le code `fa-` des icônes que vous pouvez utiliser.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:267
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed.\n"
 msgstr "Les graphiques Mermaid sont rendus côté client en SVG à la taille d'affichage et peuvent être traduits sous forme de texte. Hugo est configuré pour détecter ces graphiques automatiquement et charger la bibliothèque JavaScript uniquement lorsque nécessaire.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:269
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Changing pages URL"
 msgstr "Changer les URL des pages"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:272
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Sometimes, it makes sense to reorganize the content and to changes the path of some pages. To not break external links, you must record the old url of the new page as an alias, in the frontmatter of the new page like so:\n"
 msgstr "Parfois, il est logique de réorganiser le contenu et de changer le chemin de certaines pages. Pour ne pas casser les liens externes, vous devez enregistrer l'ancienne URL de la nouvelle page en tant qu'alias, dans le frontmatter de la nouvelle page comme ceci :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (toml)
 #: content/contribute/website/index.md:273
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "aliases:\n"
 "    - /my-old-url/\n"
@@ -9487,31 +9492,31 @@ msgstr ""
 "    - /mon-ancienne-url/\n"
 "    - /une-autre-mêm\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/website/index.md:279
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Notes"
 msgstr "Notes"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/website/index.md:281
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "RSS feed"
 msgstr "Flux RSS"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:284
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The documentation has an RSS localized feed, for now :\n"
 msgstr "La documentation dispose d'un flux RSS localisé pour le moment :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:287
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- https://ansel.photos/en/doc/index.xml,\n"
 "- https://ansel.photos/fr/doc/index.xml.\n"
@@ -9519,17 +9524,17 @@ msgstr ""
 "- https://ansel.photos/en/doc/index.xml,\n"
 "- https://ansel.photos/fr/doc/index.xml.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:289
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "This is unusual and is meant to help users keep track of changes and evolutions, by subscribing to the RSS feed or by connecting it with bots.\n"
 msgstr "C'est inhabituel et vise à aider les utilisateurs à suivre les modifications et évolutions, en s'abonnant au flux RSS ou en le connectant avec des bots.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:290
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The date of the documentation pages set in the RSS feed is the `lastmod` parameter, aka the time of last modification. Since RSS doesn't have a `jast modified date`, it's the best I have found for the time being.\n"
 msgstr "La date des pages de documentation fixée dans le flux RSS est le paramètre `lastmod`, c'est-à-dire l'heure de la dernière modification. Comme le RSS n'a pas de `date de dernière modification`, c'est le meilleur que j'ai trouvé pour l'instant.\n"
 
@@ -10658,22 +10663,21 @@ msgstr "Je crois que garder les portes ouvertes pour approfondir la compréhensi
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Hash Value: title
 #: content/contribute/workflows.md:1
-#, fuzzy, no-wrap
-#| msgid "Supported workflows"
+#, no-wrap
 msgid "Automated workflows"
-msgstr "Workflows pris en charge"
+msgstr "Workflows automatiques"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:7
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Because Ansel is mostly a one-person operation, everything that could be automated was automated. This page keeps track of everything that should be maintained in the future, and where.\n"
 msgstr "Parce qu'Ansel est principalement une opération d'une seule personne, tout ce qui pouvait être automatisé a été automatisé. Cette page garde une trace de tout ce qui devrait être maintenu à l'avenir, et où.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/workflows.md:8
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Software"
 msgstr "Logiciel"
 
@@ -10684,17 +10688,17 @@ msgstr "Logiciel"
 msgid "Nightly builds"
 msgstr "Compilations nocturnes"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:13
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Nightly builds prepare a compiled and packaged version of the software, every night at 6am UTC, for:\n"
 msgstr "Les builds nocturnes préparent une version compilée et empaquetée du logiciel, chaque nuit à 6h00 UTC, pour :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:17
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- [Linux](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/lin-nightly.yml),\n"
 "- [Windows](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/win-nightly.yml),\n"
@@ -10704,17 +10708,17 @@ msgstr ""
 "- [Windows](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/win-nightly.yml),\n"
 "- MacOS est actuellement désactivé.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:19
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The newest binary files are automatically added to the [pre-release](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0) assets, are posted on a [Matrix channel](https://matrix.to/#/#ansel-builds:matrix.org) so users can subscribe to updates, and can be downloaded through (constantly up-to-date) permalinks at:\n"
 msgstr "Les fichiers binaires les plus récents sont automatiquement ajoutés aux actifs de la [pré-version](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0), sont publiés sur un [canal Matrix](https://matrix.to/#/#ansel-builds:matrix.org) afin que les utilisateurs puissent s'abonner aux mises à jour, et peuvent être téléchargés via des liens permanents (constamment à jour) à :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:22
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- <https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip> for the Linux AppImage,\n"
 "- <https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip> for the Windows AppImage.\n"
@@ -10725,30 +10729,28 @@ msgstr ""
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/workflows.md:23
-#, fuzzy, no-wrap
-#| msgid "Welcome, developer documentation !"
+#, no-wrap
 msgid "Developer documentation"
-msgstr "Bienvenue à la documentation développeurs !"
+msgstr "Documentation développeurs"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:26
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The dev docs are [automatically built](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/docs.yml) from the source code with Doxygen, every Sunday at 00:00 UTC, then uploaded to <https://dev.ansel.photos>, which is hosted on Github Pages attached to the Ansel (software) repository.\n"
 msgstr "Les documents de développement sont [automatiquement construits](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/docs.yml) à partir du code source avec Doxygen, tous les dimanches à 00:00 UTC, puis téléchargés sur <https://dev.ansel.photos>, qui est hébergé sur Github Pages attaché au dépôt Ansel (logiciel).\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
 #: content/contribute/workflows.md:27
-#, fuzzy, no-wrap
-#| msgid "Triaging issues"
+#, no-wrap
 msgid "Commits and issues"
-msgstr "Triage des problèmes"
+msgstr "Commits et problèmes"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:30
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Github new commits and issues are [automatically posted](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/matrix.yml) to a [Matrix channel](https://matrix.to/#/#ansel-dev:matrix.org) for updates.\n"
 msgstr "Les nouveaux commits et problèmes Github sont [automatiquement publiés](https://github.com/aurelienpierreeng/ansel/blob/master/.github/workflows/matrix.yml) sur un [canal Matrix](https://matrix.to/#/#ansel-dev:matrix.org) pour les mises à jour.\n"
 
@@ -10759,10 +10761,10 @@ msgstr "Les nouveaux commits et problèmes Github sont [automatiquement publiés
 msgid "Website"
 msgstr "Site Internet"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:34
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The Hugo static website is [automatically built](https://github.com/aurelienpierreeng/ansel-website/blob/master/.github/workflows/hugo.yml) on every new commit to the source code and ever Sunday at 00:00 UTC. This auto-update is intended for [camera support](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/layouts/shortcodes/rawspeed.html) which re-parses Libraw, Rawspeed and Ansel source code straight from Github, and dynamically generates the camera support table. It is uploaded to <https://ansel.photos>, which is hosted on Github Pages attached te the Ansel Website repository.\n"
 msgstr "Le site web statique de Hugo est [automatiquement construit](https://github.com/aurelienpierreeng/ansel-website/blob/master/.github/workflows/hugo.yml) à chaque nouveau commit du code source et tous les dimanches à 00:00 UTC. Cette mise à jour automatique est destinée à [la prise en charge des caméras](https://github.com/aurelienpierreeng/ansel-website/blob/master/themes/ansel/layouts/shortcodes/rawspeed.html) qui ré-interprète Libraw, Rawspeed et le code source d'Ansel directement depuis Github, et génère dynamiquement le tableau de support des caméras. Il est téléchargé sur <https://ansel.photos>, qui est hébergé sur Github Pages attaché au dépôt du site web Ansel.\n"
 
@@ -10773,46 +10775,45 @@ msgstr "Le site web statique de Hugo est [automatiquement construit](https://git
 msgid "Documentation"
 msgstr "Documentation"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:38
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The documentation is imported into the website as a Go/Git module ([see _website_](./website/index.md)). Every new commit to the documentation [fires a workflow dispatch](https://github.com/aurelienpierreeng/ansel-doc/blob/master/.github/workflows/hugo.yml) to the main website to rebuild and update it.\n"
 msgstr "La documentation est importée dans le site web en tant que module Go/Git ([voir _site web_](./website/index.md)). Chaque nouveau commit de la documentation [déclenche un appel de workflow](https://github.com/aurelienpierreeng/ansel-doc/blob/master/.github/workflows/hugo.yml) au site web principal pour le reconstruire et le mettre à jour.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/workflows.md:39
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Forum"
 msgstr "Forum"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/contribute/workflows.md:42
-#, fuzzy, no-wrap
-#| msgid "If you have issues or questions, feel free to ask on the dedicated [Matrix translators channel](https://matrix.to/#/#ansel-translators:matrix.org).\n"
+#, no-wrap
 msgid "New posts on the forum are posted through an RSS bot to the [Matrix channel](https://matrix.to/#/#ansel-dev:matrix.org) for updates.\n"
-msgstr "Si vous avez des soucis ou des questions, n'hésitez pas à demander sur le [canal dédié aux traducteurs Matrix](https://matrix.to/#/#ansel-translators:matrix.org).\n"
+msgstr "Les nouvelles discussions sur le forum sont postées par un robot RSS bot sur le [canal Matrixl](https://matrix.to/#/#ansel-dev:matrix.org) dédié aux notifications.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/workflows.md:43
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Chantal"
 msgstr "Chantal"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:46
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The page crawler for Chantal search engine database does not yet run automated and needs manual updating.\n"
 msgstr "Le robot d'exploration de pages pour la base de données du moteur de recherche Chantal ne fonctionne pas encore automatiquement et nécessite une mise à jour manuelle.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/workflows.md:47
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Converting web pages to their vector representation, through the language model, will probably remain too heavy for any public server and will need to be done on a powerful private server.\n"
 msgstr "Convertir les pages web en leur représentation vectorielle, via le modèle linguistique, restera probablement trop lourd pour tout serveur public et devra être fait sur un serveur privé puissant.\n"
 
@@ -11432,17 +11433,17 @@ msgstr "Vous pouvez également [contribuer financièrement](https://community.an
 msgid "Translating"
 msgstr "Traduire"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:8
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Ansel uses [Gettext](https://www.gnu.org/software/gettext/) to translate all parts of the project:\n"
 msgstr "Ansel utilise [Gettext](https://www.gnu.org/software/gettext/) pour traduire toutes les parties du projet :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:12
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- The software application (written in C),\n"
 "- The website (Hugo templates and Markdown content),\n"
@@ -11452,31 +11453,31 @@ msgstr ""
 "- Le site web (modèles Hugo et contenu Markdown),\n"
 "- La documentation/manuel utilisateur, inséré dans le site web en tant que module (modèles Hugo et contenu Markdown aussi).\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:14
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "This ensures the same workflow can be used to translate all files, but also that some translated strings can be shared (for example, the translated GUI controls from the applications can be inserted directly into the documentation).\n"
 msgstr "Cela garantit que le même flux de travail peut être utilisé pour traduire tous les fichiers, mais aussi que certaines chaînes traduites peuvent être partagées (par exemple, les contrôles du GUI traduits de l'application peuvent être directement insérés dans la documentation).\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/translating.md:15
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Organization of translation files"
 msgstr "Organisation des fichiers de traduction"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:18
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The source code of the website, documentation and software all contain an immediate `po/` subfolder, containing:\n"
 msgstr "Le code source du site web, de la documentation et du logiciel contient tous un sous-dossier `po/` immédiat, contenant :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:21
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- one `.pot` file that holds all the available, translatable strings in their original language (in English),\n"
 "- many `.po` files matching translatable strings in their original language with their translation (in one language per file).\n"
@@ -11484,17 +11485,17 @@ msgstr ""
 "- un fichier `.pot` qui contient toutes les chaînes disponibles et traduisibles dans leur langue originale (en anglais),\n"
 "- de nombreux fichiers `.po` correspondant aux chaînes traduisibles dans leur langue originale avec leur traduction (dans un fichier par langue).\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:23
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Translations files are all named following the convention `language-code.po`. For example:\n"
 msgstr "Les fichiers de traduction sont tous nommés en suivant la convention `code-langue.po`. Par exemple :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:32
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- for German,\n"
 "  - the software translation is `de.po`,\n"
@@ -11514,24 +11515,24 @@ msgstr ""
 "  - la traduction du site web est `content.pt_br.po`,\n"
 "  - la traduction de la documentation est `content.pt_br.po`.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/translating.md:33
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Translating when you can't use CLI/Git"
 msgstr "Traduire quand vous ne pouvez pas utiliser CLI/Git"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:36
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "You will need to locate the relevant `.po` file for your language for the part of the project you want to translate:\n"
 msgstr "Vous devrez localiser le fichier `.po` pertinent pour votre langue pour la partie du projet que vous souhaitez traduire :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:40
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- the software : <https://github.com/aurelienpierreeng/ansel/tree/master/po>\n"
 "- the website : <https://github.com/aurelienpierreeng/ansel-website/tree/master/po>\n"
@@ -11541,10 +11542,10 @@ msgstr ""
 "- le site web : <https://github.com/aurelienpierreeng/ansel-website/tree/master/po>\n"
 "- la documentation : <https://github.com/aurelienpierreeng/ansel-doc/tree/master/po>\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:49
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "1. Download this file and open it with [Poedit](https://poedit.net/),\n"
 "2. Make the corrections and editions you need,\n"
@@ -11567,22 +11568,21 @@ msgstr ""
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
 #: content/contribute/translating.md:50
-#, fuzzy, no-wrap
-#| msgid "Translating technical terms"
+#, no-wrap
 msgid "Translating for power users"
-msgstr "Traduction des termes techniques"
+msgstr "Traduction pour les utilisateur avancés"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:53
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "This will update the `.pot` file using the source code of the project. You will need to have `Git` installed, and [Hugo 0.146](https://github.com/gohugoio/hugo/releases/tag/v0.146.7) installed on your computer.\n"
 msgstr "Cela mettra à jour le fichier `.pot` en utilisant le code source du projet. Vous devrez avoir `Git` installé, et [Hugo 0.146](https://github.com/gohugoio/hugo/releases/tag/v0.146.7) installé sur votre ordinateur.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:95
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "1. Clone the source code of the relevant project:\n"
 "    - the software :\n"
@@ -11671,36 +11671,35 @@ msgstr ""
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
 #: content/contribute/translating.md:97
-#, fuzzy, no-wrap
-#| msgid "Translating"
+#, no-wrap
 msgid "Translating images"
-msgstr "Traduire"
+msgstr "Traduire les images"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:100
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "_The following applies to the website and documentation only._\n"
 msgstr "_Ce qui suit s'applique uniquement au site web et à la documentation._\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:102
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Images can be translated too, for example application screenshots. Images are stored in the `assets/` folder if they are re-used on several pages (global assets), otherwise they are stored in the same folder as the Mardown file using them (local assets). Whether global or local, the translation process is the same, only the base folder changes.\n"
 msgstr "Les images peuvent être traduites également, par exemple les captures d'écran de l'application. Les images sont stockées dans le dossier `assets/` si elles sont réutilisées sur plusieurs pages (ressources globales), sinon, elles sont stockées dans le même dossier que le fichier Markdown qui les utilise (ressources locales). Qu'elles soient globales ou locales, le processus de traduction est le même, seule la base du dossier change.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:104
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "If, for example, you want to translate the `assets/screenshot.jpg` for the language `LANG` (which is the ISO code of the language, like `de`, `nl`, `pt_br`, `zn_cn`, etc.):\n"
 msgstr "Si, par exemple, vous souhaitez traduire le fichier `assets/screenshot.jpg` pour la langue `LANG` (qui est le code ISO de la langue, comme `de`, `nl`, `pt_br`, `zn_cn`, etc.) : \n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:110
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "1. add and commit a new `assets/screenshot.LANG.jpg` image file to the documentation or website Git repository,\n"
 "2. in the `content.LANG.po`, locate the entry containing the Markdown tag for the original image, which will be something like `![alt text](screenshot.jpg)`,\n"
@@ -11714,73 +11713,73 @@ msgstr ""
 "4. enregistrez et commentez le fichier `content.LANG.po`,\n"
 "5. créez une demande de fusion contre le dépôt du site web Ansel ou des docs Ansel.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ##
 #: content/contribute/translating.md:111
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Auto-tools and helper scripts"
 msgstr "Outils automatiques et scripts d'assistance"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/translating.md:113
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Init documentation translation with software one"
 msgstr "Initialiser la traduction de la documentation avec celle du logiciel"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:116
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Because the documentation and the software share the same strings for the GUI controls, you can lazily init the documentation strings from the software ones if they exactly match (including casing). This needs a Python interpeter and the `regex` package (install with `pip install -U regex`). From the source code of the documentation, you can call :\n"
 msgstr "Parce que la documentation et le logiciel partagent les mêmes chaînes pour les contrôles du GUI, vous pouvez paresseusement initier les chaînes de la documentation à partir de celles du logiciel si elles correspondent exactement (y compris la casse). Cela nécessite un interprète Python et le package `regex` (installez avec `pip install -U regex`). À partir du code source de la documentation, vous pouvez appeler :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (bash)
 #: content/contribute/translating.md:117
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "$ python tools/merge-translations.py path/to/software path/to/doc\n"
 msgstr "$ python tools/merge-translations.py chemin/vers/software chemin/vers/doc\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/translating.md:121
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Auto-translate documentation and website with ChatGPT"
 msgstr "Traduction automatique de la documentation et du site web avec ChatGPT"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:124
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "ChatGPT-4o does a very fair job at translating Markdown-formatted text from English, although not in every language. You will need a private API key to store in the folder of the documentation or website in a `.chatgpt.api_key` file. Then, calls to the ChatGPT API are not free, and the minimal payment of 5 US$ will roughly get you the website fully translated into 4 languages.\n"
 msgstr "ChatGPT-4o fait un très bon travail de traduction de texte formaté en Markdown à partir de l'anglais, bien que pas dans toutes les langues. Vous aurez besoin d'une clé API privée à stocker dans le dossier de la documentation ou du site web dans un fichier `.chatgpt.api_key`. Ensuite, les appels à l'API ChatGPT ne sont pas gratuits, et le paiement minimal de 5 $US vous permet de traduire entièrement le site web en 4 langues.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:126
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The all-in-one script can be called using :\n"
 msgstr "Le script tout-en-un peut être appelé en utilisant :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (bash)
 #: content/contribute/translating.md:127
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "$ sh auto-translate.sh LANG\n"
 msgstr "$ sh auto-translate.sh LANG\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:132
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "where `LANG` is the target language code (de, fr, pt_br, etc.). This will process the translation in batches of 90 to 120 strings to comply with ChatGPT API limitations and thresholding. This will :\n"
 msgstr "où `LANG` est le code de la langue cible (de, fr, pt_br, etc.). Cela traitera la traduction par lots de 90 à 120 chaînes pour se conformer aux limitations de l'API ChatGPT. Cela :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:138
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- parse the original `po/content.LANG.po` file and export the batch to translate into a temporary `po/content.LANG.txt` file,\n"
 "- send `po/content.LANG.txt` file to ChatGPT and get the response in `po/content.LANG.generated.txt`\n"
@@ -11794,24 +11793,24 @@ msgstr ""
 "- construit des fichiers Markdown traduits (en suivant la convention de nommage `page.LANG.md`),\n"
 "- construit le site web avec Hugo.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:140
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "If all these steps complete without error, then you are good to run the script again to process the next batch until completion. If errors are shown, you will need to fix them. We run only one batch at each call to let user the opportunity to find errors while there are not too many changes to inspect.\n"
 msgstr "Si toutes ces étapes se terminent sans erreur, alors vous pouvez exécuter à nouveau le script pour traiter le prochain lot jusqu'à la fin. Si des erreurs apparaissent, vous devrez les corriger. Nous exécutons un seul lot à chaque appel pour laisser à l'utilisateur l'opportunité de trouver des erreurs tant qu'il n'y a pas trop de modifications à inspecter.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:142
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "__Common errors__:\n"
 msgstr "__Erreurs courantes__ :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:148
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- nothing will be translated : check ChatGPT answer within `po/content.LANG.generated.txt`, sometimes it is unable to understand its mission. You can try again, sometimes it works on the 3rd call. But often, there is nothing to do and some languages/strings can't be translated at all.\n"
 "- when building the website with Hugo, some shortcode can't be found. This is because shortcodes are declared like so : `{{</* shortcode_name */>}}`. Sometimes, ChatGPT will try to translate `shortcode_name` and the shortcode won't work again. The solution is to bring back the English name for the shortcode and its attributes,\n"
@@ -11825,31 +11824,31 @@ msgstr ""
 "- les chaînes originales se terminent par le caractère de nouvelle ligne `\\n` et les chaînes traduites ne le font pas (ou l'inverse). Le script essaie de nettoyer cela, mais certains cas limites ne sont pas pris en charge. Les chaînes originales `msgid` et leur traduction `msgstr` dans le fichier `.po` doivent avoir le même nombre de caractères `\\n` au même endroit,\n"
 "- guillemets doubles incorrectement échappés : les chaînes Gettext `msgid` et `msgstr` doivent être délimitées par des guillemets doubles non échappés `\"` à chaque extrémité de la chaîne. Tout autre guillemet double, dans la chaîne Gettext, doit être échappé en utilisant `\\\"`.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:150
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "The best way to fix errors is to open the relevant `.po` file in a text editor. If you can't find the error and solve it, you can try opening the file into Poedit, but when saving, it will usually completly erase the faulty strings without fixing them, so translation will need to be started again from scratch.\n"
 msgstr "La meilleure façon de corriger les erreurs est d'ouvrir le fichier `.po` pertinent dans un éditeur de texte. Si vous ne trouvez pas l'erreur et ne parvenez pas à la résoudre, vous pouvez essayer d'ouvrir le fichier dans Poedit, mais en sauvegardant, cela effacera généralement complètement les chaînes défectueuses sans les corriger, donc la traduction devra être recommencée depuis le début.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ###
 #: content/contribute/translating.md:151
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Build translated Markdown files"
 msgstr "Construire des fichiers Markdown traduits"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:154
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "For the website and documentation, [Hugo](https://gohugo.io/) handles the translations of any given page `new_page.md` using the naming convention `new_page.LANG.md`, where `LANG` is the language code. Hugo natively supports manually writing these translated files in the same folder as their original, however, here we generate them using the `.po` translation file and the program `po4a`. The `build-modules.sh` and `tools/auto-translate.sh` scripts handle this internally, but you may want to generate those file manually :\n"
 msgstr "Pour le site web et la documentation, [Hugo](https://gohugo.io/) gère les traductions de n'importe quelle page donnée `new_page.md` en utilisant la convention de nommage `new_page.LANG.md`, où `LANG` est le code de langue. Hugo prend en charge nativement l'écriture manuelle de ces fichiers traduits dans le même dossier que leur original, cependant, ici nous les générons en utilisant le fichier de traduction `.po` et le programme `po4a`. Les scripts `build-modules.sh` et `tools/auto-translate.sh` gèrent cela en interne, mais vous pourriez vouloir générer ces fichiers manuellement :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:167
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "1. Update the `.pot` and `.po` files with the source code :\n"
 "    ```bash\n"
@@ -11877,10 +11876,10 @@ msgstr ""
 "    $ sh tools/build-translations.sh --remove\n"
 "    ```\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/translating.md:169
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "It is important to never commit the translated `.md` files with Git, as they are regenerated only from that script when building the website. This is only for repositiory hygiene, there is no technical drawback. Cleaning up the translated `.md` before committing ensures no mistakes.\n"
 msgstr "Il est important de ne jamais commettre les fichiers `.md` traduits avec Git, car ils sont régénérés uniquement à partir de ce script lors de la construction du site web. Cela est uniquement pour l'hygiène du dépôt, il n'y a pas de désavantage technique. Nettoyer les fichiers `.md` traduits avant de les valider garantit l'absence d'erreurs.\n"
 

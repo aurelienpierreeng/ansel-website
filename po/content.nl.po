@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-02 02:26+0200\n"
+"POT-Creation-Date: 2025-05-02 14:20+0200\n"
 "PO-Revision-Date: 2025-04-24 17:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6247,7 +6247,7 @@ msgstr ""
 #. type: Plain text
 #: content/support.md:13
 #, no-wrap
-msgid "Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated was automated for the developer's sanity, and you are asked to use the online resources first everytime it is possible.\n"
+msgid "Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated [was automated](./contribute/workflows.md) for the developer's sanity, and you are asked to use the online resources first everytime it is possible.\n"
 msgstr ""
 
 #. type: Plain text
@@ -6307,28 +6307,45 @@ msgid "It acts as your virtual librarian and can greatly improve access to infor
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:42
+#: content/support.md:41
 #, no-wrap
 msgid ""
 "{{< button url=\"https://chantal.aurelienpierre.com\" icon=\"search\" label=\"Search\" >}}\n"
+"{{% /card %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/support.md:44
+#, no-wrap
+msgid ""
+"{{% card title=\"Ansel GPT\" icon=\"search\" %}}\n"
+"Ansel GPT is a custom ChatGPT model trained with all the content of the Ansel website and documentation, plus other color science resources. It can answer many questions and help you build and configure Ansel on your system. It has access to significantly fewer resources than Chantal but can form full explanations.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/support.md:49
+#, no-wrap
+msgid ""
+"It is available to _ChatGPT Plus_ subscribers only (as per OpenAI limitations).\n"
+"{{< button url=\"https://chatgpt.com/g/g-680d2f861a608191a0f7549eadd40f2e-ansel-gpt\" icon=\"search\" label=\"Search\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 msgstr ""
 
 #. type: Title ##
-#: content/support.md:43
+#: content/support.md:50
 #, no-wrap
 msgid "Support and training with the developer"
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:46
+#: content/support.md:53
 #, no-wrap
 msgid "Getting a chance to learn how to use the tools directly with their developer is a pretty rare opportunity as far as software goes. Ansel gives it to you, with 1-on-1 personalized assistance through video-conferencing.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:52
+#: content/support.md:59
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -6339,7 +6356,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:58
+#: content/support.md:65
 #, no-wrap
 msgid ""
 "{{% card title=\"Emergency support\" icon=\"ambulance\" %}}\n"
@@ -6350,19 +6367,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: content/support.md:60
+#: content/support.md:67
 #, no-wrap
 msgid "Community support"
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:63
+#: content/support.md:70
 #, no-wrap
 msgid "Free user support is typically assumed by other users.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:68
+#: content/support.md:75
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -6372,7 +6389,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:73
+#: content/support.md:80
 #, no-wrap
 msgid ""
 "{{% card title=\"Chat\" icon=\"comment-dots\" %}}\n"
@@ -6382,13 +6399,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: content/support.md:75
+#: content/support.md:82
 #, no-wrap
 msgid "Bugs and oddities"
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:87
+#: content/support.md:94
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -6404,19 +6421,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: content/support.md:89
+#: content/support.md:96
 #, no-wrap
 msgid "Developer support"
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:92
+#: content/support.md:99
 #, no-wrap
 msgid "If you are considering joining forces for development and debugging, here is how I work.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:97
+#: content/support.md:104
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -6426,7 +6443,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/support.md:101
+#: content/support.md:108
 #, no-wrap
 msgid ""
 "{{% card title=\"Dev mentorship\" icon=\"user-friends\" %}}\n"
