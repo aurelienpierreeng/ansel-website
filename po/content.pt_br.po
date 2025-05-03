@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-02 16:59+0200\n"
+"POT-Creation-Date: 2025-05-03 03:17+0200\n"
 "PO-Revision-Date: 2025-04-24 17:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8288,9 +8288,45 @@ msgid "The page crawler for Chantal search engine database does not yet run auto
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/workflows.md:47
+#: content/contribute/workflows.md:48
 #, no-wrap
 msgid "Converting web pages to their vector representation, through the language model, will probably remain too heavy for any public server and will need to be done on a powerful private server.\n"
+msgstr ""
+
+#. type: Title ##
+#: content/contribute/workflows.md:49
+#, no-wrap
+msgid "Ansel GPT"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:52
+#, no-wrap
+msgid "The [custom ChatGPT model for Ansel](https://chatgpt.com/g/g-680d2f861a608191a0f7549eadd40f2e-ansel-gpt) is meant to assist users who have questions on Ansel software (installation, compilation, usage) or color theory. It is trained with Ansel website, documentation, Github issues, Matrix chats, and other resources. It also uses Chantal AI JSON API as backend, from where it can tap into the database of 68.800+ imaging-related pages indexed there.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:54
+#, no-wrap
+msgid "It is configured to automatically recrawl and cache, once a week, all the following resources for all languages:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:61
+#, no-wrap
+msgid ""
+"- [the main website sitemap](https://ansel.photos/sitemap.xml),\n"
+"- each [language-centric sitemap](https://ansel.photos/en/sitemap.xml),\n"
+"- the [one-page aggregated website](https://ansel.photos/en/index.md) content for each language,\n"
+"- Github RSS feed of new commits,\n"
+"- Github issues,\n"
+"- the main Community forum RSS feed.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:62
+#, no-wrap
+msgid "Users can request to see the last update log by asking \"show me the last update log\" to GPT.\n"
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: title

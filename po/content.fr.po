@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-02 16:59+0200\n"
+"POT-Creation-Date: 2025-05-03 03:17+0200\n"
 "PO-Revision-Date: 2025-05-02 17:01+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
@@ -2177,10 +2177,10 @@ msgid "Just go see the code ! Compare the branche `darktable-2.6.x` with `dark
 msgstr "Allez lire le code ! Comparez la branche `darktable-2.6.x` avec la `darktable-4.2.x`, fichier par fichier, vous m'en direz des nouvelles !\n"
 
 # TRANSLATOR Aurélien Pierre
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md:546
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "All I have heard so far are canned sentences like \"it's like many other opensource projects\" and \"there is nothing we can do about it\". People are afraid by the amount of work that a fork is (I got emails trying to convince me it was dividing productivity), without realizing the amount of resources currently wasted by the Darktable project and the permanent stress of having to base your work on an unstable code base shaken up all the time. So far, Ansel cost me less fatigue [and I solved a significant number of problems](/doc/special-topics/from-darktable/) among which some were reported since 2016 without signs of interest from the bloody \"community\".\n"
 msgstr "Tout ce que j'ai entendu jusqu'à présent ce sont des phrases toutes faites comme « c'est comme beaucoup d'autres projets open-source » et « nous ne pouvons rien y faire ». Les gens ont peur de la quantité de travail qu'impliquerait un fork (j'ai reçu des emails essayant de me convaincre que cela divisait la productivité), sans réaliser la quantité de ressources actuellement gaspillées par le projet Darktable et le stress permanent de devoir baser son travail sur une base de code instable constamment perturbée. Jusqu'à présent, Ansel m'a coûté moins de fatigue [et j'ai résolu un nombre significatif de problèmes](/doc/special-topics/from-darktable/) parmi lesquels certains ont été signalés depuis 2016 sans signe d'intérêt de la part de cette fichue « communauté ».\n"
 
@@ -4487,10 +4487,10 @@ msgstr ""
 ": Mark Fairchild est professeur à l'Institut de technologie de Rochester (étroitement lié à l'héritage de Munsell et situé à proximité de l'entreprise Eastman Kodak). Les chapitres 1 à 9 listent les différents aspects de la vision et de l'adaptation, ainsi que les paramètres qui l'affectent et la terminologie de la couleur. Les 9 chapitres centraux détaillent les modèles d'apparence de couleurs typiques prêts pour l'industrie, avec des détails d'implémentation qui n'intéresseront que les ingénieurs. Les 3 derniers chapitres traitent de questions telles que la gestion des couleurs et la reproduction des couleurs qui peuvent intéresser tout artiste graphique. [Site de l'éditeur](https://www.wiley.com/en-us/Color+Appearance+Models%2C+3rd+Edition-p-9781119967033)\n"
 
 # TRANSLATOR Aurélien Pierre
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/resources/readings.md:82
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "Colour : sense and measurement. Richard Kirk. 2022.\n"
 ": Richard Kirk holds a PhD in physics and has worked at Filmlight UK research and development since the 1980's. Filmlight is best known for its film digitization workflow (software and hardware) and its Baselight color grading software, used by most Hollywood movie productions to fine-tune the color look. Kirk is the co-author of the color-grading \"tRGB\" space used in Ansel [color balance](/doc/modules/processing-modules/color-balance-rgb/) module and presented in the book (p. 79). The book itself is made available free of charge, as a PDF, so I will not expand on its content here : have a look for yourself. Just know that it is fairly accessible to non-technical people, well illustrated, and covers both film and digital imaging, with their relationships. [Download the PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
@@ -4632,10 +4632,10 @@ msgid "_Correcting or introducing color shifts to ensure consistent look between
 msgstr "_Corriger ou introduire des décalages de couleur pour assurer une apparence cohérente entre les images et créer une ambiance_\n"
 
 # TRANSLATOR Aurélien Pierre
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/resources/readings.md:123
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "Color Correction Handbook (vol. 1) / Color Correction Look Book (vol 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)\n"
 ": These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/doc/modules/processing-modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.\n"
@@ -6079,10 +6079,10 @@ msgid "In _any_ software around, you will see a white balance setting using a te
 msgstr "Dans _n'importe_ quel logiciel, vous verrez un réglage de balance des blancs utilisant un curseur de température (en fait, [température de couleur corrélée](https://fr.wikipedia.org/wiki/Temp%C3%A9rature_de_couleur_corr%C3%A9l%C3%A9e)), puis une teinte. Mais vous avez vu dans l'équation réelle que la balance des blancs ne traite en interne rien d'autre que les coordonnées RGB de l'illuminant, bien qu'elles soient projetées dans l'espace RGB spécial dans lequel nous effectuons le redimensionnement. Alors, pourquoi s'embêter avec cette température en kelvin (K) déroutante ? Eh bien, il n'y a plus de raison maintenant, sauf héritage.\n"
 
 # TRANSLATOR Aurélien Pierre
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/resources/white-balances/index.md:288
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Physicists have a special radiator, called a [black body](https://en.wikipedia.org/wiki/Black-body_radiation). It's an idealized object which, once heated at a certain temperature, will emit a known light spectrum. More interestingly, the shape of light spectrum can be _entirely predicted_ by the temperature of the black body. Remember how [RGB is a 3D reduction of a light spectrum](../../workflows/scene-referred/index.md) ? Here, it's a 1D reduction, even better ! Meaning one single number suffices to describe unambiguously a full spectrum.\n"
 msgstr "Les physiciens ont un radiateur spécial, appelé un [corps noir](https://en.wikipedia.org/wiki/Black-body_radiation). C'est un objet idéalisé qui, une fois chauffé à une certaine température, émettra un spectre lumineux connu. Plus intéressant encore, la forme du spectre lumineux peut être _entièrement prédite_ par la température du corps noir. Vous souvenez-vous comment [RGB est une réduction 3D d'un spectre lumineux](../../workflows/scene-referred/index.md) ? Ici, c'est une réduction 1D, encore meilleure ! Ce qui signifie qu'un seul nombre suffit pour décrire sans ambiguïté un spectre complet.\n"
 
@@ -9127,17 +9127,17 @@ msgstr ""
 msgid "Internal links"
 msgstr "Liens internes"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:147
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Internal links should use relative paths from the current file whenever possible, which is not Hugo default behaviour. The purpose is to be able to follow relative links on the local file system from any modern text editor, like in any `README.md` file. We use our own code to reconnect those relative links to files with Hugo website structure (after compilation).\n"
 msgstr "Les liens internes doivent utiliser des chemins relatifs à partir du fichier courant chaque fois que possible, ce qui n'est pas le comportement par défaut de Hugo. Le but est de pouvoir suivre les liens relatifs sur le système de fichiers local depuis n'importe quel éditeur de texte moderne, comme dans n'importe quel fichier `README.md`. Nous utilisons notre propre code pour reconnecter ces liens relatifs aux fichiers avec la structure du site web Hugo (après compilation).\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:149
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "When building the website, internal links are checked and a critical error (aborting compilation) will be thrown if a page can't be found from internal links. You need to watch them out. Non-critical errors (aka `WARNING [languages] REF_NOT_FOUND`) can also be shown in a console because we twist the Hugo linker in a non-standard way, but those can be disregarded.\n"
 msgstr "Lors de la construction du site web, les liens internes sont vérifiés et une erreur critique (également connue sous le nom de `WARNING [languages] REF_NOT_FOUND`) peut aussi être affichée à la console parce que nous modifions le linker Hugo de manière non standard, mais elles peuvent être ignorées.\n"
 
@@ -9149,10 +9149,10 @@ msgid "Example of internal links:\n"
 msgstr "Exemple de lien interne :\n"
 
 # TRANSLATOR ChatGPT
+# TRANSLATOR ChatGPT
 #. type: Fenced code block (markdown)
 #: content/contribute/website/index.md:152
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "[Filmic](../../module-reference/processing-modules/filmic-rgb.md)\n"
 "[Filmic](./filmic-rgb.md)\n"
@@ -9162,10 +9162,10 @@ msgstr ""
 "[Filmic](./filmic-rgb.md)\n"
 "[Some page](./section/index.md)\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ####
 #: content/contribute/website/index.md:158
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Page anchors"
 msgstr "Ancrages de page"
 
@@ -9176,24 +9176,24 @@ msgstr "Ancrages de page"
 msgid "If you make links to page anchors, like `/my-post.md#some-heading`, be sure to __not__ insert a slash `/` between the page slug and the hashtag `#` in your Markdown code, or else the file will be taken for a directory and not found.\n"
 msgstr "Si vous faites des liens vers des ancres de page, comme `/my-post.md#some-heading`, assurez-vous de __ne pas__ insérer de barre oblique `/` entre le slug de la page et le hashtag `#` dans votre code Markdown, sinon le fichier sera pris pour un répertoire et ne sera pas trouvé.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Title ####
 #: content/contribute/website/index.md:162
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Absolute links"
 msgstr "Liens absolus"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:165
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Say you want to link to the [support](../../support.md) page. Here are all the possibilitie to create a link to that page:\n"
 msgstr "Disons que vous souhaitez créer un lien vers la page [support](../../support.md). Voici toutes les possibilités pour créer un lien vers cette page :\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:170
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- `[support](/support/)` -> valid for Hugo, but works only after the website is compiled, so it can't be debugged easily in code editor. __please avoid__\n"
 "- `[support](/support.md)` -> invalid for Hugo, will work as a side-effect of our custom link processing, but can't be debugged at all in code editor. __please avoid__\n"
@@ -9205,17 +9205,17 @@ msgstr ""
 "- `[support](./support.md)` -> invalide pour Hugo, fonctionne comme prévu par notre traitement de lien personnalisé si appelé depuis la page index, par exemple. __à utiliser, s'il vous plaît__\n"
 "- `[support](../support.md)` -> invalide pour Hugo, fonctionne comme prévu par notre traitement de lien personnalisé si appelé depuis un sous-dossier du site, comme `/contribute`. __à utiliser, s'il vous plaît__\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:172
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "If a page is in what Hugo calls a [page or section bundle](https://gohugo.io/content-management/page-bundles/), please use the link to its `index.md` or `_index.md` file.\n"
 msgstr "Si une page se trouve dans ce que Hugo appelle un [bundle de page ou de section](https://gohugo.io/content-management/page-bundles/), veuillez utiliser le lien vers son fichier `index.md` ou `_index.md`.\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:179
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "Do:\n"
 ":   ```markdown\n"
@@ -9231,10 +9231,10 @@ msgstr ""
 "    [user manual](../../doc/_index.md)\n"
 "    ```\n"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:185
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "Don't (even if it technically works):\n"
 ":   ```markdown\n"
@@ -9255,10 +9255,10 @@ msgstr ""
 msgid "External links"
 msgstr "Liens externes"
 
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:190
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "External links are not checked because that would take too much time at building, and building may happen without network access anyway. Always use `https://` in the external URLs when possible.\n"
 msgstr "Les liens externes ne sont pas vérifiés car cela prendrait trop de temps lors de la construction, et la construction peut se faire sans accès réseau de toute façon. Utilisez toujours `https://` dans les URL externes lorsque c'est possible.\n"
 
@@ -9284,10 +9284,10 @@ msgid "Be aware that Hugo automatically generates anchor links for headings, usi
 msgstr "Soyez conscient que Hugo génère automatiquement des liens d'ancrage pour les intitulés, en utilisant le texte de l'intitulé. Par conséquent, abstenez-vous d'utiliser des symboles dans les intitulés, en particulier les barres (inverses) qui perturberont les liens d'ancrage.\n"
 
 # TRANSLATOR ChatGPT
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:198
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Also be aware that these headings anchors may be used in other pages to make direct links. Changing the text of an heading will break its anchor and may break external links. To avoid breaking anchors in external links, you can change the heading text but force their ID to the previous, like so:\n"
 msgstr "Sachez également que ces ancres de titres peuvent être utilisées dans d'autres pages pour créer des liens directs. Modifier le texte d'un titre cassera son ancre et pourrait casser des liens externes. Pour éviter de casser les ancres dans les liens externes, vous pouvez changer le texte du titre mais forcer leur ID à celui précédent, comme ceci :\n"
 
@@ -9539,10 +9539,10 @@ msgid "Icons from [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free
 msgstr "Les icônes de [Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) sont prises en charge par le site web principal et la documentation Ansel, utilisant la syntaxe `fa:fa-CODE-DE-VOTRE-ICONE` comme montré dans l'exemple ci-dessus. Utilisez le [moteur de recherche Font Awesome v5](https://fontawesome.com/v5/search?o=r&m=free&s=solid) pour obtenir le code `fa-` des icônes que vous pouvez utiliser.\n"
 
 # TRANSLATOR ChatGPT
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/website/index.md:293
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid "Mermaid graphs are rendered client-side in SVG at display size and can be translated as text. Hugo is configured to detect these graphs automatically and load the javascript library only when needed. Github can also render Mermaid graphs natively, when displaying Markdown files.\n"
 msgstr "Les graphiques Mermaid sont rendus côté client en SVG à la taille d'affichage et peuvent être traduits en texte. Hugo est configuré pour détecter automatiquement ces graphiques et charger la bibliothèque javascript uniquement lorsque nécessaire. GitHub peut également rendre les graphiques Mermaid de manière native, lors de l'affichage des fichiers Markdown.\n"
 
@@ -10893,10 +10893,48 @@ msgstr "Le robot d'exploration de pages pour la base de données du moteur de re
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
-#: content/contribute/workflows.md:47
+#: content/contribute/workflows.md:48
 #, no-wrap
 msgid "Converting web pages to their vector representation, through the language model, will probably remain too heavy for any public server and will need to be done on a powerful private server.\n"
 msgstr "Convertir les pages web en leur représentation vectorielle, via le modèle linguistique, restera probablement trop lourd pour tout serveur public et devra être fait sur un serveur privé puissant.\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Title ##
+#: content/contribute/workflows.md:49
+#, fuzzy, no-wrap
+#| msgid "Ansel"
+msgid "Ansel GPT"
+msgstr "Ansel"
+
+#. type: Plain text
+#: content/contribute/workflows.md:52
+#, no-wrap
+msgid "The [custom ChatGPT model for Ansel](https://chatgpt.com/g/g-680d2f861a608191a0f7549eadd40f2e-ansel-gpt) is meant to assist users who have questions on Ansel software (installation, compilation, usage) or color theory. It is trained with Ansel website, documentation, Github issues, Matrix chats, and other resources. It also uses Chantal AI JSON API as backend, from where it can tap into the database of 68.800+ imaging-related pages indexed there.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:54
+#, no-wrap
+msgid "It is configured to automatically recrawl and cache, once a week, all the following resources for all languages:\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:61
+#, no-wrap
+msgid ""
+"- [the main website sitemap](https://ansel.photos/sitemap.xml),\n"
+"- each [language-centric sitemap](https://ansel.photos/en/sitemap.xml),\n"
+"- the [one-page aggregated website](https://ansel.photos/en/index.md) content for each language,\n"
+"- Github RSS feed of new commits,\n"
+"- Github issues,\n"
+"- the main Community forum RSS feed.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/contribute/workflows.md:62
+#, no-wrap
+msgid "Users can request to see the last update log by asking \"show me the last update log\" to GPT.\n"
+msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Hash Value: title
@@ -12670,10 +12708,10 @@ msgid "Many centralized and automated ways are offered to keep track of what's n
 msgstr "De nombreuses façons centralisées et automatisées sont proposées pour suivre ce qui est nouveau dans le projet :\n"
 
 # TRANSLATOR Aurélien Pierre
+# TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/contribute/organization.md:110
 #, no-wrap
-# TRANSLATOR ChatGPT
 msgid ""
 "- The main website has a central RSS feed, where new and updated page goes : [global RSS](../index.xml),\n"
 "- For more granularity, each section of the website (News, Doc, Workflows, etc.) has its own RSS feed too. The <i class=\"fas fa-rss-square\"></i> icon you find on section index pages and on every page links to that RSS feed in the current language.\n"

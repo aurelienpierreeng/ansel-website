@@ -45,3 +45,18 @@ New posts on the forum are posted through an RSS bot to the [Matrix channel](htt
 The page crawler for Chantal search engine database does not yet run automated and needs manual updating.
 
 Converting web pages to their vector representation, through the language model, will probably remain too heavy for any public server and will need to be done on a powerful private server.
+
+## Ansel GPT
+
+The [custom ChatGPT model for Ansel](https://chatgpt.com/g/g-680d2f861a608191a0f7549eadd40f2e-ansel-gpt) is meant to assist users who have questions on Ansel software (installation, compilation, usage) or color theory. It is trained with Ansel website, documentation, Github issues, Matrix chats, and other resources. It also uses Chantal AI JSON API as backend, from where it can tap into the database of 68.800+ imaging-related pages indexed there.
+
+It is configured to automatically recrawl and cache, once a week, all the following resources for all languages:
+
+- [the main website sitemap](https://ansel.photos/sitemap.xml),
+- each [language-centric sitemap](https://ansel.photos/en/sitemap.xml),
+- the [one-page aggregated website](https://ansel.photos/en/index.md) content for each language,
+- Github RSS feed of new commits,
+- Github issues,
+- the main Community forum RSS feed.
+
+Users can request to see the last update log by asking "show me the last update log" to GPT.
