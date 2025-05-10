@@ -804,13 +804,14 @@ a[href^="#fn:"] {
 }
 
 .sidenote p {
-  color: rgb(40, 40, 45);
+  color: rgb(76, 76, 86);
   margin: 0;
   text-align: left;
   hyphens: none;
 }
 
 .sidenote-number {
+  color: rgb(76, 76, 86);
   float: left;
   margin-right: 0.25rem;
   clear: left;
