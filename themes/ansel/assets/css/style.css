@@ -433,7 +433,7 @@ pre.mermaid img {
 #content-body figure.narrow-width,
 #content-body table,
 #content-body blockquote {
-  max-width: 35rem;
+  max-width: 36rem;
   width: auto;
   box-sizing: border-box;
 }
@@ -781,4 +781,43 @@ details[open]>summary::marker {
   vertical-align: middle;
   text-align: center;
   font-size: 1em;
+}
+
+
+a[href^="#fn:"]:before { content: '[' }
+a[href^="#fn:"]:after { content: ']' }
+a[href^="#fn:"] {
+  -webkit-font-feature-settings: 'tnum';
+  -moz-font-feature-settings: 'tnum';
+  -ms-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+
+.sidenote {
+  float: right;
+  clear: right;
+  position: absolute;
+  padding-left: 1.5rem;
+  text-align: left;
+}
+
+.sidenote p {
+  color: rgb(40, 40, 45);
+  margin: 0;
+  text-align: left;
+  hyphens: none;
+}
+
+.sidenote-number {
+  float: left;
+  margin-right: 0.25rem;
+  clear: left;
+  -webkit-font-feature-settings: 'tnum';
+  -moz-font-feature-settings: 'tnum';
+  -ms-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
 }
