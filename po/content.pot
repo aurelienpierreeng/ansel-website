@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-03 04:34+0200\n"
+"POT-Creation-Date: 2025-05-15 21:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2044,7 +2044,7 @@ msgstr ""
 #: content/news/fixing-pipe-cache-10-yo-bugs.md:17
 #, markdown-text, no-wrap
 msgid ""
-"0. Between 2020 and 2022, [Darktable underwent a mass-destruction enterprise](./darktable-dans-le-mur-au-ralenti/index.en.md), by a handful of guys with more freetime and benevolence than actual skills,\n"
+"0. Between 2020 and 2022, [Darktable underwent a mass-destruction enterprise](./darktable-dans-le-mur-au-ralenti/index.md), by a handful of guys with more freetime and benevolence than actual skills,\n"
 "1. In 2022, [I started noticing an annoying lag](https://github.com/aurelienpierreeng/ansel/issues/29) between GUI interactions with sliders controls and feedback/update of said sliders. For lack of feedback stating that the value change was recorded, users could change it again, thereby starting additionnal pipeline recomputes and effectively freezing their computer because stupid GUI never said \"got you, wait for a bit now\".\n"
 "2. I discovered that pipeline recomputations orders were issued twice per click (once on \"button pushed\", once on \"button released\" events), and once again for each mouse motion, but also that the GUI states were updated seemingly after pipe recompute.\n"
 "3. I [fixed that](./undarktable-ing-gui-controls.md) by almost rewriting the custom GUI controls (Bauhaus lib). I thought that preventing reckless recompute orders was gonna solve the lag : it didn't. Then, I discovered that requesting a new pipeline recompute before the previous ended waited for the previous to end, despite a shutdown mechanism implemented many years ago that should have worked.\n"
@@ -3498,7 +3498,7 @@ msgstr ""
 #, markdown-text, no-wrap
 msgid ""
 "Colour : sense and measurement. Richard Kirk. 2022.\n"
-": Richard Kirk holds a PhD in physics and has worked at Filmlight UK research and development since the 1980's. Filmlight is best known for its film digitization workflow (software and hardware) and its Baselight color grading software, used by most Hollywood movie productions to fine-tune the color look. Kirk is the co-author of the color-grading \"tRGB\" space used in Ansel [color balance](/doc/modules/processing-modules/color-balance-rgb/) module and presented in the book (p. 79). The book itself is made available free of charge, as a PDF, so I will not expand on its content here : have a look for yourself. Just know that it is fairly accessible to non-technical people, well illustrated, and covers both film and digital imaging, with their relationships. [Download the PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
+": Richard Kirk holds a PhD in physics and has worked at Filmlight UK research and development since the 1980's. Filmlight is best known for its film digitization workflow (software and hardware) and its Baselight color grading software, used by most Hollywood movie productions to fine-tune the color look. Kirk is the co-author of the color-grading \"tRGB\" space used in Ansel [color balance](/doc/views/darkroom/modules/color-balance-rgb/) module and presented in the book (p. 79). The book itself is made available free of charge, as a PDF, so I will not expand on its content here : have a look for yourself. Just know that it is fairly accessible to non-technical people, well illustrated, and covers both film and digital imaging, with their relationships. [Download the PDF](https://www.filmlight.ltd.uk/support/documents/colourbook/colourbook.php).\n"
 msgstr ""
 
 #. type: Plain text
@@ -3610,7 +3610,7 @@ msgstr ""
 #, markdown-text, no-wrap
 msgid ""
 "Color Correction Handbook (vol. 1) / Color Correction Look Book (vol 2). Alexis Van Hurkman. 2013. [Google Play vol. 1](https://books.google.fr/books?id=kDcdAgAAQBAJ). [Google Play vol. 2](https://books.google.fr/books?id=Hm9VAgAAQBAJ)\n"
-": These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/doc/modules/processing-modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.\n"
+": These books have a special place in Darktable/Ansel history because I used them as a reference to redesign the features of the [color balance](/doc/views/darkroom/modules/color-balance-rgb/) module. While they focus on color grading for movies, they are software-agnostic (showing how to get things done in different applications), and make use of color tools like RGB curves, color balance, channel mixer and 3D LUTs that are all available in Ansel. They contain valuable insight on how to (and why) create color looks in images, to put the form at the service of the content. I recommend you get digital copies of them because they have lots of illustrations that will be rendered on screen better than what printed paper allows.\n"
 msgstr ""
 
 #. type: Title ###
@@ -3681,7 +3681,7 @@ msgstr ""
 #. type: Plain text
 #: content/resources/supported-cameras.md:19
 #, markdown-text, no-wrap
-msgid "Noise profiles are used by the [_denoise (profiled)_](../../doc/modules/processing-modules/denoise-profiled) module. Cameras without noise profiles will still be usable, only denoising at high ISO might be of subpar quality because it will use generic noise stats.\n"
+msgid "Noise profiles are used by the [_denoise (profiled)_](../../doc/views/darkroom/modules/denoise-profiled) module. Cameras without noise profiles will still be usable, only denoising at high ISO might be of subpar quality because it will use generic noise stats.\n"
 msgstr ""
 
 #. type: Title ###
@@ -4603,7 +4603,7 @@ msgstr ""
 #. type: Plain text
 #: content/resources/white-balances/index.md:238
 #, markdown-text, no-wrap
-msgid "If we apply these operations on sensor RGB, we have [input color profiles](../../doc/modules/processing-modules/input-color-profile/) that expect a D65 illuminant to be encoded with certain RGB values: $R_{wr}G_{wr}B_{rw} = (1, 1, 1)$, by design. The $R_{w}G_{w}B_{r}$ values are then derived from the input color profile. This makes the computation even simpler:\n"
+msgid "If we apply these operations on sensor RGB, we have [input color profiles](../../doc/views/darkroom/modules/input-color-profile/) that expect a D65 illuminant to be encoded with certain RGB values: $R_{wr}G_{wr}B_{rw} = (1, 1, 1)$, by design. The $R_{w}G_{w}B_{r}$ values are then derived from the input color profile. This makes the computation even simpler:\n"
 msgstr ""
 
 #. type: Plain text
@@ -4622,7 +4622,7 @@ msgstr ""
 #. type: Plain text
 #: content/resources/white-balances/index.md:248
 #, markdown-text, no-wrap
-msgid "That's what we do in Ansel's old [white balance](../../doc/modules/processing-modules/white-balance/) module.\n"
+msgid "That's what we do in Ansel's old [white balance](../../doc/views/darkroom/modules/white-balance/) module.\n"
 msgstr ""
 
 #. type: Plain text
@@ -4634,7 +4634,7 @@ msgstr ""
 #. type: Plain text
 #: content/resources/white-balances/index.md:252
 #, markdown-text, no-wrap
-msgid "White-balancing through CAT happens in Ansel's [color calibration](../../doc/modules/processing-modules/color-calibration/) module.\n"
+msgid "White-balancing through CAT happens in Ansel's [color calibration](../../doc/views/darkroom/modules/color-calibration/) module.\n"
 msgstr ""
 
 #. type: Title ###
@@ -4665,7 +4665,7 @@ msgstr ""
 #. type: Plain text
 #: content/resources/white-balances/index.md:269
 #, markdown-text, no-wrap
-msgid "For Fuji XTrans sensors, the Markesteijn demosacing algorithm relies on a luma/chroma separation, which requires at least a rough white balancing step to happen earlier. This is the old [white balance](../../doc/modules/processing-modules/white-balance/) module. But we know the result is not accurate, especially for illuminants far away from D65 (especially for low-quality artifical lighting).\n"
+msgid "For Fuji XTrans sensors, the Markesteijn demosacing algorithm relies on a luma/chroma separation, which requires at least a rough white balancing step to happen earlier. This is the old [white balance](../../doc/views/darkroom/modules/white-balance/) module. But we know the result is not accurate, especially for illuminants far away from D65 (especially for low-quality artifical lighting).\n"
 msgstr ""
 
 #. type: Plain text
@@ -4677,7 +4677,7 @@ msgstr ""
 #. type: Plain text
 #: content/resources/white-balances/index.md:273
 #, markdown-text, no-wrap
-msgid "Another, more accurate, step of white balancing was later added in [color calibration](../../doc/modules/processing-modules/color-calibration/), using chromatic adaptation transforms (CAT16, Bradford). It can be configured automatically by extracting a profile from a color checker chart. Empirical studies have shown that the lowest color deviation, after profiling from a color checker, was achieved with color calibration after a preliminary step of white balance, in the old module, so we have retained both:\n"
+msgid "Another, more accurate, step of white balancing was later added in [color calibration](../../doc/views/darkroom/modules/color-calibration/), using chromatic adaptation transforms (CAT16, Bradford). It can be configured automatically by extracting a profile from a color checker chart. Empirical studies have shown that the lowest color deviation, after profiling from a color checker, was achieved with color calibration after a preliminary step of white balance, in the old module, so we have retained both:\n"
 msgstr ""
 
 #. type: Plain text
@@ -4788,7 +4788,7 @@ msgstr ""
 #. type: Plain text
 #: content/resources/white-balances/index.md:318
 #, markdown-text, no-wrap
-msgid "For this reason, Ansel has different illuminant settings in [color calibration CAT](../../doc/modules/processing-modules/color-calibration/). If we find that the camera detected something close enough to daylight or blackbody, we automatically offer the temperature setting. Else, we default to \"custom\", which provides users with a 2D hue/chroma setting in [CIE Luv 1976](https://en.wikipedia.org/wiki/CIELUV) that will directly allow to define illuminant color without intermediate computation. From hue/chroma to RGB, the illuminant computation uses no approximation, so the roundtrip RGB → hue/chroma → RGB accurately yields the original values.\n"
+msgid "For this reason, Ansel has different illuminant settings in [color calibration CAT](../../doc/views/darkroom/modules/color-calibration/). If we find that the camera detected something close enough to daylight or blackbody, we automatically offer the temperature setting. Else, we default to \"custom\", which provides users with a 2D hue/chroma setting in [CIE Luv 1976](https://en.wikipedia.org/wiki/CIELUV) that will directly allow to define illuminant color without intermediate computation. From hue/chroma to RGB, the illuminant computation uses no approximation, so the roundtrip RGB → hue/chroma → RGB accurately yields the original values.\n"
 msgstr ""
 
 #. type: Plain text
@@ -5008,7 +5008,7 @@ msgstr ""
 #. type: Plain text
 #: content/workflows/film-scan/index.md:21
 #, markdown-text, no-wrap
-msgid "As an early Ansel user, Alain contacted me to get help on tuning the [_Diffuse or sharpen_](../doc/modules/processing-modules/diffuse/) module to dial up or down the photographic grain in a way that closely reproduces the impact of the enlarger light source quality (point or diffused) on the final print, starting with a DSLR scan. After all, light diffusion is what happens here.[^1]\n"
+msgid "As an early Ansel user, Alain contacted me to get help on tuning the [_Diffuse or sharpen_](../doc/views/darkroom/modules/diffuse/) module to dial up or down the photographic grain in a way that closely reproduces the impact of the enlarger light source quality (point or diffused) on the final print, starting with a DSLR scan. After all, light diffusion is what happens here.[^1]\n"
 msgstr ""
 
 #. type: Link reference
@@ -5154,7 +5154,7 @@ msgstr ""
 #. type: Plain text
 #: content/workflows/monochrome-toning/index.md:23
 #, markdown-text, no-wrap
-msgid "If you start from a color image, you need to turn it into black and white : the recommended way is through the [color calibration](../doc/modules/processing-modules/color-calibration.md) module, using the B&W presets. Here is what we get :\n"
+msgid "If you start from a color image, you need to turn it into black and white : the recommended way is through the [color calibration](../doc/views/darkroom/modules/color-calibration.md) module, using the B&W presets. Here is what we get :\n"
 msgstr ""
 
 #. type: Plain text
@@ -5184,7 +5184,7 @@ msgstr ""
 #. type: Plain text
 #: content/workflows/monochrome-toning/index.md:33
 #, markdown-text, no-wrap
-msgid "In the [color balance](../doc/modules/processing-modules/color-balance-rgb.md) module, go to the _4 ways_ tab, and in the _Global offset_ section, define a hue of 259° at a chroma of 1.50%. You will need to right-click on the chroma slider, then input the `1.5` value on the keyboard, because the range of the slider goes as high as 0.75%, which fits typical color-grading uses.\n"
+msgid "In the [color balance](../doc/views/darkroom/modules/color-balance-rgb.md) module, go to the _4 ways_ tab, and in the _Global offset_ section, define a hue of 259° at a chroma of 1.50%. You will need to right-click on the chroma slider, then input the `1.5` value on the keyboard, because the range of the slider goes as high as 0.75%, which fits typical color-grading uses.\n"
 msgstr ""
 
 #. type: Plain text
@@ -6884,7 +6884,7 @@ msgstr ""
 #. type: Plain text
 #: content/contribute/website/index.md:58
 #, markdown-text, no-wrap
-msgid "See [Translating](../translating.md).\n"
+msgid "See [Translating](./translating.md).\n"
 msgstr ""
 
 #. type: Title ##
