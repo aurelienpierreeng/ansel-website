@@ -54,7 +54,7 @@ This trick will dynamically load the docs module from your local folder rather t
 
 ### Updating websites translations
 
-See [Translating](../translating.md).
+See [Translating](./translating.md).
 
 ## Editing files
 

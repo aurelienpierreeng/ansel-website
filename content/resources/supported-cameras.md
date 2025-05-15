@@ -15,7 +15,7 @@ Ansel uses [Rawspeed](https://darktable-org.github.io/rawspeed/) library to deco
 
 __The Ansel project does not have any control over the list of supported cameras and file formats, by Rawspeed or by Libraw__. The Ansel application handles pixels after they are decoded by Rawspeed or Libraw, and metadata (EXIF, IPTC, XMP) after they are decoded by [Exiv2](https://exiv2.org/). Decoding problems must be reported to Rawspeed, Libraw and Exiv2 projects, depending on their nature.
 
-Noise profiles are used by the [_denoise (profiled)_](../../doc/modules/processing-modules/denoise-profiled) module. Cameras without noise profiles will still be usable, only denoising at high ISO might be of subpar quality because it will use generic noise stats.
+Noise profiles are used by the [_denoise (profiled)_](../../doc/views/darkroom/modules/denoise-profiled) module. Cameras without noise profiles will still be usable, only denoising at high ISO might be of subpar quality because it will use generic noise stats.
 
 ### Raw file formats support
 

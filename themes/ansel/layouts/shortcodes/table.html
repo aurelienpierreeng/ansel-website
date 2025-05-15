@@ -1,6 +1,6 @@
 {{ $htmlTable := .Inner | markdownify }}
 {{ $old := "<table>" }}
-{{ $new := "<table class=\"table table-striped table-hover\">" }}
+{{ $new := "<table class=\"table table-striped table-hover full-width\">" }}
 {{ $htmlTable := replace $htmlTable $old $new }}
 
 {{ $old := "<thead>" }}

@@ -11,6 +11,8 @@ canonifyURLs = true
 removePathAccents = true
 timeout = "360s"
 
+ignoreLogs = ['warning-goldmark-raw-html']
+
 [params]
   [params.author]
     name = 'Aurélien Pierre'

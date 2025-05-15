@@ -234,7 +234,7 @@ $$
 
 See, no need for kelvin temperatures ! Those are only to confuse you in GUI. It's just rescaling pixel RGB with carefully-chosen factors.
 
-If we apply these operations on sensor RGB, we have [input color profiles](../../doc/modules/processing-modules/input-color-profile/) that expect a D65 illuminant to be encoded with certain RGB values: $R_{wr}G_{wr}B_{rw} = (1, 1, 1)$, by design. The $R_{w}G_{w}B_{r}$ values are then derived from the input color profile. This makes the computation even simpler:
+If we apply these operations on sensor RGB, we have [input color profiles](../../doc/views/darkroom/modules/input-color-profile/) that expect a D65 illuminant to be encoded with certain RGB values: $R_{wr}G_{wr}B_{rw} = (1, 1, 1)$, by design. The $R_{w}G_{w}B_{r}$ values are then derived from the input color profile. This makes the computation even simpler:
 
 $$
 \begin{cases}
@@ -244,11 +244,11 @@ B_{out} &= \dfrac{B_{in}}{B_w}\\\\
 \end{cases}
 $$
 
-That's what we do in Ansel's old [white balance](../../doc/modules/processing-modules/white-balance/) module.
+That's what we do in Ansel's old [white balance](../../doc/views/darkroom/modules/white-balance/) module.
 
 Now, the camera sensor RGB is vastly different from our cone cells RGB. In practice, attempting to white-balance in sensor RGB gives poor results, especially for illuminants for from D65, and special "RGB" spaces have been developed to improve the perceptual consistency of the operation over the whole color range. The Bradford, CAT02, CAT16 etc. chromatic adaptation transforms (CAT) apply the same operations but in special spaces. You can [learn more about them](https://acorn.stanford.edu/psych221/projects/2010/JasonSu/adaptation.html), their differences and specifics are beyond the scope of this article.
 
-White-balancing through CAT happens in Ansel's [color calibration](../../doc/modules/processing-modules/color-calibration/) module.
+White-balancing through CAT happens in Ansel's [color calibration](../../doc/views/darkroom/modules/color-calibration/) module.
 
 
 ### White balance in Ansel
@@ -265,11 +265,11 @@ flowchart TD;
   filmic --> op[output color profile]
 ```
 
-For Fuji XTrans sensors, the Markesteijn demosacing algorithm relies on a luma/chroma separation, which requires at least a rough white balancing step to happen earlier. This is the old [white balance](../../doc/modules/processing-modules/white-balance/) module. But we know the result is not accurate, especially for illuminants far away from D65 (especially for low-quality artifical lighting).
+For Fuji XTrans sensors, the Markesteijn demosacing algorithm relies on a luma/chroma separation, which requires at least a rough white balancing step to happen earlier. This is the old [white balance](../../doc/views/darkroom/modules/white-balance/) module. But we know the result is not accurate, especially for illuminants far away from D65 (especially for low-quality artifical lighting).
 
 The quality of the input color profile also relies on having RGB already normalized to D65. But we already know this can't be accurate either. Some Adobe products now use dual-illuminant DNG profiles, which have one input profile for D65 illuminant and one for illuminant A (incandescent bulb), and the final profile used is computed as a mix of both depending of the color temperature of the scene illuminant. Those fix the issue for daylight-ish illuminants, but still don't address the issue of colored stage lights and other energy-saving light bulbs with terrible color-rendering index (CRI).
 
-Another, more accurate, step of white balancing was later added in [color calibration](../../doc/modules/processing-modules/color-calibration/), using chromatic adaptation transforms (CAT16, Bradford). It can be configured automatically by extracting a profile from a color checker chart. Empirical studies have shown that the lowest color deviation, after profiling from a color checker, was achieved with color calibration after a preliminary step of white balance, in the old module, so we have retained both:
+Another, more accurate, step of white balancing was later added in [color calibration](../../doc/views/darkroom/modules/color-calibration/), using chromatic adaptation transforms (CAT16, Bradford). It can be configured automatically by extracting a profile from a color checker chart. Empirical studies have shown that the lowest color deviation, after profiling from a color checker, was achieved with color calibration after a preliminary step of white balance, in the old module, so we have retained both:
 
 1. the _white balance_ module will normalize sensor RGB such that D65 white that would have been captured on scene would record at $RGB = (1, 1, 1 )$. If the actual scene illuminant is anything else, it will be dealt with later.
 2. _input color profile_ module will convert sensor RGB to CIE XYZ 1931 color space, which acts as a glue for all later color spaces, assuming D65 illuminant (which is wrong in general),
@@ -314,7 +314,7 @@ By <a href="//commons.wikimedia.org/wiki/User:Adoniscik" title="User:Adoniscik">
 
 This could be fine, but it really isn't. Indeed, once we have the RGB coordinates of the illuminant (for example, as the camera detects it internally), finding the correlated color temperature (CCT) is done through various [approximations](https://en.wikipedia.org/wiki/Correlated_color_temperature#Approximation) (each software may use its own). The other way around, knowing the correlated color temperature, we can fetch the RGB coordinates of the illuminant through other [approximations](https://en.wikipedia.org/wiki/Planckian_locus#Approximation). Meaning that the roundtrip RGB → temperature → RGB (or, similarly, temperature → RGB → temperature) will not yield the original value. So in the event of the scene illuminant being anything but a pure black body spectrum, we stack a gross approximation of the arbitrary illuminant by a meaningless (and wrong) temperature on top of the approximation of the RGB coordinates from the temperature, all that only as an intermediate step designed to show a 1D slider in GUI (on 2D if you include tint for difficult cases), whereas all the pixel code cares about is the RGB coordinates of the illuminant anyway, which can perfectly be computed directly in RGB without going through temperature.
 
-For this reason, Ansel has different illuminant settings in [color calibration CAT](../../doc/modules/processing-modules/color-calibration/). If we find that the camera detected something close enough to daylight or blackbody, we automatically offer the temperature setting. Else, we default to "custom", which provides users with a 2D hue/chroma setting in [CIE Luv 1976](https://en.wikipedia.org/wiki/CIELUV) that will directly allow to define illuminant color without intermediate computation. From hue/chroma to RGB, the illuminant computation uses no approximation, so the roundtrip RGB → hue/chroma → RGB accurately yields the original values.
+For this reason, Ansel has different illuminant settings in [color calibration CAT](../../doc/views/darkroom/modules/color-calibration/). If we find that the camera detected something close enough to daylight or blackbody, we automatically offer the temperature setting. Else, we default to "custom", which provides users with a 2D hue/chroma setting in [CIE Luv 1976](https://en.wikipedia.org/wiki/CIELUV) that will directly allow to define illuminant color without intermediate computation. From hue/chroma to RGB, the illuminant computation uses no approximation, so the roundtrip RGB → hue/chroma → RGB accurately yields the original values.
 
 But the mess created by temperatures doesn't stop here. The black body model links temperatures to colors like this:
 

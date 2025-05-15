@@ -9,7 +9,7 @@ authors:
 
 ## Recap of the previous episodes
 
-0. Between 2020 and 2022, [Darktable underwent a mass-destruction enterprise](./darktable-dans-le-mur-au-ralenti/index.en.md), by a handful of guys with more freetime and benevolence than actual skills,
+0. Between 2020 and 2022, [Darktable underwent a mass-destruction enterprise](./darktable-dans-le-mur-au-ralenti/index.md), by a handful of guys with more freetime and benevolence than actual skills,
 1. In 2022, [I started noticing an annoying lag](https://github.com/aurelienpierreeng/ansel/issues/29) between GUI interactions with sliders controls and feedback/update of said sliders. For lack of feedback stating that the value change was recorded, users could change it again, thereby starting additionnal pipeline recomputes and effectively freezing their computer because stupid GUI never said "got you, wait for a bit now".
 2. I discovered that pipeline recomputations orders were issued twice per click (once on "button pushed", once on "button released" events), and once again for each mouse motion, but also that the GUI states were updated seemingly after pipe recompute.
 3. I [fixed that](./undarktable-ing-gui-controls.md) by almost rewriting the custom GUI controls (Bauhaus lib). I thought that preventing reckless recompute orders was gonna solve the lag : it didn't. Then, I discovered that requesting a new pipeline recompute before the previous ended waited for the previous to end, despite a shutdown mechanism implemented many years ago that should have worked.
