@@ -44,6 +44,11 @@
       {{- $got_it = true -}}
     {{- end }}
 
+    {{- with site.GetPage $link -}}
+      {{- $link = .RelPermalink -}}
+      {{- $got_it = true -}}
+    {{- end }}
+
     {{/* This works only for relative links pointing to pages outside the current section/branch bundle
          and if the current page is NOT IN a page boundle.
          see https://gohugo.io/content-management/page-bundles/

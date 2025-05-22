@@ -126,7 +126,7 @@ You can reproduce the steps above for white, using <a href="/en/workflows/img/ch
 
 ## About softproofing
 
-Ansel is able to [softproof a print](/en/doc/module-reference/utility-modules/darkroom/soft-proof/), using LittleCMS2, if you give it a proper printer profile. Softproofing means converting the image to the printer color space, that is compensating the white and black points, then remapping color gamut, using the data contained into the profile and standard ICC methods. In practice, it will uglify the picture by desaturating it and removing a lot of contrast ("milky blacks"), in an attempt to come close to the printed result. There are some caveats there, though.
+Ansel is able to [softproof a print](/doc/views/toolboxes/soft-proof/), using LittleCMS2, if you give it a proper printer profile. Softproofing means converting the image to the printer color space, that is compensating the white and black points, then remapping color gamut, using the data contained into the profile and standard ICC methods. In practice, it will uglify the picture by desaturating it and removing a lot of contrast ("milky blacks"), in an attempt to come close to the printed result. There are some caveats there, though.
 
 First of all, the softproofing shows what you would get out of a standard ICC pipeline if your printer conformed to ICC specifications. The softproofing is not written in the exported file, so applying the set of changes you see on screen is entirely up to the printer driver and photolab technician.
 
