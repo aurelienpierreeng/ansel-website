@@ -1,4 +1,4 @@
-baseURL = 'https://ansel.photos/'
+baseURL = '/'
 defaultContentLanguage = 'en'
 copyright = '© Copyright 2022-2025 – Aurélien Pierre'
 title = 'Ansel'
@@ -156,7 +156,7 @@ FootnoteReturnLinkContents = "↩"
 
   [[module.imports]]
     disable = false
-    ignoreConfig = false
+    ignoreConfig = true
     ignoreImports = true
     path = "github.com/aurelienpierreeng/ansel-doc"
 

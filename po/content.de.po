@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-05-15 21:26+0200\n"
+"POT-Creation-Date: 2025-05-22 13:41+0200\n"
 "PO-Revision-Date: 2025-04-27 23:48+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
@@ -2183,7 +2183,7 @@ msgstr "Schaut euch einfach den Code an! Vergleicht den Branch `darktable-2.6.x`
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md:546
 #, fuzzy, no-wrap
 #| msgid "All I have heard so far are canned sentences like \"it's like many other opensource projects\" and \"there is nothing we can do about it\". People are afraid by the amount of work that a fork is (I got emails trying to convince me it was dividing productivity), without realizing the amount of resources currently wasted by the Darktable project and the permanent stress of having to base your work on an unstable code base shaken up all the time. So far, Ansel cost me less fatigue [and I solved a significant number of problems](/en/doc/special-topics/from-darktable/) among which some were reported since 2016 without signs of interest from the bloody \"community\".\n"
-msgid "All I have heard so far are canned sentences like \"it's like many other opensource projects\" and \"there is nothing we can do about it\". People are afraid by the amount of work that a fork is (I got emails trying to convince me it was dividing productivity), without realizing the amount of resources currently wasted by the Darktable project and the permanent stress of having to base your work on an unstable code base shaken up all the time. So far, Ansel cost me less fatigue [and I solved a significant number of problems](/doc/special-topics/from-darktable/) among which some were reported since 2016 without signs of interest from the bloody \"community\".\n"
+msgid "All I have heard so far are canned sentences like \"it's like many other opensource projects\" and \"there is nothing we can do about it\". People are afraid by the amount of work that a fork is (I got emails trying to convince me it was dividing productivity), without realizing the amount of resources currently wasted by the Darktable project and the permanent stress of having to base your work on an unstable code base shaken up all the time. So far, Ansel cost me less fatigue [and I solved a significant number of problems](/doc/from-darktable/) among which some were reported since 2016 without signs of interest from the bloody \"community\".\n"
 msgstr "Alles, was ich bisher gehört habe, sind vorgefertigte Sätze wie „es ist wie bei vielen anderen Open-Source-Projekten“ und „es gibt nichts, was wir dagegen tun können“. Die Menschen sind von der Arbeitsmenge, die ein Fork darstellt, erschrocken (ich habe E-Mails erhalten, die versuchten, mich zu überzeugen, es sei eine Teilung der Produktivität), ohne die Menge der Ressourcen zu realisieren, die derzeit durch das Darktable-Projekt verschwendet werden, und den permanenten Stress, seine Arbeit auf einer instabilen Codebasis aufzubauen, die die ganze Zeit erschüttert wird. Bisher hat mich Ansel weniger ermüdet [und ich habe eine bedeutende Anzahl von Problemen gelöst](https://eng.aurelienpierre.com/2023/01/who-are-the-darktable-users/#Conclusion-of-this-part), darunter einige, die seit 2016 gemeldet wurden, ohne Anzeichen von Interesse von der verdammten „Gemeinschaft“.\n"
 
 # TRANSLATOR ChatGPT
@@ -7986,8 +7986,9 @@ msgstr "Über das Softproofing"
 # TRANSLATOR ChatGPT
 #. type: Plain text
 #: content/workflows/printing/index.md:130
-#, no-wrap
-msgid "Ansel is able to [softproof a print](/en/doc/module-reference/utility-modules/darkroom/soft-proof/), using LittleCMS2, if you give it a proper printer profile. Softproofing means converting the image to the printer color space, that is compensating the white and black points, then remapping color gamut, using the data contained into the profile and standard ICC methods. In practice, it will uglify the picture by desaturating it and removing a lot of contrast (\"milky blacks\"), in an attempt to come close to the printed result. There are some caveats there, though.\n"
+#, fuzzy, no-wrap
+#| msgid "Ansel is able to [softproof a print](/en/doc/module-reference/utility-modules/darkroom/soft-proof/), using LittleCMS2, if you give it a proper printer profile. Softproofing means converting the image to the printer color space, that is compensating the white and black points, then remapping color gamut, using the data contained into the profile and standard ICC methods. In practice, it will uglify the picture by desaturating it and removing a lot of contrast (\"milky blacks\"), in an attempt to come close to the printed result. There are some caveats there, though.\n"
+msgid "Ansel is able to [softproof a print](/doc/views/toolboxes/soft-proof/), using LittleCMS2, if you give it a proper printer profile. Softproofing means converting the image to the printer color space, that is compensating the white and black points, then remapping color gamut, using the data contained into the profile and standard ICC methods. In practice, it will uglify the picture by desaturating it and removing a lot of contrast (\"milky blacks\"), in an attempt to come close to the printed result. There are some caveats there, though.\n"
 msgstr "Ansel kann einen Druck [weich prüfen](/en/doc/module-reference/utility-modules/darkroom/soft-proof/), indem es LittleCMS2 verwendet, wenn Sie ihm ein geeignetes Druckerprofil geben. Weichprüfen bedeutet, das Bild in den Farbraum des Druckers umzuwandeln, was das Ausgleichen der Weiß- und Schwarzpunkte bedeutet, dann die Farbumfang neu zuzuordnen, unter Verwendung der in das Profil enthaltenen Daten und standardmäßigen ICC-Methoden. In der Praxis wird dies das Bild verschlechtern, indem es entsättigt und viel Kontrast entfernt wird („milchige Schwarztöne“), um dem gedruckten Ergebnis nahe zu kommen. Es gibt jedoch einige Vorbehalte.\n"
 
 # TRANSLATOR ChatGPT
@@ -8875,7 +8876,7 @@ msgstr "Hinweise für Übersetzer"
 #: content/contribute/website/index.md:58
 #, fuzzy, no-wrap
 #| msgid "See [Translating](../translating.md).\n"
-msgid "See [Translating](./translating.md).\n"
+msgid "See [Translating](../translating.md).\n"
 msgstr "Siehe [Übersetzung](../translating.md).\n"
 
 # TRANSLATOR ChatGPT
