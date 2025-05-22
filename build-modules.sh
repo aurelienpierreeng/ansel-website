@@ -6,6 +6,10 @@ hugo mod get -u
 # Write it to disk locally (=vendor)
 hugo mod vendor
 
+# Update addenda for translation contributors in the docs
+chmod 700 ./_vendor/github.com/aurelienpierreeng/ansel-doc/tools/update-translations.sh
+./_vendor/github.com/aurelienpierreeng/ansel-doc/tools/update-translations.sh
+
 # Auto-gen doc translations from module disk cache
 chmod 700 _vendor/github.com/aurelienpierreeng/ansel-doc/tools/build-translations.sh
 ./_vendor/github.com/aurelienpierreeng/ansel-doc/tools/build-translations.sh --add
