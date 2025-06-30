@@ -55,3 +55,7 @@ Of course, it doesn't help that the guy owning the `darktable.org` domain is not
 The one thing I still truly don't get, though is : why the urgency ? Why keep working that badly given that there is no pressure nor financial incentive to do so ? Open-source is (could have been) the one place where we could actually work properly and take the necessary time to produce long-term quality. And even there, the shortsightedness of capitalism has taken over.
 
 _If only users knew the state of deep shit this project fell into and how all the man-hours invested on it are actively making it worse…_
+
+{{< note >}}
+The developer documentation is now automatically generated and uploaded on dev.ansel.photos every Sunday at midnight, from the comments (_docstrings_) in the code.
+{{< /note >}}
