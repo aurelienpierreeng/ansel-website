@@ -309,8 +309,6 @@ Chantal is Ansel's knowledge infrastructure :
 {{% /column %}}
 {{% /row %}}
 
-
-
 {{< divider >}}
 
 ## There is a full-time designer here
@@ -345,7 +343,7 @@ Ansel development is done at a pace that ensures quality of both the code (backe
 
 Developing Ansel takes an average of 45 h/week for not even minimal wage. Open-source needs better imaging applications, which requires someone with the right skills and enough time. __Ansel needs manpower and manpower needs to pay bills__.
 
-{{< button url="https://community.ansel.photos/donations-make" label="Support the development" icon="donate" class="d-block text-center mx-auto btn">}}
+{{< button url="./donate" label="Support the development" icon="donate" class="d-block text-center mx-auto btn">}}
 
 </div>
 

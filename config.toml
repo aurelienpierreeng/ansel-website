@@ -71,6 +71,12 @@ ignoreLogs = ['warning-goldmark-raw-html']
     url = "contribute"
     weight = 8
 
+  [[menu.main]]
+    identifier = "donate"
+    name = "Donate"
+    url = "donate"
+    weight = 8
+
 [languages]
   [languages.en]
     title = 'Ansel'
