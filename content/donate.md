@@ -32,7 +32,7 @@ One-time or recurring
 {{% card title="Liberapay" icon="credit-card" %}}
 Liberapay uses PayPal and Stripe internally but can act as an anonymization layer if you want. Recurring only (you can stop recurrence right after the first payment).
 
-<a class="btn btn-primary" src="https://liberapay.com/aurelienpierre/donate">Donate</a></td>
+<a class="btn btn-primary" href="https://liberapay.com/aurelienpierre/donate">Donate</a></td>
 {{% /card %}}
 {{% /row %}}
 
