@@ -6,6 +6,37 @@ authors:
   - Aurélien Pierre
 ---
 
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+{{% row %}}
+{{% card title="Stripe" icon="null fab fa-stripe" %}}
+One-time donations only
+<td><stripe-buy-button buy-button-id="buy_btn_1RTntjE1FFuDJgxwE9QvEx4D" publishable-key="pk_live_9NsIdgsFvOh4ryQT5YjLHydq00dJjBfyqY">
+</stripe-buy-button></td>
+{{% /card %}}
+
+{{% card title="Paypal" icon="null fab fa-paypal" %}}
+One-time or recurring
+<form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="NUDGUKGYY24HN" />
+<input class="btn btn-primary" type="submit" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" value="Donate" />
+<img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
+</form>
+{{% /card %}}
+{{% /row %}}
+
+{{% row %}}
+
+{{% card title="Liberapay" icon="credit-card" %}}
+Liberapay uses PayPal and Stripe internally but can act as an anonymization layer if you want. Recurring only (you can stop recurrence right after the first payment).
+
+<a class="btn btn-primary" src="https://liberapay.com/aurelienpierre/donate">Donate</a></td>
+{{% /card %}}
+{{% /row %}}
+
+
 Ansel __is not__ a hobby project. It is a working tool designed to get job done. What is the difference ?
 
 ## Chores
@@ -68,30 +99,3 @@ Thank you.
 _Note :_ Aurélien Pierre  has worked on Darktable since the end of 2018, being the author of the darktable UCS 22 color space, of modules like filmic, tone equalizer, color balance, diffuse & sharpen, lens blur, and of the scene-referred workflow, in addition of having refactored the GUI code, allowing for user-defined graphic theming.
 
 Ansel was forked on Darktable 4.0 since dt's contributors lost their mind and disperse their efforts on peripheral features that are costly on every level.
-
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-{{% row %}}
-{{% card title="Stripe" icon="stripe" %}}
-One-time donations only
-<td><stripe-buy-button buy-button-id="buy_btn_1RTntjE1FFuDJgxwE9QvEx4D" publishable-key="pk_live_9NsIdgsFvOh4ryQT5YjLHydq00dJjBfyqY">
-</stripe-buy-button></td>
-{{% /card %}}
-
-{{% card title="Paypal" icon="paypal" %}}
-One-time or recurring
-<form action="https://www.paypal.com/donate" method="post" target="_top">
-<input type="hidden" name="hosted_button_id" value="NUDGUKGYY24HN" />
-<input class="btn btn-primary" type="submit" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" value="Donate" />
-<img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
-</form>
-{{% /card %}}
-
-{{% card title="Liberapay" icon="credit-card" %}}
-Liberapay uses PayPal and Stripe internally but can act as an anonymization layer if you want. Recurring only (you can stop recurrence right after the first payment).
-
-<a class="btn btn-primary" src="https://liberapay.com/aurelienpierre/donate">Donate</a></td>
-{{% /card %}}
-{{% /row %}}
