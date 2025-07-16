@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://ansel.photos'
 defaultContentLanguage = 'en'
 copyright = '© Copyright 2022-2025 – Aurélien Pierre'
 title = 'Ansel'
