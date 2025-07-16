@@ -61,9 +61,7 @@ jobs:
           HUGO_ENV: production
           #--baseURL "${{ steps.pages.outputs.base_url }}/"
         run: |
-          hugo \
-            --minify
-            --baseURL https://ansel.photos
+          hugo --minify --baseURL https://ansel.photos
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
