@@ -94,4 +94,22 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 {{ end -}}
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.innerHTML = `
+      <div style="text-align:center; margin:50px;">
+        <h1 class="m-5">Ansel est en grève</h1>
+        <div style="max-width: 36rem; margin: 1rem auto;">
+          <p>Le 10 septembre 2025, la France se soulève contre la dictature de son monarque fasciste et traître à la Nation, Emmanuel Macron, qui refuse de quitter le pouvoir malgré la colère du Peuple et du Parlement, et malgré la crise politique qu'il a lui même déclenchée.</p>
+          <p>Le Peuple souverain de France est, depuis 2017, constamment rabaissé et méprisé par ses élites, qui abusent de tous les leviers légaux disponibles pour gouverner contre les intérêts du pays et contre la volonté de son peuple, au profit d'une minorité de riches qui se sont enrichis de manière indécente depuis 2020, pendant que les classes travailleuses subissaient inflation, appauvrissement, pertes de leurs droits et de leurs conquis sociaux.</p>
+          <p>Les soulèvements populaires visant à faire entendre la voix du peuple souverain ont été réprimés dans une violence policière inouïe, conduisant les Nations Unies à émettre plusieurs fois des avertissements. C'est que la caste au pouvoir considère que la souveraineté lui appartient, au mépris de la définition de « démocratie <strong>représentative</strong> ».</p>
+          <p>Le 10 septembre 2025, le Peuple de France reprend la souveraineté de son pays, et son destin en main, par la grève générale et le blocage du pays, et notamment par le boycott des forces capitalistes déterminées à exploiter les travailleurs, avec le soutien de leurs marionnettes politiques.</p>
+          <p>Ansel et Aurélien PIERRE sont solidaires de ce mouvement démocratique. Ni art, ni science dignes de ce nom ne peuvent émerger sans liberté de décider de son avenir et de la société dans laquel on veut vivre.</p>
+          <p><a href="https://fr.tipeee.com/on-ne-veut-plus" target="_blank">Soutenir financièrement la lutte &raquo;</a> — <a href="https://www.onneveutplus.fr/" target="_blank">En savoir plus &raquo;</a></p>
+        </div>
+      </div>
+    `;
+  });
+</script>
+
 </head>
