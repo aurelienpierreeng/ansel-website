@@ -47,37 +47,15 @@ It is available to _ChatGPT Plus_ subscribers only (as per OpenAI limitations).
 {{% /card %}}
 {{% /row %}}
 
-## Support and training with the developer
-
-Getting a chance to learn how to use the tools directly with their developer is a pretty rare opportunity as far as software goes. Ansel gives it to you, with 1-on-1 personalized assistance through video-conferencing.
-
-{{% row %}}
-{{% card title="Training sessions" icon="chalkboard-teacher" %}}
-2 hours sessions with 2 days booking heads-up
-{{< button url="/en/booking" icon="calendar-alt" label="Book training" >}}
-{{% /card %}}
-
-{{% card title="Emergency support" icon="ambulance" %}}
-30 minutes sessions with 24 h booking heads-up
-{{< button icon="calendar-alt" label="Book support" data="data-cal-link='aurelien-pierre/emergency-ansel-support' data-cal-namespace='emergency-ansel-support'" >}}
-{{% /card %}}
-{{% /row %}}
-
-
 ## Community support
 
 Free user support is typically assumed by other users.
 
 {{% row %}}
-{{% card title="Forum" icon="comments" %}}
-{{< button url="https://community.ansel.photos" icon="users" label="Community discussions" >}}
-{{% /card %}}
-
 {{% card title="Chat" icon="comment-dots" %}}
 {{< button url="https://matrix.to/#/#ansel:matrix.org" icon="envelope" label="Matrix chat" >}}
 {{% /card %}}
 {{% /row %}}
-
 
 ## Bugs and oddities
 
@@ -89,20 +67,5 @@ Everything that leads to the software crashing, producing invalid output or unus
 {{% card title="Questions" icon="question" %}}
 If a feature seems to have been removed or to work differently, that might be a redesign, and there is always a reason behind.
 {{< button url="https://community.ansel.photos/discussions-category?category=7" icon="question" label="Ask a question" >}}
-{{% /card %}}
-{{% /row %}}
-
-
-## Developer support
-
-If you are considering joining forces for development and debugging, here is how I work.
-
-{{% row %}}
-{{% card title="Guidelines" icon="code-branch" %}}
-{{< button url="/en/contribute" icon="github fab" label="Dev wiki" >}}
-{{% /card %}}
-
-{{% card title="Dev mentorship" icon="user-friends" %}}
-{{< button url="https://cal.com/aurelien-pierre/developer-mentorship" icon="calendar-alt" label="Book an appointment" >}}
 {{% /card %}}
 {{% /row %}}
