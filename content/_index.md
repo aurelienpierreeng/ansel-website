@@ -311,48 +311,6 @@ Chantal is Ansel's knowledge infrastructure :
 
 {{< divider >}}
 
-## There is a full-time designer here
-
-{{% row %}}
-{{% column%}}
-
-<div class="d-grid float-start me-4">
-{{<figure src="Auto-portrait-0088-MLM_0774_01.jpg" style="width: 200px"/>}}
-{{< button url="https://photo.aurelienpierre.com/portfolio" label="Photography portfolio" icon="image" class="text-center w-100 mt-3">}}
-{{< button url="https://eng.aurelienpierre.com" label="Engineering blog" icon="code" class="text-center w-100">}}
-</div>
-
-<div class="no-hyphenation lead">
-
-Wouldn't it be great if open-source software had full-time designers, able to take the necessary time to understand issues and to find simple solutions, instead of piling up quick hacks and workarounds, in an ever-growing codebase ?
-
-</div>
-
-Designing is not jumping on a code editor to write as much as possible in as little time as possible. It's actually thinking a lot to write as little code as possible, because more code means more bugs.
-
-On my photographs, I make the styling, the make-up, the lighting, the shot, the editing, the retouching, the software color filters, the documentation to use them, the website to talk about them in 2 languages, and even the colorspace used for saturation adjustment. You will find _very_ few people with this kind of full-stack understanding of light and color able to also write efficient computer programs and read academic research papers on applied mathematics. For some reason, there are _lots_ of guys trying to write imaging applications in their spare time. Make your own conclusions here.
-
-{{% /column %}}
-{{% column %}}
-
-I have given 4 years of my life to the Darktable project, only to see it destroyed by clueless geeks playing code stashing on week-ends, everyone pushing his own agenda with no sense of design, in a project where nobody is responsible for anything and where we work too fast on everything at the same time.
-
-Ansel development is done at a pace that ensures quality of both the code (backend) and the design (frontend). Design is based on the user feedback I gathered from giving individual editing/retouching lessons with Darktable over the past 3 years, and on the 2 user surveys I ran in 2020 and 2022. Priorities are managed considering the software is meant to export RAW images, meaning R&D is done on image matters and everything else should just follow common computer GUI paradigms and not get in the way.
-
-<div class="bg-white rounded border border-light p-3 lead shadow-sm">
-
-Developing Ansel takes an average of 45 h/week for not even minimal wage. Open-source needs better imaging applications, which requires someone with the right skills and enough time. __Ansel needs manpower and manpower needs to pay bills__.
-
-{{< button url="./donate" label="Support the development" icon="donate" class="d-block text-center mx-auto btn">}}
-
-</div>
-
-{{% /column %}}
-
-{{% /row %}}
-
-{{< divider >}}
-
 ## Source code
 
 Ansel software and documentation are released under the GNU/GPL v3 license and versionned with Git. The website is copyrighted but publicly readable. The work repositories are hosted on Github and are mirrored on Gitlab for backup.
