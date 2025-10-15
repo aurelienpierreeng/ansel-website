@@ -8,7 +8,7 @@ weight: 9
 
 There are different ways to access information :
 
-1. __(chono)logical__, like reading page by page, line by line, until you reach the end of the publication,
+1. __(chrono)logical__, like reading page by page, line by line, until you reach the end of the publication,
 2. __thematic__, like getting to the table of contents and jumping straight to the part you are interested at, __provided the content is divided into meaningful units of content__,
 3. __transversal__, like following a "related posts" section based on content similarity (defined manually, with tags & keywords, or learned by AI topic analysis), or explicit cross-references. For example, most websites have archives listing all pages that have a certain tag/keyword, books have glossaries.
 4. __hint-based__, like presenting a bibliography of more in-depth publications or a "more info" section at the end of the content, or anticipating on later content,
