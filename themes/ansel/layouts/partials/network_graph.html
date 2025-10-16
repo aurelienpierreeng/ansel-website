@@ -28,7 +28,8 @@ window.addEventListener('DOMContentLoaded', function() {
                       name: '{{ strings.FirstUpper .Title }}', 
                       href: '{{ .Permalink }}', 
                       count: {{ (index $network .Permalink).count }},
-                      weight: {{ (index $network .Permalink).count }} }, 
+                      weight: 100 
+                    }, 
               position: { x: 50, y: 50 },
               classes: "currentNode" },
             {{- template "children" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
@@ -157,14 +158,14 @@ window.addEventListener('DOMContentLoaded', function() {
             piTol: 0.0000001,
             fit: true,
             componentSpacing: 80,
-            nodeRepulsion: function( node ){ return 4096; },
+            nodeRepulsion: function( node ){ return 2096; },
             idealEdgeLength: function( edge ){ return 80; },
-            edgeElasticity: function( edge ){ return 0.18; },
+            edgeElasticity: function( edge ){ return 0.2; },
             tile: true,
             nestingFactor: 0.1,
-            gravity: 1,
-            gravityRange: 3, 
-            numIter: 4000,
+            gravity: 100,
+            gravityRange: 1000, 
+            numIter: 3000,
             initialTemp: 1000,
             coolingFactor: 0.95,
             minTemp: 1.0,
@@ -192,6 +193,13 @@ window.addEventListener('DOMContentLoaded', function() {
                     {{- $weight := (index $network .url).count -}}
                     { data: { id: "{{ .url | md5 }}", name: "{{ strings.FirstUpper .title }}", href: "{{ .url }}", count: {{ $weight }}, weight: {{ $weight }}}, classes: "{{ if eq $recursion 1 }}firstLevelChild{{ end }}" },
                     { data: { id: "{{ add ($link | md5) (.url | md5) }}", source: "{{ $link | md5 }}", target: "{{ .url | md5 }}" } },
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+        {{/* Recurse after we declared all edges at this level */}}
+        {{- with index $network $link -}}
+            {{- range .links -}}
+                {{- if ne .url $link -}}{{/* Don't link to self */ -}}
                     {{- template "children" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
                     {{- template "parents" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
                 {{- end -}}
@@ -213,6 +221,15 @@ window.addEventListener('DOMContentLoaded', function() {
                         {{- $weight := $value.count  -}}
                         { data: { id: "{{ $key | md5 }}", name: "{{ strings.FirstUpper $value.title }}", href: "{{ $key }}", count: {{ $weight }}, weight: {{ $weight }}}, classes: "{{ if eq $recursion 1 }}firstLevelParent{{ end }}" },
                         { data: { id: "{{ add ($link | md5) ($key | md5) }}", source: "{{ $key | md5 }}", target: "{{ $link | md5 }}" } },
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+        {{/* Recurse after we declared all edges at this level */}}
+        {{- range $key, $value := $network -}}
+            {{- if ne $key $link -}}
+                {{- range $value.links -}}
+                    {{- if eq .url $link -}}
                         {{- template "parents" (dict "Link" $key "Network" $network "Recursion" $recursion) -}}
                         {{- template "children" (dict "Link" $key "Network" $network "Recursion" $recursion) -}}
                     {{- end -}}
