@@ -1,0 +1,31 @@
+{{ $data := dict -}}
+{{- $Site := .Site -}}
+{{- $lang := $Site.Language.Lang -}}
+
+{{ range site.RegularPages }}
+    {{- /* For each page, find all internal links */ -}}
+    {{- $links := findRESubmatch `href="(.*?)"` .Content -}}
+    {{- $uniqueLinks := slice -}}
+    {{- range $i, $link := $links -}}
+        {{- $group := index $link 1 -}}
+        {{- $uniqueLinks = $uniqueLinks | append $group -}}
+    {{- end -}}
+
+    {{- $linkCounts := dict -}}
+    {{- range $uniqueLinks -}}
+        {{- $count := index $linkCounts . | default 0 -}}
+        {{- $linkCounts = merge $linkCounts (dict . (add $count 1)) -}}
+    {{- end -}}
+
+    {{ $pageLinks := slice }}
+    {{ range $link, $i := $linkCounts -}}
+        {{- $link = (replaceRE "^/[a-z]{2}/" "/" $link) -}}
+        {{- with $Site.GetPage $link }}
+            {{- $pageLinks = $pageLinks| append (dict "count" $i "title" .Title "url" .Permalink ) -}}
+        {{- end -}}
+    {{ end }}
+
+    {{ $data = merge $data (dict .Permalink (dict "links" $pageLinks "title" .Title )) -}}
+{{ end -}}
+
+{{- return $data -}}

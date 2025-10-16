@@ -1,0 +1,72 @@
+<div id="network-graph-container" class="my-4 p-3 bg-white rounded shadow-sm">
+  <h2 class="h4 mb-3">Network Graph</h2>
+  <div id="network-graph" style="width: 100%; height: 500px;"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.33.1/dist/cytoscape.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/layout-base@2.0.1/layout-base.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cose-base@2.2.0/cose-base.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape-fcose@2.2.0/cytoscape-fcose.min.js"></script>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    var cy = cytoscape({
+        container: document.getElementById('network-graph'),
+        elements: [ // list of graph elements to start with
+            { data: { id: '{{ .Permalink | md5 }}', name: '{{ .Title }}', group: "nodes", href: '{{ .Permalink }}' } },
+            {{- template "children" (dict "Link" .Permalink "Recursion" 0 "Network" (partialCached "network.html" .)) -}}
+        ],
+        style: [ // the stylesheet for the graph
+        {
+            selector: 'node',
+            style: {
+                'label': 'data(name)'
+            }
+        },
+        {
+            selector: 'edge',
+            style: {
+                'curve-style': 'bezier'
+            }
+        }
+    ],
+
+    layout: 
+    {
+        // For fcose layout, remove 'padding' and use fcose options
+        // See https://github.com/iVis-at-Bilkent/cytoscape.js-fcose for more options
+        name: 'fcose',
+        quality: "proof",
+        padding: 30,
+        animate: true,
+        randomize: false,
+        nodeDimensionsIncludeLabels: true,
+        fit: true,
+        nodeRepulsion: 4500,
+        idealEdgeLength: 100,
+        edgeElasticity: 0.45,
+        nestingFactor: 0.1,
+        gravity: 0.25,
+        numIter: 2500,
+        startAngle: 3.14159, // optional: start at top
+        clockwise: true,
+        sort: undefined // keep default order
+    }
+    });
+});
+</script>
+
+{{- define "children" -}}{{- /* (dict "link" .Permalink "Network" $network ) */ -}}
+    {{- $link := .Link -}}
+    {{- $network := .Network -}}
+    {{- $recursion := add .Recursion 1 -}}
+    {{- if lt $recursion 5 -}} {{/* Limit recursion depth to avoid too large graphs */}}
+        {{- with index $network $link -}}
+            {{- range .links -}}
+                { data: { id: "{{ .url | md5 }}", name: "{{ .title }}", group: "nodes", href: "{{ .url }}" } },
+                { data: { id: "{{ add ($link | md5) (.url | md5) }}", source: "{{ $link | md5 }}", target: "{{ .url | md5 }}", group: "edges" } },
+                {{- template "children" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
