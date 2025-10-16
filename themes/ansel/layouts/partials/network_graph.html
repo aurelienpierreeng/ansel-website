@@ -1,5 +1,5 @@
 <div id="network-graph-container" class="mt-4 p-3 bg-white rounded shadow-sm">
-  <h2 class="mb-3">Network Graph for {{ .Title | strings.FirstUpper }}</h2>
+  <h2 class="mb-3">Knowledge map for {{ .Title | strings.FirstUpper }}</h2>
   <div id="network-graph" style="width: 100%; height: calc(100vh - 58px - 10rem);"></div>
   <div class="mt-3">
     <strong>Legend:</strong>
@@ -10,6 +10,7 @@
       <li class="list-inline-item"><span class="badge bg-warning text-dark">Bidirectional link with current page</span></li>
       <li class="list-inline-item"><span class="badge" style="background-color: #6f42c1;">Related page</span></li>
     </ul>
+    <div class="clearfix"></div>
   </div>
 </div>
 
