@@ -1,6 +1,15 @@
 <div id="network-graph-container" class="mt-4 p-3 bg-white rounded shadow-sm">
-  <h2 class="mb-3">Network Graph</h2>
-  <div id="network-graph" style="width: 100%; height: 500px;"></div>
+  <h2 class="mb-3">Network Graph for {{ .Title | strings.FirstUpper }}</h2>
+  <div id="network-graph" style="width: 100%; height: calc(100vh - 58px - 10rem);"></div>
+  <div class="mt-3">
+    <strong>Legend:</strong>
+    <ul class="list-inline mb-0 float-end">
+      <li class="list-inline-item"><span class="badge bg-primary rounded-0">Current page</span></li>
+      <li class="list-inline-item"><span class="badge bg-danger">Page linked by current page</span></li>
+      <li class="list-inline-item"><span class="badge bg-success">Page linking to current page</span></li>
+      <li class="list-inline-item"><span class="badge bg-warning text-dark">Bidirectional link with current page</span></li>
+    </ul>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.33.1/dist/cytoscape.min.js"></script>
@@ -12,13 +21,53 @@
 
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-    var cy = cytoscape({
-        container: document.getElementById('network-graph'),
-        elements: [ // list of graph elements to start with
-            { data: { id: '{{ .Permalink | md5 }}', name: '{{ strings.FirstUpper .Title }}', href: '{{ .Permalink }}', count: {{ (index $network .Permalink).count }} }, classes: "currentNode" },
+    var elems = 
+        [   // list of graph elements to start with
+            { data: { id: '{{ .Permalink | md5 }}', 
+                      name: '{{ strings.FirstUpper .Title }}', 
+                      href: '{{ .Permalink }}', 
+                      count: {{ (index $network .Permalink).count }},
+                      weight: {{ (index $network .Permalink).count }} }, 
+              position: { x: 50, y: 50 },
+              classes: "currentNode" },
             {{- template "children" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
             {{- template "parents" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
-        ],
+        ];
+
+    // make elems unique by data.id and merge classes if any
+    var map = {};
+    var uniq = [];
+
+    elems.forEach(function(el){
+        var id = el && el.data && el.data.id;
+        if (!id) { uniq.push(el); return; }
+
+        if (!map[id]) {
+            map[id] = Object.assign({}, el);
+            if (map[id].classes) map[id].classes = String(map[id].classes).trim();
+            uniq.push(map[id]);
+        } else {
+            // merge data (incoming properties override existing)
+            map[id].data = Object.assign({}, map[id].data || {}, el.data || {});
+
+            // keep existing position if present, otherwise take incoming
+            if (!map[id].position && el.position) map[id].position = el.position;
+
+            // merge classes (unique tokens)
+            if (el.classes) {
+                var existing = map[id].classes ? map[id].classes.split(/\s+/) : [];
+                var incoming = String(el.classes).split(/\s+/);
+                var merged = existing.concat(incoming).filter(function(v, i, a){ return v && a.indexOf(v) === i; });
+                map[id].classes = merged.join(' ');
+            }
+        }
+    });
+
+    elems = uniq;
+
+    var cy = cytoscape({
+        container: document.getElementById('network-graph'),
+        elements: elems,
         style: [ // the stylesheet for the graph
             {
                 selector: 'node',
@@ -29,30 +78,48 @@ window.addEventListener('DOMContentLoaded', function() {
                     "text-valign": "top",
                     "text-halign": "center",
                     "background-color": "#666",
+                    "text-wrap": "wrap",
+                    "text-max-width": 120,
+                    "font-size": 10,
                 }
             },
             {
                 selector: 'edge',
                 style: {
                     'curve-style': 'straight',
-                    'width': 1,
-                    'line-color': '#ccc',
-                    'target-arrow-color': '#ccc',
+                    'width': 0.5,
+                    'line-color': '#dcdcdc',
+                    /*
+                    'target-arrow-color': '#ddd',
                     'target-arrow-shape': 'triangle',
                     'target-arrow-fill': 'filled',
                     'target-arrow-width': 1,
+                    */
                 }
             },
             {
                 selector: '.currentNode',
                 style: {
-                    'background-color': 'rgb(13, 110, 253)',
+                    'background-color': '#0062cc',
+                    'shape': 'square',
                 }
             },
             {
-                selector: '.firstLevel',
+                selector: '.firstLevelChild',
                 style: {
-                    'background-color': '#d63384',
+                    'background-color': '#dc3545',
+                }
+            },
+            {
+                selector: '.firstLevelParent',
+                style: {
+                    'background-color': '#28a745',
+                }
+            },
+            {
+                selector: '.firstLevelParent.firstLevelChild',
+                style: {
+                    'background-color': '#ffc107',
                 }
             }
         ],
@@ -67,20 +134,32 @@ window.addEventListener('DOMContentLoaded', function() {
             animate: true,
             randomize: false,
             packComponents: true,
-            nodeOverlap: 20,
-            refresh: 20,
+            nodeOverlap: 400,
+            animationThreshold: 250,
+            refresh: 100,
             nodeDimensionsIncludeLabels: true,
+            avoidOverlap: true,
+            // False for random, true for greedy sampling
+            samplingType: true,
+            // Sample size to construct distance matrix
+            sampleSize: 40,
+            // Separation amount between nodes
+            nodeSeparation: 80,
+            // Power iteration tolerance
+            piTol: 0.0000001,
             fit: true,
-            componentSpacing: 60,
-            nodeRepulsion: 60000,
-            idealEdgeLength: 50,
-            edgeElasticity: 0.5,
+            componentSpacing: 80,
+            nodeRepulsion: function( node ){ return 4096; },
+            idealEdgeLength: function( edge ){ return 80; },
+            edgeElasticity: function( edge ){ return 0.18; },
+            tile: true,
             nestingFactor: 0.1,
-            gravity: 10,
-            initialTemp: 200,
+            gravity: 1,
+            gravityRange: 3, 
+            numIter: 4000,
+            initialTemp: 1000,
             coolingFactor: 0.95,
             minTemp: 1.0,
-            numIter: 4000,
             startAngle: 3.14159, // optional: start at top
             clockwise: true,
             sort: undefined // keep default order
@@ -89,7 +168,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     cy.on('tap', 'node', function(){
         window.location.href = this.data('href');
-});
+    });
 });
 </script>
 
@@ -101,10 +180,13 @@ window.addEventListener('DOMContentLoaded', function() {
         {{/* Find edges from page inner links to other pages */}}
         {{- with index $network $link -}}
             {{- range .links -}}
-                { data: { id: "{{ .url | md5 }}", name: "{{ strings.FirstUpper .title }}", href: "{{ .url }}", count: "{{ (index $network .url).count}}"}, classes: "{{ if eq $recursion 1 }}firstLevel{{ end }}" },
-                { data: { id: "{{ add ($link | md5) (.url | md5) }}", source: "{{ $link | md5 }}", target: "{{ .url | md5 }}" } },
-                {{- template "children" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
-                {{- template "parents" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
+                {{- if ne .url $link -}}{{/* Don't link to self */ -}}
+                    {{- $weight := (index $network .url).count -}}
+                    { data: { id: "{{ .url | md5 }}", name: "{{ strings.FirstUpper .title }}", href: "{{ .url }}", count: {{ $weight }}, weight: {{ $weight }}}, classes: "{{ if eq $recursion 1 }}firstLevelChild{{ end }}" },
+                    { data: { id: "{{ add ($link | md5) (.url | md5) }}", source: "{{ $link | md5 }}", target: "{{ .url | md5 }}" } },
+                    {{- template "children" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
+                    {{- template "parents" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
+                {{- end -}}
             {{- end -}}
         {{- end -}}
     {{- end -}}
@@ -120,7 +202,8 @@ window.addEventListener('DOMContentLoaded', function() {
             {{- if ne $key $link -}}
                 {{- range $value.links -}}
                     {{- if eq .url $link -}}
-                        { data: { id: "{{ $key | md5 }}", name: "{{ strings.FirstUpper $value.title }}", href: "{{ $key }}", count: "{{ $value.count }}"} },
+                        {{- $weight := $value.count  -}}
+                        { data: { id: "{{ $key | md5 }}", name: "{{ strings.FirstUpper $value.title }}", href: "{{ $key }}", count: {{ $weight }}, weight: {{ $weight }}}, classes: "{{ if eq $recursion 1 }}firstLevelParent{{ end }}" },
                         { data: { id: "{{ add ($link | md5) ($key | md5) }}", source: "{{ $key | md5 }}", target: "{{ $link | md5 }}" } },
                         {{- template "parents" (dict "Link" $key "Network" $network "Recursion" $recursion) -}}
                         {{- template "children" (dict "Link" $key "Network" $network "Recursion" $recursion) -}}
