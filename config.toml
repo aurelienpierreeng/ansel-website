@@ -197,45 +197,38 @@ FootnoteReturnLinkContents = "↩"
 
 [related]
   includeNewer = true
-  threshold = 20
+  threshold = 50
   toLower = true
-  [[related.indices]]
-      applyFilter = false
-      cardinalityThreshold = 0
-      name = 'keywords'
-      pattern = ''
-      toLower = false
-      type = 'basic'
-      weight = 100
-  [[related.indices]]
-      applyFilter = false
-      cardinalityThreshold = 0
-      name = 'categories'
-      pattern = ''
-      toLower = false
-      type = 'basic'
-      weight = 100
-  [[related.indices]]
-      applyFilter = false
-      cardinalityThreshold = 0
-      name = 'date'
-      pattern = ''
-      toLower = false
-      type = 'basic'
-      weight = 10
   [[related.indices]]
       applyFilter = false
       cardinalityThreshold = 0
       name = 'tags'
       pattern = ''
-      toLower = false
+      toLower = true
+      type = 'basic'
+      weight = 90
+  [[related.indices]]
+      applyFilter = false
+      cardinalityThreshold = 0
+      name = 'Title'
+      pattern = ''
+      toLower = true
       type = 'basic'
       weight = 80
   [[related.indices]]
       applyFilter = false
       cardinalityThreshold = 0
-      name = 'content'
+      name = 'Content'
       pattern = ''
-      toLower = false
+      toLower = true
       type = 'basic'
-      weight = 80
+      weight = 50
+  [[related.indices]]
+      applyFilter = false
+      cardinalityThreshold = 0
+      name = 'date'
+      pattern = ''
+      toLower = true
+      type = 'basic'
+      weight = 10
+

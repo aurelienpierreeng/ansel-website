@@ -1,13 +1,16 @@
-{{ $related := .Site.RegularPages.Related . | first 4 }}
-{{ with $related }}
-  <section id="related-posts" class="my-0">
-    <h2 class="heading">
-      {{ i18n "seealso" }}
-      <span class="header-filet"></span>
-    </h2>
-    <div class="d-flex flex-row gap-3 flex-grow-0 flex-wrap py-3">
+{{ with (.Site.RegularPages.Related . | first 4) }}
+  <section id="related-posts" class="mt-4 border-bottom border-secondary pb-4">
+    <h2>{{ i18n "seealso" }}</h2>
+    <div class="d-flex flex-row flex-grow-0 flex-wrap py-0 row">
       {{ range . }}
-        {{ .Render "relative" }}
+        <div class="flex-fill col col-6">
+          <div class="bg-white rounded-1 p-3 my-2">
+            <a class="link-dark text-decoration-none" href="{{ .Permalink }}">
+              <h3 class="h5 mb-2">{{ .Title | strings.FirstUpper }}</h3>
+            </a>
+            <p class="mb-0 text-muted">{{ .Summary | plainify | safeHTML | truncate 180 }}<a href="{{ .Permalink }}" class="float-end">→</a></p>
+          </div>
+        </div>
       {{ end }}
     </div>
   </section>

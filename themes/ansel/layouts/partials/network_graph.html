@@ -8,6 +8,7 @@
       <li class="list-inline-item"><span class="badge bg-danger">Page linked by current page</span></li>
       <li class="list-inline-item"><span class="badge bg-success">Page linking to current page</span></li>
       <li class="list-inline-item"><span class="badge bg-warning text-dark">Bidirectional link with current page</span></li>
+      <li class="list-inline-item"><span class="badge" style="background-color: #6f42c1;">Related page</span></li>
     </ul>
   </div>
 </div>
@@ -32,6 +33,7 @@ window.addEventListener('DOMContentLoaded', function() {
               classes: "currentNode" },
             {{- template "children" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
             {{- template "parents" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
+            {{- template "related" (dict "Link" .Permalink "Recursion" 0 "Network" $network "Page" .) -}}
         ];
 
     // make elems unique by data.id and merge classes if any
@@ -102,6 +104,12 @@ window.addEventListener('DOMContentLoaded', function() {
                 style: {
                     'background-color': '#0062cc',
                     'shape': 'square',
+                }
+            },
+            {
+                selector: '.relatedChild',
+                style: {
+                    'background-color': '#6f42c1',
                 }
             },
             {
@@ -210,6 +218,20 @@ window.addEventListener('DOMContentLoaded', function() {
                     {{- end -}}
                 {{- end -}}
             {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- define "related" -}}{{- /* (dict "link" .Permalink "Network" $network "Page" .) */ -}}
+    {{- $link := .Link -}}{{- /* Current page permalink */ -}}
+    {{- $network := .Network -}}
+    {{- $page := .Page -}}
+    {{- range ($page.Site.RegularPages.Related $page) -}}
+        {{- $url := .Permalink -}}
+        {{- with (index $network .Permalink) -}}
+            {{- $weight := .count -}}
+            { data: { id: "{{ $url | md5 }}", name: "{{ strings.FirstUpper .title }}", href: "{{ $url }}", count: {{ $weight }}, weight: {{ $weight }}}, classes: "relatedChild" },
+            { data: { id: "{{ add ($link | md5) ($url | md5) }}", source: "{{ $link | md5 }}", target: "{{ $url | md5 }}" } },
         {{- end -}}
     {{- end -}}
 {{- end -}}

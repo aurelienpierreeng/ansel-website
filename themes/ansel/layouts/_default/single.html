@@ -37,15 +37,13 @@
   {{ partial "social.html" . }}
   {{ partial "prev-next.html" . }}
   {{ partial "network_graph.html" . }}
+  {{ partial "related_posts.html" . }}
 
   {{- if not .Params.noauthor }}
-
   {{ partial "authors.html"  . }}
-
-  {{- /* partial "related_posts.html" . */ -}}
+  {{- end -}}
 
   {{ partial "comments.html" . }}
-  {{- end -}}
   </div>
 
   <aside class="d-none d-xl-flex col-xl-3 flex-column my-3">
