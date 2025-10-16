@@ -1,5 +1,5 @@
-<div id="network-graph-container" class="my-4 p-3 bg-white rounded shadow-sm">
-  <h2 class="h4 mb-3">Network Graph</h2>
+<div id="network-graph-container" class="mt-4 p-3 bg-white rounded shadow-sm">
+  <h2 class="mb-3">Network Graph</h2>
   <div id="network-graph" style="width: 100%; height: 500px;"></div>
 </div>
 
@@ -8,27 +8,47 @@
 <script src="https://cdn.jsdelivr.net/npm/cose-base@2.2.0/cose-base.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape-fcose@2.2.0/cytoscape-fcose.min.js"></script>
 
+{{ $network := partialCached "network.html" . -}}
+
 <script>
 window.addEventListener('DOMContentLoaded', function() {
     var cy = cytoscape({
         container: document.getElementById('network-graph'),
         elements: [ // list of graph elements to start with
-            { data: { id: '{{ .Permalink | md5 }}', name: '{{ .Title }}', group: "nodes", href: '{{ .Permalink }}' } },
-            {{- template "children" (dict "Link" .Permalink "Recursion" 0 "Network" (partialCached "network.html" .)) -}}
+            { data: { id: '{{ .Permalink | md5 }}', name: '{{ strings.FirstUpper .Title }}', group: "nodes", href: '{{ .Permalink }}', classes: "current", count: {{ (index $network .Permalink).count }} } },
+            {{- template "children" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
         ],
         style: [ // the stylesheet for the graph
         {
             selector: 'node',
             style: {
-                'label': 'data(name)'
+                'label': 'data(name)',
+                'width': 'data(count)',
+                'height': 'data(count)',
+                "text-valign": "top",
+                "text-halign": "center",
+                "background-color": "#666",
             }
         },
         {
             selector: 'edge',
             style: {
-                'curve-style': 'bezier'
+                'curve-style': 'straight',
+                'width': 1,
+                'line-color': '#ccc',
+                'target-arrow-color': '#ccc',
+                'target-arrow-shape': 'triangle',
+                'target-arrow-fill': 'filled',
+                'target-arrow-width': 1,
             }
-        }
+        },
+        {
+            selector: '.current',
+            style: {
+                'background-color': 'blue',
+                'line-color': 'blue'
+            }
+        },
     ],
 
     layout: 
@@ -37,22 +57,37 @@ window.addEventListener('DOMContentLoaded', function() {
         // See https://github.com/iVis-at-Bilkent/cytoscape.js-fcose for more options
         name: 'fcose',
         quality: "proof",
-        padding: 30,
+        padding: 0,
         animate: true,
         randomize: false,
+        packComponents: true,
+        nodeOverlap: 20,
+        refresh: 20,
         nodeDimensionsIncludeLabels: true,
         fit: true,
-        nodeRepulsion: 4500,
-        idealEdgeLength: 100,
+        componentSpacing: 50,
+        nodeRepulsion: 50000,
+        idealEdgeLength: 50,
         edgeElasticity: 0.45,
         nestingFactor: 0.1,
-        gravity: 0.25,
-        numIter: 2500,
+        gravity: 10,
+        initialTemp: 200,
+        coolingFactor: 0.95,
+        minTemp: 1.0,
+        numIter: 3500,
         startAngle: 3.14159, // optional: start at top
         clockwise: true,
         sort: undefined // keep default order
     }
     });
+
+    cy.on('tap', 'node', function(){
+    try { // your browser may block popups
+        window.open( this.data('href') );
+    } catch(e){ // fall back on url change
+        window.location.href = this.data('href');
+    }
+});
 });
 </script>
 
@@ -63,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function() {
     {{- if lt $recursion 5 -}} {{/* Limit recursion depth to avoid too large graphs */}}
         {{- with index $network $link -}}
             {{- range .links -}}
-                { data: { id: "{{ .url | md5 }}", name: "{{ .title }}", group: "nodes", href: "{{ .url }}" } },
+                { data: { id: "{{ .url | md5 }}", name: "{{ strings.FirstUpper .title }}", group: "nodes", href: "{{ .url }}", count: "{{ (index $network .url).count}}"} },
                 { data: { id: "{{ add ($link | md5) (.url | md5) }}", source: "{{ $link | md5 }}", target: "{{ .url | md5 }}", group: "edges" } },
                 {{- template "children" (dict "Link" .url "Network" $network "Recursion" $recursion) -}}
             {{- end -}}

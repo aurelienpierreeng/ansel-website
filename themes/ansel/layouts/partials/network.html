@@ -25,7 +25,19 @@
         {{- end -}}
     {{ end }}
 
-    {{ $data = merge $data (dict .Permalink (dict "links" $pageLinks "title" .Title )) -}}
+    {{ $data = merge $data (dict .Permalink (dict "links" $pageLinks "title" .Title "count" 1)) -}}
 {{ end -}}
+
+{{/* Aggregate counts for target nodes */ -}}
+{{/* Min count is 1 since it's used to set node size in px in network graph */}}
+{{- range $key, $value := $data -}}
+    {{- range $value.links -}}
+        {{- $url := .url -}}
+        {{- $count := .count | default 1 -}}
+        {{- $target := index $data $url | default dict -}}
+        {{- $targetCount := index $target "count" | default 0 -}}
+        {{- $data = merge $data (dict $url (merge $target (dict "count" (add $targetCount $count)))) -}}
+    {{- end -}}
+{{- end -}}
 
 {{- return $data -}}
