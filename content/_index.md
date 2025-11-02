@@ -47,6 +47,11 @@ Windows 7 to 11 installer
 {{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Download ansel.exe" icon="download" >}}
 {{% /card %}}
 
+{{% card icon="apple fab" title="MacOS X" %}}
+Distribution for MacOS X 14 and newer (for Apple M architecture)
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable.mac.zip" label="Download ansel.dmg" icon="download" >}}
+{{% /card %}}
+
 {{% card icon="terminal" title="Build from source" %}}
 Best performance for your hardware
 {{< button url="/en/doc/install" label="Building instructions" icon="wrench" >}}
