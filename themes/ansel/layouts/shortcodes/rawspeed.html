@@ -6,7 +6,7 @@
 
 {{/* Get Rawspeed XML camera database */}}
 {{ $data := dict }}
-{{ with resources.GetRemote "https://raw.githubusercontent.com/darktable-org/rawspeed/refs/heads/develop/data/cameras.xml" }}
+{{ with resources.GetRemote "https://raw.githubusercontent.com/darktable-org/rawspeed/refs/heads/stable/data/cameras.xml" }}
 {{ $data = . | transform.Unmarshal }}
 {{ end }}
 
