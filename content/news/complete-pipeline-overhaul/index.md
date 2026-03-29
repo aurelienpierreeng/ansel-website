@@ -748,7 +748,7 @@ During this work, I also lost faith in [Vkdt](https://jo.dreggn.org/vkdt/). Vkdt
 1. The slow-downs of Darktable are not to blame on the GTK stack or the OpenCL stack. Granted, those are not great, but that can be managed. They are programmer errors and bad design that wasn't re-evaluated as the needs and requirements of the software changed.
 2. A cache-first design allows to hide many latencies by __avoiding__ recomputations, and a full-GPU workflow will soon face the memory limitations of GPUs.
 3. GPUs are becoming increasingly expensive, after the rush of crypto-currencies and now the rush of AI.
-4. What killed Darktable was a lack of management and a lack of vision, a culture of _"laissez faire"_ and happy randomness, that only works with a handful of developers that all know each other. Vkdt is headed in the same direction. If code and features are allowed to grow without priorities and API tightening, it's a crashing train in slow motion.
+4. What killed Darktable was a lack of management and a lack of vision, a culture of _"laissez faire"_ and happy randomness, that only works with a handful of developers that all know each other. Vkdt is headed in the same direction. If code and features are allowed to grow without priorities and API tightening, it's a crashing train in slow motion. "newer = better" is only a transient state. The real challenge is to manage growth.
 
 From a developer perspective, Darktable has 3 main diseases :
 
