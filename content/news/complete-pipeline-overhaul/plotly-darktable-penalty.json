@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "Darktable penalty",
+      "x": [
+        "Initial loading (GPU)",
+        "Initial loading (CPU)",
+        "Zoom 100%",
+        "Pan 100%",
+        "Lighttable back/forth",
+        "Disable module",
+        "Color picking",
+        "Export full",
+        "Export half"
+      ],
+      "y": [1.16, 1.21, 2.03, 1.97, 1.75, 40, 5.4, 1.27, 100],
+      "marker": {"color": "#d55e00"}
+    }
+  ],
+  "layout": {
+    "title": {"text": "Darktable performance penalty per benchmark case"},
+    "yaxis": {"title": {"text": "Darktable / Ansel (×)"}, "rangemode": "tozero"},
+    "xaxis": {"tickangle": -30},
+    "margin": {"l": 60, "r": 20, "t": 60, "b": 140}
+  }
+}

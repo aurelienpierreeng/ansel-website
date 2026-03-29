@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "Ansel",
+      "x": [
+        "Exposure",
+        "Input color profile",
+        "Color calibration",
+        "Diffuse or sharpen",
+        "Color balance RGB",
+        "Filmic RGB",
+        "Output color profile",
+        "Dithering"
+      ],
+      "y": [-90.0, -93.75, -94.87, -31.66, -25.0, -45.45, -57.69, -46.59],
+      "marker": {"color": "#1f77b4"}
+    },
+    {
+      "type": "bar",
+      "name": "Darktable",
+      "x": [
+        "Exposure",
+        "Input color profile",
+        "Color calibration",
+        "Diffuse or sharpen",
+        "Color balance RGB",
+        "Filmic RGB",
+        "Output color profile",
+        "Dithering"
+      ],
+      "y": [900.0, 1500.0, 1850.0, 46.32, 33.33, 83.33, 136.36, 87.23],
+      "marker": {"color": "#ff7f0e"}
+    }
+  ],
+  "layout": {
+    "barmode": "group",
+    "title": {"text": "Per-module relative delta (GPU)"},
+    "yaxis": {"title": {"text": "Runtime relative difference (in %)"},
+              "zeroline": true,
+              "zerolinecolor": "#444"},
+    "xaxis": {"tickangle": -35},
+    "margin": {"l": 60, "r": 20, "t": 60, "b": 120},
+    "legend": {"orientation": "h", "x": 0, "y": 1.15}
+  }
+}

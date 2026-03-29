@@ -33,6 +33,10 @@
   </script>
 {{ end }}
 
+{{ if and (or (.Page.Store.Get "hasPlotly") .Params.plotly) (not .Params.plotlyfull) }}
+<script src="https://cdn.plot.ly/plotly-2.26.0.min.js" charset="utf-8" defer></script>
+{{ end }}
+
 {{ if .Params.latex}}
   <script>
     MathJax = {

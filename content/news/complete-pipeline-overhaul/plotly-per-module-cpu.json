@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "Ansel",
+      "x": [
+        "Exposure",
+        "Input color profile",
+        "Color calibration",
+        "Diffuse or sharpen",
+        "Color balance RGB",
+        "Filmic RGB",
+        "Output color profile",
+        "Dithering",
+        "Gamma/display encoding"
+      ],
+      "y": [-41.67, -80.0, -26.19, -7.93, 4.21, -2.14, -38.1, -57.63, 11.11],
+      "marker": {"color": "#1f77b4"}
+    },
+    {
+      "type": "bar",
+      "name": "Darktable",
+      "x": [
+        "Exposure",
+        "Input color profile",
+        "Color calibration",
+        "Diffuse or sharpen",
+        "Color balance RGB",
+        "Filmic RGB",
+        "Output color profile",
+        "Dithering",
+        "Gamma/display encoding"
+      ],
+      "y": [71.43, 400.0, 35.48, 8.62, -4.04, 2.19, 61.54, 136.0, -10.0],
+      "marker": {"color": "#ff7f0e"}
+    }
+  ],
+  "layout": {
+    "barmode": "group",
+    "title": {"text": "Per-module relative delta (CPU)"},
+    "yaxis": {"title": {"text": "Runtime relative difference (in %)"},
+              "zeroline": true,
+              "zerolinecolor": "#444"},
+    "xaxis": {"tickangle": -35},
+    "margin": {"l": 60, "r": 20, "t": 60, "b": 140},
+    "legend": {"orientation": "h", "x": 0, "y": 1.15}
+  }
+}

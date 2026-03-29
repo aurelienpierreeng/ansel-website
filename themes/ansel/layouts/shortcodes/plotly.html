@@ -1,0 +1,38 @@
+{{ $title := .Get "title" }}
+{{ if not $title }}{{ errorf "Plotly shotcode : you need to provide a title" }}{{ end }}
+{{ $id := $title | anchorize | urlize }}
+{{ $json := partial "get_resource.html" (dict "src" (.Get "src") "Page" .Page ) }}
+{{- if hugo.IsProduction }}{{ $json = $json | minify | fingerprint }}{{ end -}}
+<figure class="full-width caption-figure {{ .Get "class" }}" style="position: relative";>
+    <div id="{{ $id }}" class="full-width"></div>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  fetch({{ $json.Permalink }})
+  .then(response => response.json())
+  .then(json => {
+    const dom_item = document.getElementById({{ $id }});
+    const config = { showLink: false, responsive: true };
+    json.layout.font = {size: parseFloat(getComputedStyle(dom_item.parentNode).fontSize) * 0.85 };
+    Plotly.newPlot(dom_item, json.data, json.layout, config);
+    window.addEventListener('resize', () => {
+      json.layout.font = {size: parseFloat(getComputedStyle(dom_item.parentNode).fontSize) * 0.85 };
+      Plotly.relayout(dom_item, json.layout);
+     });
+    document.addEventListener("fullscreenchange", () => {
+      json.layout.font = {size: parseFloat(getComputedStyle(dom_item.parentNode).fontSize) * 0.85 };
+      Plotly.relayout(dom_item, json.layout);
+     });
+    screen.orientation.addEventListener("change", (event) => {
+      json.layout.font = {size: parseFloat(getComputedStyle(dom_item.parentNode).fontSize) * 0.85 };
+      Plotly.relayout(dom_item, json.layout);
+     });
+  })
+});
+</script>
+{{ if or (not (.Get "caption")) ( eq (.Get "caption") "true") }}<figcaption class="border-top">{{ .Get "title" | markdownify }}</figcaption>{{ end }}
+</figure>
+{{ if .Get "full" }}
+{{ .Page.Store.Set "plotlyfull" true }}
+{{ else }}
+{{ .Page.Store.Set "hasPlotly" true }}
+{{ end }}
