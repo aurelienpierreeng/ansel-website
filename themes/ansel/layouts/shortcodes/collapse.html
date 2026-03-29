@@ -1,0 +1,32 @@
+{{- $id := .Get "id" | default (printf "collapse-%s" (md5 .Position)) -}}
+{{- $title := .Get "title" | default "Details" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $buttonClass := .Get "buttonClass" | default "" -}}
+{{- $open := false -}}
+{{- with .Get "open" -}}
+  {{- $open = in (slice true "true" "1" 1 "yes") . -}}
+{{- end -}}
+
+<div class="accordion my-3 {{ $class }}">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="{{ $id }}-heading">
+      <button
+        class="accordion-button {{ if not $open }}collapsed{{ end }} {{ $buttonClass }}"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#{{ $id }}"
+        aria-expanded="{{ if $open }}true{{ else }}false{{ end }}"
+        aria-controls="{{ $id }}">
+        {{ $title }}
+      </button>
+    </h2>
+    <div
+      id="{{ $id }}"
+      class="accordion-collapse collapse {{ if $open }}show{{ end }}"
+      aria-labelledby="{{ $id }}-heading">
+      <div class="accordion-body">
+        {{ .Inner | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>

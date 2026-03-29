@@ -1,0 +1,10 @@
+{{- $scratch := .Parent.Scratch -}}
+
+{{- $tabs := $scratch.Get "tabs" | default (slice) -}}
+
+{{- $tabs = $tabs | append (dict
+  "title" (.Get 0)
+  "content" (.Inner | .Page.RenderString)
+) -}}
+
+{{- $scratch.Set "tabs" $tabs -}}

@@ -146,7 +146,7 @@ article {
   min-width: 300px;
 }
 
-.active {
+.navbar-nav .active {
   font-weight: bold;
 }
 
