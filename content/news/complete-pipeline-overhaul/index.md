@@ -5,6 +5,8 @@ authors:
     - Aurélien Pierre
 tags:
     - development
+resources:
+    - src: 2022-06-17__DSC00078.arw.xmp
 ---
 
 Since I started using Darktable, circa 2012, I have always been surprised by how little RAM it used. People think it is a good thing that an application uses the memory sparingly, and that is surely true if we talk about your desktop environment. But talking of a production software that does heavy pixel rendering on images from 12 to 54 Mpixels, this means the same heavy computations are done again and again instead of being saved to be reused later. That's what a cache is for : avoiding expensive computations. And it should use all the available RAM for that, because computing is wasting power, and that has a concrete impact if you are working on battery. Also, you paid for that RAM and using it doesn't empty your battery. The CPU/GPU on the other end…
@@ -98,6 +100,8 @@ So the interesting part here is not that one big refactor happened in isolation.
 ## Benchmarks
 
 Benchmarks are done on both applications compiled locally with _Release_ build and GCC14 using their respective `build.sh --build-type Release` script. The hardware is a Thinkpad P51, with 8 × Intel® Xeon® CPU E3-1505M v6 @ 3.00GHz and GPU Quadro M2200, running on Fedora 41 Plasma with Wayland. Nvidia driver version is 580.105.08. Both Ansel and Darktable config files are set with [this script](https://github.com/aurelienpierreeng/ansel/blob/master/tools/benchmark_darkroom_rc.sh) to ensure the same config baseline. We show here the output of `ansel -d perf` and `darktable -d perf`. Those benchmarks can be reproduced on any computer.
+
+The 45 Mpx test picture is taken from [here](https://discuss.pixls.us/t/backlit-hardcore-flaring-vintage-lens-fun/31270) and the editing XMP can be downloaded [here](./2022-06-17__DSC00078.arw.xmp).
 
 ### Initial loading in darkroom
 
