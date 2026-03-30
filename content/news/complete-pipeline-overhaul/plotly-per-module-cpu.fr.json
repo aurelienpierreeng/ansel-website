@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "Ansel",
+      "x": [
+        "Exposition",
+        "Profil de couleur d'entrée",
+        "Calibration des couleurs",
+        "Diffusion ou netteté",
+        "Balance couleur RVB",
+        "Filmic RVB",
+        "Profil de couleur de sortie",
+        "Tramage",
+        "Encodage gamma/affichage"
+      ],
+      "y": [-41.67, -80.0, -26.19, -7.93, 4.21, -2.14, -38.1, -57.63, 11.11],
+      "marker": {"color": "#1f77b4"}
+    },
+    {
+      "type": "bar",
+      "name": "Darktable",
+      "x": [
+        "Exposition",
+        "Profil de couleur d'entrée",
+        "Calibration des couleurs",
+        "Diffusion ou netteté",
+        "Balance couleur RVB",
+        "Filmic RVB",
+        "Profil de couleur de sortie",
+        "Tramage",
+        "Encodage gamma/affichage"
+      ],
+      "y": [71.43, 400.0, 35.48, 8.62, -4.04, 2.19, 61.54, 136.0, -10.0],
+      "marker": {"color": "#ff7f0e"}
+    }
+  ],
+  "layout": {
+    "barmode": "group",
+    "title": {"text": "Écart relatif des temps d'exécution par module (CPU)"},
+    "yaxis": {"title": {"text": "Différence relative de temps d'exécution (en %)"},
+              "zeroline": true,
+              "zerolinecolor": "#444"},
+    "xaxis": {"tickangle": -35},
+    "margin": {"l": 60, "r": 20, "t": 60, "b": 140},
+    "legend": {"orientation": "h", "x": 0, "y": 1.15}
+  }
+}

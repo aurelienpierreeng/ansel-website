@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "Ansel",
+      "x": [
+        "Exposition",
+        "Profil de couleur d'entrée",
+        "Calibration des couleurs",
+        "Diffusion ou netteté",
+        "Balance couleur RVB",
+        "Filmic RVB",
+        "Profil de couleur de sortie",
+        "Tramage"
+      ],
+      "y": [-90.0, -93.75, -94.87, -31.66, -25.0, -45.45, -57.69, -46.59],
+      "marker": {"color": "#1f77b4"}
+    },
+    {
+      "type": "bar",
+      "name": "Darktable",
+      "x": [
+        "Exposition",
+        "Profil de couleur d'entrée",
+        "Calibration des couleurs",
+        "Diffusion ou netteté",
+        "Balance couleur RVB",
+        "Filmic RVB",
+        "Profil de couleur de sortie",
+        "Tramage"
+      ],
+      "y": [900.0, 1500.0, 1850.0, 46.32, 33.33, 83.33, 136.36, 87.23],
+      "marker": {"color": "#ff7f0e"}
+    }
+  ],
+  "layout": {
+    "barmode": "group",
+    "title": {"text": "Écart relatif des temps d'exécution par module (GPU)"},
+    "yaxis": {"title": {"text": "Différence relative de temps d'exécution (en %)"},
+              "zeroline": true,
+              "zerolinecolor": "#444"},
+    "xaxis": {"tickangle": -35},
+    "margin": {"l": 60, "r": 20, "t": 60, "b": 120},
+    "legend": {"orientation": "h", "x": 0, "y": 1.15}
+  }
+}

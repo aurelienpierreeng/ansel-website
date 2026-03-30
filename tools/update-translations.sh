@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
 # Requires po4a version 0.58 or higher.
 
-# go to project root
-PROJECT_ROOT="$(cd `dirname $0`/..; pwd -P)"
-cd "$PROJECT_ROOT"
+# Resolve the real repository root once, then expose it through a temporary
+# symlink without spaces for po4a. po4a internally shells out to diff when
+# updating .pot/.po files, and that path handling breaks in this repo because
+# the checkout lives under "Sites web".
+PROJECT_ROOT="$(cd "$(dirname "$0")/.."; pwd -P)"
+PO4A_WORKDIR="$PROJECT_ROOT"
+PO4A_TMPDIR=""
+PO4A_RUN_CONF="po/po4a.conf"
+
+if [[ "$PROJECT_ROOT" == *" "* ]]; then
+    PO4A_TMPDIR="$(mktemp -d /tmp/ansel-po4a.XXXXXX)"
+    ln -s "$PROJECT_ROOT" "$PO4A_TMPDIR/repo"
+    PO4A_WORKDIR="$PO4A_TMPDIR/repo"
+    trap 'rm -rf "$PO4A_TMPDIR"' EXIT
+    PO4A_RUN_CONF="$PO4A_TMPDIR/po4a.conf"
+fi
+
+cd "$PO4A_WORKDIR"
 
 set -e
 
@@ -81,4 +96,18 @@ for f in  $(find content -type f -name '*.md'); do
 done
 
 # Update .pot and .po content with fresh .md files
-po4a --verbose --previous --no-translations --rm-translations "$po4a_conf"
+if [ "$PO4A_RUN_CONF" != "$po4a_conf" ]; then
+    PO4A_WORKDIR="$PO4A_WORKDIR" perl -pe '
+        s{(^\[po4a_paths\]\s+)(po/\S+)}{$1 . $ENV{PO4A_WORKDIR} . "/" . $2}e;
+        s{(^\[type:\s+\w+\]\s+)(content/\S+|po/\S+)}{$1 . $ENV{PO4A_WORKDIR} . "/" . $2}e;
+        s{((?:\$lang|[a-z_]+|add_[a-z_]+):)(content/\S+|po/\S+)}{$1 . $ENV{PO4A_WORKDIR} . "/" . $2}ge;
+    ' "$po4a_conf" > "$PO4A_RUN_CONF"
+fi
+
+po4a --verbose --previous --no-translations --rm-translations "$PO4A_RUN_CONF"
+
+if [ "$PO4A_RUN_CONF" != "$po4a_conf" ]; then
+    for file in po/content.pot po/content.*.po; do
+        sed -i "s#${PO4A_WORKDIR}/##g" "$file"
+    done
+fi

@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 # Requires po4a version 0.58 or higher.
 
-# go to project root
-PROJECT_ROOT="$(cd `dirname $0`/..; pwd -P)"
+# Run from the real repository root so generated .LANG.md files are added under
+# the actual content/ tree and po4a reports paths from this checkout.
+# The temporary no-space symlink workaround is only needed in
+# tools/update-translations.sh, when po4a updates .pot/.po files and shells out
+# to diff. Here we use --no-update, so running directly in the repo is safe and
+# keeps outputs in their expected location.
+PROJECT_ROOT="$(cd "$(dirname "$0")/.."; pwd -P)"
+
 cd "$PROJECT_ROOT"
 
 set -e

@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "name": "Pénalité de Darktable",
+      "x": [
+        "Chargement initial (GPU)",
+        "Chargement initial (CPU)",
+        "Zoom à 100 %",
+        "Panoramique à 100 %",
+        "Aller-retour table lumineuse",
+        "Désactivation d'un module",
+        "Pipette de couleur",
+        "Export complet",
+        "Export moitié taille"
+      ],
+      "y": [1.16, 1.21, 2.03, 1.97, 1.75, 40, 5.4, 1.27, 100],
+      "marker": {"color": "#d55e00"}
+    }
+  ],
+  "layout": {
+    "title": {"text": "Pénalité de performance de Darktable par cas de benchmark"},
+    "yaxis": {"title": {"text": "Darktable / Ansel (×)"}, "rangemode": "tozero"},
+    "xaxis": {"tickangle": -30},
+    "margin": {"l": 60, "r": 20, "t": 60, "b": 140}
+  }
+}
