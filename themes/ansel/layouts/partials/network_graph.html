@@ -23,6 +23,8 @@
 
 <script>
 window.addEventListener('DOMContentLoaded', function() {
+    var graphContainer = document.getElementById('network-graph');
+
     var elems = 
         [   // list of graph elements to start with
             { data: { id: '{{ .Permalink | md5 }}', 
@@ -31,7 +33,6 @@ window.addEventListener('DOMContentLoaded', function() {
                       count: {{ (index $network .Permalink).count }},
                       weight: 100 
                     }, 
-              position: { x: 50, y: 50 },
               classes: "currentNode" },
             {{- template "children" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
             {{- template "parents" (dict "Link" .Permalink "Recursion" 0 "Network" $network) -}}
@@ -69,28 +70,59 @@ window.addEventListener('DOMContentLoaded', function() {
 
     elems = uniq;
 
+    var layoutOptions = {
+        name: 'fcose',
+        quality: 'proof',
+        animate: true,
+        animationDuration: 500,
+        randomize: true,
+        fit: true,
+        padding: 20,
+        nodeDimensionsIncludeLabels: true,
+        avoidOverlap: true,
+        packComponents: true,
+        componentSpacing: 65,
+        nodeSeparation: 45,
+        nodeRepulsion: function(node) {
+            return node.hasClass('currentNode') ? 32000 : 13000;
+        },
+        idealEdgeLength: function(edge) {
+            return edge.source().hasClass('currentNode') || edge.target().hasClass('currentNode') ? 105 : 75;
+        },
+        edgeElasticity: 0.35,
+        nestingFactor: 0.1,
+        gravity: 0.8,
+        numIter: 2500,
+        tile: false
+    };
+
     var cy = cytoscape({
-        container: document.getElementById('network-graph'),
+        container: graphContainer,
         elements: elems,
         style: [ // the stylesheet for the graph
             {
                 selector: 'node',
                 style: {
                     'label': 'data(name)',
-                    'width': 'data(count)',
-                    'height': 'data(count)',
+                    'width': 'mapData(count, 0, 100, 18, 48)',
+                    'height': 'mapData(count, 0, 100, 18, 48)',
+                    'min-width': 18,
+                    'min-height': 18,
                     "text-valign": "top",
                     "text-halign": "center",
                     "background-color": "#666",
                     "text-wrap": "wrap",
-                    "text-max-width": 120,
-                    "font-size": 10,
+                    "text-max-width": 160,
+                    "font-size": 14,
+                    "min-zoomed-font-size": 10,
+                    "text-margin-y": -6,
+                    "events": "yes",
                 }
             },
             {
                 selector: 'edge',
                 style: {
-                    'curve-style': 'straight',
+                    'curve-style': 'bezier',
                     'width': 0.5,
                     'line-color': '#dcdcdc',
                     /*
@@ -132,52 +164,48 @@ window.addEventListener('DOMContentLoaded', function() {
                     'background-color': '#ffc107',
                 }
             }
-        ],
-
-        layout: 
-        {
-            // For fcose layout, remove 'padding' and use fcose options
-            // See https://github.com/iVis-at-Bilkent/cytoscape.js-fcose for more options
-            name: 'fcose',
-            quality: "proof",
-            padding: 0,
-            animate: true,
-            randomize: false,
-            packComponents: true,
-            nodeOverlap: 400,
-            animationThreshold: 250,
-            refresh: 100,
-            nodeDimensionsIncludeLabels: true,
-            avoidOverlap: true,
-            // False for random, true for greedy sampling
-            samplingType: true,
-            // Sample size to construct distance matrix
-            sampleSize: 40,
-            // Separation amount between nodes
-            nodeSeparation: 80,
-            // Power iteration tolerance
-            piTol: 0.0000001,
-            fit: true,
-            componentSpacing: 80,
-            nodeRepulsion: function( node ){ return 2096; },
-            idealEdgeLength: function( edge ){ return 80; },
-            edgeElasticity: function( edge ){ return 0.2; },
-            tile: true,
-            nestingFactor: 0.1,
-            gravity: 100,
-            gravityRange: 1000, 
-            numIter: 3000,
-            initialTemp: 1000,
-            coolingFactor: 0.95,
-            minTemp: 1.0,
-            startAngle: 3.14159, // optional: start at top
-            clockwise: true,
-            sort: undefined // keep default order
-        }
+        ]
     });
 
-    cy.on('tap', 'node', function(){
-        window.location.href = this.data('href');
+    function runLayout() {
+        cy.layout(layoutOptions).run();
+    }
+
+    cy.ready(function() {
+        window.requestAnimationFrame(runLayout);
+    });
+
+    graphContainer.style.overscrollBehavior = 'contain';
+    graphContainer.style.touchAction = 'none';
+
+    graphContainer.addEventListener('wheel', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }, { passive: false });
+
+    graphContainer.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+    }, { passive: false });
+
+    window.addEventListener('resize', function() {
+        cy.resize();
+        cy.fit(undefined, 30);
+    });
+
+    function openNode(event) {
+        var node = event.target;
+
+        if (!node || !node.isNode || !node.isNode()) {
+            return;
+        }
+
+        window.location.href = node.data('href');
+    }
+
+    cy.on('tap click', function(event) {
+        if (event.target !== cy && event.target.isNode && event.target.isNode()) {
+            openNode(event);
+        }
     });
 });
 </script>
