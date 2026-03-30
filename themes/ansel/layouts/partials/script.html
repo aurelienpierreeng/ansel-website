@@ -25,7 +25,7 @@
   </script>
   {{ */ -}}
   <script type="module" async>
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true,
                          theme: "neutral",
                          securityLevel: "loose",
@@ -34,7 +34,7 @@
 {{ end }}
 
 {{ if and (or (.Page.Store.Get "hasPlotly") .Params.plotly) (not .Params.plotlyfull) }}
-<script src="https://cdn.plot.ly/plotly-2.26.0.min.js" charset="utf-8" defer></script>
+<script src="https://cdn.plot.ly/plotly-3.4.0.min.js" charset="utf-8" defer></script>
 {{ end }}
 
 {{ if .Params.latex}}

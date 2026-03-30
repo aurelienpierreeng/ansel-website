@@ -774,3 +774,150 @@ Sane codebases protect data by making them private and forcing interactions thro
 Instead of that, Darktable sourcecode writes anywhere from everywhere, without proper interfaces. So any kind of change into the Darktable codebase systematically triggers edge-effects and breaks something unexpected at the other end of the software, in depressing sessions of _whack-a-mole_ born from laziness and stupidity.
 
 So, a lot of tedious work in Ansel has been done to tighten APIs, privatize as many data structures as possible, and isolate libraries from each other to de-entangle somewhat the dependency graph.
+
+## Annex : the plans
+
+### Whole architecture
+
+Here is the high-level flowchart of the whole architecture, from database to backbuffers. Now we can finally draw a flowchart of this mess.
+
+```mermaid
+flowchart TD
+  subgraph Module
+    M["Module instance<br/>dt_iop_module_t"]
+  end
+
+  subgraph Develop
+    H["dev->history<br/>history items"]
+    D["dt_develop_t<br/>history_end<br/>history_hash"]
+  end
+
+  subgraph Persist["DB + image cache"]
+    DB["SQLite history tables"]
+    IC["image cache<br/>dt_image_t"]
+  end
+
+  subgraph Pipeline
+    F["Pipe dirty flags"]
+    P["Pipe nodes / pieces"]
+    G["global_hash"]
+    B["Backbuf"]
+  end
+
+  subgraph Cache
+    C["Pixelpipe cache"]
+  end
+
+  subgraph Consumers["Backbuffer consumers"]
+    DR["darkroom.c"]
+    NAV["navigation.c"]
+    EXP["imageio.c"]
+  end
+
+  M -->|"write snapshot<br/>dt_dev_add_history_item_real()"| H
+  H -->|"update history_end / history_hash<br/>dt_dev_add_history_item_real()"| D
+
+  D -->|"write history<br/>dt_dev_write_history_ext()"| DB
+  D -->|"write image-side hash<br/>dt_dev_write_history_ext()"| IC
+
+  DB -.->|"read history<br/>dt_dev_read_history_ext()"| H
+  IC -.->|"read image metadata<br/>dt_dev_read_history_ext()"| H
+
+  H -->|"apply to modules<br/>dt_dev_pop_history_items_ext()"| M
+
+  D -->|"mark pipes dirty<br/>dt_dev_add_history_item_real()"| F
+  D -->|"check history mismatch<br/>dt_dev_darkroom_pipeline()"| F
+
+  H -->|"sync history into pipe<br/>dt_dev_pixelpipe_change()"| P
+  F -->|"consume dirty flags<br/>dt_dev_pixelpipe_change()"| P
+
+  P -->|"compute cache keys<br/>dt_pixelpipe_get_global_hash()"| G
+  G -->|"key cache entries<br/>dt_dev_pixelpipe_process_rec()"| C
+
+  C -.->|"read exact-hit / input<br/>dt_dev_pixelpipe_process_rec()"| P
+  P -->|"publish stage output<br/>dt_dev_pixelpipe_process_rec()"| C
+
+  C -->|"promote final output<br/>dt_dev_pixelpipe_process()"| B
+
+  B -->|"borrow main/preview backbuf<br/>_darkroom_expose()"| DR
+  B -->|"copy preview backbuf<br/>_lib_navigation_draw_callback()"| NAV
+  B -->|"borrow export backbuf<br/>dt_imageio_export_with_flags()"| EXP
+
+  EXP -->|"update mipmap hash<br/>dt_imageio_export_with_flags()"| IC
+
+```
+
+### RAM/vRAM memory management
+
+Cache buffers management :
+
+```mermaid
+flowchart TD
+  H["CPU RAM buffer"]
+  P["Pinned vRAM buffer<br/>CL_MEM_USE_HOST_PTR"]
+  V["Device-only vRAM buffer"]
+  G["pixelpipe_process_on_GPU()"]
+  C["pixelpipe_process_on_CPU()"]
+
+  H -->|"prepare GPU input<br/>dt_dev_pixelpipe_cache_prepare_cl_input()"| P
+  P -->|"sync host/device if needed<br/>dt_dev_pixelpipe_cache_sync_cl_buffer()"| G
+
+  V -->|"reuse existing vRAM input<br/>dt_dev_pixelpipe_cache_prepare_cl_input()"| G
+
+  G -->|"publish pinned output<br/>dt_dev_pixelpipe_cache_release_cl_buffer()"| P
+  G -->|"publish device-only output<br/>dt_dev_pixelpipe_cache_release_cl_buffer()"| V
+
+  V -->|"GPU to CPU fallback copy<br/>dt_dev_pixelpipe_cache_restore_cl_buffer()"| H
+  H -->|"resume CPU processing<br/>pixelpipe_process_on_CPU()"| C
+
+```
+
+If the module output is planned for caching (because of user preference, need for this buffer for histogram/color-picker, or the next module is the one active in GUI), OpenCL uses a pinned memory buffer (pinned on the RAM cache). We also pin input memory buffers, when the GPU takes input from the RAM cache. This is slightly more expensive than using a pure device-only buffer, but less expensive than copying that device-only buffer to the host. If the OpenCL output is not planned for caching, we use a device-only buffer that may be recycled later but will never be copied to RAM.
+
+In case of an OpenCL error for a particular module (most obvious one : out of memory), the GPU input buffer is transparently copied back on the RAM cache before falling back to the pure-CPU path.
+
+All those buffers are tracked by cache entries, which binds a RAM buffer with an vRAM one (if we use both in a pinned situation), or simply keep track of what is allocated. If a GPU memory allocation fails, we first browse the cache to release all previously-allocated buffers. If the GPU memory allocation fails again after that, we fallback to CPU.
+
+### Cache entries
+
+The cache is a hashtable of cache entries. Their key is a hash/checksum. We have 2 kinds of cache entries :
+
+- internal ones, used as reusable buffers for module inputs/outputs,
+- external ones, used as disposable buffers for modules intermediate computations.
+
+Internal cache entries are keyed by the `global_hash` of their parent module, and can be found again later (even from the GUI) because that hash is stable across runs and pipelines. They can be rekeyed if we reuse their memory buffer, so the new key matches the new state of their parent module. Those cache entries can be locked in read or write mode for safe concurrent access between parallel threads. A write lock can be captured by only one thread if no other thread is reading, a read lock can be captured by several threads if no other thread is writing. Since the write lock is released by the module writing its output earlier than the read lock is acquired by the module using the same cache entry as its input, and there is a risk of deletion in-between, they also have a `refcount` mechanism : the producer of the cache entry increments it, the consumer decrements it. The same mechanism is used by the darkroom to fetch the backbuffer with no copy. 
+
+External cache entries are keyed by the memory address of their data buffer. They are supposed to be short-lived.
+
+Adding/removing cache entries automatically increment/decrement the global cache size. We keep adding new entries for as long as the global cache size is below the allowed threshold, after which we start destroying the oldest entries if their `refcount` is 0 and they are not locked.
+
+```mermaid
+flowchart TD
+  A["absent"]
+  B["reserved for write<br/>refcount + 1<br/>write-locked"]
+  C["published<br/>exact-hit eligible"]
+  D["borrowed by consumer<br/>refcount > 0"]
+  E["backbuf-held<br/>one display ref kept"]
+  F["auto-destroy flagged"]
+  G["removed / freed"]
+
+  A -->|"create new entry<br/>dt_dev_pixelpipe_cache_get()<br/>dt_dev_pixelpipe_cache_get_writable()"| B
+  C -->|"rekey reusable entry<br/>dt_dev_pixelpipe_cache_get_writable()<br/>dt_dev_pixelpipe_cache_rekey()"| B
+
+  B -->|"backend finishes and unlocks<br/>dt_dev_pixelpipe_process_rec()"| C
+
+  C -->|"exact-hit / reopen / GUI read-only<br/>dt_dev_pixelpipe_cache_peek()<br/>dt_dev_pixelpipe_cache_get_read_only()"| D
+  D -->|"release consumer ref<br/>dt_dev_pixelpipe_cache_unref_hash()<br/>dt_dev_pixelpipe_cache_close_read_only()"| C
+
+  C -->|"keep final output alive for display<br/>_update_backbuf_cache_reference()"| E
+  E -->|"backbuf changes or invalidates<br/>_update_backbuf_cache_reference()"| C
+
+  C -->|"mark transient output<br/>dt_dev_pixelpipe_cache_flag_auto_destroy()"| F
+  F -->|"reap when no ref and no lock remain<br/>dt_dev_pixelpipe_cache_auto_destroy_apply()"| G
+
+  C -->|"explicit remove / GC / LRU<br/>dt_dev_pixelpipe_cache_remove()<br/>dt_dev_pixelpipe_cache_flush_old()<br/>dt_dev_pixel_pipe_cache_remove_lru()"| G
+  C -->|"invalid payload detected<br/>dt_dev_pixelpipe_cache_peek()"| G
+
+```
+
+__A cache entry doesn't know the kind of data it holds__. It knows only the addresses of the buffers, their size, their refcount and their lock state. So it is a generic abstraction of stuff contained in memory.
