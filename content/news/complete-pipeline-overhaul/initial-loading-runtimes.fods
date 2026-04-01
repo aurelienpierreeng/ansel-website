@@ -1,0 +1,2160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" office:version="1.3" office:mimetype="application/vnd.oasis.opendocument.spreadsheet">
+ <office:meta><dc:date>2026-04-02T17:26:33.384263210</dc:date><meta:editing-duration>PT31M57S</meta:editing-duration><meta:editing-cycles>8</meta:editing-cycles><meta:generator>LibreOffice/24.8.7.2$Linux_X86_64 LibreOffice_project/480$Build-2</meta:generator><meta:document-statistic meta:table-count="1" meta:cell-count="452" meta:object-count="0"/></office:meta>
+ <office:settings>
+  <config:config-item-set config:name="ooo:view-settings">
+   <config:config-item config:name="VisibleAreaTop" config:type="int">0</config:config-item>
+   <config:config-item config:name="VisibleAreaLeft" config:type="int">0</config:config-item>
+   <config:config-item config:name="VisibleAreaWidth" config:type="int">25735</config:config-item>
+   <config:config-item config:name="VisibleAreaHeight" config:type="int">46059</config:config-item>
+   <config:config-item-map-indexed config:name="Views">
+    <config:config-item-map-entry>
+     <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
+     <config:config-item-map-named config:name="Tables">
+      <config:config-item-map-entry config:name="Initial loading runtimes">
+       <config:config-item config:name="CursorPositionX" config:type="int">1</config:config-item>
+       <config:config-item config:name="CursorPositionY" config:type="int">83</config:config-item>
+       <config:config-item config:name="ActiveSplitRange" config:type="short">2</config:config-item>
+       <config:config-item config:name="PositionLeft" config:type="int">0</config:config-item>
+       <config:config-item config:name="PositionRight" config:type="int">0</config:config-item>
+       <config:config-item config:name="PositionTop" config:type="int">0</config:config-item>
+       <config:config-item config:name="PositionBottom" config:type="int">18</config:config-item>
+       <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
+       <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
+       <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
+       <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
+       <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
+       <config:config-item config:name="LegacySingleLineFontwork" config:type="boolean">false</config:config-item>
+       <config:config-item config:name="ConnectorUseSnapRect" config:type="boolean">false</config:config-item>
+       <config:config-item config:name="IgnoreBreakAfterMultilineField" config:type="boolean">false</config:config-item>
+      </config:config-item-map-entry>
+     </config:config-item-map-named>
+     <config:config-item config:name="ActiveTable" config:type="string">Initial loading runtimes</config:config-item>
+     <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">2409</config:config-item>
+     <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
+     <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
+     <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
+     <config:config-item config:name="ShowPageBreakPreview" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="ShowZeroValues" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="ShowNotes" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="ShowNoteAuthor" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="ShowFormulasMarks" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="GridColor" config:type="int">12632256</config:config-item>
+     <config:config-item config:name="FormulaBarHeight" config:type="short">1</config:config-item>
+     <config:config-item config:name="HasColumnRowHeaders" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="HasSheetTabs" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="IsOutlineSymbolsSet" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="IsValueHighlightingEnabled" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="IsSnapToRaster" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="RasterIsVisible" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="RasterResolutionX" config:type="int">1000</config:config-item>
+     <config:config-item config:name="RasterResolutionY" config:type="int">1000</config:config-item>
+     <config:config-item config:name="RasterSubdivisionX" config:type="int">1</config:config-item>
+     <config:config-item config:name="RasterSubdivisionY" config:type="int">1</config:config-item>
+     <config:config-item config:name="IsRasterAxisSynchronized" config:type="boolean">true</config:config-item>
+     <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="LegacySingleLineFontwork" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="ConnectorUseSnapRect" config:type="boolean">false</config:config-item>
+     <config:config-item config:name="IgnoreBreakAfterMultilineField" config:type="boolean">false</config:config-item>
+    </config:config-item-map-entry>
+   </config:config-item-map-indexed>
+  </config:config-item-set>
+  <config:config-item-set config:name="ooo:configuration-settings">
+   <config:config-item config:name="AllowPrintJobCancel" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ApplyUserData" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AutoCalculate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="CharacterCompressionType" config:type="short">0</config:config-item>
+   <config:config-item config:name="EmbedAsianScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedComplexScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedLatinScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedOnlyUsedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item-map-indexed config:name="ForbiddenCharacters">
+    <config:config-item-map-entry>
+     <config:config-item config:name="Language" config:type="string">fr</config:config-item>
+     <config:config-item config:name="Country" config:type="string">FR</config:config-item>
+     <config:config-item config:name="Variant" config:type="string"/>
+     <config:config-item config:name="BeginLine" config:type="string"/>
+     <config:config-item config:name="EndLine" config:type="string"/>
+    </config:config-item-map-entry>
+   </config:config-item-map-indexed>
+   <config:config-item config:name="GridColor" config:type="int">12632256</config:config-item>
+   <config:config-item config:name="HasColumnRowHeaders" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="HasSheetTabs" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ImagePreferredDPI" config:type="int">0</config:config-item>
+   <config:config-item config:name="IsDocumentShared" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IsKernAsianPunctuation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IsOutlineSymbolsSet" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IsRasterAxisSynchronized" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IsSnapToRaster" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="LinkUpdateMode" config:type="short">3</config:config-item>
+   <config:config-item config:name="LoadReadonly" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterName" config:type="string">HLL2350DW</config:config-item>
+   <config:config-item config:name="PrinterPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterSetup" config:type="base64Binary">ywH+/0hMTDIzNTBEVwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ1VQUzpITEwyMzUwRFcAAAAAAAAAAAAAAAAAAAAAAAAWAAMAtgAAAAAAAQAEAAhSAAAEdAAASm9iRGF0YSAxCnByaW50ZXI9SExMMjM1MERXCm9yaWVudGF0aW9uPVBvcnRyYWl0CmNvcGllcz0xCmNvbGxhdGU9ZmFsc2UKbWFyZ2luYWRqdXN0bWVudD0wLDAsJzAsMApjb2xvcmRlcHRoPTI0CmNvbG9yZGV2aWNlPTAKUFBEQ29udGV4dERhdGEKUGFnZVNpemU6QTQASW5wdXRTbG90OlRSQVkxAER1cGxleDpOb25lAAASAENPTVBBVF9EVVBMRVhfTU9ERQ8ARHVwbGV4TW9kZTo6T2ZmDABQUklOVEVSX05BTUUJAEhMTDIzNTBEVwsARFJJVkVSX05BTUUOAENVUFM6SExMMjM1MERX</config:config-item>
+   <config:config-item config:name="RasterIsVisible" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="RasterResolutionX" config:type="int">1000</config:config-item>
+   <config:config-item config:name="RasterResolutionY" config:type="int">1000</config:config-item>
+   <config:config-item config:name="RasterSubdivisionX" config:type="int">1</config:config-item>
+   <config:config-item config:name="RasterSubdivisionY" config:type="int">1</config:config-item>
+   <config:config-item config:name="SaveThumbnail" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SaveVersionOnClose" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ShowFormulasMarks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ShowNoteAuthor" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ShowNotes" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ShowPageBreaks" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ShowZeroValues" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SyntaxStringRef" config:type="short">7</config:config-item>
+   <config:config-item config:name="UpdateFromTemplate" config:type="boolean">true</config:config-item>
+   <config:config-item-map-named config:name="ScriptConfiguration">
+    <config:config-item-map-entry config:name="Initial loading runtimes">
+     <config:config-item config:name="CodeName" config:type="string">Feuille1</config:config-item>
+    </config:config-item-map-entry>
+   </config:config-item-map-named>
+  </config:config-item-set>
+ </office:settings>
+ <office:scripts>
+  <office:script script:language="ooo:Basic">
+   <ooo:libraries xmlns:ooo="http://openoffice.org/2004/office" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ooo:library-embedded ooo:name="Standard"/>
+   </ooo:libraries>
+  </office:script>
+ </office:scripts>
+ <office:font-face-decls>
+  <style:font-face style:name="Liberation Sans" svg:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Sans CJK SC" svg:font-family="&apos;Noto Sans CJK SC&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Sans Devanagari" svg:font-family="&apos;Noto Sans Devanagari&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+ </office:font-face-decls>
+ <office:styles>
+  <style:default-style style:family="table-cell">
+   <style:paragraph-properties style:tab-stop-distance="1.25cm"/>
+   <style:text-properties style:font-name="Liberation Sans" fo:font-size="10pt" fo:language="fr" fo:country="FR" style:font-name-asian="Noto Sans CJK SC" style:font-size-asian="10pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Noto Sans Devanagari" style:font-size-complex="10pt" style:language-complex="hi" style:country-complex="IN"/>
+  </style:default-style>
+  <style:default-style style:family="graphic">
+   <style:graphic-properties svg:stroke-color="#3465a4" draw:fill-color="#729fcf" fo:wrap-option="no-wrap" draw:shadow-offset-x="0.3cm" draw:shadow-offset-y="0.3cm" style:writing-mode="page"/>
+   <style:paragraph-properties style:text-autospace="ideograph-alpha" style:punctuation-wrap="simple" style:line-break="strict" loext:tab-stop-distance="0cm" style:writing-mode="page" style:font-independent-line-spacing="false">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties style:use-window-font-color="true" loext:opacity="0%" fo:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:language="fr" fo:country="FR" style:letter-kerning="true" style:font-family-asian="&apos;DejaVu Sans&apos;" style:font-family-generic-asian="system" style:font-pitch-asian="variable" style:font-size-asian="12pt" style:language-asian="zh" style:country-asian="CN" style:font-family-complex="&apos;Bitstream Vera Sans&apos;" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN"/>
+  </style:default-style>
+  <style:style style:name="Default" style:family="graphic"/>
+  <style:style style:name="Note" style:family="graphic" style:parent-style-name="Default">
+   <style:graphic-properties draw:stroke="solid" draw:marker-start="Extrémités_20_de_20_flèche_20_1" draw:marker-start-width="0.2cm" draw:marker-start-center="false" draw:fill="solid" draw:fill-color="#ffffc0" draw:auto-grow-height="true" draw:auto-grow-width="false" fo:padding-top="0.1cm" fo:padding-bottom="0.1cm" fo:padding-left="0.1cm" fo:padding-right="0.1cm" draw:shadow="visible" draw:shadow-offset-x="0.1cm" draw:shadow-offset-y="0.1cm"/>
+   <style:text-properties style:font-name="Liberation Sans" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable" fo:font-size="10pt" style:font-name-asian="Noto Sans CJK SC" style:font-family-asian="&apos;Noto Sans CJK SC&apos;" style:font-family-generic-asian="system" style:font-pitch-asian="variable" style:font-size-asian="10pt" style:font-name-complex="Noto Sans Devanagari" style:font-family-complex="&apos;Noto Sans Devanagari&apos;" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="10pt"/>
+  </style:style>
+  <number:number-style style:name="N0">
+   <number:number number:min-integer-digits="1"/>
+  </number:number-style>
+  <number:currency-style style:name="N114P0" style:volatile="true">
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
+   <number:text> </number:text>
+   <number:currency-symbol number:language="fr" number:country="FR">€</number:currency-symbol>
+  </number:currency-style>
+  <number:currency-style style:name="N114">
+   <style:text-properties fo:color="#ff0000"/>
+   <number:text>-</number:text>
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
+   <number:text> </number:text>
+   <number:currency-symbol number:language="fr" number:country="FR">€</number:currency-symbol>
+   <style:map style:condition="value()&gt;=0" style:apply-style-name="N114P0"/>
+  </number:currency-style>
+  <number:currency-style style:name="N116P0" style:volatile="true">
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
+   <number:text> </number:text>
+   <number:currency-symbol number:language="fr" number:country="FR">€</number:currency-symbol>
+  </number:currency-style>
+  <number:currency-style style:name="N116">
+   <style:text-properties fo:color="#ff0000"/>
+   <number:text>-</number:text>
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
+   <number:text> </number:text>
+   <number:currency-symbol number:language="fr" number:country="FR">€</number:currency-symbol>
+   <style:map style:condition="value()&gt;=0" style:apply-style-name="N116P0"/>
+  </number:currency-style>
+  <number:number-style style:name="N117">
+   <number:text>+</number:text>
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1"/>
+  </number:number-style>
+  <number:percentage-style style:name="N118">
+   <number:text>+</number:text>
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1"/>
+   <number:text>%</number:text>
+  </number:percentage-style>
+  <number:percentage-style style:name="N119">
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1"/>
+   <number:text>%</number:text>
+  </number:percentage-style>
+  <number:number-style style:name="N120">
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1"/>
+   <number:text>×</number:text>
+  </number:number-style>
+  <number:percentage-style style:name="N121">
+   <number:number number:decimal-places="1" number:min-decimal-places="1" number:min-integer-digits="1"/>
+   <number:text> %</number:text>
+  </number:percentage-style>
+  <number:number-style style:name="N10117" number:language="en" number:country="CA">
+   <number:number number:decimal-places="3" number:min-decimal-places="3" number:min-integer-digits="1"/>
+  </number:number-style>
+  <style:style style:name="Default" style:family="table-cell"/>
+  <style:style style:name="Heading" style:family="table-cell" style:parent-style-name="Default">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:font-size="24pt" fo:font-style="normal" fo:font-weight="bold" style:font-size-asian="24pt" style:font-style-asian="normal" style:font-weight-asian="bold" style:font-size-complex="24pt" style:font-style-complex="normal" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Heading_20_1" style:display-name="Heading 1" style:family="table-cell" style:parent-style-name="Heading">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:font-size="18pt" style:font-size-asian="18pt" style:font-size-complex="18pt"/>
+  </style:style>
+  <style:style style:name="Heading_20_2" style:display-name="Heading 2" style:family="table-cell" style:parent-style-name="Heading">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:font-size="12pt" style:font-size-asian="12pt" style:font-size-complex="12pt"/>
+  </style:style>
+  <style:style style:name="Text" style:family="table-cell" style:parent-style-name="Default">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+  </style:style>
+  <style:style style:name="Note" style:family="table-cell" style:parent-style-name="Text">
+   <style:table-cell-properties fo:background-color="#ffffcc" style:diagonal-bl-tr="none" style:diagonal-tl-br="none" fo:wrap-option="no-wrap" fo:border="0.74pt solid #808080" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#333333"/>
+  </style:style>
+  <style:style style:name="Footnote" style:family="table-cell" style:parent-style-name="Text">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#808080" fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="Hyperlink" style:family="table-cell" style:parent-style-name="Text">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#0000ee" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="#0000ee"/>
+  </style:style>
+  <style:style style:name="Status" style:family="table-cell" style:parent-style-name="Default">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+  </style:style>
+  <style:style style:name="Good" style:family="table-cell" style:parent-style-name="Status">
+   <style:table-cell-properties fo:background-color="#ccffcc" fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#006600"/>
+  </style:style>
+  <style:style style:name="Neutral" style:family="table-cell" style:parent-style-name="Status">
+   <style:table-cell-properties fo:background-color="#ffffcc" fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#996600"/>
+  </style:style>
+  <style:style style:name="Bad" style:family="table-cell" style:parent-style-name="Status">
+   <style:table-cell-properties fo:background-color="#ffcccc" fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#cc0000"/>
+  </style:style>
+  <style:style style:name="Warning" style:family="table-cell" style:parent-style-name="Status">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#cc0000"/>
+  </style:style>
+  <style:style style:name="Error" style:family="table-cell" style:parent-style-name="Status">
+   <style:table-cell-properties fo:background-color="#cc0000" fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#ffffff" fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Accent" style:family="table-cell" style:parent-style-name="Default">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Accent_20_1" style:display-name="Accent 1" style:family="table-cell" style:parent-style-name="Accent">
+   <style:table-cell-properties fo:background-color="#000000" fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#ffffff"/>
+  </style:style>
+  <style:style style:name="Accent_20_2" style:display-name="Accent 2" style:family="table-cell" style:parent-style-name="Accent">
+   <style:table-cell-properties fo:background-color="#808080" fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:color="#ffffff"/>
+  </style:style>
+  <style:style style:name="Accent_20_3" style:display-name="Accent 3" style:family="table-cell" style:parent-style-name="Accent">
+   <style:table-cell-properties fo:background-color="#dddddd" fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+  </style:style>
+  <style:style style:name="Result" style:family="table-cell" style:parent-style-name="Default">
+   <style:table-cell-properties fo:wrap-option="no-wrap" style:shrink-to-fit="false"/>
+   <style:text-properties fo:font-style="italic" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" fo:font-weight="bold" style:font-style-asian="italic" style:font-weight-asian="bold" style:font-style-complex="italic" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default">
+   <style:text-properties fo:font-weight="bold"/>
+  </style:style>
+  <draw:marker draw:name="Extrémités_20_de_20_flèche_20_1" draw:display-name="Extrémités de flèche 1" svg:viewBox="0 0 20 30" svg:d="M10 0l-10 30h20z"/>
+  <loext:theme loext:name="Office">
+   <loext:theme-colors loext:name="LibreOffice">
+    <loext:color loext:name="dark1" loext:color="#000000"/>
+    <loext:color loext:name="light1" loext:color="#ffffff"/>
+    <loext:color loext:name="dark2" loext:color="#000000"/>
+    <loext:color loext:name="light2" loext:color="#ffffff"/>
+    <loext:color loext:name="accent1" loext:color="#18a303"/>
+    <loext:color loext:name="accent2" loext:color="#0369a3"/>
+    <loext:color loext:name="accent3" loext:color="#a33e03"/>
+    <loext:color loext:name="accent4" loext:color="#8e03a3"/>
+    <loext:color loext:name="accent5" loext:color="#c99c00"/>
+    <loext:color loext:name="accent6" loext:color="#c9211e"/>
+    <loext:color loext:name="hyperlink" loext:color="#0000ee"/>
+    <loext:color loext:name="followed-hyperlink" loext:color="#551a8b"/>
+   </loext:theme-colors>
+  </loext:theme>
+ </office:styles>
+ <office:automatic-styles>
+  <style:style style:name="co1" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="6.001cm"/>
+  </style:style>
+  <style:style style:name="co2" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="3cm"/>
+  </style:style>
+  <style:style style:name="co3" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="3.623cm"/>
+  </style:style>
+  <style:style style:name="co4" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="2.942cm"/>
+  </style:style>
+  <style:style style:name="co5" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="3.702cm"/>
+  </style:style>
+  <style:style style:name="co6" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="3.466cm"/>
+  </style:style>
+  <style:style style:name="co7" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
+  </style:style>
+  <style:style style:name="ro1" style:family="table-row">
+   <style:table-row-properties style:row-height="0.452cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+  </style:style>
+  <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
+   <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
+  </style:style>
+  <number:number-style style:name="N2">
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1"/>
+  </number:number-style>
+  <number:number-style style:name="N10002" number:language="en" number:country="CA">
+   <number:number number:decimal-places="2" number:min-decimal-places="2" number:min-integer-digits="1"/>
+  </number:number-style>
+  <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="ce4" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10117"/>
+  <style:style style:name="ce5" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10002">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10002"/>
+  <style:style style:name="ce7" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N121"/>
+  <style:style style:name="ce8" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N120">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="ce9" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N120"/>
+  <style:style style:name="ce10" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N2"/>
+  <style:style style:name="ce11" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N120">
+   <style:text-properties fo:font-weight="normal" style:font-weight-asian="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:style style:name="ce12" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N121">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="ce13" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N119"/>
+  <style:style style:name="ce14" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N121">
+   <style:text-properties fo:font-weight="normal" style:font-weight-asian="normal" style:font-weight-complex="normal"/>
+  </style:style>
+  <style:page-layout style:name="pm1">
+   <style:page-layout-properties style:writing-mode="lr-tb"/>
+   <style:header-style>
+    <style:header-footer-properties fo:min-height="0.75cm" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-bottom="0.25cm"/>
+   </style:header-style>
+   <style:footer-style>
+    <style:header-footer-properties fo:min-height="0.75cm" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0.25cm"/>
+   </style:footer-style>
+  </style:page-layout>
+  <style:page-layout style:name="pm2">
+   <style:page-layout-properties style:writing-mode="lr-tb"/>
+   <style:header-style>
+    <style:header-footer-properties fo:min-height="0.75cm" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-bottom="0.25cm" fo:border="1.5pt solid #000000" fo:padding="0.018cm" fo:background-color="#c0c0c0">
+     <style:background-image/>
+    </style:header-footer-properties>
+   </style:header-style>
+   <style:footer-style>
+    <style:header-footer-properties fo:min-height="0.75cm" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0.25cm" fo:border="1.5pt solid #000000" fo:padding="0.018cm" fo:background-color="#c0c0c0">
+     <style:background-image/>
+    </style:header-footer-properties>
+   </style:footer-style>
+  </style:page-layout>
+ </office:automatic-styles>
+ <office:master-styles>
+  <style:master-page style:name="Default" style:page-layout-name="pm1">
+   <style:header>
+    <text:p><text:sheet-name>???</text:sheet-name></text:p>
+   </style:header>
+   <style:header-left style:display="false"/>
+   <style:header-first style:display="false"/>
+   <style:footer>
+    <text:p>Page <text:page-number>1</text:page-number></text:p>
+   </style:footer>
+   <style:footer-left style:display="false"/>
+   <style:footer-first style:display="false"/>
+  </style:master-page>
+  <style:master-page style:name="Report" style:page-layout-name="pm2">
+   <style:header>
+    <style:region-left>
+     <text:p><text:sheet-name>???</text:sheet-name><text:s/>(<text:title>???</text:title>)</text:p>
+    </style:region-left>
+    <style:region-right>
+     <text:p><text:date style:data-style-name="N2" text:date-value="2026-04-02">00/00/0000</text:date>, <text:time style:data-style-name="N2" text:time-value="15:39:21.647993068">00:00:00</text:time></text:p>
+    </style:region-right>
+   </style:header>
+   <style:header-left style:display="false"/>
+   <style:header-first style:display="false"/>
+   <style:footer>
+    <text:p>Page <text:page-number>1</text:page-number><text:s/>/ <text:page-count>99</text:page-count></text:p>
+   </style:footer>
+   <style:footer-left style:display="false"/>
+   <style:footer-first style:display="false"/>
+  </style:master-page>
+ </office:master-styles>
+ <office:body>
+  <office:spreadsheet>
+   <table:table table:name="Initial loading runtimes" table:style-name="ta1">
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co2" table:number-columns-repeated="2" table:default-cell-style-name="ce4"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="ce8"/>
+    <table:table-column table:style-name="co4" table:default-cell-style-name="ce12"/>
+    <table:table-column table:style-name="co5" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co6" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co7" table:default-cell-style-name="Default"/>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Config 1 CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="4"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Module / chip</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Ansel Master</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Darktable 5.4.1</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2" table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Ansel</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2" table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Darktable</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Raw settings* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.028" calcext:value-type="float">
+      <text:p>0.028</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.04" calcext:value-type="float">
+      <text:p>0.040</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C3]/[.B3]" office:value-type="float" office:value="1.42857142857143" calcext:value-type="float">
+      <text:p>1,43×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C3]-[.B3])/[.C3]" office:value-type="percentage" office:value="0.3" calcext:value-type="percentage">
+      <text:p>30,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B3]/[.C3]" office:value-type="float" office:value="0.7" calcext:value-type="float">
+      <text:p>0,70×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>White balance* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.027" calcext:value-type="float">
+      <text:p>0.027</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.029" calcext:value-type="float">
+      <text:p>0.029</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C4]/[.B4]" office:value-type="float" office:value="1.07407407407407" calcext:value-type="float">
+      <text:p>1,07×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C4]-[.B4])/[.C4]" office:value-type="percentage" office:value="0.0689655172413794" calcext:value-type="percentage">
+      <text:p>6,9 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B4]/[.C4]" office:value-type="float" office:value="0.931034482758621" calcext:value-type="float">
+      <text:p>0,93×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Highlights reconstruction* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="6.228" calcext:value-type="float">
+      <text:p>6.228</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="6.328" calcext:value-type="float">
+      <text:p>6.328</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C5]/[.B5]" office:value-type="float" office:value="1.01605651894669" calcext:value-type="float">
+      <text:p>1,02×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C5]-[.B5])/[.C5]" office:value-type="percentage" office:value="0.015802781289507" calcext:value-type="percentage">
+      <text:p>1,6 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B5]/[.C5]" office:value-type="float" office:value="0.984197218710493" calcext:value-type="float">
+      <text:p>0,98×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Demosaic* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.349" calcext:value-type="float">
+      <text:p>0.349</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.717" calcext:value-type="float">
+      <text:p>0.717</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C6]/[.B6]" office:value-type="float" office:value="2.05444126074499" calcext:value-type="float">
+      <text:p>2,05×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C6]-[.B6])/[.C6]" office:value-type="percentage" office:value="0.513249651324965" calcext:value-type="percentage">
+      <text:p>51,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B6]/[.C6]" office:value-type="float" office:value="0.486750348675035" calcext:value-type="float">
+      <text:p>0,49×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Exposure / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.005" calcext:value-type="float">
+      <text:p>0.005</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.012" calcext:value-type="float">
+      <text:p>0.012</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C7]/[.B7]" office:value-type="float" office:value="2.4" calcext:value-type="float">
+      <text:p>2,40×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C7]-[.B7])/[.C7]" office:value-type="percentage" office:value="0.583333333333333" calcext:value-type="percentage">
+      <text:p>58,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B7]/[.C7]" office:value-type="float" office:value="0.416666666666667" calcext:value-type="float">
+      <text:p>0,42×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Input color profile / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.003" calcext:value-type="float">
+      <text:p>0.003</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.015" calcext:value-type="float">
+      <text:p>0.015</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C8]/[.B8]" office:value-type="float" office:value="5" calcext:value-type="float">
+      <text:p>5,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C8]-[.B8])/[.C8]" office:value-type="percentage" office:value="0.8" calcext:value-type="percentage">
+      <text:p>80,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B8]/[.C8]" office:value-type="float" office:value="0.2" calcext:value-type="float">
+      <text:p>0,20×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color calibration / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.061" calcext:value-type="float">
+      <text:p>0.061</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.084" calcext:value-type="float">
+      <text:p>0.084</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C9]/[.B9]" office:value-type="float" office:value="1.37704918032787" calcext:value-type="float">
+      <text:p>1,38×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C9]-[.B9])/[.C9]" office:value-type="percentage" office:value="0.273809523809524" calcext:value-type="percentage">
+      <text:p>27,4 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B9]/[.C9]" office:value-type="float" office:value="0.726190476190476" calcext:value-type="float">
+      <text:p>0,73×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Diffuse or sharpen / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="3.882" calcext:value-type="float">
+      <text:p>3.882</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="4.21" calcext:value-type="float">
+      <text:p>4.210</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C10]/[.B10]" office:value-type="float" office:value="1.08449252962391" calcext:value-type="float">
+      <text:p>1,08×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C10]-[.B10])/[.C10]" office:value-type="percentage" office:value="0.0779097387173396" calcext:value-type="percentage">
+      <text:p>7,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B10]/[.C10]" office:value-type="float" office:value="0.92209026128266" calcext:value-type="float">
+      <text:p>0,92×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color balance RGB / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.251" calcext:value-type="float">
+      <text:p>0.251</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.261" calcext:value-type="float">
+      <text:p>0.261</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C11]/[.B11]" office:value-type="float" office:value="1.0398406374502" calcext:value-type="float">
+      <text:p>1,04×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C11]-[.B11])/[.C11]" office:value-type="percentage" office:value="0.0383141762452108" calcext:value-type="percentage">
+      <text:p>3,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B11]/[.C11]" office:value-type="float" office:value="0.961685823754789" calcext:value-type="float">
+      <text:p>0,96×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Filmic RGB / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.137" calcext:value-type="float">
+      <text:p>0.137</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.14" calcext:value-type="float">
+      <text:p>0.140</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C12]/[.B12]" office:value-type="float" office:value="1.02189781021898" calcext:value-type="float">
+      <text:p>1,02×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C12]-[.B12])/[.C12]" office:value-type="percentage" office:value="0.0214285714285714" calcext:value-type="percentage">
+      <text:p>2,1 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B12]/[.C12]" office:value-type="float" office:value="0.978571428571429" calcext:value-type="float">
+      <text:p>0,98×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Output color profile / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.013" calcext:value-type="float">
+      <text:p>0.013</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.021" calcext:value-type="float">
+      <text:p>0.021</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C13]/[.B13]" office:value-type="float" office:value="1.61538461538462" calcext:value-type="float">
+      <text:p>1,62×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C13]-[.B13])/[.C13]" office:value-type="percentage" office:value="0.380952380952381" calcext:value-type="percentage">
+      <text:p>38,1 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B13]/[.C13]" office:value-type="float" office:value="0.619047619047619" calcext:value-type="float">
+      <text:p>0,62×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Dithering (CPU only) / CPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.024" calcext:value-type="float">
+      <text:p>0.024</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.059" calcext:value-type="float">
+      <text:p>0.059</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C14]/[.B14]" office:value-type="float" office:value="2.45833333333333" calcext:value-type="float">
+      <text:p>2,46×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C14]-[.B14])/[.C14]" office:value-type="percentage" office:value="0.593220338983051" calcext:value-type="percentage">
+      <text:p>59,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B14]/[.C14]" office:value-type="float" office:value="0.406779661016949" calcext:value-type="float">
+      <text:p>0,41×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Gamma / display encoding (CPU only) / CPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.011" calcext:value-type="float">
+      <text:p>0.011</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.009" calcext:value-type="float">
+      <text:p>0.009</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C15]/[.B15]" office:value-type="float" office:value="0.818181818181818" calcext:value-type="float">
+      <text:p>0,82×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C15]-[.B15])/[.C15]" office:value-type="percentage" office:value="-0.222222222222222" calcext:value-type="percentage">
+      <text:p>-22,2 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B15]/[.C15]" office:value-type="float" office:value="1.22222222222222" calcext:value-type="float">
+      <text:p>1,22×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>TOTAL (s)</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="11.391" calcext:value-type="float">
+      <text:p>11.391</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="13.66" calcext:value-type="float">
+      <text:p>13.660</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C16]/[.B16]" office:value-type="float" office:value="1.19919234483364" calcext:value-type="float">
+      <text:p>1,20×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C16]-[.B16])/[.C16]" office:value-type="percentage" office:value="0.16610541727672" calcext:value-type="percentage">
+      <text:p>16,6 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8"/>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell/>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce10"/>
+     <table:table-cell table:style-name="ce13"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Config 1 GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce10"/>
+     <table:table-cell table:style-name="ce13"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Module / chip</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Ansel Master</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Darktable 5.4.1</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2" table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Ansel</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Darktable</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Raw settings* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.014" calcext:value-type="float">
+      <text:p>0.014</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.017" calcext:value-type="float">
+      <text:p>0.017</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C20]/[.B20]" office:value-type="float" office:value="1.21428571428571" calcext:value-type="float">
+      <text:p>1,21×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C20]-[.B20])/[.C20]" office:value-type="percentage" office:value="0.176470588235294" calcext:value-type="percentage">
+      <text:p>17,6 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B20]/[.C20]" office:value-type="float" office:value="0.823529411764706" calcext:value-type="float">
+      <text:p>0,82×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>White balance* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.012" calcext:value-type="float">
+      <text:p>0.012</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.013" calcext:value-type="float">
+      <text:p>0.013</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C21]/[.B21]" office:value-type="float" office:value="1.08333333333333" calcext:value-type="float">
+      <text:p>1,08×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C21]-[.B21])/[.C21]" office:value-type="percentage" office:value="0.0769230769230769" calcext:value-type="percentage">
+      <text:p>7,7 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B21]/[.C21]" office:value-type="float" office:value="0.923076923076923" calcext:value-type="float">
+      <text:p>0,92×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Highlights reconstruction* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="3.559" calcext:value-type="float">
+      <text:p>3.559</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="3.7" calcext:value-type="float">
+      <text:p>3.700</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C22]/[.B22]" office:value-type="float" office:value="1.03961787018826" calcext:value-type="float">
+      <text:p>1,04×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C22]-[.B22])/[.C22]" office:value-type="percentage" office:value="0.0381081081081081" calcext:value-type="percentage">
+      <text:p>3,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B22]/[.C22]" office:value-type="float" office:value="0.961891891891892" calcext:value-type="float">
+      <text:p>0,96×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Demosaic* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.521" calcext:value-type="float">
+      <text:p>0.521</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.49" calcext:value-type="float">
+      <text:p>0.490</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C23]/[.B23]" office:value-type="float" office:value="0.940499040307102" calcext:value-type="float">
+      <text:p>0,94×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C23]-[.B23])/[.C23]" office:value-type="percentage" office:value="-0.063265306122449" calcext:value-type="percentage">
+      <text:p>-6,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B23]/[.C23]" office:value-type="float" office:value="1.06326530612245" calcext:value-type="float">
+      <text:p>1,06×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Exposure / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.001" calcext:value-type="float">
+      <text:p>0.001</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.01" calcext:value-type="float">
+      <text:p>0.010</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C24]/[.B24]" office:value-type="float" office:value="10" calcext:value-type="float">
+      <text:p>10,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C24]-[.B24])/[.C24]" office:value-type="percentage" office:value="0.9" calcext:value-type="percentage">
+      <text:p>90,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B24]/[.C24]" office:value-type="float" office:value="0.1" calcext:value-type="float">
+      <text:p>0,10×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Input color profile / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.002" calcext:value-type="float">
+      <text:p>0.002</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.032" calcext:value-type="float">
+      <text:p>0.032</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C25]/[.B25]" office:value-type="float" office:value="16" calcext:value-type="float">
+      <text:p>16,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C25]-[.B25])/[.C25]" office:value-type="percentage" office:value="0.9375" calcext:value-type="percentage">
+      <text:p>93,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B25]/[.C25]" office:value-type="float" office:value="0.0625" calcext:value-type="float">
+      <text:p>0,06×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color calibration / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.001" calcext:value-type="float">
+      <text:p>0.001</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.039" calcext:value-type="float">
+      <text:p>0.039</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C26]/[.B26]" office:value-type="float" office:value="39" calcext:value-type="float">
+      <text:p>39,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C26]-[.B26])/[.C26]" office:value-type="percentage" office:value="0.974358974358974" calcext:value-type="percentage">
+      <text:p>97,4 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B26]/[.C26]" office:value-type="float" office:value="0.0256410256410256" calcext:value-type="float">
+      <text:p>0,03×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Diffuse or sharpen / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1.164" calcext:value-type="float">
+      <text:p>1.164</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1.69" calcext:value-type="float">
+      <text:p>1.690</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C27]/[.B27]" office:value-type="float" office:value="1.45189003436426" calcext:value-type="float">
+      <text:p>1,45×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C27]-[.B27])/[.C27]" office:value-type="percentage" office:value="0.311242603550296" calcext:value-type="percentage">
+      <text:p>31,1 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B27]/[.C27]" office:value-type="float" office:value="0.688757396449704" calcext:value-type="float">
+      <text:p>0,69×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color balance RGB / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.009" calcext:value-type="float">
+      <text:p>0.009</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.012" calcext:value-type="float">
+      <text:p>0.012</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C28]/[.B28]" office:value-type="float" office:value="1.33333333333333" calcext:value-type="float">
+      <text:p>1,33×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C28]-[.B28])/[.C28]" office:value-type="percentage" office:value="0.25" calcext:value-type="percentage">
+      <text:p>25,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B28]/[.C28]" office:value-type="float" office:value="0.75" calcext:value-type="float">
+      <text:p>0,75×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Filmic RGB / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.006" calcext:value-type="float">
+      <text:p>0.006</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.011" calcext:value-type="float">
+      <text:p>0.011</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C29]/[.B29]" office:value-type="float" office:value="1.83333333333333" calcext:value-type="float">
+      <text:p>1,83×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C29]-[.B29])/[.C29]" office:value-type="percentage" office:value="0.454545454545455" calcext:value-type="percentage">
+      <text:p>45,5 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B29]/[.C29]" office:value-type="float" office:value="0.545454545454546" calcext:value-type="float">
+      <text:p>0,55×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Output color profile / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.022" calcext:value-type="float">
+      <text:p>0.022</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.052" calcext:value-type="float">
+      <text:p>0.052</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C30]/[.B30]" office:value-type="float" office:value="2.36363636363636" calcext:value-type="float">
+      <text:p>2,36×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C30]-[.B30])/[.C30]" office:value-type="percentage" office:value="0.576923076923077" calcext:value-type="percentage">
+      <text:p>57,7 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B30]/[.C30]" office:value-type="float" office:value="0.423076923076923" calcext:value-type="float">
+      <text:p>0,42×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Dithering (CPU only) / GPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.044" calcext:value-type="float">
+      <text:p>0.044</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.088" calcext:value-type="float">
+      <text:p>0.088</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C31]/[.B31]" office:value-type="float" office:value="2" calcext:value-type="float">
+      <text:p>2,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C31]-[.B31])/[.C31]" office:value-type="percentage" office:value="0.5" calcext:value-type="percentage">
+      <text:p>50,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B31]/[.C31]" office:value-type="float" office:value="0.5" calcext:value-type="float">
+      <text:p>0,50×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Gamma / display encoding (CPU only) / GPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.013" calcext:value-type="float">
+      <text:p>0.013</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.009" calcext:value-type="float">
+      <text:p>0.009</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C32]/[.B32]" office:value-type="float" office:value="0.692307692307692" calcext:value-type="float">
+      <text:p>0,69×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C32]-[.B32])/[.C32]" office:value-type="percentage" office:value="-0.444444444444445" calcext:value-type="percentage">
+      <text:p>-44,4 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B32]/[.C32]" office:value-type="float" office:value="1.44444444444444" calcext:value-type="float">
+      <text:p>1,44×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>TOTAL (s)</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="5.914" calcext:value-type="float">
+      <text:p>5.914</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="6.822" calcext:value-type="float">
+      <text:p>6.822</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C33]/[.B33]" office:value-type="float" office:value="1.15353398714914" calcext:value-type="float">
+      <text:p>1,15×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C33]-[.B33])/[.C33]" office:value-type="percentage" office:value="0.13309879800645" calcext:value-type="percentage">
+      <text:p>13,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8"/>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell/>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce10"/>
+     <table:table-cell table:style-name="ce13"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Config 2 CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce10"/>
+     <table:table-cell table:style-name="ce13"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Module / chip</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Ansel Master</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Darktable 5.4.1</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2" table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Ansel</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Darktable</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Raw settings* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.067" calcext:value-type="float">
+      <text:p>0.067</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.049" calcext:value-type="float">
+      <text:p>0.049</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C37]/[.B37]" office:value-type="float" office:value="0.73134328358209" calcext:value-type="float">
+      <text:p>0,73×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C37]-[.B37])/[.C37]" office:value-type="percentage" office:value="-0.36734693877551" calcext:value-type="percentage">
+      <text:p>-36,7 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B37]/[.C37]" office:value-type="float" office:value="1.36734693877551" calcext:value-type="float">
+      <text:p>1,37×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>White balance* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.07" calcext:value-type="float">
+      <text:p>0.070</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.035" calcext:value-type="float">
+      <text:p>0.035</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C38]/[.B38]" office:value-type="float" office:value="0.5" calcext:value-type="float">
+      <text:p>0,50×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C38]-[.B38])/[.C38]" office:value-type="percentage" office:value="-1" calcext:value-type="percentage">
+      <text:p>-100,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B38]/[.C38]" office:value-type="float" office:value="2" calcext:value-type="float">
+      <text:p>2,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Highlights reconstruction* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="13.416" calcext:value-type="float">
+      <text:p>13.416</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="12.909" calcext:value-type="float">
+      <text:p>12.909</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C39]/[.B39]" office:value-type="float" office:value="0.962209302325581" calcext:value-type="float">
+      <text:p>0,96×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C39]-[.B39])/[.C39]" office:value-type="percentage" office:value="-0.0392749244712991" calcext:value-type="percentage">
+      <text:p>-3,9 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B39]/[.C39]" office:value-type="float" office:value="1.0392749244713" calcext:value-type="float">
+      <text:p>1,04×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Demosaic* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1.005" calcext:value-type="float">
+      <text:p>1.005</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1.798" calcext:value-type="float">
+      <text:p>1.798</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C40]/[.B40]" office:value-type="float" office:value="1.78905472636816" calcext:value-type="float">
+      <text:p>1,79×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C40]-[.B40])/[.C40]" office:value-type="percentage" office:value="0.441045606229144" calcext:value-type="percentage">
+      <text:p>44,1 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B40]/[.C40]" office:value-type="float" office:value="0.558954393770856" calcext:value-type="float">
+      <text:p>0,56×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Exposure / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.004" calcext:value-type="float">
+      <text:p>0.004</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.003" calcext:value-type="float">
+      <text:p>0.003</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C41]/[.B41]" office:value-type="float" office:value="0.75" calcext:value-type="float">
+      <text:p>0,75×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C41]-[.B41])/[.C41]" office:value-type="percentage" office:value="-0.333333333333333" calcext:value-type="percentage">
+      <text:p>-33,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B41]/[.C41]" office:value-type="float" office:value="1.33333333333333" calcext:value-type="float">
+      <text:p>1,33×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Input color profile / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.003" calcext:value-type="float">
+      <text:p>0.003</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.033" calcext:value-type="float">
+      <text:p>0.033</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C42]/[.B42]" office:value-type="float" office:value="11" calcext:value-type="float">
+      <text:p>11,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C42]-[.B42])/[.C42]" office:value-type="percentage" office:value="0.909090909090909" calcext:value-type="percentage">
+      <text:p>90,9 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B42]/[.C42]" office:value-type="float" office:value="0.0909090909090909" calcext:value-type="float">
+      <text:p>0,09×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color calibration / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.078" calcext:value-type="float">
+      <text:p>0.078</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.05" calcext:value-type="float">
+      <text:p>0.050</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C43]/[.B43]" office:value-type="float" office:value="0.641025641025641" calcext:value-type="float">
+      <text:p>0,64×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C43]-[.B43])/[.C43]" office:value-type="percentage" office:value="-0.56" calcext:value-type="percentage">
+      <text:p>-56,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B43]/[.C43]" office:value-type="float" office:value="1.56" calcext:value-type="float">
+      <text:p>1,56×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Diffuse or sharpen / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="3.215" calcext:value-type="float">
+      <text:p>3.215</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="3.367" calcext:value-type="float">
+      <text:p>3.367</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C44]/[.B44]" office:value-type="float" office:value="1.04727838258165" calcext:value-type="float">
+      <text:p>1,05×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C44]-[.B44])/[.C44]" office:value-type="percentage" office:value="0.0451440451440452" calcext:value-type="percentage">
+      <text:p>4,5 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B44]/[.C44]" office:value-type="float" office:value="0.954855954855955" calcext:value-type="float">
+      <text:p>0,95×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color balance RGB / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.261" calcext:value-type="float">
+      <text:p>0.261</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.179" calcext:value-type="float">
+      <text:p>0.179</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C45]/[.B45]" office:value-type="float" office:value="0.685823754789272" calcext:value-type="float">
+      <text:p>0,69×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C45]-[.B45])/[.C45]" office:value-type="percentage" office:value="-0.458100558659218" calcext:value-type="percentage">
+      <text:p>-45,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B45]/[.C45]" office:value-type="float" office:value="1.45810055865922" calcext:value-type="float">
+      <text:p>1,46×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Filmic RGB / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.124" calcext:value-type="float">
+      <text:p>0.124</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.114" calcext:value-type="float">
+      <text:p>0.114</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C46]/[.B46]" office:value-type="float" office:value="0.919354838709678" calcext:value-type="float">
+      <text:p>0,92×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C46]-[.B46])/[.C46]" office:value-type="percentage" office:value="-0.087719298245614" calcext:value-type="percentage">
+      <text:p>-8,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B46]/[.C46]" office:value-type="float" office:value="1.08771929824561" calcext:value-type="float">
+      <text:p>1,09×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Output color profile / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.017" calcext:value-type="float">
+      <text:p>0.017</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.041" calcext:value-type="float">
+      <text:p>0.041</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C47]/[.B47]" office:value-type="float" office:value="2.41176470588235" calcext:value-type="float">
+      <text:p>2,41×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C47]-[.B47])/[.C47]" office:value-type="percentage" office:value="0.585365853658537" calcext:value-type="percentage">
+      <text:p>58,5 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B47]/[.C47]" office:value-type="float" office:value="0.414634146341463" calcext:value-type="float">
+      <text:p>0,41×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Dithering (CPU only) / CPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.012" calcext:value-type="float">
+      <text:p>0.012</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.028" calcext:value-type="float">
+      <text:p>0.028</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C48]/[.B48]" office:value-type="float" office:value="2.33333333333333" calcext:value-type="float">
+      <text:p>2,33×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C48]-[.B48])/[.C48]" office:value-type="percentage" office:value="0.571428571428571" calcext:value-type="percentage">
+      <text:p>57,1 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B48]/[.C48]" office:value-type="float" office:value="0.428571428571429" calcext:value-type="float">
+      <text:p>0,43×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Gamma / display encoding (CPU only) / CPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.01" calcext:value-type="float">
+      <text:p>0.010</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.009" calcext:value-type="float">
+      <text:p>0.009</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C49]/[.B49]" office:value-type="float" office:value="0.9" calcext:value-type="float">
+      <text:p>0,90×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C49]-[.B49])/[.C49]" office:value-type="percentage" office:value="-0.111111111111111" calcext:value-type="percentage">
+      <text:p>-11,1 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B49]/[.C49]" office:value-type="float" office:value="1.11111111111111" calcext:value-type="float">
+      <text:p>1,11×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>TOTAL (s)</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="19.413" calcext:value-type="float">
+      <text:p>19.413</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="44.481" calcext:value-type="float">
+      <text:p>44.481</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C50]/[.B50]" office:value-type="float" office:value="2.29129964456807" calcext:value-type="float">
+      <text:p>2,29×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C50]-[.B50])/[.C50]" office:value-type="percentage" office:value="0.563566466581237" calcext:value-type="percentage">
+      <text:p>56,4 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8"/>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell/>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce10"/>
+     <table:table-cell table:style-name="ce13"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Config 2 GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce10"/>
+     <table:table-cell table:style-name="ce13"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Module / chip</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Ansel Master</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+      <text:p>Darktable 5.4.1</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2" table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Ansel</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Darktable</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Raw settings* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.04" calcext:value-type="float">
+      <text:p>0.040</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.059" calcext:value-type="float">
+      <text:p>0.059</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C54]/[.B54]" office:value-type="float" office:value="1.475" calcext:value-type="float">
+      <text:p>1,48×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C54]-[.B54])/[.C54]" office:value-type="percentage" office:value="0.322033898305085" calcext:value-type="percentage">
+      <text:p>32,2 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B54]/[.C54]" office:value-type="float" office:value="0.677966101694915" calcext:value-type="float">
+      <text:p>0,68×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>White balance* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.008" calcext:value-type="float">
+      <text:p>0.008</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.007" calcext:value-type="float">
+      <text:p>0.007</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C55]/[.B55]" office:value-type="float" office:value="0.875" calcext:value-type="float">
+      <text:p>0,88×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C55]-[.B55])/[.C55]" office:value-type="percentage" office:value="-0.142857142857143" calcext:value-type="percentage">
+      <text:p>-14,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B55]/[.C55]" office:value-type="float" office:value="1.14285714285714" calcext:value-type="float">
+      <text:p>1,14×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Highlights reconstruction* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1.601" calcext:value-type="float">
+      <text:p>1.601</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1.87" calcext:value-type="float">
+      <text:p>1.870</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C56]/[.B56]" office:value-type="float" office:value="1.16801998750781" calcext:value-type="float">
+      <text:p>1,17×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C56]-[.B56])/[.C56]" office:value-type="percentage" office:value="0.143850267379679" calcext:value-type="percentage">
+      <text:p>14,4 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B56]/[.C56]" office:value-type="float" office:value="0.856149732620321" calcext:value-type="float">
+      <text:p>0,86×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Demosaic* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1.459" calcext:value-type="float">
+      <text:p>1.459</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.123" calcext:value-type="float">
+      <text:p>0.123</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C57]/[.B57]" office:value-type="float" office:value="0.0843043180260452" calcext:value-type="float">
+      <text:p>0,08×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C57]-[.B57])/[.C57]" office:value-type="percentage" office:value="-10.8617886178862" calcext:value-type="percentage">
+      <text:p>-1086,2 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce8" table:formula="of:=[.B57]/[.C57]" office:value-type="float" office:value="11.8617886178862" calcext:value-type="float">
+      <text:p>11,86×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Exposure / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2" office:value-type="float" office:value="0.002" calcext:value-type="float">
+      <text:p>0.002</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C58]/[.B58]" office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C58]-[.B58])/[.C58]" office:value-type="percentage" office:value="0" calcext:value-type="percentage">
+      <text:p>0,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B58]/[.C58]" office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Input color profile / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.015" calcext:value-type="float">
+      <text:p>0.015</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.004" calcext:value-type="float">
+      <text:p>0.004</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C59]/[.B59]" office:value-type="float" office:value="0.266666666666667" calcext:value-type="float">
+      <text:p>0,27×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C59]-[.B59])/[.C59]" office:value-type="percentage" office:value="-2.75" calcext:value-type="percentage">
+      <text:p>-275,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B59]/[.C59]" office:value-type="float" office:value="3.75" calcext:value-type="float">
+      <text:p>3,75×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color calibration / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.001" calcext:value-type="float">
+      <text:p>0.001</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.004" calcext:value-type="float">
+      <text:p>0.004</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C60]/[.B60]" office:value-type="float" office:value="4" calcext:value-type="float">
+      <text:p>4,00×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C60]-[.B60])/[.C60]" office:value-type="percentage" office:value="0.75" calcext:value-type="percentage">
+      <text:p>75,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B60]/[.C60]" office:value-type="float" office:value="0.25" calcext:value-type="float">
+      <text:p>0,25×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Diffuse or sharpen / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.377" calcext:value-type="float">
+      <text:p>0.377</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.518" calcext:value-type="float">
+      <text:p>0.518</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C61]/[.B61]" office:value-type="float" office:value="1.37400530503979" calcext:value-type="float">
+      <text:p>1,37×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C61]-[.B61])/[.C61]" office:value-type="percentage" office:value="0.272200772200772" calcext:value-type="percentage">
+      <text:p>27,2 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B61]/[.C61]" office:value-type="float" office:value="0.727799227799228" calcext:value-type="float">
+      <text:p>0,73×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color balance RGB / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.011" calcext:value-type="float">
+      <text:p>0.011</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.004" calcext:value-type="float">
+      <text:p>0.004</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce9" table:formula="of:=[.C62]/[.B62]" office:value-type="float" office:value="0.363636363636364" calcext:value-type="float">
+      <text:p>0,36×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7" table:formula="of:=([.C62]-[.B62])/[.C62]" office:value-type="percentage" office:value="-1.75" calcext:value-type="percentage">
+      <text:p>-175,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B62]/[.C62]" office:value-type="float" office:value="2.75" calcext:value-type="float">
+      <text:p>2,75×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Filmic RGB / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.005" calcext:value-type="float">
+      <text:p>0.005</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.041" calcext:value-type="float">
+      <text:p>0.041</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C63]/[.B63]" office:value-type="float" office:value="8.2" calcext:value-type="float">
+      <text:p>8,20×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C63]-[.B63])/[.C63]" office:value-type="percentage" office:value="0.878048780487805" calcext:value-type="percentage">
+      <text:p>87,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B63]/[.C63]" office:value-type="float" office:value="0.121951219512195" calcext:value-type="float">
+      <text:p>0,12×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Output color profile / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.022" calcext:value-type="float">
+      <text:p>0.022</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.032" calcext:value-type="float">
+      <text:p>0.032</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C64]/[.B64]" office:value-type="float" office:value="1.45454545454545" calcext:value-type="float">
+      <text:p>1,45×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C64]-[.B64])/[.C64]" office:value-type="percentage" office:value="0.3125" calcext:value-type="percentage">
+      <text:p>31,3 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B64]/[.C64]" office:value-type="float" office:value="0.6875" calcext:value-type="float">
+      <text:p>0,69×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Dithering (CPU only) / GPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.017" calcext:value-type="float">
+      <text:p>0.017</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.047" calcext:value-type="float">
+      <text:p>0.047</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C65]/[.B65]" office:value-type="float" office:value="2.76470588235294" calcext:value-type="float">
+      <text:p>2,76×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C65]-[.B65])/[.C65]" office:value-type="percentage" office:value="0.638297872340426" calcext:value-type="percentage">
+      <text:p>63,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B65]/[.C65]" office:value-type="float" office:value="0.361702127659575" calcext:value-type="float">
+      <text:p>0,36×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Gamma / display encoding (CPU only) / GPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.006" calcext:value-type="float">
+      <text:p>0.006</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0.015" calcext:value-type="float">
+      <text:p>0.015</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.C66]/[.B66]" office:value-type="float" office:value="2.5" calcext:value-type="float">
+      <text:p>2,50×</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=([.C66]-[.B66])/[.C66]" office:value-type="percentage" office:value="0.6" calcext:value-type="percentage">
+      <text:p>60,0 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.B66]/[.C66]" office:value-type="float" office:value="0.4" calcext:value-type="float">
+      <text:p>0,40×</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>TOTAL (s)</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="5.176" calcext:value-type="float">
+      <text:p>5.176</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="3.927" calcext:value-type="float">
+      <text:p>3.927</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=[.C67]/[.B67]" office:value-type="float" office:value="0.758693972179289" calcext:value-type="float">
+      <text:p>0,76×</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce14" table:formula="of:=([.C67]-[.B67])/[.C67]" office:value-type="percentage" office:value="-0.318054494525083" calcext:value-type="percentage">
+      <text:p>-31,8 %</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11"/>
+     <table:table-cell table:number-columns-repeated="2"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell/>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="4"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Averages</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Ansel</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3"/>
+     <table:table-cell table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>Speed up Darktable</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Raw settings* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D3]*[.D37])" office:value-type="float" office:value="1.022142905568" calcext:value-type="float">
+      <text:p>1.02</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F3]*[.F37])" office:value-type="float" office:value="0.978336781043653" calcext:value-type="float">
+      <text:p>0.98</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>White balance* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D4]*[.D38])" office:value-type="float" office:value="0.73282810879294" calcext:value-type="float">
+      <text:p>0.73</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F4]*[.F38])" office:value-type="float" office:value="1.36457647844203" calcext:value-type="float">
+      <text:p>1.36</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Highlights reconstruction* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D5]*[.D39])" office:value-type="float" office:value="0.988766420454829" calcext:value-type="float">
+      <text:p>0.99</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F5]*[.F39])" office:value-type="float" office:value="1.01136120656282" calcext:value-type="float">
+      <text:p>1.01</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Demosaic* / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D6]*[.D40])" office:value-type="float" office:value="1.9171614036334" calcext:value-type="float">
+      <text:p>1.92</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F6]*[.F40])" office:value-type="float" office:value="0.521604491987375" calcext:value-type="float">
+      <text:p>0.52</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Exposure / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D7]*[.D41])" office:value-type="float" office:value="1.34164078649987" calcext:value-type="float">
+      <text:p>1.34</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F7]*[.F41])" office:value-type="float" office:value="0.74535599249993" calcext:value-type="float">
+      <text:p>0.75</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Input color profile / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D8]*[.D42])" office:value-type="float" office:value="7.41619848709566" calcext:value-type="float">
+      <text:p>7.42</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F8]*[.F42])" office:value-type="float" office:value="0.134839972492648" calcext:value-type="float">
+      <text:p>0.13</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color calibration / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D9]*[.D43])" office:value-type="float" office:value="0.939533838423878" calcext:value-type="float">
+      <text:p>0.94</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F9]*[.F43])" office:value-type="float" office:value="1.06435761981448" calcext:value-type="float">
+      <text:p>1.06</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Diffuse or sharpen / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D10]*[.D44])" office:value-type="float" office:value="1.06572303266205" calcext:value-type="float">
+      <text:p>1.07</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F10]*[.F44])" office:value-type="float" office:value="0.9383301001782" calcext:value-type="float">
+      <text:p>0.94</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color balance RGB / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D11]*[.D45])" office:value-type="float" office:value="0.844480556530798" calcext:value-type="float">
+      <text:p>0.84</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F11]*[.F45])" office:value-type="float" office:value="1.18415988653201" calcext:value-type="float">
+      <text:p>1.18</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Filmic RGB / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D12]*[.D46])" office:value-type="float" office:value="0.96927121926303" calcext:value-type="float">
+      <text:p>0.97</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F12]*[.F46])" office:value-type="float" office:value="1.03170297448874" calcext:value-type="float">
+      <text:p>1.03</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Output color profile / CPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D13]*[.D47])" office:value-type="float" office:value="1.97381042701926" calcext:value-type="float">
+      <text:p>1.97</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F13]*[.F47])" office:value-type="float" office:value="0.506634267562435" calcext:value-type="float">
+      <text:p>0.51</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Dithering (CPU only) / CPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D14]*[.D48])" office:value-type="float" office:value="2.39501797719999" calcext:value-type="float">
+      <text:p>2.40</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F14]*[.F48])" office:value-type="float" office:value="0.417533400383533" calcext:value-type="float">
+      <text:p>0.42</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Gamma / display encoding (CPU only) / CPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D15]*[.D49])" office:value-type="float" office:value="0.858116330321033" calcext:value-type="float">
+      <text:p>0.86</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F15]*[.F49])" office:value-type="float" office:value="1.1653431646335" calcext:value-type="float">
+      <text:p>1.17</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>PER-MODULE AVERAGE</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:formula="of:=GEOMEAN([.B70:.B82])" office:value-type="float" office:value="1.34462988081594" calcext:value-type="float">
+      <text:p>1,34462988081594</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6"/>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>TOTAL AVERAGE</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:formula="of:=GEOMEAN([.D16];[.D50])" office:value-type="float" office:value="1.65762148679549" calcext:value-type="float">
+      <text:p>1,65762148679549</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6"/>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell/>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6"/>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Raw settings* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D20]*[.D54])" office:value-type="float" office:value="1.33830916778278" calcext:value-type="float">
+      <text:p>1.34</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F20]*[.F54])" office:value-type="float" office:value="0.747211499459975" calcext:value-type="float">
+      <text:p>0.75</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>White balance* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D21]*[.D55])" office:value-type="float" office:value="0.973610120462327" calcext:value-type="float">
+      <text:p>0.97</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F21]*[.F55])" office:value-type="float" office:value="1.02710518202619" calcext:value-type="float">
+      <text:p>1.03</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Highlights reconstruction* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D22]*[.D56])" office:value-type="float" office:value="1.10195029459145" calcext:value-type="float">
+      <text:p>1.10</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F22]*[.F56])" office:value-type="float" office:value="0.907481948058967" calcext:value-type="float">
+      <text:p>0.91</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Demosaic* / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D23]*[.D57])" office:value-type="float" office:value="0.281581480565111" calcext:value-type="float">
+      <text:p>0.28</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F23]*[.F57])" office:value-type="float" office:value="3.55136991961645" calcext:value-type="float">
+      <text:p>3.55</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Exposure / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D24]*[.D58])" office:value-type="float" office:value="3.16227766016838" calcext:value-type="float">
+      <text:p>3.16</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F24]*[.F58])" office:value-type="float" office:value="0.316227766016838" calcext:value-type="float">
+      <text:p>0.32</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Input color profile / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D25]*[.D59])" office:value-type="float" office:value="2.06559111797729" calcext:value-type="float">
+      <text:p>2.07</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F25]*[.F59])" office:value-type="float" office:value="0.484122918275927" calcext:value-type="float">
+      <text:p>0.48</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color calibration / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D26]*[.D60])" office:value-type="float" office:value="12.4899959967968" calcext:value-type="float">
+      <text:p>12.49</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F26]*[.F60])" office:value-type="float" office:value="0.0800640769025436" calcext:value-type="float">
+      <text:p>0.08</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Diffuse or sharpen / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D27]*[.D61])" office:value-type="float" office:value="1.41241092092595" calcext:value-type="float">
+      <text:p>1.41</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F27]*[.F61])" office:value-type="float" office:value="0.708009252253882" calcext:value-type="float">
+      <text:p>0.71</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Color balance RGB / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.D28]*[.D62])" office:value-type="float" office:value="0.696310623822791" calcext:value-type="float">
+      <text:p>0.70</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.F28]*[.F62])" office:value-type="float" office:value="1.43614066163451" calcext:value-type="float">
+      <text:p>1.44</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Filmic RGB / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D29]*[.D63])" office:value-type="float" office:value="3.87728427295876" calcext:value-type="float">
+      <text:p>3.88</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F29]*[.F63])" office:value-type="float" office:value="0.257912479354241" calcext:value-type="float">
+      <text:p>0.26</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Output color profile / GPU</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D30]*[.D64])" office:value-type="float" office:value="1.85418891403374" calcext:value-type="float">
+      <text:p>1.85</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F30]*[.F64])" office:value-type="float" office:value="0.539319371630006" calcext:value-type="float">
+      <text:p>0.54</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Dithering (CPU only) / GPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D31]*[.D65])" office:value-type="float" office:value="2.35147012838902" calcext:value-type="float">
+      <text:p>2.35</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F31]*[.F65])" office:value-type="float" office:value="0.425265874283121" calcext:value-type="float">
+      <text:p>0.43</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Gamma / display encoding (CPU only) / GPU pipeline</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce5" table:formula="of:=SQRT([.D32]*[.D66])" office:value-type="float" office:value="1.31558702896054" calcext:value-type="float">
+      <text:p>1.32</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce7"/>
+     <table:table-cell table:style-name="ce6" table:formula="of:=SQRT([.F32]*[.F66])" office:value-type="float" office:value="0.760116950066092" calcext:value-type="float">
+      <text:p>0.76</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>PER-MODULE AVERAGE</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:formula="of:=GEOMEAN([.B86:.B98])" office:value-type="float" office:value="1.65906347929025" calcext:value-type="float">
+      <text:p>1,65906347929025</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="3"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>TOTAL AVERAGE</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:formula="of:=GEOMEAN([.D33];[.D67])" office:value-type="float" office:value="0.935510172448163" calcext:value-type="float">
+      <text:p>0,935510172448163</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="3"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell/>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="4"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>GRAND TOTAL</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:formula="of:=GEOMEAN([.B100];[.B84])" office:value-type="float" office:value="1.24527979304485" calcext:value-type="float">
+      <text:p>1,24527979304485</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Default" table:number-columns-repeated="3"/>
+     <table:table-cell table:number-columns-repeated="3"/>
+    </table:table-row>
+   </table:table>
+   <table:named-expressions/>
+  </office:spreadsheet>
+ </office:body>
+</office:document>

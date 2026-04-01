@@ -4,43 +4,53 @@
       "type": "bar",
       "name": "Ansel",
       "x": [
+        "Parametres RAW",
+        "Balance des blancs",
+        "Reconstruction des hautes lumieres",
+        "Demosaicage",
         "Exposition",
-        "Profil de couleur d'entrée",
+        "Profil de couleur d'entree",
         "Calibration des couleurs",
-        "Diffusion ou netteté",
+        "Diffusion ou nettete",
         "Balance couleur RVB",
         "Filmic RVB",
         "Profil de couleur de sortie",
-        "Tramage"
+        "Tramage",
+        "Encodage gamma/affichage"
       ],
-      "y": [-90.0, -93.75, -94.87, -31.66, -25.0, -45.45, -57.69, -46.59],
+      "y": [1.34, 0.97, 1.10, 0.28, 3.16, 2.07, 12.49, 1.41, 0.70, 3.88, 1.85, 2.35, 1.32],
       "marker": {"color": "#1f77b4"}
     },
     {
       "type": "bar",
       "name": "Darktable",
       "x": [
+        "Parametres RAW",
+        "Balance des blancs",
+        "Reconstruction des hautes lumieres",
+        "Demosaicage",
         "Exposition",
-        "Profil de couleur d'entrée",
+        "Profil de couleur d'entree",
         "Calibration des couleurs",
-        "Diffusion ou netteté",
+        "Diffusion ou nettete",
         "Balance couleur RVB",
         "Filmic RVB",
         "Profil de couleur de sortie",
-        "Tramage"
+        "Tramage",
+        "Encodage gamma/affichage"
       ],
-      "y": [900.0, 1500.0, 1850.0, 46.32, 33.33, 83.33, 136.36, 87.23],
+      "y": [0.75, 1.03, 0.91, 3.55, 0.32, 0.48, 0.08, 0.71, 1.44, 0.26, 0.54, 0.43, 0.76],
       "marker": {"color": "#ff7f0e"}
     }
   ],
   "layout": {
     "barmode": "group",
-    "title": {"text": "Écart relatif des temps d'exécution par module (GPU)"},
-    "yaxis": {"title": {"text": "Différence relative de temps d'exécution (en %)"},
+    "title": {"text": "Vitesse relative par module (GPU)"},
+    "yaxis": {"title": {"text": "Rapport de vitesse"},
               "zeroline": true,
               "zerolinecolor": "#444"},
     "xaxis": {"tickangle": -35},
-    "margin": {"l": 60, "r": 20, "t": 60, "b": 120},
+    "margin": {"l": 60, "r": 20, "t": 60, "b": 150},
     "legend": {"orientation": "h", "x": 0, "y": 1.15}
   }
 }

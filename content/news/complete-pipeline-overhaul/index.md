@@ -99,43 +99,51 @@ So the interesting part here is not that one big refactor happened in isolation.
 
 ## Benchmarks
 
-Benchmarks are done on both applications compiled locally with _Release_ build and GCC14 using their respective `build.sh --build-type Release` script. The hardware is a Thinkpad P51, with 8 × Intel® Xeon® CPU E3-1505M v6 @ 3.00GHz and GPU Quadro M2200, running on Fedora 41 Plasma with Wayland. Nvidia driver version is 580.105.08. Both Ansel and Darktable config files are set with [this script](https://github.com/aurelienpierreeng/ansel/blob/master/tools/benchmark_darkroom_rc.sh) to ensure the same config baseline. We show here the output of `ansel -d perf` and `darktable -d perf`. Those benchmarks can be reproduced on any computer.
+Benchmarks are done on both applications compiled locally with _Release_ build and GCC14 using their respective `build.sh --build-type Release` script. 
 
-The 45 Mpx test picture is taken from [here](https://discuss.pixls.us/t/backlit-hardcore-flaring-vintage-lens-fun/31270) and the editing XMP can be downloaded [here](./2022-06-17__DSC00078.arw.xmp).
+Config 1
+: The hardware is a Thinkpad P51, with 8 × Intel Xeon CPU E3-1505M v6 @ 3.00GHz and GPU Nvidia Quadro M2200, running on Fedora 41 Plasma with Wayland. Nvidia driver version is 580.105.08. The Intel Xeon is an high-end CPU released in 2015. The Quadro M2200 is a mid-range professionnal CPU released in 2017.
+
+Config 2
+: The hardware is a desktop PC with 4 × Intel Core i3-4130 and GPU AMD Radeon RX 580 Polaris 10, running on Ubuntu 24.04 LTS with Wayland. AMD driver version is RustiCL 25.2.8. The Core i3 is a mid-range CPU released in 2013. The AMD Polaris 10 is a mid-high-range GPU released in 2017.
+
+We show here the output of `ansel -d perf` and `darktable -d perf`. Both Ansel and Darktable config files are set with [this script](https://github.com/aurelienpierreeng/ansel/blob/master/tools/benchmark_darkroom_rc.sh) to ensure the same config baseline. The 45 Mpx test picture is taken from [here](https://discuss.pixls.us/t/backlit-hardcore-flaring-vintage-lens-fun/31270) and the editing XMP can be downloaded [here](./2022-06-17__DSC00078.arw.xmp).
 
 ### Initial loading in darkroom
 
 Warning: in Ansel, it is important to run this test with no module focused in the GUI (that is, uncollapsed). In this situation, Ansel always caches the output of the previous module so we ensure that, when modifications are made in that focus module, we always restart computations from the immediate input. But forcing the cache like this triggers memory overhead that can be visible for lightweight modules.
 
+#### Config 1
+
 {{< tabs >}}
 
 {{< tab "Ansel Master GPU" >}}
 ```
-4.474793 [dev_pixelpipe] took 0.000 secs (0.000 CPU) to load the image.
-4.739267 [dev_pixelpipe] pipeline resync with history took 0.029 secs (0.026 CPU) for pipe virtual-preview
-4.806027 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
-4.806089 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
-4.872758 [dev_pixelpipe] pipeline resync with history took 0.026 secs (0.036 CPU) for pipe preview
-4.889006 [dev_pixelpipe] took 0.016 secs (0.037 CPU) initing base buffer [preview]
-4.922294 [dev_pixelpipe] took 0.033 secs (0.031 CPU) processed `Raw settings' on GPU, blended on  [preview]
-4.938778 [dev_pixelpipe] took 0.015 secs (0.018 CPU) processed `white balance' on GPU, blended on  [preview]
-8.456387 [dev_pixelpipe] took 3.518 secs (3.549 CPU) processed `highlight reconstruction' on GPU, blended on GPU [preview]
-9.052687 [dev_pixelpipe] took 0.596 secs (0.308 CPU) processed `demosaic' on GPU, blended on  [preview]
-9.401928 [dev_pixelpipe] took 0.349 secs (0.201 CPU) processed `lens correction' on GPU, blended on  [preview]
-9.498531 [dev_pixelpipe] took 0.097 secs (0.095 CPU) processed `Initial resampling' on GPU, blended on  [preview]
-9.499987 [dev_pixelpipe] took 0.001 secs (0.001 CPU) processed `exposure' on GPU, blended on GPU [preview]
-9.502353 [dev_pixelpipe] took 0.002 secs (0.002 CPU) processed `input color profile' on GPU, blended on  [preview]
-9.503926 [dev_pixelpipe] took 0.002 secs (0.001 CPU) processed `color calibration' on GPU, blended on GPU [preview]
-10.658713 [dev_pixelpipe] took 1.155 secs (1.115 CPU) processed `diffuse or sharpen' on GPU, blended on GPU [preview]
-10.667555 [dev_pixelpipe] took 0.009 secs (0.009 CPU) processed `color balance rgb' on GPU, blended on GPU [preview]
-10.673614 [dev_pixelpipe] took 0.006 secs (0.003 CPU) processed `filmic rgb' on GPU, blended on GPU [preview]
-10.695368 [dev_pixelpipe] took 0.022 secs (0.012 CPU) processed `output color profile' on GPU, blended on  [preview]
-10.742278 [dev_pixelpipe] took 0.047 secs (0.034 CPU) processed `dithering' on CPU, blended on  [preview]
-10.753262 [dev_pixelpipe] took 0.011 secs (0.048 CPU) processed `display encoding' on CPU, blended on  [preview]
-10.753354 [pixelpipe] preview internal pixel pipeline processing took 5.880 secs (5.464 CPU)
-10.753476 [dev_process_preview] pipeline processing thread took 5.881 secs (5.464 CPU)
-10.820855 [dev_pixelpipe] pipeline resync with history took 0.056 secs (0.406 CPU) for pipe full
-10.824477 [dev_process_full] pipeline processing thread took 0.000 secs (0.000 CPU)
+3.774487 [dev_pixelpipe] took 0.000 secs (0.000 CPU) to load the image.
+4.297272 [dev_pixelpipe] pipeline resync with history took 0.029 secs (0.026 CPU) for pipe virtual-preview
+4.348621 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+4.348664 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+4.373993 [dev_pixelpipe] pipeline resync with history took 0.020 secs (0.027 CPU) for pipe preview
+4.418708 [dev_pixelpipe] took 0.045 secs (0.065 CPU) initing base buffer [preview]
+4.432355 [dev_pixelpipe] took 0.014 secs (0.024 CPU) processed `Raw settings' on GPU, blended on  [preview]
+4.446876 [dev_pixelpipe] took 0.012 secs (0.008 CPU) processed `white balance' on GPU, blended on  [preview]
+8.005526 [dev_pixelpipe] took 3.559 secs (3.518 CPU) processed `highlight reconstruction' on GPU, blended on GPU [preview]
+8.526439 [dev_pixelpipe] took 0.521 secs (0.308 CPU) processed `demosaic' on GPU, blended on  [preview]
+8.885873 [dev_pixelpipe] took 0.359 secs (0.237 CPU) processed `lens correction' on GPU, blended on  [preview]
+9.023990 [dev_pixelpipe] took 0.138 secs (0.166 CPU) processed `Initial resampling' on GPU, blended on  [preview]
+9.025471 [dev_pixelpipe] took 0.001 secs (0.001 CPU) processed `exposure' on GPU, blended on GPU [preview]
+9.027915 [dev_pixelpipe] took 0.002 secs (0.001 CPU) processed `input color profile' on GPU, blended on  [preview]
+9.029435 [dev_pixelpipe] took 0.001 secs (0.001 CPU) processed `color calibration' on GPU, blended on GPU [preview]
+10.192986 [dev_pixelpipe] took 1.164 secs (1.166 CPU) processed `diffuse or sharpen' on GPU, blended on GPU [preview]
+10.202087 [dev_pixelpipe] took 0.009 secs (0.007 CPU) processed `color balance rgb' on GPU, blended on GPU [preview]
+10.208416 [dev_pixelpipe] took 0.006 secs (0.007 CPU) processed `filmic rgb' on GPU, blended on GPU [preview]
+10.230434 [dev_pixelpipe] took 0.022 secs (0.027 CPU) processed `output color profile' on GPU, blended on  [preview]
+10.274536 [dev_pixelpipe] took 0.044 secs (0.045 CPU) processed `dithering' on CPU, blended on  [preview]
+10.287948 [dev_pixelpipe] took 0.013 secs (0.065 CPU) processed `display encoding' on CPU, blended on  [preview]
+10.288000 [pixelpipe] preview internal pixel pipeline processing took 5.914 secs (5.647 CPU)
+10.288092 [dev_process_preview] pipeline processing thread took 5.914 secs (5.647 CPU)
+10.319024 [dev_pixelpipe] pipeline resync with history took 0.021 secs (0.027 CPU) for pipe full
+10.319082 [dev_process_full] pipeline processing thread took 0.000 secs (0.000 CPU)
 ```
 {{< /tab >}}
 
@@ -188,29 +196,31 @@ Warning: in Ansel, it is important to run this test with no module focused in th
 
 {{< tab "Ansel Master CPU" >}}
 ```
-3.695922 [dev_pixelpipe] took 0.000 secs (0.000 CPU) to load the image.
-4.101947 [dev_pixelpipe] pipeline resync with history took 0.023 secs (0.031 CPU) for pipe preview
-4.113447 [darkroom] took 0.015 secs (0.024 CPU) redraw
-4.117058 [dev_pixelpipe] took 0.015 secs (0.025 CPU) initing base buffer [preview]
-4.149378 [dev_pixelpipe] took 0.032 secs (0.086 CPU) processed `Raw settings' on CPU, blended on  [preview]
-4.181609 [dev_pixelpipe] took 0.032 secs (0.096 CPU) processed `white balance' on CPU, blended on  [preview]
-10.424658 [dev_pixelpipe] took 6.243 secs (44.074 CPU) processed `highlight reconstruction' on CPU, blended on CPU [preview]
-10.778340 [dev_pixelpipe] took 0.354 secs (2.622 CPU) processed `demosaic' on CPU, blended on  [preview]
-10.858075 [dev_pixelpipe] took 0.080 secs (0.481 CPU) processed `lens correction' on CPU, blended on  [preview]
-11.004742 [dev_pixelpipe] took 0.147 secs (0.916 CPU) processed `Initial resampling' on CPU, blended on  [preview]
-11.011701 [dev_pixelpipe] took 0.007 secs (0.036 CPU) processed `exposure' on CPU, blended on CPU [preview]
-11.015201 [dev_pixelpipe] took 0.003 secs (0.016 CPU) processed `input color profile' on CPU, blended on  [preview]
-11.077223 [dev_pixelpipe] took 0.062 secs (0.349 CPU) processed `color calibration' on CPU, blended on CPU [preview]
-14.953074 [dev_pixelpipe] took 3.876 secs (28.821 CPU) processed `diffuse or sharpen' on CPU, blended on CPU [preview]
-15.225196 [dev_pixelpipe] took 0.272 secs (1.627 CPU) processed `color balance rgb' on CPU, blended on CPU [preview]
-15.361886 [dev_pixelpipe] took 0.137 secs (0.772 CPU) processed `filmic rgb' on CPU, blended on CPU [preview]
-15.374734 [dev_pixelpipe] took 0.013 secs (0.071 CPU) processed `output color profile' on CPU, blended on  [preview]
-15.400044 [dev_pixelpipe] took 0.025 secs (0.040 CPU) processed `dithering' on CPU, blended on  [preview]
-15.410297 [dev_pixelpipe] took 0.010 secs (0.054 CPU) processed `display encoding' on CPU, blended on  [preview]
-15.410353 [pixelpipe] preview internal pixel pipeline processing took 11.308 secs (80.087 CPU)
-15.410383 [dev_process_preview] pipeline processing thread took 11.308 secs (80.087 CPU)
-15.479787 [dev_pixelpipe] pipeline resync with history took 0.059 secs (0.426 CPU) for pipe full
-15.479850 [dev_process_full] pipeline processing thread took 0.000 secs (0.000 CPU)
+3.693459 [dev_pixelpipe] took 0.000 secs (0.000 CPU) to load the image.
+4.191924 [dev_pixelpipe] pipeline resync with history took 0.028 secs (0.027 CPU) for pipe virtual-preview
+4.239670 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+4.239695 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+4.270490 [dev_pixelpipe] pipeline resync with history took 0.021 secs (0.032 CPU) for pipe preview
+4.285167 [dev_pixelpipe] took 0.015 secs (0.028 CPU) initing base buffer [preview]
+4.312817 [dev_pixelpipe] took 0.028 secs (0.057 CPU) processed `Raw settings' on CPU, blended on  [preview]
+4.340242 [dev_pixelpipe] took 0.027 secs (0.077 CPU) processed `white balance' on CPU, blended on  [preview]
+10.568064 [dev_pixelpipe] took 6.228 secs (44.403 CPU) processed `highlight reconstruction' on CPU, blended on CPU [preview]
+10.916768 [dev_pixelpipe] took 0.349 secs (2.606 CPU) processed `demosaic' on CPU, blended on  [preview]
+10.994516 [dev_pixelpipe] took 0.078 secs (0.476 CPU) processed `lens correction' on CPU, blended on  [preview]
+11.275119 [dev_pixelpipe] took 0.281 secs (1.907 CPU) processed `Initial resampling' on CPU, blended on  [preview]
+11.279994 [dev_pixelpipe] took 0.005 secs (0.027 CPU) processed `exposure' on CPU, blended on CPU [preview]
+11.283320 [dev_pixelpipe] took 0.003 secs (0.016 CPU) processed `input color profile' on CPU, blended on  [preview]
+11.344783 [dev_pixelpipe] took 0.061 secs (0.358 CPU) processed `color calibration' on CPU, blended on CPU [preview]
+15.226838 [dev_pixelpipe] took 3.882 secs (28.990 CPU) processed `diffuse or sharpen' on CPU, blended on CPU [preview]
+15.477450 [dev_pixelpipe] took 0.251 secs (1.621 CPU) processed `color balance rgb' on CPU, blended on CPU [preview]
+15.614651 [dev_pixelpipe] took 0.137 secs (0.760 CPU) processed `filmic rgb' on CPU, blended on CPU [preview]
+15.627350 [dev_pixelpipe] took 0.013 secs (0.071 CPU) processed `output color profile' on CPU, blended on  [preview]
+15.651362 [dev_pixelpipe] took 0.024 secs (0.036 CPU) processed `dithering' on CPU, blended on  [preview]
+15.661923 [dev_pixelpipe] took 0.011 secs (0.061 CPU) processed `display encoding' on CPU, blended on  [preview]
+15.661982 [pixelpipe] preview internal pixel pipeline processing took 11.391 secs (81.494 CPU)
+15.661998 [dev_process_preview] pipeline processing thread took 11.391 secs (81.494 CPU)
+15.696285 [dev_pixelpipe] pipeline resync with history took 0.024 secs (0.030 CPU) for pipe full
+15.696358 [dev_process_full] pipeline processing thread took 0.000 secs (0.000 CPU)
 ```
 {{< /tab >}}
 
@@ -264,57 +274,330 @@ Warning: in Ansel, it is important to run this test with no module focused in th
 
 {{< /tabs >}}
 
+#### Config 2
+
+{{< tabs >}}
+{{< tab "Ansel Master GPU" >}}
+```
+11.665044 [dev_pixelpipe] took 0.133 secs (0.040 CPU) to load the image.
+12.213223 [dev_pixelpipe] pipeline resync with history took 0.037 secs (0.035 CPU) for pipe virtual-preview
+12.283635 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+12.283776 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+12.352420 [dev_pixelpipe] pipeline resync with history took 0.031 secs (0.048 CPU) for pipe preview
+12.503504 [dev_pixelpipe] took 0.151 secs (0.106 CPU) initing base buffer [preview]
+12.543494 [dev_pixelpipe] took 0.040 secs (0.028 CPU) processed `Raw settings' on GPU, blended on  [preview]
+12.551123 [dev_pixelpipe] took 0.008 secs (0.005 CPU) processed `white balance' on GPU, blended on  [preview]
+14.151775 [dev_pixelpipe] took 1.601 secs (0.220 CPU) processed `highlight reconstruction' on GPU, blended on GPU [preview]
+15.611182 [dev_pixelpipe] took 1.459 secs (0.277 CPU) processed `demosaic' on GPU, blended on  [preview]
+16.739262 [dev_pixelpipe] took 1.128 secs (0.347 CPU) processed `lens correction' on GPU, blended on  [preview]
+17.069383 [dev_pixelpipe] took 0.330 secs (0.113 CPU) processed `Initial resampling' on GPU, blended on  [preview]
+17.073034 [dev_pixelpipe] took 0.002 secs (0.001 CPU) processed `exposure' on GPU, blended on GPU [preview]
+17.087853 [dev_pixelpipe] took 0.015 secs (0.003 CPU) processed `input color profile' on GPU, blended on  [preview]
+17.088924 [dev_pixelpipe] took 0.001 secs (0.001 CPU) processed `color calibration' on GPU, blended on GPU [preview]
+17.466256 [dev_pixelpipe] took 0.377 secs (0.050 CPU) processed `diffuse or sharpen' on GPU, blended on GPU [preview]
+17.477553 [dev_pixelpipe] took 0.011 secs (0.013 CPU) processed `color balance rgb' on GPU, blended on GPU [preview]
+17.482526 [dev_pixelpipe] took 0.005 secs (0.006 CPU) processed `filmic rgb' on GPU, blended on GPU [preview]
+17.504652 [dev_pixelpipe] took 0.022 secs (0.016 CPU) processed `output color profile' on GPU, blended on  [preview]
+17.521778 [dev_pixelpipe] took 0.017 secs (0.019 CPU) processed `dithering' on CPU, blended on  [preview]
+17.528134 [dev_pixelpipe] took 0.006 secs (0.013 CPU) processed `display encoding' on CPU, blended on  [preview]
+17.528179 [pixelpipe] preview internal pixel pipeline processing took 5.176 secs (1.220 CPU)
+17.528240 [dev_process_preview] pipeline processing thread took 5.176 secs (1.220 CPU)
+17.562933 [dev_pixelpipe] pipeline resync with history took 0.024 secs (0.027 CPU) for pipe full
+17.563008 [dev_process_full] pipeline processing thread took 0.000 secs (0.000 CPU)
+```
+{{< /tab >}}
+
+{{< tab "Darktable 5.4.1 GPU" >}}
+```
+23.6180 [dt_dev_load_raw] loading the image. took 0.290 secs (0.055 CPU)
+24.6549 [dt_dev_process_image_job] loading image. took 0.000 secs (0.000 CPU)
+24.7621 [dev_pixelpipe] took 0.023 secs (0.034 CPU) initing base buffer [full]
+24.8212 [dev_pixelpipe] took 0.059 secs (0.022 CPU) [full] processed `rawprepare' on GPU, blended on GPU
+24.8286 [dev_pixelpipe] took 0.007 secs (0.000 CPU) [full] processed `temperature' on GPU, blended on GPU
+26.6983 [dev_pixelpipe] took 1.870 secs (0.433 CPU) [full] processed `highlights' on GPU, blended on GPU
+26.7416 [resample_cl] plan 0.002 secs (0.001 CPU) resample 0.032 secs (0.000 CPU)
+26.8215 [dev_pixelpipe] took 0.123 secs (0.009 CPU) [full] processed `demosaic' on GPU, blended on GPU
+26.8260 [dev_pixelpipe] took 0.004 secs (0.001 CPU) [full] processed `lens' on GPU, blended on GPU
+26.8282 [dev_pixelpipe] took 0.002 secs (0.001 CPU) [full] processed `ashift' on GPU, blended on GPU
+26.8306 [dev_pixelpipe] took 0.002 secs (0.001 CPU) [full] processed `exposure' on GPU, blended on GPU
+26.8347 [dev_pixelpipe] took 0.004 secs (0.001 CPU) [full] processed `colorin' on GPU, blended on GPU
+26.8370 [dt_ioppr_transform_image_colorspace_cl] IOP_CS_LAB-->IOP_CS_RGB took 0.002 secs (0.001 GPU) [channelmixerrgb]
+26.8384 [dev_pixelpipe] took 0.004 secs (0.001 CPU) [full] processed `channelmixerrgb' on GPU, blended on GPU
+27.3567 [dev_pixelpipe] took 0.518 secs (0.022 CPU) [full] processed `diffuse' on GPU, blended on GPU
+27.3613 [dev_pixelpipe] took 0.004 secs (0.001 CPU) [full] processed `colorbalancergb' on GPU, blended on GPU
+27.4019 [dev_pixelpipe] took 0.041 secs (0.011 CPU) [full] processed `filmicrgb' on GPU, blended on GPU
+27.4053 [dt_ioppr_transform_image_colorspace_cl] IOP_CS_RGB-->IOP_CS_LAB took 0.003 secs (0.001 GPU) [colorout]
+27.4345 [dev_pixelpipe] took 0.032 secs (0.009 CPU) [full] processed `colorout' on GPU, blended on GPU
+27.4814 [dev_pixelpipe] took 0.047 secs (0.025 CPU) [full] processed `dither' on CPU, blended on CPU
+27.4962 [dev_pixelpipe] took 0.015 secs (0.045 CPU) [full] processed `gamma' on CPU, blended on CPU
+27.4990 [dev_process_image] pixel pipeline took 2.760 secs (0.618 CPU) processing `2022-06-17__DSC00078.arw'
+
+27.5249 [dt_dev_process_image_job] loading image. took 0.005 secs (0.013 CPU)
+27.5866 [dt_dev_process_image_job] loading image. took 0.000 secs (0.000 CPU)
+27.6513 [dev_pixelpipe] took 0.000 secs (0.000 CPU) initing base buffer [preview]
+27.6561 [dev_pixelpipe] took 0.005 secs (0.006 CPU) [preview] processed `rawprepare' on GPU, blended on GPU
+27.6580 [dev_pixelpipe] took 0.002 secs (0.001 CPU) [preview] processed `temperature' on GPU, blended on GPU
+27.7797 [dev_pixelpipe] took 0.122 secs (0.062 CPU) [preview] processed `highlights' on GPU, blended on GPU
+27.7845 [dev_pixelpipe] took 0.005 secs (0.002 CPU) [preview] processed `demosaic' on GPU, blended on GPU
+27.7854 [dev_pixelpipe] took 0.001 secs (0.000 CPU) [preview] processed `lens' on GPU, blended on GPU
+27.8023 [dev_pixelpipe] took 0.017 secs (0.002 CPU) [preview] processed `ashift' on GPU, blended on GPU
+27.8034 [dev_pixelpipe] took 0.001 secs (0.000 CPU) [preview] processed `exposure' on GPU, blended on GPU
+27.8058 [dev_pixelpipe] took 0.002 secs (0.000 CPU) [preview] processed `colorin' on GPU, blended on GPU
+27.8077 [dt_ioppr_transform_image_colorspace_cl] IOP_CS_LAB-->IOP_CS_RGB took 0.001 secs (0.000 GPU) [channelmixerrgb]
+27.8089 [dev_pixelpipe] took 0.003 secs (0.000 CPU) [preview] processed `channelmixerrgb' on GPU, blended on GPU
+28.5157 [dev_pixelpipe] took 0.707 secs (0.076 CPU) [preview] processed `diffuse' on GPU, blended on GPU
+28.5240 [dev_pixelpipe] took 0.008 secs (0.004 CPU) [preview] processed `colorbalancergb' on GPU, blended on GPU
+28.6037 [dev_pixelpipe] took 0.079 secs (0.031 CPU) [preview] processed `filmicrgb' on GPU, blended on GPU
+28.6092 [dt_ioppr_transform_image_colorspace_cl] IOP_CS_RGB-->IOP_CS_LAB took 0.005 secs (0.000 GPU) [colorout]
+28.6323 [dev_pixelpipe] took 0.028 secs (0.007 CPU) [preview] processed `colorout' on GPU, blended on GPU
+28.6675 [dev_pixelpipe] took 0.035 secs (0.010 CPU) [preview] processed `dither' on CPU, blended on CPU
+28.6881 [dev_pixelpipe] took 0.021 secs (0.066 CPU) [preview] processed `gamma' on CPU, blended on CPU
+28.8183 [dev_process_image] pixel pipeline took 1.167 secs (0.442 CPU) processing `2022-06-17__DSC00078.arw'
+```
+{{< /tab >}}
+
+{{< tab "Ansel Master CPU" >}}
+```
+24.011285 [dev_pixelpipe] took 0.000 secs (0.000 CPU) to load the image.
+24.571944 [dev_pixelpipe] pipeline resync with history took 0.038 secs (0.035 CPU) for pipe virtual-preview
+24.640211 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+24.640260 [dev_pixelpipe] pipeline resync with history took 0.000 secs (0.000 CPU) for pipe virtual-preview
+24.726982 [dev_pixelpipe] pipeline resync with history took 0.046 secs (0.069 CPU) for pipe preview
+24.766022 [dev_pixelpipe] took 0.039 secs (0.029 CPU) initing base buffer [preview]
+24.833124 [dev_pixelpipe] took 0.067 secs (0.071 CPU) processed `Raw settings' on CPU, blended on  [preview]
+24.903016 [dev_pixelpipe] took 0.070 secs (0.064 CPU) processed `white balance' on CPU, blended on  [preview]
+38.318787 [dev_pixelpipe] took 13.416 secs (34.286 CPU) processed `highlight reconstruction' on CPU, blended on CPU [preview]
+39.324031 [dev_pixelpipe] took 1.005 secs (3.031 CPU) processed `demosaic' on CPU, blended on  [preview]
+39.455093 [dev_pixelpipe] took 0.131 secs (0.291 CPU) processed `lens correction' on CPU, blended on  [preview]
+40.413148 [dev_pixelpipe] took 0.958 secs (2.942 CPU) processed `Initial resampling' on CPU, blended on  [preview]
+40.416769 [dev_pixelpipe] took 0.004 secs (0.006 CPU) processed `exposure' on CPU, blended on CPU [preview]
+40.419936 [dev_pixelpipe] took 0.003 secs (0.003 CPU) processed `input color profile' on CPU, blended on  [preview]
+40.498418 [dev_pixelpipe] took 0.078 secs (0.159 CPU) processed `color calibration' on CPU, blended on CPU [preview]
+43.713993 [dev_pixelpipe] took 3.215 secs (7.915 CPU) processed `diffuse or sharpen' on CPU, blended on CPU [preview]
+43.975371 [dev_pixelpipe] took 0.261 secs (0.667 CPU) processed `color balance rgb' on CPU, blended on CPU [preview]
+44.099572 [dev_pixelpipe] took 0.124 secs (0.320 CPU) processed `filmic rgb' on CPU, blended on CPU [preview]
+44.116735 [dev_pixelpipe] took 0.017 secs (0.034 CPU) processed `output color profile' on CPU, blended on  [preview]
+44.129210 [dev_pixelpipe] took 0.012 secs (0.018 CPU) processed `dithering' on CPU, blended on  [preview]
+44.139760 [dev_pixelpipe] took 0.010 secs (0.023 CPU) processed `display encoding' on CPU, blended on  [preview]
+44.139820 [pixelpipe] preview internal pixel pipeline processing took 19.413 secs (49.861 CPU)
+44.139847 [dev_process_preview] pipeline processing thread took 19.413 secs (49.861 CPU)
+44.179382 [dev_pixelpipe] pipeline resync with history took 0.029 secs (0.054 CPU) for pipe full
+44.179505 [dev_process_full] pipeline processing thread took 0.000 secs (0.000 CPU)
+```
+{{< /tab >}}
+
+{{< tab "Darktable 5.4.1 CPU" >}}
+```
+12.5778 [dt_dev_process_image_job] loading image. took 0.000 secs (0.000 CPU)
+12.6692 [dt_dev_process_image_job] loading image. took 0.000 secs (0.000 CPU)
+12.7607 [dev_pixelpipe] took 0.018 secs (0.022 CPU) initing base buffer [full]
+12.8098 [dev_pixelpipe] took 0.049 secs (0.105 CPU) [full] processed `rawprepare' on CPU
+12.8448 [dev_pixelpipe] took 0.035 secs (0.042 CPU) [full] processed `temperature' on CPU
+25.7535 [dev_pixelpipe] took 12.909 secs (44.992 CPU) [full] processed `highlights' on CPU
+27.5129 [resample_plain] plan 0.001 secs (0.001 CPU) resample 0.732 secs (2.749 CPU)
+27.5515 [dev_pixelpipe] took 1.798 secs (6.012 CPU) [full] processed `demosaic' on CPU
+27.5571 [dev_pixelpipe] took 0.006 secs (0.005 CPU) [full] processed `lens' on CPU
+27.5603 [dev_pixelpipe] took 0.003 secs (0.003 CPU) [full] processed `ashift' on CPU
+27.5634 [dev_pixelpipe] took 0.003 secs (0.005 CPU) [full] processed `exposure' on CPU
+27.5963 [dev_pixelpipe] took 0.033 secs (0.100 CPU) [full] processed `colorin' on CPU
+27.6038 [dt_ioppr_transform_image_colorspace] IOP_CS_LAB-->IOP_CS_RGB took 0.007 secs (0.018 CPU) [channelmixerrgb]
+27.6464 [dev_pixelpipe] took 0.050 secs (0.163 CPU) [full] processed `channelmixerrgb' on CPU
+31.0132 [dev_pixelpipe] took 3.367 secs (12.611 CPU) [full] processed `diffuse' on CPU
+31.1921 [dev_pixelpipe] took 0.179 secs (0.647 CPU) [full] processed `colorbalancergb' on CPU
+31.3065 [dev_pixelpipe] took 0.114 secs (0.406 CPU) [full] processed `filmicrgb' on CPU
+31.3321 [dt_ioppr_transform_image_colorspace] IOP_CS_RGB-->IOP_CS_LAB took 0.025 secs (0.091 CPU) [colorout]
+31.3475 [dev_pixelpipe] took 0.041 secs (0.124 CPU) [full] processed `colorout' on CPU
+31.3754 [dev_pixelpipe] took 0.028 secs (0.020 CPU) [full] processed `dither' on CPU
+31.3849 [dev_pixelpipe] took 0.009 secs (0.034 CPU) [full] processed `gamma' on CPU
+31.3870 [dev_process_image] pixel pipeline took 18.644 secs (65.292 CPU) processing `2022-06-17__DSC00078.arw'
+
+31.4040 [dt_dev_process_image_job] loading image. took 0.000 secs (0.000 CPU)
+31.5018 [dt_dev_process_image_job] loading image. took 0.000 secs (0.000 CPU)
+31.5722 [dev_pixelpipe] took 0.000 secs (0.000 CPU) initing base buffer [preview]
+31.5824 [dev_pixelpipe] took 0.010 secs (0.014 CPU) [preview] processed `rawprepare' on CPU
+31.5861 [dev_pixelpipe] took 0.004 secs (0.008 CPU) [preview] processed `temperature' on CPU
+32.7796 [dev_pixelpipe] took 1.193 secs (4.129 CPU) [preview] processed `highlights' on CPU
+32.8917 [dev_pixelpipe] took 0.112 secs (0.387 CPU) [preview] processed `demosaic' on CPU
+32.9099 [dev_pixelpipe] took 0.018 secs (0.031 CPU) [preview] processed `lens' on CPU
+32.9433 [dev_pixelpipe] took 0.033 secs (0.050 CPU) [preview] processed `ashift' on CPU
+32.9610 [dev_pixelpipe] took 0.018 secs (0.023 CPU) [preview] processed `exposure' on CPU
+33.1087 [dev_pixelpipe] took 0.148 secs (0.532 CPU) [preview] processed `colorin' on CPU
+33.1362 [dt_ioppr_transform_image_colorspace] IOP_CS_LAB-->IOP_CS_RGB took 0.027 secs (0.096 CPU) [channelmixerrgb]
+33.3353 [dev_pixelpipe] took 0.227 secs (0.825 CPU) [preview] processed `channelmixerrgb' on CPU
+55.6386 [dev_pixelpipe] took 22.303 secs (82.427 CPU) [preview] processed `diffuse' on CPU
+56.4763 [dev_pixelpipe] took 0.837 secs (3.180 CPU) [preview] processed `colorbalancergb' on CPU
+57.0002 [dev_pixelpipe] took 0.523 secs (1.966 CPU) [preview] processed `filmicrgb' on CPU
+57.1225 [dt_ioppr_transform_image_colorspace] IOP_CS_RGB-->IOP_CS_LAB took 0.122 secs (0.437 CPU) [colorout]
+57.1852 [dev_pixelpipe] took 0.184 secs (0.637 CPU) [preview] processed `colorout' on CPU
+57.2043 [dev_pixelpipe] took 0.019 secs (0.018 CPU) [preview] processed `dither' on CPU
+57.2471 [dev_pixelpipe] took 0.043 secs (0.155 CPU) [preview] processed `gamma' on CPU
+57.4090 [dev_process_image] pixel pipeline took 25.837 secs (94.647 CPU) processing `2022-06-17__DSC00078.arw'
+```
+{{< /tab >}}
+
+{{< /tabs >}}
+
+
+#### Report
+
 First of all, when entering the darkroom, __Darktable computes 2 pipelines for the same result as Ansel, that computes only one__. So, regardless of actual runtimes, already it's half useless computations.
 
-Then, Ansel computes the full-resolution image up to the _initial resampling_ module, while Darktable does it only until before _demosaic_. This is important to the comparison :
+Then, Ansel computes the full-resolution image up to the _initial resampling_ module, while Darktable does it only until before _demosaic_. This is important to the comparison.
 
-{{< table class="align-center" >}}
+{{< tabs >}}
+
+{{< tab "Config 1" >}}
+{{< table class="align-center">}}
+Config 1 (Intel Xeon, Nvidia Quadro)
 | Software | GPU | CPU |
 |----------|-----|-----|
-| Ansel    | 5.880 s | 11.308 s |
+| Ansel    | 5.914 s | 11.391 s |
 | Darktable 5.4.1 | 6.822 s | 13.66 s |
 {{< /table >}}
+{{< /tab >}}
+{{< tab "Config 2">}}
+{{< table class="align-center" >}}
+Config 2 (Intel i3, AMD Radeon)
+| Software | GPU | CPU |
+|----------|-----|-----|
+| Ansel    | 5.176 s | 19.413 s |
+| Darktable 5.4.1 | 3.927 s | 44.481 s |
+{{< /table >}}
+{{< /tab >}}
 
-Darktable manages to be slower than Ansel on GPU even looking only at the single _main pipeline_ rendering and even downscaling the picture to display resolution earlier in the pipeline. But we actually see the same effect on CPU, despite all the alleged "optimizations" done on CPU-only modules circa 2023-2024 in Darktable. Overall, Darktable will freeze your computer 0.94 s longer on GPU (16 % more) and 2.35 s more on CPU (21 % more).
+{{< /tabs >}}
 
-That gives us the following side-by-side module comparisons (we compare only modules running at the same resolution for the main image pipeline only) :
+On config 1, Darktable manages to be slower than Ansel on GPU even looking only at the single _main pipeline_ rendering and even downscaling the picture to display resolution earlier in the pipeline. But we actually see the same effect on CPU, despite all the alleged "optimizations" done on CPU-only modules circa 2023-2024 in Darktable. Overall, Darktable will freeze your computer 0.91 s longer on GPU (13 % more) and 2.27 s more on CPU (17 % more).
 
-{{< plotly title="Per-module relative runtimes (GPU). Lower is better." src="plotly-per-module-gpu.json" class="full-width" >}}
+On config 2, the CPU path shows 0.8 s penalty for Ansel on the main pipeline only. The AMD GPU shows a bad hit on the _demosaic_ module (still using bad Darktable 4.0 code) and on the _lens correction_ module, that process full-resolution on Ansel while it processes at screen resolution in Darktable. Taking into account the second pipeline that Darktable runs, Ansel is only slower by 1.25 s on GPU. On CPU however, Darktable now freezes the machine 25.07 s longer because of that duplicated pipeline work. Anyway, the slow modules are at the beginning of the pipeline and will not be recomputed for the whole session.
 
-{{< plotly title="Per-module relative runtimes (CPU). Lower is better." src="plotly-per-module-cpu.json" class="full-width" >}}
+That gives us the following side-by-side module comparisons. We compare only modules running at the same resolution for the main image pipeline only. In the averages tab, factors are averaged with a geometric mean and relative differences with a harmonic mean:
 
+{{< tabs >}}
+{{< tab "Config 1">}}
 {{< table >}}
 | Module / chip | Ansel Master | Darktable 5.4.1 | Ansel speed-up |
 | ------------- | ------------ | --------------- | -------------- |
-| Exposure / CPU | 7 ms | 12 ms | ×1.71 / +42 % |
-| Exposure / GPU | 1 ms | 10 ms | ×10 / +90 % |
-| Input color profile / CPU | 3 ms | 15 ms | ×5 / +80 % |
-| Input color profile / GPU | 2 ms | 32 ms | ×16 / +94 % | 
-| Color calibration / CPU | 62 ms | 84 ms | ×1.35 / +26 % |
-| Color calibration / GPU | 2 ms | 39 ms | ×19.5 / +95 % |
-| Diffuse or sharpen / CPU | 3.88 s | 4.21 s | ×1.09 / +8 % |
-| Diffuse or sharpen / GPU | 1.16 s | 1.69 s | ×1.46 / +32 % |
-| Color balance RGB / CPU | 272 ms | 261 ms | ×0.96 / -4.2 % |
-| Color balance RGB / GPU | 9 ms | 12 ms | ×1.33 / +25 % |
-| Filmic RGB / CPU | 137 ms | 140 ms | ×1.02 / +2.1 % |
-| Filmic RGB / GPU | 6 ms | 11 ms | ×1.83 / +45 % |
-| Output color profile / CPU | 13 ms | 21 ms | ×1.62 / +38 % |
-| Output color profile / GPU | 22 ms | 52 ms | ×2.36 / +58 % |
-| Dithering (CPU only) / CPU pipeline | 25 ms | 59 ms | ×2.36 / +58 % |
-| Dithering (CPU only) / GPU pipeline | 47 ms | 88 ms | ×1.87 / +47 % |
-| Gamma / display encoding (CPU only) / CPU pipeline | 10 ms | 9 ms | ×0.9 / -11 % |
+| Raw settings* / CPU | 28 ms | 40 ms | __×1.43 / +30 %__ |
+| Raw settings* / GPU | 14 ms | 17 ms | __×1.21 / +18 %__ |
+| White balance* / CPU | 27 ms | 29 ms | __×1.07 / +6.9 %__ |
+| White balance* / GPU | 12 ms | 13 ms | __×1.08 / +7.7 %__ |
+| Highlights reconstruction* / CPU | 6.23 s | 6.33 s | __×1.02 / +1.6 %__ |
+| Highlights reconstruction* / GPU | 3.56 s | 3.70 s | __×1.04 / +3.8 %__ |
+| Demosaic* / CPU | 349 ms | 717 ms | __×2.05 / +51 %__ |
+| Demosaic* / GPU | 521 ms | 490 ms | ×0.94 / -6.3 % |
+| Exposure / CPU | 5 ms | 12 ms | __×2.4 / +58 %__ |
+| Exposure / GPU | 1 ms | 10 ms | __×10 / +90 %__ |
+| Input color profile / CPU | 3 ms | 15 ms | __×5 / +80 %__ |
+| Input color profile / GPU | 2 ms | 32 ms | __×16 / +94 %__ | 
+| Color calibration / CPU | 61 ms | 84 ms | __×1.38 / +27 %__ |
+| Color calibration / GPU | 1 ms | 39 ms | __×39 / +97 %__ |
+| Diffuse or sharpen / CPU | 3.88 s | 4.21 s | __×1.08 / +7.8 %__ |
+| Diffuse or sharpen / GPU | 1.16 s | 1.69 s | __×1.45 / +31 %__ |
+| Color balance RGB / CPU | 251 ms | 261 ms | __×1.04 / +3.8 %__ |
+| Color balance RGB / GPU | 9 ms | 12 ms | __×1.33 / +25 %__ |
+| Filmic RGB / CPU | 137 ms | 140 ms | __×1.02 / +2.1 %__ |
+| Filmic RGB / GPU | 6 ms | 11 ms | __×1.83 / +45 %__ |
+| Output color profile / CPU | 13 ms | 21 ms | __×1.62 / +38 %__ |
+| Output color profile / GPU | 22 ms | 52 ms | __×2.36 / +58 %__ |
+| Dithering (CPU only) / CPU pipeline | 24 ms | 59 ms | __×2.46 / +59 %__ |
+| Dithering (CPU only) / GPU pipeline | 44 ms | 88 ms | __×2 / +50 %__ |
+| Gamma / display encoding (CPU only) / GPU pipeline | 13 ms | 9 ms | ×0.69 / -44 % |
+| Gamma / display encoding (CPU only) / CPU pipeline | 11 ms | 9 ms | ×0.82 / -22 % |
 {{< /table >}}
+*: modules running at full resolution on both applications.
+{{< /tab >}}
+{{< tab "Config 2">}}
+{{< table >}}
+| Module / chip | Ansel Master | Darktable 5.4.1 | Ansel speed-up |
+| ------------- | ------------ | --------------- | -------------- |
+| Raw settings* / CPU | 67 ms | 49 ms | ×0.73 / -37 % |
+| Raw settings* / GPU | 40 ms | 59 ms | __×1.48 / +32 %__ |
+| White balance* / CPU | 70 ms | 35 ms | ×0.5 / -100 % |
+| White balance* / GPU | 8 ms | 7 ms | ×0.88 / -14 % |
+| Highlights reconstruction* / CPU | 13.42 s | 12.91 s | ×0.96 / -3.9 % |
+| Highlights reconstruction* / GPU | 1.60 s | 1.87 s | __×1.17 / +14 %__ |
+| Demosaic* / CPU | 1.01 s | 1.80 s | __×1.79 / +44 %__ |
+| Demosaic* / GPU | 1.46 s | 123 ms | ×0.08 / -1090 % |
+| Exposure / CPU | 4 ms | 3 ms | ×0.75 / -33 % |
+| Exposure / GPU | 2 ms | 2 ms | __×1 / 0 %__ |
+| Input color profile / CPU | 3 ms | 33 ms | __×11 / +91 %__ |
+| Input color profile / GPU | 15 ms | 4 ms | ×0.27 / -275 % |
+| Color calibration / CPU | 78 ms | 50 ms | ×0.64 / -56 % |
+| Color calibration / GPU | 1 ms | 4 ms | __×4 / +75 %__ |
+| Diffuse or sharpen / CPU | 3.22 s | 3.37 s | __×1.05 / +4.5 %__ |
+| Diffuse or sharpen / GPU | 377 ms | 518 ms | __×1.37 / +27 %__ |
+| Color balance RGB / CPU | 261 ms | 179 ms | ×0.69 / -46 % |
+| Color balance RGB / GPU | 11 ms | 4 ms | ×0.36 / -175 % |
+| Filmic RGB / CPU | 124 ms | 114 ms | ×0.92 / -8.8 % |
+| Filmic RGB / GPU | 5 ms | 41 ms | __×8.2 / +88 %__ |
+| Output color profile / CPU | 17 ms | 41 ms | __×2.41 / +59 %__ |
+| Output color profile / GPU | 22 ms | 32 ms | __×1.45 / +31 %__ |
+| Dithering (CPU only) / CPU pipeline | 12 ms | 28 ms | __×2.33 / +57 %__ |
+| Dithering (CPU only) / GPU pipeline | 17 ms | 47 ms | __×2.76 / +64 %__ |
+| Gamma / display encoding (CPU only) / CPU pipeline | 10 ms | 9 ms | ×0.9 / -11 % |
+| Gamma / display encoding (CPU only) / GPU pipeline | 6 ms | 15 ms | __×2.5 / +60 %__ |
+{{< /table >}}
+*: modules running at full resolution on both applications.
+{{< /tab >}}
 
-On GPU, what we see is clearly the benefit of the high-level memory management, using pinned OpenCL memory or plain device-only memory buffers where relevant. I'm not aware of any changes between Darktable and Ansel GPU code for these modules, so the only explanation is the cache-first redesign with proper memory handling. But that gives us __speed-ups between 25 and 95 % with no internal algorithmic change__.
+{{< tab "Averages" >}}
+{{< table >}}
+Average over config 1 and 2. Factors are averaged with a geometric mean, and relative differences with a harmonic mean.
+| Module / chip | Ansel speed-up | Ansel code |
+| ------------- | -------------- | ---------- |
+| Raw settings* / CPU | __×1.02__ | Custom (manually vectorized) |
+| Raw settings* / GPU | __×1.34__ | Same as DT 5.4.1 |
+| White balance* / CPU | ×0.73 | Custom (manually vectorized) |
+| White balance* / GPU | ×0.97 | Same as DT 5.4.1 |
+| Highlights reconstruction* / CPU | ×0.99 | Same as DT 5.0 |
+| Highlights reconstruction* / GPU | __×1.1__ | Same as DT 5.0 |
+| Demosaic* / CPU | __×1.92__ | Same as DT 4.0 |
+| Demosaic* / GPU | ×0.28 | Same as DT 4.0 |
+| Exposure / CPU | __×1.34__ | Custom (manually vectorized) |
+| Exposure / GPU | __×3.16__ | Same as DT 4.0 |
+| Input color profile / CPU | __×7.42__ | Custom (manually vectorized) |
+| Input color profile / GPU | __×2.07__ | Custom | 
+| Color calibration / CPU | ×0.94 | Custom (manually vectorized) |
+| Color calibration / GPU | __×12.49__ | Same as DT 4.0 |
+| Diffuse or sharpen / CPU | __×1.07__ | Same as DT 4.0 |
+| Diffuse or sharpen / GPU | __×1.41__ | Same as DT 4.0 |
+| Color balance RGB / CPU | ×0.84 | Custom (manually vectorized) |
+| Color balance RGB / GPU | ×0.7 | Same as DT 4.0 |
+| Filmic RGB / CPU | ×0.97 | Custom (manually vectorized) |
+| Filmic RGB / GPU | __×3.88__ | Same as DT 5.4.1 |
+| Output color profile / CPU | __×1.97__ | Custom (manually vectorized) |
+| Output color profile / GPU | __×1.85__ | Custom |
+| Dithering (CPU only) / CPU pipeline | __×2.40__ | Same as DT 4.0 |
+| Dithering (CPU only) / GPU pipeline | __×2.35__ | Same as DT 4.0 |
+| Gamma / display encoding (CPU only) / CPU pipeline | ×0.86 | Same as DT 5.4.1 |
+| Gamma / display encoding (CPU only) / GPU pipeline | __×1.32__ | Same as DT 5.4.1 |
+{{< /table >}}
+*: modules running at full resolution on both applications.
+{{< /tab >}}
+{{< /tabs>}}
 
+{{< plotly title="Per-module relative speed (GPU). Higher is better." src="plotly-per-module-gpu.json" class="full-width" >}}
 
-On CPU, things get interesting because Darktable is supposed to have received a lot of module-wise pixel-loop optimizations between 4.0 and 5.2. And yet it performs worse than Ansel for almost all listed modules, with _gamma/display encoding_ being the exception. Ansel backported _filmic RGB_ algorithmic optimizations from Darktable 5.0, _diffuse or sharpen_ actually computes 9 more divisions per pixel in Ansel code than in Darktable's (bug fix), _dithering_ still uses the Darktable 4.0 code (whereas the 5.4 code was allegedly optimized), and _input/output color profiles_, _color balance RGB_ and _color calibration_ have been optimized in Ansel using compiler vector types explicitly (a different kind of optimization than the one done in Darktable using OpenMP and compiler hints).
+On GPU, Darktable 5.4 has optimized kernels for _demosaic (RCD)_ and _color balance RGB_ while Ansel still used the ones from Darktable 4.0, and Ansel has optimized kernels for _color calibration_, _input & output color profiles_. Other modules either previous Darktable 4.0 kernels or kernels slightly tweaked with Darktable 5.x speed-ups. So the speed-ups we see are clearly the benefit of the high-level memory management, using pinned OpenCL memory or plain device-only memory buffers where relevant.
 
-In Darktable, [Ralf Brown optimized modules](https://github.com/darktable-org/darktable/pulls?q=is%3Apr+is%3Aclosed+author%3Aralfbrown+performance) for a 64-core AMD Threadripper CPU, and I'm running a good old Intel Xeon with 4 × 2 cores on Hyper-Threading. So, despite all the misleading hype and lies spread in release notes these past years, Darktable has degraded on Intel and all the agitation is ultimately worth nothing. I know far more people running Intel i5/i7 hardware than any kind of 64-core CPU. So we are very happy to see that performance has improved for those who needed it the least. The others just need to buy new hardware, I guess. Open-source has become just the same consumerist crap as commercial software now.
+__Across all modules, Ansel is 1.7 times faster than Darktable__ (geometric mean).
+
+{{< plotly title="Per-module relative speed (CPU). Higher is better." src="plotly-per-module-cpu.json" class="full-width" >}}
+
+On CPU, things are more nuanced. 
+
+Darktable 5.x is supposed to have received CPU optimizations for _dithering_ and _demosaicing (RCD)_, yet both those modules perform worse than Ansel's on both configs.
+
+Ansel has manually-vectorized CPU pixel code for _color balance RGB_, _color calibration_, _input/output color profile_, _raw settings_, _white balance_, _exposure_ and _filmic_, while Darktable's uses compiler hints to achieve vectorization. All of them perform better than Darktable's on the Intel Xeon. On the Intel i3, for basic color matrix work, Ansel performs (much) better, but it's slightly harming basic modules like _raw settings_, _exposure_ or _white balance_. 
+
+_Diffuse or sharpen_ should still use the same Darktable 4.0 code on Ansel and on Darktable 5.4, but Ansel is faster on both configs, which shows the benefit of using our own pre-allocated memory array for the cache, and allocating memory buffers out of the OS circuitery. This shows that optimizing at the module level is the wrong scope, and that global pipeline needed an overhaul first.
 
 But it is of course easier to tackle module-wise optimizations because modules are… modular, meaning self-enclosed and self-reliant. There is little chance to mess up the software as a whole when working on modules because they are isolated from the rest. Application-global architecture changes, on the other hand, are dangerous, complicated and demanding. And they impose to stop the development of any new module at all while the architecture is getting stabilized. Which Darktable will never have the discipline to do, because the project is unmanaged and random pull requests pop up on Github at random times from random contributors.
 
-But the magnitude of the speed-ups reached here only confirms what I have been saying for years : the module level is the wrong level, the problem in this application is its pipeline. Ralf Brown reports individual speed-ups of 5 to 15 %, inconsistent depending on the number of cores used (often resulting in regressions for 8 cores and fewer). __On CPU, for color matrix maths, we get a speed-up range between 31 and 80 %.__
+__Across all modules, Ansel is 1.3 times faster than Darktable__ (geometric mean).
+
+Combining GPU and CPU pathes over both config, opening the darkroom is __1.25 times faster on Ansel__ (geometric mean).
 
 ### Zooming at 100%
 
@@ -745,9 +1028,9 @@ I don't do opinions, I do benchmarks. The numbers I published here can be entire
 
 {{< plotly title="Darktable performance penalty per benchmark case" src="plotly-darktable-penalty.json" class="full-width" >}}
 
-- individual modules are on average __26 % faster on Ansel CPU__ compared to Darktable CPU,
-- individual modules are on average __61 % faster on Ansel GPU__ compared to Darktable GPU,
-- full pipelines are anywhere between __×1.16 and ×100 faster on Ansel GPU__ compared to Darktable GPU, because __Ansel has a working cache__,
+- individual modules are on average __1.34 times faster on Ansel CPU__ compared to Darktable CPU,
+- individual modules are on average __1.65 times faster on Ansel GPU__ compared to Darktable GPU,
+- full pipelines are anywhere between __1.25 times and 100 times faster on Ansel__ compared to Darktable GPU, because __Ansel has a working cache__,
 - Ansel is not just faster, it's also more energy-efficient, because fewer things are (re)computed.
 
 All this was achieved by removing GUI code from pipeline rendering code, by making the data lifecycle clearer, simpler, and more robust, not by adding more special-case handling and workarounds. Ansel is able to use a lot more RAM than Darktable, while doing the bookkeeping necessary to know how much it actually uses and if it should start recycling memory.
