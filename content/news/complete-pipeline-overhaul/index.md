@@ -107,7 +107,7 @@ Config 1
 Config 2
 : The hardware is a desktop PC with 4 × Intel Core i3-4130 and GPU AMD Radeon RX 580 Polaris 10, running on Ubuntu 24.04 LTS with Wayland. AMD driver version is RustiCL 25.2.8. The Core i3 is a mid-range CPU released in 2013. The AMD Polaris 10 is a mid-high-range GPU released in 2017.
 
-We show here the output of `ansel -d perf` and `darktable -d perf`. Both Ansel and Darktable config files are set with [this script](https://github.com/aurelienpierreeng/ansel/blob/master/tools/benchmark_darkroom_rc.sh) to ensure the same config baseline. The 45 Mpx test picture is taken from [here](https://discuss.pixls.us/t/backlit-hardcore-flaring-vintage-lens-fun/31270) and the editing XMP can be downloaded [here](./2022-06-17__DSC00078.arw.xmp).
+We show here the output of `ansel -d perf` and `darktable -d perf`. Both Ansel and Darktable config files are set with [this script](https://github.com/aurelienpierreeng/ansel/blob/master/tools/benchmark_darkroom_rc.sh) to ensure the same config baseline. The 45 Mpx test picture is taken from [here](https://discuss.pixls.us/t/backlit-hardcore-flaring-vintage-lens-fun/31270) and the editing XMP can be downloaded [here](2022-06-17__DSC00078.arw.xmp).
 
 ### Initial loading in darkroom
 
