@@ -27,6 +27,17 @@ AppImages have been modified to accept command-line arguments and expose other b
 2. to process images without GUI through `./Ansel-xxxx-x86_64.AppImage ansel-cli input.raw output.tif`
 3. to call other internal programs (see the [docs](/doc/install/linux/#run-the-appimage)).
 
+Due to dependencies issues on Ubuntu, the AppImage had to be upgraded to Ubuntu 24.04, which makes it now compatible with all Linux systems supporting at least `libc 2.39`. You can check your own `libc` version by running `ldd --version` in a terminal. Ansel AppImage is therefore compatible with :
+
+1. Ubuntu 24.04,
+2. Debian 13,
+3. Linux Mint 22,
+4. Pop!_OS 24.04,
+5. Fedora 40,
+6. openSUSE Leap 16
+
+Note that the Ansel AppImage doesn't bundle the OpenMP library anymore, since it conflicted with some debug helpers in a weird way. It will now use the system one. If not installed (which would be rare on Linux), it is part of the GCC ecosystem (`libgomp`).
+
 ## Docker images
 
 Nightly builds have been added as [Docker images](https://hub.docker.com/r/aurelienpierre/ansel) too. These will allow to run `ansel-cli` on backend servers. Note though that Ansel CLI is not safe to run on servers with public web access, as it doesn't prevent code injection and doesn't sanitize user inputs in any way. Docker images are based on Ubuntu 24.04.
@@ -40,13 +51,13 @@ On reasonably-fast networks, that would prevent users from buying expensive hard
 
 ## MacOS
 
-MacOS nightly builds have been added last October for the Apple M (Arm64) architecture. In September 2025, Github added runners for MacOS 15 Sonoma on Intel architecture. This allowed to add support of Intel i386 for Ansel nightly builds today.
+MacOS nightly builds have been added last October for the Apple M (Arm64) architecture. In September 2025, Github added runners for MacOS 15 Sonoma on Intel architecture. This allowed to add support of Intel i386 for Ansel nightly builds today. Both architectures are compiled on MacOS 15 Sonoma.
 
 Note that [Apple Intel architecture](https://github.com/actions/runner-images/issues/13045) is planned for deprecation by Github in August 2027 since Apple has discontinued support of this architecture. After this, there will be no easy way of building Ansel for Apple Intel hardware.
 
 ## About nightly builds
 
-Nightly-builds are auto-generated on Github runners (think of them as virtual servers you can start and stop from scripts to execute things), every morning between 5 and 7 am UTC. The generated packages are added to the [pre-release notes](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0), which acts as a repositories, and provides 1.5 year of build histories so you get a chance to rollback to a previously-working version if code changes suddently break the application in a way that prevents you from using it.
+Nightly builds are auto-generated on Github runners (think of them as virtual servers you can start and stop from scripts to execute things), every morning between 5 and 7 am UTC. The generated packages are added to the [pre-release notes](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0), which acts as a repositories, and provides 1.5 year of build histories so you get a chance to rollback to a previously-working version if code changes suddently break the application in a way that prevents you from using it.
 
 The nightly builds are entirely dependent:
 
