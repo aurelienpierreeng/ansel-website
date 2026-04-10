@@ -38,18 +38,19 @@ Pressing the camera shutter merely started a process ending when the on-screen p
 
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
-Distribution-agnostic executable
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip" label="Download ansel.appimage" icon="download" >}}
+Distribution-agnostic, portable AppImage executable
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip" label="Download" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
 Windows 7 to 11 installer
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Download ansel.exe" icon="download" >}}
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Download" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="apple fab" title="MacOS X" %}}
-Distribution for MacOS X 14 and newer (for Apple M architecture)
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable.mac.zip" label="Download ansel.dmg" icon="download" >}}
+Distribution for MacOS X 15 and newer.
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable-arm64.mac.zip" label="Download for Apple M" icon="download" >}}
+{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable-intel64.mac.zip" label="Download for Intel" icon="download" >}}
 {{% /card %}}
 
 {{% card icon="terminal" title="Build from source" %}}
@@ -247,13 +248,10 @@ The software is integrally translated in English, French, Italian and simplified
 ## Darktable, but better
 
 {{% row %}}
-
 {{% column %}}
 
 <div class="no-hyphenation lead">
-
 Ansel is what Darktable 4.0 could have been if it didn't die of [feature creep](https://en.wikipedia.org/wiki/Feature_creep).
-
 </div>
 
 Between 2020 and 2023, Darktable has suffered [massive code additions of peripheral features](./news/darktable-dans-le-mur-au-ralenti/), often ill-coded, poorly designed and penalizing usability, performance and maintenance. Too many workarounds failed to fix bugs, but layered new problems on top of legacy code : welcome in maintenance nightmare.
