@@ -67,3 +67,11 @@ The nightly builds are entirely dependent:
 - on [Ubuntu](https://ubuntu.com/download/server) for providing the Linux dependencies ecosystem.
 
 That's a lot of third parties to rely on, and nightly builds often break just because Github deprecated a runner or one of MSYS/Ubuntu/Homebrew renamed a package, removed it or upgraded it to a newer version that changes API and breaks with Ansel internals. So, despite the apparent automatization of the whole workflow, regular maintenance is still needed and nightly builds might stay broken for some time.
+
+## Credits
+
+I would like to thank:
+
+- [Alynx Zhou](https://alynx.one/), for having been an huge help with debugging AppImage and Linux nightly builds, on top of other CMake configuration,
+- [Jake Langford](https://github.com/jakenvac), [Miguel Moquillon](https://www.moquillon.fr/), [Laurent Perraut](https://www.perraut.net/), [Sidney Markowitz](https://github.com/sidney) for having brought MacOS support and nightly builds,
+- [Jiyoné](https://github.com/Jiyone) for having handled the MacOS code reviews and merges.
