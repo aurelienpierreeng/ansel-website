@@ -9,13 +9,13 @@ authors:
 
 ## Target clones
 
-Compiling the software natively on the computer use to improve runtimes on CPU by around 30 %. The reason is the compiler makes specific optimizations for the target hardware on which it is compiled, while pre-built packages have to stay generic and trigger more conservative optimization for the sake of wide support. Note that OpenCL kernels are, anyway, compiled for your particular GPU using your OpenCL driver, so the story is different there.
+Compiling the software natively on the computer use to improve runtimes on CPU by around 30 %, compared to pre-built packages. The reason is the compiler makes specific optimizations for the target hardware on which it is compiled, while pre-built packages have to stay generic and trigger more conservative optimization for the sake of wide support. Note that OpenCL kernels are, anyway, compiled for your particular GPU using your OpenCL driver, so the story is different there.
 
 In 2016, GCC introduced [target clones](https://maskray.me/blog/2023-02-05-function-multi-versioning), followed in 2023 by CLang, for which I added support in Darktable in 2019 in some parts only (noticeably, the _tone equalizer_). This experiment had never been scaled to the whole software until now.
 
 Target clones essentially allow to build different versions of the code, optimized for different hardware architectures, and the software will choose the right one to execute at runtime. Since this relies on `ifunc`, this is supported only on Linux (and even there, not for all versions of `libc`) and Mac OS Intel, so expect no Windows support. The same feature on Windows would have to be coded manually.
 
-With generalized target clones, Ansel AppImages packages now run significantly faster, and within a 5 % margin compared to native builds (aka compiling yourself).
+With generalized target clones, Ansel AppImages packages now run significantly faster, and within a 5 % margin compared to native builds (aka compiling yourself). This is a hand streched out toward all the less computer-litterate users, who can't build the software themselves and usually overlap with the crowd that owns weak hardware.
 
 ## Linux AppImage
 
