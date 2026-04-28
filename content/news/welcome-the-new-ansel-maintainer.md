@@ -12,14 +12,9 @@ Pending a real structure, Guillaume needs donations to pay his bills and you can
 Guillaume has been using Darktable since circa 2018 and moved to Ansel since the beginning. As a kitchen chef and culinary photographer, he has co-authored and photographed several cooking books whose pictures were edited with Darktable then with Ansel :
 
 - [À l'école de la fermentation](https://www.editionsalternatives.com/site.php?type=P&id=2368), 2025, Éditions Alternatives.
-- [Bocaux et fermentation](https://www.editions-larousse.fr/livre/bocaux-et-fermentation-9782036013094/), 2022, Éditions Larousse.
-- [Aliments fermentés, aliments santé](https://www.editionsalternatives.com/site.php?type=P&id=2182), 2022, Éditions Alternatives.
 - [Le miel, guide d'usage](https://www.editionsalternatives.com/site.php?type=P&id=2256), 2022, Éditions Alternatives.
-- [Boissons fermentées naturelles](https://www.editionsalternatives.com/site.php?type=P&id=2183), 2021, Éditions Alternatives.
-- [Fromages et laitages naturels](https://www.editionsalternatives.com/site.php?type=P&id=2184), 2021, Éditions Alternatives.
 - [Légumes lacto-fermentés](https://www.gallimard.fr/catalogue/legumes-lacto-fermentes/9782072932588), 2021, Éditions Gallimard.
 - [Faire son pain et son levain](https://www.editions-larousse.fr/livre/faire-son-pain-et-son-levain-9782036000919/), 2021, Éditions Larousse.
-- ...
 
 Guillaume also has an extensive experience with analog photography and film scanning, developping his negatives himself at home with C41 & E6 processes, or caffenol. He shoots stereophotography on diapositives. He has created some impressive Arduino-based devices to help with film chemical development and scanning, where he learned how to program in C.
 
