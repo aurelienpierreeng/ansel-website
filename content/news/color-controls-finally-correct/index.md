@@ -301,7 +301,7 @@ So the new _split-toning_ module in Ansel proposes two channel mixers and two co
 
 _At that point, you may think I'm obsessing about concert photography, but it's only because stage lights are the most demanding setup and forgive no mistake in the color pipeline. Those have been unsolved issues for decades; blue lights have been known to break into magenta, and they are the ultimate color benchmark_.
 
-Here, we adjusted highlights temperature for more natural skin tones, while preserving the overall blue surround in shadows. In such a scene, there is no white that you can sample, so targeting natural skin tones is the only guide. Then, you do your best to preserve the spirit of the stage lighting (keep blue blue), while minding the limits of your RGB gamut. For more details, see the [documentation](doc/views/darkroom/modules/split-toning-rgb).
+Here, we adjusted highlights temperature for more natural skin tones, while preserving the overall blue surround in shadows. In such a scene, there is no white that you can sample, so targeting natural skin tones is the only guide. Then, you do your best to preserve the spirit of the stage lighting (keep blue blue), while minding the limits of your RGB gamut. For more details, see the [documentation](doc/views/darkroom/modules/split-toning).
 
 ### Color primaries
 
