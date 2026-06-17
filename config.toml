@@ -188,7 +188,7 @@ FootnoteReturnLinkContents = "↩"
   bgColor = '#ffffff'
   hint = 'photo'
   quality = 86
-  resampleFilter = 'linear'
+  resampleFilter = 'mitchellNetravali'
 
 [Params.Images]
     maxSize = 4096

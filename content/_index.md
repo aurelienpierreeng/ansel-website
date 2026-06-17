@@ -15,7 +15,7 @@ tags:
     <p class="lead mb-4"><em>Ansel</em> is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs.</p>
   </div>
 <div class="my-5">
-{{< slideshow images="lighttable.jpg,darkroom.jpg" >}}
+{{< slideshow images="ansel-0.1-lighttable.jpg,ansel-0.1-import.jpg,ansel-0.1-darkroom.jpg,ansel-0.1-masks.jpg,ansel-0.1-actions.jpg" >}}
 </div>
 </div>
 
