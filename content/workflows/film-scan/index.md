@@ -32,13 +32,11 @@ But he also built a complete apparatus to achieve the initial film scan and was 
 
 _Please note that Alain is a French speaker and this book was mostly translated using machine translation. If you understand French enough, you might want to read the original version._
 
-<object data="https://static.ansel.photos/article-lumiere-ponctuelle-en-compress.pdf" type="application/pdf" width="100%" height="900px">
-  <p>Unable to display PDF file. <a href="https://static.ansel.photos/article-lumiere-ponctuelle-en-compress.pdf">Download</a> instead.</p>
+<object data="https://bw-film-scanning.oguse.fr/document/point-light-article-revised-edition-2026-en.pdf" type="application/pdf" width="100%" height="900px">
+  <p>Unable to display PDF file. <a href="https://bw-film-scanning.oguse.fr/document/point-light-article-revised-edition-2026-en.pdf">Download</a> instead.</p>
 </object>
 
-<div class="text-center">
-{{< button url="https://static.ansel.photos/article-lumiere-ponctuelle-en-compress.pdf" label="Download the eBook (PDF)" icon="download fas" class="">}}
-</div>
+[See Alain's website…](https://bw-film-scanning.oguse.fr/en/index.html)
 
 
 ## Summary of Ansel settings
