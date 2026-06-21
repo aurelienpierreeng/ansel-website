@@ -7,3 +7,9 @@ resources/*
 _vendor/*
 *.api_key
 po/footers/*
+# Local Sentry / PostHog tokens used by tools/fetch-sentry-reliability.py - never commit
+.sentry-auth
+.sentry-auth-perso
+.sentry-auth-orga
+.posthog-auth
+.posthog-auth-perso

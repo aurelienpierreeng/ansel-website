@@ -1,0 +1,136 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "r3836",
+        "r3843"
+      ],
+      "y": [
+        95.83,
+        93.75
+      ],
+      "text": [
+        "69/72",
+        "30/32"
+      ],
+      "textposition": "auto",
+      "hovertext": [
+        "r3836 (g8f7c553)<br>95.83% crash-free<br>69 / 72 sessions<br>MTBF: 43 min (avg uptime before crash, n=3)<br>(merged 3 release names)",
+        "r3843 (gfe8df22)<br>93.75% crash-free<br>30 / 32 sessions<br>MTBF: 13 min (avg uptime before crash, n=2)<br>(merged 2 release names)"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": [
+          95.83,
+          93.75
+        ],
+        "colorscale": "RdYlGn",
+        "cmin": 88,
+        "cmax": 100,
+        "showscale": false
+      },
+      "name": "Crash-free %"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines+markers",
+      "x": [
+        "r3836",
+        "r3843"
+      ],
+      "y": [
+        42.911,
+        13.208
+      ],
+      "yaxis": "y2",
+      "connectgaps": false,
+      "hovertext": [
+        "r3836 (g8f7c553)<br>MTBF 43 min<br>(avg uptime before crash, n=3)",
+        "r3843 (gfe8df22)<br>MTBF 13 min<br>(avg uptime before crash, n=2)"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": "#1f3a5f",
+        "size": 8
+      },
+      "line": {
+        "color": "#1f3a5f",
+        "width": 1.5,
+        "dash": "dot"
+      },
+      "name": "MTBF (uptime before crash)"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Crash-free sessions per release \u2014 global 94.2% crash-free over 171 sessions (the last 2 days)"
+    },
+    "xaxis": {
+      "title": {
+        "text": "Release"
+      },
+      "type": "category"
+    },
+    "yaxis": {
+      "title": {
+        "text": "Crash-free sessions (%)"
+      },
+      "range": [
+        88,
+        100
+      ],
+      "ticksuffix": "%"
+    },
+    "yaxis2": {
+      "title": {
+        "text": "MTBF: mean uptime before crash (min)"
+      },
+      "overlaying": "y",
+      "side": "right",
+      "rangemode": "tozero",
+      "showgrid": false,
+      "ticksuffix": " min"
+    },
+    "legend": {
+      "orientation": "h",
+      "x": 0,
+      "y": 1.08
+    },
+    "shapes": [
+      {
+        "type": "line",
+        "xref": "paper",
+        "x0": 0,
+        "x1": 1,
+        "yref": "y",
+        "y0": 94.15204678362574,
+        "y1": 94.15204678362574,
+        "line": {
+          "color": "#444",
+          "width": 1.5,
+          "dash": "dash"
+        }
+      }
+    ],
+    "annotations": [
+      {
+        "xref": "paper",
+        "yref": "y",
+        "x": 1,
+        "y": 94.15204678362574,
+        "xanchor": "right",
+        "yanchor": "bottom",
+        "text": "global 94.2%",
+        "showarrow": false
+      }
+    ],
+    "margin": {
+      "t": 70,
+      "r": 70,
+      "b": 60,
+      "l": 60
+    },
+    "showlegend": true
+  }
+}

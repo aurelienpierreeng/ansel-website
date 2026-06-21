@@ -73,6 +73,14 @@ The links above always point to the latest nightly build of the "fairly stable" 
 {{% /column %}}
 {{% /row %}}
 
+### Is it stable ?
+
+<div class="bg-white">
+
+{{< plotly title="Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)" src="reliability.json" class="full-width" >}}
+
+</div>
+
 {{< divider >}}
 
 ## Why Ansel ?

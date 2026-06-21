@@ -12,11 +12,11 @@ on:
   # Can be triggered from a webhook from ansel-docs on new commits
   repository_dispatch:
 
-  # Update once a week at midnight on sundays
-  # This is only to maintain an up-to-date camera support table
-  # since it is read from Rawspeed/Libraw/Ansel source code at the time of building
+  # Rebuild twice a day (00:00 and 12:00 UTC) to refresh the Sentry/PostHog
+  # reliability chart and the camera support table (read from Rawspeed/Libraw/Ansel
+  # source at build time).
   schedule:
-    - cron: "0 0 * * SUN"
+    - cron: "0 0,12 * * *"
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -54,6 +54,17 @@ jobs:
       - name: Fetch modules and build translations
         run: |
           sh build-modules.sh
+      - name: Fetch reliability data (Sentry + PostHog)
+        env:
+          # Sentry User Auth Token with org:read + project:read (repository secret).
+          # If unset/empty, the script is a no-op and the committed placeholder chart
+          # is used, so the build never fails on it.
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_READ_TOKEN }}
+          # PostHog personal API key (phx_...) with query read scope, for average
+          # session length / time-based MTBF. Optional: if unset, those are omitted.
+          POSTHOG_QUERY_KEY: ${{ secrets.POSTHOG_QUERY_KEY }}
+        run: |
+          python3 tools/fetch-sentry-reliability.py
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
