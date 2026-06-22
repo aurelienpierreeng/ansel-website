@@ -58,21 +58,6 @@ Best performance for your hardware
 {{< button url="/en/doc/install" label="Building instructions" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
-
-{{% row %}}
-{{% column %}}
-
-{{< warning >}}
-__Ansel is in alpha version__. The GUI is susceptible to change and the application may crash under some circumstances.
-{{< /warning >}}
-
-
-{{% /column %}}
-{{% column %}}
-The links above always point to the latest nightly build of the "fairly stable" branch. If you want a particular version or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).
-{{% /column %}}
-{{% /row %}}
-
 ### Is it stable ?
 
 {{% row %}}
@@ -104,6 +89,8 @@ The links above always point to the latest nightly build of the "fairly stable" 
 {{% column %}}
 
 Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours.
+
+The links above always point to the latest nightly build of the "fairly stable" branch. If you want a particular revision or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).
 
 {{% /column %}}
 {{% /row %}}
