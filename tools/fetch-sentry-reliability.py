@@ -63,7 +63,7 @@ HOST = os.environ.get("SENTRY_HOST", "https://de.sentry.io")
 POSTHOG_HOST = os.environ.get("POSTHOG_HOST", "https://eu.posthog.com")
 POSTHOG_PROJECT_ID = os.environ.get("POSTHOG_PROJECT_ID", "206740")
 STATS_PERIOD = os.environ.get("RELIABILITY_STATS_PERIOD", "90d")
-MIN_SESSIONS = int(os.environ.get("RELIABILITY_MIN_SESSIONS", "25"))
+MIN_SESSIONS = int(os.environ.get("RELIABILITY_MIN_SESSIONS", "15"))
 MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "12"))
 ENVIRONMENT = os.environ.get("RELIABILITY_ENVIRONMENT", "").strip()
 
@@ -113,6 +113,32 @@ def fetch_groups(token):
     req = urllib.request.Request(url, headers={"Authorization": "Bearer %s" % token})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)  # full payload: "groups" + "intervals"
+
+
+def fetch_global_users(token):
+    """Project-wide, de-duplicated unique-user counts (no per-release grouping), so
+    the crash-free-users headline isn't inflated by users active in several
+    releases. Returns (users, healthy_users) or None."""
+    params = [
+        ("project", PROJECT_ID),
+        ("field", "count_unique(user)"),
+        ("field", "crash_free_rate(user)"),
+        ("statsPeriod", STATS_PERIOD),
+        ("interval", "1d"),
+    ]
+    if ENVIRONMENT:
+        params.append(("environment", ENVIRONMENT))
+    url = "%s/api/0/organizations/%s/sessions/?%s" % (HOST, ORG, urllib.parse.urlencode(params))
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer %s" % token})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        groups = json.load(resp).get("groups", [])
+    if not groups:
+        return None
+    totals = groups[0].get("totals") or {}
+    users = int(totals.get("count_unique(user)") or 0)
+    rate = totals.get("crash_free_rate(user)")
+    healthy = users * float(rate) if (users and rate is not None) else 0.0
+    return users, healthy
 
 
 def sentry_first_session(payload):
@@ -300,11 +326,28 @@ def _gh_request(token, url):
         return json.load(resp)
 
 
-def _gh_bug_count(token, extra):
-    """Count issues of the "Bug" type in the repo matching the extra qualifiers."""
-    q = "repo:%s is:issue type:Bug %s" % (GITHUB_REPO, extra)
+ISSUE_TYPES = ("Bug", "Task", "Feature")
+
+
+def _gh_count(token, qualifiers):
+    """Count issues in the repo matching the search qualifiers."""
+    q = "repo:%s is:issue %s" % (GITHUB_REPO, qualifiers)
     url = "%s/search/issues?per_page=1&q=%s" % (GITHUB_API, urllib.parse.quote(q))
     return int(_gh_request(token, url).get("total_count", 0))
+
+
+def _bucket_counts(token, bucket_q):
+    """For a milestone/no-milestone bucket, count resolved (closed as completed)
+    and still-open issues per type. Returns (fixed_total, open_total, per_type)."""
+    per_type = {}
+    f_total = o_total = 0
+    for t in ISSUE_TYPES:
+        f = _gh_count(token, 'type:%s state:closed reason:completed %s' % (t, bucket_q))
+        o = _gh_count(token, 'type:%s state:open %s' % (t, bucket_q))
+        per_type[t] = (f, o)
+        f_total += f
+        o_total += o
+    return f_total, o_total, per_type
 
 
 def _version_key(title):
@@ -312,89 +355,80 @@ def _version_key(title):
     return tuple(int(n) for n in nums) if nums else (9999,)
 
 
-def fetch_github_bugs(token):
-    """Bug-fixing progress, bucketed by milestone (+ an "Unscheduled" bucket for
-    bugs not yet assigned to one). The next release is the lowest-version open
-    milestone, picked dynamically so nothing needs editing per release.
+def fetch_github_issues(token):
+    """Issue-resolution progress (bugs + tasks + features) for the NEXT release
+    only - the lowest-version open milestone, chosen dynamically so nothing needs
+    editing per revision. Later milestones and unscheduled issues are ignored.
 
-    Returns (rows, total_closed, total_open) where rows is a list of
-    (label, fixed, remaining) ordered next-release first, then later milestones,
-    then "Unscheduled"; or None if the data can't be fetched."""
+    Returns (milestone_title, per_type, total_fixed, total_open) or None."""
     try:
         milestones = _gh_request(
             token, "%s/repos/%s/milestones?state=open&per_page=100" % (GITHUB_API, GITHUB_REPO))
     except Exception as exc:  # noqa: BLE001
         warn("GitHub milestones request failed (%s)." % exc)
         return None
-    milestones.sort(key=lambda m: _version_key(m.get("title", "")))
+    if not milestones:
+        return None
+    nxt = sorted(milestones, key=lambda m: _version_key(m.get("title", "")))[0]
+    title = nxt.get("title", "?")
+    f, o, per_type = _bucket_counts(token, 'milestone:"%s"' % title)
+    if f + o == 0:
+        return None
+    return title, per_type, f, o
 
-    rows = []
-    for i, m in enumerate(milestones):
-        title = m.get("title", "?")
-        closed = _gh_bug_count(token, 'state:closed milestone:"%s"' % title)
-        opened = _gh_bug_count(token, 'state:open milestone:"%s"' % title)
-        if closed + opened == 0:
+
+def _issues_figure(milestone, per_type, total_fixed, total_open):
+    """Horizontal stacked bars for the next release: number of issues (x) per type
+    (y = bugs / tasks / features), Resolved (green) + Still open (blush). The
+    milestone number goes in the title."""
+    labels, x_res, x_open, hov_res, hov_open, txt_res, txt_open = [], [], [], [], [], [], []
+    for t in reversed(ISSUE_TYPES):  # reversed so bugs ends up on top
+        rf, ro = per_type[t]
+        if rf + ro == 0:
             continue
-        label = "%s (next release)" % title if i == 0 else title
-        rows.append((label, closed, opened))
+        labels.append(t.lower() + "s")
+        x_res.append(rf)
+        x_open.append(ro)
+        txt_res.append(str(rf) if rf else "")
+        txt_open.append(str(ro) if ro else "")
+        hov_res.append("%s<br>%d resolved" % (t.lower() + "s", rf))
+        hov_open.append("%s<br>%d still open" % (t.lower() + "s", ro))
 
-    # Bugs not (yet) attached to any milestone - they exist and matter too.
-    u_closed = _gh_bug_count(token, "state:closed no:milestone")
-    u_open = _gh_bug_count(token, "state:open no:milestone")
-    if u_closed + u_open > 0:
-        rows.append(("Unscheduled", u_closed, u_open))
-
-    total_closed = _gh_bug_count(token, "state:closed")
-    total_open = _gh_bug_count(token, "state:open")
-    return rows, total_closed, total_open
-
-
-def _bugs_figure(rows, total_closed, total_open):
-    """Horizontal stacked bars: fixed (green) vs remaining (blush) per bucket."""
-    labels = [r[0] for r in rows]
-    fixed = [r[1] for r in rows]
-    remaining = [r[2] for r in rows]
-    hover_f, hover_r = [], []
-    for label, f, r in rows:
-        tot = f + r
-        pct = (100.0 * f / tot) if tot else 0.0
-        hover_f.append("%s<br>%d fixed of %d (%.0f%% done)" % (label, f, tot, pct))
-        hover_r.append("%s<br>%d still open" % (label, r))
-    title = ("Bug reports — %d fixed, %d still open"
-             % (total_closed, total_open))
+    title = ("Next release %s — %d issues resolved, %d still open"
+             % (milestone, total_fixed, total_open))
     return {
         "data": [
-            {"type": "bar", "orientation": "h", "y": labels, "x": fixed, "name": "Fixed",
-             "marker": {"color": "#8ec1a8"}, "text": [str(f) for f in fixed],
+            {"type": "bar", "orientation": "h", "y": labels, "x": x_res, "name": "Resolved",
+             "marker": {"color": "#8ec1a8"}, "text": txt_res,
              "textposition": "inside", "insidetextanchor": "middle",
-             "hovertext": hover_f, "hoverinfo": "text"},
-            {"type": "bar", "orientation": "h", "y": labels, "x": remaining, "name": "Remaining",
-             "marker": {"color": "#e8a598"}, "text": [str(r) for r in remaining],
+             "hovertext": hov_res, "hoverinfo": "text"},
+            {"type": "bar", "orientation": "h", "y": labels, "x": x_open, "name": "Still open",
+             "marker": {"color": "#e8a598"}, "text": txt_open,
              "textposition": "inside", "insidetextanchor": "middle",
-             "hovertext": hover_r, "hoverinfo": "text"},
+             "hovertext": hov_open, "hoverinfo": "text"},
         ],
         "layout": {
             "title": {"text": title},
             "barmode": "stack",
-            "xaxis": {"title": {"text": "Bug reports"}, "rangemode": "tozero"},
-            "yaxis": {"automargin": True, "autorange": "reversed"},  # next release on top
+            "xaxis": {"title": {"text": "Number of issues"}, "rangemode": "tozero"},
+            "yaxis": {"type": "category", "automargin": True},
             "legend": {"orientation": "h", "x": 0, "y": 1.12},
-            "margin": {"t": 80, "r": 30, "b": 50, "l": 60},
+            "margin": {"t": 80, "r": 30, "b": 50, "l": 80},
             "showlegend": True,
         },
     }
 
 
 def write_bugs_figure(token):
-    data = fetch_github_bugs(token)
-    if not data or not data[0]:
-        warn("no GitHub bug data; keeping bugs placeholder.")
+    data = fetch_github_issues(token)
+    if not data:
+        warn("no GitHub issue data; keeping bugs placeholder.")
         return
-    rows, total_closed, total_open = data
+    milestone, per_type, total_fixed, total_open = data
     with open(OUT_PATH_BUGS, "w") as f:
-        json.dump(_bugs_figure(rows, total_closed, total_open), f, indent=2)
-    print("[bugs] wrote %s (%d fixed, %d open across %d buckets)"
-          % (OUT_PATH_BUGS, total_closed, total_open, len(rows)))
+        json.dump(_issues_figure(milestone, per_type, total_fixed, total_open), f, indent=2)
+    print("[bugs] wrote %s (next release %s: %d resolved, %d open)"
+          % (OUT_PATH_BUGS, milestone, total_fixed, total_open))
 
 
 def _strip(release):
@@ -529,7 +563,7 @@ def fetch_crash_times(token):
     return list(agg.values()), first_ts
 
 
-def build_figure(groups, posthog_rows, crash_rows, span_label):
+def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None):
     # Unify releases that are the same commit under different names. Cluster by
     # commit hash: two releases belong together when one hash is a prefix of the
     # other (e.g. "8f7c553" ⊂ "8f7c553fb6" ⊂ the full 40-char SHA). Sessions are
@@ -717,7 +751,7 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         layout = {
             "title": {"text": title},
             "barmode": "stack",
-            "xaxis": {"title": {"text": "Release"}, "type": "category"},
+            "xaxis": {"title": {"text": "Revision"}, "type": "category"},
             "yaxis": {"title": {"text": count_title}, "rangemode": "tozero"},
             "legend": {"orientation": "h", "x": 0, "y": 1.10},
             "margin": {"t": 60 * n_lines, "r": 70 if has_sec else 30, "b": 60, "l": 60},
@@ -759,8 +793,8 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
             mtbf_hover.append("%s<br>no timed crash" % name(c))
 
     g_avg_len = (g_dur_sum / g_dur_n) if g_dur_n else None
-    sessions_title = ("Sessions per release<br />Global %.1f%% crash-free over %d sessions (%s)"
-                      % (global_rate, global_total, span_label))
+    sessions_title = ("Sessions per revision (%s)<br />%.1f%% crash-free over %d sessions"
+                      % (span_label, global_rate, global_total))
     sessions_figure = _stacked_figure(
         s_healthy, s_crashed, s_text, s_hh, s_hc, "Sessions",
         mtbf_min, mtbf_hover, "MTBF (uptime before crash)",
@@ -793,11 +827,17 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
             pics_y.append(None)
             pics_hover.append("%s<br>no image data yet" % name(c))
 
-    g_users = sum(c["users"] for c in shown)
-    g_healthy_users = sum(c["healthy_users"] for c in shown)
+    # Global unique-user counts: use the deduplicated project-wide figures when
+    # available (count_unique over all releases), since summing per-release uniques
+    # double-counts a user who ran more than one release. Fall back to the sum.
+    if global_users:
+        g_users, g_healthy_users = global_users
+    else:
+        g_users = sum(c["users"] for c in shown)
+        g_healthy_users = sum(c["healthy_users"] for c in shown)
     g_user_rate = (g_healthy_users / g_users * 100.0) if g_users else 0.0
-    users_title = ("Users per release<br />Global %.1f%% crash-free over %d users (%s)"
-                   % (g_user_rate, int(round(g_users)), span_label))
+    users_title = ("Users per revision (%s)<br />%.1f%% crash-free over %d unique users"
+                   % (span_label, g_user_rate, int(round(g_users))))
     users_figure = _stacked_figure(
         u_healthy, u_crashed, u_text, u_hh, u_hc, "Users",
         pics_y, pics_hover, "Pictures edited",
@@ -869,8 +909,14 @@ def main():
     span_start = min((t for t in span_starts if t), default=None)
     span_label = _format_span(span_start, datetime.now(timezone.utc))
 
+    try:
+        global_users = fetch_global_users(token)
+    except Exception as exc:  # noqa: BLE001
+        warn("global unique-user query failed (%s); using per-release sum." % exc)
+        global_users = None
+
     figure, users_figure, n_shown, global_total = build_figure(
-        groups, posthog_rows, crash_rows, span_label)
+        groups, posthog_rows, crash_rows, span_label, global_users)
     if n_shown == 0:
         warn("no release meets the >=%d sessions threshold over %s; "
              "skipping reliability chart." % (MIN_SESSIONS, STATS_PERIOD))

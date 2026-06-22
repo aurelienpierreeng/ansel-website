@@ -79,14 +79,14 @@ The links above always point to the latest nightly build of the "fairly stable" 
 {{% column %}}
 {{% card %}}
 
-{{< plotly title="Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)" src="reliability.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)" caption="false" src="reliability.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
 {{% /column %}}
 {{% column %}}
 {{% card %}}
 
-{{< plotly title="Crash-free users and number of pictures edited without crashing, per nightly build (data collected by opt-in sentry.io and posthog)" src="reliability-users.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Crash-free users and number of pictures edited without crashing, per nightly build (data collected by opt-in sentry.io and posthog)" caption="false" src="reliability-users.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
 {{% /column %}}
@@ -96,7 +96,7 @@ The links above always point to the latest nightly build of the "fairly stable" 
 {{% column %}}
 {{% card %}}
 
-{{< plotly title="Reported bugs already fixed versus still open, for the next release and overall (source: Github). Many bugs have already been ironed out; the remaining ones are tracked openly." src="bugs.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Reported issues (bugs, tasks and features) already resolved versus still open, per release (source: Github). Much has already been done; what remains is tracked openly." caption="false" src="bugs.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
 {{% /column %}}

@@ -5,25 +5,33 @@
       "x": [
         "r3836",
         "r3843",
+        "r3852",
+        "612eede",
         "Other"
       ],
       "y": [
-        38,
+        40,
         11,
-        32
+        5,
+        10,
+        21
       ],
       "name": "Crash-free",
       "text": [
-        "93%",
+        "91%",
         "79%",
+        "100%",
+        "83%",
         "91%"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "r3836 (g8f7c553)<br>38 crash-free / 41 users (92.7%)",
+        "r3836 (g8f7c553)<br>40 crash-free / 44 users (90.9%)",
         "r3843 (gfe8df22)<br>11 crash-free / 14 users (78.6%)",
-        "Other (18 releases)<br>32 crash-free / 35 users (91.4%)<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g20b726304712, g44e169a0bf, g57ac4e0009<br>g612eede039ab, g62a64153df, g64fbcd4, g6cfb70ce03, gac4d3eb<br>gb7dcf71607, gc5a3836b91, gc670519dd298, gdd7af4fb66, gec42f61984<br>geec4b98f22, gf82a9a82e1, gfe9b4fe71c"
+        "r3852 (g57ac4e0)<br>5 crash-free / 5 users (100.0%)",
+        "g612eede<br>10 crash-free / 12 users (83.3%)",
+        "Other (16 releases)<br>21 crash-free / 23 users (91.3%)<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g20b726304712, g44e169a0bf, g62a64153df<br>g64fbcd4, g6cfb70ce03, gac4d3eb, gb7dcf71607, gc5a3836b91<br>gc670519dd298, gdd7af4fb66, gec42f61984, geec4b98f22, gf82a9a82e1<br>gfe9b4fe71c"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -35,18 +43,24 @@
       "x": [
         "r3836",
         "r3843",
+        "r3852",
+        "612eede",
         "Other"
       ],
       "y": [
+        4,
         3,
-        3,
-        3
+        0,
+        2,
+        2
       ],
       "name": "Crashed",
       "hovertext": [
-        "r3836 (g8f7c553)<br>3 users hit a crash",
+        "r3836 (g8f7c553)<br>4 users hit a crash",
         "r3843 (gfe8df22)<br>3 users hit a crash",
-        "Other (18 releases)<br>3 users hit a crash"
+        "r3852 (g57ac4e0)<br>0 users hit a crash",
+        "g612eede<br>2 users hit a crash",
+        "Other (16 releases)<br>2 users hit a crash"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -59,19 +73,25 @@
       "x": [
         "r3836",
         "r3843",
+        "r3852",
+        "612eede",
         "Other"
       ],
       "y": [
         null,
         null,
-        3446
+        null,
+        5934,
+        null
       ],
       "yaxis": "y2",
       "name": "Pictures edited",
       "hovertext": [
         "r3836 (g8f7c553)<br>no image data yet",
         "r3843 (gfe8df22)<br>no image data yet",
-        "Other (18 releases)<br>3446 pictures edited<br>(3249 clean + 197 before a crash)"
+        "r3852 (g57ac4e0)<br>no image data yet",
+        "g612eede<br>5934 pictures edited<br>(5598 clean + 336 before a crash)",
+        "Other (16 releases)<br>no image data yet"
       ],
       "hoverinfo": "text",
       "connectgaps": false,
@@ -91,12 +111,12 @@
   ],
   "layout": {
     "title": {
-      "text": "Users per release<br />Global 90.0% crash-free over 90 users (the last 2 days)"
+      "text": "Users per revision (the last 3 days)<br />86.7% crash-free over 75 unique users"
     },
     "barmode": "stack",
     "xaxis": {
       "title": {
-        "text": "Release"
+        "text": "Revision"
       },
       "type": "category"
     },

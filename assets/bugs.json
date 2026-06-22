@@ -4,26 +4,30 @@
       "type": "bar",
       "orientation": "h",
       "y": [
-        "0.1 (next release)",
-        "Unscheduled"
+        "features",
+        "tasks",
+        "bugs"
       ],
       "x": [
-        119,
-        7
+        9,
+        8,
+        407
       ],
-      "name": "Fixed",
+      "name": "Resolved",
       "marker": {
         "color": "#8ec1a8"
       },
       "text": [
-        "119",
-        "7"
+        "9",
+        "8",
+        "407"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "0.1 (next release)<br>119 fixed of 123 (97% done)",
-        "Unscheduled<br>7 fixed of 9 (78% done)"
+        "features<br>9 resolved",
+        "tasks<br>8 resolved",
+        "bugs<br>407 resolved"
       ],
       "hoverinfo": "text"
     },
@@ -31,44 +35,48 @@
       "type": "bar",
       "orientation": "h",
       "y": [
-        "0.1 (next release)",
-        "Unscheduled"
+        "features",
+        "tasks",
+        "bugs"
       ],
       "x": [
-        4,
-        2
+        0,
+        0,
+        4
       ],
-      "name": "Remaining",
+      "name": "Still open",
       "marker": {
         "color": "#e8a598"
       },
       "text": [
-        "4",
-        "2"
+        "",
+        "",
+        "4"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "0.1 (next release)<br>4 still open",
-        "Unscheduled<br>2 still open"
+        "features<br>0 still open",
+        "tasks<br>0 still open",
+        "bugs<br>4 still open"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Bug reports \u2014 126 fixed, 6 still open"
+      "text": "Next release 0.1 \u2014 424 issues resolved, 4 still open"
     },
     "barmode": "stack",
     "xaxis": {
       "title": {
-        "text": "Bug reports"
+        "text": "Number of issues"
       },
       "rangemode": "tozero"
     },
     "yaxis": {
-      "automargin": true,
-      "autorange": "reversed"
+      "type": "category",
+      "automargin": true
     },
     "legend": {
       "orientation": "h",
@@ -79,7 +87,7 @@
       "t": 80,
       "r": 30,
       "b": 50,
-      "l": 60
+      "l": 80
     },
     "showlegend": true
   }
