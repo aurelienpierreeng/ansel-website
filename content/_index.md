@@ -92,6 +92,8 @@ Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/
 
 The links above always point to the latest nightly build of the "fairly stable" branch. If you want a particular revision or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).
 
+A new release is published when the list of all bugs have been cleared, meaning the software is stable. Not on an arbitrary date.
+
 {{% /column %}}
 {{% /row %}}
 
