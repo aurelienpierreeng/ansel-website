@@ -1,0 +1,80 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "r3836",
+        "r3843"
+      ],
+      "y": [
+        29,
+        7
+      ],
+      "name": "Crash-free",
+      "text": [
+        "91%",
+        "78%"
+      ],
+      "textposition": "inside",
+      "insidetextanchor": "middle",
+      "hovertext": [
+        "r3836 (g8f7c553)<br>29 crash-free / 32 users (90.6%)",
+        "r3843 (gfe8df22)<br>7 crash-free / 9 users (77.8%)"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": "#8ec1a8"
+      }
+    },
+    {
+      "type": "bar",
+      "x": [
+        "r3836",
+        "r3843"
+      ],
+      "y": [
+        3,
+        2
+      ],
+      "name": "Crashed",
+      "hovertext": [
+        "r3836 (g8f7c553)<br>3 users hit a crash",
+        "r3843 (gfe8df22)<br>2 users hit a crash"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": "#e8a598"
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Users per release \u2014 global 87.8% crash-free over 41 users (the last 2 days)"
+    },
+    "barmode": "stack",
+    "xaxis": {
+      "title": {
+        "text": "Release"
+      },
+      "type": "category"
+    },
+    "yaxis": {
+      "title": {
+        "text": "Users"
+      },
+      "rangemode": "tozero"
+    },
+    "legend": {
+      "orientation": "h",
+      "x": 0,
+      "y": 1.1
+    },
+    "margin": {
+      "t": 80,
+      "r": 30,
+      "b": 60,
+      "l": 60
+    },
+    "showlegend": true
+  }
+}

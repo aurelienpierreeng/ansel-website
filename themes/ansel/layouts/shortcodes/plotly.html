@@ -1,13 +1,18 @@
 {{ $title := .Get "title" }}
 {{ if not $title }}{{ errorf "Plotly shotcode : you need to provide a title" }}{{ end }}
 {{ $id := $title | anchorize | urlize }}
+{{/* dynamic="true": data refreshed out-of-band (e.g. rebuilt twice a day). Keep a
+     STABLE url (no content fingerprint) and revalidate on fetch, so an updated
+     JSON is picked up even when the HTML page is cached. Static charts keep the
+     fingerprinted, immutable url. */}}
+{{ $dynamic := eq (.Get "dynamic") "true" }}
 {{ $json := partial "get_resource.html" (dict "src" (.Get "src") "Page" .Page ) }}
-{{- if hugo.IsProduction }}{{ $json = $json | minify | fingerprint }}{{ end -}}
+{{- if and hugo.IsProduction (not $dynamic) }}{{ $json = $json | minify | fingerprint }}{{ end -}}
 <figure class="full-width caption-figure {{ .Get "class" }}" style="position: relative";>
     <div id="{{ $id }}" class="full-width"></div>
 <script>
 window.addEventListener('DOMContentLoaded', () => {
-  fetch({{ $json.Permalink }})
+  fetch({{ $json.Permalink }}{{ if $dynamic }}, { cache: 'no-cache' }{{ end }})
   .then(response => response.json())
   .then(json => {
     const dom_item = document.getElementById({{ $id }});

@@ -49,6 +49,7 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Consumed by the existing {{< plotly src="reliability.json" >}} shortcode, whose
 # get_resource partial resolves it from the assets/ directory.
 OUT_PATH = os.path.join(REPO_ROOT, "assets", "reliability.json")
+OUT_PATH_USERS = os.path.join(REPO_ROOT, "assets", "reliability-users.json")
 
 ORG = os.environ.get("SENTRY_ORG", "aurelienpierreeng")
 PROJECT_ID = os.environ.get("SENTRY_PROJECT_ID", "4511598693253200")
@@ -94,6 +95,8 @@ def fetch_groups(token):
         ("project", PROJECT_ID),
         ("field", "sum(session)"),
         ("field", "crash_free_rate(session)"),
+        ("field", "count_unique(user)"),
+        ("field", "crash_free_rate(user)"),
         ("groupBy", "release"),
         ("statsPeriod", STATS_PERIOD),
         ("interval", "1d"),
@@ -136,6 +139,8 @@ def fetch_posthog(key):
         "sumIf(toFloat(properties.session_seconds), "
         "event = 'session_end' AND isNotNull(properties.session_seconds)) AS dur_sum, "
         "countIf(event = 'session_end' AND isNotNull(properties.session_seconds)) AS dur_n, "
+        "sumIf(toFloat(properties.images_processed), "
+        "event = 'session_end' AND isNotNull(properties.images_processed)) AS pics, "
         "min(timestamp) AS first_ts "
         "FROM events "
         "WHERE event IN ('session_start','session_end') "
@@ -153,12 +158,14 @@ def fetch_posthog(key):
 
     rows = []
     first_ts = None
-    for rel, n_start, n_end, dur_sum, dur_n, ts in results:
+    for rel, n_start, n_end, dur_sum, dur_n, pics, ts in results:
         h = _commit_hash(rel) if rel else None
         if not h:
             continue
-        rows.append({"hash": h, "n_start": int(n_start or 0), "n_end": int(n_end or 0),
-                     "dur_sum": float(dur_sum or 0.0), "dur_n": int(dur_n or 0)})
+        rows.append({"hash": h, "revision": _revision(rel),
+                     "n_start": int(n_start or 0), "n_end": int(n_end or 0),
+                     "dur_sum": float(dur_sum or 0.0), "dur_n": int(dur_n or 0),
+                     "pics": int(pics or 0)})
         t = _parse_ts(ts) if isinstance(ts, str) else None
         if t and (first_ts is None or t < first_ts):
             first_ts = t
@@ -225,23 +232,26 @@ def _format_span(start, end):
 
 
 def fetch_crash_times(token):
-    """Per-commit time-to-crash from Sentry crash events.
+    """Per-commit crash stats from Sentry crash events.
 
-    MTBF here is the mean uptime before a crash: the length of the sessions that
-    ended in a crash. Ansel stamps that on every crash event as the session_seconds
-    tag (see _sentry_stamp_session_length in sentry.c). We read the raw events,
-    canonicalize the release to a commit hash, and return rows to aggregate.
-
-    Returns (rows, first_ts) with rows [{"hash", "sec_sum", "n"}] and the earliest
-    crash timestamp seen (for the data span).
+    Each crash event carries (from sentry.c) the session_seconds and
+    images_processed at crash time, plus the shared session_id. We DEDUPE by
+    session_id so one crashed session counts once (multiple events per crash, or
+    re-sent envelopes, don't inflate the figures), then aggregate per commit:
+      sec_sum / sec_n  -> mean uptime before a crash (MTBF)
+      pics_sum         -> images processed before a crash
+    Returns (rows, first_ts) with rows [{"hash","sec_sum","sec_n","pics_sum"}].
     """
-    rows = []
+    agg = {}        # hash -> aggregate
+    seen = set()    # session_ids already counted
     first_ts = None
     base = "%s/api/0/organizations/%s/events/" % (HOST, ORG)
     params = [
         ("project", PROJECT_ID),
         ("field", "release"),
         ("field", "session_seconds"),
+        ("field", "images_processed"),
+        ("field", "session_id"),
         ("field", "timestamp"),
         ("query", "event.type:error has:session_seconds"),
         ("statsPeriod", STATS_PERIOD),
@@ -258,16 +268,30 @@ def fetch_crash_times(token):
             payload = json.load(resp)
             link = resp.headers.get("Link", "")
         for ev in payload.get("data", []):
-            h = _commit_hash(ev.get("release") or "")
-            try:
-                sec = float(ev.get("session_seconds"))
-            except (TypeError, ValueError):
-                continue
-            if h and sec > 0:
-                rows.append({"hash": h, "sec_sum": sec, "n": 1})
             t = _parse_ts(ev.get("timestamp"))
             if t and (first_ts is None or t < first_ts):
                 first_ts = t
+            # One record per crashed session (fall back to event id pre-session_id).
+            sid = ev.get("session_id") or ev.get("id")
+            if sid in seen:
+                continue
+            seen.add(sid)
+            h = _commit_hash(ev.get("release") or "")
+            if not h:
+                continue
+            try:
+                sec = float(ev.get("session_seconds"))
+            except (TypeError, ValueError):
+                sec = None
+            try:
+                pics = int(float(ev.get("images_processed")))
+            except (TypeError, ValueError):
+                pics = 0
+            a = agg.setdefault(h, {"hash": h, "sec_sum": 0.0, "sec_n": 0, "pics_sum": 0})
+            if sec and sec > 0:
+                a["sec_sum"] += sec
+                a["sec_n"] += 1
+            a["pics_sum"] += pics
         # Follow pagination only while the next page reports results.
         cursor = None
         for part in link.split(","):
@@ -277,7 +301,7 @@ def fetch_crash_times(token):
                     cursor = m.group(1)
         if not cursor:
             break
-    return rows, first_ts
+    return list(agg.values()), first_ts
 
 
 def build_figure(groups, posthog_rows, crash_rows, span_label):
@@ -301,6 +325,10 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         g_total += total
         g_healthy += healthy
 
+        users = int(totals.get("count_unique(user)") or 0)
+        u_rate = totals.get("crash_free_rate(user)")
+        healthy_users = users * float(u_rate) if (users and u_rate is not None) else 0.0
+
         h = _commit_hash(release)
         rev = _revision(release)
 
@@ -313,8 +341,9 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         if match is None:
             clusters.append({"hash": h, "revision": rev, "releases": [release],
                              "total": total, "healthy": healthy,
+                             "users": users, "healthy_users": healthy_users,
                              "dur_sum": 0.0, "dur_n": 0, "ph_start": 0, "ph_end": 0,
-                             "crash_sec": 0.0, "crash_n": 0})
+                             "pics": 0, "crash_sec": 0.0, "crash_n": 0, "crash_pics": 0})
         else:
             # keep the longest (most specific) hash as the cluster key
             if h is not None and (match["hash"] is None or len(h) > len(match["hash"])):
@@ -324,6 +353,8 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
             match["releases"].append(release)
             match["total"] += total
             match["healthy"] += healthy
+            match["users"] += users
+            match["healthy_users"] += healthy_users
 
     # Join PostHog (session length + start/end counts) onto each commit cluster by
     # prefix, and cross-validate session counts against Sentry. dur_sum/dur_n drive
@@ -339,13 +370,20 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
                 c["dur_n"] += r["dur_n"]
                 c["ph_start"] += r["n_start"]
                 c["ph_end"] += r["n_end"]
+                c["pics"] += r["pics"]
+                # Keep the revision number (from app_version) as metadata even when
+                # the Sentry release is a bare commit SHA, so the label survives the
+                # move to commit-only aggregation / shallow-clone builds.
+                if r.get("revision") and not c["revision"]:
+                    c["revision"] = r["revision"]
         g_dur_sum += c["dur_sum"]
         g_dur_n += c["dur_n"]
-        # Time-to-crash (MTBF) from the crash events of this commit.
+        # Time-to-crash (MTBF) and images-before-crash from this commit's crashes.
         for r in crash_rows:
             if r["hash"].startswith(c["hash"]) or c["hash"].startswith(r["hash"]):
                 c["crash_sec"] += r["sec_sum"]
-                c["crash_n"] += r["n"]
+                c["crash_n"] += r["sec_n"]
+                c["crash_pics"] += r["pics_sum"]
         if c["ph_start"] > 0:
             tag = ("r%s" % c["revision"]) if c["revision"] else c["hash"][:7]
             sentry_cf = (c["healthy"] / c["total"] * 100.0) if c["total"] else 0.0
@@ -385,139 +423,117 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         return _strip(c["releases"][0])
 
     labels = [label(c) for c in shown]
-    rates = [round(c["healthy"] / c["total"] * 100.0, 2) for c in shown]
-    healthy_counts = [int(round(c["healthy"])) for c in shown]
-    totals = [c["total"] for c in shown]
-    hover = []
-    for c, hc, tt, rt in zip(shown, healthy_counts, totals, rates):
-        line = "%s<br>%.2f%% crash-free<br>%d / %d sessions" % (name(c), rt, hc, tt)
+    # Soft pastel palette: low-saturation sage / blush for crash-free vs crashed.
+    # The secondary-axis line is near-black and bold so it stays legible over the
+    # pastel bars it overlaps.
+    GREEN, RED, ACCENT = "#8ec1a8", "#e8a598", "#222222"
+
+    def _stacked_figure(healthy, crashed, ratio_text, hover_h, hover_c, count_title,
+                        sec_y, sec_hover, sec_name, sec_axis_title, sec_suffix, title):
+        # Absolute counts as stacked bars (left axis); the per-release ratio is the
+        # in-bar label. An optional secondary metric (a COUNT or time) is drawn as a
+        # line on the right axis - and dropped entirely (axis + legend) when it has
+        # no data, so we never show an empty series.
+        has_sec = any(v is not None for v in sec_y)
+        data = [
+            {"type": "bar", "x": labels, "y": healthy, "name": "Crash-free",
+             "text": ratio_text, "textposition": "inside", "insidetextanchor": "middle",
+             "hovertext": hover_h, "hoverinfo": "text", "marker": {"color": GREEN}},
+            {"type": "bar", "x": labels, "y": crashed, "name": "Crashed",
+             "hovertext": hover_c, "hoverinfo": "text", "marker": {"color": RED}},
+        ]
+        if has_sec:
+            data.append(
+                {"type": "scatter", "mode": "lines+markers", "x": labels, "y": sec_y,
+                 "yaxis": "y2", "name": sec_name, "hovertext": sec_hover,
+                 "hoverinfo": "text", "connectgaps": False,
+                 "marker": {"color": ACCENT, "size": 9,
+                            "line": {"color": "#ffffff", "width": 1}},
+                 "line": {"color": ACCENT, "width": 3}})
+        layout = {
+            "title": {"text": title},
+            "barmode": "stack",
+            "xaxis": {"title": {"text": "Release"}, "type": "category"},
+            "yaxis": {"title": {"text": count_title}, "rangemode": "tozero"},
+            "legend": {"orientation": "h", "x": 0, "y": 1.10},
+            "margin": {"t": 80, "r": 70 if has_sec else 30, "b": 60, "l": 60},
+            "showlegend": True,
+        }
+        if has_sec:
+            layout["yaxis2"] = {"title": {"text": sec_axis_title}, "overlaying": "y",
+                                "side": "right", "rangemode": "tozero",
+                                "ticksuffix": sec_suffix, "showgrid": False}
+        return {"data": data, "layout": layout}
+
+    # ---------- Figure 1: SESSIONS (counts + ratio text, MTBF line) ----------
+    s_healthy, s_crashed, s_text, s_hh, s_hc = [], [], [], [], []
+    mtbf_min, mtbf_hover = [], []
+    for c in shown:
+        total = c["total"]
+        healthy = int(round(c["healthy"]))
+        crashed = max(0, total - healthy)
+        ratio = (healthy / total * 100.0) if total else 0.0
+        s_healthy.append(healthy)
+        s_crashed.append(crashed)
+        s_text.append("%.0f%%" % ratio if total else "")
+        hh = "%s<br>%d crash-free / %d sessions (%.1f%%)" % (name(c), healthy, total, ratio)
         avg_len = (c["dur_sum"] / c["dur_n"]) if c["dur_n"] else None
         if avg_len:
-            line += "<br>avg session: %s" % _fmt_duration(avg_len)
-        # MTBF = mean uptime before a crash: average of the session length that led
-        # to each crash (session_seconds stamped on the crash events).
-        if c["crash_n"]:
-            line += "<br>MTBF: %s (avg uptime before crash, n=%d)" % (
-                _fmt_duration(c["crash_sec"] / c["crash_n"]), c["crash_n"])
-        elif (c["total"] - c["healthy"]) >= 0.5:
-            line += "<br>MTBF: n/a (crashes not timed)"   # crashed, but pre-instrumentation
-        else:
-            line += "<br>MTBF: no crash yet"
-        if len(c["releases"]) > 1:
-            line += "<br>(merged %d release names)" % len(c["releases"])
-        hover.append(line)
-    bar_text = ["%d/%d" % (h, t) for h, t in zip(healthy_counts, totals)]
-
-    # MTBF series for the secondary axis: mean uptime before a crash, in minutes.
-    # None (gap) where a release has no timed crash, so the line skips it.
-    mtbf_min = []
-    mtbf_hover = []
-    for c in shown:
+            hh += "<br>avg session: %s" % _fmt_duration(avg_len)
+        s_hh.append(hh)
+        s_hc.append("%s<br>%d crashed sessions" % (name(c), crashed))
         if c["crash_n"]:
             sec = c["crash_sec"] / c["crash_n"]
             mtbf_min.append(round(sec / 60.0, 3))
-            mtbf_hover.append("%s<br>MTBF %s<br>(avg uptime before crash, n=%d)"
+            mtbf_hover.append("%s<br>MTBF %s<br>(mean uptime before crash, n=%d)"
                               % (name(c), _fmt_duration(sec), c["crash_n"]))
         else:
             mtbf_min.append(None)
             mtbf_hover.append("%s<br>no timed crash" % name(c))
 
-    y_floor = 0
-    if rates:
-        y_floor = max(0, int(min(rates)) - 5)
-
-    # Global summary for the title (no MTBF here - MTBF is per-release, it is the
-    # uptime before a crash and is not meaningful averaged across the whole line).
     g_avg_len = (g_dur_sum / g_dur_n) if g_dur_n else None
-    g_parts = ["global %.1f%% crash-free" % global_rate]
-    if g_avg_len:
-        g_parts.append("avg session %s" % _fmt_duration(g_avg_len))
-    global_summary = " · ".join(g_parts)
+    s_extra = (" · avg session %s" % _fmt_duration(g_avg_len)) if g_avg_len else ""
+    sessions_title = ("Sessions per release — global %.1f%% crash-free%s over %d sessions (%s)"
+                      % (global_rate, s_extra, global_total, span_label))
+    sessions_figure = _stacked_figure(
+        s_healthy, s_crashed, s_text, s_hh, s_hc, "Sessions",
+        mtbf_min, mtbf_hover, "MTBF (uptime before crash)",
+        "MTBF: mean uptime before crash (min)", " min", sessions_title)
 
-    title = (
-        "Crash-free sessions per release — %s over %d sessions (%s)"
-        % (global_summary, global_total, span_label)
-    )
+    # ---------- Figure 2: USERS (counts + ratio text, pictures-edited line) ----------
+    u_healthy, u_crashed, u_text, u_hh, u_hc = [], [], [], [], []
+    pics_y, pics_hover = [], []
+    for c in shown:
+        u = c["users"]
+        hu = int(round(c["healthy_users"]))
+        cu = max(0, u - hu)
+        ur = (hu / u * 100.0) if u else 0.0
+        u_healthy.append(hu)
+        u_crashed.append(cu)
+        u_text.append("%.0f%%" % ur if u else "")
+        u_hh.append("%s<br>%d crash-free / %d users (%.1f%%)" % (name(c), hu, u, ur)
+                    if u else "%s<br>no user data" % name(c))
+        u_hc.append("%s<br>%d users hit a crash" % (name(c), cu))
+        total_pics = c["pics"] + c["crash_pics"]
+        if c["ph_end"] > 0 or c["crash_pics"] > 0:
+            pics_y.append(total_pics)
+            pics_hover.append("%s<br>%d pictures edited<br>(%d clean + %d before a crash)"
+                              % (name(c), total_pics, c["pics"], c["crash_pics"]))
+        else:
+            pics_y.append(None)
+            pics_hover.append("%s<br>no image data yet" % name(c))
 
-    data = [
-        {
-            "type": "bar",
-            "x": labels,
-            "y": rates,
-            "text": bar_text,
-            "textposition": "auto",
-            "hovertext": hover,
-            "hoverinfo": "text",
-            "marker": {
-                "color": rates,
-                "colorscale": "RdYlGn",
-                "cmin": max(0, y_floor),
-                "cmax": 100,
-                "showscale": False,
-            },
-            "name": "Crash-free %",
-        },
-        {
-            "type": "scatter",
-            "mode": "lines+markers",
-            "x": labels,
-            "y": mtbf_min,
-            "yaxis": "y2",
-            "connectgaps": False,
-            "hovertext": mtbf_hover,
-            "hoverinfo": "text",
-            "marker": {"color": "#1f3a5f", "size": 8},
-            "line": {"color": "#1f3a5f", "width": 1.5, "dash": "dot"},
-            "name": "MTBF (uptime before crash)",
-        },
-    ]
+    g_users = sum(c["users"] for c in shown)
+    g_healthy_users = sum(c["healthy_users"] for c in shown)
+    g_user_rate = (g_healthy_users / g_users * 100.0) if g_users else 0.0
+    users_title = ("Users per release — global %.1f%% crash-free over %d users (%s)"
+                   % (g_user_rate, int(round(g_users)), span_label))
+    users_figure = _stacked_figure(
+        u_healthy, u_crashed, u_text, u_hh, u_hc, "Users",
+        pics_y, pics_hover, "Pictures edited",
+        "Pictures edited (count)", "", users_title)
 
-    layout = {
-        "title": {"text": title},
-        "xaxis": {"title": {"text": "Release"}, "type": "category"},
-        "yaxis": {
-            "title": {"text": "Crash-free sessions (%)"},
-            "range": [y_floor, 100],
-            "ticksuffix": "%",
-        },
-        "yaxis2": {
-            "title": {"text": "MTBF: mean uptime before crash (min)"},
-            "overlaying": "y",
-            "side": "right",
-            "rangemode": "tozero",
-            "showgrid": False,
-            "ticksuffix": " min",
-        },
-        "legend": {"orientation": "h", "x": 0, "y": 1.08},
-        "shapes": [
-            {
-                "type": "line",
-                "xref": "paper",
-                "x0": 0,
-                "x1": 1,
-                "yref": "y",
-                "y0": global_rate,
-                "y1": global_rate,
-                "line": {"color": "#444", "width": 1.5, "dash": "dash"},
-            }
-        ],
-        "annotations": [
-            {
-                "xref": "paper",
-                "yref": "y",
-                "x": 1,
-                "y": global_rate,
-                "xanchor": "right",
-                "yanchor": "bottom",
-                "text": "global %.1f%%" % global_rate,
-                "showarrow": False,
-            }
-        ],
-        "margin": {"t": 70, "r": 70, "b": 60, "l": 60},
-        "showlegend": True,
-    }
-
-    return {"data": data, "layout": layout}, len(shown), global_total
+    return sessions_figure, users_figure, len(shown), global_total
 
 
 def main():
@@ -563,17 +579,19 @@ def main():
     span_start = min((t for t in span_starts if t), default=None)
     span_label = _format_span(span_start, datetime.now(timezone.utc))
 
-    figure, n_shown, global_total = build_figure(groups, posthog_rows, crash_rows, span_label)
+    figure, users_figure, n_shown, global_total = build_figure(
+        groups, posthog_rows, crash_rows, span_label)
     if n_shown == 0:
         warn("no release meets the >=%d sessions threshold over %s; "
              "skipping reliability chart." % (MIN_SESSIONS, STATS_PERIOD))
         return 0
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
-    with open(OUT_PATH, "w") as f:
-        json.dump(figure, f, indent=2)
-    print("[reliability] wrote %s (%d releases, %d total sessions)"
-          % (OUT_PATH, n_shown, global_total))
+    for path, fig in ((OUT_PATH, figure), (OUT_PATH_USERS, users_figure)):
+        with open(path, "w") as f:
+            json.dump(fig, f, indent=2)
+    print("[reliability] wrote %s and %s (%d releases, %d total sessions)"
+          % (OUT_PATH, OUT_PATH_USERS, n_shown, global_total))
     return 0
 
 

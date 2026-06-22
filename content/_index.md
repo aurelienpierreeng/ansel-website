@@ -75,9 +75,14 @@ The links above always point to the latest nightly build of the "fairly stable" 
 
 ### Is it stable ?
 
-<div class="bg-white">
+<div class="bg-white mb-3">
 
-{{< plotly title="Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)" src="reliability.json" class="full-width" >}}
+{{< plotly title="Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)" src="reliability.json" class="full-width" dynamic="true" >}}
+
+</div>
+<div class="bg-white mt-3">
+
+{{< plotly title="Crash-free users and number of pictures edited without crashing, per nightly build (data collected by opt-in sentry.io and posthog)" src="reliability-users.json" class="full-width" dynamic="true" >}}
 
 </div>
 

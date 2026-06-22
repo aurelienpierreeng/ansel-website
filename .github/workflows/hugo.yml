@@ -59,7 +59,7 @@ jobs:
           # Sentry User Auth Token with org:read + project:read (repository secret).
           # If unset/empty, the script is a no-op and the committed placeholder chart
           # is used, so the build never fails on it.
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_READ_TOKEN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           # PostHog personal API key (phx_...) with query read scope, for average
           # session length / time-based MTBF. Optional: if unset, those are omitted.
           POSTHOG_QUERY_KEY: ${{ secrets.POSTHOG_QUERY_KEY }}
