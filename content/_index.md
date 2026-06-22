@@ -359,7 +359,7 @@ Copyright.
 
 <div class="bg-white mb-3">
 
-{{< plotly title="Number of image files opened by file type (data collected by opt-in posthog). DNG files are split between mosaiced (raw) and demosaiced (linear)." src="usage-files.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Number of image files opened by file type (data collected by opt-in posthog)." src="usage-files.json" class="full-width" dynamic="true" >}}
 
 </div><div class="bg-white my-3">
 

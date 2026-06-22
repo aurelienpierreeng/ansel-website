@@ -432,6 +432,15 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         rate = totals.get("crash_free_rate(session)")
         if not release or total <= 0 or rate is None:
             continue
+
+        # Skip releases that are not tied to a commit (e.g. the "dsn-verify" test
+        # tag, or any manual/test release): they are not real usage and must not
+        # count toward any release or the global totals.
+        h = _commit_hash(release)
+        if h is None:
+            continue
+        rev = _revision(release)
+
         total = int(total)
         healthy = total * float(rate)
         g_total += total
@@ -440,9 +449,6 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         users = int(totals.get("count_unique(user)") or 0)
         u_rate = totals.get("crash_free_rate(user)")
         healthy_users = users * float(u_rate) if (users and u_rate is not None) else 0.0
-
-        h = _commit_hash(release)
-        rev = _revision(release)
 
         match = None
         if h is not None:
@@ -520,7 +526,36 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         return (rev is None, int(rev) if rev else 0)
     shown.sort(key=_order_key)
 
+    # Fold everything that didn't make the cut (below the session threshold, beyond
+    # the MAX_RELEASES cap, or not tied to a release - intermediate commits, test
+    # events) into a single "Other" entry kept last on the x-axis. Counts are
+    # additive; note "Other" users sum count_unique across releases, so a user
+    # active in several minor releases can be counted more than once there.
+    shown_ids = {id(c) for c in shown}
+    other = [c for c in clusters if id(c) not in shown_ids]
+    if other:
+        _keys = ("total", "healthy", "users", "healthy_users", "dur_sum", "dur_n",
+                 "ph_start", "ph_end", "pics", "crash_sec", "crash_n", "crash_pics")
+        agg = {k: sum(c[k] for c in other) for k in _keys}
+
+        def _member(c):
+            if c["hash"]:
+                return "g%s" % c["hash"][:12]   # commit hash (abbreviated)
+            if c["revision"]:
+                return "r%s" % c["revision"]
+            return _strip(c["releases"][0])
+        members = sorted(_member(c) for c in other)
+        # wrap the list a few per line so the hover stays readable
+        members_str = "<br>".join(", ".join(members[i:i + 5])
+                                  for i in range(0, len(members), 5))
+
+        agg.update({"is_other": True, "n_releases": len(other), "members": members_str,
+                    "hash": None, "revision": None, "releases": []})
+        shown.append(agg)
+
     def label(c):
+        if c.get("is_other"):
+            return "Other"
         if c["revision"]:
             return "r%s" % c["revision"]     # revision count, matches the About box
         if c["hash"]:
@@ -528,6 +563,8 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         return _strip(c["releases"][0])
 
     def name(c):
+        if c.get("is_other"):
+            return "Other (%d releases)" % c["n_releases"]
         if c["revision"] and c["hash"]:
             return "r%s (g%s)" % (c["revision"], c["hash"][:7])
         if c["hash"]:
@@ -592,6 +629,9 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         avg_len = (c["dur_sum"] / c["dur_n"]) if c["dur_n"] else None
         if avg_len:
             hh += "<br>avg session: %s" % _fmt_duration(avg_len)
+        if c.get("is_other"):
+            hh += "<br><i>⚠ minor / intermediate commits — likely development or pre-release builds</i>"
+            hh += "<br>aggregated commits:<br>%s" % c["members"]
         s_hh.append(hh)
         s_hc.append("%s<br>%d crashed sessions" % (name(c), crashed))
         if c["crash_n"]:
@@ -623,8 +663,12 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
         u_healthy.append(hu)
         u_crashed.append(cu)
         u_text.append("%.0f%%" % ur if u else "")
-        u_hh.append("%s<br>%d crash-free / %d users (%.1f%%)" % (name(c), hu, u, ur)
-                    if u else "%s<br>no user data" % name(c))
+        uh = ("%s<br>%d crash-free / %d users (%.1f%%)" % (name(c), hu, u, ur)
+              if u else "%s<br>no user data" % name(c))
+        if c.get("is_other"):
+            uh += "<br><i>⚠ minor / intermediate commits — likely development or pre-release builds</i>"
+            uh += "<br>aggregated commits:<br>%s" % c["members"]
+        u_hh.append(uh)
         u_hc.append("%s<br>%d users hit a crash" % (name(c), cu))
         total_pics = c["pics"] + c["crash_pics"]
         if c["ph_end"] > 0 or c["crash_pics"] > 0:
