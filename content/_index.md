@@ -264,7 +264,9 @@ The software is integrally translated in English, French, Italian and simplified
 {{% column %}}
 
 <div class="no-hyphenation lead">
+
 Ansel is what Darktable 4.0 could have been if it didn't die of [feature creep](https://en.wikipedia.org/wiki/Feature_creep).
+
 </div>
 
 Between 2020 and 2023, Darktable has suffered [massive code additions of peripheral features](./news/darktable-dans-le-mur-au-ralenti/), often ill-coded, poorly designed and penalizing usability, performance and maintenance. Too many workarounds failed to fix bugs, but layered new problems on top of legacy code : welcome in maintenance nightmare.

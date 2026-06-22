@@ -42,25 +42,25 @@
     {{- with $page.GetPage $link -}}
       {{- $link = .RelPermalink -}}
       {{- $got_it = true -}}
-    {{- end }}
+    {{- end -}}
 
     {{- with site.GetPage $link -}}
       {{- $link = .RelPermalink -}}
       {{- $got_it = true -}}
-    {{- end }}
+    {{- end -}}
 
     {{/* This works only for relative links pointing to pages outside the current section/branch bundle
          and if the current page is NOT IN a page boundle.
          see https://gohugo.io/content-management/page-bundles/
     */}}
     {{- if not $got_it -}}
-      {{- $opts := dict "path" $link "lang" .Page.Lang "outputFormat" $output }}
+      {{- $opts := dict "path" $link "lang" .Page.Lang "outputFormat" $output -}}
       {{- with try (ref .Page $opts) -}}
-        {{ with $page.GetPage .Value }}
+        {{- with $page.GetPage .Value -}}
           {{- $link = .RelPermalink -}}
           {{- $got_it = true -}}
-        {{ end }}
-      {{- end }}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
 
     {{/* This works only for relative links pointing to pages outside the current section/branch bundle
@@ -68,13 +68,13 @@
          see https://gohugo.io/content-management/page-bundles/
     */}}
     {{- if not $got_it -}}
-      {{- $opts := dict "path" (strings.TrimPrefix "../" $link) "lang" .Page.Lang "outputFormat" $output }}
+      {{- $opts := dict "path" (strings.TrimPrefix "../" $link) "lang" .Page.Lang "outputFormat" $output -}}
       {{- with try (ref .Page $opts) -}}
-        {{ with $page.GetPage .Value }}
+        {{- with $page.GetPage .Value -}}
           {{- $link = .RelPermalink -}}
           {{- $got_it = true -}}
-        {{ end }}
-      {{- end }}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
 
     {{- if not $got_it -}}
