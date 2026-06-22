@@ -50,6 +50,8 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # get_resource partial resolves it from the assets/ directory.
 OUT_PATH = os.path.join(REPO_ROOT, "assets", "reliability.json")
 OUT_PATH_USERS = os.path.join(REPO_ROOT, "assets", "reliability-users.json")
+OUT_PATH_FILES = os.path.join(REPO_ROOT, "assets", "usage-files.json")
+OUT_PATH_MODULES = os.path.join(REPO_ROOT, "assets", "usage-modules.json")
 
 ORG = os.environ.get("SENTRY_ORG", "aurelienpierreeng")
 PROJECT_ID = os.environ.get("SENTRY_PROJECT_ID", "4511598693253200")
@@ -170,6 +172,116 @@ def fetch_posthog(key):
         if t and (first_ts is None or t < first_ts):
             first_ts = t
     return rows, first_ts
+
+
+def _posthog_query(key, hogql):
+    body = json.dumps({"query": {"kind": "HogQLQuery", "query": hogql}}).encode()
+    url = "%s/api/projects/%s/query/" % (POSTHOG_HOST, POSTHOG_PROJECT_ID)
+    req = urllib.request.Request(
+        url, data=body,
+        headers={"Authorization": "Bearer %s" % key, "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp).get("results", [])
+
+
+def fetch_file_types(key):
+    """Number of image files opened per file type, from the file_opened events.
+
+    Bucketed by extension, except DNG (which can be a mosaiced raw or an already
+    demosaiced/linear file) which is split by needs_demosaic. Returns sorted
+    (labels, values, hover)."""
+    hogql = (
+        "SELECT lower(properties.extension) AS ext, "
+        "toString(properties.needs_demosaic) AS demo, count() AS n "
+        "FROM events WHERE event = 'file_opened' AND isNotNull(properties.extension) "
+        "AND timestamp > now() - INTERVAL %d DAY GROUP BY ext, demo"
+    ) % PERIOD_DAYS
+    agg = {}
+    for ext, demo, n in _posthog_query(key, hogql):
+        ext = (ext or "?").lower()
+        n = int(n or 0)
+        if ext == "dng":
+            mosaiced = str(demo).lower() in ("true", "1")
+            label = "DNG (mosaiced)" if mosaiced else "DNG (demosaiced)"
+        else:
+            label = ext.upper()
+        agg[label] = agg.get(label, 0) + n
+    items = sorted(agg.items(), key=lambda kv: kv[1], reverse=True)
+    labels = [k for k, _ in items]
+    values = [v for _, v in items]
+    hover = ["%s<br>%d files opened" % (k, v) for k, v in items]
+    return labels, values, hover
+
+
+def fetch_modules(key, limit=25):
+    """Most-used features (views / panels / modules), from the module_used events.
+    Returns (labels, values, hover) for the top `limit` by usage."""
+    hogql = (
+        "SELECT properties.category AS cat, properties.name AS nm, count() AS n "
+        "FROM events WHERE event = 'module_used' AND isNotNull(properties.name) "
+        "AND timestamp > now() - INTERVAL %d DAY "
+        "GROUP BY cat, nm ORDER BY n DESC LIMIT %d"
+    ) % (PERIOD_DAYS, limit)
+    labels, values, hover = [], [], []
+    for cat, nm, n in _posthog_query(key, hogql):
+        labels.append(nm or "?")
+        values.append(int(n or 0))
+        hover.append("%s<br>%s · used %d times" % (nm or "?", cat or "?", int(n or 0)))
+    return labels, values, hover
+
+
+def _usage_bar_figure(labels, values, hover, title, y_title, color):
+    """Single-series bar chart in the same pastel theme as the reliability charts."""
+    return {
+        "data": [{
+            "type": "bar", "x": labels, "y": values,
+            "hovertext": hover, "hoverinfo": "text", "marker": {"color": color},
+        }],
+        "layout": {
+            "title": {"text": title},
+            "xaxis": {"type": "category", "tickangle": -40, "automargin": True},
+            "yaxis": {"title": {"text": y_title}, "rangemode": "tozero"},
+            "margin": {"t": 70, "r": 30, "b": 80, "l": 60},
+            "showlegend": False,
+        },
+    }
+
+
+def _usage_span(key):
+    """Actual data window for the usage events, phrased like the other charts."""
+    rows = _posthog_query(key, "SELECT min(timestamp) FROM events WHERE event IN "
+                          "('file_opened','module_used') AND timestamp > now() - "
+                          "INTERVAL %d DAY" % PERIOD_DAYS)
+    first = _parse_ts(rows[0][0]) if rows and rows[0] and isinstance(rows[0][0], str) else None
+    return _format_span(first, datetime.now(timezone.utc))
+
+
+def write_usage_figures(key):
+    """Build and write the two "How is Ansel used?" charts (PostHog only)."""
+    fl, fv, fh = fetch_file_types(key)
+    ml, mv, mh = fetch_modules(key)
+    span = _usage_span(key)
+    # Grand total of all activations (the bars only show the top features).
+    mtot = _posthog_query(key, "SELECT count() FROM events WHERE event = "
+                          "'module_used' AND timestamp > now() - INTERVAL %d DAY" % PERIOD_DAYS)
+    modules_total = int(mtot[0][0]) if mtot and mtot[0] else sum(mv)
+    files_title = ("Image files opened, by type — %d files (%s)"
+                   % (sum(fv), span))
+    modules_title = ("Most-used features — %d activations (%s)"
+                     % (modules_total, span))
+    jobs = (
+        (OUT_PATH_FILES, fl, _usage_bar_figure(
+            fl, fv, fh, files_title, "Files opened", "#8ec1a8")),
+        (OUT_PATH_MODULES, ml, _usage_bar_figure(
+            ml, mv, mh, modules_title, "Times used", "#9db4d0")),
+    )
+    for path, labels, fig in jobs:
+        if not labels:
+            warn("no data for %s; keeping placeholder." % os.path.basename(path))
+            continue
+        with open(path, "w") as f:
+            json.dump(fig, f, indent=2)
+        print("[usage] wrote %s (%d entries)" % (path, len(labels)))
 
 
 def _strip(release):
@@ -538,6 +650,19 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
 
 def main():
     token = get_token()
+    ph_key = get_posthog_key()
+    os.makedirs(os.path.join(REPO_ROOT, "assets"), exist_ok=True)
+
+    # "How is Ansel used?" charts come from PostHog alone, so build them regardless
+    # of whether Sentry (reliability) is available.
+    if ph_key:
+        try:
+            write_usage_figures(ph_key)
+        except Exception as exc:  # noqa: BLE001
+            warn("usage figures failed (%s); keeping placeholders." % exc)
+    else:
+        warn("no PostHog key (POSTHOG_QUERY_KEY / .posthog-auth); usage figures skipped.")
+
     if not token:
         warn("no Sentry token (set SENTRY_AUTH_TOKEN or add .sentry-auth-perso); "
              "skipping reliability chart.")
@@ -566,15 +691,12 @@ def main():
     # Optional second source: PostHog, for session length / time-based MTBF that
     # Sentry can't provide. Missing key or failure just omits those metrics.
     posthog_rows = []
-    ph_key = get_posthog_key()
     if ph_key:
         try:
             posthog_rows, ph_first = fetch_posthog(ph_key)
             span_starts.append(ph_first)
         except Exception as exc:  # noqa: BLE001
             warn("PostHog request failed (%s); session length omitted." % exc)
-    else:
-        warn("no PostHog key (POSTHOG_QUERY_KEY / .posthog-auth); session length omitted.")
 
     span_start = min((t for t in span_starts if t), default=None)
     span_label = _format_span(span_start, datetime.now(timezone.utc))

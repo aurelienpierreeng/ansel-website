@@ -353,4 +353,18 @@ Copyright.
 
 {{% /row %}}
 
+{{< divider >}}
+
+## How is Ansel used ?
+
+<div class="bg-white mb-3">
+
+{{< plotly title="Number of image files opened by file type (data collected by opt-in posthog). DNG files are split between mosaiced (raw) and demosaiced (linear)." src="usage-files.json" class="full-width" dynamic="true" >}}
+
+</div><div class="bg-white my-3">
+
+{{< plotly title="Most-used features: views, panels and editing modules, by number of activations (data collected by opt-in posthog)." src="usage-modules.json" class="full-width" dynamic="true" >}}
+
+</div>
+
 </div>

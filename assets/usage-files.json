@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "DNG (mosaiced)",
+        "NEF",
+        "RW2",
+        "JPG",
+        "RAF",
+        "PNG",
+        "TIF",
+        "CR2"
+      ],
+      "y": [
+        9,
+        7,
+        6,
+        4,
+        4,
+        2,
+        1,
+        1
+      ],
+      "hovertext": [
+        "DNG (mosaiced)<br>9 files opened",
+        "NEF<br>7 files opened",
+        "RW2<br>6 files opened",
+        "JPG<br>4 files opened",
+        "RAF<br>4 files opened",
+        "PNG<br>2 files opened",
+        "TIF<br>1 files opened",
+        "CR2<br>1 files opened"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": "#8ec1a8"
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Image files opened, by type \u2014 34 files (the last 17 h)"
+    },
+    "xaxis": {
+      "type": "category",
+      "tickangle": -40,
+      "automargin": true
+    },
+    "yaxis": {
+      "title": {
+        "text": "Files opened"
+      },
+      "rangemode": "tozero"
+    },
+    "margin": {
+      "t": 70,
+      "r": 30,
+      "b": 80,
+      "l": 60
+    },
+    "showlegend": false
+  }
+}

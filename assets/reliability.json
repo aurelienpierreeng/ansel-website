@@ -7,19 +7,19 @@
         "r3843"
       ],
       "y": [
-        73,
-        31
+        88,
+        36
       ],
       "name": "Crash-free",
       "text": [
-        "96%",
-        "94%"
+        "97%",
+        "92%"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "r3836 (g8f7c553)<br>73 crash-free / 76 sessions (96.1%)",
-        "r3843 (gfe8df22)<br>31 crash-free / 33 sessions (93.9%)"
+        "r3836 (g8f7c553)<br>88 crash-free / 91 sessions (96.7%)",
+        "r3843 (gfe8df22)<br>36 crash-free / 39 sessions (92.3%)"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -34,12 +34,12 @@
       ],
       "y": [
         3,
-        2
+        3
       ],
       "name": "Crashed",
       "hovertext": [
         "r3836 (g8f7c553)<br>3 crashed sessions",
-        "r3843 (gfe8df22)<br>2 crashed sessions"
+        "r3843 (gfe8df22)<br>3 crashed sessions"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -55,13 +55,13 @@
       ],
       "y": [
         42.911,
-        13.208
+        9.844
       ],
       "yaxis": "y2",
       "name": "MTBF (uptime before crash)",
       "hovertext": [
         "r3836 (g8f7c553)<br>MTBF 43 min<br>(mean uptime before crash, n=3)",
-        "r3843 (gfe8df22)<br>MTBF 13 min<br>(mean uptime before crash, n=2)"
+        "r3843 (gfe8df22)<br>MTBF 10 min<br>(mean uptime before crash, n=3)"
       ],
       "hoverinfo": "text",
       "connectgaps": false,
@@ -81,7 +81,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Sessions per release \u2014 global 94.7% crash-free over 187 sessions (the last 2 days)"
+      "text": "Sessions per release \u2014 global 94.9% crash-free \u00b7 avg session 67 min over 217 sessions (the last 2 days)"
     },
     "barmode": "stack",
     "xaxis": {

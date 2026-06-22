@@ -7,19 +7,19 @@
         "r3843"
       ],
       "y": [
-        29,
-        7
+        35,
+        8
       ],
       "name": "Crash-free",
       "text": [
-        "91%",
-        "78%"
+        "92%",
+        "73%"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "r3836 (g8f7c553)<br>29 crash-free / 32 users (90.6%)",
-        "r3843 (gfe8df22)<br>7 crash-free / 9 users (77.8%)"
+        "r3836 (g8f7c553)<br>35 crash-free / 38 users (92.1%)",
+        "r3843 (gfe8df22)<br>8 crash-free / 11 users (72.7%)"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -34,12 +34,12 @@
       ],
       "y": [
         3,
-        2
+        3
       ],
       "name": "Crashed",
       "hovertext": [
         "r3836 (g8f7c553)<br>3 users hit a crash",
-        "r3843 (gfe8df22)<br>2 users hit a crash"
+        "r3843 (gfe8df22)<br>3 users hit a crash"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -49,7 +49,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Users per release \u2014 global 87.8% crash-free over 41 users (the last 2 days)"
+      "text": "Users per release \u2014 global 87.8% crash-free over 49 users (the last 2 days)"
     },
     "barmode": "stack",
     "xaxis": {
