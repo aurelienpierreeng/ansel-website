@@ -13,3 +13,4 @@ po/footers/*
 .sentry-auth-orga
 .posthog-auth
 .posthog-auth-perso
+.github-auth
