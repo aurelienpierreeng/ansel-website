@@ -712,13 +712,15 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
                  "marker": {"color": ACCENT, "size": 9,
                             "line": {"color": "#ffffff", "width": 1}},
                  "line": {"color": ACCENT, "width": 3}})
+        # Account for title line wrap (manual)
+        n_lines = title.count("<br") + 1
         layout = {
             "title": {"text": title},
             "barmode": "stack",
             "xaxis": {"title": {"text": "Release"}, "type": "category"},
             "yaxis": {"title": {"text": count_title}, "rangemode": "tozero"},
             "legend": {"orientation": "h", "x": 0, "y": 1.10},
-            "margin": {"t": 80, "r": 70 if has_sec else 30, "b": 60, "l": 60},
+            "margin": {"t": 60 * n_lines, "r": 70 if has_sec else 30, "b": 60, "l": 60},
             "showlegend": True,
         }
         if has_sec:
@@ -757,9 +759,8 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
             mtbf_hover.append("%s<br>no timed crash" % name(c))
 
     g_avg_len = (g_dur_sum / g_dur_n) if g_dur_n else None
-    s_extra = (" · avg session %s" % _fmt_duration(g_avg_len)) if g_avg_len else ""
-    sessions_title = ("Sessions per release — global %.1f%% crash-free%s over %d sessions (%s)"
-                      % (global_rate, s_extra, global_total, span_label))
+    sessions_title = ("Sessions per release<br />Global %.1f%% crash-free over %d sessions (%s)"
+                      % (global_rate, global_total, span_label))
     sessions_figure = _stacked_figure(
         s_healthy, s_crashed, s_text, s_hh, s_hc, "Sessions",
         mtbf_min, mtbf_hover, "MTBF (uptime before crash)",
@@ -795,7 +796,7 @@ def build_figure(groups, posthog_rows, crash_rows, span_label):
     g_users = sum(c["users"] for c in shown)
     g_healthy_users = sum(c["healthy_users"] for c in shown)
     g_user_rate = (g_healthy_users / g_users * 100.0) if g_users else 0.0
-    users_title = ("Users per release — global %.1f%% crash-free over %d users (%s)"
+    users_title = ("Users per release<br />Global %.1f%% crash-free over %d users (%s)"
                    % (g_user_rate, int(round(g_users)), span_label))
     users_figure = _stacked_figure(
         u_healthy, u_crashed, u_text, u_hh, u_hc, "Users",

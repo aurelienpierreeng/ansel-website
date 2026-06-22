@@ -100,6 +100,12 @@ The links above always point to the latest nightly build of the "fairly stable" 
 
 {{% /card %}}
 {{% /column %}}
+
+{{% column %}}
+
+Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours.
+
+{{% /column %}}
 {{% /row %}}
 
 {{< divider >}}

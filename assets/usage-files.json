@@ -3,32 +3,35 @@
     {
       "type": "bar",
       "x": [
-        "DNG (mosaiced)",
         "NEF",
+        "DNG (mosaiced)",
         "RW2",
         "RAF",
         "JPG",
         "PNG",
+        "DNG (demosaiced)",
         "CR2",
         "TIF"
       ],
       "y": [
         9,
-        8,
+        9,
         7,
         5,
         4,
         2,
         2,
+        2,
         1
       ],
       "hovertext": [
+        "NEF<br>9 files opened",
         "DNG (mosaiced)<br>9 files opened",
-        "NEF<br>8 files opened",
         "RW2<br>7 files opened",
         "RAF<br>5 files opened",
         "JPG<br>4 files opened",
         "PNG<br>2 files opened",
+        "DNG (demosaiced)<br>2 files opened",
         "CR2<br>2 files opened",
         "TIF<br>1 files opened"
       ],
@@ -40,7 +43,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 38 files (the last 18 h)"
+      "text": "Image files opened, by type \u2014 41 files (the last 19 h)"
     },
     "xaxis": {
       "type": "category",
