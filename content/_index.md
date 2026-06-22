@@ -75,16 +75,32 @@ The links above always point to the latest nightly build of the "fairly stable" 
 
 ### Is it stable ?
 
-<div class="bg-white mb-3">
+{{% row %}}
+{{% column %}}
+{{% card %}}
 
 {{< plotly title="Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)" src="reliability.json" class="full-width" dynamic="true" >}}
 
-</div>
-<div class="bg-white mt-3">
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
 
 {{< plotly title="Crash-free users and number of pictures edited without crashing, per nightly build (data collected by opt-in sentry.io and posthog)" src="reliability-users.json" class="full-width" dynamic="true" >}}
 
-</div>
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+
+{{< plotly title="Reported bugs already fixed versus still open, for the next release and overall (source: Github). Many bugs have already been ironed out; the remaining ones are tracked openly." src="bugs.json" class="full-width" dynamic="true" >}}
+
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
 
 {{< divider >}}
 

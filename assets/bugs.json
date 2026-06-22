@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "orientation": "h",
+      "y": [
+        "0.1 (next release)",
+        "Unscheduled"
+      ],
+      "x": [
+        119,
+        7
+      ],
+      "name": "Fixed",
+      "marker": {
+        "color": "#8ec1a8"
+      },
+      "text": [
+        "119",
+        "7"
+      ],
+      "textposition": "inside",
+      "insidetextanchor": "middle",
+      "hovertext": [
+        "0.1 (next release)<br>119 fixed of 123 (97% done)",
+        "Unscheduled<br>7 fixed of 9 (78% done)"
+      ],
+      "hoverinfo": "text"
+    },
+    {
+      "type": "bar",
+      "orientation": "h",
+      "y": [
+        "0.1 (next release)",
+        "Unscheduled"
+      ],
+      "x": [
+        4,
+        2
+      ],
+      "name": "Remaining",
+      "marker": {
+        "color": "#e8a598"
+      },
+      "text": [
+        "4",
+        "2"
+      ],
+      "textposition": "inside",
+      "insidetextanchor": "middle",
+      "hovertext": [
+        "0.1 (next release)<br>4 still open",
+        "Unscheduled<br>2 still open"
+      ],
+      "hoverinfo": "text"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Bug reports \u2014 126 fixed, 6 still open"
+    },
+    "barmode": "stack",
+    "xaxis": {
+      "title": {
+        "text": "Bug reports"
+      },
+      "rangemode": "tozero"
+    },
+    "yaxis": {
+      "automargin": true,
+      "autorange": "reversed"
+    },
+    "legend": {
+      "orientation": "h",
+      "x": 0,
+      "y": 1.12
+    },
+    "margin": {
+      "t": 80,
+      "r": 30,
+      "b": 50,
+      "l": 60
+    },
+    "showlegend": true
+  }
+}

@@ -1,11 +1,19 @@
 <div class="col" style="min-width: 300px">
 <div class="card h-100 {{ .Get "class" }}">
 <div class="card-body text-center justify-content-between d-flex flex-column">
-<span class="my-2 text-center w-100">
-  <i class="fas fa-{{ .Get "icon" }} align-top icon-circle"></i>
-</span>
-<h5 class="fs-5 text-center my-2">{{ .Get "title" }}</h5>
-<div class="text-center my-2 mx-auto">{{ .Inner }}</div>
+{{ with .Get "icon" }}
+  <span class="my-2 text-center w-100">
+    <i class="fas fa-{{ . }} align-top icon-circle"></i>
+  </span>
+{{ end }}
+{{ with .Get "title" }}
+  <h5 class="fs-5 text-center my-2">{{ . }}</h5>
+  <div class="text-center my-2 mx-auto">
+{{ else }}
+  <div>
+{{ end }}
+{{ .Inner }}
+</div>
 </div>
 </div>
 </div>

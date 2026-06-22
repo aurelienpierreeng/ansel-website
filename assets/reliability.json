@@ -8,22 +8,22 @@
         "Other"
       ],
       "y": [
-        89,
-        38,
-        80
+        91,
+        41,
+        86
       ],
       "name": "Crash-free",
       "text": [
         "97%",
         "93%",
-        "94%"
+        "95%"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "r3836 (g8f7c553)<br>89 crash-free / 92 sessions (96.7%)",
-        "r3843 (gfe8df22)<br>38 crash-free / 41 sessions (92.7%)",
-        "Other (18 releases)<br>80 crash-free / 85 sessions (94.1%)<br>avg session: 67 min<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g20b726304712, g44e169a0bf, g57ac4e0009<br>g612eede039ab, g62a64153df, g64fbcd4, g6cfb70ce03, gac4d3eb<br>gb7dcf71607, gc5a3836b91, gc670519dd298, gdd7af4fb66, gec42f61984<br>geec4b98f22, gf82a9a82e1, gfe9b4fe71c"
+        "r3836 (g8f7c553)<br>91 crash-free / 94 sessions (96.8%)",
+        "r3843 (gfe8df22)<br>41 crash-free / 44 sessions (93.2%)",
+        "Other (18 releases)<br>86 crash-free / 91 sessions (94.5%)<br>avg session: 66 min<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g20b726304712, g44e169a0bf, g57ac4e0009<br>g612eede039ab, g62a64153df, g64fbcd4, g6cfb70ce03, gac4d3eb<br>gb7dcf71607, gc5a3836b91, gc670519dd298, gdd7af4fb66, gec42f61984<br>geec4b98f22, gf82a9a82e1, gfe9b4fe71c"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -91,7 +91,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Sessions per release \u2014 global 95.0% crash-free \u00b7 avg session 67 min over 218 sessions (the last 2 days)"
+      "text": "Sessions per release \u2014 global 95.2% crash-free \u00b7 avg session 66 min over 229 sessions (the last 2 days)"
     },
     "barmode": "stack",
     "xaxis": {

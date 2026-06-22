@@ -6,31 +6,31 @@
         "DNG (mosaiced)",
         "NEF",
         "RW2",
-        "JPG",
         "RAF",
+        "JPG",
         "PNG",
-        "TIF",
-        "CR2"
+        "CR2",
+        "TIF"
       ],
       "y": [
         9,
+        8,
         7,
-        6,
-        4,
+        5,
         4,
         2,
-        1,
+        2,
         1
       ],
       "hovertext": [
         "DNG (mosaiced)<br>9 files opened",
-        "NEF<br>7 files opened",
-        "RW2<br>6 files opened",
+        "NEF<br>8 files opened",
+        "RW2<br>7 files opened",
+        "RAF<br>5 files opened",
         "JPG<br>4 files opened",
-        "RAF<br>4 files opened",
         "PNG<br>2 files opened",
-        "TIF<br>1 files opened",
-        "CR2<br>1 files opened"
+        "CR2<br>2 files opened",
+        "TIF<br>1 files opened"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -40,7 +40,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 34 files (the last 17 h)"
+      "text": "Image files opened, by type \u2014 38 files (the last 18 h)"
     },
     "xaxis": {
       "type": "category",

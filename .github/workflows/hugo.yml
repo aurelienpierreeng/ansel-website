@@ -63,6 +63,9 @@ jobs:
           # PostHog personal API key (phx_...) with query read scope, for average
           # session length / time-based MTBF. Optional: if unset, those are omitted.
           POSTHOG_QUERY_KEY: ${{ secrets.POSTHOG_QUERY_KEY }}
+          # Token to read GitHub issues for the bug-progress chart. The built-in
+          # GITHUB_TOKEN works for the public repo; a PAT secret can override it.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 tools/fetch-sentry-reliability.py
       - name: Build with Hugo

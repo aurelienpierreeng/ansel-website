@@ -52,6 +52,10 @@ OUT_PATH = os.path.join(REPO_ROOT, "assets", "reliability.json")
 OUT_PATH_USERS = os.path.join(REPO_ROOT, "assets", "reliability-users.json")
 OUT_PATH_FILES = os.path.join(REPO_ROOT, "assets", "usage-files.json")
 OUT_PATH_MODULES = os.path.join(REPO_ROOT, "assets", "usage-modules.json")
+OUT_PATH_BUGS = os.path.join(REPO_ROOT, "assets", "bugs.json")
+
+GITHUB_REPO = os.environ.get("GITHUB_REPO", "aurelienpierreeng/ansel")
+GITHUB_API = "https://api.github.com"
 
 ORG = os.environ.get("SENTRY_ORG", "aurelienpierreeng")
 PROJECT_ID = os.environ.get("SENTRY_PROJECT_ID", "4511598693253200")
@@ -282,6 +286,115 @@ def write_usage_figures(key):
         with open(path, "w") as f:
             json.dump(fig, f, indent=2)
         print("[usage] wrote %s (%d entries)" % (path, len(labels)))
+
+
+# --- GitHub bug-report progress -------------------------------------------------
+
+def _gh_request(token, url):
+    req = urllib.request.Request(url, headers={
+        "Authorization": "Bearer %s" % token,
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "ansel-website-stats",
+    })
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp)
+
+
+def _gh_bug_count(token, extra):
+    """Count issues of the "Bug" type in the repo matching the extra qualifiers."""
+    q = "repo:%s is:issue type:Bug %s" % (GITHUB_REPO, extra)
+    url = "%s/search/issues?per_page=1&q=%s" % (GITHUB_API, urllib.parse.quote(q))
+    return int(_gh_request(token, url).get("total_count", 0))
+
+
+def _version_key(title):
+    nums = re.findall(r"\d+", title or "")
+    return tuple(int(n) for n in nums) if nums else (9999,)
+
+
+def fetch_github_bugs(token):
+    """Bug-fixing progress, bucketed by milestone (+ an "Unscheduled" bucket for
+    bugs not yet assigned to one). The next release is the lowest-version open
+    milestone, picked dynamically so nothing needs editing per release.
+
+    Returns (rows, total_closed, total_open) where rows is a list of
+    (label, fixed, remaining) ordered next-release first, then later milestones,
+    then "Unscheduled"; or None if the data can't be fetched."""
+    try:
+        milestones = _gh_request(
+            token, "%s/repos/%s/milestones?state=open&per_page=100" % (GITHUB_API, GITHUB_REPO))
+    except Exception as exc:  # noqa: BLE001
+        warn("GitHub milestones request failed (%s)." % exc)
+        return None
+    milestones.sort(key=lambda m: _version_key(m.get("title", "")))
+
+    rows = []
+    for i, m in enumerate(milestones):
+        title = m.get("title", "?")
+        closed = _gh_bug_count(token, 'state:closed milestone:"%s"' % title)
+        opened = _gh_bug_count(token, 'state:open milestone:"%s"' % title)
+        if closed + opened == 0:
+            continue
+        label = "%s (next release)" % title if i == 0 else title
+        rows.append((label, closed, opened))
+
+    # Bugs not (yet) attached to any milestone - they exist and matter too.
+    u_closed = _gh_bug_count(token, "state:closed no:milestone")
+    u_open = _gh_bug_count(token, "state:open no:milestone")
+    if u_closed + u_open > 0:
+        rows.append(("Unscheduled", u_closed, u_open))
+
+    total_closed = _gh_bug_count(token, "state:closed")
+    total_open = _gh_bug_count(token, "state:open")
+    return rows, total_closed, total_open
+
+
+def _bugs_figure(rows, total_closed, total_open):
+    """Horizontal stacked bars: fixed (green) vs remaining (blush) per bucket."""
+    labels = [r[0] for r in rows]
+    fixed = [r[1] for r in rows]
+    remaining = [r[2] for r in rows]
+    hover_f, hover_r = [], []
+    for label, f, r in rows:
+        tot = f + r
+        pct = (100.0 * f / tot) if tot else 0.0
+        hover_f.append("%s<br>%d fixed of %d (%.0f%% done)" % (label, f, tot, pct))
+        hover_r.append("%s<br>%d still open" % (label, r))
+    title = ("Bug reports — %d fixed, %d still open"
+             % (total_closed, total_open))
+    return {
+        "data": [
+            {"type": "bar", "orientation": "h", "y": labels, "x": fixed, "name": "Fixed",
+             "marker": {"color": "#8ec1a8"}, "text": [str(f) for f in fixed],
+             "textposition": "inside", "insidetextanchor": "middle",
+             "hovertext": hover_f, "hoverinfo": "text"},
+            {"type": "bar", "orientation": "h", "y": labels, "x": remaining, "name": "Remaining",
+             "marker": {"color": "#e8a598"}, "text": [str(r) for r in remaining],
+             "textposition": "inside", "insidetextanchor": "middle",
+             "hovertext": hover_r, "hoverinfo": "text"},
+        ],
+        "layout": {
+            "title": {"text": title},
+            "barmode": "stack",
+            "xaxis": {"title": {"text": "Bug reports"}, "rangemode": "tozero"},
+            "yaxis": {"automargin": True, "autorange": "reversed"},  # next release on top
+            "legend": {"orientation": "h", "x": 0, "y": 1.12},
+            "margin": {"t": 80, "r": 30, "b": 50, "l": 60},
+            "showlegend": True,
+        },
+    }
+
+
+def write_bugs_figure(token):
+    data = fetch_github_bugs(token)
+    if not data or not data[0]:
+        warn("no GitHub bug data; keeping bugs placeholder.")
+        return
+    rows, total_closed, total_open = data
+    with open(OUT_PATH_BUGS, "w") as f:
+        json.dump(_bugs_figure(rows, total_closed, total_open), f, indent=2)
+    print("[bugs] wrote %s (%d fixed, %d open across %d buckets)"
+          % (OUT_PATH_BUGS, total_closed, total_open, len(rows)))
 
 
 def _strip(release):
@@ -706,6 +819,16 @@ def main():
             warn("usage figures failed (%s); keeping placeholders." % exc)
     else:
         warn("no PostHog key (POSTHOG_QUERY_KEY / .posthog-auth); usage figures skipped.")
+
+    # Bug-report progress from GitHub (independent of everything above).
+    gh_token = _read_token("GITHUB_TOKEN", ".github-auth")
+    if gh_token:
+        try:
+            write_bugs_figure(gh_token)
+        except Exception as exc:  # noqa: BLE001
+            warn("bug figure failed (%s); keeping placeholder." % exc)
+    else:
+        warn("no GitHub token (GITHUB_TOKEN / .github-auth); bug figure skipped.")
 
     if not token:
         warn("no Sentry token (set SENTRY_AUTH_TOKEN or add .sentry-auth-perso); "

@@ -8,22 +8,22 @@
         "Other"
       ],
       "y": [
-        36,
-        9,
-        28
+        37,
+        11,
+        31
       ],
       "name": "Crash-free",
       "text": [
         "92%",
-        "75%",
-        "93%"
+        "79%",
+        "94%"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "r3836 (g8f7c553)<br>36 crash-free / 39 users (92.3%)",
-        "r3843 (gfe8df22)<br>9 crash-free / 12 users (75.0%)",
-        "Other (18 releases)<br>28 crash-free / 30 users (93.3%)<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g20b726304712, g44e169a0bf, g57ac4e0009<br>g612eede039ab, g62a64153df, g64fbcd4, g6cfb70ce03, gac4d3eb<br>gb7dcf71607, gc5a3836b91, gc670519dd298, gdd7af4fb66, gec42f61984<br>geec4b98f22, gf82a9a82e1, gfe9b4fe71c"
+        "r3836 (g8f7c553)<br>37 crash-free / 40 users (92.5%)",
+        "r3843 (gfe8df22)<br>11 crash-free / 14 users (78.6%)",
+        "Other (18 releases)<br>31 crash-free / 33 users (93.9%)<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g20b726304712, g44e169a0bf, g57ac4e0009<br>g612eede039ab, g62a64153df, g64fbcd4, g6cfb70ce03, gac4d3eb<br>gb7dcf71607, gc5a3836b91, gc670519dd298, gdd7af4fb66, gec42f61984<br>geec4b98f22, gf82a9a82e1, gfe9b4fe71c"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -64,14 +64,14 @@
       "y": [
         null,
         null,
-        1686
+        2695
       ],
       "yaxis": "y2",
       "name": "Pictures edited",
       "hovertext": [
         "r3836 (g8f7c553)<br>no image data yet",
         "r3843 (gfe8df22)<br>no image data yet",
-        "Other (18 releases)<br>1686 pictures edited<br>(1686 clean + 0 before a crash)"
+        "Other (18 releases)<br>2695 pictures edited<br>(2695 clean + 0 before a crash)"
       ],
       "hoverinfo": "text",
       "connectgaps": false,
@@ -91,7 +91,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Users per release \u2014 global 90.1% crash-free over 81 users (the last 2 days)"
+      "text": "Users per release \u2014 global 90.8% crash-free over 87 users (the last 2 days)"
     },
     "barmode": "stack",
     "xaxis": {
