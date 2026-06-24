@@ -55,9 +55,7 @@ msgstr "Aurélien Pierre"
 #: content/news/complete-pipeline-overhaul/index.md:1
 #, no-wrap
 msgid "development"
-msgstr ""
-"\n"
-"Développement"
+msgstr "Développement"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Array Element: tags
@@ -1069,7 +1067,7 @@ msgstr ""
 #: content/news/color-controls-finally-correct/index.md:390
 #, no-wrap
 msgid "{{< figure src=\"filmic.jpg\" width=\"350\" />}}\n"
-msgstr "\n"
+msgstr "{{< figure src=\"filmic.jpg\" width=\"350\" />}}\n"
 
 #. type: Plain text
 #: content/news/color-controls-finally-correct/index.md:392
@@ -18102,9 +18100,7 @@ msgstr "Documenter Ansel"
 #: content/contribute/documenting.md:7
 #, no-wrap
 msgid "Introduction "
-msgstr ""
-"\n"
-"Introduction"
+msgstr "Introduction"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
