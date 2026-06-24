@@ -23,7 +23,12 @@ For consumer & entertainment use, you can check the state of Wayland CMS support
 
 ## The problem
 
-Most (if not all) laptop screens and many consumer-level monitors have a white point _much_ more blue than the standard 6500 K, anywhere between 6800 K to 7200 K. To correct that, the historical way is to calibrate the screen and write the calibration curves into the [Video Card Gamma Table (VCGT)](https://www.color.org/groups/medical/displays/controllingVCGT.pdf). The VCGT is stored in [a special field](https://www.argyllcms.com/doc/iccvcgt.html) inside the ICC profiles. When starting your Linux session, some piece of software would read the VCGT from the ICC profile and load it on the actual video memory. So the whole desktop would have its white point and contrast curve corrected in one lazy step, whether application were "color managed" or not.
+Most (if not all) laptop screens and many consumer-level monitors have a white point _much_ more blue than the standard 6500 K, anywhere between 6800 K to 7200 K. To correct that, the historical way is to calibrate the screen and write the calibration curves into the [Video Card Gamma Table (VCGT)](https://www.color.org/groups/medical/displays/controllingVCGT.pdf). The VCGT is both:
+
+- [a special data field](https://www.argyllcms.com/doc/iccvcgt.html) inside the ICC profiles,
+- a special memory region on your GPU.
+
+When starting your Linux session, some piece of software reads the VCGT from an ICC profile and loads it on the actual video memory. So the whole desktop would have its white point and contrast curve corrected in one lazy step, whether application were "color managed" or not.
 
 Later on, many applets called "night color" or "redshift" hacked the VCGT to shift colors to amber in the evening and at night, because blue(ish) light is known to disturb sleep patterns, and while it is great for your circadian rhythm, it adds a layer of randomness in the color pipeline. Also, the VCGT could be lost without warning when resuming from standby mode, and several applications could race to be the last one overriding it. The rise of dual-GPU systems (discrete + embedded) did nothing to help reliability in the color pipeline, and the proprietary Nvidia driver is still the only one allowing to preview the VCGT.
 
@@ -91,7 +96,10 @@ Check that each monitor has its calibration loaded from ICC profile into VCGT wh
     - Adobe RGB, then colors in the green-cyan region will appear more saturated on screen than they are in the file,
     - Display P3, then all colors will appear more saturated on screen than they are in the file, but the orange-green-cyan region will also be the worst offender.
 : This problem has no solution within GTK3, that Ansel uses as a graphic toolkit, and even with GTK4, there is still no viable, widely supported solution as of now. Manually handling color profiles in Ansel works until the compositors start actively color-managing application windows themselves : then GTK3 offers no way of tagging a window as "already color-managed", as to prevent the compositor from doing them further harm. It will instead double up on colorspace conversions we already did internally and mess up colors in way that only experts will be able to spot. Luckily for us, as of mid-2026, no compositor is able to color-manage anything.
-: In any case, the manual colorspace conversions can be done only on image surfaces that we paint in the Ansel app window. We have zero control over GUI controls colors defined in the theme stylesheet (`ansel.css`), which are implicitely sRGB (as per CSS standard). Meaning GUI colors will always look oversaturated if your monitor native gamut is larger than sRGB, compared to what they are intended to be.
+: In any case, the manual colorspace conversions can be done only on image surfaces that we paint in the Ansel app window. We have zero control over GUI controls colors defined in the theme stylesheet (`ansel.css`), and handled directly by GTK widgets, which are implicitely sRGB (as per CSS standard). Meaning GUI colors will always look oversaturated if your monitor native gamut is larger than sRGB, compared to what they are intended to be.
+
+Check that HDR support is disabled
+: Wayland now supports HDR capabilities by tampering with display backlighting. Although Ansel outputs good old 8 bits RGB and should not pull the HDR triggers, HDR is not part of ICC v2 or v4 and there is no telling how this feature would affect the tone response. It may be harmless, but until this is thorougly audited, the safe path is to keep HDR disabled.
 
 Check that you are using Xorg
 : Seriously, just don't use Wayland for photography.
