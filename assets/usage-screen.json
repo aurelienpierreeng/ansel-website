@@ -2,45 +2,61 @@
   "data": [
     {
       "type": "bar",
+      "orientation": "h",
       "x": [
-        "4\u20136 GiB",
-        "6\u20138 GiB",
-        "14\u201316 GiB",
-        "16\u201318 GiB",
-        "18\u201320 GiB",
-        "22\u201324 GiB",
-        "28\u201330 GiB",
-        "30\u201332 GiB",
-        "56\u201358 GiB",
-        "60\u201362 GiB"
-      ],
-      "y": [
+        2,
         1,
-        4,
-        16,
         1,
-        3,
+        1,
         6,
         2,
-        17,
         1,
-        22
+        2,
+        2,
+        2,
+        20,
+        11,
+        1,
+        10,
+        11
+      ],
+      "y": [
+        "768\u00d7480",
+        "750\u00d7500",
+        "855\u00d7554",
+        "864\u00d7558",
+        "960\u00d7540",
+        "960\u00d7600",
+        "1024\u00d7576",
+        "1280\u00d7720",
+        "1366\u00d7768",
+        "1536\u00d7864",
+        "1920\u00d71080",
+        "1920\u00d71200",
+        "2560\u00d71080",
+        "2560\u00d71440",
+        "3840\u00d72160"
       ],
       "hovertext": [
-        "4\u20136 GiB<br>1 users",
-        "6\u20138 GiB<br>4 users",
-        "14\u201316 GiB<br>16 users",
-        "16\u201318 GiB<br>1 users",
-        "18\u201320 GiB<br>3 users",
-        "22\u201324 GiB<br>6 users",
-        "28\u201330 GiB<br>2 users",
-        "30\u201332 GiB<br>17 users \u00b7 median",
-        "56\u201358 GiB<br>1 users",
-        "60\u201362 GiB<br>22 users"
+        "768\u00d7480<br>2 users",
+        "750\u00d7500<br>1 users",
+        "855\u00d7554<br>1 users",
+        "864\u00d7558<br>1 users",
+        "960\u00d7540<br>6 users",
+        "960\u00d7600<br>2 users",
+        "1024\u00d7576<br>1 users",
+        "1280\u00d7720<br>2 users",
+        "1366\u00d7768<br>2 users",
+        "1536\u00d7864<br>2 users",
+        "1920\u00d71080<br>20 users \u00b7 median",
+        "1920\u00d71200<br>11 users",
+        "2560\u00d71080<br>1 users",
+        "2560\u00d71440<br>10 users",
+        "3840\u00d72160<br>11 users"
       ],
       "hoverinfo": "text",
       "marker": {
-        "color": "#d8c19a"
+        "color": "#a8ccc9"
       }
     },
     {
@@ -60,18 +76,18 @@
         "size": 11
       },
       "x": [
-        "14\u201316 GiB",
-        "14\u201316 GiB"
+        0,
+        20
       ],
       "y": [
-        0,
-        22
+        "960\u00d7540",
+        "960\u00d7540"
       ],
       "text": [
         "",
         "P10"
       ],
-      "textposition": "top center"
+      "textposition": "middle left"
     },
     {
       "type": "scatter",
@@ -90,18 +106,18 @@
         "size": 11
       },
       "x": [
-        "30\u201332 GiB",
-        "30\u201332 GiB"
+        0,
+        20
       ],
       "y": [
-        0,
-        22
+        "1920\u00d71080",
+        "1920\u00d71080"
       ],
       "text": [
         "",
         "median"
       ],
-      "textposition": "top center"
+      "textposition": "middle left"
     },
     {
       "type": "scatter",
@@ -120,39 +136,38 @@
         "size": 11
       },
       "x": [
-        "60\u201362 GiB",
-        "60\u201362 GiB"
+        0,
+        20
       ],
       "y": [
-        0,
-        22
+        "3840\u00d72160",
+        "3840\u00d72160"
       ],
       "text": [
         "",
         "P90"
       ],
-      "textposition": "top center"
+      "textposition": "middle left"
     }
   ],
   "layout": {
     "title": {
-      "text": "Installed memory (RAM) \u2014 73 users"
+      "text": "Screen size in device pixels, after high-DPI scaling \u2014 73 users"
     },
     "xaxis": {
-      "type": "category",
-      "tickangle": -40,
-      "automargin": true
-    },
-    "yaxis": {
       "title": {
         "text": "Users"
       },
       "rangemode": "tozero"
     },
+    "yaxis": {
+      "type": "category",
+      "automargin": true
+    },
     "margin": {
       "t": 70,
       "r": 30,
-      "b": 80,
+      "b": 50,
       "l": 60
     },
     "showlegend": false

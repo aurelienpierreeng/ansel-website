@@ -5,13 +5,13 @@
       "x": [
         "NEF",
         "DNG (mosaiced)",
+        "RAF",
         "JPG",
         "CR2",
-        "RAF",
         "RW2",
         "ORF",
-        "TIFF",
         "DNG (demosaiced)",
+        "TIFF",
         "ARW",
         "PNG",
         "EXR",
@@ -19,34 +19,34 @@
         "HEIC"
       ],
       "y": [
-        63,
-        46,
-        40,
-        33,
-        32,
-        21,
-        16,
-        14,
-        12,
-        8,
+        78,
+        55,
+        43,
+        42,
+        37,
+        22,
+        17,
+        15,
+        15,
+        9,
         7,
-        3,
+        4,
         1,
         1
       ],
       "hovertext": [
-        "NEF<br>63 files opened",
-        "DNG (mosaiced)<br>46 files opened",
-        "JPG<br>40 files opened",
-        "CR2<br>33 files opened",
-        "RAF<br>32 files opened",
-        "RW2<br>21 files opened",
-        "ORF<br>16 files opened",
-        "TIFF<br>14 files opened",
-        "DNG (demosaiced)<br>12 files opened",
-        "ARW<br>8 files opened",
+        "NEF<br>78 files opened",
+        "DNG (mosaiced)<br>55 files opened",
+        "RAF<br>43 files opened",
+        "JPG<br>42 files opened",
+        "CR2<br>37 files opened",
+        "RW2<br>22 files opened",
+        "ORF<br>17 files opened",
+        "DNG (demosaiced)<br>15 files opened",
+        "TIFF<br>15 files opened",
+        "ARW<br>9 files opened",
         "PNG<br>7 files opened",
-        "EXR<br>3 files opened",
+        "EXR<br>4 files opened",
         "CR3<br>1 files opened",
         "HEIC<br>1 files opened"
       ],
@@ -54,11 +54,101 @@
       "marker": {
         "color": "#8ec1a8"
       }
+    },
+    {
+      "type": "scatter",
+      "mode": "lines+text",
+      "name": "P10",
+      "hoverinfo": "name",
+      "showlegend": false,
+      "cliponaxis": false,
+      "line": {
+        "color": "#9aa0a6",
+        "width": 1,
+        "dash": "dot"
+      },
+      "textfont": {
+        "color": "#9aa0a6",
+        "size": 11
+      },
+      "x": [
+        "NEF",
+        "NEF"
+      ],
+      "y": [
+        0,
+        78
+      ],
+      "text": [
+        "",
+        "P10"
+      ],
+      "textposition": "top center"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines+text",
+      "name": "median",
+      "hoverinfo": "name",
+      "showlegend": false,
+      "cliponaxis": false,
+      "line": {
+        "color": "#222222",
+        "width": 2,
+        "dash": "dot"
+      },
+      "textfont": {
+        "color": "#222222",
+        "size": 11
+      },
+      "x": [
+        "RAF",
+        "RAF"
+      ],
+      "y": [
+        0,
+        78
+      ],
+      "text": [
+        "",
+        "median"
+      ],
+      "textposition": "top center"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines+text",
+      "name": "P90",
+      "hoverinfo": "name",
+      "showlegend": false,
+      "cliponaxis": false,
+      "line": {
+        "color": "#9aa0a6",
+        "width": 1,
+        "dash": "dot"
+      },
+      "textfont": {
+        "color": "#9aa0a6",
+        "size": 11
+      },
+      "x": [
+        "TIFF",
+        "TIFF"
+      ],
+      "y": [
+        0,
+        78
+      ],
+      "text": [
+        "",
+        "P90"
+      ],
+      "textposition": "top center"
     }
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 297 files (the last 3 days)"
+      "text": "Image files opened, by type \u2014 346 files (the last 3 days)"
     },
     "xaxis": {
       "type": "category",

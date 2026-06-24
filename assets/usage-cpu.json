@@ -3,44 +3,44 @@
     {
       "type": "bar",
       "x": [
-        "4\u20136 GiB",
-        "6\u20138 GiB",
-        "14\u201316 GiB",
-        "16\u201318 GiB",
-        "18\u201320 GiB",
-        "22\u201324 GiB",
-        "28\u201330 GiB",
-        "30\u201332 GiB",
-        "56\u201358 GiB",
-        "60\u201362 GiB"
+        "2",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12",
+        "14",
+        "16",
+        "20",
+        "24"
       ],
       "y": [
         1,
-        4,
-        16,
-        1,
+        7,
+        11,
+        15,
         3,
-        6,
-        2,
-        17,
+        10,
         1,
-        22
+        19,
+        1,
+        5
       ],
       "hovertext": [
-        "4\u20136 GiB<br>1 users",
-        "6\u20138 GiB<br>4 users",
-        "14\u201316 GiB<br>16 users",
-        "16\u201318 GiB<br>1 users",
-        "18\u201320 GiB<br>3 users",
-        "22\u201324 GiB<br>6 users",
-        "28\u201330 GiB<br>2 users",
-        "30\u201332 GiB<br>17 users \u00b7 median",
-        "56\u201358 GiB<br>1 users",
-        "60\u201362 GiB<br>22 users"
+        "2 cores<br>1 users",
+        "4 cores<br>7 users",
+        "6 cores<br>11 users",
+        "8 cores<br>15 users",
+        "10 cores<br>3 users \u00b7 median",
+        "12 cores<br>10 users",
+        "14 cores<br>1 users",
+        "16 cores<br>19 users",
+        "20 cores<br>1 users",
+        "24 cores<br>5 users"
       ],
       "hoverinfo": "text",
       "marker": {
-        "color": "#d8c19a"
+        "color": "#b9a6cc"
       }
     },
     {
@@ -60,12 +60,12 @@
         "size": 11
       },
       "x": [
-        "14\u201316 GiB",
-        "14\u201316 GiB"
+        "4",
+        "4"
       ],
       "y": [
         0,
-        22
+        19
       ],
       "text": [
         "",
@@ -90,12 +90,12 @@
         "size": 11
       },
       "x": [
-        "30\u201332 GiB",
-        "30\u201332 GiB"
+        "10",
+        "10"
       ],
       "y": [
         0,
-        22
+        19
       ],
       "text": [
         "",
@@ -120,12 +120,12 @@
         "size": 11
       },
       "x": [
-        "60\u201362 GiB",
-        "60\u201362 GiB"
+        "16",
+        "16"
       ],
       "y": [
         0,
-        22
+        19
       ],
       "text": [
         "",
@@ -136,11 +136,13 @@
   ],
   "layout": {
     "title": {
-      "text": "Installed memory (RAM) \u2014 73 users"
+      "text": "CPU logical cores \u2014 73 users"
     },
     "xaxis": {
       "type": "category",
-      "tickangle": -40,
+      "title": {
+        "text": "Logical cores"
+      },
       "automargin": true
     },
     "yaxis": {
@@ -152,7 +154,7 @@
     "margin": {
       "t": 70,
       "r": 30,
-      "b": 80,
+      "b": 60,
       "l": 60
     },
     "showlegend": false

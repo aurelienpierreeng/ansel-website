@@ -58,6 +58,8 @@ OUT_PATH_GPU = os.path.join(REPO_ROOT, "assets", "usage-gpu.json")
 OUT_PATH_RAM = os.path.join(REPO_ROOT, "assets", "usage-ram.json")
 OUT_PATH_DISPLAY = os.path.join(REPO_ROOT, "assets", "usage-display.json")
 OUT_PATH_DISTRO = os.path.join(REPO_ROOT, "assets", "usage-distro.json")
+OUT_PATH_SCREEN = os.path.join(REPO_ROOT, "assets", "usage-screen.json")
+OUT_PATH_CPU = os.path.join(REPO_ROOT, "assets", "usage-cpu.json")
 OUT_PATH_BUGS = os.path.join(REPO_ROOT, "assets", "bugs.json")
 
 # Soft pastel colorway (sage / blush / blue + extras) shared by all usage charts.
@@ -368,27 +370,125 @@ def _truthy(v):
     return str(v).strip().lower() in ("true", "1", "yes")
 
 
+def _clean_gpu(name):
+    """Drop parenthesised noise from a GPU name for legibility, e.g.
+    "Intel(R) UHD Graphics 630" -> "Intel UHD Graphics 630",
+    "AMD Radeon RX 6700 (radeonsi, navi22, ACO, DRM 3.16)" -> "AMD Radeon RX 6700".
+    """
+    name = re.sub(r"\([^)]*\)", "", name)
+    return re.sub(r"\s+", " ", name).strip()
+
+
+def _num(v):
+    """Round a numeric-ish value to int, e.g. "1920.0" -> 1920, or None."""
+    try:
+        f = float(v)
+    except (TypeError, ValueError):
+        return None
+    return int(round(f)) if f > 0 else None
+
+
+def _screen_label(sw, sh, ppd):
+    """Screen geometry as (pixel_count, "width×height"), or None.
+
+    The reported geometry is divided by the scaling factor (GTK ppd) to get the
+    device (logical) resolution. pixel_count is returned for sorting by surface
+    area."""
+    w, h = _num(sw), _num(sh)
+    if not w or not h:
+        return None
+    try:
+        s = float(ppd)
+    except (TypeError, ValueError):
+        s = 1.0
+    if s <= 0:
+        s = 1.0
+    # Reported geometry is in physical pixels; divide by the scaling factor to get
+    # the device (logical) resolution actually used to lay out the UI.
+    w = int(round(w / s))
+    h = int(round(h / s))
+    return w * h, "%d×%d" % (w, h)
+
+
 def fetch_user_platforms(key):
     """One row per unique user with their most-recent reported platform facts.
 
     Uses argMax(..., timestamp) so each user contributes a single, latest value
     (dedup by unique user as requested). Returns a list of dicts."""
-    props = ["os", "opencl", "gpu", "ram_gb", "display_server"]
+    props = ["os", "opencl", "gpu", "ram_gb", "display_server",
+             "screen_width", "screen_height", "ppd", "cpu_cores"]
     sel = ", ".join("argMax(properties.%s, timestamp) AS %s" % (p, p) for p in props)
     hogql = (
         "SELECT %s FROM events WHERE event = 'session_start' "
         "AND timestamp > now() - INTERVAL %d DAY GROUP BY person_id"
     ) % (sel, PERIOD_DAYS)
     rows = []
-    for os_s, opencl, gpu, ram, disp in _posthog_query(key, hogql):
+    for os_s, opencl, gpu, ram, disp, sw, sh, ppd, cores in _posthog_query(key, hogql):
         rows.append({"os": os_s, "opencl": opencl, "gpu": gpu,
-                     "ram": ram, "disp": disp})
+                     "ram": ram, "disp": disp,
+                     "sw": sw, "sh": sh, "ppd": ppd, "cores": cores})
     return rows
 
 
 def _count_sorted(counter, reverse=True):
     items = sorted(counter.items(), key=lambda kv: kv[1], reverse=reverse)
     return [k for k, _ in items], [v for _, v in items]
+
+
+def _weighted_quantile_idx(counts, q):
+    """Index of the category (in the given display order) at which the cumulative
+    count first reaches quantile q of the total. q=0.5 is the weighted median,
+    0.1 / 0.9 the first / last decile. Or None when there is no data."""
+    total = sum(counts)
+    if total <= 0:
+        return None
+    thresh = total * q
+    cum = 0
+    for i, v in enumerate(counts):
+        cum += v
+        if cum >= thresh:
+            return i
+    return len(counts) - 1
+
+
+def _weighted_median_idx(counts):
+    return _weighted_quantile_idx(counts, 0.5)
+
+
+def _ref_line(cat, span, orient, name, color="#222222", width=2):
+    """Dotted reference line trace at category `cat`, with the name written as a
+    text overlay at the line's end. orient 'v' draws a vertical line at x=cat over
+    y in [0, span] (label on top); 'h' a horizontal line at y=cat over x in
+    [0, span] (label at the right)."""
+    trace = {"type": "scatter", "mode": "lines+text", "name": name,
+             "hoverinfo": "name", "showlegend": False, "cliponaxis": False,
+             "line": {"color": color, "width": width, "dash": "dot"},
+             "textfont": {"color": color, "size": 11}}
+    if orient == "v":
+        trace["x"], trace["y"] = [cat, cat], [0, span]
+        trace["text"], trace["textposition"] = ["", name], "top center"
+    else:
+        trace["x"], trace["y"] = [0, span], [cat, cat]
+        trace["text"], trace["textposition"] = ["", name], "middle left"
+    return trace
+
+
+def _quantile_lines(labels, counts, span, orient):
+    """P10 / median / P90 reference lines for a weighted histogram. Returns
+    (traces, median_idx). The median is drawn bold and dark, the deciles thinner
+    and lighter."""
+    specs = [("P10", 0.1, "#9aa0a6", 1),
+             ("median", 0.5, "#222222", 2),
+             ("P90", 0.9, "#9aa0a6", 1)]
+    traces, median_idx = [], None
+    for name, q, color, width in specs:
+        idx = _weighted_quantile_idx(counts, q)
+        if idx is None:
+            continue
+        traces.append(_ref_line(labels[idx], span, orient, name, color, width))
+        if q == 0.5:
+            median_idx = idx
+    return traces, median_idx
 
 
 def write_platform_figures(key):
@@ -399,7 +499,7 @@ def write_platform_figures(key):
         return
     n_users = len(rows)
 
-    fam, opencl, gpu, ram, disp, distro = {}, {}, {}, {}, {}, {}
+    fam, opencl, gpu, ram, disp, distro, screen, cpu = {}, {}, {}, {}, {}, {}, {}, {}
     for r in rows:
         f = _os_family(r["os"])
         # macOS reports no OS string (telemetry gap), but Apple-Silicon machines
@@ -412,10 +512,10 @@ def write_platform_figures(key):
         if r["opencl"] is not None and str(r["opencl"]).strip() != "":
             k = "With OpenCL" if _truthy(r["opencl"]) else "Without OpenCL"
             opencl[k] = opencl.get(k, 0) + 1
-        # GPU brand + model (or "No GPU detected").
-        g = (r["gpu"] or "").strip()
-        gk = g if g else "No GPU detected"
-        gpu[gk] = gpu.get(gk, 0) + 1
+        # GPU brand + model (only when one was reported), parentheses stripped.
+        g = _clean_gpu(r["gpu"] or "")
+        if g:
+            gpu[g] = gpu.get(g, 0) + 1
         # RAM in 2 GB classes.
         rc = _ram_class(r["ram"])
         if rc:
@@ -430,10 +530,19 @@ def write_platform_figures(key):
             elif d:
                 disp["Other"] = disp.get("Other", 0) + 1
             distro[_distro_name(r["os"])] = distro.get(_distro_name(r["os"]), 0) + 1
+        # Screen geometry as width×height@scaling.
+        sc = _screen_label(r["sw"], r["sh"], r["ppd"])
+        if sc:
+            key_sc = (sc[0], sc[1])  # (sort key = pixel count, display label)
+            screen[key_sc] = screen.get(key_sc, 0) + 1
+        # CPU logical core count.
+        cc = _num(r["cores"])
+        if cc:
+            cpu[cc] = cpu.get(cc, 0) + 1
 
     jobs = []
 
-    # 2. Users per OS family (bar).
+    # 2. Users per OS family (pie).
     fl, fv = _count_sorted(fam)
     jobs.append((OUT_PATH_OS, fl, _usage_pie_figure(
         fl, fv, "Operating systems in use — %d users" % n_users,
@@ -445,35 +554,47 @@ def write_platform_figures(key):
         ol, ov, "GPU acceleration (OpenCL) — %d users" % sum(ov),
         ["%s<br>%d users" % (k, v) for k, v in zip(ol, ov)])))
 
-    # 4. GPU models (horizontal bar, most common first).
+    # 4. GPU models (vertical bar, most common first).
     gl, gv = _count_sorted(gpu)
     gl, gv = gl[:20], gv[:20]
     gpu_fig = {
         "data": [{
-            "type": "bar", "orientation": "h", "x": list(reversed(gv)),
-            "y": list(reversed(gl)),
-            "hovertext": ["%s<br>%d users" % (k, v)
-                          for k, v in zip(reversed(gl), reversed(gv))],
-            "hoverinfo": "text", "marker": {"color": "#b9a6cc"},
+            "type": "bar", "x": gl, "y": gv,
+            "hovertext": ["%s<br>%d users" % (k, v) for k, v in zip(gl, gv)],
+            "hoverinfo": "text", "marker": {"color": "#9db4d0"},
         }],
         "layout": {
             "title": {"text": "Graphics cards in use — %d users" % sum(gv)},
-            "xaxis": {"title": {"text": "Users"}, "rangemode": "tozero"},
-            "yaxis": {"type": "category", "automargin": True},
-            "margin": {"t": 70, "r": 30, "b": 50, "l": 60},
+            "xaxis": {"type": "category", "tickangle": -40, "automargin": True},
+            "yaxis": {"title": {"text": "Users"}, "rangemode": "tozero"},
+            "margin": {"t": 70, "r": 30, "b": 120, "l": 60},
             "showlegend": False,
         },
     }
     jobs.append((OUT_PATH_GPU, gl, gpu_fig))
 
-    # 5. RAM in 2 GB classes (bar, ordered by size).
+    # 5. RAM in 2 GB classes (bar, ordered by size, median marked).
     ram_items = sorted(ram.items(), key=lambda kv: kv[0][0])
     rl = [lbl for (_, lbl), _ in ram_items]
     rv = [v for _, v in ram_items]
-    ram_fig = _usage_bar_figure(
-        rl, rv, ["%s<br>%d users" % (l, v) for l, v in zip(rl, rv)],
-        "Installed memory (RAM) — %d users" % sum(rv), "Users", "#d8c19a")
-    ram_fig["layout"]["xaxis"]["tickangle"] = -40
+    rlines, rmid = _quantile_lines(rl, rv, max(rv) if rv else 0, "v")
+    ram_data = [{
+        "type": "bar", "x": rl, "y": rv,
+        "hovertext": ["%s<br>%d users%s" % (l, v, " · median" if i == rmid else "")
+                      for i, (l, v) in enumerate(zip(rl, rv))],
+        "hoverinfo": "text", "marker": {"color": "#d8c19a"},
+    }]
+    ram_data.extend(rlines)
+    ram_fig = {
+        "data": ram_data,
+        "layout": {
+            "title": {"text": "Installed memory (RAM) — %d users" % sum(rv)},
+            "xaxis": {"type": "category", "tickangle": -40, "automargin": True},
+            "yaxis": {"title": {"text": "Users"}, "rangemode": "tozero"},
+            "margin": {"t": 70, "r": 30, "b": 80, "l": 60},
+            "showlegend": False,
+        },
+    }
     jobs.append((OUT_PATH_RAM, rl, ram_fig))
 
     # 6. X11 vs Wayland, Linux only (pie).
@@ -487,6 +608,60 @@ def write_platform_figures(key):
     jobs.append((OUT_PATH_DISTRO, nl, _usage_pie_figure(
         nl, nv, "Linux distributions — %d users" % sum(nv),
         ["%s<br>%d users" % (k, v) for k, v in zip(nl, nv)])))
+
+    # 8. Screen geometry width×height (horizontal bar, sorted by surface area;
+    # smallest at the bottom, largest at top). The median screen (by surface area,
+    # weighted across users) is highlighted.
+    sc_items = sorted(screen.items(), key=lambda kv: kv[0][0])  # by pixel count asc
+    sl = [lbl for (_, lbl), _ in sc_items]
+    sv = [v for _, v in sc_items]
+    total = sum(sv)
+    slines, smid = _quantile_lines(sl, sv, max(sv) if sv else 0, "h")
+    hover = ["%s<br>%d users%s" % (l, v, " · median" if i == smid else "")
+             for i, (l, v) in enumerate(zip(sl, sv))]
+    median_label = sl[smid] if smid is not None else "?"
+    screen_data = [{
+        "type": "bar", "orientation": "h", "x": sv, "y": sl,
+        "hovertext": hover, "hoverinfo": "text", "marker": {"color": "#a8ccc9"},
+    }]
+    screen_data.extend(slines)
+    screen_fig = {
+        "data": screen_data,
+        "layout": {
+            "title": {"text": "Screen size in device pixels, after high-DPI "
+                      "scaling — %d users" % total},
+            "xaxis": {"title": {"text": "Users"}, "rangemode": "tozero"},
+            "yaxis": {"type": "category", "automargin": True},
+            "margin": {"t": 70, "r": 30, "b": 50, "l": 60},
+            "showlegend": False,
+        },
+    }
+    jobs.append((OUT_PATH_SCREEN, sl, screen_fig))
+
+    # 9. CPU logical cores (vertical bar, ordered by core count, P10/median/P90).
+    cpu_items = sorted(cpu.items(), key=lambda kv: kv[0])
+    cl = [str(k) for k, _ in cpu_items]
+    cv = [v for _, v in cpu_items]
+    clines, cmid = _quantile_lines(cl, cv, max(cv) if cv else 0, "v")
+    cpu_data = [{
+        "type": "bar", "x": cl, "y": cv,
+        "hovertext": ["%s cores<br>%d users%s" % (l, v, " · median" if i == cmid else "")
+                      for i, (l, v) in enumerate(zip(cl, cv))],
+        "hoverinfo": "text", "marker": {"color": "#b9a6cc"},
+    }]
+    cpu_data.extend(clines)
+    cpu_fig = {
+        "data": cpu_data,
+        "layout": {
+            "title": {"text": "CPU logical cores — %d users" % sum(cv)},
+            "xaxis": {"type": "category", "title": {"text": "Logical cores"},
+                      "automargin": True},
+            "yaxis": {"title": {"text": "Users"}, "rangemode": "tozero"},
+            "margin": {"t": 70, "r": 30, "b": 60, "l": 60},
+            "showlegend": False,
+        },
+    }
+    jobs.append((OUT_PATH_CPU, cl, cpu_fig))
 
     for path, labels, fig in jobs:
         if not labels:
@@ -506,13 +681,18 @@ def write_usage_figures(key):
     mtot = _posthog_query(key, "SELECT count() FROM events WHERE event = "
                           "'module_used' AND timestamp > now() - INTERVAL %d DAY" % PERIOD_DAYS)
     modules_total = int(mtot[0][0]) if mtot and mtot[0] else sum(mv)
+    # Median file type: the one at which the cumulative count of images opened
+    # crosses half the total (bars are already ordered by count), marked with a
+    # vertical line.
+    flines, fmid = _quantile_lines(fl, fv, max(fv) if fv else 0, "v")
     files_title = ("Image files opened, by type — %d files (%s)"
                    % (sum(fv), span))
+    files_fig = _usage_bar_figure(fl, fv, fh, files_title, "Files opened", "#8ec1a8")
+    files_fig["data"].extend(flines)
     modules_title = ("Most-used features — %d activations (%s)"
                      % (modules_total, span))
     jobs = (
-        (OUT_PATH_FILES, fl, _usage_bar_figure(
-            fl, fv, fh, files_title, "Files opened", "#8ec1a8")),
+        (OUT_PATH_FILES, fl, files_fig),
         (OUT_PATH_MODULES, ml, _usage_bar_figure(
             ml, mv, mh, modules_title, "Times used", "#9db4d0")),
     )

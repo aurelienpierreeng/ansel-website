@@ -424,12 +424,30 @@ The charts below come from the opt-in PostHog telemetry.
 {{% row %}}
 {{% column %}}
 {{% card %}}
+{{< plotly title="Display server used by Linux users." caption="false" src="usage-display.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Linux distributions used." caption="false" src="usage-distro.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
 {{< plotly title="Graphics cards in use, by number of users." caption="false" src="usage-gpu.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}
 
 {{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Number of CPU logical cores, by number of users." caption="false" src="usage-cpu.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
 {{% column %}}
 {{% card %}}
 {{< plotly title="Installed memory (RAM), in 2 GB classes, by number of users." caption="false" src="usage-ram.json" class="full-width" dynamic="true" >}}
@@ -440,14 +458,12 @@ The charts below come from the opt-in PostHog telemetry.
 {{% row %}}
 {{% column %}}
 {{% card %}}
-{{< plotly title="Display server used by Linux users." caption="false" src="usage-display.json" class="full-width" dynamic="true" >}}
-{{% /card %}}
-{{% /column %}}
-{{% column %}}
-{{% card %}}
-{{< plotly title="Linux distributions used." caption="false" src="usage-distro.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Screen size (width×height@scaling factor), by number of users." caption="false" src="usage-screen.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}
+
+
+
 
 </div>

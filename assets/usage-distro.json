@@ -5,10 +5,11 @@
       "labels": [
         "Arch Linux",
         "Ubuntu",
-        "Linux Mint",
         "Debian",
+        "Linux Mint",
         "Fedora",
         "CachyOS",
+        "Garuda",
         "LMDE",
         "Bluefin",
         "Void",
@@ -16,15 +17,16 @@
         "Perfido",
         "EndeavourOS",
         "Manjaro",
-        "Garuda"
+        "Zorin"
       ],
       "values": [
         16,
-        8,
-        7,
+        12,
+        9,
         7,
         5,
         3,
+        2,
         1,
         1,
         1,
@@ -37,11 +39,12 @@
       "hole": 0.45,
       "hovertext": [
         "Arch Linux<br>16 users",
-        "Ubuntu<br>8 users",
+        "Ubuntu<br>12 users",
+        "Debian<br>9 users",
         "Linux Mint<br>7 users",
-        "Debian<br>7 users",
         "Fedora<br>5 users",
         "CachyOS<br>3 users",
+        "Garuda<br>2 users",
         "LMDE<br>1 users",
         "Bluefin<br>1 users",
         "Void<br>1 users",
@@ -49,7 +52,7 @@
         "Perfido<br>1 users",
         "EndeavourOS<br>1 users",
         "Manjaro<br>1 users",
-        "Garuda<br>1 users"
+        "Zorin<br>1 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -74,7 +77,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 54 users"
+      "text": "Linux distributions \u2014 62 users"
     },
     "margin": {
       "t": 70,
