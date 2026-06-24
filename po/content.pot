@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-21 16:48+0200\n"
+"POT-Creation-Date: 2026-06-24 13:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11902,7 +11902,7 @@ msgstr ""
 #. type: Plain text
 #: content/workflows/film-scan/index.md:40
 #, markdown-text, no-wrap
-msgid "[See Alain's website](https://bw-film-scanning.oguse.fr/en/index.html)\n"
+msgid "[See Alain's website…](https://bw-film-scanning.oguse.fr/en/index.html)\n"
 msgstr ""
 
 #. type: Title ##
@@ -16963,20 +16963,22 @@ msgstr ""
 
 #. type: Plain text
 #: content/_index.md:33
-#: content/_index.md:306
-#: content/_index.md:343
+#: content/_index.md:302
+#: content/_index.md:352
+#: content/_index.md:453
 #, markdown-text, no-wrap
 msgid "</div>\n"
 msgstr ""
 
 #. type: Plain text
 #: content/_index.md:36
-#: content/_index.md:77
-#: content/_index.md:112
-#: content/_index.md:227
-#: content/_index.md:247
-#: content/_index.md:274
-#: content/_index.md:316
+#: content/_index.md:121
+#: content/_index.md:156
+#: content/_index.md:271
+#: content/_index.md:291
+#: content/_index.md:320
+#: content/_index.md:362
+#: content/_index.md:390
 #, markdown-text, no-wrap
 msgid "{{< divider >}}\n"
 msgstr ""
@@ -17025,18 +17027,159 @@ msgstr ""
 msgid ""
 "{{% card icon=\"terminal\" title=\"Build from source\" %}}\n"
 "Best performance for your hardware\n"
-"{{< button url=\"/en/doc/install\" label=\"Building instructions\" icon=\"wrench\" >}}\n"
+"{{< button url=\"/doc/install\" label=\"Building instructions\" icon=\"wrench\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:64
-#: content/_index.md:82
+#: content/_index.md:65
+#: content/_index.md:368
+#, markdown-text, no-wrap
+msgid "{{% row %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:69
+#, markdown-text, no-wrap
+msgid ""
+"{{% column class=\"text-center\" %}}\n"
+"{{< button url=\"/doc/install/\" label=\"Installation help\" icon=\"mouse\" >}}\n"
+"{{% /column %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:73
+#, markdown-text, no-wrap
+msgid ""
+"{{% column class=\"text-center\" %}}\n"
+"{{< button url=\"/doc/getting-started/\" label=\"Getting started\" icon=\"hands-helping\" >}}\n"
+"{{% /column %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:75
+#: content/_index.md:388
+#, markdown-text, no-wrap
+msgid "{{% /row %}}\n"
+msgstr ""
+
+#. type: Title ###
+#: content/_index.md:78
+#, markdown-text, no-wrap
+msgid "Is it stable ?"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:83
 #: content/_index.md:100
-#: content/_index.md:252
-#: content/_index.md:279
-#: content/_index.md:297
+#, markdown-text, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:85
+#, markdown-text, no-wrap
+msgid "{{< plotly title=\"Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)\" caption=\"false\" src=\"reliability.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:90
+#, markdown-text, no-wrap
+msgid ""
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:92
+#, markdown-text, no-wrap
+msgid "{{< plotly title=\"Crash-free users and number of pictures edited without crashing, per nightly build (data collected by opt-in sentry.io and posthog)\" caption=\"false\" src=\"reliability-users.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:96
+#, markdown-text, no-wrap
+msgid ""
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:102
+#, markdown-text, no-wrap
+msgid "{{< plotly title=\"Reported issues (bugs, tasks and features) already resolved versus still open, per release (source: Github). Much has already been done; what remains is tracked openly.\" caption=\"false\" src=\"bugs.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:105
+#, markdown-text, no-wrap
+msgid ""
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:107
+#, markdown-text, no-wrap
+msgid "{{% column %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:109
+#, markdown-text, no-wrap
+msgid "A new release is published when the list of all bugs have been cleared, meaning the software is stable. Not on an arbitrary date. \n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:111
+#, markdown-text, no-wrap
+msgid "Revisions are intermediate states of the sourcecode (not releases). They are aggregated by Git commit hash and shown only once they have been used by at least 25 distinct people (less-used and intermediate commits are folded into *Other*). An asterisk (\\*) marks commits we shipped as a packaged nightly or stable build.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:113
+#, markdown-text, no-wrap
+msgid "Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours. __Ansel saves your editing histories immediately after each change__: in case of a crash you loose at most the last action.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:115
+#, markdown-text, no-wrap
+msgid "The links above always point to the latest nightly build of the \"fairly stable\" branch. If you want a particular revision or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:119
+#: content/_index.md:136
+#: content/_index.md:154
+#: content/_index.md:318
+#: content/_index.md:335
+#: content/_index.md:360
+#, markdown-text, no-wrap
+msgid ""
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+
+#. type: Title ##
+#: content/_index.md:122
+#, markdown-text, no-wrap
+msgid "Why Ansel ?"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:126
+#: content/_index.md:144
+#: content/_index.md:296
+#: content/_index.md:325
+#: content/_index.md:343
 #, markdown-text, no-wrap
 msgid ""
 "{{% row %}}\n"
@@ -17044,43 +17187,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:68
-#, markdown-text, no-wrap
-msgid ""
-"{{< warning >}}\n"
-"__Ansel is in alpha version__. The GUI is susceptible to change and the application may crash under some circumstances.\n"
-"{{< /warning >}}\n"
-msgstr ""
-
-#. type: Plain text
-#: content/_index.md:75
-#, markdown-text, no-wrap
-msgid ""
-"{{% /column %}}\n"
-"{{% column %}}\n"
-"The links above always point to the latest nightly build of the \"fairly stable\" branch. If you want a particular version or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
-"{{% /column %}}\n"
-"{{% /row %}}\n"
-msgstr ""
-
-#. type: Title ##
-#: content/_index.md:78
-#, markdown-text, no-wrap
-msgid "Why Ansel ?"
-msgstr ""
-
-#. type: Plain text
-#: content/_index.md:84
+#: content/_index.md:128
 #, markdown-text, no-wrap
 msgid "Many solutions already exist to produce ready-to-consume photographs for masses, from smartphones filters to out-of-cameras JPEGs, followed recently by AI-driven automagic toy filters. These make photography easier than ever, but are the produced images really __your__ images and, in any case, the images __you__ expected ?\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:87
-#: content/_index.md:105
-#: content/_index.md:263
-#: content/_index.md:284
+#: content/_index.md:131
+#: content/_index.md:149
 #: content/_index.md:309
+#: content/_index.md:330
+#: content/_index.md:355
 #, markdown-text, no-wrap
 msgid ""
 "{{% /column %}}\n"
@@ -17088,25 +17205,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:89
+#: content/_index.md:133
 #, markdown-text, no-wrap
 msgid "_Ansel_ lets you interpret your raw photographs much like a music instrument, when most software tries to automatically play the score for you. It aims at being an underwhelming, boring, tool that just does what you ask of it, without getting in your way.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:92
-#: content/_index.md:110
-#: content/_index.md:272
-#: content/_index.md:289
-#: content/_index.md:314
-#, markdown-text, no-wrap
-msgid ""
-"{{% /column %}}\n"
-"{{% /row %}}\n"
-msgstr ""
-
-#. type: Plain text
-#: content/_index.md:97
+#: content/_index.md:141
 #, markdown-text, no-wrap
 msgid ""
 "<div class=\"text-center my-5\">\n"
@@ -17116,46 +17221,46 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:102
+#: content/_index.md:146
 #, markdown-text, no-wrap
 msgid "When you like music, you can choose between learning how to play or buying recordings. It's easier to buy, but more satisfying to play. Photo editing applications have lied to users for decades, pretending they could play without learning, because the software would deal with technical complexities for them, and entirely hide them.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:107
+#: content/_index.md:151
 #, markdown-text, no-wrap
 msgid "It turns out that users have only been fighting applications they understand less and less, for control over their results, and to recover those tricky cases where automation fails. As time will go by, expect to lose more and more time fighting AIs to get natural-looking results… manually. Why not simply cut the middle-man ?\n"
 msgstr ""
 
 #. type: Title ##
-#: content/_index.md:113
+#: content/_index.md:157
 #, markdown-text, no-wrap
 msgid "What can Ansel do for you ?"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:116
+#: content/_index.md:160
 #, markdown-text, no-wrap
 msgid "Ansel allows you to manage your collections of pictures, to edit your raw digital photographs and film scans non-destructively and to export the result to common file formats. It stores your editing histories as text and lets you go back in time at any editing step you like, anytime.\n"
 msgstr ""
 
 #. type: Title ###
-#: content/_index.md:117
+#: content/_index.md:161
 #, markdown-text, no-wrap
 msgid "Color work"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:120
+#: content/_index.md:164
 #, markdown-text, no-wrap
 msgid "Ansel ships a recent color science, compatible with HDR : the chromatic adaptation CIE CAT 2016, the HDR color space JzAzBz (2017) and the perceptual color space darktable UCS 2022, developed specifically to manipulate color saturation without the fluorescent effect.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:128
+#: content/_index.md:172
 #, markdown-text, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Color calibration</h5>\n"
 "{{% compare after=\"calibration-after.jpg\" before=\"calibration-before.jpg\" cols=\"2\" %}}\n"
@@ -17165,7 +17270,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:136
+#: content/_index.md:180
 #, markdown-text, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -17174,14 +17279,14 @@ msgid ""
 "Give ambiance and character to your pictures by polishing their color palette with nuanced and fine-grained controls, in RGB, Ych or HSB color spaces, for creative and corrective purposes.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:144
+#: content/_index.md:188
 #, markdown-text, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Color matching</h5>\n"
 "{{< compare after=\"matching-after.jpg\" before=\"matching-before.jpg\" cols=\"2\">}}\n"
@@ -17191,7 +17296,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:152
+#: content/_index.md:196
 #, markdown-text, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -17200,26 +17305,26 @@ msgid ""
 "Use the hue, chroma and lightness qualifiers to quickly define masks and apply selective effects. Combine parametric masks with drawn masks and boolean operations. Refine and feather the edges of masks by blurring or using clever edges detection.\n"
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 
 #. type: Title ###
-#: content/_index.md:154
+#: content/_index.md:198
 #, markdown-text, no-wrap
 msgid "Tonal work"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:157
+#: content/_index.md:201
 #, markdown-text, no-wrap
 msgid "The tonal working methods are designed to manipulate luminance without affecting hue nor saturation, in order to respect the color work, done apart.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:165
+#: content/_index.md:209
 #, markdown-text, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>HDR tone mapping</h5>\n"
 "{{% compare after=\"filmic-after.jpg\" before=\"filmic-before.jpg\" cols=\"2\" %}}\n"
@@ -17229,7 +17334,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:173
+#: content/_index.md:217
 #, markdown-text, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -17238,20 +17343,20 @@ msgid ""
 "Balance densities based on exposure zones, by preserving local contrast thanks to an edge detection algorithm, and select the exposure zones to affect directly from the picture, through the interactive cursor. _(Photo : Andreas Schneider)_\n"
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 
 #. type: Title ###
-#: content/_index.md:174
+#: content/_index.md:218
 #, markdown-text, no-wrap
 msgid "Image reconstruction"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:183
+#: content/_index.md:227
 #, markdown-text, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Lens deblurring</h5>\n"
 "{{% compare after=\"sharpen-after.jpg\" before=\"sharpen-before.jpg\" cols=\"2\" %}}\n"
@@ -17261,7 +17366,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:191
+#: content/_index.md:235
 #, markdown-text, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -17270,14 +17375,14 @@ msgid ""
 "Restore some depth in foggy and hazy shots by bringing back textures and saturation in colors, without overaccentuating already sharp details.\n"
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:199
+#: content/_index.md:243
 #, markdown-text, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Denoising</h5>\n"
 "{{< compare after=\"denoise-after.jpg\" before=\"denoise-before.jpg\" cols=\"2\">}}\n"
@@ -17287,7 +17392,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:207
+#: content/_index.md:251
 #, markdown-text, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -17296,20 +17401,20 @@ msgid ""
 "Salvage both color and texture in highlights, recover blown areas by propagating gradients while the gamut-mapping watches your back to ensure colorful highlights can still be printed at their proper hue. You don't have to bleach highlights to hide problems anymore.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 
 #. type: Title ###
-#: content/_index.md:208
+#: content/_index.md:252
 #, markdown-text, no-wrap
 msgid "Specialized features"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:217
+#: content/_index.md:261
 #, markdown-text, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Automatic perspective correction</h5>\n"
 "{{< compare after=\"perspective-after.jpg\" before=\"perspective-before.jpg\" cols=\"2\" >}}\n"
@@ -17319,7 +17424,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:225
+#: content/_index.md:269
 #, markdown-text, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -17328,100 +17433,103 @@ msgid ""
 "Anonymize people, license plates, etc. and play with use conditions of socially prude network without defiling your pictures too much.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 
 #. type: Title ##
-#: content/_index.md:229
+#: content/_index.md:273
 #, markdown-text, no-wrap
 msgid "Compatibility"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:245
+#: content/_index.md:289
 #, markdown-text, no-wrap
 msgid ""
 "{{% row %}}\n"
 "{{% card title=\"Edits\" icon=\"desktop\" %}}\n"
 "Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to 4.0 database and XMP files. Coming from darktable ?\n"
-"{{< button url=\"/en/doc/special-topics/from-darktable/\" label=\"Find out what is changed\" icon=\"sync\" >}}\n"
+"{{< button url=\"/doc/special-topics/from-darktable/\" label=\"Find out what is changed\" icon=\"sync\" >}}\n"
 "{{% /card %}}\n"
 "{{% card title=\"Cameras\" icon=\"camera\" %}}\n"
 "Ansel uses Rawspeed and Libraw to decode raw photographs. New cameras may need up to 24 months to be fully supported after their commercial release.\n"
-"{{< button url=\"/en/resources/supported-cameras\" label=\"Supported cameras\" icon=\"wrench\" >}}\n"
+"{{< button url=\"/resources/supported-cameras\" label=\"Supported cameras\" icon=\"wrench\" >}}\n"
 "{{% /card %}}\n"
 "{{% card title=\"Languages\" icon=\"language\" %}}\n"
 "The software is integrally translated in English, French, Italian and simplified Chinese. Partial translations are available in German, Spanish, Portugese, Ukranian, etc.\n"
-"{{< button url=\"https://github.com/aurelienpierreeng/ansel/wiki/Translations\" label=\"Improve translations\" icon=\"comment\" >}}\n"
+"{{< button url=\"/contribute/translating/\" label=\"Improve translations\" icon=\"comment\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 msgstr ""
 
 #. type: Title ##
-#: content/_index.md:248
+#: content/_index.md:292
 #, markdown-text, no-wrap
 msgid "Darktable, but better"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:256
+#: content/_index.md:298
 #, markdown-text, no-wrap
-msgid ""
-"<div class=\"no-hyphenation lead\">\n"
-"Ansel is what Darktable 4.0 could have been if it didn't die of [feature creep](https://en.wikipedia.org/wiki/Feature_creep).\n"
-"</div>\n"
+msgid "<div class=\"no-hyphenation lead\">\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:258
+#: content/_index.md:300
+#, markdown-text, no-wrap
+msgid "Ansel is what Darktable 4.0 could have been if it didn't die of [feature creep](https://en.wikipedia.org/wiki/Feature_creep).\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:304
 #, markdown-text, no-wrap
 msgid "Between 2020 and 2023, Darktable has suffered [massive code additions of peripheral features](./news/darktable-dans-le-mur-au-ralenti/), often ill-coded, poorly designed and penalizing usability, performance and maintenance. Too many workarounds failed to fix bugs, but layered new problems on top of legacy code : welcome in maintenance nightmare.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:260
+#: content/_index.md:306
 #, markdown-text, no-wrap
 msgid "In fairness, without project management or feature planning, this was bound to happen. Darktable has always struggled to be more than a pack of individual plugins.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:265
+#: content/_index.md:311
 #, markdown-text, no-wrap
 msgid "The result is a weird, frustrating, app trying to reinvent GUI paradigms on its own, trying to do everything for everyone, slower and less stable than before, and absolutely terrible to debug.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:267
+#: content/_index.md:313
 #, markdown-text, no-wrap
 msgid "With a scene-referred-centric user interface, many modules merged into a global menu, rewritten import tool and sparing image pipeline recomputations, Ansel is a Darktable 4.0 variant where 30.000 lines of poorly-written code and half-broken features have been removed, and 11.000 lines rewritten : __it runs faster, smoother, uses less power and requires less configuration__.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:269
+#: content/_index.md:315
 #, markdown-text, no-wrap
 msgid "With a decreased code complexity, its maintenance should be easier in the future too.\n"
 msgstr ""
 
 #. type: Title ##
-#: content/_index.md:275
+#: content/_index.md:321
 #, markdown-text, no-wrap
 msgid "Beyond documentation"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:281
+#: content/_index.md:327
 #, markdown-text, no-wrap
 msgid "The typical, recurring painpoint of open-source software projects is documentation. When there is none, users complain about it. When there is one, they complain it is too long, not complete enough, or it doesn't include use cases. Developers expect users to have a linear reading of the project documentation. It will simply not happen and developers will serve as parrots. That only builds up frustration on both ends. __Documentation is not enough__.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:286
+#: content/_index.md:332
 #, markdown-text, no-wrap
 msgid "Chantal is a bilingual (French-English) language model trained specifically for image processing, color theory and photography, that understands technical slang, synonyms and some translations. __Its web interface allows search queries through a central index__ of open-source software documentation, bug reports, user forums, YouTube channels, scientific publications and standards organizations (CIE, ICC, ACES).\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:294
+#: content/_index.md:340
 #, markdown-text, no-wrap
 msgid ""
 "<div class=\"text-center my-5\">\n"
@@ -17431,19 +17539,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:299
+#: content/_index.md:345
 #, markdown-text, no-wrap
 msgid "<div class=\"no-hyphenation lead mx-auto\">\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:301
+#: content/_index.md:347
 #, markdown-text, no-wrap
 msgid "Chantal is Ansel's knowledge infrastructure :\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:304
+#: content/_index.md:350
 #, markdown-text, no-wrap
 msgid ""
 "- quickly find relevant information among trusted sources,\n"
@@ -17451,31 +17559,25 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:311
+#: content/_index.md:357
 #, markdown-text, no-wrap
 msgid "<span class=\"no-hyphenation lead mx-auto\">Designed to make users cleverer, instead of making the software dumber.</span> The artificial intelligence feeds you learning material on topics of your choice. Let's invest in natural intelligence.\n"
 msgstr ""
 
 #. type: Title ##
-#: content/_index.md:317
+#: content/_index.md:363
 #, markdown-text, no-wrap
 msgid "Source code"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:320
+#: content/_index.md:366
 #, markdown-text, no-wrap
 msgid "Ansel software and documentation are released under the GNU/GPL v3 license and versionned with Git. The website is copyrighted but publicly readable. The work repositories are hosted on Github and are mirrored on Gitlab for backup.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:322
-#, markdown-text, no-wrap
-msgid "{{% row %}}\n"
-msgstr ""
-
-#. type: Plain text
-#: content/_index.md:328
+#: content/_index.md:374
 #, markdown-text, no-wrap
 msgid ""
 "{{% card title=\"Software\" icon=\"desktop\" %}}\n"
@@ -17486,7 +17588,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:334
+#: content/_index.md:380
 #, markdown-text, no-wrap
 msgid ""
 "{{% card title=\"Documentation\" icon=\"book\" %}}\n"
@@ -17497,7 +17599,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/_index.md:340
+#: content/_index.md:386
 #, markdown-text, no-wrap
 msgid ""
 "{{% card title=\"Website\" icon=\"globe\" %}}\n"
@@ -17507,8 +17609,102 @@ msgid ""
 "{{% /card %}}\n"
 msgstr ""
 
-#. type: Plain text
-#: content/_index.md:342
+#. type: Title ##
+#: content/_index.md:391
 #, markdown-text, no-wrap
-msgid "{{% /row %}}\n"
+msgid "How is Ansel used ?"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:394
+#, markdown-text, no-wrap
+msgid "The charts below come from the opt-in PostHog telemetry.\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:402
+#, markdown-text, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Number of image files opened by file type (data collected by opt-in posthog).\" caption=\"false\" src=\"usage-files.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:410
+#, markdown-text, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Most-used features: views, panels and editing modules, by number of activations (data collected by opt-in posthog).\" caption=\"false\" src=\"usage-modules.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:423
+#, markdown-text, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Operating systems in use, by number of users.\" caption=\"false\" src=\"usage-os.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Users running with or without GPU acceleration (OpenCL).\" caption=\"false\" src=\"usage-opencl.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:431
+#, markdown-text, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Graphics cards in use, by number of users.\" caption=\"false\" src=\"usage-gpu.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:439
+#, markdown-text, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Installed memory (RAM), in 2 GB classes, by number of users.\" caption=\"false\" src=\"usage-ram.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+
+#. type: Plain text
+#: content/_index.md:452
+#, markdown-text, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Display server used by Linux users.\" caption=\"false\" src=\"usage-display.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Linux distributions used.\" caption=\"false\" src=\"usage-distro.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
 msgstr ""

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-06-21 16:48+0200\n"
-"PO-Revision-Date: 2025-05-02 17:01+0200\n"
+"POT-Creation-Date: 2026-06-24 13:54+0200\n"
+"PO-Revision-Date: 2026-06-24 14:11+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -15,34 +15,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Array Element: authors
 #: content/news/color-controls-finally-correct/index.md:1
 #: content/news/welcome-the-new-ansel-maintainer.md:1
 #: content/news/rewriting-key-shortcuts.md:1
-#: content/news/rewriting-import/index.md:1
-#: content/news/dev-diary-2.md:1
+#: content/news/rewriting-import/index.md:1 content/news/dev-diary-2.md:1
 #: content/news/redesigning-lighttable-and-mipmap-cache/index.md:1
-#: content/news/changes-appimage.md:1
-#: content/news/new-build-options-linux.md:1
+#: content/news/changes-appimage.md:1 content/news/new-build-options-linux.md:1
 #: content/news/darktable-dans-le-mur-au-ralenti/index.md:1
 #: content/news/implementing-kill-switch.md:1
 #: content/news/history-merge-topology/index.md:1
 #: content/news/welcome-dev-docs/index.md:1
 #: content/news/complete-pipeline-overhaul/index.md:1
-#: content/news/fixing-pipe-cache-10-yo-bugs.md:1
-#: content/news/dev-diary-1.md:1
+#: content/news/fixing-pipe-cache-10-yo-bugs.md:1 content/news/dev-diary-1.md:1
 #: content/news/welcome-ansel-gpt.md:1
 #: content/news/modules-groups-redesign/index.md:1
 #: content/news/changes-in-packages-distribution.md:1
 #: content/news/undarktable-ing-gui-controls.md:1
 #: content/resources/diffuse-or-sharpen-math/index.md:1
-#: content/resources/lexicon.md:1
-#: content/resources/misconceptions.md:1
-#: content/resources/readings.md:1
-#: content/resources/troubleshooting-color.md:1
+#: content/resources/lexicon.md:1 content/resources/misconceptions.md:1
+#: content/resources/readings.md:1 content/resources/troubleshooting-color.md:1
 #: content/resources/white-balances/index.md:1
 #: content/workflows/film-scan/index.md:1
 #: content/workflows/monochrome-toning/index.md:1
@@ -60,7 +55,9 @@ msgstr "Aurélien Pierre"
 #: content/news/complete-pipeline-overhaul/index.md:1
 #, no-wrap
 msgid "development"
-msgstr "Développement"
+msgstr ""
+"\n"
+"Développement"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Array Element: tags
@@ -1070,10 +1067,9 @@ msgstr ""
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/news/color-controls-finally-correct/index.md:390
-#, fuzzy, no-wrap
-#| msgid "{{< figure src=\"/fl1-report.png\" />}}\n"
+#, no-wrap
 msgid "{{< figure src=\"filmic.jpg\" width=\"350\" />}}\n"
-msgstr "{{< figure src=\"/fl1-report.png\" />}}\n"
+msgstr "\n"
 
 #. type: Plain text
 #: content/news/color-controls-finally-correct/index.md:392
@@ -2069,14 +2065,12 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Array Element: tags
-#: content/news/rewriting-import/index.md:1
-#: content/news/dev-diary-2.md:1
+#: content/news/rewriting-import/index.md:1 content/news/dev-diary-2.md:1
 #: content/news/redesigning-lighttable-and-mipmap-cache/index.md:1
 #: content/news/new-build-options-linux.md:1
 #: content/news/implementing-kill-switch.md:1
 #: content/news/welcome-dev-docs/index.md:1
-#: content/news/fixing-pipe-cache-10-yo-bugs.md:1
-#: content/news/dev-diary-1.md:1
+#: content/news/fixing-pipe-cache-10-yo-bugs.md:1 content/news/dev-diary-1.md:1
 #: content/news/changes-in-packages-distribution.md:1
 #: content/news/undarktable-ing-gui-controls.md:1
 #, fuzzy, no-wrap
@@ -2819,10 +2813,11 @@ msgstr ""
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/news/redesigning-lighttable-and-mipmap-cache/index.md:109
-#, fuzzy, no-wrap
-#| msgid "![](module-groups.jpg)\n"
+#, no-wrap
 msgid "![](filters-2.jpg)\n"
-msgstr "![](module-groups.jpg)\n"
+msgstr ""
+"![](filters-2.jpg)\n"
+"\n"
 
 #. type: Title ###
 #: content/news/redesigning-lighttable-and-mipmap-cache/index.md:110
@@ -3384,8 +3379,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Array Element: tags
-#: content/news/changes-appimage.md:1
-#: content/news/welcome-ansel-gpt.md:1
+#: content/news/changes-appimage.md:1 content/news/welcome-ansel-gpt.md:1
 #, no-wrap
 msgid "Announcement"
 msgstr "Annonce"
@@ -9837,8 +9831,7 @@ msgstr "Cet article documente les mathématiques actuellement implémentées dan
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/resources/diffuse-or-sharpen-math/index.md:14
-#: content/resources/misconceptions.md:13
-#: content/resources/readings.md:13
+#: content/resources/misconceptions.md:13 content/resources/readings.md:13
 #, no-wrap
 msgid "<!--more-->\n"
 msgstr "<!--plus-->\n"
@@ -11819,8 +11812,7 @@ msgstr "Quelles ressources peuvent être trouvées en ligne et dans les biblioth
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/resources/readings.md:14
-#: content/contribute/triaging.md:9
+#: content/resources/readings.md:14 content/contribute/triaging.md:9
 #, no-wrap
 msgid "Preamble"
 msgstr "Préambule"
@@ -12023,8 +12015,7 @@ msgstr "Références"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Yaml Front Matter Array Element: tags
-#: content/resources/readings.md:73
-#: content/workflows/scene-referred/index.md:1
+#: content/resources/readings.md:73 content/workflows/scene-referred/index.md:1
 #, no-wrap
 msgid "Color science"
 msgstr "Science des couleurs"
@@ -14081,8 +14072,9 @@ msgstr ""
 
 #. type: Plain text
 #: content/workflows/film-scan/index.md:40
-#, no-wrap
-msgid "[See Alain's website](https://bw-film-scanning.oguse.fr/en/index.html)\n"
+#, fuzzy, no-wrap
+#| msgid "[See Alain's website](https://bw-film-scanning.oguse.fr/en/index.html)\n"
+msgid "[See Alain's website…](https://bw-film-scanning.oguse.fr/en/index.html)\n"
 msgstr "[Voir le site d'Alain](https://bw-film-scanning.oguse.fr/fr/index.html)\n"
 
 # TRANSLATOR Aurélien Pierre
@@ -16202,8 +16194,7 @@ msgstr "![](obsidian-screenshots-document-outline.jpg)\n"
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
 #: content/contribute/website/index.md:110
-#: content/contribute/coding-style.md:360
-#: content/contribute/documenting.md:92
+#: content/contribute/coding-style.md:360 content/contribute/documenting.md:92
 #, no-wrap
 msgid "Guidelines"
 msgstr "Lignes directrices"
@@ -16801,8 +16792,7 @@ msgstr "Style de codage"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/contribute/coding-style.md:7
-#: content/contribute/audience.md:27
+#: content/contribute/coding-style.md:7 content/contribute/audience.md:27
 #, no-wrap
 msgid "Values"
 msgstr "Valeurs"
@@ -18112,7 +18102,9 @@ msgstr "Documenter Ansel"
 #: content/contribute/documenting.md:7
 #, no-wrap
 msgid "Introduction "
-msgstr "Introduction"
+msgstr ""
+"\n"
+"Introduction"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
@@ -18606,8 +18598,7 @@ msgstr "Logiciel"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
-#: content/contribute/workflows.md:10
-#: content/contribute/organization.md:24
+#: content/contribute/workflows.md:10 content/contribute/organization.md:24
 #, no-wrap
 msgid "Nightly builds"
 msgstr "Compilations nocturnes"
@@ -18680,8 +18671,7 @@ msgstr "Les nouveaux commits et problèmes Github sont [automatiquement publiés
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
-#: content/contribute/workflows.md:31
-#: content/contribute/organization.md:42
+#: content/contribute/workflows.md:31 content/contribute/organization.md:42
 #, no-wrap
 msgid "Website"
 msgstr "Site Internet"
@@ -18695,8 +18685,7 @@ msgstr "Le site web statique de Hugo est [automatiquement construit](https://git
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
-#: content/contribute/workflows.md:35
-#: content/contribute/organization.md:50
+#: content/contribute/workflows.md:35 content/contribute/organization.md:50
 #, no-wrap
 msgid "Documentation"
 msgstr "Documentation"
@@ -20689,22 +20678,17 @@ msgstr "Presser le déclencheur de l'appareil photo démarre à peine un process
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:33
-#: content/_index.md:306
-#: content/_index.md:343
+#: content/_index.md:33 content/_index.md:302 content/_index.md:352
+#: content/_index.md:453
 #, no-wrap
 msgid "</div>\n"
 msgstr "</div>\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:36
-#: content/_index.md:77
-#: content/_index.md:112
-#: content/_index.md:227
-#: content/_index.md:247
-#: content/_index.md:274
-#: content/_index.md:316
+#: content/_index.md:36 content/_index.md:121 content/_index.md:156
+#: content/_index.md:271 content/_index.md:291 content/_index.md:320
+#: content/_index.md:362 content/_index.md:390
 #, no-wrap
 msgid "{{< divider >}}\n"
 msgstr "{{< divider >}}\n"
@@ -20719,13 +20703,7 @@ msgstr "Installer"
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/_index.md:44
-#, fuzzy, no-wrap
-#| msgid ""
-#| "{{% row %}}\n"
-#| "{{% card icon=\"linux fab\" title=\"Linux\" %}}\n"
-#| "Distribution-agnostic executable\n"
-#| "{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip\" label=\"Download ansel.appimage\" icon=\"download\" >}}\n"
-#| "{{% /card %}}\n"
+#, no-wrap
 msgid ""
 "{{% row %}}\n"
 "{{% card icon=\"linux fab\" title=\"Linux\" %}}\n"
@@ -20736,18 +20714,13 @@ msgstr ""
 "{{% row %}}\n"
 "{{% card icon=\"linux fab\" title=\"Linux\" %}}\n"
 "Exécutable indépendant de la distribution\n"
-"{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip\" label=\"Télécharger ansel.appimage\" icon=\"download\" >}}\n"
+"{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip\" label=\"Télécharger\" icon=\"download\" >}}\n"
 "{{% /card %}}\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/_index.md:49
-#, fuzzy, no-wrap
-#| msgid ""
-#| "{{% card icon=\"windows fab\" title=\"Windows\" %}}\n"
-#| "Windows 7 to 11 installer\n"
-#| "{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip\" label=\"Download ansel.exe\" icon=\"download\" >}}\n"
-#| "{{% /card %}}\n"
+#, no-wrap
 msgid ""
 "{{% card icon=\"windows fab\" title=\"Windows\" %}}\n"
 "Windows 7 to 11 installer\n"
@@ -20756,19 +20729,13 @@ msgid ""
 msgstr ""
 "{{% card icon=\"windows fab\" title=\"Windows\" %}}\n"
 "Installeur Windows 7 à 11\n"
-"{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip\" label=\"Télécharger ansel.exe\" icon=\"download\" >}}\n"
+"{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip\" label=\"Télécharger\" icon=\"download\" >}}\n"
 "{{% /card %}}\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
 #: content/_index.md:55
-#, fuzzy, no-wrap
-#| msgid ""
-#| "{{% row %}}\n"
-#| "{{% card icon=\"linux fab\" title=\"Linux\" %}}\n"
-#| "Distribution-agnostic executable\n"
-#| "{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip\" label=\"Download ansel.appimage\" icon=\"download\" >}}\n"
-#| "{{% /card %}}\n"
+#, no-wrap
 msgid ""
 "{{% card icon=\"apple fab\" title=\"MacOS X\" %}}\n"
 "Distribution for MacOS X 15 and newer.\n"
@@ -20776,10 +20743,10 @@ msgid ""
 "{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable-intel64.mac.zip\" label=\"Download for Intel\" icon=\"download\" >}}\n"
 "{{% /card %}}\n"
 msgstr ""
-"{{% row %}}\n"
-"{{% card icon=\"linux fab\" title=\"Linux\" %}}\n"
-"Exécutable indépendant de la distribution\n"
-"{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip\" label=\"Télécharger ansel.appimage\" icon=\"download\" >}}\n"
+"{{% card icon=\"apple fab\" title=\"MacOS X\" %}}\n"
+"Distribution pour MacOS X 15 et plus récent.\n"
+"{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable-arm64.mac.zip\" label=\"Télécharger pour Apple M\" icon=\"download\" >}}\n"
+"{{< button url=\"https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable-intel64.mac.zip\" label=\"Télécharger pour Intel\" icon=\"download\" >}}\n"
 "{{% /card %}}\n"
 
 # TRANSLATOR Aurélien Pierre
@@ -20789,83 +20756,213 @@ msgstr ""
 msgid ""
 "{{% card icon=\"terminal\" title=\"Build from source\" %}}\n"
 "Best performance for your hardware\n"
-"{{< button url=\"/en/doc/install\" label=\"Building instructions\" icon=\"wrench\" >}}\n"
+"{{< button url=\"/doc/install\" label=\"Building instructions\" icon=\"wrench\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 msgstr ""
 "{{% card icon=\"terminal\" title=\"Compilation depuis les sources\" %}}\n"
 "Les meilleurs performances pour votre matériel\n"
-"{{< button url=\"/en/doc/install\" label=\"Instructions de compilation\" icon=\"wrench\" >}}\n"
+"{{< button url=\"/doc/install\" label=\"Instructions de compilation\" icon=\"wrench\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:64
-#: content/_index.md:82
-#: content/_index.md:100
-#: content/_index.md:252
-#: content/_index.md:279
-#: content/_index.md:297
+#: content/_index.md:65 content/_index.md:368
+#, no-wrap
+msgid "{{% row %}}\n"
+msgstr "{{% row %}}\n"
+
+#. type: Plain text
+#: content/_index.md:69
 #, no-wrap
 msgid ""
-"{{% row %}}\n"
-"{{% column %}}\n"
+"{{% column class=\"text-center\" %}}\n"
+"{{< button url=\"/doc/install/\" label=\"Installation help\" icon=\"mouse\" >}}\n"
+"{{% /column %}}\n"
 msgstr ""
-"{{% row %}}\n"
-"{{% column %}}\n"
+"{{% column class=\"text-center\" %}}\n"
+"{{< button url=\"/doc/install/\" label=\"Aide à l'installation\" icon=\"mouse\" >}}\n"
+"{{% /column %}}\n"
+
+#. type: Plain text
+#: content/_index.md:73
+#, no-wrap
+msgid ""
+"{{% column class=\"text-center\" %}}\n"
+"{{< button url=\"/doc/getting-started/\" label=\"Getting started\" icon=\"hands-helping\" >}}\n"
+"{{% /column %}}\n"
+msgstr ""
+"{{% column class=\"text-center\" %}}\n"
+"{{< button url=\"/doc/getting-started/\" label=\"Démarrer\" icon=\"hands-helping\" >}}\n"
+"{{% /column %}}\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:68
+#: content/_index.md:75 content/_index.md:388
 #, no-wrap
-msgid ""
-"{{< warning >}}\n"
-"__Ansel is in alpha version__. The GUI is susceptible to change and the application may crash under some circumstances.\n"
-"{{< /warning >}}\n"
-msgstr ""
-"{{< warning >}}\n"
-"__Ansel est en version alpha__. L'interface graphique est susceptible de changer et l'application peut crasher dans certaines circonstances.\n"
-"{{< /warning >}}\n"
+msgid "{{% /row %}}\n"
+msgstr "{{% /row %}}\n"
+
+#. type: Title ###
+#: content/_index.md:78
+#, no-wrap
+msgid "Is it stable ?"
+msgstr "Est-ce stable ?"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:75
+#: content/_index.md:83 content/_index.md:100
 #, no-wrap
+#| msgid ""
+#| "{{% row %}}\n"
+#| "{{% column %}}\n"
 msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+
+#. type: Plain text
+#: content/_index.md:85
+#, no-wrap
+msgid "{{< plotly title=\"Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)\" caption=\"false\" src=\"reliability.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+msgstr "{{< plotly title=\"Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)\" caption=\"false\" src=\"reliability.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:90
+#, no-wrap
+#| msgid ""
+#| "{{% /column %}}\n"
+#| "{{% column %}}\n"
+msgid ""
+"{{% /card %}}\n"
 "{{% /column %}}\n"
 "{{% column %}}\n"
-"The links above always point to the latest nightly build of the \"fairly stable\" branch. If you want a particular version or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
+"{{% card %}}\n"
+msgstr ""
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+
+#. type: Plain text
+#: content/_index.md:92
+#, no-wrap
+msgid "{{< plotly title=\"Crash-free users and number of pictures edited without crashing, per nightly build (data collected by opt-in sentry.io and posthog)\" caption=\"false\" src=\"reliability-users.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+msgstr "{{< plotly title=\"Crash-free users and number of pictures edited without crashing, per nightly build (data collected by opt-in sentry.io and posthog)\" caption=\"false\" src=\"reliability-users.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:96
+#, no-wrap
+#| msgid ""
+#| "{{% /column %}}\n"
+#| "{{% /row %}}\n"
+msgid ""
+"{{% /card %}}\n"
 "{{% /column %}}\n"
 "{{% /row %}}\n"
 msgstr ""
+"{{% /card %}}\n"
 "{{% /column %}}\n"
-"{{% column p=true %}}\n"
-"Les liens ci-dessus pointent toujours vers la dernière compilation quotidienne de la branche « raisonnablement stable ». Si vous voulez une version particulière ou que vous voulez rétrograder, [vous pouvez trouver toutes les versions intermédiaires sur Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
+"{{% /row %}}\n"
+
+#. type: Plain text
+#: content/_index.md:102
+#, no-wrap
+msgid "{{< plotly title=\"Reported issues (bugs, tasks and features) already resolved versus still open, per release (source: Github). Much has already been done; what remains is tracked openly.\" caption=\"false\" src=\"bugs.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+msgstr "{{< plotly title=\"Reported issues (bugs, tasks and features) already resolved versus still open, per release (source: Github). Much has already been done; what remains is tracked openly.\" caption=\"false\" src=\"bugs.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:105
+#, no-wrap
+msgid ""
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+msgstr ""
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:107
+#, no-wrap
+msgid "{{% column %}}\n"
+msgstr "{{% column %}}\n"
+
+#. type: Plain text
+#: content/_index.md:109
+#, no-wrap
+msgid "A new release is published when the list of all bugs have been cleared, meaning the software is stable. Not on an arbitrary date. \n"
+msgstr "Une nouvelle version est publiée quand la liste de tous les bugs a été traitée, signifiant que le logiciel est stable. Pas à une date arbitraire.\n"
+
+#. type: Plain text
+#: content/_index.md:111
+#, no-wrap
+msgid "Revisions are intermediate states of the sourcecode (not releases). They are aggregated by Git commit hash and shown only once they have been used by at least 25 distinct people (less-used and intermediate commits are folded into *Other*). An asterisk (\\*) marks commits we shipped as a packaged nightly or stable build.\n"
+msgstr "Les révisions sont des états intermédiaires du code source (et non des versions). Elles sont agrégée par hash de commit Git et montrées seulement lorsqu'au moins 25 personnes différentes les ont utilisées (les révisions moins utilisées et les commits intermédiaires sont groupés dans *Other*). Une astérisque (\\*) marque les commits livrés sous forme de paquet précompilé nocturne (_nightly build_) ou stable.\n"
+
+#. type: Plain text
+#: content/_index.md:113
+#, no-wrap
+msgid "Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours. __Ansel saves your editing histories immediately after each change__: in case of a crash you loose at most the last action.\n"
+msgstr "Les bugs doivent être rapportés sur [Github](https://github.com/aurelienpierreeng/ansel/issues) ou ils ne seront jamais réglés. Ce logiciel gratuit n'est garanti de fonctionner que sur les ordinateurs de ses développeurs, qui ne sont pas en face du vôtre. __Ansel sauvegarde votre historique de retouche après chaque changement__ : en cas de crash, vous perdez au pire votre dernière action.\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:115
+#, no-wrap
+msgid "The links above always point to the latest nightly build of the \"fairly stable\" branch. If you want a particular revision or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
+msgstr "Les liens ci-dessus pointent toujours vers la dernière compilation quotidienne de la branche « raisonnablement stable ». Si vous voulez une version particulière ou que vous voulez rétrograder, [vous pouvez trouver toutes les versions intermédiaires sur Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:119 content/_index.md:136 content/_index.md:154
+#: content/_index.md:318 content/_index.md:335 content/_index.md:360
+#, no-wrap
+msgid ""
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
 "{{% /column %}}\n"
 "{{% /row %}}\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/_index.md:78
+#: content/_index.md:122
 #, no-wrap
 msgid "Why Ansel ?"
 msgstr "Pourquoi Ansel ?"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:84
+#: content/_index.md:126 content/_index.md:144 content/_index.md:296
+#: content/_index.md:325 content/_index.md:343
+#, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:128
 #, no-wrap
 msgid "Many solutions already exist to produce ready-to-consume photographs for masses, from smartphones filters to out-of-cameras JPEGs, followed recently by AI-driven automagic toy filters. These make photography easier than ever, but are the produced images really __your__ images and, in any case, the images __you__ expected ?\n"
 msgstr "De nombreuses solutions existent pour produire des photographies prêtes à consommer pour les masses, des filtres de smartphones aux JPEG produits par les appareils photo, suivis récemment par la magie automatisée des filtres jouets par IA. Tout ça rend la photographie plus facile que jamais, mais les images produites sont-elles réellement __vos__ images et en tout cas, les images que __vous__ attendiez ?\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:87
-#: content/_index.md:105
-#: content/_index.md:263
-#: content/_index.md:284
-#: content/_index.md:309
+#: content/_index.md:131 content/_index.md:149 content/_index.md:309
+#: content/_index.md:330 content/_index.md:355
 #, no-wrap
 msgid ""
 "{{% /column %}}\n"
@@ -20876,29 +20973,14 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:89
+#: content/_index.md:133
 #, no-wrap
 msgid "_Ansel_ lets you interpret your raw photographs much like a music instrument, when most software tries to automatically play the score for you. It aims at being an underwhelming, boring, tool that just does what you ask of it, without getting in your way.\n"
 msgstr "_Ansel_ vous permet d'interpréter vos photos brutes comme un instrument de musique, là où la plupart des logiciels essaient de jouer la partition automatiquement à votre place. Il vise à être un outil peu excitant et ennuyeux, qui fait juste ce que vous lui demandez, sans se mettre en travers de votre chemin.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:92
-#: content/_index.md:110
-#: content/_index.md:272
-#: content/_index.md:289
-#: content/_index.md:314
-#, no-wrap
-msgid ""
-"{{% /column %}}\n"
-"{{% /row %}}\n"
-msgstr ""
-"{{% /column %}}\n"
-"{{% /row %}}\n"
-
-# TRANSLATOR Aurélien Pierre
-#. type: Plain text
-#: content/_index.md:97
+#: content/_index.md:141
 #, no-wrap
 msgid ""
 "<div class=\"text-center my-5\">\n"
@@ -20913,52 +20995,52 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:102
+#: content/_index.md:146
 #, no-wrap
 msgid "When you like music, you can choose between learning how to play or buying recordings. It's easier to buy, but more satisfying to play. Photo editing applications have lied to users for decades, pretending they could play without learning, because the software would deal with technical complexities for them, and entirely hide them.\n"
 msgstr "Quand vous aimez la musique, vous pouvez choisir entre apprendre à jouer ou acheter des enregistrements. Il est plus facile d'acheter, mais plus satisfaisant de jouer. Les applications de traitement photo ont menti aux utilisateurs pendant des décennies, en prétendant qu'ils pourraient jouer sans apprendre, parce que le logiciel se chargerait des difficultés techniques, et les cacherait entièrement.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:107
+#: content/_index.md:151
 #, no-wrap
 msgid "It turns out that users have only been fighting applications they understand less and less, for control over their results, and to recover those tricky cases where automation fails. As time will go by, expect to lose more and more time fighting AIs to get natural-looking results… manually. Why not simply cut the middle-man ?\n"
 msgstr "Il apparait en fait que les utilisateurs se battent contre des applications qu'ils comprennent de moins en moins, pour le contrôle de leurs résultats et pour récupérer les cas épineux où l'automatisation échoue. À mesure que le temps passe, attendez vous à perdre de plus en plus de temps à vous battre contre des IA pour obtenir des résultats naturels… manuellement. Pourquoi ne pas directement éliminer l'intermédiaire ?\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/_index.md:113
+#: content/_index.md:157
 #, no-wrap
 msgid "What can Ansel do for you ?"
 msgstr "Que peut Ansel pour vous ?"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:116
+#: content/_index.md:160
 #, no-wrap
 msgid "Ansel allows you to manage your collections of pictures, to edit your raw digital photographs and film scans non-destructively and to export the result to common file formats. It stores your editing histories as text and lets you go back in time at any editing step you like, anytime.\n"
 msgstr "Ansel vous permet de gérer vos collections d'images, de traiter vos fichiers numériques bruts de capteur et vos pellicules numérisées, et d'exporter le résultat vers les formats de fichiers courants. Il stocke votre historique de traitement sous forme de texte et vous permet de remonter dans le temps à n'importe quelle étape de votre traitement, à tout moment.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
-#: content/_index.md:117
+#: content/_index.md:161
 #, no-wrap
 msgid "Color work"
 msgstr "Travail sur la couleur"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:120
+#: content/_index.md:164
 #, no-wrap
 msgid "Ansel ships a recent color science, compatible with HDR : the chromatic adaptation CIE CAT 2016, the HDR color space JzAzBz (2017) and the perceptual color space darktable UCS 2022, developed specifically to manipulate color saturation without the fluorescent effect.\n"
 msgstr "Ansel embarque une science de la couleur récente et compatible HDR : l'adaptation chromatique CIE CAT 2016, l'espace de couleur HDR JzAzBz (2017) et l'espace de couleur perceptuel darktable UCS 2022, développé spécialement pour manipuler la saturation des couleurs en évitant l'effet fluo.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:128
+#: content/_index.md:172
 #, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Color calibration</h5>\n"
 "{{% compare after=\"calibration-after.jpg\" before=\"calibration-before.jpg\" cols=\"2\" %}}\n"
@@ -20966,7 +21048,7 @@ msgid ""
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
 msgstr ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Calibration des couleurs</h5>\n"
 "{{< compare after=\"calibration-after.jpg\" before=\"calibration-before.jpg\" cols=\"2\" >}}\n"
@@ -20976,7 +21058,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:136
+#: content/_index.md:180
 #, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -20985,7 +21067,7 @@ msgid ""
 "Give ambiance and character to your pictures by polishing their color palette with nuanced and fine-grained controls, in RGB, Ych or HSB color spaces, for creative and corrective purposes.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 "{{% column %}}\n"
 "<h5>Gradation des couleurs</h5>\n"
@@ -20993,14 +21075,15 @@ msgstr ""
 "Donnez ambiance et caractère à vos photos en polissant leur palette de couleur avec des contrôles nuancés et détaillés, dans les espaces de couleur RVB, Ych ou HSB, à des fins créatives ou correctives.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
+"\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:144
+#: content/_index.md:188
 #, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Color matching</h5>\n"
 "{{< compare after=\"matching-after.jpg\" before=\"matching-before.jpg\" cols=\"2\">}}\n"
@@ -21008,7 +21091,7 @@ msgid ""
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
 msgstr ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Correspondance de couleur</h5>\n"
 "{{< compare after=\"matching-after.jpg\" before=\"matching-before.jpg\" cols=\"2\" >}}\n"
@@ -21018,7 +21101,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:152
+#: content/_index.md:196
 #, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -21027,7 +21110,7 @@ msgid ""
 "Use the hue, chroma and lightness qualifiers to quickly define masks and apply selective effects. Combine parametric masks with drawn masks and boolean operations. Refine and feather the edges of masks by blurring or using clever edges detection.\n"
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 "{{% column %}}\n"
 "<h5>Qualificateurs de teinte et fusion</h5>\n"
@@ -21035,28 +21118,29 @@ msgstr ""
 "Utilisez les qualificateurs de teinte, chroma et luminosité pour définir rapidement des masques, et appliquer des effets sélectifs. Combinez les masques paramétriques avec des masques dessinés avec des opérations booléennes. Raffinez et détaillez les bords des masques par floutage ou détection de bords intelligente.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
+"\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
-#: content/_index.md:154
+#: content/_index.md:198
 #, no-wrap
 msgid "Tonal work"
 msgstr "Travail sur les tonalités"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:157
+#: content/_index.md:201
 #, no-wrap
 msgid "The tonal working methods are designed to manipulate luminance without affecting hue nor saturation, in order to respect the color work, done apart.\n"
 msgstr "Les méthodes de travail sur les tonalités sont conçues pour manipuler la luminance sans toucher à la teinte ou à la saturation, de façon à respecter le travail sur la couleur, effectué séparément.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:165
+#: content/_index.md:209
 #, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>HDR tone mapping</h5>\n"
 "{{% compare after=\"filmic-after.jpg\" before=\"filmic-before.jpg\" cols=\"2\" %}}\n"
@@ -21064,7 +21148,7 @@ msgid ""
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
 msgstr ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Mappage de ton HDR</h5>\n"
 "{{< compare after=\"filmic-after.jpg\" before=\"filmic-before.jpg\" cols=\"2\" >}}\n"
@@ -21074,7 +21158,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:173
+#: content/_index.md:217
 #, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -21083,7 +21167,7 @@ msgid ""
 "Balance densities based on exposure zones, by preserving local contrast thanks to an edge detection algorithm, and select the exposure zones to affect directly from the picture, through the interactive cursor. _(Photo : Andreas Schneider)_\n"
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 "{{% column %}}\n"
 "<h5>Traitement basé sur le zone system</h5>\n"
@@ -21091,21 +21175,22 @@ msgstr ""
 "Équilibrez les densités par zone de lumination, en préservant le contraste local grâce à un algorithme de détection des bords, et sélectionnez les zones de lumination à affecter directement dans l'image via le curseur interactif. _(Photo : Andreas Schneider)_\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
+"\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
-#: content/_index.md:174
+#: content/_index.md:218
 #, no-wrap
 msgid "Image reconstruction"
 msgstr "Reconstruction d'image"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:183
+#: content/_index.md:227
 #, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Lens deblurring</h5>\n"
 "{{% compare after=\"sharpen-after.jpg\" before=\"sharpen-before.jpg\" cols=\"2\" %}}\n"
@@ -21113,7 +21198,7 @@ msgid ""
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
 msgstr ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Défloutage d'objectif</h5>\n"
 "{{< compare after=\"sharpen-after.jpg\" before=\"sharpen-before.jpg\" cols=\"2\" >}}\n"
@@ -21123,7 +21208,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:191
+#: content/_index.md:235
 #, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -21132,7 +21217,7 @@ msgid ""
 "Restore some depth in foggy and hazy shots by bringing back textures and saturation in colors, without overaccentuating already sharp details.\n"
 "{{% /compare %}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 "{{% column %}}\n"
 "<h5>Désembuage</h5>\n"
@@ -21140,14 +21225,15 @@ msgstr ""
 "Restaurez une certaine profondeur dans les clichés brumeux et flous en ramenant des textures et de la saturation dans les couleurs, sans pour autant sur-accentuer les détails déjà nets.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
+"\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:199
+#: content/_index.md:243
 #, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Denoising</h5>\n"
 "{{< compare after=\"denoise-after.jpg\" before=\"denoise-before.jpg\" cols=\"2\">}}\n"
@@ -21155,7 +21241,7 @@ msgid ""
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
 msgstr ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Débruitage</h5>\n"
 "{{< compare after=\"denoise-after.jpg\" before=\"denoise-before.jpg\" cols=\"2\" >}}\n"
@@ -21165,7 +21251,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:207
+#: content/_index.md:251
 #, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -21174,7 +21260,7 @@ msgid ""
 "Salvage both color and texture in highlights, recover blown areas by propagating gradients while the gamut-mapping watches your back to ensure colorful highlights can still be printed at their proper hue. You don't have to bleach highlights to hide problems anymore.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 "{{% column %}}\n"
 "<h5>Reconstruction des hautes lumières</h5>\n"
@@ -21182,21 +21268,22 @@ msgstr ""
 "Sauvez à la fois la couleur et la texture dans les hautes lumières, récupérez les zones brûlées en propageant les gradients pendant que le gamut-mapping surveille vos arrières en garantissant que les hautes lumières saturées peuvent toujours être imprimées à leur teinte d'origine. Vous n'êtes plus obligé de délaver les hautes lumières pour cacher les problèmes.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
+"\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ###
-#: content/_index.md:208
+#: content/_index.md:252
 #, no-wrap
 msgid "Specialized features"
 msgstr "Fonctions spécialisées"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:217
+#: content/_index.md:261
 #, no-wrap
 msgid ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Automatic perspective correction</h5>\n"
 "{{< compare after=\"perspective-after.jpg\" before=\"perspective-before.jpg\" cols=\"2\" >}}\n"
@@ -21204,7 +21291,7 @@ msgid ""
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
 msgstr ""
-"<div class=\"row\">\n"
+"{{% row %}}\n"
 "{{% column %}}\n"
 "<h5>Correction automatique de la perspective</h5>\n"
 "{{< compare after=\"perspective-after.jpg\" before=\"perspective-before.jpg\" cols=\"2\" >}}\n"
@@ -21214,7 +21301,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:225
+#: content/_index.md:269
 #, no-wrap
 msgid ""
 "{{% column %}}\n"
@@ -21223,7 +21310,7 @@ msgid ""
 "Anonymize people, license plates, etc. and play with use conditions of socially prude network without defiling your pictures too much.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
 msgstr ""
 "{{% column %}}\n"
 "<h5>Censurer</h5>\n"
@@ -21231,127 +21318,131 @@ msgstr ""
 "Anonymisez facilement des gens, plaques d'immatriculation, etc. et jouez avec les conditions d'utilisation des réseaux socialement prudes sans trop défigurer vos images.\n"
 "{{</ compare >}}\n"
 "{{% /column %}}\n"
-"</div>\n"
+"{{% /row %}}\n"
+"\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/_index.md:229
+#: content/_index.md:273
 #, no-wrap
 msgid "Compatibility"
 msgstr "Compatibilité"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:245
+#: content/_index.md:289
 #, no-wrap
 msgid ""
 "{{% row %}}\n"
 "{{% card title=\"Edits\" icon=\"desktop\" %}}\n"
 "Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to 4.0 database and XMP files. Coming from darktable ?\n"
-"{{< button url=\"/en/doc/special-topics/from-darktable/\" label=\"Find out what is changed\" icon=\"sync\" >}}\n"
+"{{< button url=\"/doc/special-topics/from-darktable/\" label=\"Find out what is changed\" icon=\"sync\" >}}\n"
 "{{% /card %}}\n"
 "{{% card title=\"Cameras\" icon=\"camera\" %}}\n"
 "Ansel uses Rawspeed and Libraw to decode raw photographs. New cameras may need up to 24 months to be fully supported after their commercial release.\n"
-"{{< button url=\"/en/resources/supported-cameras\" label=\"Supported cameras\" icon=\"wrench\" >}}\n"
+"{{< button url=\"/resources/supported-cameras\" label=\"Supported cameras\" icon=\"wrench\" >}}\n"
 "{{% /card %}}\n"
 "{{% card title=\"Languages\" icon=\"language\" %}}\n"
 "The software is integrally translated in English, French, Italian and simplified Chinese. Partial translations are available in German, Spanish, Portugese, Ukranian, etc.\n"
-"{{< button url=\"https://github.com/aurelienpierreeng/ansel/wiki/Translations\" label=\"Improve translations\" icon=\"comment\" >}}\n"
+"{{< button url=\"/contribute/translating/\" label=\"Improve translations\" icon=\"comment\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 msgstr ""
 "{{% row %}}\n"
 "{{% card title=\"Edits\" icon=\"desktop\" %}}\n"
 "Ansel est basé sur darktable 4.0 et est entièrement compatible avec les XMP de traitement et la base de données de darktable 2.x à 4.0. Vous venez de darktable ?\n"
-"{{< button url=\"/fr/doc/special-topics/from-darktable/\" label=\"Découvrez ce qui a changé\" icon=\"sync\" >}}\n"
+"{{< button url=\"/doc/special-topics/from-darktable/\" label=\"Découvrez ce qui a changé\" icon=\"sync\" >}}\n"
 "{{% /card %}}\n"
 "{{% card title=\"Appareils photos\" icon=\"camera\" %}}\n"
 "Ansel utilise Rawspeed et Libraw pour décoder les photos brutes. Les nouveaux appareils peuvent demander jusqu'à 24 mois après leur mise sur le marché pour être entièrement supportés.\n"
-"{{< button url=\"/fr/resources/supported-cameras\" label=\"Appareils pris en charge\" icon=\"wrench\" >}}\n"
+"{{< button url=\"/resources/supported-cameras\" label=\"Appareils pris en charge\" icon=\"wrench\" >}}\n"
 "{{% /card %}}\n"
 "{{% card title=\"Langues\" icon=\"language\" %}}\n"
 "Le logiciel est intégralement traduit en anglais, français et chinois simplifié. Des traductions partielles sont disponibles en allemand, espagnol, portugais, ukrainien, etc.\n"
-"{{< button url=\"https://github.com/aurelienpierreeng/ansel/wiki/Translations\" label=\"Améliorez les traductions\" icon=\"comment\" >}}\n"
+"{{< button url=\"/contribute/translating/\" label=\"Améliorez les traductions\" icon=\"comment\" >}}\n"
 "{{% /card %}}\n"
 "{{% /row %}}\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/_index.md:248
+#: content/_index.md:292
 #, no-wrap
 msgid "Darktable, but better"
 msgstr "Darktable, mais en mieux"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:256
-#, fuzzy, no-wrap
-#| msgid "Ansel is what Darktable 4.0 could have been if it didn't die of [feature creep](https://en.wikipedia.org/wiki/Feature_creep).\n"
-msgid ""
-"<div class=\"no-hyphenation lead\">\n"
-"Ansel is what Darktable 4.0 could have been if it didn't die of [feature creep](https://en.wikipedia.org/wiki/Feature_creep).\n"
-"</div>\n"
+#: content/_index.md:298
+#, no-wrap
+msgid "<div class=\"no-hyphenation lead\">\n"
+msgstr "<div class=\"no-hyphenation lead\">\n"
+
+# TRANSLATOR Aurélien Pierre
+#. type: Plain text
+#: content/_index.md:300
+#, no-wrap
+msgid "Ansel is what Darktable 4.0 could have been if it didn't die of [feature creep](https://en.wikipedia.org/wiki/Feature_creep).\n"
 msgstr "Ansel est ce que Darktable 4.0 aurait pu être s'il n'était pas mort de [feature creep](https://en.wikipedia.org/wiki/Feature_creep).\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:258
+#: content/_index.md:304
 #, no-wrap
 msgid "Between 2020 and 2023, Darktable has suffered [massive code additions of peripheral features](./news/darktable-dans-le-mur-au-ralenti/), often ill-coded, poorly designed and penalizing usability, performance and maintenance. Too many workarounds failed to fix bugs, but layered new problems on top of legacy code : welcome in maintenance nightmare.\n"
 msgstr "Entre 2020 et 2023, Darktable a souffert d'[additions massives de code pour des fonctionnalités périphériques](./news/darktable-dans-le-mur-au-ralenti/), souvent mal codées, mal conçues et pénalisant l'utilisabilité, la performance et la maintenance. Trop de solutions de contournement ont échoué à corriger des bugs, mais ont empilé de nouveaux problèmes par dessus du code ancien : bienvenue dans un cauchemar de maintenance.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:260
+#: content/_index.md:306
 #, no-wrap
 msgid "In fairness, without project management or feature planning, this was bound to happen. Darktable has always struggled to be more than a pack of individual plugins.\n"
 msgstr "Sans gestion de projet ni planification des fonctionnalités, ce qui devait arriver a simplement fini par arriver. Darktable a toujours peiné à être plus qu'un pack de plugins individuels.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:265
+#: content/_index.md:311
 #, no-wrap
 msgid "The result is a weird, frustrating, app trying to reinvent GUI paradigms on its own, trying to do everything for everyone, slower and less stable than before, and absolutely terrible to debug.\n"
 msgstr "Le résultat est une application bizarre et frustrante, qui essaie de réinventer les paradigmes GUI dans son coin, en essayant de tout faire pour tout le monde, plus lent et moins stable qu'avant, et absolument terrible à débugger.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:267
+#: content/_index.md:313
 #, no-wrap
 msgid "With a scene-referred-centric user interface, many modules merged into a global menu, rewritten import tool and sparing image pipeline recomputations, Ansel is a Darktable 4.0 variant where 30.000 lines of poorly-written code and half-broken features have been removed, and 11.000 lines rewritten : __it runs faster, smoother, uses less power and requires less configuration__.\n"
 msgstr "Avec une interface centrée sur l'orienté scène, de nombreux modules fusionnés dans un menu global, un outil d'import réécrit et des recalculs du pipeline d'image plus économes, Ansel est une variante de Darktable 4.0 où 30 000 lignes de code mal écrit et de fonctionnalités à moité cassées ont été retirées, et 11 000 lignes ont été réécrites : __il s'exécute plus vite, il est plus réactif, utilise moins de puissance et requiert moins de configuration.__\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:269
+#: content/_index.md:315
 #, no-wrap
 msgid "With a decreased code complexity, its maintenance should be easier in the future too.\n"
 msgstr "Avec une complexité réduite du code, la maintenance devrait aussi être plus facile à l'avenir.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/_index.md:275
+#: content/_index.md:321
 #, no-wrap
 msgid "Beyond documentation"
 msgstr "Au delà de la documentation"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:281
+#: content/_index.md:327
 #, no-wrap
 msgid "The typical, recurring painpoint of open-source software projects is documentation. When there is none, users complain about it. When there is one, they complain it is too long, not complete enough, or it doesn't include use cases. Developers expect users to have a linear reading of the project documentation. It will simply not happen and developers will serve as parrots. That only builds up frustration on both ends. __Documentation is not enough__.\n"
 msgstr "Le point de blocage typique et récurrent des projets logiciels open-source est la documentation. Quand il n'y a en pas, le utilisateurs s'en plaignent. Quand il y en a une, ils se plaignent qu'elle est trop longue, pas assez complète, ou qu'elle n'inclue pas d'exemples d'utilisation. Les développeurs s'attendent à ce que les utilisateurs fassent une lecture linéaire de la documentation du projet. Ça n'arrivera simplement pas, et les développeurs serviront de perroquets. Cela ne fait qu'alimenter la frustration des deux côtés. __La documentation ne suffit pas__.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:286
+#: content/_index.md:332
 #, no-wrap
 msgid "Chantal is a bilingual (French-English) language model trained specifically for image processing, color theory and photography, that understands technical slang, synonyms and some translations. __Its web interface allows search queries through a central index__ of open-source software documentation, bug reports, user forums, YouTube channels, scientific publications and standards organizations (CIE, ICC, ACES).\n"
 msgstr "Chantal est un modèle de langage bilingue (français-anglais) entraîné spécifiquement pour le traitement d'image, la théorie de la couleur et la photographie, qui comprend le jargon technique, les synonymes et certaines traductions. __Son interface web permet de faire des recherches dans un index central__ composé de documentations de logiciels open-source, de rapport de bugs, de forums utilisateurs, de chaînes Youtube, de publications scientifiques et d'instances de standardisation (CIE, ICC, ACES).\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:294
+#: content/_index.md:340
 #, no-wrap
 msgid ""
 "<div class=\"text-center my-5\">\n"
@@ -21366,21 +21457,21 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:299
+#: content/_index.md:345
 #, no-wrap
 msgid "<div class=\"no-hyphenation lead mx-auto\">\n"
 msgstr "<div class=\"no-hyphenation lead mx-auto\">\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:301
+#: content/_index.md:347
 #, no-wrap
 msgid "Chantal is Ansel's knowledge infrastructure :\n"
 msgstr "Chantal est l'infrastructure de connaissance d'Ansel :\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:304
+#: content/_index.md:350
 #, no-wrap
 msgid ""
 "- quickly find relevant information among trusted sources,\n"
@@ -21391,35 +21482,28 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:311
+#: content/_index.md:357
 #, no-wrap
 msgid "<span class=\"no-hyphenation lead mx-auto\">Designed to make users cleverer, instead of making the software dumber.</span> The artificial intelligence feeds you learning material on topics of your choice. Let's invest in natural intelligence.\n"
 msgstr "<span class=\"no-hyphenation lead mx-auto\">Conçu pour rendre les utilisateurs plus intelligents, au lieu de rendre le logiciel plus stupide.</span> L'intelligence artificielle vous procure du matériel d'apprentissage sur les sujets de votre choix. Investissez dans l'intelligence naturelle.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Title ##
-#: content/_index.md:317
+#: content/_index.md:363
 #, no-wrap
 msgid "Source code"
 msgstr "Code source"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:320
+#: content/_index.md:366
 #, no-wrap
 msgid "Ansel software and documentation are released under the GNU/GPL v3 license and versionned with Git. The website is copyrighted but publicly readable. The work repositories are hosted on Github and are mirrored on Gitlab for backup.\n"
 msgstr "Le logiciel et la documentation d'Ansel sont publiés sous licence GNU/GPL v3 et versionnés avec Git. Le site web est sous copyright mais le code est visible. Les dépôts de travail sont hébergés sur Github et dupliqués sur des miroirs Gitlab pour sauvegarde.\n"
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:322
-#, no-wrap
-msgid "{{% row %}}\n"
-msgstr "{{% row %}}\n"
-
-# TRANSLATOR Aurélien Pierre
-#. type: Plain text
-#: content/_index.md:328
+#: content/_index.md:374
 #, no-wrap
 msgid ""
 "{{% card title=\"Software\" icon=\"desktop\" %}}\n"
@@ -21436,7 +21520,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:334
+#: content/_index.md:380
 #, no-wrap
 msgid ""
 "{{% card title=\"Documentation\" icon=\"book\" %}}\n"
@@ -21453,7 +21537,7 @@ msgstr ""
 
 # TRANSLATOR Aurélien Pierre
 #. type: Plain text
-#: content/_index.md:340
+#: content/_index.md:386
 #, no-wrap
 msgid ""
 "{{% card title=\"Website\" icon=\"globe\" %}}\n"
@@ -21468,12 +21552,168 @@ msgstr ""
 "{{< button url=\"https://gitlab.com/aurelienpierreeng/ansel-website\" label=\"Gitlab (miroir)\" icon=\"gitlab fab\">}}\n"
 "{{% /card %}}\n"
 
-# TRANSLATOR Aurélien Pierre
-#. type: Plain text
-#: content/_index.md:342
+#. type: Title ##
+#: content/_index.md:391
 #, no-wrap
-msgid "{{% /row %}}\n"
-msgstr "{{% /row %}}\n"
+msgid "How is Ansel used ?"
+msgstr "Comment est utilisé Ansel ?"
+
+#. type: Plain text
+#: content/_index.md:394
+#, no-wrap
+msgid "The charts below come from the opt-in PostHog telemetry.\n"
+msgstr "Les graphes suivants viennent de la télémétrie PostHog sur consentement explicite de l'utilisateur.\n"
+
+#. type: Plain text
+#: content/_index.md:402
+#, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Number of image files opened by file type (data collected by opt-in posthog).\" caption=\"false\" src=\"usage-files.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Number of image files opened by file type (data collected by opt-in posthog).\" caption=\"false\" src=\"usage-files.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+
+#. type: Plain text
+#: content/_index.md:410
+#, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Most-used features: views, panels and editing modules, by number of activations (data collected by opt-in posthog).\" caption=\"false\" src=\"usage-modules.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Most-used features: views, panels and editing modules, by number of activations (data collected by opt-in posthog).\" caption=\"false\" src=\"usage-modules.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+
+#. type: Plain text
+#: content/_index.md:423
+#, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Operating systems in use, by number of users.\" caption=\"false\" src=\"usage-os.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Users running with or without GPU acceleration (OpenCL).\" caption=\"false\" src=\"usage-opencl.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Operating systems in use, by number of users.\" caption=\"false\" src=\"usage-os.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Users running with or without GPU acceleration (OpenCL).\" caption=\"false\" src=\"usage-opencl.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+
+#. type: Plain text
+#: content/_index.md:431
+#, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Graphics cards in use, by number of users.\" caption=\"false\" src=\"usage-gpu.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Graphics cards in use, by number of users.\" caption=\"false\" src=\"usage-gpu.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+
+#. type: Plain text
+#: content/_index.md:439
+#, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Installed memory (RAM), in 2 GB classes, by number of users.\" caption=\"false\" src=\"usage-ram.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Installed memory (RAM), in 2 GB classes, by number of users.\" caption=\"false\" src=\"usage-ram.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+
+#. type: Plain text
+#: content/_index.md:452
+#, no-wrap
+msgid ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Display server used by Linux users.\" caption=\"false\" src=\"usage-display.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Linux distributions used.\" caption=\"false\" src=\"usage-distro.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+msgstr ""
+"{{% row %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Display server used by Linux users.\" caption=\"false\" src=\"usage-display.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% column %}}\n"
+"{{% card %}}\n"
+"{{< plotly title=\"Linux distributions used.\" caption=\"false\" src=\"usage-distro.json\" class=\"full-width\" dynamic=\"true\" >}}\n"
+"{{% /card %}}\n"
+"{{% /column %}}\n"
+"{{% /row %}}\n"
+
+# TRANSLATOR Aurélien Pierre
+#, no-wrap
+#~ msgid ""
+#~ "{{< warning >}}\n"
+#~ "__Ansel is in alpha version__. The GUI is susceptible to change and the application may crash under some circumstances.\n"
+#~ "{{< /warning >}}\n"
+#~ msgstr ""
+#~ "{{< warning >}}\n"
+#~ "__Ansel est en version alpha__. L'interface graphique est susceptible de changer et l'application peut crasher dans certaines circonstances.\n"
+#~ "{{< /warning >}}\n"
 
 # TRANSLATOR ChatGPT
 #, no-wrap
@@ -21574,16 +21814,6 @@ msgstr "{{% /row %}}\n"
 #~ "<div class=\"text-center\">\n"
 #~ "{{< button url=\"https://static.ansel.photos/article-lumiere-ponctuelle-32-4.pdf\" label=\"Télécharger le livre numérique (PDF)\" icon=\"download fas\" class=\"\">}}\n"
 #~ "</div>\n"
-
-# TRANSLATOR Aurélien Pierre
-#, no-wrap
-#~ msgid "{{% column %}}\n"
-#~ msgstr "{{% column %}}\n"
-
-# TRANSLATOR Aurélien Pierre
-#, no-wrap
-#~ msgid "<div class=\"no-hyphenation lead\">\n"
-#~ msgstr "<div class=\"no-hyphenation lead\">\n"
 
 # TRANSLATOR Aurélien Pierre
 #, no-wrap
