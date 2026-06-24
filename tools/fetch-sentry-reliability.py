@@ -30,8 +30,8 @@ Tunables (env vars, with defaults):
   POSTHOG_HOST=https://eu.posthog.com
   POSTHOG_PROJECT_ID=206740
   RELIABILITY_STATS_PERIOD=90d              (rolling window = "currently used")
-  RELIABILITY_MIN_SESSIONS=25               (drop releases with too few sessions to
-                                             be statistically meaningful)
+  RELIABILITY_MIN_USERS=25                  (drop revisions used by too few unique
+                                             users to be statistically meaningful)
   RELIABILITY_MAX_RELEASES=12               (cap bars for readability)
   RELIABILITY_ENVIRONMENT=                  (e.g. "nightly" to show only official
                                              builds; empty = all environments)
@@ -63,7 +63,7 @@ HOST = os.environ.get("SENTRY_HOST", "https://de.sentry.io")
 POSTHOG_HOST = os.environ.get("POSTHOG_HOST", "https://eu.posthog.com")
 POSTHOG_PROJECT_ID = os.environ.get("POSTHOG_PROJECT_ID", "206740")
 STATS_PERIOD = os.environ.get("RELIABILITY_STATS_PERIOD", "90d")
-MIN_SESSIONS = int(os.environ.get("RELIABILITY_MIN_SESSIONS", "15"))
+MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "25"))
 MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "12"))
 ENVIRONMENT = os.environ.get("RELIABILITY_ENVIRONMENT", "").strip()
 
@@ -326,6 +326,39 @@ def _gh_request(token, url):
         return json.load(resp)
 
 
+def fetch_packaged_hashes(token):
+    """Commit hashes of our officially packaged builds (nightly + stable).
+
+    The nightly/stable builds are shipped as release assets, whose file names embed
+    the commit hash, e.g. "Ansel-0.0.0+1008.g05e82c55-x86_64.AppImage". We take the
+    last two published releases (including pre-releases, since the nightly channel is
+    a rolling pre-release) and union the hashes found in their asset names. Returned
+    lowercased so revisions that match a packaged build can be flagged with an
+    asterisk on the chart. Returns a set (possibly empty)."""
+    try:
+        releases = _gh_request(
+            token, "%s/repos/%s/releases?per_page=2" % (GITHUB_API, GITHUB_REPO))
+    except Exception as exc:  # noqa: BLE001
+        warn("GitHub releases request failed (%s); no packaged-build markers." % exc)
+        return set()
+    hashes = set()
+    for rel in releases or []:
+        for asset in rel.get("assets", []):
+            m = re.search(r"[.~]g([0-9a-f]{7,40})", asset.get("name", ""))
+            if m:
+                hashes.add(m.group(1).lower())
+    return hashes
+
+
+def _is_packaged(cluster_hash, packaged_hashes):
+    """True if a release cluster's commit hash matches a packaged build. Abbreviated
+    and full hashes are reconciled by prefix matching (either way), as elsewhere."""
+    if not cluster_hash or not packaged_hashes:
+        return False
+    return any(cluster_hash.startswith(p) or p.startswith(cluster_hash)
+               for p in packaged_hashes)
+
+
 ISSUE_TYPES = ("Bug", "Task", "Feature")
 
 
@@ -563,7 +596,8 @@ def fetch_crash_times(token):
     return list(agg.values()), first_ts
 
 
-def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None):
+def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None,
+                 packaged_hashes=None):
     # Unify releases that are the same commit under different names. Cluster by
     # commit hash: two releases belong together when one hash is a prefix of the
     # other (e.g. "8f7c553" ⊂ "8f7c553fb6" ⊂ the full 40-char SHA). Sessions are
@@ -660,8 +694,9 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     global_rate = (g_healthy / g_total * 100.0) if g_total > 0 else 0.0
     global_total = int(round(g_total))
 
-    # Only statistically meaningful, most-active releases, capped for readability.
-    shown = [c for c in clusters if c["total"] >= MIN_SESSIONS]
+    # Only statistically meaningful revisions (used by enough distinct people),
+    # most-active first, capped for readability.
+    shown = [c for c in clusters if c["users"] >= MIN_USERS]
     shown.sort(key=lambda c: c["total"], reverse=True)
     shown = shown[:MAX_RELEASES]
 
@@ -700,22 +735,27 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
                     "hash": None, "revision": None, "releases": []})
         shown.append(agg)
 
+    packaged = packaged_hashes or set()
+
     def label(c):
+        # Aggregate by commit hash: label every revision by its abbreviated SHA so
+        # the x-axis is consistent (no mix of revision numbers and hashes). An
+        # asterisk marks commits that we shipped as a packaged nightly/stable build.
         if c.get("is_other"):
             return "Other"
-        if c["revision"]:
-            return "r%s" % c["revision"]     # revision count, matches the About box
         if c["hash"]:
-            return c["hash"][:7]             # commit SHA, abbreviated
+            star = "*" if _is_packaged(c["hash"], packaged) else ""
+            return c["hash"][:7] + star
         return _strip(c["releases"][0])
 
     def name(c):
         if c.get("is_other"):
             return "Other (%d releases)" % c["n_releases"]
-        if c["revision"] and c["hash"]:
-            return "r%s (g%s)" % (c["revision"], c["hash"][:7])
         if c["hash"]:
-            return "g%s" % c["hash"][:7]
+            star = " ★ packaged build" if _is_packaged(c["hash"], packaged) else ""
+            if c["revision"]:
+                return "g%s (r%s)%s" % (c["hash"][:7], c["revision"], star)
+            return "g%s%s" % (c["hash"][:7], star)
         return _strip(c["releases"][0])
 
     labels = [label(c) for c in shown]
@@ -861,13 +901,21 @@ def main():
     else:
         warn("no PostHog key (POSTHOG_QUERY_KEY / .posthog-auth); usage figures skipped.")
 
-    # Bug-report progress from GitHub (independent of everything above).
+    # Bug-report progress from GitHub (independent of everything above), and the
+    # commit hashes of our packaged builds (to flag them on the reliability chart).
     gh_token = _read_token("GITHUB_TOKEN", ".github-auth")
+    packaged_hashes = set()
     if gh_token:
         try:
             write_bugs_figure(gh_token)
         except Exception as exc:  # noqa: BLE001
             warn("bug figure failed (%s); keeping placeholder." % exc)
+        try:
+            packaged_hashes = fetch_packaged_hashes(gh_token)
+            warn("packaged builds: %d commit hashes from the last 2 releases."
+                 % len(packaged_hashes))
+        except Exception as exc:  # noqa: BLE001
+            warn("packaged-hash lookup failed (%s); no asterisks." % exc)
     else:
         warn("no GitHub token (GITHUB_TOKEN / .github-auth); bug figure skipped.")
 
@@ -916,10 +964,10 @@ def main():
         global_users = None
 
     figure, users_figure, n_shown, global_total = build_figure(
-        groups, posthog_rows, crash_rows, span_label, global_users)
+        groups, posthog_rows, crash_rows, span_label, global_users, packaged_hashes)
     if n_shown == 0:
-        warn("no release meets the >=%d sessions threshold over %s; "
-             "skipping reliability chart." % (MIN_SESSIONS, STATS_PERIOD))
+        warn("no revision meets the >=%d unique-users threshold over %s; "
+             "skipping reliability chart." % (MIN_USERS, STATS_PERIOD))
         return 0
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)

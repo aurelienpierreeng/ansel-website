@@ -5,35 +5,56 @@
       "x": [
         "NEF",
         "DNG (mosaiced)",
-        "RW2",
         "JPG",
         "RAF",
-        "PNG",
+        "CR2",
+        "RW2",
+        "ORF",
         "DNG (demosaiced)",
         "TIF",
-        "CR2"
+        "ARW",
+        "PNG",
+        "TIFF",
+        "EXR",
+        "JPEG",
+        "CR3",
+        "HEIC"
       ],
       "y": [
+        62,
+        46,
+        38,
+        32,
+        30,
+        21,
         14,
-        9,
+        12,
+        10,
         8,
         7,
-        6,
         4,
+        3,
         2,
-        2,
-        2
+        1,
+        1
       ],
       "hovertext": [
-        "NEF<br>14 files opened",
-        "DNG (mosaiced)<br>9 files opened",
-        "RW2<br>8 files opened",
-        "JPG<br>7 files opened",
-        "RAF<br>6 files opened",
-        "PNG<br>4 files opened",
-        "DNG (demosaiced)<br>2 files opened",
-        "TIF<br>2 files opened",
-        "CR2<br>2 files opened"
+        "NEF<br>62 files opened",
+        "DNG (mosaiced)<br>46 files opened",
+        "JPG<br>38 files opened",
+        "RAF<br>32 files opened",
+        "CR2<br>30 files opened",
+        "RW2<br>21 files opened",
+        "ORF<br>14 files opened",
+        "DNG (demosaiced)<br>12 files opened",
+        "TIF<br>10 files opened",
+        "ARW<br>8 files opened",
+        "PNG<br>7 files opened",
+        "TIFF<br>4 files opened",
+        "EXR<br>3 files opened",
+        "JPEG<br>2 files opened",
+        "CR3<br>1 files opened",
+        "HEIC<br>1 files opened"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -43,7 +64,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 54 files (the last 22 h)"
+      "text": "Image files opened, by type \u2014 291 files (the last 3 days)"
     },
     "xaxis": {
       "type": "category",

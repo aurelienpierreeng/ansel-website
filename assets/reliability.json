@@ -3,35 +3,31 @@
     {
       "type": "bar",
       "x": [
-        "r3836",
-        "r3843",
-        "r3852",
-        "612eede",
+        "8f7c553",
+        "d6af87a*",
+        "612eede*",
         "Other"
       ],
       "y": [
+        146,
         109,
-        41,
-        18,
-        29,
-        64
+        95,
+        271
       ],
       "name": "Crash-free",
       "text": [
         "96%",
-        "93%",
-        "100%",
-        "88%",
-        "93%"
+        "94%",
+        "95%",
+        "95%"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "r3836 (g8f7c553)<br>109 crash-free / 113 sessions (96.5%)",
-        "r3843 (gfe8df22)<br>41 crash-free / 44 sessions (93.2%)",
-        "r3852 (g57ac4e0)<br>18 crash-free / 18 sessions (100.0%)",
-        "g612eede<br>29 crash-free / 33 sessions (87.9%)<br>avg session: 32 min",
-        "Other (16 releases)<br>64 crash-free / 69 sessions (92.8%)<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g20b726304712, g44e169a0bf, g62a64153df<br>g64fbcd4, g6cfb70ce03, gac4d3eb, gb7dcf71607, gc5a3836b91<br>gc670519dd298, gdd7af4fb66, gec42f61984, geec4b98f22, gf82a9a82e1<br>gfe9b4fe71c"
+        "g8f7c553 (r3836)<br>146 crash-free / 152 sessions (96.1%)",
+        "gd6af87a \u2605 packaged build<br>109 crash-free / 116 sessions (94.0%)<br>avg session: 45 min",
+        "g612eede \u2605 packaged build<br>95 crash-free / 100 sessions (95.0%)<br>avg session: 37 min",
+        "Other (42 releases)<br>271 crash-free / 285 sessions (95.1%)<br>avg session: 8 min<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g09261d8251d2, g1bd1d84af9c0, g20b726304712<br>g2685cbf0e339, g30caa136b885, g3ca2912c9f53, g44e169a0bf, g499d0bfc05c1<br>g545cde157b97, g57ac4e0009, g5a4c8b9b47dc, g5c04b98ff412, g62a64153df<br>g64fbcd4, g6c50b8dd2525, g6cfb70ce03, g80e6b4b2, g86d7ed4a791a<br>g93700db4e37e, g9bb743f2baeb, ga6726e4215e9, gac4d3ebb, gb24e7e7a9371<br>gb7dcf71607, gc2527d1166c5, gc5a3836b91, gc670519dd298, gc79c52f469d5<br>gcfa6648f926f, gdd7af4fb66, ge18b244743bd, ge2ea8c9979d2, gec42f61984<br>geec4b98f22, gf10d1dfc33dd, gf712664a9ae6, gf82a9a82e1, gfdb2360bc139<br>gfe8df22039, gfe9b4fe71c"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -41,26 +37,23 @@
     {
       "type": "bar",
       "x": [
-        "r3836",
-        "r3843",
-        "r3852",
-        "612eede",
+        "8f7c553",
+        "d6af87a*",
+        "612eede*",
         "Other"
       ],
       "y": [
-        4,
-        3,
-        0,
-        4,
-        5
+        6,
+        7,
+        5,
+        14
       ],
       "name": "Crashed",
       "hovertext": [
-        "r3836 (g8f7c553)<br>4 crashed sessions",
-        "r3843 (gfe8df22)<br>3 crashed sessions",
-        "r3852 (g57ac4e0)<br>0 crashed sessions",
-        "g612eede<br>4 crashed sessions",
-        "Other (16 releases)<br>5 crashed sessions"
+        "g8f7c553 (r3836)<br>6 crashed sessions",
+        "gd6af87a \u2605 packaged build<br>7 crashed sessions",
+        "g612eede \u2605 packaged build<br>5 crashed sessions",
+        "Other (42 releases)<br>14 crashed sessions"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -71,27 +64,24 @@
       "type": "scatter",
       "mode": "lines+markers",
       "x": [
-        "r3836",
-        "r3843",
-        "r3852",
-        "612eede",
+        "8f7c553",
+        "d6af87a*",
+        "612eede*",
         "Other"
       ],
       "y": [
-        42.6,
-        9.844,
-        null,
-        4.35,
-        0.172
+        48.692,
+        78.431,
+        188.417,
+        4.272
       ],
       "yaxis": "y2",
       "name": "MTBF (uptime before crash)",
       "hovertext": [
-        "r3836 (g8f7c553)<br>MTBF 43 min<br>(mean uptime before crash, n=4)",
-        "r3843 (gfe8df22)<br>MTBF 10 min<br>(mean uptime before crash, n=3)",
-        "r3852 (g57ac4e0)<br>no timed crash",
-        "g612eede<br>MTBF 4 min<br>(mean uptime before crash, n=4)",
-        "Other (16 releases)<br>MTBF 10 s<br>(mean uptime before crash, n=3)"
+        "g8f7c553 (r3836)<br>MTBF 49 min<br>(mean uptime before crash, n=6)",
+        "gd6af87a \u2605 packaged build<br>MTBF 78 min<br>(mean uptime before crash, n=7)",
+        "g612eede \u2605 packaged build<br>MTBF 3.1 h<br>(mean uptime before crash, n=5)",
+        "Other (42 releases)<br>MTBF 4 min<br>(mean uptime before crash, n=12)"
       ],
       "hoverinfo": "text",
       "connectgaps": false,
@@ -111,7 +101,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Sessions per revision (the last 3 days)<br />94.2% crash-free over 277 sessions"
+      "text": "Sessions per revision (the last 4 days)<br />95.1% crash-free over 653 sessions"
     },
     "barmode": "stack",
     "xaxis": {

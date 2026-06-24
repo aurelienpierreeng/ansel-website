@@ -9,25 +9,25 @@
         "bugs"
       ],
       "x": [
-        9,
-        8,
-        407
+        39,
+        21,
+        408
       ],
       "name": "Resolved",
       "marker": {
         "color": "#8ec1a8"
       },
       "text": [
-        "9",
-        "8",
-        "407"
+        "39",
+        "21",
+        "408"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
-        "features<br>9 resolved",
-        "tasks<br>8 resolved",
-        "bugs<br>407 resolved"
+        "features<br>39 resolved",
+        "tasks<br>21 resolved",
+        "bugs<br>408 resolved"
       ],
       "hoverinfo": "text"
     },
@@ -42,7 +42,7 @@
       "x": [
         0,
         0,
-        4
+        12
       ],
       "name": "Still open",
       "marker": {
@@ -51,21 +51,21 @@
       "text": [
         "",
         "",
-        "4"
+        "12"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
         "features<br>0 still open",
         "tasks<br>0 still open",
-        "bugs<br>4 still open"
+        "bugs<br>12 still open"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Next release 0.1 \u2014 424 issues resolved, 4 still open"
+      "text": "Next release 0.1 \u2014 468 issues resolved, 12 still open"
     },
     "barmode": "stack",
     "xaxis": {
