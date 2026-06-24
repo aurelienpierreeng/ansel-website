@@ -55,9 +55,26 @@ Distribution for MacOS X 15 and newer.
 
 {{% card icon="terminal" title="Build from source" %}}
 Best performance for your hardware
-{{< button url="/en/doc/install" label="Building instructions" icon="wrench" >}}
+{{< button url="/doc/install" label="Building instructions" icon="wrench" >}}
 {{% /card %}}
 {{% /row %}}
+
+---
+
+{{% row %}}
+
+{{% column class="text-center" %}}
+{{< button url="/doc/install/" label="Installation help" icon="mouse" >}}
+{{% /column %}}
+
+{{% column class="text-center" %}}
+{{< button url="/doc/getting-started/" label="Getting started" icon="hands-helping" >}}
+{{% /column %}}
+
+{{% /row %}}
+
+---
+
 ### Is it stable ?
 
 {{% row %}}
@@ -88,13 +105,14 @@ Best performance for your hardware
 
 {{% column %}}
 
-Revisions are aggregated by Git commit hash and shown only once they have been used by at least 25 distinct people (less-used and intermediate commits are folded into *Other*). An asterisk (\*) marks commits we shipped as a packaged nightly or stable build.
+A new release is published when the list of all bugs have been cleared, meaning the software is stable. Not on an arbitrary date. 
 
-Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours.
+Revisions are intermediate states of the sourcecode (not releases). They are aggregated by Git commit hash and shown only once they have been used by at least 25 distinct people (less-used and intermediate commits are folded into *Other*). An asterisk (\*) marks commits we shipped as a packaged nightly or stable build.
+
+Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours. __Ansel saves your editing histories immediately after each change__: in case of a crash you loose at most the last action.
 
 The links above always point to the latest nightly build of the "fairly stable" branch. If you want a particular revision or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).
 
-A new release is published when the list of all bugs have been cleared, meaning the software is stable. Not on an arbitrary date.
 
 {{% /column %}}
 {{% /row %}}
@@ -257,15 +275,15 @@ Anonymize people, license plates, etc. and play with use conditions of socially 
 {{% row %}}
 {{% card title="Edits" icon="desktop" %}}
 Ansel is based on darktable 4.0 and is fully compatible with darktable 2.x up to 4.0 database and XMP files. Coming from darktable ?
-{{< button url="/en/doc/special-topics/from-darktable/" label="Find out what is changed" icon="sync" >}}
+{{< button url="/doc/special-topics/from-darktable/" label="Find out what is changed" icon="sync" >}}
 {{% /card %}}
 {{% card title="Cameras" icon="camera" %}}
 Ansel uses Rawspeed and Libraw to decode raw photographs. New cameras may need up to 24 months to be fully supported after their commercial release.
-{{< button url="/en/resources/supported-cameras" label="Supported cameras" icon="wrench" >}}
+{{< button url="/resources/supported-cameras" label="Supported cameras" icon="wrench" >}}
 {{% /card %}}
 {{% card title="Languages" icon="language" %}}
 The software is integrally translated in English, French, Italian and simplified Chinese. Partial translations are available in German, Spanish, Portugese, Ukranian, etc.
-{{< button url="https://github.com/aurelienpierreeng/ansel/wiki/Translations" label="Improve translations" icon="comment" >}}
+{{< button url="/contribute/translating/" label="Improve translations" icon="comment" >}}
 {{% /card %}}
 {{% /row %}}
 
