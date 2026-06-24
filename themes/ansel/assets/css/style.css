@@ -438,6 +438,12 @@ pre.mermaid img {
   box-sizing: border-box;
 }
 
+/* Definitions */
+dl dd ol,
+dl dd ul {
+  margin: 0;
+}
+
 #content-body blockquote {
   padding-left: 1rem;
   padding-top: 0.5rem;
