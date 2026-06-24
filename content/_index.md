@@ -144,7 +144,7 @@ Ansel allows you to manage your collections of pictures, to edit your raw digita
 
 Ansel ships a recent color science, compatible with HDR : the chromatic adaptation CIE CAT 2016, the HDR color space JzAzBz (2017) and the perceptual color space darktable UCS 2022, developed specifically to manipulate color saturation without the fluorescent effect.
 
-<div class="row">
+{{% row %}}
 {{% column %}}
 <h5>Color calibration</h5>
 {{% compare after="calibration-after.jpg" before="calibration-before.jpg" cols="2" %}}
@@ -158,9 +158,9 @@ Fix white balance and get __high-fidelity__ colors in just a few clicks, by cali
 Give ambiance and character to your pictures by polishing their color palette with nuanced and fine-grained controls, in RGB, Ych or HSB color spaces, for creative and corrective purposes.
 {{</ compare >}}
 {{% /column %}}
-</div>
+{{% /row %}}
 
-<div class="row">
+{{% row %}}
 {{% column %}}
 <h5>Color matching</h5>
 {{< compare after="matching-after.jpg" before="matching-before.jpg" cols="2">}}
@@ -174,14 +174,14 @@ Force the chromatic adaptation such that any selected object matches a predeterm
 Use the hue, chroma and lightness qualifiers to quickly define masks and apply selective effects. Combine parametric masks with drawn masks and boolean operations. Refine and feather the edges of masks by blurring or using clever edges detection.
 {{% /compare %}}
 {{% /column %}}
-</div>
+{{% /row %}}
 
 
 ### Tonal work
 
 The tonal working methods are designed to manipulate luminance without affecting hue nor saturation, in order to respect the color work, done apart.
 
-<div class="row">
+{{% row %}}
 {{% column %}}
 <h5>HDR tone mapping</h5>
 {{% compare after="filmic-after.jpg" before="filmic-before.jpg" cols="2" %}}
@@ -195,11 +195,11 @@ Recover deep shadows and compress the dynamic range while retaining original sat
 Balance densities based on exposure zones, by preserving local contrast thanks to an edge detection algorithm, and select the exposure zones to affect directly from the picture, through the interactive cursor. _(Photo : Andreas Schneider)_
 {{% /compare %}}
 {{% /column %}}
-</div>
+{{% /row %}}
 
 ### Image reconstruction
 
-<div class="row">
+{{% row %}}
 {{% column %}}
 <h5>Lens deblurring</h5>
 {{% compare after="sharpen-after.jpg" before="sharpen-before.jpg" cols="2" %}}
@@ -213,9 +213,9 @@ Unleash the power of multiscale, gradient-based machine learning to rejuvenate o
 Restore some depth in foggy and hazy shots by bringing back textures and saturation in colors, without overaccentuating already sharp details.
 {{% /compare %}}
 {{% /column %}}
-</div>
+{{% /row %}}
 
-<div class="row">
+{{% row %}}
 {{% column %}}
 <h5>Denoising</h5>
 {{< compare after="denoise-after.jpg" before="denoise-before.jpg" cols="2">}}
@@ -229,11 +229,11 @@ Remove chromatic noise, soften and blend luminance noise.
 Salvage both color and texture in highlights, recover blown areas by propagating gradients while the gamut-mapping watches your back to ensure colorful highlights can still be printed at their proper hue. You don't have to bleach highlights to hide problems anymore.
 {{</ compare >}}
 {{% /column %}}
-</div>
+{{% /row %}}
 
 ### Specialized features
 
-<div class="row">
+{{% row %}}
 {{% column %}}
 <h5>Automatic perspective correction</h5>
 {{< compare after="perspective-after.jpg" before="perspective-before.jpg" cols="2" >}}
@@ -247,7 +247,7 @@ Let the machine learning detect automatically vertical and horizontal lines and 
 Anonymize people, license plates, etc. and play with use conditions of socially prude network without defiling your pictures too much.
 {{</ compare >}}
 {{% /column %}}
-</div>
+{{% /row %}}
 
 {{< divider >}}
 
@@ -372,14 +372,64 @@ Copyright.
 
 ## How is Ansel used ?
 
-<div class="bg-white mb-3">
+The charts below come from the opt-in PostHog telemetry.
 
-{{< plotly title="Number of image files opened by file type (data collected by opt-in posthog)." src="usage-files.json" class="full-width" dynamic="true" >}}
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Number of image files opened by file type (data collected by opt-in posthog)." caption="false" src="usage-files.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
 
-</div><div class="bg-white my-3">
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Most-used features: views, panels and editing modules, by number of activations (data collected by opt-in posthog)." caption="false" src="usage-modules.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
 
-{{< plotly title="Most-used features: views, panels and editing modules, by number of activations (data collected by opt-in posthog)." src="usage-modules.json" class="full-width" dynamic="true" >}}
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Operating systems in use, by number of users." caption="false" src="usage-os.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Users running with or without GPU acceleration (OpenCL)." caption="false" src="usage-opencl.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
 
-</div>
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Graphics cards in use, by number of users." caption="false" src="usage-gpu.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Installed memory (RAM), in 2 GB classes, by number of users." caption="false" src="usage-ram.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Display server used by Linux users." caption="false" src="usage-display.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Linux distributions used." caption="false" src="usage-distro.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
 
 </div>

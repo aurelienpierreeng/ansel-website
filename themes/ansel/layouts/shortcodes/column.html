@@ -1,6 +1,6 @@
 {{ $p := .Page }}
 {{ .Page.Scratch.Set "columns" (.Get "cols" | default 2 ) }}
-<div class="col my-2 {{.Get "class" }}" style="min-width: 300px">
+<div class="col my-0 {{.Get "class" }}" style="min-width: 300px">
 {{ .Inner | $p.RenderString  }}
 </div>
 {{ .Page.Scratch.Delete "columns" }}

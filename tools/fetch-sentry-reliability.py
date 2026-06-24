@@ -52,7 +52,17 @@ OUT_PATH = os.path.join(REPO_ROOT, "assets", "reliability.json")
 OUT_PATH_USERS = os.path.join(REPO_ROOT, "assets", "reliability-users.json")
 OUT_PATH_FILES = os.path.join(REPO_ROOT, "assets", "usage-files.json")
 OUT_PATH_MODULES = os.path.join(REPO_ROOT, "assets", "usage-modules.json")
+OUT_PATH_OS = os.path.join(REPO_ROOT, "assets", "usage-os.json")
+OUT_PATH_OPENCL = os.path.join(REPO_ROOT, "assets", "usage-opencl.json")
+OUT_PATH_GPU = os.path.join(REPO_ROOT, "assets", "usage-gpu.json")
+OUT_PATH_RAM = os.path.join(REPO_ROOT, "assets", "usage-ram.json")
+OUT_PATH_DISPLAY = os.path.join(REPO_ROOT, "assets", "usage-display.json")
+OUT_PATH_DISTRO = os.path.join(REPO_ROOT, "assets", "usage-distro.json")
 OUT_PATH_BUGS = os.path.join(REPO_ROOT, "assets", "bugs.json")
+
+# Soft pastel colorway (sage / blush / blue + extras) shared by all usage charts.
+PALETTE = ["#8ec1a8", "#e8a598", "#9db4d0", "#d8c19a", "#b9a6cc", "#a8ccc9",
+           "#e0b0c0", "#c5ca8e", "#9fb6c9", "#cdae8f", "#a9b8a0", "#d2a6a6"]
 
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "aurelienpierreeng/ansel")
 GITHUB_API = "https://api.github.com"
@@ -229,6 +239,8 @@ def fetch_file_types(key):
     agg = {}
     for ext, demo, n in _posthog_query(key, hogql):
         ext = (ext or "?").lower()
+        # Merge equivalent extensions so they count as one type.
+        ext = {"tif": "tiff", "jpeg": "jpg"}.get(ext, ext)
         n = int(n or 0)
         if ext == "dng":
             mosaiced = str(demo).lower() in ("true", "1")
@@ -284,6 +296,205 @@ def _usage_span(key):
                           "INTERVAL %d DAY" % PERIOD_DAYS)
     first = _parse_ts(rows[0][0]) if rows and rows[0] and isinstance(rows[0][0], str) else None
     return _format_span(first, datetime.now(timezone.utc))
+
+
+def _usage_pie_figure(labels, values, title, hover=None):
+    """Donut pie chart in the shared pastel theme."""
+    return {
+        "data": [{
+            "type": "pie", "labels": labels, "values": values, "hole": 0.45,
+            "hovertext": hover, "hoverinfo": "text" if hover else "label+value+percent",
+            "textinfo": "label+percent", "sort": True,
+            "marker": {"colors": PALETTE},
+        }],
+        "layout": {
+            "title": {"text": title},
+            "margin": {"t": 70, "r": 20, "b": 20, "l": 20},
+            "showlegend": True,
+            "legend": {"orientation": "h", "x": 0, "y": -0.05},
+        },
+    }
+
+
+# --- Hardware / platform demographics (PostHog session_start, per unique user) ---
+
+# Linux distro families, matched (case-insensitive substring) against the reported
+# OS string. Fedora-derived atomic spins are listed before "Fedora" so they stay
+# distinct; order matters (first match wins).
+KNOWN_DISTROS = [
+    "Linux Mint", "LMDE", "Ubuntu", "Kubuntu", "Pop!_OS", "Debian", "Bluefin",
+    "Bazzite", "Nobara", "Perfido", "Fedora", "Arch Linux", "EndeavourOS",
+    "CachyOS", "Manjaro", "Garuda", "Void", "openSUSE", "Gentoo", "NixOS",
+    "Alpine", "Zorin", "elementary", "Solus", "Slackware",
+]
+
+
+def _os_family(s):
+    """Classify a reported OS string into Linux / macOS / Windows, or None."""
+    if not s:
+        return None
+    t = s.lower()
+    if "windows" in t:
+        return "Windows"
+    if "mac" in t or "darwin" in t or "os x" in t:
+        return "macOS"
+    return "Linux"  # every other reported OS string is a Linux distro
+
+
+def _distro_name(s):
+    """Normalise a Linux OS string to a distro name ("Ubuntu 24.04.4 LTS" ->
+    "Ubuntu", "Fedora Linux 44 (...)" -> "Fedora")."""
+    if not s:
+        return "Other"
+    for d in KNOWN_DISTROS:
+        if d.lower() in s.lower():
+            return d
+    return s.split()[0]  # fall back to the first word
+
+
+def _ram_class(v):
+    """2 GB-wide RAM class for a reported gigabyte figure; returns (low, label)."""
+    try:
+        g = float(v)
+    except (TypeError, ValueError):
+        return None
+    if g <= 0:
+        return None
+    low = int(g // 2 * 2)
+    return low, "%d–%d GiB" % (low, low + 2)
+
+
+def _truthy(v):
+    return str(v).strip().lower() in ("true", "1", "yes")
+
+
+def fetch_user_platforms(key):
+    """One row per unique user with their most-recent reported platform facts.
+
+    Uses argMax(..., timestamp) so each user contributes a single, latest value
+    (dedup by unique user as requested). Returns a list of dicts."""
+    props = ["os", "opencl", "gpu", "ram_gb", "display_server"]
+    sel = ", ".join("argMax(properties.%s, timestamp) AS %s" % (p, p) for p in props)
+    hogql = (
+        "SELECT %s FROM events WHERE event = 'session_start' "
+        "AND timestamp > now() - INTERVAL %d DAY GROUP BY person_id"
+    ) % (sel, PERIOD_DAYS)
+    rows = []
+    for os_s, opencl, gpu, ram, disp in _posthog_query(key, hogql):
+        rows.append({"os": os_s, "opencl": opencl, "gpu": gpu,
+                     "ram": ram, "disp": disp})
+    return rows
+
+
+def _count_sorted(counter, reverse=True):
+    items = sorted(counter.items(), key=lambda kv: kv[1], reverse=reverse)
+    return [k for k, _ in items], [v for _, v in items]
+
+
+def write_platform_figures(key):
+    """Build and write the per-user hardware/platform charts (PostHog only)."""
+    rows = fetch_user_platforms(key)
+    if not rows:
+        warn("no PostHog session_start data; keeping platform placeholders.")
+        return
+    n_users = len(rows)
+
+    fam, opencl, gpu, ram, disp, distro = {}, {}, {}, {}, {}, {}
+    for r in rows:
+        f = _os_family(r["os"])
+        # macOS reports no OS string (telemetry gap), but Apple-Silicon machines
+        # are unambiguous from the GPU name, so recover them as macOS.
+        if not f and (r["gpu"] or "").strip().lower().startswith("apple "):
+            f = "macOS"
+        if f:
+            fam[f] = fam.get(f, 0) + 1
+        # OpenCL on/off (only meaningful when reported).
+        if r["opencl"] is not None and str(r["opencl"]).strip() != "":
+            k = "With OpenCL" if _truthy(r["opencl"]) else "Without OpenCL"
+            opencl[k] = opencl.get(k, 0) + 1
+        # GPU brand + model (or "No GPU detected").
+        g = (r["gpu"] or "").strip()
+        gk = g if g else "No GPU detected"
+        gpu[gk] = gpu.get(gk, 0) + 1
+        # RAM in 2 GB classes.
+        rc = _ram_class(r["ram"])
+        if rc:
+            ram[rc] = ram.get(rc, 0) + 1
+        # Linux-only: display server and distribution.
+        if f == "Linux":
+            d = (r["disp"] or "").strip().lower()
+            if d in ("x11", "xorg"):
+                disp["X11"] = disp.get("X11", 0) + 1
+            elif d == "wayland":
+                disp["Wayland"] = disp.get("Wayland", 0) + 1
+            elif d:
+                disp["Other"] = disp.get("Other", 0) + 1
+            distro[_distro_name(r["os"])] = distro.get(_distro_name(r["os"]), 0) + 1
+
+    jobs = []
+
+    # 2. Users per OS family (bar).
+    fl, fv = _count_sorted(fam)
+    jobs.append((OUT_PATH_OS, fl, _usage_pie_figure(
+        fl, fv, "Operating systems in use — %d users" % n_users,
+        ["%s<br>%d users" % (k, v) for k, v in zip(fl, fv)])))
+
+    # 3. OpenCL on/off (pie).
+    ol, ov = _count_sorted(opencl)
+    jobs.append((OUT_PATH_OPENCL, ol, _usage_pie_figure(
+        ol, ov, "GPU acceleration (OpenCL) — %d users" % sum(ov),
+        ["%s<br>%d users" % (k, v) for k, v in zip(ol, ov)])))
+
+    # 4. GPU models (horizontal bar, most common first).
+    gl, gv = _count_sorted(gpu)
+    gl, gv = gl[:20], gv[:20]
+    gpu_fig = {
+        "data": [{
+            "type": "bar", "orientation": "h", "x": list(reversed(gv)),
+            "y": list(reversed(gl)),
+            "hovertext": ["%s<br>%d users" % (k, v)
+                          for k, v in zip(reversed(gl), reversed(gv))],
+            "hoverinfo": "text", "marker": {"color": "#b9a6cc"},
+        }],
+        "layout": {
+            "title": {"text": "Graphics cards in use — %d users" % sum(gv)},
+            "xaxis": {"title": {"text": "Users"}, "rangemode": "tozero"},
+            "yaxis": {"type": "category", "automargin": True},
+            "margin": {"t": 70, "r": 30, "b": 50, "l": 60},
+            "showlegend": False,
+        },
+    }
+    jobs.append((OUT_PATH_GPU, gl, gpu_fig))
+
+    # 5. RAM in 2 GB classes (bar, ordered by size).
+    ram_items = sorted(ram.items(), key=lambda kv: kv[0][0])
+    rl = [lbl for (_, lbl), _ in ram_items]
+    rv = [v for _, v in ram_items]
+    ram_fig = _usage_bar_figure(
+        rl, rv, ["%s<br>%d users" % (l, v) for l, v in zip(rl, rv)],
+        "Installed memory (RAM) — %d users" % sum(rv), "Users", "#d8c19a")
+    ram_fig["layout"]["xaxis"]["tickangle"] = -40
+    jobs.append((OUT_PATH_RAM, rl, ram_fig))
+
+    # 6. X11 vs Wayland, Linux only (pie).
+    dl, dv = _count_sorted(disp)
+    jobs.append((OUT_PATH_DISPLAY, dl, _usage_pie_figure(
+        dl, dv, "Display server on Linux — %d users" % sum(dv),
+        ["%s<br>%d users" % (k, v) for k, v in zip(dl, dv)])))
+
+    # 7. Linux distributions (pie).
+    nl, nv = _count_sorted(distro)
+    jobs.append((OUT_PATH_DISTRO, nl, _usage_pie_figure(
+        nl, nv, "Linux distributions — %d users" % sum(nv),
+        ["%s<br>%d users" % (k, v) for k, v in zip(nl, nv)])))
+
+    for path, labels, fig in jobs:
+        if not labels:
+            warn("no data for %s; keeping placeholder." % os.path.basename(path))
+            continue
+        with open(path, "w") as f:
+            json.dump(fig, f, indent=2)
+        print("[usage] wrote %s (%d entries)" % (path, len(labels)))
 
 
 def write_usage_figures(key):
@@ -898,6 +1109,10 @@ def main():
             write_usage_figures(ph_key)
         except Exception as exc:  # noqa: BLE001
             warn("usage figures failed (%s); keeping placeholders." % exc)
+        try:
+            write_platform_figures(ph_key)
+        except Exception as exc:  # noqa: BLE001
+            warn("platform figures failed (%s); keeping placeholders." % exc)
     else:
         warn("no PostHog key (POSTHOG_QUERY_KEY / .posthog-auth); usage figures skipped.")
 

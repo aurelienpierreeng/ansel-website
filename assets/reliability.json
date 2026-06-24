@@ -11,8 +11,8 @@
       "y": [
         146,
         109,
-        95,
-        271
+        97,
+        277
       ],
       "name": "Crash-free",
       "text": [
@@ -26,8 +26,8 @@
       "hovertext": [
         "g8f7c553 (r3836)<br>146 crash-free / 152 sessions (96.1%)",
         "gd6af87a \u2605 packaged build<br>109 crash-free / 116 sessions (94.0%)<br>avg session: 45 min",
-        "g612eede \u2605 packaged build<br>95 crash-free / 100 sessions (95.0%)<br>avg session: 37 min",
-        "Other (42 releases)<br>271 crash-free / 285 sessions (95.1%)<br>avg session: 8 min<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g09261d8251d2, g1bd1d84af9c0, g20b726304712<br>g2685cbf0e339, g30caa136b885, g3ca2912c9f53, g44e169a0bf, g499d0bfc05c1<br>g545cde157b97, g57ac4e0009, g5a4c8b9b47dc, g5c04b98ff412, g62a64153df<br>g64fbcd4, g6c50b8dd2525, g6cfb70ce03, g80e6b4b2, g86d7ed4a791a<br>g93700db4e37e, g9bb743f2baeb, ga6726e4215e9, gac4d3ebb, gb24e7e7a9371<br>gb7dcf71607, gc2527d1166c5, gc5a3836b91, gc670519dd298, gc79c52f469d5<br>gcfa6648f926f, gdd7af4fb66, ge18b244743bd, ge2ea8c9979d2, gec42f61984<br>geec4b98f22, gf10d1dfc33dd, gf712664a9ae6, gf82a9a82e1, gfdb2360bc139<br>gfe8df22039, gfe9b4fe71c"
+        "g612eede \u2605 packaged build<br>97 crash-free / 102 sessions (95.1%)<br>avg session: 36 min",
+        "Other (42 releases)<br>277 crash-free / 291 sessions (95.2%)<br>avg session: 8 min<br><i>\u26a0 minor / intermediate commits \u2014 likely development or pre-release builds</i><br>aggregated commits:<br>g060e058cea, g06327f5e26, g09261d8251d2, g1bd1d84af9c0, g20b726304712<br>g2685cbf0e339, g30caa136b885, g3ca2912c9f53, g44e169a0bf, g499d0bfc05c1<br>g545cde157b97, g57ac4e0009, g5a4c8b9b47dc, g5c04b98ff412, g62a64153df<br>g64fbcd4, g6c50b8dd2525, g6cfb70ce03, g80e6b4b2, g86d7ed4a791a<br>g93700db4e37e, g9bb743f2baeb, ga6726e4215e9, gac4d3ebb, gb24e7e7a9371<br>gb7dcf71607, gc2527d1166c5, gc5a3836b91, gc670519dd298, gc79c52f469d5<br>gcfa6648f926f, gdd7af4fb66, ge18b244743bd, ge2ea8c9979d2, gec42f61984<br>geec4b98f22, gf10d1dfc33dd, gf712664a9ae6, gf82a9a82e1, gfdb2360bc139<br>gfe8df22039, gfe9b4fe71c"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -101,7 +101,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Sessions per revision (the last 4 days)<br />95.1% crash-free over 653 sessions"
+      "text": "Sessions per revision (the last 4 days)<br />95.2% crash-free over 661 sessions"
     },
     "barmode": "stack",
     "xaxis": {

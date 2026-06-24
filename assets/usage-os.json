@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "type": "pie",
+      "labels": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "values": [
+        54,
+        3,
+        1
+      ],
+      "hole": 0.45,
+      "hovertext": [
+        "Linux<br>54 users",
+        "macOS<br>3 users",
+        "Windows<br>1 users"
+      ],
+      "hoverinfo": "text",
+      "textinfo": "label+percent",
+      "sort": true,
+      "marker": {
+        "colors": [
+          "#8ec1a8",
+          "#e8a598",
+          "#9db4d0",
+          "#d8c19a",
+          "#b9a6cc",
+          "#a8ccc9",
+          "#e0b0c0",
+          "#c5ca8e",
+          "#9fb6c9",
+          "#cdae8f",
+          "#a9b8a0",
+          "#d2a6a6"
+        ]
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Operating systems in use \u2014 62 users"
+    },
+    "margin": {
+      "t": 70,
+      "r": 20,
+      "b": 20,
+      "l": 20
+    },
+    "showlegend": true,
+    "legend": {
+      "orientation": "h",
+      "x": 0,
+      "y": -0.05
+    }
+  }
+}

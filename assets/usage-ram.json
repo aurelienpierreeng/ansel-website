@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "6\u20138 GiB",
+        "14\u201316 GiB",
+        "18\u201320 GiB",
+        "22\u201324 GiB",
+        "28\u201330 GiB",
+        "30\u201332 GiB",
+        "56\u201358 GiB",
+        "60\u201362 GiB"
+      ],
+      "y": [
+        1,
+        15,
+        3,
+        5,
+        2,
+        13,
+        1,
+        22
+      ],
+      "hovertext": [
+        "6\u20138 GiB<br>1 users",
+        "14\u201316 GiB<br>15 users",
+        "18\u201320 GiB<br>3 users",
+        "22\u201324 GiB<br>5 users",
+        "28\u201330 GiB<br>2 users",
+        "30\u201332 GiB<br>13 users",
+        "56\u201358 GiB<br>1 users",
+        "60\u201362 GiB<br>22 users"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": "#d8c19a"
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Installed memory (RAM) \u2014 62 users"
+    },
+    "xaxis": {
+      "type": "category",
+      "tickangle": -40,
+      "automargin": true
+    },
+    "yaxis": {
+      "title": {
+        "text": "Users"
+      },
+      "rangemode": "tozero"
+    },
+    "margin": {
+      "t": 70,
+      "r": 30,
+      "b": 80,
+      "l": 60
+    },
+    "showlegend": false
+  }
+}

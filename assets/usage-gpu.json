@@ -1,0 +1,100 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "orientation": "h",
+      "x": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        3,
+        11,
+        16
+      ],
+      "y": [
+        "AMD Radeon RX 6700 XT (radeonsi, navi22, ACO, DRM 3.64, 7.0.12-arch1-1)",
+        "NVIDIA GeForce GTX 1660",
+        "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+        "Intel(R) Iris(R) Xe Graphics",
+        "NVIDIA RTX A4000 Laptop GPU",
+        "NVIDIA GeForce RTX 3070 Laptop GPU",
+        "NVIDIA GeForce RTX 4070 SUPER",
+        "AMD Radeon Pro 5300 Compute Engine",
+        "Apple M4 Pro",
+        "NVIDIA GeForce RTX 3060 Ti",
+        "NVIDIA GeForce RTX 4070",
+        "NVIDIA GeForce GTX 1650 with Max-Q Design",
+        "NVIDIA GeForce GTX 1060 6GB",
+        "Intel(R) UHD Graphics 630",
+        "NVIDIA GeForce RTX 3080 Laptop GPU",
+        "NVIDIA GeForce RTX 3050",
+        "NVIDIA GeForce RTX 2070 SUPER",
+        "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "NVIDIA RTX A400",
+        "No GPU detected"
+      ],
+      "hovertext": [
+        "AMD Radeon RX 6700 XT (radeonsi, navi22, ACO, DRM 3.64, 7.0.12-arch1-1)<br>1 users",
+        "NVIDIA GeForce GTX 1660<br>1 users",
+        "NVIDIA GeForce RTX 3050 Ti Laptop GPU<br>1 users",
+        "Intel(R) Iris(R) Xe Graphics<br>1 users",
+        "NVIDIA RTX A4000 Laptop GPU<br>1 users",
+        "NVIDIA GeForce RTX 3070 Laptop GPU<br>1 users",
+        "NVIDIA GeForce RTX 4070 SUPER<br>1 users",
+        "AMD Radeon Pro 5300 Compute Engine<br>1 users",
+        "Apple M4 Pro<br>1 users",
+        "NVIDIA GeForce RTX 3060 Ti<br>1 users",
+        "NVIDIA GeForce RTX 4070<br>1 users",
+        "NVIDIA GeForce GTX 1650 with Max-Q Design<br>1 users",
+        "NVIDIA GeForce GTX 1060 6GB<br>2 users",
+        "Intel(R) UHD Graphics 630<br>2 users",
+        "NVIDIA GeForce RTX 3080 Laptop GPU<br>2 users",
+        "NVIDIA GeForce RTX 3050<br>2 users",
+        "NVIDIA GeForce RTX 2070 SUPER<br>2 users",
+        "NVIDIA GeForce RTX 4060 Laptop GPU<br>3 users",
+        "NVIDIA RTX A400<br>11 users",
+        "No GPU detected<br>16 users"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": "#b9a6cc"
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Graphics cards in use \u2014 52 users"
+    },
+    "xaxis": {
+      "title": {
+        "text": "Users"
+      },
+      "rangemode": "tozero"
+    },
+    "yaxis": {
+      "type": "category",
+      "automargin": true
+    },
+    "margin": {
+      "t": 70,
+      "r": 30,
+      "b": 50,
+      "l": 60
+    },
+    "showlegend": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "type": "pie",
+      "labels": [
+        "Arch Linux",
+        "Ubuntu",
+        "Linux Mint",
+        "Debian",
+        "Fedora",
+        "CachyOS",
+        "LMDE",
+        "Bluefin",
+        "Void",
+        "openSUSE",
+        "Perfido",
+        "EndeavourOS",
+        "Manjaro",
+        "Garuda"
+      ],
+      "values": [
+        16,
+        8,
+        7,
+        7,
+        5,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "hole": 0.45,
+      "hovertext": [
+        "Arch Linux<br>16 users",
+        "Ubuntu<br>8 users",
+        "Linux Mint<br>7 users",
+        "Debian<br>7 users",
+        "Fedora<br>5 users",
+        "CachyOS<br>3 users",
+        "LMDE<br>1 users",
+        "Bluefin<br>1 users",
+        "Void<br>1 users",
+        "openSUSE<br>1 users",
+        "Perfido<br>1 users",
+        "EndeavourOS<br>1 users",
+        "Manjaro<br>1 users",
+        "Garuda<br>1 users"
+      ],
+      "hoverinfo": "text",
+      "textinfo": "label+percent",
+      "sort": true,
+      "marker": {
+        "colors": [
+          "#8ec1a8",
+          "#e8a598",
+          "#9db4d0",
+          "#d8c19a",
+          "#b9a6cc",
+          "#a8ccc9",
+          "#e0b0c0",
+          "#c5ca8e",
+          "#9fb6c9",
+          "#cdae8f",
+          "#a9b8a0",
+          "#d2a6a6"
+        ]
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Linux distributions \u2014 54 users"
+    },
+    "margin": {
+      "t": 70,
+      "r": 20,
+      "b": 20,
+      "l": 20
+    },
+    "showlegend": true,
+    "legend": {
+      "orientation": "h",
+      "x": 0,
+      "y": -0.05
+    }
+  }
+}
