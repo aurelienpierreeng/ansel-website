@@ -8,20 +8,23 @@
         1,
         1,
         1,
+        1,
         6,
         2,
+        2,
+        4,
+        2,
         1,
-        2,
-        2,
-        2,
-        20,
-        11,
         1,
-        10,
+        31,
+        12,
+        2,
+        15,
         11
       ],
       "y": [
         "768\u00d7480",
+        "756\u00d7491",
         "750\u00d7500",
         "855\u00d7554",
         "864\u00d7558",
@@ -31,6 +34,7 @@
         "1280\u00d7720",
         "1366\u00d7768",
         "1536\u00d7864",
+        "1600\u00d7900",
         "1920\u00d71080",
         "1920\u00d71200",
         "2560\u00d71080",
@@ -39,19 +43,21 @@
       ],
       "hovertext": [
         "768\u00d7480<br>2 users",
+        "756\u00d7491<br>1 users",
         "750\u00d7500<br>1 users",
         "855\u00d7554<br>1 users",
         "864\u00d7558<br>1 users",
         "960\u00d7540<br>6 users",
         "960\u00d7600<br>2 users",
-        "1024\u00d7576<br>1 users",
-        "1280\u00d7720<br>2 users",
+        "1024\u00d7576<br>2 users",
+        "1280\u00d7720<br>4 users",
         "1366\u00d7768<br>2 users",
-        "1536\u00d7864<br>2 users",
-        "1920\u00d71080<br>20 users \u00b7 median",
-        "1920\u00d71200<br>11 users",
-        "2560\u00d71080<br>1 users",
-        "2560\u00d71440<br>10 users",
+        "1536\u00d7864<br>1 users",
+        "1600\u00d7900<br>1 users",
+        "1920\u00d71080<br>31 users \u00b7 median",
+        "1920\u00d71200<br>12 users",
+        "2560\u00d71080<br>2 users",
+        "2560\u00d71440<br>15 users",
         "3840\u00d72160<br>11 users"
       ],
       "hoverinfo": "text",
@@ -77,7 +83,7 @@
       },
       "x": [
         0,
-        20
+        31
       ],
       "y": [
         "960\u00d7540",
@@ -107,7 +113,7 @@
       },
       "x": [
         0,
-        20
+        31
       ],
       "y": [
         "1920\u00d71080",
@@ -137,7 +143,7 @@
       },
       "x": [
         0,
-        20
+        31
       ],
       "y": [
         "3840\u00d72160",
@@ -152,7 +158,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Screen size in device pixels, after high-DPI scaling \u2014 73 users"
+      "text": "Screen size in device pixels, after high-DPI scaling \u2014 95 users"
     },
     "xaxis": {
       "title": {

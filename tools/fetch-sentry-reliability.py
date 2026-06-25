@@ -883,6 +883,29 @@ def _revision(release):
     return m.group(1) if m else None
 
 
+# z for a 95% two-sided confidence interval (standard normal quantile at 0.975).
+CONF_Z = 1.959963984540054
+
+
+def _wilson_interval(k, n, z=CONF_Z):
+    """Wilson score confidence interval for a binomial proportion k/n.
+
+    Returns (low, high) bounds in [0, 1]. Preferred over the normal/Wald interval
+    because crash-free rates sit near 1.0 and samples are often small: Wilson stays
+    within [0, 1], never collapses to zero width at p=1, and widens for small n -
+    so a widely-tested revision gets a tight band, a barely-tested one a wide band.
+    """
+    if n <= 0:
+        return 0.0, 1.0
+    k = max(0, min(k, n))
+    phat = k / n
+    z2 = z * z
+    denom = 1.0 + z2 / n
+    center = (phat + z2 / (2 * n)) / denom
+    half = (z / denom) * ((phat * (1 - phat) / n + z2 / (4 * n * n)) ** 0.5)
+    return max(0.0, center - half), min(1.0, center + half)
+
+
 def _fmt_duration(seconds):
     """Human-readable duration, or None."""
     if not seconds or seconds <= 0:
@@ -1104,27 +1127,29 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     # events) into a single "Other" entry kept last on the x-axis. Counts are
     # additive; note "Other" users sum count_unique across releases, so a user
     # active in several minor releases can be counted more than once there.
-    shown_ids = {id(c) for c in shown}
-    other = [c for c in clusters if id(c) not in shown_ids]
-    if other:
-        _keys = ("total", "healthy", "users", "healthy_users", "dur_sum", "dur_n",
-                 "ph_start", "ph_end", "pics", "crash_sec", "crash_n", "crash_pics")
-        agg = {k: sum(c[k] for c in other) for k in _keys}
+    if False:
+        # disabled for now, not really meaningful
+        shown_ids = {id(c) for c in shown}
+        other = [c for c in clusters if id(c) not in shown_ids]
+        if other:
+            _keys = ("total", "healthy", "users", "healthy_users", "dur_sum", "dur_n",
+                    "ph_start", "ph_end", "pics", "crash_sec", "crash_n", "crash_pics")
+            agg = {k: sum(c[k] for c in other) for k in _keys}
 
-        def _member(c):
-            if c["hash"]:
-                return "g%s" % c["hash"][:12]   # commit hash (abbreviated)
-            if c["revision"]:
-                return "r%s" % c["revision"]
-            return _strip(c["releases"][0])
-        members = sorted(_member(c) for c in other)
-        # wrap the list a few per line so the hover stays readable
-        members_str = "<br>".join(", ".join(members[i:i + 5])
-                                  for i in range(0, len(members), 5))
+            def _member(c):
+                if c["hash"]:
+                    return "g%s" % c["hash"][:12]   # commit hash (abbreviated)
+                if c["revision"]:
+                    return "r%s" % c["revision"]
+                return _strip(c["releases"][0])
+            members = sorted(_member(c) for c in other)
+            # wrap the list a few per line so the hover stays readable
+            members_str = "<br>".join(", ".join(members[i:i + 5])
+                                    for i in range(0, len(members), 5))
 
-        agg.update({"is_other": True, "n_releases": len(other), "members": members_str,
-                    "hash": None, "revision": None, "releases": []})
-        shown.append(agg)
+            agg.update({"is_other": True, "n_releases": len(other), "members": members_str,
+                        "hash": None, "revision": None, "releases": []})
+            shown.append(agg)
 
     packaged = packaged_hashes or set()
 
@@ -1156,7 +1181,8 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     GREEN, RED, ACCENT = "#8ec1a8", "#e8a598", "#222222"
 
     def _stacked_figure(healthy, crashed, ratio_text, hover_h, hover_c, count_title,
-                        sec_y, sec_hover, sec_name, sec_axis_title, sec_suffix, title):
+                        sec_y, sec_hover, sec_name, sec_axis_title, sec_suffix, title,
+                        err_plus=None, err_minus=None):
         # Absolute counts as stacked bars (left axis); the per-release ratio is the
         # in-bar label. An optional secondary metric (a COUNT or time) is drawn as a
         # line on the right axis - and dropped entirely (axis + legend) when it has
@@ -1169,6 +1195,18 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
             {"type": "bar", "x": labels, "y": crashed, "name": "Crashed",
              "hovertext": hover_c, "hoverinfo": "text", "marker": {"color": RED}},
         ]
+        # Error bars at the crash-free/crashed boundary = 95% confidence band on the
+        # crash-free count (Wilson). Wide bars flag thinly-tested, low-confidence
+        # revisions; tight bars, well-tested ones. Drawn as a separate trace placed
+        # AFTER the stacked bars so the upward half isn't painted over by "Crashed".
+        if err_plus is not None:
+            data.append({
+                "type": "scatter", "mode": "markers", "x": labels, "y": healthy,
+                "name": "95% confidence", "marker": {"opacity": 0, "size": 1},
+                "hoverinfo": "skip", "showlegend": False,
+                "error_y": {"type": "data", "symmetric": False,
+                            "array": err_plus, "arrayminus": err_minus,
+                            "color": "#555555", "thickness": 1.3, "width": 4}})
         if has_sec:
             data.append(
                 {"type": "scatter", "mode": "lines+markers", "x": labels, "y": sec_y,
@@ -1196,16 +1234,21 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
 
     # ---------- Figure 1: SESSIONS (counts + ratio text, MTBF line) ----------
     s_healthy, s_crashed, s_text, s_hh, s_hc = [], [], [], [], []
+    s_err_plus, s_err_minus = [], []
     mtbf_min, mtbf_hover = [], []
     for c in shown:
         total = c["total"]
         healthy = int(round(c["healthy"]))
         crashed = max(0, total - healthy)
         ratio = (healthy / total * 100.0) if total else 0.0
+        lo, hi = _wilson_interval(healthy, total)
+        s_err_plus.append(max(0.0, hi * total - healthy))
+        s_err_minus.append(max(0.0, healthy - lo * total))
         s_healthy.append(healthy)
         s_crashed.append(crashed)
         s_text.append("%.0f%%" % ratio if total else "")
         hh = "%s<br>%d crash-free / %d sessions (%.1f%%)" % (name(c), healthy, total, ratio)
+        hh += "<br>95%% confidence: %.1f–%.1f%%" % (lo * 100, hi * 100)
         avg_len = (c["dur_sum"] / c["dur_n"]) if c["dur_n"] else None
         if avg_len:
             hh += "<br>avg session: %s" % _fmt_duration(avg_len)
@@ -1229,21 +1272,28 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     sessions_figure = _stacked_figure(
         s_healthy, s_crashed, s_text, s_hh, s_hc, "Sessions",
         mtbf_min, mtbf_hover, "MTBF (uptime before crash)",
-        "MTBF: mean uptime before crash (min)", " min", sessions_title)
+        "MTBF: mean uptime before crash (min)", " min", sessions_title,
+        s_err_plus, s_err_minus)
 
     # ---------- Figure 2: USERS (counts + ratio text, pictures-edited line) ----------
     u_healthy, u_crashed, u_text, u_hh, u_hc = [], [], [], [], []
+    u_err_plus, u_err_minus = [], []
     pics_y, pics_hover = [], []
     for c in shown:
         u = c["users"]
         hu = int(round(c["healthy_users"]))
         cu = max(0, u - hu)
         ur = (hu / u * 100.0) if u else 0.0
+        lo, hi = _wilson_interval(hu, u)
+        u_err_plus.append(max(0.0, hi * u - hu))
+        u_err_minus.append(max(0.0, hu - lo * u))
         u_healthy.append(hu)
         u_crashed.append(cu)
         u_text.append("%.0f%%" % ur if u else "")
         uh = ("%s<br>%d crash-free / %d users (%.1f%%)" % (name(c), hu, u, ur)
               if u else "%s<br>no user data" % name(c))
+        if u:
+            uh += "<br>95%% confidence: %.1f–%.1f%%" % (lo * 100, hi * 100)
         if c.get("is_other"):
             uh += "<br><i>⚠ minor / intermediate commits — likely development or pre-release builds</i>"
             uh += "<br>aggregated commits:<br>%s" % c["members"]
@@ -1272,7 +1322,8 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     users_figure = _stacked_figure(
         u_healthy, u_crashed, u_text, u_hh, u_hc, "Users",
         pics_y, pics_hover, "Pictures edited",
-        "Pictures edited (count)", "", users_title)
+        "Pictures edited (count)", "", users_title,
+        u_err_plus, u_err_minus)
 
     return sessions_figure, users_figure, len(shown), global_total
 

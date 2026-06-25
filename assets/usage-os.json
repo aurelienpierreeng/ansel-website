@@ -8,14 +8,14 @@
         "Windows"
       ],
       "values": [
-        62,
-        6,
+        80,
+        10,
         1
       ],
       "hole": 0.45,
       "hovertext": [
-        "Linux<br>62 users",
-        "macOS<br>6 users",
+        "Linux<br>80 users",
+        "macOS<br>10 users",
         "Windows<br>1 users"
       ],
       "hoverinfo": "text",
@@ -41,7 +41,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Operating systems in use \u2014 73 users"
+      "text": "Operating systems in use \u2014 95 users"
     },
     "margin": {
       "t": 70,

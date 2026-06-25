@@ -6,8 +6,8 @@
         "NEF",
         "DNG (mosaiced)",
         "RAF",
-        "JPG",
         "CR2",
+        "JPG",
         "RW2",
         "ORF",
         "DNG (demosaiced)",
@@ -16,39 +16,45 @@
         "PNG",
         "EXR",
         "CR3",
-        "HEIC"
+        "HEIC",
+        "PFM",
+        "HDR"
       ],
       "y": [
-        78,
-        55,
-        43,
-        42,
-        37,
-        22,
-        17,
-        15,
-        15,
-        9,
+        107,
+        62,
+        58,
+        56,
+        48,
+        24,
+        21,
+        20,
+        18,
+        14,
+        8,
         7,
-        4,
+        2,
+        1,
         1,
         1
       ],
       "hovertext": [
-        "NEF<br>78 files opened",
-        "DNG (mosaiced)<br>55 files opened",
-        "RAF<br>43 files opened",
-        "JPG<br>42 files opened",
-        "CR2<br>37 files opened",
-        "RW2<br>22 files opened",
-        "ORF<br>17 files opened",
-        "DNG (demosaiced)<br>15 files opened",
-        "TIFF<br>15 files opened",
-        "ARW<br>9 files opened",
-        "PNG<br>7 files opened",
-        "EXR<br>4 files opened",
-        "CR3<br>1 files opened",
-        "HEIC<br>1 files opened"
+        "NEF<br>107 files opened",
+        "DNG (mosaiced)<br>62 files opened",
+        "RAF<br>58 files opened",
+        "CR2<br>56 files opened",
+        "JPG<br>48 files opened",
+        "RW2<br>24 files opened",
+        "ORF<br>21 files opened",
+        "DNG (demosaiced)<br>20 files opened",
+        "TIFF<br>18 files opened",
+        "ARW<br>14 files opened",
+        "PNG<br>8 files opened",
+        "EXR<br>7 files opened",
+        "CR3<br>2 files opened",
+        "HEIC<br>1 files opened",
+        "PFM<br>1 files opened",
+        "HDR<br>1 files opened"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -77,7 +83,7 @@
       ],
       "y": [
         0,
-        78
+        107
       ],
       "text": [
         "",
@@ -107,7 +113,7 @@
       ],
       "y": [
         0,
-        78
+        107
       ],
       "text": [
         "",
@@ -137,7 +143,7 @@
       ],
       "y": [
         0,
-        78
+        107
       ],
       "text": [
         "",
@@ -148,7 +154,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 346 files (the last 3 days)"
+      "text": "Image files opened, by type \u2014 448 files (the last 4 days)"
     },
     "xaxis": {
       "type": "category",
