@@ -109,6 +109,8 @@ A new release is published when the list of all bugs have been cleared, meaning 
 
 Revisions are intermediate states of the sourcecode (not releases). They are aggregated by Git commit hash and shown only once they have been used by at least 25 distinct people (less-used and intermediate commits are folded into *Other*). An asterisk (\*) marks commits we shipped as a packaged nightly or stable build.
 
+On the two charts above, the crash-free rate is shown as a percentage whose **bar opacity encodes our confidence** (95% confidence interval): the solid part (*almost certain*) is the rate we are confident the software reaches, the fainter parts (*likely*, then *optimistic*) reach up to the best plausible rate, written in parentheses on top. The fewer people tested a revision, the less confident we are in the statistics, and the larger the interval.
+
 Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours. __Ansel saves your editing histories immediately after each change__: in case of a crash you loose at most the last action.
 
 The links above always point to the latest nightly build of the "fairly stable" branch. If you want a particular revision or need to roll back, [you can find all intermediate versions on Github](https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0).

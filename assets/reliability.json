@@ -9,30 +9,33 @@
         "612eede*"
       ],
       "y": [
-        154,
-        123,
-        116,
-        105
+        92.06101926328579,
+        87.90158790898288,
+        94.03025556519603,
+        85.67424805457289
       ],
-      "name": "Crash-free",
+      "name": "Almost certain",
+      "marker": {
+        "color": "rgba(142,193,168,1.0)"
+      },
       "text": [
-        "96%",
-        "93%",
-        "98%",
-        "92%"
+        "92%",
+        "88%",
+        "94%",
+        "86%"
       ],
       "textposition": "inside",
-      "insidetextanchor": "middle",
+      "insidetextanchor": "end",
+      "textfont": {
+        "color": "#143a2c"
+      },
       "hovertext": [
-        "g8f7c553 (r3836)<br>154 crash-free / 160 sessions (96.2%)<br>95% confidence: 92.1\u201398.3%",
-        "gd6af87a \u2605 packaged build<br>123 crash-free / 132 sessions (93.2%)<br>95% confidence: 87.5\u201396.4%<br>avg session: 52 min",
-        "gc2527d1 \u2605 packaged build<br>116 crash-free / 118 sessions (98.3%)<br>95% confidence: 94.0\u201399.5%<br>avg session: 39 min",
-        "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 85.7\u201395.8%<br>avg session: 35 min"
+        "g8f7c553 (r3836)<br>154 crash-free / 160 sessions (96.2%)<br>95% confidence: 92.1\u201398.3%<br>MTBF (uptime before crash): 49 min (n=6)",
+        "gd6af87a \u2605 packaged build<br>127 crash-free / 136 sessions (93.4%)<br>95% confidence: 87.9\u201396.5%<br>avg session: 49 min<br>MTBF (uptime before crash): 65 min (n=9)",
+        "gc2527d1 \u2605 packaged build<br>116 crash-free / 118 sessions (98.3%)<br>95% confidence: 94.0\u201399.5%<br>avg session: 39 min<br>MTBF (uptime before crash): 52 min (n=2)",
+        "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 85.7\u201395.8%<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)"
       ],
-      "hoverinfo": "text",
-      "marker": {
-        "color": "#8ec1a8"
-      }
+      "hoverinfo": "text"
     },
     {
       "type": "bar",
@@ -43,26 +46,25 @@
         "612eede*"
       ],
       "y": [
-        6,
-        9,
-        2,
-        9
+        4.188980736714214,
+        5.480765032193602,
+        4.274829180566684,
+        6.4310151033218546
       ],
-      "name": "Crashed",
-      "hovertext": [
-        "g8f7c553 (r3836)<br>6 crashed sessions",
-        "gd6af87a \u2605 packaged build<br>9 crashed sessions",
-        "gc2527d1 \u2605 packaged build<br>2 crashed sessions",
-        "g612eede \u2605 packaged build<br>9 crashed sessions"
-      ],
-      "hoverinfo": "text",
+      "name": "Likely",
       "marker": {
-        "color": "#e8a598"
-      }
+        "color": "rgba(142,193,168,0.55)"
+      },
+      "hovertext": [
+        "g8f7c553 (r3836)<br>154 crash-free / 160 sessions (96.2%)<br>95% confidence: 92.1\u201398.3%<br>MTBF (uptime before crash): 49 min (n=6)",
+        "gd6af87a \u2605 packaged build<br>127 crash-free / 136 sessions (93.4%)<br>95% confidence: 87.9\u201396.5%<br>avg session: 49 min<br>MTBF (uptime before crash): 65 min (n=9)",
+        "gc2527d1 \u2605 packaged build<br>116 crash-free / 118 sessions (98.3%)<br>95% confidence: 94.0\u201399.5%<br>avg session: 39 min<br>MTBF (uptime before crash): 52 min (n=2)",
+        "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 85.7\u201395.8%<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)"
+      ],
+      "hoverinfo": "text"
     },
     {
-      "type": "scatter",
-      "mode": "markers",
+      "type": "bar",
       "x": [
         "8f7c553",
         "d6af87a*",
@@ -70,80 +72,38 @@
         "612eede*"
       ],
       "y": [
-        154,
-        123,
-        116,
-        105
+        2.0202076833499945,
+        3.0973299082504013,
+        1.2288710038172468,
+        3.6858753846825607
       ],
-      "name": "95% confidence",
+      "name": "Optimistic",
       "marker": {
-        "opacity": 0,
-        "size": 1
+        "color": "rgba(142,193,168,0.28)"
       },
-      "hoverinfo": "skip",
-      "showlegend": false,
-      "error_y": {
-        "type": "data",
-        "symmetric": false,
-        "array": [
-          3.2323322933600025,
-          4.210731799164876,
-          1.4500677845043555,
-          4.201897938538124
-        ],
-        "arrayminus": [
-          6.702369178742742,
-          7.434536294206225,
-          5.04429843306869,
-          7.331357217786902
-        ],
-        "color": "#555555",
-        "thickness": 1.3,
-        "width": 4
-      }
-    },
-    {
-      "type": "scatter",
-      "mode": "lines+markers",
-      "x": [
-        "8f7c553",
-        "d6af87a*",
-        "c2527d1*",
-        "612eede*"
+      "text": [
+        "(98%)",
+        "(96%)",
+        "(100%)",
+        "(96%)"
       ],
-      "y": [
-        48.692,
-        64.939,
-        51.683,
-        108.437
-      ],
-      "yaxis": "y2",
-      "name": "MTBF (uptime before crash)",
+      "textposition": "outside",
+      "textfont": {
+        "color": "#143a2c"
+      },
+      "cliponaxis": false,
       "hovertext": [
-        "g8f7c553 (r3836)<br>MTBF 49 min<br>(mean uptime before crash, n=6)",
-        "gd6af87a \u2605 packaged build<br>MTBF 65 min<br>(mean uptime before crash, n=9)",
-        "gc2527d1 \u2605 packaged build<br>MTBF 52 min<br>(mean uptime before crash, n=2)",
-        "g612eede \u2605 packaged build<br>MTBF 1.8 h<br>(mean uptime before crash, n=9)"
+        "g8f7c553 (r3836)<br>154 crash-free / 160 sessions (96.2%)<br>95% confidence: 92.1\u201398.3%<br>MTBF (uptime before crash): 49 min (n=6)",
+        "gd6af87a \u2605 packaged build<br>127 crash-free / 136 sessions (93.4%)<br>95% confidence: 87.9\u201396.5%<br>avg session: 49 min<br>MTBF (uptime before crash): 65 min (n=9)",
+        "gc2527d1 \u2605 packaged build<br>116 crash-free / 118 sessions (98.3%)<br>95% confidence: 94.0\u201399.5%<br>avg session: 39 min<br>MTBF (uptime before crash): 52 min (n=2)",
+        "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 85.7\u201395.8%<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)"
       ],
-      "hoverinfo": "text",
-      "connectgaps": false,
-      "marker": {
-        "color": "#222222",
-        "size": 9,
-        "line": {
-          "color": "#ffffff",
-          "width": 1
-        }
-      },
-      "line": {
-        "color": "#222222",
-        "width": 3
-      }
+      "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Sessions per revision (the last 6 days)<br />94.1% crash-free over 909 sessions"
+      "text": "Crash-free sessions per revision (the last 6 days)<br />94.2% crash-free over 929 sessions"
     },
     "barmode": "stack",
     "xaxis": {
@@ -154,31 +114,31 @@
     },
     "yaxis": {
       "title": {
-        "text": "Sessions"
+        "text": "Crash-free sessions"
       },
-      "rangemode": "tozero"
+      "rangemode": "tozero",
+      "ticksuffix": "%",
+      "range": [
+        0,
+        108
+      ]
     },
     "legend": {
       "orientation": "h",
-      "x": 0,
-      "y": 1.1
+      "x": 0.5,
+      "xanchor": "center",
+      "y": 0.01,
+      "yanchor": "bottom",
+      "bgcolor": "rgba(255,255,255,0.65)",
+      "bordercolor": "rgba(0,0,0,0.15)",
+      "borderwidth": 1
     },
     "margin": {
       "t": 120,
-      "r": 70,
+      "r": 30,
       "b": 60,
       "l": 60
     },
-    "showlegend": true,
-    "yaxis2": {
-      "title": {
-        "text": "MTBF: mean uptime before crash (min)"
-      },
-      "overlaying": "y",
-      "side": "right",
-      "rangemode": "tozero",
-      "ticksuffix": " min",
-      "showgrid": false
-    }
+    "showlegend": true
   }
 }

@@ -1175,138 +1175,112 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
         return _strip(c["releases"][0])
 
     labels = [label(c) for c in shown]
-    # Soft pastel palette: low-saturation sage / blush for crash-free vs crashed.
-    # The secondary-axis line is near-black and bold so it stays legible over the
-    # pastel bars it overlaps.
-    GREEN, RED, ACCENT = "#8ec1a8", "#e8a598", "#222222"
+    # Crash-free rate as a percentage stack whose OPACITY encodes confidence
+    # (Wilson 95% CI): solid up to the lower bound (we are ~97.5% sure the true
+    # rate is at least this), semi-transparent up to the measured rate, faint up
+    # to the upper bound. Same green hue throughout, varied via the alpha channel
+    # so the in-bar / on-top text stays crisp (text uses a solid colour).
+    GREEN_RGB = "142,193,168"
+    A_SOLID = "rgba(%s,1.0)" % GREEN_RGB     # 0 -> CI lower bound (most certain)
+    A_MID = "rgba(%s,0.55)" % GREEN_RGB      # lower bound -> measured
+    A_FAINT = "rgba(%s,0.28)" % GREEN_RGB    # measured -> CI upper bound (least)
+    TEXT_DARK = "#143a2c"
 
-    def _stacked_figure(healthy, crashed, ratio_text, hover_h, hover_c, count_title,
-                        sec_y, sec_hover, sec_name, sec_axis_title, sec_suffix, title,
-                        err_plus=None, err_minus=None):
-        # Absolute counts as stacked bars (left axis); the per-release ratio is the
-        # in-bar label. An optional secondary metric (a COUNT or time) is drawn as a
-        # line on the right axis - and dropped entirely (axis + legend) when it has
-        # no data, so we never show an empty series.
-        has_sec = any(v is not None for v in sec_y)
+    def _conf_figure(seg_a, seg_b, seg_c, low_text, top_text, hover, y_title, title):
+        # Three stacked % segments per revision (confidence tiers). The CI lower
+        # bound is written just below the top of the solid bar; the upper bound on
+        # top. Secondary metrics (MTBF / pictures) live only in the hover now.
         data = [
-            {"type": "bar", "x": labels, "y": healthy, "name": "Crash-free",
-             "text": ratio_text, "textposition": "inside", "insidetextanchor": "middle",
-             "hovertext": hover_h, "hoverinfo": "text", "marker": {"color": GREEN}},
-            {"type": "bar", "x": labels, "y": crashed, "name": "Crashed",
-             "hovertext": hover_c, "hoverinfo": "text", "marker": {"color": RED}},
+            {"type": "bar", "x": labels, "y": seg_a, "name": "Almost certain",
+             "marker": {"color": A_SOLID}, "text": low_text,
+             "textposition": "inside", "insidetextanchor": "end",
+             "textfont": {"color": TEXT_DARK},
+             "hovertext": hover, "hoverinfo": "text"},
+            {"type": "bar", "x": labels, "y": seg_b, "name": "Likely",
+             "marker": {"color": A_MID},
+             "hovertext": hover, "hoverinfo": "text"},
+            {"type": "bar", "x": labels, "y": seg_c, "name": "Optimistic",
+             "marker": {"color": A_FAINT}, "text": top_text,
+             "textposition": "outside", "textfont": {"color": TEXT_DARK},
+             "cliponaxis": False, "hovertext": hover, "hoverinfo": "text"},
         ]
-        # Error bars at the crash-free/crashed boundary = 95% confidence band on the
-        # crash-free count (Wilson). Wide bars flag thinly-tested, low-confidence
-        # revisions; tight bars, well-tested ones. Drawn as a separate trace placed
-        # AFTER the stacked bars so the upward half isn't painted over by "Crashed".
-        if err_plus is not None:
-            data.append({
-                "type": "scatter", "mode": "markers", "x": labels, "y": healthy,
-                "name": "95% confidence", "marker": {"opacity": 0, "size": 1},
-                "hoverinfo": "skip", "showlegend": False,
-                "error_y": {"type": "data", "symmetric": False,
-                            "array": err_plus, "arrayminus": err_minus,
-                            "color": "#555555", "thickness": 1.3, "width": 4}})
-        if has_sec:
-            data.append(
-                {"type": "scatter", "mode": "lines+markers", "x": labels, "y": sec_y,
-                 "yaxis": "y2", "name": sec_name, "hovertext": sec_hover,
-                 "hoverinfo": "text", "connectgaps": False,
-                 "marker": {"color": ACCENT, "size": 9,
-                            "line": {"color": "#ffffff", "width": 1}},
-                 "line": {"color": ACCENT, "width": 3}})
         # Account for title line wrap (manual)
         n_lines = title.count("<br") + 1
         layout = {
             "title": {"text": title},
             "barmode": "stack",
             "xaxis": {"title": {"text": "Revision"}, "type": "category"},
-            "yaxis": {"title": {"text": count_title}, "rangemode": "tozero"},
-            "legend": {"orientation": "h", "x": 0, "y": 1.10},
-            "margin": {"t": 60 * n_lines, "r": 70 if has_sec else 30, "b": 60, "l": 60},
+            "yaxis": {"title": {"text": y_title}, "rangemode": "tozero",
+                      "ticksuffix": "%", "range": [0, 108]},
+            # Legend overlaid inside the plot, just above the x axis.
+            "legend": {"orientation": "h", "x": 0.5, "xanchor": "center",
+                       "y": 0.01, "yanchor": "bottom",
+                       "bgcolor": "rgba(255,255,255,0.65)",
+                       "bordercolor": "rgba(0,0,0,0.15)", "borderwidth": 1},
+            "margin": {"t": 60 * n_lines, "r": 30, "b": 60, "l": 60},
             "showlegend": True,
         }
-        if has_sec:
-            layout["yaxis2"] = {"title": {"text": sec_axis_title}, "overlaying": "y",
-                                "side": "right", "rangemode": "tozero",
-                                "ticksuffix": sec_suffix, "showgrid": False}
         return {"data": data, "layout": layout}
 
-    # ---------- Figure 1: SESSIONS (counts + ratio text, MTBF line) ----------
-    s_healthy, s_crashed, s_text, s_hh, s_hc = [], [], [], [], []
-    s_err_plus, s_err_minus = [], []
-    mtbf_min, mtbf_hover = [], []
+    # ---------- Figure 1: SESSIONS (crash-free %, confidence-tier stack) ----------
+    s_seg_a, s_seg_b, s_seg_c, s_low, s_top, s_hh = [], [], [], [], [], []
     for c in shown:
         total = c["total"]
         healthy = int(round(c["healthy"]))
-        crashed = max(0, total - healthy)
         ratio = (healthy / total * 100.0) if total else 0.0
         lo, hi = _wilson_interval(healthy, total)
-        s_err_plus.append(max(0.0, hi * total - healthy))
-        s_err_minus.append(max(0.0, healthy - lo * total))
-        s_healthy.append(healthy)
-        s_crashed.append(crashed)
-        s_text.append("%.0f%%" % ratio if total else "")
+        lo_pct, hi_pct = lo * 100.0, hi * 100.0
+        # Confidence tiers: 0->lower bound (solid), ->measured (mid), ->upper (faint).
+        s_seg_a.append(lo_pct)
+        s_seg_b.append(max(0.0, ratio - lo_pct))
+        s_seg_c.append(max(0.0, hi_pct - ratio))
+        s_low.append("%.0f%%" % lo_pct if total else "")
+        s_top.append("(%.0f%%)" % hi_pct if total else "")
         hh = "%s<br>%d crash-free / %d sessions (%.1f%%)" % (name(c), healthy, total, ratio)
-        hh += "<br>95%% confidence: %.1f–%.1f%%" % (lo * 100, hi * 100)
+        hh += "<br>95%% confidence: %.1f–%.1f%%" % (lo_pct, hi_pct)
         avg_len = (c["dur_sum"] / c["dur_n"]) if c["dur_n"] else None
         if avg_len:
             hh += "<br>avg session: %s" % _fmt_duration(avg_len)
+        if c["crash_n"]:
+            sec = c["crash_sec"] / c["crash_n"]
+            hh += "<br>MTBF (uptime before crash): %s (n=%d)" % (_fmt_duration(sec), c["crash_n"])
         if c.get("is_other"):
             hh += "<br><i>⚠ minor / intermediate commits — likely development or pre-release builds</i>"
             hh += "<br>aggregated commits:<br>%s" % c["members"]
         s_hh.append(hh)
-        s_hc.append("%s<br>%d crashed sessions" % (name(c), crashed))
-        if c["crash_n"]:
-            sec = c["crash_sec"] / c["crash_n"]
-            mtbf_min.append(round(sec / 60.0, 3))
-            mtbf_hover.append("%s<br>MTBF %s<br>(mean uptime before crash, n=%d)"
-                              % (name(c), _fmt_duration(sec), c["crash_n"]))
-        else:
-            mtbf_min.append(None)
-            mtbf_hover.append("%s<br>no timed crash" % name(c))
 
-    g_avg_len = (g_dur_sum / g_dur_n) if g_dur_n else None
-    sessions_title = ("Sessions per revision (%s)<br />%.1f%% crash-free over %d sessions"
+    sessions_title = ("Crash-free sessions per revision (%s)"
+                      "<br />%.1f%% crash-free over %d sessions"
                       % (span_label, global_rate, global_total))
-    sessions_figure = _stacked_figure(
-        s_healthy, s_crashed, s_text, s_hh, s_hc, "Sessions",
-        mtbf_min, mtbf_hover, "MTBF (uptime before crash)",
-        "MTBF: mean uptime before crash (min)", " min", sessions_title,
-        s_err_plus, s_err_minus)
+    sessions_figure = _conf_figure(
+        s_seg_a, s_seg_b, s_seg_c, s_low, s_top, s_hh, "Crash-free sessions",
+        sessions_title)
 
-    # ---------- Figure 2: USERS (counts + ratio text, pictures-edited line) ----------
-    u_healthy, u_crashed, u_text, u_hh, u_hc = [], [], [], [], []
-    u_err_plus, u_err_minus = [], []
-    pics_y, pics_hover = [], []
+    # ---------- Figure 2: USERS (crash-free %, confidence-tier stack) ----------
+    u_seg_a, u_seg_b, u_seg_c, u_low, u_top, u_hh = [], [], [], [], [], []
     for c in shown:
         u = c["users"]
         hu = int(round(c["healthy_users"]))
-        cu = max(0, u - hu)
         ur = (hu / u * 100.0) if u else 0.0
         lo, hi = _wilson_interval(hu, u)
-        u_err_plus.append(max(0.0, hi * u - hu))
-        u_err_minus.append(max(0.0, hu - lo * u))
-        u_healthy.append(hu)
-        u_crashed.append(cu)
-        u_text.append("%.0f%%" % ur if u else "")
+        lo_pct, hi_pct = lo * 100.0, hi * 100.0
+        u_seg_a.append(lo_pct if u else 0.0)
+        u_seg_b.append(max(0.0, ur - lo_pct) if u else 0.0)
+        u_seg_c.append(max(0.0, hi_pct - ur) if u else 0.0)
+        u_low.append("%.0f%%" % lo_pct if u else "")
+        u_top.append("(%.0f%%)" % hi_pct if u else "")
         uh = ("%s<br>%d crash-free / %d users (%.1f%%)" % (name(c), hu, u, ur)
               if u else "%s<br>no user data" % name(c))
         if u:
-            uh += "<br>95%% confidence: %.1f–%.1f%%" % (lo * 100, hi * 100)
+            uh += "<br>95%% confidence: %.1f–%.1f%%" % (lo_pct, hi_pct)
+        total_pics = c["pics"] + c["crash_pics"]
+        if c["ph_end"] > 0 or c["crash_pics"] > 0:
+            uh += ("<br>%d pictures edited (%d clean + %d before a crash)"
+                   % (total_pics, c["pics"], c["crash_pics"]))
         if c.get("is_other"):
             uh += "<br><i>⚠ minor / intermediate commits — likely development or pre-release builds</i>"
             uh += "<br>aggregated commits:<br>%s" % c["members"]
         u_hh.append(uh)
-        u_hc.append("%s<br>%d users hit a crash" % (name(c), cu))
-        total_pics = c["pics"] + c["crash_pics"]
-        if c["ph_end"] > 0 or c["crash_pics"] > 0:
-            pics_y.append(total_pics)
-            pics_hover.append("%s<br>%d pictures edited<br>(%d clean + %d before a crash)"
-                              % (name(c), total_pics, c["pics"], c["crash_pics"]))
-        else:
-            pics_y.append(None)
-            pics_hover.append("%s<br>no image data yet" % name(c))
 
     # Global unique-user counts: use the deduplicated project-wide figures when
     # available (count_unique over all releases), since summing per-release uniques
@@ -1317,13 +1291,12 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
         g_users = sum(c["users"] for c in shown)
         g_healthy_users = sum(c["healthy_users"] for c in shown)
     g_user_rate = (g_healthy_users / g_users * 100.0) if g_users else 0.0
-    users_title = ("Users per revision (%s)<br />%.1f%% crash-free over %d unique users"
+    users_title = ("Crash-free users per revision (%s)"
+                   "<br />%.1f%% crash-free over %d unique users"
                    % (span_label, g_user_rate, int(round(g_users))))
-    users_figure = _stacked_figure(
-        u_healthy, u_crashed, u_text, u_hh, u_hc, "Users",
-        pics_y, pics_hover, "Pictures edited",
-        "Pictures edited (count)", "", users_title,
-        u_err_plus, u_err_minus)
+    users_figure = _conf_figure(
+        u_seg_a, u_seg_b, u_seg_c, u_low, u_top, u_hh, "Crash-free users",
+        users_title)
 
     return sessions_figure, users_figure, len(shown), global_total
 

@@ -9,30 +9,33 @@
         "612eede*"
       ],
       "y": [
-        50,
-        35,
-        38,
-        30
+        78.53155482892853,
+        74.45578847902313,
+        83.49612263085902,
+        73.37915722962816
       ],
-      "name": "Crash-free",
+      "name": "Almost certain",
+      "marker": {
+        "color": "rgba(142,193,168,1.0)"
+      },
       "text": [
-        "89%",
-        "88%",
-        "95%",
-        "88%"
+        "79%",
+        "74%",
+        "83%",
+        "73%"
       ],
       "textposition": "inside",
-      "insidetextanchor": "middle",
+      "insidetextanchor": "end",
+      "textfont": {
+        "color": "#143a2c"
+      },
       "hovertext": [
         "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "gd6af87a \u2605 packaged build<br>35 crash-free / 40 users (87.5%)<br>95% confidence: 73.9\u201394.5%",
-        "gc2527d1 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%",
-        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%"
+        "gd6af87a \u2605 packaged build<br>36 crash-free / 41 users (87.8%)<br>95% confidence: 74.5\u201394.7%<br>13193 pictures edited (10495 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>12950 pictures edited (11834 clean + 1116 before a crash)",
+        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
       ],
-      "hoverinfo": "text",
-      "marker": {
-        "color": "#8ec1a8"
-      }
+      "hoverinfo": "text"
     },
     {
       "type": "bar",
@@ -43,26 +46,25 @@
         "612eede*"
       ],
       "y": [
-        6,
-        5,
-        2,
-        4
+        10.754159456785757,
+        13.349089569757368,
+        11.50387736914098,
+        14.856136888018895
       ],
-      "name": "Crashed",
-      "hovertext": [
-        "g8f7c553 (r3836)<br>6 users hit a crash",
-        "gd6af87a \u2605 packaged build<br>5 users hit a crash",
-        "gc2527d1 \u2605 packaged build<br>2 users hit a crash",
-        "g612eede \u2605 packaged build<br>4 users hit a crash"
-      ],
-      "hoverinfo": "text",
+      "name": "Likely",
       "marker": {
-        "color": "#e8a598"
-      }
+        "color": "rgba(142,193,168,0.55)"
+      },
+      "hovertext": [
+        "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
+        "gd6af87a \u2605 packaged build<br>36 crash-free / 41 users (87.8%)<br>95% confidence: 74.5\u201394.7%<br>13193 pictures edited (10495 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>12950 pictures edited (11834 clean + 1116 before a crash)",
+        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
+      ],
+      "hoverinfo": "text"
     },
     {
-      "type": "scatter",
-      "mode": "markers",
+      "type": "bar",
       "x": [
         "8f7c553",
         "d6af87a*",
@@ -70,80 +72,38 @@
         "612eede*"
       ],
       "y": [
-        50,
-        35,
-        38,
-        30
+        5.71035014316864,
+        6.8717854826417835,
+        3.6179332613851614,
+        7.093259217470603
       ],
-      "name": "95% confidence",
+      "name": "Optimistic",
       "marker": {
-        "opacity": 0,
-        "size": 1
+        "color": "rgba(142,193,168,0.28)"
       },
-      "hoverinfo": "skip",
-      "showlegend": false,
-      "error_y": {
-        "type": "data",
-        "symmetric": false,
-        "array": [
-          3.1977960801744416,
-          2.816199899621836,
-          1.4471733045540631,
-          2.411708133940003
-        ],
-        "arrayminus": [
-          6.02232929580002,
-          5.444847935540441,
-          4.601550947656392,
-          5.0510865419264235
-        ],
-        "color": "#555555",
-        "thickness": 1.3,
-        "width": 4
-      }
-    },
-    {
-      "type": "scatter",
-      "mode": "lines+markers",
-      "x": [
-        "8f7c553",
-        "d6af87a*",
-        "c2527d1*",
-        "612eede*"
+      "text": [
+        "(95%)",
+        "(95%)",
+        "(99%)",
+        "(95%)"
       ],
-      "y": [
-        null,
-        13193,
-        12950,
-        18026
-      ],
-      "yaxis": "y2",
-      "name": "Pictures edited",
+      "textposition": "outside",
+      "textfont": {
+        "color": "#143a2c"
+      },
+      "cliponaxis": false,
       "hovertext": [
-        "g8f7c553 (r3836)<br>no image data yet",
-        "gd6af87a \u2605 packaged build<br>13193 pictures edited<br>(10495 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>12950 pictures edited<br>(11834 clean + 1116 before a crash)",
-        "g612eede \u2605 packaged build<br>18026 pictures edited<br>(15318 clean + 2708 before a crash)"
+        "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
+        "gd6af87a \u2605 packaged build<br>36 crash-free / 41 users (87.8%)<br>95% confidence: 74.5\u201394.7%<br>13193 pictures edited (10495 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>12950 pictures edited (11834 clean + 1116 before a crash)",
+        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
       ],
-      "hoverinfo": "text",
-      "connectgaps": false,
-      "marker": {
-        "color": "#222222",
-        "size": 9,
-        "line": {
-          "color": "#ffffff",
-          "width": 1
-        }
-      },
-      "line": {
-        "color": "#222222",
-        "width": 3
-      }
+      "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Users per revision (the last 6 days)<br />85.8% crash-free over 197 unique users"
+      "text": "Crash-free users per revision (the last 6 days)<br />85.9% crash-free over 199 unique users"
     },
     "barmode": "stack",
     "xaxis": {
@@ -154,31 +114,31 @@
     },
     "yaxis": {
       "title": {
-        "text": "Users"
+        "text": "Crash-free users"
       },
-      "rangemode": "tozero"
+      "rangemode": "tozero",
+      "ticksuffix": "%",
+      "range": [
+        0,
+        108
+      ]
     },
     "legend": {
       "orientation": "h",
-      "x": 0,
-      "y": 1.1
+      "x": 0.5,
+      "xanchor": "center",
+      "y": 0.01,
+      "yanchor": "bottom",
+      "bgcolor": "rgba(255,255,255,0.65)",
+      "bordercolor": "rgba(0,0,0,0.15)",
+      "borderwidth": 1
     },
     "margin": {
       "t": 120,
-      "r": 70,
+      "r": 30,
       "b": 60,
       "l": 60
     },
-    "showlegend": true,
-    "yaxis2": {
-      "title": {
-        "text": "Pictures edited (count)"
-      },
-      "overlaying": "y",
-      "side": "right",
-      "rangemode": "tozero",
-      "ticksuffix": "",
-      "showgrid": false
-    }
+    "showlegend": true
   }
 }

@@ -25,7 +25,7 @@
         17,
         14,
         9,
-        5,
+        6,
         4,
         2,
         2,
@@ -44,7 +44,7 @@
         "Arch Linux<br>17 users",
         "Debian<br>14 users",
         "Linux Mint<br>9 users",
-        "Fedora<br>5 users",
+        "Fedora<br>6 users",
         "CachyOS<br>4 users",
         "Void<br>2 users",
         "openSUSE<br>2 users",
@@ -80,7 +80,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 80 users"
+      "text": "Linux distributions \u2014 81 users"
     },
     "margin": {
       "t": 70,
