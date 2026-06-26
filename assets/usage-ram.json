@@ -7,11 +7,11 @@
         "6\u20138 GiB",
         "12\u201314 GiB",
         "14\u201316 GiB",
-        "16\u201318 GiB",
         "18\u201320 GiB",
         "22\u201324 GiB",
         "28\u201330 GiB",
         "30\u201332 GiB",
+        "46\u201348 GiB",
         "56\u201358 GiB",
         "60\u201362 GiB"
       ],
@@ -19,27 +19,27 @@
         1,
         12,
         2,
-        23,
-        1,
+        27,
         3,
         6,
-        2,
-        23,
+        3,
+        22,
         1,
-        23
+        2,
+        21
       ],
       "hovertext": [
         "4\u20136 GiB<br>1 users",
         "6\u20138 GiB<br>12 users",
         "12\u201314 GiB<br>2 users",
-        "14\u201316 GiB<br>23 users",
-        "16\u201318 GiB<br>1 users",
+        "14\u201316 GiB<br>27 users",
         "18\u201320 GiB<br>3 users",
-        "22\u201324 GiB<br>6 users",
-        "28\u201330 GiB<br>2 users \u00b7 median",
-        "30\u201332 GiB<br>23 users",
-        "56\u201358 GiB<br>1 users",
-        "60\u201362 GiB<br>23 users"
+        "22\u201324 GiB<br>6 users \u00b7 median",
+        "28\u201330 GiB<br>3 users",
+        "30\u201332 GiB<br>22 users",
+        "46\u201348 GiB<br>1 users",
+        "56\u201358 GiB<br>2 users",
+        "60\u201362 GiB<br>21 users"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -68,7 +68,7 @@
       ],
       "y": [
         0,
-        23
+        27
       ],
       "text": [
         "",
@@ -93,12 +93,12 @@
         "size": 11
       },
       "x": [
-        "28\u201330 GiB",
-        "28\u201330 GiB"
+        "22\u201324 GiB",
+        "22\u201324 GiB"
       ],
       "y": [
         0,
-        23
+        27
       ],
       "text": [
         "",
@@ -128,7 +128,7 @@
       ],
       "y": [
         0,
-        23
+        27
       ],
       "text": [
         "",
@@ -139,7 +139,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Installed memory (RAM) \u2014 97 users"
+      "text": "Installed memory (RAM) \u2014 100 users"
     },
     "xaxis": {
       "type": "category",

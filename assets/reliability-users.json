@@ -4,14 +4,16 @@
       "type": "bar",
       "x": [
         "8f7c553",
+        "22f623c*",
         "d6af87a*",
         "c2527d1*",
         "612eede*"
       ],
       "y": [
         78.53155482892853,
-        74.45578847902313,
-        83.49612263085902,
+        67.54192051863438,
+        74.99960973799033,
+        83.86102112962914,
         73.37915722962816
       ],
       "name": "Almost certain",
@@ -20,8 +22,9 @@
       },
       "text": [
         "79%",
-        "74%",
-        "83%",
+        "68%",
+        "75%",
+        "84%",
         "73%"
       ],
       "textposition": "inside",
@@ -31,8 +34,9 @@
       },
       "hovertext": [
         "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "gd6af87a \u2605 packaged build<br>36 crash-free / 41 users (87.8%)<br>95% confidence: 74.5\u201394.7%<br>13193 pictures edited (10495 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>12950 pictures edited (11834 clean + 1116 before a crash)",
+        "g22f623c \u2605 packaged build<br>41 crash-free / 51 users (80.4%)<br>95% confidence: 67.5\u201389.0%<br>17375 pictures edited (14182 clean + 3193 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13240 pictures edited (10542 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>39 crash-free / 41 users (95.1%)<br>95% confidence: 83.9\u201398.7%<br>15917 pictures edited (14801 clean + 1116 before a crash)",
         "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
       ],
       "hoverinfo": "text"
@@ -41,14 +45,16 @@
       "type": "bar",
       "x": [
         "8f7c553",
+        "22f623c*",
         "d6af87a*",
         "c2527d1*",
         "612eede*"
       ],
       "y": [
         10.754159456785757,
-        13.349089569757368,
-        11.50387736914098,
+        12.850236344110712,
+        13.095628357247762,
+        11.260930089883061,
         14.856136888018895
       ],
       "name": "Likely",
@@ -57,8 +63,9 @@
       },
       "hovertext": [
         "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "gd6af87a \u2605 packaged build<br>36 crash-free / 41 users (87.8%)<br>95% confidence: 74.5\u201394.7%<br>13193 pictures edited (10495 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>12950 pictures edited (11834 clean + 1116 before a crash)",
+        "g22f623c \u2605 packaged build<br>41 crash-free / 51 users (80.4%)<br>95% confidence: 67.5\u201389.0%<br>17375 pictures edited (14182 clean + 3193 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13240 pictures edited (10542 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>39 crash-free / 41 users (95.1%)<br>95% confidence: 83.9\u201398.7%<br>15917 pictures edited (14801 clean + 1116 before a crash)",
         "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
       ],
       "hoverinfo": "text"
@@ -67,14 +74,16 @@
       "type": "bar",
       "x": [
         "8f7c553",
+        "22f623c*",
         "d6af87a*",
         "c2527d1*",
         "612eede*"
       ],
       "y": [
         5.71035014316864,
-        6.8717854826417835,
-        3.6179332613851614,
+        8.592500624788201,
+        6.710958577003666,
+        3.5299542439708773,
         7.093259217470603
       ],
       "name": "Optimistic",
@@ -83,6 +92,7 @@
       },
       "text": [
         "(95%)",
+        "(89%)",
         "(95%)",
         "(99%)",
         "(95%)"
@@ -94,8 +104,9 @@
       "cliponaxis": false,
       "hovertext": [
         "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "gd6af87a \u2605 packaged build<br>36 crash-free / 41 users (87.8%)<br>95% confidence: 74.5\u201394.7%<br>13193 pictures edited (10495 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>12950 pictures edited (11834 clean + 1116 before a crash)",
+        "g22f623c \u2605 packaged build<br>41 crash-free / 51 users (80.4%)<br>95% confidence: 67.5\u201389.0%<br>17375 pictures edited (14182 clean + 3193 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13240 pictures edited (10542 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>39 crash-free / 41 users (95.1%)<br>95% confidence: 83.9\u201398.7%<br>15917 pictures edited (14801 clean + 1116 before a crash)",
         "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
       ],
       "hoverinfo": "text"
@@ -103,7 +114,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Crash-free users per revision (the last 6 days)<br />85.9% crash-free over 199 unique users"
+      "text": "Crash-free users per revision (the last 6 days)<br />84.4% crash-free over 225 unique users"
     },
     "barmode": "stack",
     "xaxis": {

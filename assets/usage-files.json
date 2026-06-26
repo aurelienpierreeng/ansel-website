@@ -9,49 +9,52 @@
         "CR2",
         "JPG",
         "RW2",
-        "DNG (demosaiced)",
-        "ORF",
         "TIFF",
+        "ORF",
+        "DNG (demosaiced)",
         "ARW",
-        "PNG",
         "EXR",
         "CR3",
+        "PNG",
+        "PEF",
         "HEIC",
         "PFM",
         "HDR"
       ],
       "y": [
-        111,
-        62,
-        58,
-        56,
-        48,
+        142,
+        72,
+        71,
+        61,
+        60,
+        30,
+        28,
+        26,
         24,
-        21,
-        21,
         19,
-        14,
+        16,
+        9,
         8,
-        7,
-        3,
+        1,
         1,
         1,
         1
       ],
       "hovertext": [
-        "NEF<br>111 files opened",
-        "DNG (mosaiced)<br>62 files opened",
-        "RAF<br>58 files opened",
-        "CR2<br>56 files opened",
-        "JPG<br>48 files opened",
-        "RW2<br>24 files opened",
-        "DNG (demosaiced)<br>21 files opened",
-        "ORF<br>21 files opened",
-        "TIFF<br>19 files opened",
-        "ARW<br>14 files opened",
+        "NEF<br>142 files opened",
+        "DNG (mosaiced)<br>72 files opened",
+        "RAF<br>71 files opened",
+        "CR2<br>61 files opened",
+        "JPG<br>60 files opened",
+        "RW2<br>30 files opened",
+        "TIFF<br>28 files opened",
+        "ORF<br>26 files opened",
+        "DNG (demosaiced)<br>24 files opened",
+        "ARW<br>19 files opened",
+        "EXR<br>16 files opened",
+        "CR3<br>9 files opened",
         "PNG<br>8 files opened",
-        "EXR<br>7 files opened",
-        "CR3<br>3 files opened",
+        "PEF<br>1 files opened",
         "HEIC<br>1 files opened",
         "PFM<br>1 files opened",
         "HDR<br>1 files opened"
@@ -83,7 +86,7 @@
       ],
       "y": [
         0,
-        111
+        142
       ],
       "text": [
         "",
@@ -113,7 +116,7 @@
       ],
       "y": [
         0,
-        111
+        142
       ],
       "text": [
         "",
@@ -138,12 +141,12 @@
         "size": 11
       },
       "x": [
-        "TIFF",
-        "TIFF"
+        "DNG (demosaiced)",
+        "DNG (demosaiced)"
       ],
       "y": [
         0,
-        111
+        142
       ],
       "text": [
         "",
@@ -154,7 +157,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 455 files (the last 4 days)"
+      "text": "Image files opened, by type \u2014 570 files (the last 5 days)"
     },
     "xaxis": {
       "type": "category",

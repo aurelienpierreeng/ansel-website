@@ -9,13 +9,13 @@
       ],
       "values": [
         55,
-        21,
+        20,
         1
       ],
       "hole": 0.45,
       "hovertext": [
         "Wayland<br>55 users",
-        "X11<br>21 users",
+        "X11<br>20 users",
         "Other<br>1 users"
       ],
       "hoverinfo": "text",
@@ -41,7 +41,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Display server on Linux \u2014 77 users"
+      "text": "Display server on Linux \u2014 76 users"
     },
     "margin": {
       "t": 70,

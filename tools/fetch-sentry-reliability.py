@@ -1227,8 +1227,27 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     for c in shown:
         total = c["total"]
         healthy = int(round(c["healthy"]))
+        crashed = max(0, total - healthy)
         ratio = (healthy / total * 100.0) if total else 0.0
-        lo, hi = _wilson_interval(healthy, total)
+        # Sessions are clustered within users, so they are NOT independent and the
+        # raw session count makes the Wilson interval far too narrow. We size the CI
+        # on an effective sample n_eff = n_sessions / DEFF, estimating the design
+        # effect from the data as the mean crashes per crashed user:
+        #   DEFF = crashed_sessions / crashed_users
+        # This is 1 when each crashed user crashed once (crashes spread out / random
+        # — e.g. heavy-use memory leaks — sessions nearly independent → n_eff = all
+        # sessions) and rises toward the mean sessions-per-user when a crashed user
+        # crashes every time (environment-tied → n_eff collapses to the user count).
+        # Bounded to [n_users, n_sessions]; with no observed crashes there is no
+        # clustering signal, so fall back to the conservative user count.
+        users = c["users"]
+        crashed_users = max(0, int(round(users - c["healthy_users"])))
+        if crashed > 0 and crashed_users > 0:
+            deff = crashed / crashed_users
+            n_eff = min(float(total), max(float(users), total / deff))
+        else:
+            n_eff = float(users or total)
+        lo, hi = _wilson_interval(ratio / 100.0 * n_eff, n_eff)
         lo_pct, hi_pct = lo * 100.0, hi * 100.0
         # Confidence tiers: 0->lower bound (solid), ->measured (mid), ->upper (faint).
         s_seg_a.append(lo_pct)
@@ -1237,7 +1256,8 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
         s_low.append("%.0f%%" % lo_pct if total else "")
         s_top.append("(%.0f%%)" % hi_pct if total else "")
         hh = "%s<br>%d crash-free / %d sessions (%.1f%%)" % (name(c), healthy, total, ratio)
-        hh += "<br>95%% confidence: %.1f–%.1f%%" % (lo_pct, hi_pct)
+        hh += ("<br>95%% confidence: %.1f–%.1f%% (effective n≈%d)"
+               % (lo_pct, hi_pct, round(n_eff)))
         avg_len = (c["dur_sum"] / c["dur_n"]) if c["dur_n"] else None
         if avg_len:
             hh += "<br>avg session: %s" % _fmt_duration(avg_len)

@@ -11,32 +11,32 @@
         "12",
         "14",
         "16",
-        "20",
-        "24"
+        "24",
+        "32"
       ],
       "y": [
         1,
         12,
-        11,
-        21,
-        6,
-        16,
-        1,
-        23,
-        1,
-        5
+        9,
+        20,
+        9,
+        15,
+        2,
+        27,
+        4,
+        1
       ],
       "hovertext": [
         "2 cores<br>1 users",
         "4 cores<br>12 users",
-        "6 cores<br>11 users",
-        "8 cores<br>21 users",
-        "10 cores<br>6 users \u00b7 median",
-        "12 cores<br>16 users",
-        "14 cores<br>1 users",
-        "16 cores<br>23 users",
-        "20 cores<br>1 users",
-        "24 cores<br>5 users"
+        "6 cores<br>9 users",
+        "8 cores<br>20 users",
+        "10 cores<br>9 users \u00b7 median",
+        "12 cores<br>15 users",
+        "14 cores<br>2 users",
+        "16 cores<br>27 users",
+        "24 cores<br>4 users",
+        "32 cores<br>1 users"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -65,7 +65,7 @@
       ],
       "y": [
         0,
-        23
+        27
       ],
       "text": [
         "",
@@ -95,7 +95,7 @@
       ],
       "y": [
         0,
-        23
+        27
       ],
       "text": [
         "",
@@ -125,7 +125,7 @@
       ],
       "y": [
         0,
-        23
+        27
       ],
       "text": [
         "",
@@ -136,7 +136,7 @@
   ],
   "layout": {
     "title": {
-      "text": "CPU logical cores \u2014 97 users"
+      "text": "CPU logical cores \u2014 100 users"
     },
     "xaxis": {
       "type": "category",

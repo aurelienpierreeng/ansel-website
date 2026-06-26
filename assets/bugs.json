@@ -42,7 +42,7 @@
       "x": [
         0,
         0,
-        14
+        19
       ],
       "name": "Still open",
       "marker": {
@@ -51,21 +51,21 @@
       "text": [
         "",
         "",
-        "14"
+        "19"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
         "features<br>0 still open",
         "tasks<br>0 still open",
-        "bugs<br>14 still open"
+        "bugs<br>19 still open"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Next release 0.1 \u2014 469 issues resolved, 14 still open"
+      "text": "Next release 0.1 \u2014 469 issues resolved, 19 still open"
     },
     "barmode": "stack",
     "xaxis": {
