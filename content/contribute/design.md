@@ -96,3 +96,42 @@ Approved pull requests will be merged early in the `candidate` or `dev` branch 
 If no bug or breakage is reported after some time and the prototype fulfils its initial purpose correctly, it will get merged in `master` and the related issue will be closed and moved to the "Done" column of the [project management Kanban board](https://github.com/users/aurelienpierre/projects/1/views/1).
 
 If the prototype proves itself unsatisfactory, it may be rejected and another one will need to be worked out.
+
+## Pro tips from a seasoned designer
+
+### Not all _software_ problems are _coding_ problems
+
+Many problems don't require more tools (or toys), and more code. More code is always bad anyway, and should be avoided whenever possible. Very often, user's problem is they can't see how to bend existing features to fulfill their needs. This is solved by education, aka better documentation and more tutorials, and sometimes by better UI.
+
+### Listen but don't listen to users
+
+Users express what they want and what they like, never what they need. They will want the same thing as their neighbour just got. They will like what they are used to. And then, for everything one likes, you will find another one to dislike it. So the Darktable way of solving conflict is to not solve conflict, but give everyone an option, a mode, a preference to enable that special thing they like, how they like it. This means more `case` in your `switch`, more nested `if`, more codepaths you will need to test now, debug, and maintain in the future, and then more preferences hiding the others in the pref window. Before you know it, the code is a tumor that nobody understands anymore, and fixing it only makes it more complicated.
+
+When you scratch beneath the surface, you find than what people actually need is much closer to other people's needs than what they say they want. So you can reconcile the needs much easier than the desires, and without compromising. But then you have to trace the root needs below the will, and that takes abstraction skills and psychology.
+
+### UI designers are dangerous idiots
+
+Everybody who only sees, focuses and cares about the UI is a dangerous idiot. If your GUI is complicated, it means a lot more than just a "complicated GUI" : it means that the complexity of your backend has reached your frontend. I have found the hard way that GUI complexity is never separate, and can't be solved separately, from backend complexity and overall application architecture. GUI is not parallel to backend architecture, it's the termination of it.
+
+The problem of UI designers is they typically don't code, or if they do, they suck at low-level programming and software architecture. So they focus on what little they see and understand (typical [streetlight effect](https://en.wikipedia.org/wiki/Streetlight_effect)), and they only produce non-actionnable designs that conflicts with what the software actually needs to work. Because that GUI is only connecting user input to the backend, and if we need that many widgets, it's because the architecture needs that many inputs. You can't escape it : to remove widgets, you need to remove inputs, which means your architecture will have to work with fewer degrees of freedom __first__. That starts with simplifying the backend, which means stinky refactoring of dusty old code nobody understands anymore.
+
+You don't solve GUI issues with drawings and mockups, you solve GUI issues with solving backend issues. But then you need guys who understand both levels.
+
+### Ask yourself 36 times per day what was the problem you were trying to solve
+
+It's super easy to get lost into technicalities when programming in a low-level language and fighting third-party libs or APIs, but sometimes the solution is simple and elegant and you got carried away too far into pointers and thread locks. Always go back to the initial problem at hand, that's your lifeline to simplicity.
+
+What is the problem ? Who faces it ? When ? How often ? Doing what ? 
+
+The best path is the simplest path towards your solution : low techs, little code, few layers.
+
+### Document your shitty design
+
+Many times, I completely redid a design while documenting it, because it's when you try to explain it that your realize it's too complicated to explain, which means it's too complicated to understand. If you can't explain your design in a couple of paragraphs, or your documentation has too many "if this, then that", there are usually two reasons :
+
+1. your GUI doesn't expose the relevant info where user needs it, so you have to link half the documentation in your explanation to redirect users to everything they need to know or check before using the one thing you were documenting. The solution is to bring back relevant info where it's needed.
+2. your GUI has too many trays, collapsible stuff, contextual behaviours, use cases or hidden preferences, and covering all bases makes you write a novel. The solution is to linearize the workflow, maybe remove options or split features.
+
+GUI is how users control the backend, but it's also where they learn about existing features and what they do. The documentation should provide context, guidelines and references regarding how we do stuff, but the GUI should explain what it does itself.
+
+Of course, there is an obvious limitation to that : in a photography application, users need to understand photography and its language, which involves things like _dynamic range_, _color gamut_, _tone mapping_, etc. The GUI should be self-explanatory on _how it's supposed to be used_, not remove the need to learn the trade (what should be done and how).
