@@ -3,17 +3,32 @@
     {
       "type": "pie",
       "labels": [
-        "With OpenCL",
-        "Without OpenCL"
+        "GNOME",
+        "KDE",
+        "Cinnamon",
+        "wlroots",
+        "XFCE",
+        "Hyprland",
+        "LXQt"
       ],
       "values": [
-        52,
-        48
+        28,
+        28,
+        9,
+        4,
+        3,
+        2,
+        1
       ],
       "hole": 0.45,
       "hovertext": [
-        "With OpenCL<br>52 users",
-        "Without OpenCL<br>48 users"
+        "GNOME<br>28 users",
+        "KDE<br>28 users",
+        "Cinnamon<br>9 users",
+        "wlroots<br>4 users",
+        "XFCE<br>3 users",
+        "Hyprland<br>2 users",
+        "LXQt<br>1 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -40,7 +55,7 @@
   ],
   "layout": {
     "title": {
-      "text": "GPU acceleration (OpenCL) \u2014 100 users"
+      "text": "Desktop environment on Linux \u2014 75 users"
     },
     "margin": {
       "t": 70,

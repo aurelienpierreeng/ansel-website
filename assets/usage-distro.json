@@ -13,12 +13,7 @@
         "Void",
         "Garuda",
         "Manjaro",
-        "LMDE",
-        "Bluefin",
-        "Perfido",
-        "Aurora",
-        "EndeavourOS",
-        "Zorin"
+        "Other"
       ],
       "values": [
         18,
@@ -31,12 +26,7 @@
         2,
         2,
         2,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
+        6
       ],
       "hole": 0.45,
       "hovertext": [
@@ -50,15 +40,12 @@
         "Void<br>2 users",
         "Garuda<br>2 users",
         "Manjaro<br>2 users",
-        "LMDE<br>1 users",
-        "Bluefin<br>1 users",
-        "Perfido<br>1 users",
-        "Aurora<br>1 users",
-        "EndeavourOS<br>1 users",
-        "Zorin<br>1 users"
+        "Other<br>6 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
+      "textposition": "inside",
+      "insidetextorientation": "horizontal",
       "sort": true,
       "marker": {
         "colors": [

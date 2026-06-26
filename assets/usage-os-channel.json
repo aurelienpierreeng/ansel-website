@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "type": "heatmap",
+      "x": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "y": [
+        "nightly",
+        "self-build"
+      ],
+      "z": [
+        [
+          46.31578947368421,
+          13.684210526315791,
+          0.0
+        ],
+        [
+          37.89473684210527,
+          1.0526315789473684,
+          1.0526315789473684
+        ]
+      ],
+      "text": [
+        [
+          "46%",
+          "14%",
+          "0%"
+        ],
+        [
+          "38%",
+          "1%",
+          "1%"
+        ]
+      ],
+      "texttemplate": "%{text}",
+      "hovertext": [
+        [
+          "Linux \u00b7 nightly<br>46.3% of users (44)",
+          "macOS \u00b7 nightly<br>13.7% of users (13)",
+          "Windows \u00b7 nightly<br>0.0% of users (0)"
+        ],
+        [
+          "Linux \u00b7 self-build<br>37.9% of users (36)",
+          "macOS \u00b7 self-build<br>1.1% of users (1)",
+          "Windows \u00b7 self-build<br>1.1% of users (1)"
+        ]
+      ],
+      "hoverinfo": "text",
+      "colorscale": [
+        [
+          0,
+          "#f3f6f4"
+        ],
+        [
+          1,
+          "#8ec1a8"
+        ]
+      ],
+      "colorbar": {
+        "title": {
+          "text": "% of users"
+        },
+        "ticksuffix": "%"
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Users by operating system \u00d7 build channel \u2014 95 users"
+    },
+    "xaxis": {
+      "type": "category",
+      "title": {
+        "text": "Operating system"
+      }
+    },
+    "yaxis": {
+      "type": "category",
+      "title": {
+        "text": "Build channel"
+      }
+    },
+    "margin": {
+      "t": 70,
+      "r": 30,
+      "b": 60,
+      "l": 90
+    },
+    "showlegend": false
+  }
+}

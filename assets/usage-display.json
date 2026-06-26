@@ -20,6 +20,8 @@
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
+      "textposition": "inside",
+      "insidetextorientation": "horizontal",
       "sort": true,
       "marker": {
         "colors": [

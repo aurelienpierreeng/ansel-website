@@ -41,6 +41,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -60,6 +61,13 @@ OUT_PATH_DISPLAY = os.path.join(REPO_ROOT, "assets", "usage-display.json")
 OUT_PATH_DISTRO = os.path.join(REPO_ROOT, "assets", "usage-distro.json")
 OUT_PATH_SCREEN = os.path.join(REPO_ROOT, "assets", "usage-screen.json")
 OUT_PATH_CPU = os.path.join(REPO_ROOT, "assets", "usage-cpu.json")
+OUT_PATH_OS_CHANNEL = os.path.join(REPO_ROOT, "assets", "usage-os-channel.json")
+OUT_PATH_ACTIVE = os.path.join(REPO_ROOT, "assets", "usage-active.json")
+OUT_PATH_SESSLEN = os.path.join(REPO_ROOT, "assets", "usage-session-length.json")
+OUT_PATH_IMAGES = os.path.join(REPO_ROOT, "assets", "usage-images.json")
+OUT_PATH_GPU_VENDOR = os.path.join(REPO_ROOT, "assets", "usage-gpu-vendor.json")
+OUT_PATH_DE = os.path.join(REPO_ROOT, "assets", "usage-de.json")
+OUT_PATH_OPENCL_GPU = os.path.join(REPO_ROOT, "assets", "usage-opencl-gpu.json")
 OUT_PATH_BUGS = os.path.join(REPO_ROOT, "assets", "bugs.json")
 
 # Soft pastel colorway (sage / blush / blue + extras) shared by all usage charts.
@@ -219,11 +227,18 @@ def fetch_posthog(key):
 def _posthog_query(key, hogql):
     body = json.dumps({"query": {"kind": "HogQLQuery", "query": hogql}}).encode()
     url = "%s/api/projects/%s/query/" % (POSTHOG_HOST, POSTHOG_PROJECT_ID)
-    req = urllib.request.Request(
-        url, data=body,
-        headers={"Authorization": "Bearer %s" % key, "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.load(resp).get("results", [])
+    last = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(
+                url, data=body,
+                headers={"Authorization": "Bearer %s" % key,
+                         "Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                return json.load(resp).get("results", [])
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:  # noqa: PERF203
+            last = exc
+    raise last
 
 
 def fetch_file_types(key):
@@ -291,6 +306,57 @@ def _usage_bar_figure(labels, values, hover, title, y_title, color):
     }
 
 
+def _hist_quantile_figure(labels, counts, title, y_title, x_title, color, unit):
+    """Ordered vertical-bar histogram with P10/median/P90 overlay lines (weighted
+    by `counts`). `unit` labels the per-bar hover count (e.g. "sessions")."""
+    lines, mid = _quantile_lines(labels, counts, max(counts) if counts else 0, "v")
+    data = [{
+        "type": "bar", "x": labels, "y": counts,
+        "hovertext": ["%s<br>%d %s%s" % (l, v, unit, " · median" if i == mid else "")
+                      for i, (l, v) in enumerate(zip(labels, counts))],
+        "hoverinfo": "text", "marker": {"color": color},
+    }]
+    data.extend(lines)
+    return {
+        "data": data,
+        "layout": {
+            "title": {"text": title},
+            "xaxis": {"type": "category", "title": {"text": x_title}, "automargin": True},
+            "yaxis": {"title": {"text": y_title}, "rangemode": "tozero"},
+            "margin": {"t": 70, "r": 30, "b": 80, "l": 60},
+            "showlegend": False,
+        },
+    }
+
+
+def fetch_active_users(key):
+    """Daily count of unique users (active users over time). Returns (dates, users)."""
+    rows = _posthog_query(key, (
+        "SELECT toDate(timestamp) AS d, count(DISTINCT person_id) AS u "
+        "FROM events WHERE event = 'session_start' "
+        "AND timestamp > now() - INTERVAL %d DAY GROUP BY d ORDER BY d"
+    ) % PERIOD_DAYS)
+    dates = [str(d) for d, _ in rows]
+    users = [int(u or 0) for _, u in rows]
+    return dates, users
+
+
+def _fetch_floats(key, prop):
+    """All non-null numeric values of a session_end property over the window."""
+    rows = _posthog_query(key, (
+        "SELECT toFloat(properties.%s) AS v FROM events WHERE event = 'session_end' "
+        "AND isNotNull(properties.%s) AND timestamp > now() - INTERVAL %d DAY "
+        "LIMIT 1000000"
+    ) % (prop, prop, PERIOD_DAYS))
+    out = []
+    for (v,) in rows:
+        try:
+            out.append(float(v))
+        except (TypeError, ValueError):
+            pass
+    return out
+
+
 def _usage_span(key):
     """Actual data window for the usage events, phrased like the other charts."""
     rows = _posthog_query(key, "SELECT min(timestamp) FROM events WHERE event IN "
@@ -306,7 +372,10 @@ def _usage_pie_figure(labels, values, title, hover=None):
         "data": [{
             "type": "pie", "labels": labels, "values": values, "hole": 0.45,
             "hovertext": hover, "hoverinfo": "text" if hover else "label+value+percent",
-            "textinfo": "label+percent", "sort": True,
+            # Labels only inside the slices; ones that don't fit are hidden (no
+            # outside leader-line labels) since the colour legend already lists them.
+            "textinfo": "label+percent", "textposition": "inside",
+            "insidetextorientation": "horizontal", "sort": True,
             "marker": {"colors": PALETTE},
         }],
         "layout": {
@@ -379,6 +448,45 @@ def _clean_gpu(name):
     return re.sub(r"\s+", " ", name).strip()
 
 
+def _gpu_vendor(name):
+    """Map a GPU name to its vendor, or None if no GPU."""
+    t = (name or "").lower()
+    if not t:
+        return None
+    if any(k in t for k in ("nvidia", "geforce", "quadro", "rtx", "gtx", "tesla")):
+        return "NVIDIA"
+    if any(k in t for k in ("amd", "radeon", "gfx", "navi", "vega")):
+        return "AMD"
+    if any(k in t for k in ("intel", "iris", "uhd", "hd graphics", "arc")):
+        return "Intel"
+    if "apple" in t or re.match(r"m[1-9]\b", t):
+        return "Apple"
+    return "Other"
+
+
+def _de_name(s):
+    """Normalise a desktop-environment string ("ubuntu:GNOME" -> "GNOME",
+    "X-Cinnamon" -> "Cinnamon")."""
+    s = (s or "").strip()
+    if ":" in s:
+        s = s.split(":")[-1]
+    if s.upper().startswith("X-"):
+        s = s[2:]
+    return s or None
+
+
+def _hist_bins(values, bins):
+    """Count values into ordered (label, lo, hi) bins (hi exclusive). Returns
+    (labels, counts)."""
+    counts = [0] * len(bins)
+    for v in values:
+        for i, (_, lo, hi) in enumerate(bins):
+            if lo <= v < hi:
+                counts[i] += 1
+                break
+    return [b[0] for b in bins], counts
+
+
 def _num(v):
     """Round a numeric-ish value to int, e.g. "1920.0" -> 1920, or None."""
     try:
@@ -416,17 +524,20 @@ def fetch_user_platforms(key):
     Uses argMax(..., timestamp) so each user contributes a single, latest value
     (dedup by unique user as requested). Returns a list of dicts."""
     props = ["os", "opencl", "gpu", "ram_gb", "display_server",
-             "screen_width", "screen_height", "ppd", "cpu_cores"]
+             "screen_width", "screen_height", "ppd", "cpu_cores", "build_channel",
+             "desktop_environment"]
     sel = ", ".join("argMax(properties.%s, timestamp) AS %s" % (p, p) for p in props)
     hogql = (
         "SELECT %s FROM events WHERE event = 'session_start' "
         "AND timestamp > now() - INTERVAL %d DAY GROUP BY person_id"
     ) % (sel, PERIOD_DAYS)
     rows = []
-    for os_s, opencl, gpu, ram, disp, sw, sh, ppd, cores in _posthog_query(key, hogql):
+    for (os_s, opencl, gpu, ram, disp, sw, sh, ppd, cores, chan, de) \
+            in _posthog_query(key, hogql):
         rows.append({"os": os_s, "opencl": opencl, "gpu": gpu,
                      "ram": ram, "disp": disp,
-                     "sw": sw, "sh": sh, "ppd": ppd, "cores": cores})
+                     "sw": sw, "sh": sh, "ppd": ppd, "cores": cores,
+                     "chan": chan, "de": de})
     return rows
 
 
@@ -500,6 +611,8 @@ def write_platform_figures(key):
     n_users = len(rows)
 
     fam, opencl, gpu, ram, disp, distro, screen, cpu = {}, {}, {}, {}, {}, {}, {}, {}
+    osch = {}  # (os family, build channel) -> user count, for the 2D histogram
+    vendor, de, oclgpu = {}, {}, {}
     for r in rows:
         f = _os_family(r["os"])
         # macOS reports no OS string (telemetry gap), but Apple-Silicon machines
@@ -508,6 +621,9 @@ def write_platform_figures(key):
             f = "macOS"
         if f:
             fam[f] = fam.get(f, 0) + 1
+            chan = (r["chan"] or "").strip()
+            if chan:
+                osch[(f, chan)] = osch.get((f, chan), 0) + 1
         # OpenCL on/off (only meaningful when reported).
         if r["opencl"] is not None and str(r["opencl"]).strip() != "":
             k = "With OpenCL" if _truthy(r["opencl"]) else "Without OpenCL"
@@ -539,6 +655,20 @@ def write_platform_figures(key):
         cc = _num(r["cores"])
         if cc:
             cpu[cc] = cpu.get(cc, 0) + 1
+        # GPU vendor.
+        ven = _gpu_vendor(r["gpu"])
+        if ven:
+            vendor[ven] = vendor.get(ven, 0) + 1
+        # Desktop environment (Linux only).
+        if f == "Linux":
+            d_e = _de_name(r["de"])
+            if d_e:
+                de[d_e] = de.get(d_e, 0) + 1
+        # OpenCL on/off × GPU present/absent (2x2).
+        if r["opencl"] is not None and str(r["opencl"]).strip() != "":
+            ocl = "OpenCL on" if _truthy(r["opencl"]) else "OpenCL off"
+            has_gpu = "GPU present" if (r["gpu"] or "").strip() else "No GPU"
+            oclgpu[(ocl, has_gpu)] = oclgpu.get((ocl, has_gpu), 0) + 1
 
     jobs = []
 
@@ -603,10 +733,17 @@ def write_platform_figures(key):
         dl, dv, "Display server on Linux — %d users" % sum(dv),
         ["%s<br>%d users" % (k, v) for k, v in zip(dl, dv)])))
 
-    # 7. Linux distributions (pie).
+    # 7. Linux distributions (pie); distros below 2% of users folded into "Other".
     nl, nv = _count_sorted(distro)
+    distro_total = sum(nv)
+    keep = [(k, v) for k, v in zip(nl, nv) if v >= 0.02 * distro_total]
+    other = sum(v for k, v in zip(nl, nv) if v < 0.02 * distro_total)
+    if other:
+        keep.append(("Other", other))
+    nl = [k for k, _ in keep]
+    nv = [v for _, v in keep]
     jobs.append((OUT_PATH_DISTRO, nl, _usage_pie_figure(
-        nl, nv, "Linux distributions — %d users" % sum(nv),
+        nl, nv, "Linux distributions — %d users" % distro_total,
         ["%s<br>%d users" % (k, v) for k, v in zip(nl, nv)])))
 
     # 8. Screen geometry width×height (horizontal bar, sorted by surface area;
@@ -662,6 +799,140 @@ def write_platform_figures(key):
         },
     }
     jobs.append((OUT_PATH_CPU, cl, cpu_fig))
+
+    # 10. OS x build channel user density (2D histogram / heatmap).
+    fams = [f for f in ("Linux", "macOS", "Windows") if any(k[0] == f for k in osch)]
+    chans_order = ["nightly", "self-build"]
+    chans = [c for c in chans_order if any(k[1] == c for k in osch)]
+    chans += sorted({k[1] for k in osch} - set(chans_order))
+    # z[row=channel][col=os family] as a percentage of all users in the matrix;
+    # annotate each cell with its share, full count on hover.
+    osch_total = sum(osch.values()) or 1
+    z = [[osch.get((f, ch), 0) / osch_total * 100.0 for f in fams] for ch in chans]
+    ann = [["%.0f%%" % (osch.get((f, ch), 0) / osch_total * 100.0) for f in fams]
+           for ch in chans]
+    osch_fig = {
+        "data": [{
+            "type": "heatmap", "x": fams, "y": chans, "z": z,
+            "text": ann, "texttemplate": "%{text}",
+            "hovertext": [["%s · %s<br>%.1f%% of users (%d)"
+                           % (f, ch, osch.get((f, ch), 0) / osch_total * 100.0,
+                              osch.get((f, ch), 0))
+                           for f in fams] for ch in chans],
+            "hoverinfo": "text", "colorscale": [[0, "#f3f6f4"], [1, "#8ec1a8"]],
+            "colorbar": {"title": {"text": "% of users"}, "ticksuffix": "%"},
+        }],
+        "layout": {
+            "title": {"text": "Users by operating system × build channel — %d users"
+                      % sum(osch.values())},
+            "xaxis": {"type": "category", "title": {"text": "Operating system"}},
+            "yaxis": {"type": "category", "title": {"text": "Build channel"}},
+            "margin": {"t": 70, "r": 30, "b": 60, "l": 90},
+            "showlegend": False,
+        },
+    }
+    jobs.append((OUT_PATH_OS_CHANNEL, fams, osch_fig))
+
+    # 11. GPU vendor (pie).
+    vl, vv = _count_sorted(vendor)
+    jobs.append((OUT_PATH_GPU_VENDOR, vl, _usage_pie_figure(
+        vl, vv, "Graphics card vendors — %d users" % sum(vv),
+        ["%s<br>%d users" % (k, v) for k, v in zip(vl, vv)])))
+
+    # 12. Desktop environment, Linux only (pie).
+    el, ev = _count_sorted(de)
+    jobs.append((OUT_PATH_DE, el, _usage_pie_figure(
+        el, ev, "Desktop environment on Linux — %d users" % sum(ev),
+        ["%s<br>%d users" % (k, v) for k, v in zip(el, ev)])))
+
+    # 13. OpenCL × GPU presence user density (2D histogram / heatmap, in %).
+    ocl_rows = ["OpenCL on", "OpenCL off"]
+    gpu_cols = ["GPU present", "No GPU"]
+    ocl_rows = [r for r in ocl_rows if any(k[0] == r for k in oclgpu)]
+    gpu_cols = [c for c in gpu_cols if any(k[1] == c for k in oclgpu)]
+    oc_total = sum(oclgpu.values()) or 1
+    oc_z = [[oclgpu.get((r, c), 0) / oc_total * 100.0 for c in gpu_cols]
+            for r in ocl_rows]
+    oc_ann = [["%.0f%%" % (oclgpu.get((r, c), 0) / oc_total * 100.0) for c in gpu_cols]
+              for r in ocl_rows]
+    oclgpu_fig = {
+        "data": [{
+            "type": "heatmap", "x": gpu_cols, "y": ocl_rows, "z": oc_z,
+            "text": oc_ann, "texttemplate": "%{text}",
+            "hovertext": [["%s · %s<br>%.1f%% of users (%d)"
+                           % (r, c, oclgpu.get((r, c), 0) / oc_total * 100.0,
+                              oclgpu.get((r, c), 0))
+                           for c in gpu_cols] for r in ocl_rows],
+            "hoverinfo": "text", "colorscale": [[0, "#f3f6f4"], [1, "#8ec1a8"]],
+            "colorbar": {"title": {"text": "% of users"}, "ticksuffix": "%"},
+        }],
+        "layout": {
+            "title": {"text": "GPU acceleration vs graphics card — %d users"
+                      % sum(oclgpu.values())},
+            "xaxis": {"type": "category", "title": {"text": "Graphics card"}},
+            "yaxis": {"type": "category", "title": {"text": "OpenCL"}},
+            "margin": {"t": 70, "r": 30, "b": 60, "l": 90},
+            "showlegend": False,
+        },
+    }
+    jobs.append((OUT_PATH_OPENCL_GPU, ocl_rows, oclgpu_fig))
+
+    for path, labels, fig in jobs:
+        if not labels:
+            warn("no data for %s; keeping placeholder." % os.path.basename(path))
+            continue
+        with open(path, "w") as f:
+            json.dump(fig, f, indent=2)
+        print("[usage] wrote %s (%d entries)" % (path, len(labels)))
+
+
+def write_engagement_figures(key):
+    """Active-users-over-time, session-length and images-per-session charts."""
+    jobs = []
+
+    # 2. Active users over time (daily line).
+    dates, users = fetch_active_users(key)
+    if dates:
+        jobs.append((OUT_PATH_ACTIVE, dates, {
+            "data": [{
+                "type": "scatter", "mode": "lines+markers", "x": dates, "y": users,
+                "hovertext": ["%s<br>%d active users" % (d, u)
+                              for d, u in zip(dates, users)],
+                "hoverinfo": "text", "line": {"color": "#8ec1a8", "width": 2},
+                "marker": {"color": "#8ec1a8", "size": 6}, "fill": "tozeroy",
+                "fillcolor": "rgba(142,193,168,0.25)"}],
+            "layout": {
+                "title": {"text": "Active users per day"},
+                "xaxis": {"title": {"text": "Date"}, "type": "date"},
+                "yaxis": {"title": {"text": "Unique users"}, "rangemode": "tozero"},
+                "margin": {"t": 70, "r": 30, "b": 60, "l": 60},
+                "showlegend": False,
+            },
+        }))
+
+    # 3. Session length distribution (per session, with P10/median/P90).
+    SEC_BINS = [("<1 min", 0, 60), ("1–5 min", 60, 300), ("5–15 min", 300, 900),
+                ("15–30 min", 900, 1800), ("30–60 min", 1800, 3600),
+                ("1–2 h", 3600, 7200), ("2–4 h", 7200, 14400),
+                ("4 h+", 14400, float("inf"))]
+    secs = _fetch_floats(key, "session_seconds")
+    sec_labels, sec_counts = _hist_bins(secs, SEC_BINS)
+    if secs:
+        jobs.append((OUT_PATH_SESSLEN, sec_labels, _hist_quantile_figure(
+            sec_labels, sec_counts, "Session length — %d sessions" % len(secs),
+            "Sessions", "Session length", "#9db4d0", "sessions")))
+
+    # 4. Images edited per session (per session, with P10/median/P90).
+    IMG_BINS = [("0", 0, 1), ("1", 1, 2), ("2–4", 2, 5), ("5–9", 5, 10),
+                ("10–24", 10, 25), ("25–49", 25, 50), ("50–99", 50, 100),
+                ("100–499", 100, 500), ("500+", 500, float("inf"))]
+    imgs = _fetch_floats(key, "images_processed")
+    img_labels, img_counts = _hist_bins(imgs, IMG_BINS)
+    if imgs:
+        jobs.append((OUT_PATH_IMAGES, img_labels, _hist_quantile_figure(
+            img_labels, img_counts,
+            "Images edited per session — %d sessions" % len(imgs),
+            "Sessions", "Images edited", "#d8c19a", "sessions")))
 
     for path, labels, fig in jobs:
         if not labels:
@@ -1337,6 +1608,10 @@ def main():
             write_platform_figures(ph_key)
         except Exception as exc:  # noqa: BLE001
             warn("platform figures failed (%s); keeping placeholders." % exc)
+        try:
+            write_engagement_figures(ph_key)
+        except Exception as exc:  # noqa: BLE001
+            warn("engagement figures failed (%s); keeping placeholders." % exc)
     else:
         warn("no PostHog key (POSTHOG_QUERY_KEY / .posthog-auth); usage figures skipped.")
 

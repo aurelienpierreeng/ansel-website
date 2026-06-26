@@ -1,0 +1,87 @@
+{
+  "data": [
+    {
+      "type": "heatmap",
+      "x": [
+        "GPU present",
+        "No GPU"
+      ],
+      "y": [
+        "OpenCL on",
+        "OpenCL off"
+      ],
+      "z": [
+        [
+          52.0,
+          0.0
+        ],
+        [
+          15.0,
+          33.0
+        ]
+      ],
+      "text": [
+        [
+          "52%",
+          "0%"
+        ],
+        [
+          "15%",
+          "33%"
+        ]
+      ],
+      "texttemplate": "%{text}",
+      "hovertext": [
+        [
+          "OpenCL on \u00b7 GPU present<br>52.0% of users (52)",
+          "OpenCL on \u00b7 No GPU<br>0.0% of users (0)"
+        ],
+        [
+          "OpenCL off \u00b7 GPU present<br>15.0% of users (15)",
+          "OpenCL off \u00b7 No GPU<br>33.0% of users (33)"
+        ]
+      ],
+      "hoverinfo": "text",
+      "colorscale": [
+        [
+          0,
+          "#f3f6f4"
+        ],
+        [
+          1,
+          "#8ec1a8"
+        ]
+      ],
+      "colorbar": {
+        "title": {
+          "text": "% of users"
+        },
+        "ticksuffix": "%"
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "GPU acceleration vs graphics card \u2014 100 users"
+    },
+    "xaxis": {
+      "type": "category",
+      "title": {
+        "text": "Graphics card"
+      }
+    },
+    "yaxis": {
+      "type": "category",
+      "title": {
+        "text": "OpenCL"
+      }
+    },
+    "margin": {
+      "t": 70,
+      "r": 30,
+      "b": 60,
+      "l": 90
+    },
+    "showlegend": false
+  }
+}

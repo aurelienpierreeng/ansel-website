@@ -3,65 +3,41 @@
     {
       "type": "bar",
       "x": [
-        "NEF",
-        "DNG (mosaiced)",
-        "RAF",
-        "CR2",
-        "JPG",
-        "RW2",
-        "TIFF",
-        "ORF",
-        "DNG (demosaiced)",
-        "ARW",
-        "EXR",
-        "CR3",
-        "PNG",
-        "PEF",
-        "HEIC",
-        "PFM",
-        "HDR"
+        "0",
+        "1",
+        "2\u20134",
+        "5\u20139",
+        "10\u201324",
+        "25\u201349",
+        "50\u201399",
+        "100\u2013499",
+        "500+"
       ],
       "y": [
-        144,
+        103,
+        14,
         73,
-        72,
-        61,
-        60,
-        31,
-        28,
-        26,
-        24,
-        19,
-        18,
-        9,
-        8,
-        1,
-        1,
-        1,
-        1
+        39,
+        35,
+        38,
+        35,
+        75,
+        42
       ],
       "hovertext": [
-        "NEF<br>144 files opened",
-        "DNG (mosaiced)<br>73 files opened",
-        "RAF<br>72 files opened",
-        "CR2<br>61 files opened",
-        "JPG<br>60 files opened",
-        "RW2<br>31 files opened",
-        "TIFF<br>28 files opened",
-        "ORF<br>26 files opened",
-        "DNG (demosaiced)<br>24 files opened",
-        "ARW<br>19 files opened",
-        "EXR<br>18 files opened",
-        "CR3<br>9 files opened",
-        "PNG<br>8 files opened",
-        "PEF<br>1 files opened",
-        "HEIC<br>1 files opened",
-        "PFM<br>1 files opened",
-        "HDR<br>1 files opened"
+        "0<br>103 sessions",
+        "1<br>14 sessions",
+        "2\u20134<br>73 sessions",
+        "5\u20139<br>39 sessions \u00b7 median",
+        "10\u201324<br>35 sessions",
+        "25\u201349<br>38 sessions",
+        "50\u201399<br>35 sessions",
+        "100\u2013499<br>75 sessions",
+        "500+<br>42 sessions"
       ],
       "hoverinfo": "text",
       "marker": {
-        "color": "#8ec1a8"
+        "color": "#d8c19a"
       }
     },
     {
@@ -81,12 +57,12 @@
         "size": 11
       },
       "x": [
-        "NEF",
-        "NEF"
+        "0",
+        "0"
       ],
       "y": [
         0,
-        144
+        103
       ],
       "text": [
         "",
@@ -111,12 +87,12 @@
         "size": 11
       },
       "x": [
-        "RAF",
-        "RAF"
+        "5\u20139",
+        "5\u20139"
       ],
       "y": [
         0,
-        144
+        103
       ],
       "text": [
         "",
@@ -141,12 +117,12 @@
         "size": 11
       },
       "x": [
-        "ARW",
-        "ARW"
+        "100\u2013499",
+        "100\u2013499"
       ],
       "y": [
         0,
-        144
+        103
       ],
       "text": [
         "",
@@ -157,16 +133,18 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 577 files (the last 5 days)"
+      "text": "Images edited per session \u2014 454 sessions"
     },
     "xaxis": {
       "type": "category",
-      "tickangle": -40,
+      "title": {
+        "text": "Images edited"
+      },
       "automargin": true
     },
     "yaxis": {
       "title": {
-        "text": "Files opened"
+        "text": "Sessions"
       },
       "rangemode": "tozero"
     },

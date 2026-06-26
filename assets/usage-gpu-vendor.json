@@ -3,17 +3,23 @@
     {
       "type": "pie",
       "labels": [
-        "With OpenCL",
-        "Without OpenCL"
+        "NVIDIA",
+        "Apple",
+        "AMD",
+        "Intel"
       ],
       "values": [
-        52,
-        48
+        37,
+        14,
+        10,
+        6
       ],
       "hole": 0.45,
       "hovertext": [
-        "With OpenCL<br>52 users",
-        "Without OpenCL<br>48 users"
+        "NVIDIA<br>37 users",
+        "Apple<br>14 users",
+        "AMD<br>10 users",
+        "Intel<br>6 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -40,7 +46,7 @@
   ],
   "layout": {
     "title": {
-      "text": "GPU acceleration (OpenCL) \u2014 100 users"
+      "text": "Graphics card vendors \u2014 67 users"
     },
     "margin": {
       "t": 70,

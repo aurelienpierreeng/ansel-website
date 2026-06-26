@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "lines+markers",
+      "x": [
+        "2026-06-21",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26"
+      ],
+      "y": [
+        7,
+        26,
+        32,
+        45,
+        48,
+        19
+      ],
+      "hovertext": [
+        "2026-06-21<br>7 active users",
+        "2026-06-22<br>26 active users",
+        "2026-06-23<br>32 active users",
+        "2026-06-24<br>45 active users",
+        "2026-06-25<br>48 active users",
+        "2026-06-26<br>19 active users"
+      ],
+      "hoverinfo": "text",
+      "line": {
+        "color": "#8ec1a8",
+        "width": 2
+      },
+      "marker": {
+        "color": "#8ec1a8",
+        "size": 6
+      },
+      "fill": "tozeroy",
+      "fillcolor": "rgba(142,193,168,0.25)"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Active users per day"
+    },
+    "xaxis": {
+      "title": {
+        "text": "Date"
+      },
+      "type": "date"
+    },
+    "yaxis": {
+      "title": {
+        "text": "Unique users"
+      },
+      "rangemode": "tozero"
+    },
+    "margin": {
+      "t": 70,
+      "r": 30,
+      "b": 60,
+      "l": 60
+    },
+    "showlegend": false
+  }
+}

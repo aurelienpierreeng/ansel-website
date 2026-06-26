@@ -19,8 +19,8 @@
         "NVIDIA GeForce GTX 1060 6GB",
         "Apple M1",
         "NVIDIA GeForce GTX 1650 with Max-Q Design",
-        "gfx90c:xnack+",
         "AMD Radeon RX 6800 XT",
+        "gfx90c:xnack+",
         "NVIDIA GeForce RTX 4070",
         "NVIDIA GeForce RTX 3060 Ti"
       ],
@@ -63,8 +63,8 @@
         "NVIDIA GeForce GTX 1060 6GB<br>2 users",
         "Apple M1<br>1 users",
         "NVIDIA GeForce GTX 1650 with Max-Q Design<br>1 users",
-        "gfx90c:xnack+<br>1 users",
         "AMD Radeon RX 6800 XT<br>1 users",
+        "gfx90c:xnack+<br>1 users",
         "NVIDIA GeForce RTX 4070<br>1 users",
         "NVIDIA GeForce RTX 3060 Ti<br>1 users"
       ],

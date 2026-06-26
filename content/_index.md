@@ -397,6 +397,27 @@ The charts below come from the opt-in PostHog telemetry.
 {{% row %}}
 {{% column %}}
 {{% card %}}
+{{< plotly title="Active users per day." caption="false" src="usage-active.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Distribution of session lengths (P10 / median / P90 marked)." caption="false" src="usage-session-length.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Number of images edited per session (P10 / median / P90 marked)." caption="false" src="usage-images.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
 {{< plotly title="Number of image files opened by file type (data collected by opt-in posthog)." caption="false" src="usage-files.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
@@ -426,12 +447,17 @@ The charts below come from the opt-in PostHog telemetry.
 {{% row %}}
 {{% column %}}
 {{% card %}}
-{{< plotly title="Display server used by Linux users." caption="false" src="usage-display.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Linux distributions used." caption="false" src="usage-distro.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
 {{% column %}}
 {{% card %}}
-{{< plotly title="Linux distributions used." caption="false" src="usage-distro.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Desktop environment used by Linux users." caption="false" src="usage-de.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Display server used by Linux users." caption="false" src="usage-display.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}
@@ -440,6 +466,11 @@ The charts below come from the opt-in PostHog telemetry.
 {{% column %}}
 {{% card %}}
 {{< plotly title="Graphics cards in use, by number of users." caption="false" src="usage-gpu.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Graphics card vendors, by number of users." caption="false" src="usage-gpu-vendor.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}
@@ -461,6 +492,19 @@ The charts below come from the opt-in PostHog telemetry.
 {{% column %}}
 {{% card %}}
 {{< plotly title="Screen size (width×height@scaling factor), by number of users." caption="false" src="usage-screen.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="User density per operating system and build channel (nightly = our packaged builds, self-build = compiled from source)." caption="false" src="usage-os-channel.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="GPU acceleration (OpenCL) versus whether a graphics card is present." caption="false" src="usage-opencl-gpu.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}

@@ -11,7 +11,7 @@
       ],
       "y": [
         92.10886045972583,
-        84.65079331177611,
+        85.41972616216367,
         85.72234519998277,
         94.39712362150749,
         81.38864267373351
@@ -34,7 +34,7 @@
       },
       "hovertext": [
         "g8f7c553 (r3836)<br>155 crash-free / 161 sessions (96.3%)<br>95% confidence: 92.1\u201398.3% (effective n\u2248161)<br>MTBF (uptime before crash): 49 min (n=6)",
-        "g22f623c \u2605 packaged build<br>167 crash-free / 183 sessions (91.3%)<br>95% confidence: 84.7\u201395.2% (effective n\u2248114)<br>avg session: 31 min<br>MTBF (uptime before crash): 45 min (n=16)",
+        "g22f623c \u2605 packaged build<br>183 crash-free / 200 sessions (91.5%)<br>95% confidence: 85.4\u201395.2% (effective n\u2248129)<br>avg session: 32 min<br>MTBF (uptime before crash): 52 min (n=17)",
         "gd6af87a \u2605 packaged build<br>130 crash-free / 139 sessions (93.5%)<br>95% confidence: 85.7\u201397.2% (effective n\u224877)<br>avg session: 47 min<br>MTBF (uptime before crash): 65 min (n=9)",
         "gc2527d1 \u2605 packaged build<br>124 crash-free / 126 sessions (98.4%)<br>95% confidence: 94.4\u201399.6% (effective n\u2248126)<br>avg session: 1.7 h<br>MTBF (uptime before crash): 52 min (n=2)",
         "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 81.4\u201396.9% (effective n\u224851)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)"
@@ -52,7 +52,7 @@
       ],
       "y": [
         4.164431465740009,
-        6.606037289316788,
+        6.08027383783633,
         7.802834656132333,
         4.0155747911909145,
         10.716620484161226
@@ -63,7 +63,7 @@
       },
       "hovertext": [
         "g8f7c553 (r3836)<br>155 crash-free / 161 sessions (96.3%)<br>95% confidence: 92.1\u201398.3% (effective n\u2248161)<br>MTBF (uptime before crash): 49 min (n=6)",
-        "g22f623c \u2605 packaged build<br>167 crash-free / 183 sessions (91.3%)<br>95% confidence: 84.7\u201395.2% (effective n\u2248114)<br>avg session: 31 min<br>MTBF (uptime before crash): 45 min (n=16)",
+        "g22f623c \u2605 packaged build<br>183 crash-free / 200 sessions (91.5%)<br>95% confidence: 85.4\u201395.2% (effective n\u2248129)<br>avg session: 32 min<br>MTBF (uptime before crash): 52 min (n=17)",
         "gd6af87a \u2605 packaged build<br>130 crash-free / 139 sessions (93.5%)<br>95% confidence: 85.7\u201397.2% (effective n\u224877)<br>avg session: 47 min<br>MTBF (uptime before crash): 65 min (n=9)",
         "gc2527d1 \u2605 packaged build<br>124 crash-free / 126 sessions (98.4%)<br>95% confidence: 94.4\u201399.6% (effective n\u2248126)<br>avg session: 1.7 h<br>MTBF (uptime before crash): 52 min (n=2)",
         "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 81.4\u201396.9% (effective n\u224851)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)"
@@ -81,7 +81,7 @@
       ],
       "y": [
         2.007729544981217,
-        3.9247454047943933,
+        3.6875281039665566,
         3.6776781389479396,
         1.1509214048193144,
         4.781885686023756
@@ -104,7 +104,7 @@
       "cliponaxis": false,
       "hovertext": [
         "g8f7c553 (r3836)<br>155 crash-free / 161 sessions (96.3%)<br>95% confidence: 92.1\u201398.3% (effective n\u2248161)<br>MTBF (uptime before crash): 49 min (n=6)",
-        "g22f623c \u2605 packaged build<br>167 crash-free / 183 sessions (91.3%)<br>95% confidence: 84.7\u201395.2% (effective n\u2248114)<br>avg session: 31 min<br>MTBF (uptime before crash): 45 min (n=16)",
+        "g22f623c \u2605 packaged build<br>183 crash-free / 200 sessions (91.5%)<br>95% confidence: 85.4\u201395.2% (effective n\u2248129)<br>avg session: 32 min<br>MTBF (uptime before crash): 52 min (n=17)",
         "gd6af87a \u2605 packaged build<br>130 crash-free / 139 sessions (93.5%)<br>95% confidence: 85.7\u201397.2% (effective n\u224877)<br>avg session: 47 min<br>MTBF (uptime before crash): 65 min (n=9)",
         "gc2527d1 \u2605 packaged build<br>124 crash-free / 126 sessions (98.4%)<br>95% confidence: 94.4\u201399.6% (effective n\u2248126)<br>avg session: 1.7 h<br>MTBF (uptime before crash): 52 min (n=2)",
         "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 81.4\u201396.9% (effective n\u224851)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)"
@@ -114,7 +114,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Crash-free sessions per revision (the last 6 days)<br />93.4% crash-free over 1123 sessions"
+      "text": "Crash-free sessions per revision (the last 6 days)<br />93.5% crash-free over 1153 sessions"
     },
     "barmode": "stack",
     "xaxis": {
