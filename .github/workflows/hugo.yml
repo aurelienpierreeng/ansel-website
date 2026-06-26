@@ -12,11 +12,11 @@ on:
   # Can be triggered from a webhook from ansel-docs on new commits
   repository_dispatch:
 
-  # Rebuild twice a day (00:00 and 12:00 UTC) to refresh the Sentry/PostHog
+  # Rebuild every 6h to refresh the Sentry/PostHog
   # reliability chart and the camera support table (read from Rawspeed/Libraw/Ansel
   # source at build time).
   schedule:
-    - cron: "0 0,12 * * *"
+    - cron: "0 */6 * * *"
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
