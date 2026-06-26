@@ -105,11 +105,9 @@ Best performance for your hardware
 
 {{% column %}}
 
-A new release is published when the list of all bugs have been cleared, meaning the software is stable. Not on an arbitrary date. 
+Ansel has not published a stable release yet and there is no ETA for one : a new release is published when the list of all bugs have been cleared, so we _know_ the software and stable. So far, Ansel only publishes __revisions__, which are intermediate states of the sourcecode. Once a revision has been tested by at least 25 unique users, its reliability stats will show above. An asterisk (\*) marks revisions we shipped as a packaged nightly build.
 
-Revisions are intermediate states of the sourcecode (not releases). They are aggregated by Git commit hash and shown only once they have been used by at least 25 distinct people (less-used and intermediate commits are folded into *Other*). An asterisk (\*) marks commits we shipped as a packaged nightly or stable build.
-
-On the two charts above, the crash-free rate is shown as a percentage whose **bar opacity encodes our confidence** (95% confidence interval): the solid part (*almost certain*) is the rate we are confident the software reaches, the fainter parts (*likely*, then *optimistic*) reach up to the best plausible rate, written in parentheses on top. The fewer people tested a revision, the less confident we are in the statistics, and the larger the interval.
+On the two charts above, the crash-free rate is shown as a percentage whose **bar opacity encodes our confidence** : the solid part (*almost certain*) is the rate we are confident the software reaches, the *likely* range goes up to the currently recorded average, then *optimistic* reaches up to the best plausible rate written in parentheses on top. The fewer people tested a revision, the more incertainty there is on the average, the larger the {*likely* + *optimistic*} range gets : it is the margin of error of the current average at 95% confidence.
 
 Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours. __Ansel saves your editing histories immediately after each change__: in case of a crash you loose at most the last action.
 
