@@ -105,17 +105,22 @@ Many problems don't require more tools (or toys), and more code. More code is al
 
 ### Listen but don't listen to users
 
-Users express what they want and what they like, never what they need. They will want the same thing as their neighbour just got. They will like what they are used to. And then, for everything one likes, you will find another one to dislike it. So the Darktable way of solving conflict is to not solve conflict, but give everyone an option, a mode, a preference to enable that special thing they like, how they like it. This means more `case` in your `switch`, more nested `if`, more codepaths you will need to test now, debug, and maintain in the future, and then more preferences hiding the others in the pref window. Before you know it, the code is a tumor that nobody understands anymore, and fixing it only makes it more complicated.
+Users express what they want and what they like, never what they need. And you don't need to listen to them to know what it will be:
+
+1. they will want the same thing as their neighbour just got,
+2. they will like what they are used to. 
+
+And then, for everything one likes, you will find another one to dislike it. So the Darktable way of solving conflict is to not solve conflict, but give everyone an option, a mode, a preference to enable that special thing they like, how they like it. This means more `case` in your `switch`, more nested `if`, more codepaths you will need to test now, debug, and maintain in the future, and then more preferences hiding the others in the pref window. Before you know it, the code is a tumor that nobody understands anymore, and fixing it only makes it more complicated.
 
 When you scratch beneath the surface, you find than what people actually need is much closer to other people's needs than what they say they want. So you can reconcile the needs much easier than the desires, and without compromising. But then you have to trace the root needs below the will, and that takes abstraction skills and psychology.
 
 ### UI designers are dangerous idiots
 
-Everybody who only sees, focuses and cares about the UI is a dangerous idiot. If your GUI is complicated, it means a lot more than just a "complicated GUI" : it means that the complexity of your backend has reached your frontend. I have found the hard way that GUI complexity is never separate, and can't be solved separately, from backend complexity and overall application architecture. GUI is not parallel to backend architecture, it's the termination of it.
+Everybody who only sees, focuses and cares about the UI is a dangerous idiot. If your GUI is complicated, it means a lot more than just a "complicated GUI" : it means that __the complexity of your backend has reached your frontend__. I have found the hard way that GUI complexity is never separate, and can't be solved separately, from backend complexity and overall application architecture. GUI is not parallel to backend architecture, it's the termination of it.
 
 The problem of UI designers is they typically don't code, or if they do, they suck at low-level programming and software architecture. So they focus on what little they see and understand (typical [streetlight effect](https://en.wikipedia.org/wiki/Streetlight_effect)), and they only produce non-actionnable designs that conflicts with what the software actually needs to work. Because that GUI is only connecting user input to the backend, and if we need that many widgets, it's because the architecture needs that many inputs. You can't escape it : to remove widgets, you need to remove inputs, which means your architecture will have to work with fewer degrees of freedom __first__. That starts with simplifying the backend, which means stinky refactoring of dusty old code nobody understands anymore.
 
-You don't solve GUI issues with drawings and mockups, you solve GUI issues with solving backend issues. But then you need guys who understand both levels.
+You don't solve GUI issues with drawings and mockups, you solve GUI issues with solving backend issues. But then you need guys who understand both levels, and they may be too expensive for you.
 
 ### Ask yourself 36 times per day what was the problem you were trying to solve
 
@@ -135,3 +140,31 @@ Many times, I completely redid a design while documenting it, because it's when
 GUI is how users control the backend, but it's also where they learn about existing features and what they do. The documentation should provide context, guidelines and references regarding how we do stuff, but the GUI should explain what it does itself.
 
 Of course, there is an obvious limitation to that : in a photography application, users need to understand photography and its language, which involves things like _dynamic range_, _color gamut_, _tone mapping_, etc. The GUI should be self-explanatory on _how it's supposed to be used_, not remove the need to learn the trade (what should be done and how).
+
+### Design is an iterative process
+
+An application is a virtual world in which one small change can reorder how the rest of the ecosystem adapts around it. Therefore any design change can trigger the need to change other things around (refactor tools, move widgets, prune features). Which then might trigger the need to correct the initial change again. It's a step by step process in which it is foolish to even try to get everything right at each step, what matters it that each steps improves the environment from the previous.
+
+Sometimes, (re)design can't be done by small steps but by large leaps : that's when you redo the architecture. These leaps will break many things around them, which is ok if the newer architecture is simpler and more robust overall, and if you give it some time to recover before taking the sledgehammer again. But that will create a transient state in which the new design will appear worse than the previous. This is telling us that how the design is percieved is not a valid input : design quality has to be assessed against its goals and evaluated with objective metrics, not with feelings and quick tests.
+
+And sometimes, some steps are mistakes and should be reverted. The [sunk cost fallacy](https://en.wikipedia.org/wiki/Sunk_cost) should not be used to justify that some redesign should be kept because it was a lot of work to achieve. It's expected that all research & development doesn't make it into production.
+
+### Whack-a-mole sessions mean your architecture has run its course
+
+Whether you keep creating new bugs while fixing old ones, or you keep creating edge cases by extending some feature, it all points in the same direction : your architecture can't be bent any more because it has outgrown its design requirements. It might be that the backend has grown too convoluted or it might be that the existing architecture was really not planned for what you are trying to make it do, but both ways, you will have to redo the architecture and stop hacking in-place. Otherwise, you are only adding technical debt.
+
+But then, the development cost changes scale and that saturday-afternoon project might become a month-long project.
+
+### Best-practices are guidelines, not rules
+
+Best-practices help developing sane habits and clean code, unless you don't understand the problem they tried to solve and use them out of their scope of validity. In that case, they become cargo cult : trying to mimic the effects in the hope that it will magically fix the causes too.
+
+The first that comes to mind is code reuse/code sharing. If reusing the same code for (seemingly similar) features leads to too much internal branching (nested `if`, `switch`/`case`, etc.), to handle all possible paths, what you win on code volume is lost on cyclomatic complexity, and, by the way, your features are not as similar as you thought. 
+
+Also, duplicating code might be a starting point to locally optimize the duplicate later: once you have the complete procedure in front of you, you may spot steps that can be cached or factorized. Whereas if the procedure is only opaque, high-level, reusable API methods, then you loose the ability to spot and remove redundant computations. So, there is a principle of __data reuse/sharing__ (aka caching computed data that will be used later with no change, to spare CPU cycles) that can be made impossible by __code reuse/sharing__, because it obfuscates and abstracts data lifecycle.
+
+This becomes critical on pixel loops: you want to collapse all pixel-wise operations into the same loop, to pay the memory I/O price only once. Which means that you will have to re-implement the same affine correction ($y = a * x + b$) into each loop using it, rather than having a reusable method that does just that in its own loop.
+
+### Don't brace yourself
+
+If you find yourself overwhelmed by some cryptic and random bugs that keep coming and that you can't make sense of, don't keep fighting blindly and take a step back. Then instrument debug helpers, or higher-level managers that keep track of internal states and give you a map of the software data values at any relevant point in its lifecycle. This is especially critical in asynchronous setups, where several threads create, access or compute stuff in parallel on different timelines, and the actual ordering sequence depends on runtime context.
