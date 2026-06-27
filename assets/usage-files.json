@@ -4,58 +4,58 @@
       "type": "bar",
       "x": [
         "NEF",
-        "DNG (mosaiced)",
         "RAF",
-        "CR2",
+        "DNG (mosaiced)",
         "JPG",
-        "RW2",
+        "CR2",
         "TIFF",
+        "RW2",
         "ORF",
         "DNG (demosaiced)",
         "ARW",
         "EXR",
         "CR3",
         "PNG",
-        "PEF",
         "HEIC",
+        "PEF",
         "PFM",
         "HDR"
       ],
       "y": [
-        144,
-        73,
-        72,
-        61,
-        60,
-        31,
+        168,
+        86,
+        82,
+        75,
+        67,
+        45,
+        40,
+        34,
         28,
-        26,
-        24,
-        19,
-        18,
-        9,
-        8,
-        1,
-        1,
+        25,
+        22,
+        15,
+        11,
+        3,
+        2,
         1,
         1
       ],
       "hovertext": [
-        "NEF<br>144 files opened",
-        "DNG (mosaiced)<br>73 files opened",
-        "RAF<br>72 files opened",
-        "CR2<br>61 files opened",
-        "JPG<br>60 files opened",
-        "RW2<br>31 files opened",
-        "TIFF<br>28 files opened",
-        "ORF<br>26 files opened",
-        "DNG (demosaiced)<br>24 files opened",
-        "ARW<br>19 files opened",
-        "EXR<br>18 files opened",
-        "CR3<br>9 files opened",
-        "PNG<br>8 files opened",
-        "PEF<br>1 files opened",
-        "HEIC<br>1 files opened",
+        "NEF<br>168 files opened",
+        "RAF<br>86 files opened",
+        "DNG (mosaiced)<br>82 files opened",
+        "JPG<br>75 files opened",
+        "CR2<br>67 files opened",
+        "TIFF<br>45 files opened",
+        "RW2<br>40 files opened",
+        "ORF<br>34 files opened",
+        "DNG (demosaiced)<br>28 files opened",
+        "ARW<br>25 files opened",
+        "EXR<br>22 files opened",
+        "CR3<br>15 files opened",
+        "PNG<br>11 files opened",
+        "HEIC<br>3 files opened",
+        "PEF<br>2 files opened",
         "PFM<br>1 files opened",
         "HDR<br>1 files opened"
       ],
@@ -86,7 +86,7 @@
       ],
       "y": [
         0,
-        144
+        168
       ],
       "text": [
         "",
@@ -111,12 +111,12 @@
         "size": 11
       },
       "x": [
-        "RAF",
-        "RAF"
+        "JPG",
+        "JPG"
       ],
       "y": [
         0,
-        144
+        168
       ],
       "text": [
         "",
@@ -146,7 +146,7 @@
       ],
       "y": [
         0,
-        144
+        168
       ],
       "text": [
         "",
@@ -157,7 +157,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 577 files (the last 5 days)"
+      "text": "Image files opened, by type \u2014 705 files (the last 6 days)"
     },
     "xaxis": {
       "type": "category",

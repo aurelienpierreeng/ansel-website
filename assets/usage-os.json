@@ -8,14 +8,14 @@
         "Windows"
       ],
       "values": [
-        81,
-        14,
+        79,
+        16,
         1
       ],
       "hole": 0.45,
       "hovertext": [
-        "Linux<br>81 users",
-        "macOS<br>14 users",
+        "Linux<br>79 users",
+        "macOS<br>16 users",
         "Windows<br>1 users"
       ],
       "hoverinfo": "text",

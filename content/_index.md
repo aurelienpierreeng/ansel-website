@@ -77,6 +77,8 @@ Best performance for your hardware
 
 ### Is it stable ?
 
+_Stats updated automatically every 4h. Last update : {{% build-time %}}_
+
 {{% row %}}
 {{% column %}}
 {{% card %}}

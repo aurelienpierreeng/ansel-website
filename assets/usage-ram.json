@@ -3,12 +3,14 @@
     {
       "type": "bar",
       "x": [
-        "4\u20136 GiB",
         "6\u20138 GiB",
+        "10\u201312 GiB",
         "12\u201314 GiB",
         "14\u201316 GiB",
+        "16\u201318 GiB",
         "18\u201320 GiB",
         "22\u201324 GiB",
+        "24\u201326 GiB",
         "28\u201330 GiB",
         "30\u201332 GiB",
         "46\u201348 GiB",
@@ -16,30 +18,34 @@
         "60\u201362 GiB"
       ],
       "y": [
+        11,
         1,
-        12,
         2,
-        27,
-        3,
-        6,
-        3,
+        33,
+        1,
+        2,
+        5,
+        1,
+        1,
         22,
         1,
         2,
-        21
+        18
       ],
       "hovertext": [
-        "4\u20136 GiB<br>1 users",
-        "6\u20138 GiB<br>12 users",
+        "6\u20138 GiB<br>11 users",
+        "10\u201312 GiB<br>1 users",
         "12\u201314 GiB<br>2 users",
-        "14\u201316 GiB<br>27 users",
-        "18\u201320 GiB<br>3 users",
-        "22\u201324 GiB<br>6 users \u00b7 median",
-        "28\u201330 GiB<br>3 users",
+        "14\u201316 GiB<br>33 users",
+        "16\u201318 GiB<br>1 users",
+        "18\u201320 GiB<br>2 users \u00b7 median",
+        "22\u201324 GiB<br>5 users",
+        "24\u201326 GiB<br>1 users",
+        "28\u201330 GiB<br>1 users",
         "30\u201332 GiB<br>22 users",
         "46\u201348 GiB<br>1 users",
         "56\u201358 GiB<br>2 users",
-        "60\u201362 GiB<br>21 users"
+        "60\u201362 GiB<br>18 users"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -68,7 +74,7 @@
       ],
       "y": [
         0,
-        27
+        33
       ],
       "text": [
         "",
@@ -93,12 +99,12 @@
         "size": 11
       },
       "x": [
-        "22\u201324 GiB",
-        "22\u201324 GiB"
+        "18\u201320 GiB",
+        "18\u201320 GiB"
       ],
       "y": [
         0,
-        27
+        33
       ],
       "text": [
         "",
@@ -128,7 +134,7 @@
       ],
       "y": [
         0,
-        27
+        33
       ],
       "text": [
         "",

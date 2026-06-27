@@ -4,43 +4,40 @@
       "type": "pie",
       "labels": [
         "Ubuntu",
-        "Arch Linux",
         "Debian",
+        "Arch Linux",
         "Linux Mint",
         "Fedora",
         "CachyOS",
-        "openSUSE",
         "Void",
-        "Garuda",
+        "openSUSE",
         "Manjaro",
         "Other"
       ],
       "values": [
         18,
-        16,
-        15,
-        8,
-        5,
+        14,
+        13,
+        10,
+        9,
         4,
-        3,
         2,
         2,
         2,
-        6
+        5
       ],
       "hole": 0.45,
       "hovertext": [
         "Ubuntu<br>18 users",
-        "Arch Linux<br>16 users",
-        "Debian<br>15 users",
-        "Linux Mint<br>8 users",
-        "Fedora<br>5 users",
+        "Debian<br>14 users",
+        "Arch Linux<br>13 users",
+        "Linux Mint<br>10 users",
+        "Fedora<br>9 users",
         "CachyOS<br>4 users",
-        "openSUSE<br>3 users",
         "Void<br>2 users",
-        "Garuda<br>2 users",
+        "openSUSE<br>2 users",
         "Manjaro<br>2 users",
-        "Other<br>6 users"
+        "Other<br>5 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -67,7 +64,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 81 users"
+      "text": "Linux distributions \u2014 79 users"
     },
     "margin": {
       "t": 70,

@@ -12,33 +12,33 @@
       ],
       "z": [
         [
-          52.0,
+          51.0,
           0.0
         ],
         [
-          15.0,
-          33.0
+          19.0,
+          30.0
         ]
       ],
       "text": [
         [
-          "52%",
+          "51%",
           "0%"
         ],
         [
-          "15%",
-          "33%"
+          "19%",
+          "30%"
         ]
       ],
       "texttemplate": "%{text}",
       "hovertext": [
         [
-          "OpenCL on \u00b7 GPU present<br>52.0% of users (52)",
+          "OpenCL on \u00b7 GPU present<br>51.0% of users (51)",
           "OpenCL on \u00b7 No GPU<br>0.0% of users (0)"
         ],
         [
-          "OpenCL off \u00b7 GPU present<br>15.0% of users (15)",
-          "OpenCL off \u00b7 No GPU<br>33.0% of users (33)"
+          "OpenCL off \u00b7 GPU present<br>19.0% of users (19)",
+          "OpenCL off \u00b7 No GPU<br>30.0% of users (30)"
         ]
       ],
       "hoverinfo": "text",

@@ -16,7 +16,7 @@ on:
   # reliability chart and the camera support table (read from Rawspeed/Libraw/Ansel
   # source at build time).
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */4 * * *"
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

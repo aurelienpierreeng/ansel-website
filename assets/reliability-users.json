@@ -7,14 +7,16 @@
         "22f623c*",
         "d6af87a*",
         "c2527d1*",
-        "612eede*"
+        "612eede*",
+        "6859265*"
       ],
       "y": [
         78.53155482892853,
-        65.37364041400255,
+        66.37997242680521,
         74.99960973799033,
-        83.86102112962914,
-        73.37915722962816
+        84.21014760304114,
+        73.37915722962816,
+        86.50512388404788
       ],
       "name": "Almost certain",
       "marker": {
@@ -22,10 +24,11 @@
       },
       "text": [
         "79%",
-        "65%",
+        "66%",
         "75%",
         "84%",
-        "73%"
+        "73%",
+        "87%"
       ],
       "textposition": "inside",
       "insidetextanchor": "end",
@@ -34,10 +37,11 @@
       },
       "hovertext": [
         "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "g22f623c \u2605 packaged build<br>40 crash-free / 51 users (78.4%)<br>95% confidence: 65.4\u201387.5%<br>18879 pictures edited (15685 clean + 3194 before a crash)",
-        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13240 pictures edited (10542 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>39 crash-free / 41 users (95.1%)<br>95% confidence: 83.9\u201398.7%<br>15917 pictures edited (14801 clean + 1116 before a crash)",
-        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
+        "g22f623c \u2605 packaged build<br>47 crash-free / 60 users (78.3%)<br>95% confidence: 66.4\u201386.9%<br>27563 pictures edited (24313 clean + 3250 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13250 pictures edited (10552 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>40 crash-free / 42 users (95.2%)<br>95% confidence: 84.2\u201398.7%<br>18390 pictures edited (17274 clean + 1116 before a crash)",
+        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)",
+        "g6859265 \u2605 packaged build<br>37 crash-free / 38 users (97.4%)<br>95% confidence: 86.5\u201399.5%<br>11334 pictures edited (11334 clean + 0 before a crash)"
       ],
       "hoverinfo": "text"
     },
@@ -48,14 +52,16 @@
         "22f623c*",
         "d6af87a*",
         "c2527d1*",
-        "612eede*"
+        "612eede*",
+        "6859265*"
       ],
       "y": [
         10.754159456785757,
-        13.057732135017062,
+        11.953360906528118,
         13.095628357247762,
-        11.260930089883061,
-        14.856136888018895
+        11.02794763505409,
+        14.856136888018895,
+        10.8632971685837
       ],
       "name": "Likely",
       "marker": {
@@ -63,10 +69,11 @@
       },
       "hovertext": [
         "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "g22f623c \u2605 packaged build<br>40 crash-free / 51 users (78.4%)<br>95% confidence: 65.4\u201387.5%<br>18879 pictures edited (15685 clean + 3194 before a crash)",
-        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13240 pictures edited (10542 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>39 crash-free / 41 users (95.1%)<br>95% confidence: 83.9\u201398.7%<br>15917 pictures edited (14801 clean + 1116 before a crash)",
-        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
+        "g22f623c \u2605 packaged build<br>47 crash-free / 60 users (78.3%)<br>95% confidence: 66.4\u201386.9%<br>27563 pictures edited (24313 clean + 3250 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13250 pictures edited (10552 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>40 crash-free / 42 users (95.2%)<br>95% confidence: 84.2\u201398.7%<br>18390 pictures edited (17274 clean + 1116 before a crash)",
+        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)",
+        "g6859265 \u2605 packaged build<br>37 crash-free / 38 users (97.4%)<br>95% confidence: 86.5\u201399.5%<br>11334 pictures edited (11334 clean + 0 before a crash)"
       ],
       "hoverinfo": "text"
     },
@@ -77,14 +84,16 @@
         "22f623c*",
         "d6af87a*",
         "c2527d1*",
-        "612eede*"
+        "612eede*",
+        "6859265*"
       ],
       "y": [
         5.71035014316864,
-        9.074689042747622,
+        8.543622618476363,
         6.710958577003666,
-        3.5299542439708773,
-        7.093259217470603
+        3.4461522710142134,
+        7.093259217470603,
+        2.165520178791539
       ],
       "name": "Optimistic",
       "marker": {
@@ -92,10 +101,11 @@
       },
       "text": [
         "(95%)",
-        "(88%)",
+        "(87%)",
         "(95%)",
         "(99%)",
-        "(95%)"
+        "(95%)",
+        "(100%)"
       ],
       "textposition": "outside",
       "textfont": {
@@ -104,17 +114,18 @@
       "cliponaxis": false,
       "hovertext": [
         "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "g22f623c \u2605 packaged build<br>40 crash-free / 51 users (78.4%)<br>95% confidence: 65.4\u201387.5%<br>18879 pictures edited (15685 clean + 3194 before a crash)",
-        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13240 pictures edited (10542 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>39 crash-free / 41 users (95.1%)<br>95% confidence: 83.9\u201398.7%<br>15917 pictures edited (14801 clean + 1116 before a crash)",
-        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)"
+        "g22f623c \u2605 packaged build<br>47 crash-free / 60 users (78.3%)<br>95% confidence: 66.4\u201386.9%<br>27563 pictures edited (24313 clean + 3250 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13250 pictures edited (10552 clean + 2698 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>40 crash-free / 42 users (95.2%)<br>95% confidence: 84.2\u201398.7%<br>18390 pictures edited (17274 clean + 1116 before a crash)",
+        "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)",
+        "g6859265 \u2605 packaged build<br>37 crash-free / 38 users (97.4%)<br>95% confidence: 86.5\u201399.5%<br>11334 pictures edited (11334 clean + 0 before a crash)"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Crash-free users per revision (the last 6 days)<br />84.4% crash-free over 225 unique users"
+      "text": "Crash-free users per revision (the last 7 days)<br />84.1% crash-free over 258 unique users"
     },
     "barmode": "stack",
     "xaxis": {

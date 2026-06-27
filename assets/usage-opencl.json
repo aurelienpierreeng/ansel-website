@@ -7,13 +7,13 @@
         "Without OpenCL"
       ],
       "values": [
-        52,
-        48
+        51,
+        49
       ],
       "hole": 0.45,
       "hovertext": [
-        "With OpenCL<br>52 users",
-        "Without OpenCL<br>48 users"
+        "With OpenCL<br>51 users",
+        "Without OpenCL<br>49 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
