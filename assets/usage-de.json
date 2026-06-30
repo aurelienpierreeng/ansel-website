@@ -8,30 +8,33 @@
         "Cinnamon",
         "wlroots",
         "Hyprland",
-        "MATE",
         "XFCE",
-        "LXQt"
+        "i3",
+        "LXQt",
+        "LXDE"
       ],
       "values": [
+        30,
         29,
-        26,
-        12,
+        15,
+        6,
         2,
-        2,
+        1,
         1,
         1,
         1
       ],
       "hole": 0.45,
       "hovertext": [
-        "GNOME<br>29 users",
-        "KDE<br>26 users",
-        "Cinnamon<br>12 users",
-        "wlroots<br>2 users",
+        "GNOME<br>30 users",
+        "KDE<br>29 users",
+        "Cinnamon<br>15 users",
+        "wlroots<br>6 users",
         "Hyprland<br>2 users",
-        "MATE<br>1 users",
         "XFCE<br>1 users",
-        "LXQt<br>1 users"
+        "i3<br>1 users",
+        "LXQt<br>1 users",
+        "LXDE<br>1 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -58,7 +61,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Desktop environment on Linux \u2014 74 users"
+      "text": "Desktop environment on Linux \u2014 86 users"
     },
     "margin": {
       "t": 70,

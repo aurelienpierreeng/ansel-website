@@ -5,18 +5,24 @@
       "x": [
         "8f7c553",
         "22f623c*",
-        "d6af87a*",
+        "9e45a3d*",
         "c2527d1*",
+        "a5831af*",
+        "d6af87a*",
         "612eede*",
+        "b453c5e*",
         "6859265*"
       ],
       "y": [
-        92.20283411139559,
-        85.4481791472375,
-        86.18985123272557,
-        94.759441294307,
-        81.38864267373351,
-        93.00380108531947
+        92.42826143228314,
+        86.42074977315455,
+        84.85819115773593,
+        87.3899457734313,
+        84.07537395119957,
+        86.71200521407359,
+        82.10705281355494,
+        86.67183442558937,
+        83.05510980295884
       ],
       "name": "Almost certain",
       "marker": {
@@ -24,11 +30,14 @@
       },
       "text": [
         "92%",
-        "85%",
         "86%",
-        "95%",
-        "81%",
-        "93%"
+        "85%",
+        "87%",
+        "84%",
+        "87%",
+        "82%",
+        "87%",
+        "83%"
       ],
       "textposition": "inside",
       "insidetextanchor": "end",
@@ -36,12 +45,15 @@
         "color": "#143a2c"
       },
       "hovertext": [
-        "g8f7c553 (r3836)<br>157 crash-free / 163 sessions (96.3%)<br>95% confidence: 92.2\u201398.3% (effective n\u2248163)<br>MTBF (uptime before crash): 49 min (n=6)",
-        "g22f623c \u2605 packaged build<br>206 crash-free / 226 sessions (91.2%)<br>95% confidence: 85.4\u201394.8% (effective n\u2248147)<br>avg session: 42 min<br>MTBF (uptime before crash): 1.6 h (n=20)",
-        "gd6af87a \u2605 packaged build<br>135 crash-free / 144 sessions (93.8%)<br>95% confidence: 86.2\u201397.3% (effective n\u224880)<br>avg session: 44 min<br>MTBF (uptime before crash): 65 min (n=9)",
-        "gc2527d1 \u2605 packaged build<br>133 crash-free / 135 sessions (98.5%)<br>95% confidence: 94.8\u201399.6% (effective n\u2248135)<br>avg session: 1.8 h<br>MTBF (uptime before crash): 52 min (n=2)",
-        "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 81.4\u201396.9% (effective n\u224851)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)",
-        "g6859265 \u2605 packaged build<br>76 crash-free / 77 sessions (98.7%)<br>95% confidence: 93.0\u201399.8% (effective n\u224877)<br>avg session: 36 min<br>MTBF (uptime before crash): 12 s (n=1)"
+        "g8f7c553 (r3836)<br>162 crash-free / 168 sessions (96.4%)<br>95% confidence: 92.4\u201398.4% (effective n\u2248168)<br>MTBF (uptime before crash): 54 min (n=3)",
+        "g22f623c \u2605 packaged build<br>234 crash-free / 255 sessions (91.8%)<br>95% confidence: 86.4\u201395.1% (effective n\u2248158)<br>avg session: 39 min<br>MTBF (uptime before crash): 89 min (n=21)",
+        "g9e45a3d \u2605 packaged build<br>182 crash-free / 198 sessions (91.9%)<br>95% confidence: 84.9\u201395.8% (effective n\u224899)<br>avg session: 56 min<br>MTBF (uptime before crash): 43 s (n=14)",
+        "gc2527d1 \u2605 packaged build<br>146 crash-free / 153 sessions (95.4%)<br>95% confidence: 87.4\u201398.4% (effective n\u224866)<br>avg session: 1.8 h<br>MTBF (uptime before crash): 17 min (n=6)",
+        "ga5831af \u2605 packaged build<br>144 crash-free / 153 sessions (94.1%)<br>95% confidence: 84.1\u201398.0% (effective n\u224851)<br>avg session: 36 min<br>MTBF (uptime before crash): 59 s (n=9)",
+        "gd6af87a \u2605 packaged build<br>141 crash-free / 150 sessions (94.0%)<br>95% confidence: 86.7\u201397.4% (effective n\u224883)<br>avg session: 42 min<br>MTBF (uptime before crash): 65 min (n=9)",
+        "g612eede \u2605 packaged build<br>110 crash-free / 119 sessions (92.4%)<br>95% confidence: 82.1\u201397.0% (effective n\u224853)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)",
+        "gb453c5e \u2605 packaged build<br>98 crash-free / 103 sessions (95.1%)<br>95% confidence: 86.7\u201398.3% (effective n\u224862)<br>avg session: 50 min",
+        "g6859265 \u2605 packaged build<br>89 crash-free / 94 sessions (94.7%)<br>95% confidence: 83.1\u201398.5% (effective n\u224840)<br>avg session: 56 min<br>MTBF (uptime before crash): 4 s (n=4)"
       ],
       "hoverinfo": "text"
     },
@@ -50,30 +62,39 @@
       "x": [
         "8f7c553",
         "22f623c*",
-        "d6af87a*",
+        "9e45a3d*",
         "c2527d1*",
+        "a5831af*",
+        "d6af87a*",
         "612eede*",
+        "b453c5e*",
         "6859265*"
       ],
       "y": [
-        4.11618429351239,
-        5.702263330638601,
-        7.560148767274427,
-        3.7590772242115236,
-        10.716620484161226,
-        5.6974976159792305
+        4.000309996288294,
+        5.343956109198388,
+        7.061000761455986,
+        8.034890827875898,
+        10.042273107623956,
+        7.287994785926415,
+        10.329921976361021,
+        8.473796642371795,
+        11.625741260870953
       ],
       "name": "Likely",
       "marker": {
         "color": "rgba(142,193,168,0.55)"
       },
       "hovertext": [
-        "g8f7c553 (r3836)<br>157 crash-free / 163 sessions (96.3%)<br>95% confidence: 92.2\u201398.3% (effective n\u2248163)<br>MTBF (uptime before crash): 49 min (n=6)",
-        "g22f623c \u2605 packaged build<br>206 crash-free / 226 sessions (91.2%)<br>95% confidence: 85.4\u201394.8% (effective n\u2248147)<br>avg session: 42 min<br>MTBF (uptime before crash): 1.6 h (n=20)",
-        "gd6af87a \u2605 packaged build<br>135 crash-free / 144 sessions (93.8%)<br>95% confidence: 86.2\u201397.3% (effective n\u224880)<br>avg session: 44 min<br>MTBF (uptime before crash): 65 min (n=9)",
-        "gc2527d1 \u2605 packaged build<br>133 crash-free / 135 sessions (98.5%)<br>95% confidence: 94.8\u201399.6% (effective n\u2248135)<br>avg session: 1.8 h<br>MTBF (uptime before crash): 52 min (n=2)",
-        "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 81.4\u201396.9% (effective n\u224851)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)",
-        "g6859265 \u2605 packaged build<br>76 crash-free / 77 sessions (98.7%)<br>95% confidence: 93.0\u201399.8% (effective n\u224877)<br>avg session: 36 min<br>MTBF (uptime before crash): 12 s (n=1)"
+        "g8f7c553 (r3836)<br>162 crash-free / 168 sessions (96.4%)<br>95% confidence: 92.4\u201398.4% (effective n\u2248168)<br>MTBF (uptime before crash): 54 min (n=3)",
+        "g22f623c \u2605 packaged build<br>234 crash-free / 255 sessions (91.8%)<br>95% confidence: 86.4\u201395.1% (effective n\u2248158)<br>avg session: 39 min<br>MTBF (uptime before crash): 89 min (n=21)",
+        "g9e45a3d \u2605 packaged build<br>182 crash-free / 198 sessions (91.9%)<br>95% confidence: 84.9\u201395.8% (effective n\u224899)<br>avg session: 56 min<br>MTBF (uptime before crash): 43 s (n=14)",
+        "gc2527d1 \u2605 packaged build<br>146 crash-free / 153 sessions (95.4%)<br>95% confidence: 87.4\u201398.4% (effective n\u224866)<br>avg session: 1.8 h<br>MTBF (uptime before crash): 17 min (n=6)",
+        "ga5831af \u2605 packaged build<br>144 crash-free / 153 sessions (94.1%)<br>95% confidence: 84.1\u201398.0% (effective n\u224851)<br>avg session: 36 min<br>MTBF (uptime before crash): 59 s (n=9)",
+        "gd6af87a \u2605 packaged build<br>141 crash-free / 150 sessions (94.0%)<br>95% confidence: 86.7\u201397.4% (effective n\u224883)<br>avg session: 42 min<br>MTBF (uptime before crash): 65 min (n=9)",
+        "g612eede \u2605 packaged build<br>110 crash-free / 119 sessions (92.4%)<br>95% confidence: 82.1\u201397.0% (effective n\u224853)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)",
+        "gb453c5e \u2605 packaged build<br>98 crash-free / 103 sessions (95.1%)<br>95% confidence: 86.7\u201398.3% (effective n\u224862)<br>avg session: 50 min",
+        "g6859265 \u2605 packaged build<br>89 crash-free / 94 sessions (94.7%)<br>95% confidence: 83.1\u201398.5% (effective n\u224840)<br>avg session: 56 min<br>MTBF (uptime before crash): 4 s (n=4)"
       ],
       "hoverinfo": "text"
     },
@@ -82,18 +103,24 @@
       "x": [
         "8f7c553",
         "22f623c*",
-        "d6af87a*",
+        "9e45a3d*",
         "c2527d1*",
+        "a5831af*",
+        "d6af87a*",
         "612eede*",
+        "b453c5e*",
         "6859265*"
       ],
       "y": [
-        1.983230013741263,
-        3.6049275151462297,
-        3.551062432915799,
-        1.0742611395479855,
-        4.781885686023756,
-        1.069079568988883
+        1.924519363800556,
+        3.359555549877399,
+        3.9293678305168953,
+        3.007074069442538,
+        3.861688998929992,
+        3.410172219698879,
+        4.582737349013556,
+        3.189786024766562,
+        3.7957258347304617
       ],
       "name": "Optimistic",
       "marker": {
@@ -102,10 +129,13 @@
       "text": [
         "(98%)",
         "(95%)",
+        "(96%)",
+        "(98%)",
+        "(98%)",
         "(97%)",
-        "(100%)",
         "(97%)",
-        "(100%)"
+        "(98%)",
+        "(98%)"
       ],
       "textposition": "outside",
       "textfont": {
@@ -113,19 +143,22 @@
       },
       "cliponaxis": false,
       "hovertext": [
-        "g8f7c553 (r3836)<br>157 crash-free / 163 sessions (96.3%)<br>95% confidence: 92.2\u201398.3% (effective n\u2248163)<br>MTBF (uptime before crash): 49 min (n=6)",
-        "g22f623c \u2605 packaged build<br>206 crash-free / 226 sessions (91.2%)<br>95% confidence: 85.4\u201394.8% (effective n\u2248147)<br>avg session: 42 min<br>MTBF (uptime before crash): 1.6 h (n=20)",
-        "gd6af87a \u2605 packaged build<br>135 crash-free / 144 sessions (93.8%)<br>95% confidence: 86.2\u201397.3% (effective n\u224880)<br>avg session: 44 min<br>MTBF (uptime before crash): 65 min (n=9)",
-        "gc2527d1 \u2605 packaged build<br>133 crash-free / 135 sessions (98.5%)<br>95% confidence: 94.8\u201399.6% (effective n\u2248135)<br>avg session: 1.8 h<br>MTBF (uptime before crash): 52 min (n=2)",
-        "g612eede \u2605 packaged build<br>105 crash-free / 114 sessions (92.1%)<br>95% confidence: 81.4\u201396.9% (effective n\u224851)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)",
-        "g6859265 \u2605 packaged build<br>76 crash-free / 77 sessions (98.7%)<br>95% confidence: 93.0\u201399.8% (effective n\u224877)<br>avg session: 36 min<br>MTBF (uptime before crash): 12 s (n=1)"
+        "g8f7c553 (r3836)<br>162 crash-free / 168 sessions (96.4%)<br>95% confidence: 92.4\u201398.4% (effective n\u2248168)<br>MTBF (uptime before crash): 54 min (n=3)",
+        "g22f623c \u2605 packaged build<br>234 crash-free / 255 sessions (91.8%)<br>95% confidence: 86.4\u201395.1% (effective n\u2248158)<br>avg session: 39 min<br>MTBF (uptime before crash): 89 min (n=21)",
+        "g9e45a3d \u2605 packaged build<br>182 crash-free / 198 sessions (91.9%)<br>95% confidence: 84.9\u201395.8% (effective n\u224899)<br>avg session: 56 min<br>MTBF (uptime before crash): 43 s (n=14)",
+        "gc2527d1 \u2605 packaged build<br>146 crash-free / 153 sessions (95.4%)<br>95% confidence: 87.4\u201398.4% (effective n\u224866)<br>avg session: 1.8 h<br>MTBF (uptime before crash): 17 min (n=6)",
+        "ga5831af \u2605 packaged build<br>144 crash-free / 153 sessions (94.1%)<br>95% confidence: 84.1\u201398.0% (effective n\u224851)<br>avg session: 36 min<br>MTBF (uptime before crash): 59 s (n=9)",
+        "gd6af87a \u2605 packaged build<br>141 crash-free / 150 sessions (94.0%)<br>95% confidence: 86.7\u201397.4% (effective n\u224883)<br>avg session: 42 min<br>MTBF (uptime before crash): 65 min (n=9)",
+        "g612eede \u2605 packaged build<br>110 crash-free / 119 sessions (92.4%)<br>95% confidence: 82.1\u201397.0% (effective n\u224853)<br>avg session: 35 min<br>MTBF (uptime before crash): 1.8 h (n=9)",
+        "gb453c5e \u2605 packaged build<br>98 crash-free / 103 sessions (95.1%)<br>95% confidence: 86.7\u201398.3% (effective n\u224862)<br>avg session: 50 min",
+        "g6859265 \u2605 packaged build<br>89 crash-free / 94 sessions (94.7%)<br>95% confidence: 83.1\u201398.5% (effective n\u224840)<br>avg session: 56 min<br>MTBF (uptime before crash): 4 s (n=4)"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Crash-free sessions per revision (the last 7 days)<br />93.4% crash-free over 1346 sessions"
+      "text": "Crash-free sessions per revision (the last 11 days)<br />93.5% crash-free over 1944 sessions"
     },
     "barmode": "stack",
     "xaxis": {

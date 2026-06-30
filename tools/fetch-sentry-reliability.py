@@ -527,17 +527,73 @@ def fetch_user_platforms(key):
              "screen_width", "screen_height", "ppd", "cpu_cores", "build_channel",
              "desktop_environment"]
     sel = ", ".join("argMax(properties.%s, timestamp) AS %s" % (p, p) for p in props)
+    # Group by distinct_id (= dt_install_id, the same anonymous id Sentry uses as the
+    # user) so the result can be merged with Sentry, deduped per user.
     hogql = (
-        "SELECT %s FROM events WHERE event = 'session_start' "
-        "AND timestamp > now() - INTERVAL %d DAY GROUP BY person_id"
+        "SELECT distinct_id, %s FROM events WHERE event = 'session_start' "
+        "AND timestamp > now() - INTERVAL %d DAY GROUP BY distinct_id"
     ) % (sel, PERIOD_DAYS)
     rows = []
-    for (os_s, opencl, gpu, ram, disp, sw, sh, ppd, cores, chan, de) \
+    for (uid, os_s, opencl, gpu, ram, disp, sw, sh, ppd, cores, chan, de) \
             in _posthog_query(key, hogql):
-        rows.append({"os": os_s, "opencl": opencl, "gpu": gpu,
-                     "ram": ram, "disp": disp,
+        rows.append({"uid": uid, "src": "posthog", "os": os_s, "opencl": opencl,
+                     "gpu": gpu, "ram": ram, "disp": disp,
                      "sw": sw, "sh": sh, "ppd": ppd, "cores": cores,
                      "chan": chan, "de": de})
+    return rows
+
+
+def fetch_sentry_platforms(token):
+    """Per-user device facts from Sentry crash events — the only Sentry source that
+    carries device detail — deduped by install id (= Sentry user id = PostHog
+    distinct_id), keeping each user's most recent event. This supplements PostHog,
+    which misses users whose usage POSTs never arrived (e.g. the Windows TLS bug).
+    Returns rows in the same schema as fetch_user_platforms; fields Sentry does not
+    expose (RAM, cores, screen) are left None. GPU/OpenCL come from the same source
+    as PostHog (the OpenCL device), so the two are consistent."""
+    base = "%s/api/0/organizations/%s/events/" % (HOST, ORG)
+    params = [("project", PROJECT_ID),
+              ("field", "user"), ("field", "os.name"), ("field", "opencl"),
+              ("field", "opencl_device"), ("field", "build_channel"),
+              ("field", "display_server"), ("field", "desktop_environment"),
+              ("field", "timestamp"),
+              ("query", "event.type:error"), ("statsPeriod", STATS_PERIOD),
+              ("sort", "-timestamp"), ("per_page", "100")]
+    seen, rows, cursor = set(), [], None
+    for _ in range(30):  # bounded pagination
+        p = list(params)
+        if cursor:
+            p.append(("cursor", cursor))
+        req = urllib.request.Request(base + "?" + urllib.parse.urlencode(p),
+                                     headers={"Authorization": "Bearer %s" % token})
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            payload = json.load(resp)
+            link = resp.headers.get("Link", "")
+        for ev in payload.get("data", []):
+            uid = ev.get("user") or ""
+            if uid.startswith("id:"):
+                uid = uid[3:]
+            if not uid or uid in seen:
+                continue
+            seen.add(uid)
+            ocl = ev.get("opencl")
+            rows.append({"uid": uid, "src": "sentry",
+                         "os": ev.get("os.name") or None,
+                         "opencl": ocl if ocl not in (None, "") else None,
+                         "gpu": ev.get("opencl_device") or None,
+                         "disp": ev.get("display_server") or None,
+                         "de": ev.get("desktop_environment") or None,
+                         "chan": ev.get("build_channel") or None,
+                         "ram": None, "cores": None,
+                         "sw": None, "sh": None, "ppd": None})
+        cursor = None
+        for part in link.split(","):
+            if 'rel="next"' in part and 'results="true"' in part:
+                m = re.search(r'cursor="([^"]+)"', part)
+                if m:
+                    cursor = m.group(1)
+        if not cursor:
+            break
     return rows
 
 
@@ -602,11 +658,27 @@ def _quantile_lines(labels, counts, span, orient):
     return traces, median_idx
 
 
-def write_platform_figures(key):
-    """Build and write the per-user hardware/platform charts (PostHog only)."""
+def write_platform_figures(key, sentry_token=None):
+    """Build and write the per-user hardware/platform charts. PostHog is the primary
+    source; Sentry crash events supplement it with users PostHog never captured
+    (deduped by install id), so the user census is more complete."""
     rows = fetch_user_platforms(key)
+    by_uid = {r["uid"]: r for r in rows}
+    if sentry_token:
+        try:
+            added = 0
+            for sr in fetch_sentry_platforms(sentry_token):
+                # PostHog rows are richer (RAM/cores/screen), so they win for users
+                # seen in both; only add users PostHog is missing.
+                if sr["uid"] not in by_uid:
+                    by_uid[sr["uid"]] = sr
+                    added += 1
+            warn("platform: %d PostHog users + %d Sentry-only users." % (len(rows), added))
+        except Exception as exc:  # noqa: BLE001
+            warn("Sentry platform merge failed (%s); PostHog only." % exc)
+    rows = list(by_uid.values())
     if not rows:
-        warn("no PostHog session_start data; keeping platform placeholders.")
+        warn("no platform data; keeping placeholders.")
         return
     n_users = len(rows)
 
@@ -645,7 +717,9 @@ def write_platform_figures(key):
                 disp["Wayland"] = disp.get("Wayland", 0) + 1
             elif d:
                 disp["Other"] = disp.get("Other", 0) + 1
-            distro[_distro_name(r["os"])] = distro.get(_distro_name(r["os"]), 0) + 1
+            # Distro needs the full OS string; Sentry only reports os.name="Linux".
+            if r.get("src") == "posthog":
+                distro[_distro_name(r["os"])] = distro.get(_distro_name(r["os"]), 0) + 1
         # Screen geometry as width×height@scaling.
         sc = _screen_label(r["sw"], r["sh"], r["ppd"])
         if sc:
@@ -1605,7 +1679,7 @@ def main():
         except Exception as exc:  # noqa: BLE001
             warn("usage figures failed (%s); keeping placeholders." % exc)
         try:
-            write_platform_figures(ph_key)
+            write_platform_figures(ph_key, get_token())
         except Exception as exc:  # noqa: BLE001
             warn("platform figures failed (%s); keeping placeholders." % exc)
         try:

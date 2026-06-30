@@ -5,18 +5,24 @@
       "x": [
         "8f7c553",
         "22f623c*",
-        "d6af87a*",
+        "9e45a3d*",
         "c2527d1*",
+        "a5831af*",
+        "d6af87a*",
         "612eede*",
+        "b453c5e*",
         "6859265*"
       ],
       "y": [
-        78.53155482892853,
-        66.37997242680521,
+        78.87718941661296,
+        68.28636426898584,
+        72.47591482358985,
+        81.39101309875801,
+        80.99057319884169,
         74.99960973799033,
-        84.21014760304114,
         73.37915722962816,
-        86.50512388404788
+        78.69932065071163,
+        83.49612263085902
       ],
       "name": "Almost certain",
       "marker": {
@@ -24,11 +30,14 @@
       },
       "text": [
         "79%",
-        "66%",
+        "68%",
+        "72%",
+        "81%",
+        "81%",
         "75%",
-        "84%",
         "73%",
-        "87%"
+        "79%",
+        "83%"
       ],
       "textposition": "inside",
       "insidetextanchor": "end",
@@ -36,12 +45,15 @@
         "color": "#143a2c"
       },
       "hovertext": [
-        "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "g22f623c \u2605 packaged build<br>47 crash-free / 60 users (78.3%)<br>95% confidence: 66.4\u201386.9%<br>27563 pictures edited (24313 clean + 3250 before a crash)",
-        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13250 pictures edited (10552 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>40 crash-free / 42 users (95.2%)<br>95% confidence: 84.2\u201398.7%<br>18390 pictures edited (17274 clean + 1116 before a crash)",
+        "g8f7c553 (r3836)<br>51 crash-free / 57 users (89.5%)<br>95% confidence: 78.9\u201395.1%",
+        "g22f623c \u2605 packaged build<br>51 crash-free / 64 users (79.7%)<br>95% confidence: 68.3\u201387.7%<br>31939 pictures edited (28689 clean + 3250 before a crash)",
+        "g9e45a3d \u2605 packaged build<br>44 crash-free / 52 users (84.6%)<br>95% confidence: 72.5\u201392.0%<br>52825 pictures edited (52816 clean + 9 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>40 crash-free / 43 users (93.0%)<br>95% confidence: 81.4\u201397.6%<br>20241 pictures edited (19125 clean + 1116 before a crash)",
+        "ga5831af \u2605 packaged build<br>39 crash-free / 42 users (92.9%)<br>95% confidence: 81.0\u201397.5%<br>33120 pictures edited (32909 clean + 211 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13254 pictures edited (10556 clean + 2698 before a crash)",
         "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)",
-        "g6859265 \u2605 packaged build<br>37 crash-free / 38 users (97.4%)<br>95% confidence: 86.5\u201399.5%<br>11334 pictures edited (11334 clean + 0 before a crash)"
+        "gb453c5e \u2605 packaged build<br>34 crash-free / 37 users (91.9%)<br>95% confidence: 78.7\u201397.2%<br>13903 pictures edited (13903 clean + 0 before a crash)",
+        "g6859265 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>13871 pictures edited (13870 clean + 1 before a crash)"
       ],
       "hoverinfo": "text"
     },
@@ -50,30 +62,39 @@
       "x": [
         "8f7c553",
         "22f623c*",
-        "d6af87a*",
+        "9e45a3d*",
         "c2527d1*",
+        "a5831af*",
+        "d6af87a*",
         "612eede*",
+        "b453c5e*",
         "6859265*"
       ],
       "y": [
-        10.754159456785757,
-        11.953360906528118,
+        10.596494793913351,
+        11.401135731014165,
+        12.139469791794767,
+        11.632242715195474,
+        11.866569658301174,
         13.095628357247762,
-        11.02794763505409,
         14.856136888018895,
-        10.8632971685837
+        13.192571241180275,
+        11.50387736914098
       ],
       "name": "Likely",
       "marker": {
         "color": "rgba(142,193,168,0.55)"
       },
       "hovertext": [
-        "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "g22f623c \u2605 packaged build<br>47 crash-free / 60 users (78.3%)<br>95% confidence: 66.4\u201386.9%<br>27563 pictures edited (24313 clean + 3250 before a crash)",
-        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13250 pictures edited (10552 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>40 crash-free / 42 users (95.2%)<br>95% confidence: 84.2\u201398.7%<br>18390 pictures edited (17274 clean + 1116 before a crash)",
+        "g8f7c553 (r3836)<br>51 crash-free / 57 users (89.5%)<br>95% confidence: 78.9\u201395.1%",
+        "g22f623c \u2605 packaged build<br>51 crash-free / 64 users (79.7%)<br>95% confidence: 68.3\u201387.7%<br>31939 pictures edited (28689 clean + 3250 before a crash)",
+        "g9e45a3d \u2605 packaged build<br>44 crash-free / 52 users (84.6%)<br>95% confidence: 72.5\u201392.0%<br>52825 pictures edited (52816 clean + 9 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>40 crash-free / 43 users (93.0%)<br>95% confidence: 81.4\u201397.6%<br>20241 pictures edited (19125 clean + 1116 before a crash)",
+        "ga5831af \u2605 packaged build<br>39 crash-free / 42 users (92.9%)<br>95% confidence: 81.0\u201397.5%<br>33120 pictures edited (32909 clean + 211 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13254 pictures edited (10556 clean + 2698 before a crash)",
         "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)",
-        "g6859265 \u2605 packaged build<br>37 crash-free / 38 users (97.4%)<br>95% confidence: 86.5\u201399.5%<br>11334 pictures edited (11334 clean + 0 before a crash)"
+        "gb453c5e \u2605 packaged build<br>34 crash-free / 37 users (91.9%)<br>95% confidence: 78.7\u201397.2%<br>13903 pictures edited (13903 clean + 0 before a crash)",
+        "g6859265 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>13871 pictures edited (13870 clean + 1 before a crash)"
       ],
       "hoverinfo": "text"
     },
@@ -82,18 +103,24 @@
       "x": [
         "8f7c553",
         "22f623c*",
-        "d6af87a*",
+        "9e45a3d*",
         "c2527d1*",
+        "a5831af*",
+        "d6af87a*",
         "612eede*",
+        "b453c5e*",
         "6859265*"
       ],
       "y": [
-        5.71035014316864,
-        8.543622618476363,
+        5.611849937099208,
+        8.039082180816337,
+        7.376930367835072,
+        4.5755852283250675,
+        4.683816155526557,
         6.710958577003666,
-        3.4461522710142134,
         7.093259217470603,
-        2.165520178791539
+        5.312050698063302,
+        3.6179332613851614
       ],
       "name": "Optimistic",
       "marker": {
@@ -101,11 +128,14 @@
       },
       "text": [
         "(95%)",
-        "(87%)",
+        "(88%)",
+        "(92%)",
+        "(98%)",
+        "(98%)",
         "(95%)",
-        "(99%)",
         "(95%)",
-        "(100%)"
+        "(97%)",
+        "(99%)"
       ],
       "textposition": "outside",
       "textfont": {
@@ -113,19 +143,22 @@
       },
       "cliponaxis": false,
       "hovertext": [
-        "g8f7c553 (r3836)<br>50 crash-free / 56 users (89.3%)<br>95% confidence: 78.5\u201395.0%",
-        "g22f623c \u2605 packaged build<br>47 crash-free / 60 users (78.3%)<br>95% confidence: 66.4\u201386.9%<br>27563 pictures edited (24313 clean + 3250 before a crash)",
-        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13250 pictures edited (10552 clean + 2698 before a crash)",
-        "gc2527d1 \u2605 packaged build<br>40 crash-free / 42 users (95.2%)<br>95% confidence: 84.2\u201398.7%<br>18390 pictures edited (17274 clean + 1116 before a crash)",
+        "g8f7c553 (r3836)<br>51 crash-free / 57 users (89.5%)<br>95% confidence: 78.9\u201395.1%",
+        "g22f623c \u2605 packaged build<br>51 crash-free / 64 users (79.7%)<br>95% confidence: 68.3\u201387.7%<br>31939 pictures edited (28689 clean + 3250 before a crash)",
+        "g9e45a3d \u2605 packaged build<br>44 crash-free / 52 users (84.6%)<br>95% confidence: 72.5\u201392.0%<br>52825 pictures edited (52816 clean + 9 before a crash)",
+        "gc2527d1 \u2605 packaged build<br>40 crash-free / 43 users (93.0%)<br>95% confidence: 81.4\u201397.6%<br>20241 pictures edited (19125 clean + 1116 before a crash)",
+        "ga5831af \u2605 packaged build<br>39 crash-free / 42 users (92.9%)<br>95% confidence: 81.0\u201397.5%<br>33120 pictures edited (32909 clean + 211 before a crash)",
+        "gd6af87a \u2605 packaged build<br>37 crash-free / 42 users (88.1%)<br>95% confidence: 75.0\u201394.8%<br>13254 pictures edited (10556 clean + 2698 before a crash)",
         "g612eede \u2605 packaged build<br>30 crash-free / 34 users (88.2%)<br>95% confidence: 73.4\u201395.3%<br>18026 pictures edited (15318 clean + 2708 before a crash)",
-        "g6859265 \u2605 packaged build<br>37 crash-free / 38 users (97.4%)<br>95% confidence: 86.5\u201399.5%<br>11334 pictures edited (11334 clean + 0 before a crash)"
+        "gb453c5e \u2605 packaged build<br>34 crash-free / 37 users (91.9%)<br>95% confidence: 78.7\u201397.2%<br>13903 pictures edited (13903 clean + 0 before a crash)",
+        "g6859265 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>13871 pictures edited (13870 clean + 1 before a crash)"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Crash-free users per revision (the last 7 days)<br />84.1% crash-free over 258 unique users"
+      "text": "Crash-free users per revision (the last 11 days)<br />85.1% crash-free over 343 unique users"
     },
     "barmode": "stack",
     "xaxis": {

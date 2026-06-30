@@ -11,7 +11,7 @@
       "x": [
         39,
         21,
-        416
+        422
       ],
       "name": "Resolved",
       "marker": {
@@ -20,14 +20,14 @@
       "text": [
         "39",
         "21",
-        "416"
+        "422"
       ],
       "textposition": "inside",
       "insidetextanchor": "middle",
       "hovertext": [
         "features<br>39 resolved",
         "tasks<br>21 resolved",
-        "bugs<br>416 resolved"
+        "bugs<br>422 resolved"
       ],
       "hoverinfo": "text"
     },
@@ -65,7 +65,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Next release 0.1 \u2014 476 issues resolved, 22 still open"
+      "text": "Next release 0.1 \u2014 482 issues resolved, 22 still open"
     },
     "barmode": "stack",
     "xaxis": {

@@ -5,57 +5,69 @@
       "x": [
         "NEF",
         "RAF",
-        "DNG (mosaiced)",
         "JPG",
+        "DNG (mosaiced)",
         "CR2",
-        "TIFF",
         "RW2",
-        "ORF",
-        "DNG (demosaiced)",
+        "TIFF",
         "ARW",
-        "EXR",
+        "ORF",
         "CR3",
+        "DNG (demosaiced)",
+        "EXR",
         "PNG",
         "HEIC",
+        "RWL",
         "PEF",
+        "JP2",
+        "AVIF",
+        "3FR",
         "PFM",
         "HDR"
       ],
       "y": [
-        168,
-        86,
-        82,
-        75,
-        67,
-        45,
-        40,
+        246,
+        156,
+        120,
+        110,
+        97,
+        66,
+        61,
+        56,
+        49,
+        37,
         34,
-        28,
-        25,
-        22,
-        15,
-        11,
+        33,
+        17,
+        5,
         3,
         2,
+        1,
+        1,
+        1,
         1,
         1
       ],
       "hovertext": [
-        "NEF<br>168 files opened",
-        "RAF<br>86 files opened",
-        "DNG (mosaiced)<br>82 files opened",
-        "JPG<br>75 files opened",
-        "CR2<br>67 files opened",
-        "TIFF<br>45 files opened",
-        "RW2<br>40 files opened",
-        "ORF<br>34 files opened",
-        "DNG (demosaiced)<br>28 files opened",
-        "ARW<br>25 files opened",
-        "EXR<br>22 files opened",
-        "CR3<br>15 files opened",
-        "PNG<br>11 files opened",
-        "HEIC<br>3 files opened",
+        "NEF<br>246 files opened",
+        "RAF<br>156 files opened",
+        "JPG<br>120 files opened",
+        "DNG (mosaiced)<br>110 files opened",
+        "CR2<br>97 files opened",
+        "RW2<br>66 files opened",
+        "TIFF<br>61 files opened",
+        "ARW<br>56 files opened",
+        "ORF<br>49 files opened",
+        "CR3<br>37 files opened",
+        "DNG (demosaiced)<br>34 files opened",
+        "EXR<br>33 files opened",
+        "PNG<br>17 files opened",
+        "HEIC<br>5 files opened",
+        "RWL<br>3 files opened",
         "PEF<br>2 files opened",
+        "JP2<br>1 files opened",
+        "AVIF<br>1 files opened",
+        "3FR<br>1 files opened",
         "PFM<br>1 files opened",
         "HDR<br>1 files opened"
       ],
@@ -86,7 +98,7 @@
       ],
       "y": [
         0,
-        168
+        246
       ],
       "text": [
         "",
@@ -111,12 +123,12 @@
         "size": 11
       },
       "x": [
-        "JPG",
-        "JPG"
+        "DNG (mosaiced)",
+        "DNG (mosaiced)"
       ],
       "y": [
         0,
-        168
+        246
       ],
       "text": [
         "",
@@ -141,12 +153,12 @@
         "size": 11
       },
       "x": [
-        "ARW",
-        "ARW"
+        "CR3",
+        "CR3"
       ],
       "y": [
         0,
-        168
+        246
       ],
       "text": [
         "",
@@ -157,7 +169,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 705 files (the last 6 days)"
+      "text": "Image files opened, by type \u2014 1097 files (the last 9 days)"
     },
     "xaxis": {
       "type": "category",
