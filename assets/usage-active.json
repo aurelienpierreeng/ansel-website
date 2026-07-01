@@ -27,7 +27,7 @@
         49,
         37,
         39,
-        10
+        12
       ],
       "hovertext": [
         "2026-06-21<br>7 active users",
@@ -40,7 +40,7 @@
         "2026-06-28<br>49 active users",
         "2026-06-29<br>37 active users",
         "2026-06-30<br>39 active users",
-        "2026-07-01<br>10 active users"
+        "2026-07-01<br>12 active users"
       ],
       "hoverinfo": "text",
       "line": {

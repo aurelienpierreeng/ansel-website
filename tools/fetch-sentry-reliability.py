@@ -1095,6 +1095,18 @@ def _is_packaged(cluster_hash, packaged_hashes):
                for p in packaged_hashes)
 
 
+def fetch_commit_date(token, sha):
+    """Committer date (YYYY-MM-DD) for a commit hash, or None. GitHub's commits
+    endpoint resolves abbreviated SHAs, so the short hashes we cluster on work."""
+    try:
+        c = _gh_request(token, "%s/repos/%s/commits/%s" % (GITHUB_API, GITHUB_REPO, sha))
+    except Exception:  # noqa: BLE001 - unknown/unpushed commit, or network error
+        return None
+    date = (((c.get("commit") or {}).get("committer") or {}).get("date")
+            or ((c.get("commit") or {}).get("author") or {}).get("date"))
+    return date[:10] if date else None
+
+
 ISSUE_TYPES = ("Bug", "Task", "Feature")
 
 
@@ -1356,7 +1368,7 @@ def fetch_crash_times(token):
 
 
 def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None,
-                 packaged_hashes=None):
+                 packaged_hashes=None, gh_token=None):
     # Unify releases that are the same commit under different names. Cluster by
     # commit hash: two releases belong together when one hash is a prefix of the
     # other (e.g. "8f7c553" ⊂ "8f7c553fb6" ⊂ the full 40-char SHA). Sessions are
@@ -1459,12 +1471,18 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     shown.sort(key=lambda c: c["total"], reverse=True)
     shown = shown[:MAX_RELEASES]
 
-    # Display order: by release number (revision count), so the x-axis reads
-    # oldest -> newest left to right. Releases without a revision number (pure-SHA
-    # builds) trail at the end.
+    # Attach each shown revision's commit date (from GitHub) and read the x-axis
+    # chronologically by it, oldest -> newest. Unknown/unpushed commits fall back
+    # to the revision number and trail at the end.
+    if gh_token:
+        for c in shown:
+            if c.get("hash"):
+                c["date"] = fetch_commit_date(gh_token, c["hash"])
+
     def _order_key(c):
+        d = c.get("date")
         rev = c.get("revision")
-        return (rev is None, int(rev) if rev else 0)
+        return (d is None, d or "", int(rev) if rev else 0)
     shown.sort(key=_order_key)
 
     # Fold everything that didn't make the cut (below the session threshold, beyond
@@ -1499,13 +1517,15 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     packaged = packaged_hashes or set()
 
     def label(c):
-        # Aggregate by commit hash: label every revision by its abbreviated SHA so
-        # the x-axis is consistent (no mix of revision numbers and hashes). An
-        # asterisk marks commits that we shipped as a packaged nightly/stable build.
+        # Label every revision by its commit date (chronological x-axis). An
+        # asterisk marks commits we shipped as a packaged nightly/stable build; the
+        # exact commit hash stays available in the hover.
         if c.get("is_other"):
             return "Other"
+        star = "*" if c.get("hash") and _is_packaged(c["hash"], packaged) else ""
+        if c.get("date"):
+            return c["date"] + star
         if c["hash"]:
-            star = "*" if _is_packaged(c["hash"], packaged) else ""
             return c["hash"][:7] + star
         return _strip(c["releases"][0])
 
@@ -1519,7 +1539,17 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
             return "g%s%s" % (c["hash"][:7], star)
         return _strip(c["releases"][0])
 
-    labels = [label(c) for c in shown]
+    # x uses a UNIQUE id per revision (the commit hash) so two revisions built on
+    # the same day don't collapse onto one category; the date is shown as the tick
+    # label via ticktext.
+    def _xid(c):
+        if c.get("is_other"):
+            return "Other"
+        if c.get("hash"):
+            return c["hash"][:12]
+        return _strip(c["releases"][0])
+    xids = [_xid(c) for c in shown]
+    labels = [label(c) for c in shown]  # tick text (commit date, "*" if packaged)
     # Crash-free rate as a percentage stack whose OPACITY encodes confidence
     # (Wilson 95% CI): solid up to the lower bound (we are ~97.5% sure the true
     # rate is at least this), semi-transparent up to the measured rate, faint up
@@ -1536,15 +1566,15 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
         # bound is written just below the top of the solid bar; the upper bound on
         # top. Secondary metrics (MTBF / pictures) live only in the hover now.
         data = [
-            {"type": "bar", "x": labels, "y": seg_a, "name": "Almost certain",
+            {"type": "bar", "x": xids, "y": seg_a, "name": "Almost certain",
              "marker": {"color": A_SOLID}, "text": low_text,
              "textposition": "inside", "insidetextanchor": "end",
              "textfont": {"color": TEXT_DARK},
              "hovertext": hover, "hoverinfo": "text"},
-            {"type": "bar", "x": labels, "y": seg_b, "name": "Likely",
+            {"type": "bar", "x": xids, "y": seg_b, "name": "Likely",
              "marker": {"color": A_MID},
              "hovertext": hover, "hoverinfo": "text"},
-            {"type": "bar", "x": labels, "y": seg_c, "name": "Optimistic",
+            {"type": "bar", "x": xids, "y": seg_c, "name": "Optimistic",
              "marker": {"color": A_FAINT}, "text": top_text,
              "textposition": "outside", "textfont": {"color": TEXT_DARK},
              "cliponaxis": False, "hovertext": hover, "hoverinfo": "text"},
@@ -1554,7 +1584,10 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
         layout = {
             "title": {"text": title},
             "barmode": "stack",
-            "xaxis": {"title": {"text": "Revision"}, "type": "category"},
+            # Unique commit-hash ids as categories (so same-day revisions stay
+            # separate), with the commit date shown as the tick label.
+            "xaxis": {"title": {"text": "Revision"}, "type": "category",
+                      "tickmode": "array", "tickvals": xids, "ticktext": labels},
             "yaxis": {"title": {"text": y_title}, "rangemode": "tozero",
                       "ticksuffix": "%", "range": [0, 108]},
             # Legend overlaid inside the plot, just above the x axis.
@@ -1752,7 +1785,8 @@ def main():
         global_users = None
 
     figure, users_figure, n_shown, global_total = build_figure(
-        groups, posthog_rows, crash_rows, span_label, global_users, packaged_hashes)
+        groups, posthog_rows, crash_rows, span_label, global_users, packaged_hashes,
+        gh_token)
     if n_shown == 0:
         warn("no revision meets the >=%d unique-users threshold over %s; "
              "skipping reliability chart." % (MIN_USERS, STATS_PERIOD))

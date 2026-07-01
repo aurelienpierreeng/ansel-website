@@ -14,26 +14,26 @@
         "500+"
       ],
       "y": [
-        243,
+        256,
         23,
-        165,
-        74,
-        87,
-        82,
+        169,
+        76,
+        90,
+        84,
         77,
-        150,
-        104
+        154,
+        107
       ],
       "hovertext": [
-        "0<br>243 sessions",
+        "0<br>256 sessions",
         "1<br>23 sessions",
-        "2\u20134<br>165 sessions",
-        "5\u20139<br>74 sessions \u00b7 median",
-        "10\u201324<br>87 sessions",
-        "25\u201349<br>82 sessions",
+        "2\u20134<br>169 sessions",
+        "5\u20139<br>76 sessions \u00b7 median",
+        "10\u201324<br>90 sessions",
+        "25\u201349<br>84 sessions",
         "50\u201399<br>77 sessions",
-        "100\u2013499<br>150 sessions",
-        "500+<br>104 sessions"
+        "100\u2013499<br>154 sessions",
+        "500+<br>107 sessions"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -62,7 +62,7 @@
       ],
       "y": [
         0,
-        243
+        256
       ],
       "text": [
         "",
@@ -92,7 +92,7 @@
       ],
       "y": [
         0,
-        243
+        256
       ],
       "text": [
         "",
@@ -122,7 +122,7 @@
       ],
       "y": [
         0,
-        243
+        256
       ],
       "text": [
         "",
@@ -133,7 +133,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Images edited per session \u2014 1005 sessions"
+      "text": "Images edited per session \u2014 1036 sessions"
     },
     "xaxis": {
       "type": "category",

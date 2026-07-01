@@ -27,17 +27,17 @@
         "HDR"
       ],
       "y": [
-        289,
-        177,
-        128,
-        117,
-        107,
+        291,
+        185,
+        130,
+        118,
+        108,
         79,
-        64,
-        64,
-        51,
-        47,
-        38,
+        65,
+        65,
+        52,
+        48,
+        41,
         37,
         21,
         5,
@@ -51,17 +51,17 @@
         1
       ],
       "hovertext": [
-        "NEF<br>289 files opened",
-        "RAF<br>177 files opened",
-        "JPG<br>128 files opened",
-        "DNG (mosaiced)<br>117 files opened",
-        "CR2<br>107 files opened",
+        "NEF<br>291 files opened",
+        "RAF<br>185 files opened",
+        "JPG<br>130 files opened",
+        "DNG (mosaiced)<br>118 files opened",
+        "CR2<br>108 files opened",
         "RW2<br>79 files opened",
-        "TIFF<br>64 files opened",
-        "ARW<br>64 files opened",
-        "ORF<br>51 files opened",
-        "CR3<br>47 files opened",
-        "EXR<br>38 files opened",
+        "TIFF<br>65 files opened",
+        "ARW<br>65 files opened",
+        "ORF<br>52 files opened",
+        "CR3<br>48 files opened",
+        "EXR<br>41 files opened",
         "DNG (demosaiced)<br>37 files opened",
         "PNG<br>21 files opened",
         "HEIC<br>5 files opened",
@@ -101,7 +101,7 @@
       ],
       "y": [
         0,
-        289
+        291
       ],
       "text": [
         "",
@@ -131,7 +131,7 @@
       ],
       "y": [
         0,
-        289
+        291
       ],
       "text": [
         "",
@@ -161,7 +161,7 @@
       ],
       "y": [
         0,
-        289
+        291
       ],
       "text": [
         "",
@@ -172,7 +172,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 1235 files (the last 10 days)"
+      "text": "Image files opened, by type \u2014 1256 files (the last 10 days)"
     },
     "xaxis": {
       "type": "category",

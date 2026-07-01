@@ -79,7 +79,7 @@ Best performance for your hardware
 
 ### Is it stable ?
 
-_Stats updated automatically every 4h. Last update : {{% build-time %}}_
+_Stats updated automatically every 4h from opt-in Sentry.io crash logs collection. Last update : {{% build-time %}}_
 
 {{% row %}}
 {{% column %}}
@@ -109,7 +109,7 @@ _Stats updated automatically every 4h. Last update : {{% build-time %}}_
 
 {{% column %}}
 
-Ansel has not published a stable release yet and there is no ETA for one : a new release is published when the list of all bugs have been cleared, so we _know_ the software and stable. So far, Ansel only publishes __revisions__, which are intermediate states of the sourcecode. Once a revision has been tested by at least 25 unique users, its reliability stats will show above. An asterisk (\*) marks revisions we shipped as a packaged nightly build.
+Ansel has not published a stable release yet and there is no ETA for one : a new release is published when the list of all bugs have been cleared, so we _know_ the software and stable. So far, Ansel only publishes __revisions__, which are intermediate states of the sourcecode. Once a revision has been tested by at least 35 unique users, its reliability stats will show above. An asterisk (\*) marks revisions we shipped as a packaged nightly build.
 
 On the two charts above, the crash-free rate is shown as a percentage whose **bar opacity encodes our confidence** : the solid part (*almost certain*) is the rate we are confident the software reaches, the *likely* range goes up to the currently recorded average, then *optimistic* reaches up to the best plausible rate written in parentheses on top. The fewer people tested a revision, the more incertainty there is on the average, the larger the {*likely* + *optimistic*} range gets : it is the margin of error of the current average at 95% confidence.
 

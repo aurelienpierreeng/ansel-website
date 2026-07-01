@@ -10,7 +10,6 @@
         "Fedora",
         "CachyOS",
         "openSUSE",
-        "Zorin",
         "Void",
         "Garuda",
         "LMDE",
@@ -29,8 +28,7 @@
         2,
         2,
         2,
-        2,
-        3
+        4
       ],
       "hole": 0.45,
       "hovertext": [
@@ -41,12 +39,11 @@
         "Fedora<br>5 users",
         "CachyOS<br>3 users",
         "openSUSE<br>3 users",
-        "Zorin<br>2 users",
         "Void<br>2 users",
         "Garuda<br>2 users",
         "LMDE<br>2 users",
         "Manjaro<br>2 users",
-        "Other<br>3 users"
+        "Other<br>4 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -73,7 +70,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 82 users"
+      "text": "Linux distributions \u2014 81 users"
     },
     "margin": {
       "t": 70,

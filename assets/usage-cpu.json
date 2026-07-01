@@ -20,8 +20,8 @@
         2,
         14,
         10,
-        23,
-        7,
+        22,
+        8,
         1,
         14,
         1,
@@ -34,8 +34,8 @@
         "2 cores<br>2 users",
         "4 cores<br>14 users",
         "6 cores<br>10 users",
-        "8 cores<br>23 users",
-        "10 cores<br>7 users \u00b7 median",
+        "8 cores<br>22 users",
+        "10 cores<br>8 users \u00b7 median",
         "11 cores<br>1 users",
         "12 cores<br>14 users",
         "14 cores<br>1 users",
@@ -71,7 +71,7 @@
       ],
       "y": [
         0,
-        23
+        22
       ],
       "text": [
         "",
@@ -101,7 +101,7 @@
       ],
       "y": [
         0,
-        23
+        22
       ],
       "text": [
         "",
@@ -131,7 +131,7 @@
       ],
       "y": [
         0,
-        23
+        22
       ],
       "text": [
         "",
