@@ -13,24 +13,24 @@
         "4 h+"
       ],
       "y": [
-        221,
-        253,
-        196,
-        74,
-        58,
-        34,
-        28,
-        32
+        255,
+        285,
+        213,
+        81,
+        66,
+        39,
+        33,
+        33
       ],
       "hovertext": [
-        "<1 min<br>221 sessions",
-        "1\u20135 min<br>253 sessions \u00b7 median",
-        "5\u201315 min<br>196 sessions",
-        "15\u201330 min<br>74 sessions",
-        "30\u201360 min<br>58 sessions",
-        "1\u20132 h<br>34 sessions",
-        "2\u20134 h<br>28 sessions",
-        "4 h+<br>32 sessions"
+        "<1 min<br>255 sessions",
+        "1\u20135 min<br>285 sessions \u00b7 median",
+        "5\u201315 min<br>213 sessions",
+        "15\u201330 min<br>81 sessions",
+        "30\u201360 min<br>66 sessions",
+        "1\u20132 h<br>39 sessions",
+        "2\u20134 h<br>33 sessions",
+        "4 h+<br>33 sessions"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -59,7 +59,7 @@
       ],
       "y": [
         0,
-        253
+        285
       ],
       "text": [
         "",
@@ -89,7 +89,7 @@
       ],
       "y": [
         0,
-        253
+        285
       ],
       "text": [
         "",
@@ -119,7 +119,7 @@
       ],
       "y": [
         0,
-        253
+        285
       ],
       "text": [
         "",
@@ -130,7 +130,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Session length \u2014 896 sessions"
+      "text": "Session length \u2014 1005 sessions"
     },
     "xaxis": {
       "type": "category",

@@ -12,12 +12,12 @@
       ],
       "z": [
         [
-          50.37037037037037,
+          49.63503649635037,
           0.0
         ],
         [
-          18.51851851851852,
-          31.11111111111111
+          17.51824817518248,
+          32.846715328467155
         ]
       ],
       "text": [
@@ -26,19 +26,19 @@
           "0%"
         ],
         [
-          "19%",
-          "31%"
+          "18%",
+          "33%"
         ]
       ],
       "texttemplate": "%{text}",
       "hovertext": [
         [
-          "OpenCL on \u00b7 GPU present<br>50.4% of users (68)",
+          "OpenCL on \u00b7 GPU present<br>49.6% of users (68)",
           "OpenCL on \u00b7 No GPU<br>0.0% of users (0)"
         ],
         [
-          "OpenCL off \u00b7 GPU present<br>18.5% of users (25)",
-          "OpenCL off \u00b7 No GPU<br>31.1% of users (42)"
+          "OpenCL off \u00b7 GPU present<br>17.5% of users (24)",
+          "OpenCL off \u00b7 No GPU<br>32.8% of users (45)"
         ]
       ],
       "hoverinfo": "text",
@@ -62,7 +62,7 @@
   ],
   "layout": {
     "title": {
-      "text": "GPU acceleration vs graphics card \u2014 135 users"
+      "text": "GPU acceleration vs graphics card \u2014 137 users"
     },
     "xaxis": {
       "type": "category",

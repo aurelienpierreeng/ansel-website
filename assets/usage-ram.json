@@ -22,12 +22,12 @@
         3,
         8,
         1,
-        4,
+        3,
         30,
         1,
         3,
         2,
-        4,
+        5,
         24,
         1,
         2,
@@ -38,12 +38,12 @@
         "4\u20136 GiB<br>3 users",
         "6\u20138 GiB<br>8 users",
         "10\u201312 GiB<br>1 users",
-        "12\u201314 GiB<br>4 users",
+        "12\u201314 GiB<br>3 users",
         "14\u201316 GiB<br>30 users",
         "16\u201318 GiB<br>1 users",
-        "18\u201320 GiB<br>3 users \u00b7 median",
-        "22\u201324 GiB<br>2 users",
-        "28\u201330 GiB<br>4 users",
+        "18\u201320 GiB<br>3 users",
+        "22\u201324 GiB<br>2 users \u00b7 median",
+        "28\u201330 GiB<br>5 users",
         "30\u201332 GiB<br>24 users",
         "46\u201348 GiB<br>1 users",
         "56\u201358 GiB<br>2 users",
@@ -102,8 +102,8 @@
         "size": 11
       },
       "x": [
-        "18\u201320 GiB",
-        "18\u201320 GiB"
+        "22\u201324 GiB",
+        "22\u201324 GiB"
       ],
       "y": [
         0,

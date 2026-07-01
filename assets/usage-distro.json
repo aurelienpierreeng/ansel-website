@@ -5,8 +5,8 @@
       "labels": [
         "Arch Linux",
         "Ubuntu",
-        "Linux Mint",
         "Debian",
+        "Linux Mint",
         "Fedora",
         "CachyOS",
         "openSUSE",
@@ -18,11 +18,11 @@
         "Other"
       ],
       "values": [
-        16,
-        16,
+        17,
+        17,
         12,
-        11,
-        6,
+        12,
+        5,
         3,
         3,
         2,
@@ -34,11 +34,11 @@
       ],
       "hole": 0.45,
       "hovertext": [
-        "Arch Linux<br>16 users",
-        "Ubuntu<br>16 users",
+        "Arch Linux<br>17 users",
+        "Ubuntu<br>17 users",
+        "Debian<br>12 users",
         "Linux Mint<br>12 users",
-        "Debian<br>11 users",
-        "Fedora<br>6 users",
+        "Fedora<br>5 users",
         "CachyOS<br>3 users",
         "openSUSE<br>3 users",
         "Zorin<br>2 users",
@@ -73,7 +73,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 80 users"
+      "text": "Linux distributions \u2014 82 users"
     },
     "margin": {
       "t": 70,

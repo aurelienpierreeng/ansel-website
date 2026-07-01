@@ -13,24 +13,24 @@
       ],
       "z": [
         [
-          41.12903225806452,
-          16.129032258064516,
-          7.258064516129033
+          42.06349206349206,
+          15.079365079365079,
+          7.936507936507936
         ],
         [
-          29.838709677419356,
-          1.6129032258064515,
-          4.032258064516129
+          29.365079365079367,
+          1.5873015873015872,
+          3.968253968253968
         ]
       ],
       "text": [
         [
-          "41%",
-          "16%",
-          "7%"
+          "42%",
+          "15%",
+          "8%"
         ],
         [
-          "30%",
+          "29%",
           "2%",
           "4%"
         ]
@@ -38,12 +38,12 @@
       "texttemplate": "%{text}",
       "hovertext": [
         [
-          "Linux \u00b7 nightly<br>41.1% of users (51)",
-          "macOS \u00b7 nightly<br>16.1% of users (20)",
-          "Windows \u00b7 nightly<br>7.3% of users (9)"
+          "Linux \u00b7 nightly<br>42.1% of users (53)",
+          "macOS \u00b7 nightly<br>15.1% of users (19)",
+          "Windows \u00b7 nightly<br>7.9% of users (10)"
         ],
         [
-          "Linux \u00b7 self-build<br>29.8% of users (37)",
+          "Linux \u00b7 self-build<br>29.4% of users (37)",
           "macOS \u00b7 self-build<br>1.6% of users (2)",
           "Windows \u00b7 self-build<br>4.0% of users (5)"
         ]
@@ -69,7 +69,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Users by operating system \u00d7 build channel \u2014 124 users"
+      "text": "Users by operating system \u00d7 build channel \u2014 126 users"
     },
     "xaxis": {
       "type": "category",

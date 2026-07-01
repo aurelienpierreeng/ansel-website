@@ -18,28 +18,28 @@
       ],
       "y": [
         2,
-        13,
+        14,
         10,
-        22,
-        9,
+        23,
+        7,
         1,
-        15,
+        14,
         1,
-        20,
+        21,
         2,
         3,
         2
       ],
       "hovertext": [
         "2 cores<br>2 users",
-        "4 cores<br>13 users",
+        "4 cores<br>14 users",
         "6 cores<br>10 users",
-        "8 cores<br>22 users",
-        "10 cores<br>9 users \u00b7 median",
+        "8 cores<br>23 users",
+        "10 cores<br>7 users \u00b7 median",
         "11 cores<br>1 users",
-        "12 cores<br>15 users",
+        "12 cores<br>14 users",
         "14 cores<br>1 users",
-        "16 cores<br>20 users",
+        "16 cores<br>21 users",
         "20 cores<br>2 users",
         "24 cores<br>3 users",
         "32 cores<br>2 users"
@@ -71,7 +71,7 @@
       ],
       "y": [
         0,
-        22
+        23
       ],
       "text": [
         "",
@@ -101,7 +101,7 @@
       ],
       "y": [
         0,
-        22
+        23
       ],
       "text": [
         "",
@@ -131,7 +131,7 @@
       ],
       "y": [
         0,
-        22
+        23
       ],
       "text": [
         "",

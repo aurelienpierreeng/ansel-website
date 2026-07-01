@@ -10,14 +10,14 @@
       ],
       "values": [
         46,
-        22,
+        21,
         13,
         12
       ],
       "hole": 0.45,
       "hovertext": [
         "NVIDIA<br>46 users",
-        "Apple<br>22 users",
+        "Apple<br>21 users",
         "AMD<br>13 users",
         "Intel<br>12 users"
       ],
@@ -46,7 +46,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Graphics card vendors \u2014 93 users"
+      "text": "Graphics card vendors \u2014 92 users"
     },
     "margin": {
       "t": 70,

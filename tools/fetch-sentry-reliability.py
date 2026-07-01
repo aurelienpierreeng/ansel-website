@@ -83,7 +83,7 @@ HOST = os.environ.get("SENTRY_HOST", "https://de.sentry.io")
 POSTHOG_HOST = os.environ.get("POSTHOG_HOST", "https://eu.posthog.com")
 POSTHOG_PROJECT_ID = os.environ.get("POSTHOG_PROJECT_ID", "206740")
 STATS_PERIOD = os.environ.get("RELIABILITY_STATS_PERIOD", "90d")
-MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "25"))
+MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "35"))
 MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "12"))
 ENVIRONMENT = os.environ.get("RELIABILITY_ENVIRONMENT", "").strip()
 
