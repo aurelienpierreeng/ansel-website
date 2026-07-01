@@ -39,18 +39,20 @@ Pressing the camera shutter merely started a process ending when the on-screen p
 {{% row %}}
 {{% card icon="linux fab" title="Linux" %}}
 Distribution-agnostic, portable AppImage executable
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/lin-nightly/master/ansel.stable.AppImage.zip" label="Download" icon="download" >}}
+{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".appimage" label="Download latest" >}}
+{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".appimage" label="Download previous" offset="1" display="link" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
 Windows 7 to 11 installer
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/win-nightly/master/ansel.stable.win64.zip" label="Download" icon="download" >}}
+{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".exe" label="Download latest" >}}
+{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".exe" label="Download previous" offset="1" display="link" >}}
 {{% /card %}}
 
 {{% card icon="apple fab" title="MacOS X" %}}
 Distribution for MacOS X 15 and newer.
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable-arm64.mac.zip" label="Download for Apple M" icon="download" >}}
-{{< button url="https://nightly.link/aurelienpierreeng/ansel/workflows/mac-nightly/master/ansel.stable-intel64.mac.zip" label="Download for Intel" icon="download" >}}
+{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension="arm64.dmg" label="Download latest (Apple M)" >}}
+{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension="i386.dmg" label="Download latest (Intel)" >}}
 {{% /card %}}
 
 {{% card icon="terminal" title="Build from source" %}}

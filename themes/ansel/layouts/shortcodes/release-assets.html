@@ -1,0 +1,89 @@
+{{- $repo := .Get "repo" | default "aurelienpierreeng/ansel" -}}
+{{- $releaseInput := .Get "release" | default (.Get "tag") | default "latest" -}}
+{{- $extension := .Get "extension" | default "" | lower -}}
+{{- $buttonLabel := .Get "label" | default "Download" -}}
+{{- $display := .Get "display" | default "button" | lower -}}
+{{- $offset := int (.Get "offset" | default "0") -}}
+{{- $token := "" -}}
+{{- with getenv "HUGO_GITHUB_TOKEN" -}}
+  {{- $token = . | strings.TrimSpace -}}
+{{- end -}}
+{{- if not $token -}}
+  {{- with readFile ".github-auth" -}}
+    {{- $token = . | strings.TrimSpace -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $releaseTag := $releaseInput -}}
+{{- $repoSlug := $repo -}}
+{{- if strings.HasPrefix $releaseInput "http" -}}
+  {{- $parsed := urls.Parse $releaseInput -}}
+  {{- if and $parsed.Host (eq $parsed.Host "github.com") -}}
+    {{- $segments := split (strings.TrimPrefix "/" $parsed.Path) "/" -}}
+    {{- if ge (len $segments) 4 -}}
+      {{- $repoSlug = printf "%s/%s" (index $segments 0) (index $segments 1) -}}
+      {{- if eq (index $segments 2) "releases" -}}
+        {{- $releaseTag = index $segments 4 -}}
+      {{- else if eq (index $segments 2) "tag" -}}
+        {{- $releaseTag = index $segments 3 -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $apiURL := printf "https://api.github.com/repos/%s/releases/tags/%s" $repoSlug $releaseTag -}}
+{{- $headers := dict "Accept" "application/vnd.github+json" "User-Agent" "AnselWebsite" -}}
+{{- if $token -}}
+  {{- $headers = merge $headers (dict "Authorization" (printf "Bearer %s" $token)) -}}
+{{- end -}}
+
+{{- $resource := false -}}
+{{- with try (resources.GetRemote $apiURL (dict "headers" $headers)) -}}
+  {{- if .Err -}}
+    {{- warnf "Failed to fetch GitHub release %q: %s" $apiURL .Err -}}
+  {{- else -}}
+    {{- $resource = .Value -}}
+  {{- end -}}
+{{- end -}}
+{{- $releaseData := dict -}}
+{{- with $resource -}}
+  {{- $releaseData = .Content | transform.Unmarshal -}}
+{{- end -}}
+
+{{- $matches := slice -}}
+{{- with $releaseData.assets -}}
+  {{- range . -}}
+    {{- $name := .name | lower -}}
+    {{- $downloadURL := .browser_download_url -}}
+    {{- if and $downloadURL (not (strings.Contains $name "source")) (hasSuffix $name $extension) -}}
+      {{- $assetDate := .updated_at | default .created_at | default "" -}}
+      {{- $matches = $matches | append (dict "name" $name "url" $downloadURL "date" $assetDate) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $matches = sort $matches "date" "desc" -}}
+{{- $selectedAsset := index $matches $offset -}}
+
+{{ if not $selectedAsset }}
+  {{- $fallbackURL := printf "https://github.com/%s/releases/tag/%s" $repoSlug $releaseTag -}}
+  <a role="button" class="btn btn-dark my-1" href="{{ $fallbackURL }}">View release assets</a>
+{{ else }}
+  {{- $name := index $selectedAsset "name" -}}
+  {{- $hash := "" -}}
+  {{- $hashMatches := findRE "\\.g[0-9a-f]+-" $name -}}
+  {{- if gt (len $hashMatches) 0 -}}
+    {{- $hash = (index $hashMatches 0) | strings.TrimPrefix ".g" | strings.TrimSuffix "-" -}}
+  {{- end -}}
+  {{- $title := $buttonLabel -}}
+  {{- if $hash -}}
+    {{- $title = printf "revision %s" $hash -}}
+  {{- end -}}
+  {{- if eq $display "link" -}}
+    <a href="{{ index $selectedAsset "url" }}" title="{{ $title | safeHTMLAttr }}">{{ $buttonLabel }}</a>
+  {{- else -}}
+    <a role="button" class="btn btn-dark my-1" href="{{ index $selectedAsset "url" }}" title="{{ $title | safeHTMLAttr }}">
+      <i class="fas fa-download"></i><span class="px-1">{{ $buttonLabel }}</span>
+    </a>
+  {{- end -}}
+{{ end }}
