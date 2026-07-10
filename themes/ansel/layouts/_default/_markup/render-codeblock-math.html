@@ -1,0 +1,10 @@
+{{- /* Raw LaTeX passthrough for ```math / ```mathjax fences.
+       .Inner is not markdown-processed, so backslashes survive verbatim.
+       Wrapped in $$…$$ (the only display delimiter this site configures)
+       and in class="math" (MathJax processHtmlClass). Use display-math
+       environments inside the fence (aligned, bmatrix, cases), not `align`. */ -}}
+<div class="math full-width">
+$$
+{{ trim .Inner "\n" | safeHTML }}
+$$
+</div>
