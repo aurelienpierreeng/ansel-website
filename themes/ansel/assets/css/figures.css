@@ -9,8 +9,23 @@ figure {
   max-width: 100%;
 }
 
-figure.caption-figure,
-.gallery.caption-figure {
+/* Captioned gallery : the caption is a flex child, so the flex gap (1rem) already
+   separates it from the last image row — its own top margin would double the spacing. */
+.gallery > .gallery-caption {
+  margin-top: 0;
+}
+
+/* Captioned table : close the figure visually like image figures do (bottom border),
+   and give it breathing room before the following content. The table's own bootstrap
+   bottom margin is dropped so the caption spacing matches the gallery rhythm. */
+.table-responsive.caption-figure {
+  border-bottom: 1px solid var(--bs-secondary);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.table-responsive.caption-figure table {
+  margin-bottom: 0;
 }
 
 #lightbox figure
@@ -24,6 +39,11 @@ figcaption,
 .gallery-caption {
   padding: 0;
   margin: 1rem 0 0 0;
+}
+
+/* Caption blocks draw a top rule (border-top) : keep the text off it. */
+.gallery-caption {
+  padding-top: 1rem;
 }
 
 figure figcaption,
