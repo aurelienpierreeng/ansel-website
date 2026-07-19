@@ -201,7 +201,15 @@ pull request for you through the [GitHub CLI](https://cli.github.com).
 
 #### a. Linux/MacOS variant
 
-Install Github CLI with `apt install gh` or `brew install gh`, ; it signs you into GitHub through your
+Install Github CLI with:
+
+```powershell 
+apt install gh # Debian/Ubuntu
+dnf install gh # Fedora/Redhat
+brew install gh # MacOS
+```
+
+it signs you into GitHub through your
 browser and does the rest, then run:
 
 ```sh
@@ -210,7 +218,13 @@ sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --ur
 
 #### b. Windows variant
 
-Install Github CLI with `winget install Git.Git GitHub.cli`, then run:
+Install Github CLI with:
+
+```powershell
+winget install Git.Git GitHub.cli
+```
+
+then run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>
