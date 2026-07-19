@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-07-19 19:01+0200\n"
+"POT-Creation-Date: 2026-07-19 20:05+0200\n"
 "PO-Revision-Date: 2026-06-26 13:13+0200\n"
 "Last-Translator: Aurélien PIERRE <contact@aurelienpierre.com>\n"
 "Language-Team: none\n"
@@ -27277,11 +27277,10 @@ msgstr ""
 "sh scripts/setup_contributor.sh\n"
 
 # TRANSLATOR Claude
-#. type: Title ####
+#. type: Title #####
 #: content/contribute/training-data.md:131
 #: content/contribute/training-data.md:162
 #: content/contribute/training-data.md:185
-#: content/contribute/training-data.md:219
 #, no-wrap
 msgid "b. Windows variant"
 msgstr "b. Variante Windows"
@@ -27421,130 +27420,42 @@ msgstr "Téléversez le fichier `.tar.gz` affiché vers n'importe quel hébergeu
 #. type: Title ###
 #: content/contribute/training-data.md:197
 #, no-wrap
-msgid "5. Submit"
-msgstr "5. Soumettre"
+msgid "5. Upload and open an issue"
+msgstr "5. Téléverser et ouvrir un ticket"
 
 # TRANSLATOR Claude
 #. type: Plain text
-#: content/contribute/training-data.md:201
+#: content/contribute/training-data.md:204
 #, no-wrap
 msgid ""
-"One script opens the contribution\n"
-"pull request for you through the [GitHub CLI](https://cli.github.com).\n"
-msgstr "Un seul script ouvre pour vous la pull request de contribution via la [CLI GitHub](https://cli.github.com).\n"
-
-# TRANSLATOR Claude
-#. type: Title ####
-#: content/contribute/training-data.md:202
-#, no-wrap
-msgid "a. Linux/MacOS variant"
-msgstr "a. Variante Linux/MacOS"
-
-# TRANSLATOR Claude
-#. type: Plain text
-#: content/contribute/training-data.md:205
-#: content/contribute/training-data.md:222
-#, no-wrap
-msgid "Install Github CLI with:\n"
-msgstr "Installez la CLI GitHub avec :\n"
-
-# TRANSLATOR Claude
-#. type: Fenced code block (powershell )
-#: content/contribute/training-data.md:206
-#, no-wrap
-msgid ""
-"apt install gh # Debian/Ubuntu\n"
-"dnf install gh # Fedora/Redhat\n"
-"brew install gh # MacOS\n"
-msgstr ""
-"apt install gh # Debian/Ubuntu\n"
-"dnf install gh # Fedora/Redhat\n"
-"brew install gh # MacOS\n"
-
-# TRANSLATOR Claude
-#. type: Plain text
-#: content/contribute/training-data.md:214
-#, no-wrap
-msgid ""
-"it signs you into GitHub through your\n"
-"browser and does the rest, then run:\n"
-msgstr "elle vous connecte à GitHub via votre navigateur et fait le reste ; ensuite, lancez :\n"
-
-# TRANSLATOR Claude
-#. type: Fenced code block (sh)
-#: content/contribute/training-data.md:215
-#, no-wrap
-msgid "sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --url <your-link>\n"
-msgstr "sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --url <your-link>\n"
-
-# TRANSLATOR Claude
-#. type: Fenced code block (powershell)
-#: content/contribute/training-data.md:223
-#, no-wrap
-msgid "winget install Git.Git GitHub.cli\n"
-msgstr "winget install Git.Git GitHub.cli\n"
-
-# TRANSLATOR Claude
-#. type: Plain text
-#: content/contribute/training-data.md:231
-#, no-wrap
-msgid ""
-"If `winget` is not recognized (common on Windows 10), download and run the\n"
-"two installers directly instead — [Git for Windows](https://git-scm.com/download/win)\n"
-"and the [GitHub CLI](https://cli.github.com) — then close and reopen\n"
-"PowerShell.\n"
-msgstr "Si `winget` n'est pas reconnu (fréquent sous Windows 10), téléchargez et exécutez plutôt directement les deux installateurs — [Git pour Windows](https://git-scm.com/download/win) et la [CLI GitHub](https://cli.github.com) — puis fermez et rouvrez PowerShell.\n"
-
-# TRANSLATOR Claude
-#. type: Plain text
-#: content/contribute/training-data.md:233
-#, no-wrap
-msgid "Then run:\n"
-msgstr "Puis lancez :\n"
-
-# TRANSLATOR Claude
-#. type: Fenced code block (powershell)
-#: content/contribute/training-data.md:234
-#, no-wrap
-msgid "powershell -ExecutionPolicy Bypass -File scripts\\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>\n"
-msgstr "powershell -ExecutionPolicy Bypass -File scripts\\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>\n"
-
-# TRANSLATOR Claude
-#. type: Title ####
-#: content/contribute/training-data.md:238
-#, no-wrap
-msgid "Alternative"
-msgstr "Alternative"
-
-# TRANSLATOR Claude
-#. type: Plain text
-#: content/contribute/training-data.md:245
-#, no-wrap
-msgid ""
-"The pull request contains only a small metadata file — handle, link,\n"
-"checksum, statistics, license grant — never the images. If you'd rather not\n"
-"install `gh`, open a\n"
+"Put the `.tar.gz` that step 4 printed on any file host that gives a **direct\n"
+"download link** — Google Drive, Dropbox, WeTransfer, Proton Drive, your own\n"
+"server — then open a\n"
 "[Shard contribution issue](https://github.com/aurelienpierreeng/ansel-denoise/issues/new/choose)\n"
-"with the link and the checksum instead.\n"
-msgstr "La pull request ne contient qu'un petit fichier de métadonnées — identifiant, lien, somme de contrôle, statistiques, concession de licence — jamais les images. Si vous préférez ne pas installer `gh`, ouvrez plutôt un [ticket de contribution de fragments](https://github.com/aurelienpierreeng/ansel-denoise/issues/new/choose) avec le lien et la somme de contrôle.\n"
+"and paste the link. The form also asks you to confirm the license grant.\n"
+msgstr "Placez le fichier `.tar.gz` affiché à l'étape 4 sur n'importe quel hébergeur de fichiers offrant un **lien de téléchargement direct** — Google Drive, Dropbox, WeTransfer, Proton Drive, votre propre serveur — puis ouvrez un [ticket de contribution de fragments](https://github.com/aurelienpierreeng/ansel-denoise/issues/new/choose) et collez-y le lien. Le formulaire vous demande aussi de confirmer la concession de licence.\n"
 
 # TRANSLATOR Claude
 #. type: Plain text
-#: content/contribute/training-data.md:247
+#: content/contribute/training-data.md:209
 #, no-wrap
-msgid "That's it. You can delete `shards/mine` and the bundle afterwards.\n"
-msgstr "C'est tout. Vous pouvez ensuite supprimer `shards/mine` et l'archive.\n"
+msgid ""
+"That is the whole submission — no git, no GitHub CLI, nothing to install\n"
+"beyond what step 0 set up, and the same on Linux, macOS and Windows. The\n"
+"maintainer downloads your bundle, verifies it and merges it into the corpus.\n"
+"You can delete `shards/mine` and the bundle afterwards.\n"
+msgstr "Voilà toute la soumission — pas de git, pas de CLI GitHub, rien à installer au-delà de ce que l'étape 0 a mis en place, et c'est identique sous Linux, macOS et Windows. Le mainteneur télécharge votre archive, la vérifie et la fusionne dans le corpus. Vous pouvez ensuite supprimer `shards/mine` et l'archive.\n"
 
 # TRANSLATOR Claude
 #. type: Title ##
-#: content/contribute/training-data.md:248
+#: content/contribute/training-data.md:210
 #, no-wrap
 msgid "What happens next"
 msgstr "Ce qui se passe ensuite"
 
 # TRANSLATOR Claude
 #. type: Plain text
-#: content/contribute/training-data.md:256
+#: content/contribute/training-data.md:218
 #, no-wrap
 msgid ""
 "The maintainer reviews your pull request, then a collection script downloads\n"
@@ -27557,7 +27468,7 @@ msgstr "Le mainteneur examine votre pull request, puis un script de collecte té
 
 # TRANSLATOR Claude
 #. type: Plain text
-#: content/contribute/training-data.md:260
+#: content/contribute/training-data.md:222
 #, no-wrap
 msgid ""
 "You can also train the model yourself — on your own machine or a free GPU\n"
@@ -31583,6 +31494,95 @@ msgstr ""
 "{{% /card %}}\n"
 "{{% /column %}}\n"
 "{{% /row %}}\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "5. Submit"
+#~ msgstr "5. Soumettre"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid ""
+#~ "One script opens the contribution\n"
+#~ "pull request for you through the [GitHub CLI](https://cli.github.com).\n"
+#~ msgstr "Un seul script ouvre pour vous la pull request de contribution via la [CLI GitHub](https://cli.github.com).\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "a. Linux/MacOS variant"
+#~ msgstr "a. Variante Linux/MacOS"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "Install Github CLI with:\n"
+#~ msgstr "Installez la CLI GitHub avec :\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid ""
+#~ "apt install gh # Debian/Ubuntu\n"
+#~ "dnf install gh # Fedora/Redhat\n"
+#~ "brew install gh # MacOS\n"
+#~ msgstr ""
+#~ "apt install gh # Debian/Ubuntu\n"
+#~ "dnf install gh # Fedora/Redhat\n"
+#~ "brew install gh # MacOS\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid ""
+#~ "it signs you into GitHub through your\n"
+#~ "browser and does the rest, then run:\n"
+#~ msgstr "elle vous connecte à GitHub via votre navigateur et fait le reste ; ensuite, lancez :\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --url <your-link>\n"
+#~ msgstr "sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --url <your-link>\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "winget install Git.Git GitHub.cli\n"
+#~ msgstr "winget install Git.Git GitHub.cli\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid ""
+#~ "If `winget` is not recognized (common on Windows 10), download and run the\n"
+#~ "two installers directly instead — [Git for Windows](https://git-scm.com/download/win)\n"
+#~ "and the [GitHub CLI](https://cli.github.com) — then close and reopen\n"
+#~ "PowerShell.\n"
+#~ msgstr "Si `winget` n'est pas reconnu (fréquent sous Windows 10), téléchargez et exécutez plutôt directement les deux installateurs — [Git pour Windows](https://git-scm.com/download/win) et la [CLI GitHub](https://cli.github.com) — puis fermez et rouvrez PowerShell.\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "Then run:\n"
+#~ msgstr "Puis lancez :\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "powershell -ExecutionPolicy Bypass -File scripts\\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>\n"
+#~ msgstr "powershell -ExecutionPolicy Bypass -File scripts\\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "Alternative"
+#~ msgstr "Alternative"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid ""
+#~ "The pull request contains only a small metadata file — handle, link,\n"
+#~ "checksum, statistics, license grant — never the images. If you'd rather not\n"
+#~ "install `gh`, open a\n"
+#~ "[Shard contribution issue](https://github.com/aurelienpierreeng/ansel-denoise/issues/new/choose)\n"
+#~ "with the link and the checksum instead.\n"
+#~ msgstr "La pull request ne contient qu'un petit fichier de métadonnées — identifiant, lien, somme de contrôle, statistiques, concession de licence — jamais les images. Si vous préférez ne pas installer `gh`, ouvrez plutôt un [ticket de contribution de fragments](https://github.com/aurelienpierreeng/ansel-denoise/issues/new/choose) avec le lien et la somme de contrôle.\n"
+
+# TRANSLATOR Claude
+#, no-wrap
+#~ msgid "That's it. You can delete `shards/mine` and the bundle afterwards.\n"
+#~ msgstr "C'est tout. Vous pouvez ensuite supprimer `shards/mine` et l'archive.\n"
 
 #, no-wrap
 #~ msgid "A new release is published when the list of all bugs have been cleared, meaning the software is stable. Not on an arbitrary date. \n"

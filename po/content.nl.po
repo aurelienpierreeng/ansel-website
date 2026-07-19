@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-19 19:01+0200\n"
+"POT-Creation-Date: 2026-07-19 20:05+0200\n"
 "PO-Revision-Date: 2025-04-24 17:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -20322,11 +20322,10 @@ msgid ""
 "sh scripts/setup_contributor.sh\n"
 msgstr ""
 
-#. type: Title ####
+#. type: Title #####
 #: content/contribute/training-data.md:131
 #: content/contribute/training-data.md:162
 #: content/contribute/training-data.md:185
-#: content/contribute/training-data.md:219
 #, no-wrap
 msgid "b. Windows variant"
 msgstr ""
@@ -20447,112 +20446,38 @@ msgstr ""
 #. type: Title ###
 #: content/contribute/training-data.md:197
 #, no-wrap
-msgid "5. Submit"
+msgid "5. Upload and open an issue"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/training-data.md:201
+#: content/contribute/training-data.md:204
 #, no-wrap
 msgid ""
-"One script opens the contribution\n"
-"pull request for you through the [GitHub CLI](https://cli.github.com).\n"
-msgstr ""
-
-#. type: Title ####
-#: content/contribute/training-data.md:202
-#, no-wrap
-msgid "a. Linux/MacOS variant"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/training-data.md:205
-#: content/contribute/training-data.md:222
-#, no-wrap
-msgid "Install Github CLI with:\n"
-msgstr ""
-
-#. type: Fenced code block (powershell )
-#: content/contribute/training-data.md:206
-#, no-wrap
-msgid ""
-"apt install gh # Debian/Ubuntu\n"
-"dnf install gh # Fedora/Redhat\n"
-"brew install gh # MacOS\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/training-data.md:214
-#, no-wrap
-msgid ""
-"it signs you into GitHub through your\n"
-"browser and does the rest, then run:\n"
-msgstr ""
-
-#. type: Fenced code block (sh)
-#: content/contribute/training-data.md:215
-#, no-wrap
-msgid "sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --url <your-link>\n"
-msgstr ""
-
-#. type: Fenced code block (powershell)
-#: content/contribute/training-data.md:223
-#, no-wrap
-msgid "winget install Git.Git GitHub.cli\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/training-data.md:231
-#, no-wrap
-msgid ""
-"If `winget` is not recognized (common on Windows 10), download and run the\n"
-"two installers directly instead — [Git for Windows](https://git-scm.com/download/win)\n"
-"and the [GitHub CLI](https://cli.github.com) — then close and reopen\n"
-"PowerShell.\n"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/training-data.md:233
-#, no-wrap
-msgid "Then run:\n"
-msgstr ""
-
-#. type: Fenced code block (powershell)
-#: content/contribute/training-data.md:234
-#, no-wrap
-msgid "powershell -ExecutionPolicy Bypass -File scripts\\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>\n"
-msgstr ""
-
-#. type: Title ####
-#: content/contribute/training-data.md:238
-#, no-wrap
-msgid "Alternative"
-msgstr ""
-
-#. type: Plain text
-#: content/contribute/training-data.md:245
-#, no-wrap
-msgid ""
-"The pull request contains only a small metadata file — handle, link,\n"
-"checksum, statistics, license grant — never the images. If you'd rather not\n"
-"install `gh`, open a\n"
+"Put the `.tar.gz` that step 4 printed on any file host that gives a **direct\n"
+"download link** — Google Drive, Dropbox, WeTransfer, Proton Drive, your own\n"
+"server — then open a\n"
 "[Shard contribution issue](https://github.com/aurelienpierreeng/ansel-denoise/issues/new/choose)\n"
-"with the link and the checksum instead.\n"
+"and paste the link. The form also asks you to confirm the license grant.\n"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/training-data.md:247
+#: content/contribute/training-data.md:209
 #, no-wrap
-msgid "That's it. You can delete `shards/mine` and the bundle afterwards.\n"
+msgid ""
+"That is the whole submission — no git, no GitHub CLI, nothing to install\n"
+"beyond what step 0 set up, and the same on Linux, macOS and Windows. The\n"
+"maintainer downloads your bundle, verifies it and merges it into the corpus.\n"
+"You can delete `shards/mine` and the bundle afterwards.\n"
 msgstr ""
 
 #. type: Title ##
-#: content/contribute/training-data.md:248
+#: content/contribute/training-data.md:210
 #, no-wrap
 msgid "What happens next"
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/training-data.md:256
+#: content/contribute/training-data.md:218
 #, no-wrap
 msgid ""
 "The maintainer reviews your pull request, then a collection script downloads\n"
@@ -20564,7 +20489,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: content/contribute/training-data.md:260
+#: content/contribute/training-data.md:222
 #, no-wrap
 msgid ""
 "You can also train the model yourself — on your own machine or a free GPU\n"
