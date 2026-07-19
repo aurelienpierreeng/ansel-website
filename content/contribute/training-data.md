@@ -194,56 +194,18 @@ Upload the printed `.tar.gz` to any file host the maintainer can
 download from — Google Drive, Dropbox, WeTransfer, Proton Drive, your own
 server — and copy the download link.
 
-### 5. Submit
+### 5. Upload and open an issue
 
-One script opens the contribution
-pull request for you through the [GitHub CLI](https://cli.github.com).
-
-#### a. Linux/MacOS variant
-
-Install Github CLI with:
-
-```powershell 
-apt install gh # Debian/Ubuntu
-dnf install gh # Fedora/Redhat
-brew install gh # MacOS
-```
-
-it signs you into GitHub through your
-browser and does the rest, then run:
-
-```sh
-sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --url <your-link>
-```
-
-#### b. Windows variant
-
-Install Github CLI with:
-
-```powershell
-winget install Git.Git GitHub.cli
-```
-
-If `winget` is not recognized (common on Windows 10), download and run the
-two installers directly instead — [Git for Windows](https://git-scm.com/download/win)
-and the [GitHub CLI](https://cli.github.com) — then close and reopen
-PowerShell.
-
-Then run:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>
-```
-
-#### Alternative
-
-The pull request contains only a small metadata file — handle, link,
-checksum, statistics, license grant — never the images. If you'd rather not
-install `gh`, open a
+Put the `.tar.gz` that step 4 printed on any file host that gives a **direct
+download link** — Google Drive, Dropbox, WeTransfer, Proton Drive, your own
+server — then open a
 [Shard contribution issue](https://github.com/aurelienpierreeng/ansel-denoise/issues/new/choose)
-with the link and the checksum instead.
+and paste the link. The form also asks you to confirm the license grant.
 
-That's it. You can delete `shards/mine` and the bundle afterwards.
+That is the whole submission — no git, no GitHub CLI, nothing to install
+beyond what step 0 set up, and the same on Linux, macOS and Windows. The
+maintainer downloads your bundle, verifies it and merges it into the corpus.
+You can delete `shards/mine` and the bundle afterwards.
 
 ## What happens next
 
