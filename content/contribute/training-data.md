@@ -48,13 +48,17 @@ explicitly select is ever touched.
 
 You keep the copyright on your photographs. Contributed tiles are published
 under the [Ansel Training Data License](https://github.com/aurelienpierreeng/ansel-denoise/blob/master/LICENSE-DATA.md)
-(ATDL-1.0): they may be used **solely** by the Ansel project and by people
-reproducing its training workflow on their own infrastructure, **only** to
-train denoising neural networks — as clean ground truth, synthetically
-corrupted with noise so the network learns to split noise from detail.
-**Every other use is explicitly forbidden**, generative AI included. You can
-request removal at any time by opening an issue: your shards are deleted
-from the corpus and excluded from all future trainings.
+(ATDL-1.1). What it allows: **anyone** may use the tiles with the
+ansel-denoise training stack (GPL-3.0) to **audit, review, reproduce and
+benchmark** the Ansel denoiser — scientific and academic use is welcome —
+or to **train their own denoising models**, whose weights are theirs
+without restriction, including in other open-source or commercial
+applications. The bright line is what the training stack can learn: the
+tiles must never feed a stack able to learn anything else than separating
+noise from signal — **"style" learning and generative AI are explicitly
+forbidden**, as are dataset redistribution and identifying depicted people
+or places. You can request removal at any time by opening an issue: your
+shards are deleted from the corpus and excluded from all future trainings.
 
 Every contribution is recorded in a
 [public registry](https://github.com/aurelienpierreeng/ansel-denoise/blob/master/contrib/registry.jsonl)
