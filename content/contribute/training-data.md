@@ -224,7 +224,12 @@ Install Github CLI with:
 winget install Git.Git GitHub.cli
 ```
 
-then run:
+If `winget` is not recognized (common on Windows 10), download and run the
+two installers directly instead — [Git for Windows](https://git-scm.com/download/win)
+and the [GitHub CLI](https://cli.github.com) — then close and reopen
+PowerShell.
+
+Then run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>
