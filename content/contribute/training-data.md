@@ -115,9 +115,9 @@ that one script for just that one run — you never need to change a system
 setting. Paste commands into PowerShell with a right-click.
 {{</ note >}}
 
-#### 0. Install the tooling
+### 0. Install the tooling
 
-##### a. Linux variant
+#### a. Linux variant
 
 One script, installs the two Python
 dependencies (`numpy`, `rawpy`) (note: __copy and execute one line at a time__):
@@ -128,7 +128,7 @@ cd ansel-denoise
 sh scripts/setup_contributor.sh
 ```
 
-##### b. Windows variant
+#### b. Windows variant
 
 On Windows, in PowerShell, from the folder where you want the tools (e.g.
 `cd $HOME\Documents`) — no git needed, the script downloads the repository
@@ -140,26 +140,26 @@ powershell -ExecutionPolicy Bypass -File setup_contributor.ps1
 cd ansel-denoise
 ```
 
-#### 1. Curate in Ansel.
+### 1. Curate in Ansel.
 
 In the lighttable, select the images you are willing
 to make public tiles of (filter by ISO to be quick, <kbd>Ctrl+A</kbd> to select all), then menu
 **File ▸ Export image list...**, select **Export ▸ Image filenames**, then click **Save as file...**
 and keep the proposed `ansel-image-files.txt` name.
 
-#### 2. Harvest.
+### 2. Harvest.
 
 Gates on ISO, decodes each file in a crash-isolated process,
 writes the shards. Your Ansel library is used read-only when present but is
 not required — camera and ISO are read from the files themselves otherwise. Nothing is uploaded yet.
 
-##### a. Linux variant
+#### a. Linux variant
 
 ```sh
 python3 -m ansel_denoise.harvest_library --paths-file ansel-image-files.txt --out shards/mine
 ```
 
-##### b. Windows variant
+#### b. Windows variant
 
 On Windows (`py` comes with Python; your Ansel library is found
 automatically under `%LOCALAPPDATA%\ansel` — save the exported
@@ -170,13 +170,13 @@ full path):
 py -m ansel_denoise.harvest_library --paths-file ansel-image-files.txt --out shards\mine
 ```
 
-#### 3. Pack.
+### 3. Pack.
 
 Validates every shard, prefixes them with your handle, writes a
 manifest with checksums and your license grant, bundles the license text
 with the data, produces one tarball.
 
-##### a. Linux variant
+#### a. Linux variant
 
 ```sh
 python3 scripts/pack_contribution.py shards/mine --handle your-github-name
@@ -188,18 +188,18 @@ python3 scripts/pack_contribution.py shards/mine --handle your-github-name
 py scripts\pack_contribution.py shards\mine --handle your-github-name
 ```
 
-#### 4. Upload
+### 4. Upload
 
 Upload the printed `.tar.gz` to any file host the maintainer can
 download from — Google Drive, Dropbox, WeTransfer, Proton Drive, your own
 server — and copy the download link.
 
-#### 5. Submit
+### 5. Submit
 
 One script opens the contribution
 pull request for you through the [GitHub CLI](https://cli.github.com).
 
-##### a. Linux/MacOS variant
+#### a. Linux/MacOS variant
 
 Install Github CLI with `apt install gh` or `brew install gh`, ; it signs you into GitHub through your
 browser and does the rest, then run:
@@ -208,7 +208,7 @@ browser and does the rest, then run:
 sh scripts/submit_contribution.sh ansel-denoise-contrib-<you>-<date>.tar.gz --url <your-link>
 ```
 
-##### b. Windows variant
+#### b. Windows variant
 
 Install Github CLI with `winget install Git.Git GitHub.cli`, then run:
 
@@ -216,7 +216,7 @@ Install Github CLI with `winget install Git.Git GitHub.cli`, then run:
 powershell -ExecutionPolicy Bypass -File scripts\submit_contribution.ps1 -Bundle ansel-denoise-contrib-<you>-<date>.tar.gz -Url <your-link>
 ```
 
-##### Alternative
+#### Alternative
 
 The pull request contains only a small metadata file — handle, link,
 checksum, statistics, license grant — never the images. If you'd rather not
