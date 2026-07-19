@@ -116,7 +116,7 @@ setting. Paste commands into PowerShell with a right-click.
 {{</ note >}}
 
 **0. Install the tooling** — one script, installs the two Python
-dependencies (`numpy`, `rawpy`):
+dependencies (`numpy`, `rawpy`) (note: __copy and execute one line at a time__):
 
 ```sh
 git clone https://github.com/aurelienpierreeng/ansel-denoise.git
@@ -126,7 +126,7 @@ sh scripts/setup_contributor.sh
 
 On Windows, in PowerShell, from the folder where you want the tools (e.g.
 `cd $HOME\Documents`) — no git needed, the script downloads the repository
-as a ZIP for you:
+as a ZIP for you (note: __copy and execute one line at a time__):
 
 ```powershell
 Invoke-WebRequest https://raw.githubusercontent.com/aurelienpierreeng/ansel-denoise/master/scripts/setup_contributor.ps1 -OutFile setup_contributor.ps1
@@ -135,13 +135,14 @@ cd ansel-denoise
 ```
 
 **1. Curate in Ansel.** In the lighttable, select the images you are willing
-to make public tiles of (filter by ISO to be quick), then
-**File ▸ Export image list... ▸ Save as file...** and keep the proposed
-`ansel-image-files.txt` name.
+to make public tiles of (filter by ISO to be quick, <kbd>Ctrl+A</kbd> to select all), then menu
+**File ▸ Export image list...**, select **Export ▸ Image filenames**, then click **Save as file...**
+and keep the proposed `ansel-image-files.txt` name.
 
-**2. Harvest.** Reads your Ansel library database (read-only), gates on ISO,
-decodes each file in a crash-isolated process, writes the shards. Nothing is
-uploaded:
+**2. Harvest.** Gates on ISO, decodes each file in a crash-isolated process,
+writes the shards. Your Ansel library is used read-only when present but is
+not required — camera and ISO are read from the files themselves otherwise.
+Nothing is uploaded:
 
 ```sh
 python3 -m ansel_denoise.harvest_library --paths-file ansel-image-files.txt --out shards/mine
