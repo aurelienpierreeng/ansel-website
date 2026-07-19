@@ -10208,7 +10208,7 @@ msgstr "{{< figure src=\"ansel-lighttable-modules.png\" />}}\n"
 #: content/news/modules-groups-redesign/index.md:42
 #, no-wrap
 msgid "That's 3 mistakes here :\n"
-msgstr "{{< figure src=\"ansel-lighttable-modules.png\" />}}\n"
+msgstr "Aquí hay 3 errores :\n"
 
 # TRANSLATOR ChatGPT
 #. type: Plain text
@@ -14665,7 +14665,6 @@ msgstr ""
 "casi neutra. **Ground truth** es la escena sin recortar, **clipped** lo que el sensor registra,\n"
 "**previous method** el port a Python del módulo à-trous de 2021, **corrected method** el mismo diseño con la\n"
 "reparación de señal completa descrita justo debajo.\n"
-"{{% /figure %}}\n"
 
 # TRANSLATOR Claude
 #. type: Plain text

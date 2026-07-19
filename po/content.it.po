@@ -14665,7 +14665,6 @@ msgstr ""
 "quasi neutra. **Ground truth** è la scena non tagliata, **clipped** ciò che il sensore registra,\n"
 "**previous method** il port Python del modulo à-trous del 2021, **corrected method** lo stesso progetto con la\n"
 "riparazione a segnale intero descritta qui sotto.\n"
-"{{% /figure %}}\n"
 
 # TRANSLATOR Claude
 #. type: Plain text

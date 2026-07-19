@@ -14428,7 +14428,6 @@ msgid ""
 msgstr ""
 "{{% figure src=\"./synthetic-bug-fix.png\" %}}\n"
 "Une scène synthétique : trois hautes lumières monocanal saturées (disques rouge, vert, bleu) et une proche du neutre très brillante. **Ground truth** est la scène non écrêtée, **clipped** ce que le capteur enregistre, **previous method** le portage Python du module à-trous de 2021, **corrected method** la même conception avec la réparation sur signal complet décrite juste en dessous.\n"
-"{{% /figure %}}\n"
 
 # TRANSLATOR Claude
 #. type: Plain text
@@ -14443,7 +14442,6 @@ msgid ""
 "rim diffusion.\n"
 "{{% /figure %}}\n"
 msgstr ""
-"{{% figure src=\"./synthetic-bug-fix.png\" %}}\n"
 "Dans les disques monocanal, le résultat corrigé remonte vers la couleur vraie (p. ex. le disque rouge récupère $\\approx 1.7$ contre une vraie valeur $\\approx 1.9$, le vert et le bleu étant reproduits exactement) là où la méthode précédente reste *en dessous* de l'écrêtage ($\\approx 0.9$). Le disque neutre tout-écrêté, plat à l'écrêtage à la fois dans le capteur et dans la méthode précédente, est ré-bombé par le remplissage de luminance partagé (centre $\\approx 1.5$ contre une vraie valeur $\\approx 1.6$) et reste proche du neutre, sa chrominance portée par la diffusion du pourtour.\n"
 "{{% /figure %}}\n"
 
