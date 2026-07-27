@@ -272,7 +272,7 @@ total amount of variation the image contains, large where it wiggles and zero wh
 constant :
 
 ```math
-E[u] = \int_\Omega \lVert \nabla u \rVert^2 \, \mathrm{d}x,
+E[u] = \int_\Omega \lVert \nabla u \rVert^2 \, \mathrm{d}\Omega,
 ```
 
 whose minimizer over the hole $\Omega$, with the surrounding pixels as boundary condition, is the
@@ -300,7 +300,7 @@ smoothed while the reconstructed luminance is left alone.
 direction equally ; it is *isotropic*. It generalizes to a weighted form,
 
 ```math
-E(u) = \int_\Omega \nabla u^\top D \,\nabla u ,
+E(u) = \int_\Omega \nabla u^\top D \,\nabla u \,\mathrm{d}\Omega ,
 ```
 
 where the **diffusion tensor** $D$ is a small symmetric matrix defined at every pixel whose job
@@ -740,7 +740,7 @@ above.
 $r = \text{RGB}/L_\text{sum}$ should be smooth and match the rim, optionally biased toward flatness:
 
 ```math
-E_{\text{chrominance}} = \int_\Omega \Big( \lVert \nabla r \rVert^2 + \lambda \, \lVert r \rVert^2 \Big)\, \mathrm{d} \Omega,
+E_{\text{chrominance}} = \int_\Omega \Big( \lVert \nabla r \rVert^2 + \lambda \, \lVert r \rVert^2 \Big)\, \mathrm{d}\Omega,
 \qquad
 r\big|_{\partial \Omega} = r_{\text{valid}} .
 ```
@@ -1134,7 +1134,7 @@ solved *directly*. The unknown $u$ is each chrominance plane in turn ; the equat
 $\mathrm{div}(D\\,\nabla u) = 0$, the steady state of
 [the anisotropic diffusion of the theory section](#diffusion-as-color-inpainting) and,
 equivalently, the exact minimizer of its weighted smoothness energy
-$\int \nabla u^\top D\\,\nabla u$, with the coefficient-field results as Dirichlet anchors,
+$\int_\Omega \nabla u^\top D\\,\nabla u\\,\mathrm{d}\Omega$, with the coefficient-field results as Dirichlet anchors,
 fixed boundary values the solve must honour. The tensor is built from the **recovered
 luminance** (the reconstruction's own output, smoothed by two box-blur passes) : with $g$ the
 unit gradient of that smoothed luminance and $t = g^\perp$ the isophote direction,
