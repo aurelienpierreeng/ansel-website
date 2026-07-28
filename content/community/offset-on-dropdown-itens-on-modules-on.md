@@ -1,0 +1,49 @@
+---
+title: "offset on dropdown itens on modules on version eb70788"
+date: 2023-09-20
+slug: "offset-on-dropdown-itens-on-modules-on"
+tags:
+  - Community archive
+forum_author: "nirceu"
+forum_category: "Bugs and strange behaviours"
+forum_url: "https://community.ansel.photos/view-discussion/offset-on-dropdown-itens-on-modules-on"
+---
+
+{{< note >}}
+**Archived discussion.** This page is a verbatim copy of a thread from
+`community.ansel.photos`, the Ansel community forum, which ran from March 2023
+until it was taken offline in June 2025 after the site was compromised — a counterfeit
+site had been planted inside the forum software, so the whole thing had to come down.
+
+The original address was `https://community.ansel.photos/view-discussion/offset-on-dropdown-itens-on-modules-on`.
+No crawler ever captured this particular thread, so the text below — taken straight from the forum database — is the only copy left.
+
+Answers may refer to older versions of Ansel, and image attachments did not survive the
+shutdown. Current discussion happens on
+[GitHub Discussions](https://github.com/aurelienpierreeng/ansel/discussions).
+{{< /note >}}
+
+*Posted by **nirceu** on 2023-09-20.*
+
+have to click slightly above the desired option to enable it on dropdown lists, on all modules.
+
+hidden options for the "display metadata" module do not keep between sessions.
+
+(KDE plasma 5.27.6 on old vaio SVD13215PXB)
+
+## Replies
+
+**Lukas** — 2023-09-21
+
+The dropdown issue is already known: /archive/clicking-issue-windows-10/
+
+What do you mean by the "hidden options" of the "display metadata" module? How is it related to the dropdown issue?
+
+---
+
+**nirceu** — 2023-09-27
+
+I'm refering to the itens not checked as visible on the display metadata preferences. The issues are not related, but I ended up listing them together, sorry about that.
+
+Re-reading this post I saw that it is a bit confusing, it's my "self taught english" fault and a bit of laziness!!
+
