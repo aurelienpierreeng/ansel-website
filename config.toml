@@ -62,7 +62,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   [[menu.main]]
     identifier = "community"
     name = "Community"
-    url = "https://community.ansel.photos/"
+    url = "/community/"
     weight = 5
 
   [[menu.main]]

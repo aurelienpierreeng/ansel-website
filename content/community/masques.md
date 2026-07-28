@@ -1,0 +1,48 @@
+---
+title: "Masques"
+date: 2024-11-05
+slug: "masques"
+tags:
+  - Community archive
+forum_author: "Unknown"
+forum_category: "Recovered from web archive"
+forum_url: "https://community.ansel.photos/view-discussion/masques"
+wayback_url: "https://web.archive.org/web/20241210165506/https://community.ansel.photos/view-discussion/masques"
+---
+
+{{< note >}}
+**Archived discussion.** This page is a verbatim copy of a thread from
+`community.ansel.photos`, the Ansel community forum, which ran from March 2023
+until it was taken offline in June 2025 after the site was compromised — a counterfeit
+site had been planted inside the forum software, so the whole thing had to come down.
+
+The original address was `https://community.ansel.photos/view-discussion/masques`.
+You can check this copy against the [snapshot in the Internet Archive](https://web.archive.org/web/20241210165506/https://community.ansel.photos/view-discussion/masques).
+
+Answers may refer to older versions of Ansel, and image attachments did not survive the
+shutdown. Current discussion happens on
+[GitHub Discussions](https://github.com/aurelienpierreeng/ansel/discussions).
+{{< /note >}}
+
+*Posted by **Unknown** on 2024-11-05.*
+
+Bonjour,
+
+je ne parvient pas à isoler correctement la fleur pour appliquer un flou d'objectif sur l'arrière plan. Des conseils ?. Merci d'avance.
+
+Accès au fichier RAW : [https://vieuxloup.synology.me:5001/sharing/cdfYH4RtW](https://vieuxloup.synology.me:5001/sharing/cdfYH4RtW)
+
+## Replies
+
+**Dom** — 2024-11-05
+
+Autre lien vers RAW : [https://download.drive.shadow.tech/s/qi8eswWKi8JD39o](https://download.drive.shadow.tech/s/qi8eswWKi8JD39o)
+
+*\[attachment lost: image was hosted on the retired forum\]*
+
+---
+
+**Dom** — 2024-11-05
+
+[See more...](javascript:void(0))
+
