@@ -1,8 +1,14 @@
 ---
-title: Introduction
+title: Nominal workflows
 date: 2024-07-14
-weight: 1
+weight: 7
 ---
+
+What Ansel is, who it serves and what it refuses is declared in [Scope](./scope.md); this
+page gives the background — why digital photography software went wrong — and the concrete
+workflows the tool is optimized for. Everything here is reference material for the
+[design protocol](./design.md): a proposal is evaluated against these workflows, not against
+the sum of everyone's habits.
 
 ## Context
 
@@ -17,20 +23,6 @@ Secondly, the analogue printing is a hands-on process, where the lab tech intera
 Thirdly, the analogue lab tech could directly (physically) access the paper and the negative to perform all kinds of adjustments and even distortions (dodging & burning, masking, split-toning, cross-processing, bleach bypass, solarization, etc.). This direct physical access enabled artists to hack the printing process in ways sometimes unplanned by vendors, to match their targeted visual outcome. Digital imaging has cast away the techs and artists alike from the medium, and they are confined to the functionality provided in the GUI of their software. The actual image lives in the computer as pure data, and only engineers know how to access it and what happens to it.
 
 Finally, digital imaging has been driven by computer scientists rather than by color scientists, let alone by actual photographers or photo lab technicians. They developed a digital language incompatible with the legacy of analogue photography and collections of editing tools making use of anonymous unit-less parameters that didn't care for optics and exposure values, thus confusing the analogue-trained photographers (used to drive brightness through light exposure or chemical developing times…). Their constant reliance on "barely working" color spaces (HSL, non-linearly encoded RGB) to handle color changes impregnated many an user with bad habits which soon became expectations, then requirements. The color pipelines developed by the coding monkeys later needed a completely different workflow to handle HDR images, because their hacky logic didn't scale with dynamic range and "worked" only as long as camera sensors and computer displays had mostly the same dynamic range as paper prints, with no future-proofing intended.
-
-## High-level goal of Ansel
-
-Ansel aims at being an instrument of visual expression letting artists develop their own interpretation of the raw material by allowing a large expressive range of color effects, much like a musical instrument lets musicians interpret the score by allowing a large expressive range of sound effects. This is achieved by putting back the retoucher in the center of the image processing, by allowing a transparent and as-direct-as-possible access to the image data, and by providing color manipulations making sense either on an optical level or on a psycho-perceptual level.
-
-Although film and the analogue legacy is often used as an inspiration and as a starting point/first base, making digital image processing a 1:1 virtual translation of analogue printing is not the goal. Let us not forget that film was engineered within the technical limitations of dyes and chemicals, and that many of its beloved properties are actually limitations of its technology (which is not to say that don't have expressive merits, but let's not fall into backward-looking for the sake of it), and were not actually desired in the first place.
-
-However, much like music, it is expected from users to complete at least a basic theoretical and practical training to be able to use this imaging instrument, and Ansel will not give up visual quality for the sake of smoothing the learning curve.
-
-## User-level goal of Ansel
-
-1. Allow to efficiently cull the photographs coming out of the camera/memory card, in order to pick only the ones worthy of being fully post-processed,
-2. Allow to edit/retouch the culled photographs in the most direct way, with a minimal number of steps, using unit image controls that affect only one perceptual or optical property at a time,
-3. Allow indexing and later retrieval of the processed photographs for archival purposes.
 
 ## Supported workflows
 
@@ -64,6 +56,8 @@ In darktable, the tags have been customarily misunderstood as mere keywords, but
 In any case, if you find yourself needing a complex GUI to sort and access your pictures, your method needs to be simplified. A good software allows to achieve simple tasks simply, and I refuse to make the simple tasks complicated just to account for insane workflows.
 
 ## Processing workflow
+
+Although film and the analogue legacy is often used as an inspiration and as a starting point/first base, making digital image processing a 1:1 virtual translation of analogue printing is not the goal. Let us not forget that film was engineered within the technical limitations of dyes and chemicals, and that many of its beloved properties are actually limitations of its technology (which is not to say that don't have expressive merits, but let's not fall into backward-looking for the sake of it), and were not actually desired in the first place.
 
 The scene-referred workflow is the standard in Ansel, as it proved to be faster and more reliable for users who allocated some time to understand it, and allows an unified treatment for HDR and SDR scenes alike. It relies on manipulating the image in a framework where pixel RGB is treated as a light emission for as long as possible, allowing accurate (de-)blurring, (de-)noising, illuminant correction and color-preserving brightening/darkening based on exposure compensations. When the last optically-bound image filter is applied, it then shifts to a perceptual framework where the pixel RGB is converted and handled as a 3D color object (hue, chroma or saturation, lightness or brightness) using color appearance models.
 

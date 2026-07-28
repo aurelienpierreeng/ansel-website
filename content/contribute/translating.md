@@ -1,7 +1,7 @@
 ---
 title: Translating
 date: 2024-07-15
-weight: 6
+weight: 12
 ---
 
 Ansel uses [Gettext](https://www.gnu.org/software/gettext/) to translate all parts of the project:
@@ -44,8 +44,8 @@ You will need to locate the relevant `.po` file for your language for the part o
     - Automatically-translated strings will have `TRANSLATOR ChatGPT` there, once you verify those strings, please remove this line,
     - Then add a comment containing `TRANSLATOR Your Name` on a new line. Keep other (non-ChatGPT) contributors there, if any.
 4. Save the file and:
-    - __Alternative 1__ _(easier for contributor, more steps for maintainer)_: drop it [on my private cloud](https://cloud.apmlt.net/s/YAdfYajPkE5nLyW),
-    - __Aternative 2__ _(more steps for contributor, easier for maintainer)_: commit it with Git and open a pull request against the proper Github repository.
+    - __Alternative 1__ _(easier for contributor)_: attach it to a new thread in [GitHub Discussions](https://github.com/aurelienpierreeng/ansel/discussions),
+    - __Alternative 2__ _(easier for the maintainer)_: commit it with Git and open a pull request against the proper Github repository.
 
 ## Translating for power users
 

@@ -1,7 +1,7 @@
 ---
 title: Triaging issues
 date: 2024-07-15
-weight: 8
+weight: 9
 ---
 
 This page is written for people helping triaging issues on the issue Github tracker.
@@ -30,7 +30,7 @@ Project management works better with SMART tasks. S.M.A.R.T. stands for:
 
 __A good issue is one that leads to a SMART task__. For Ansel, that means issues focusing on a clearly-defined problem affecting a clearly-defined step of the picture editing workflow ("I have problems doing X because Y and I would like Z").
 
-Questions and general discussions should happen on <https://community.ansel.photos>.
+Questions and general discussions should happen in [GitHub Discussions](https://github.com/aurelienpierreeng/ansel/discussions).
 
 Bad issues are:
 
@@ -93,7 +93,7 @@ The nature of the issues is handled with labels. We have:
 - bugs (stuff that has never worked in the past years),
 - enhancements (stuff that needs to be improved or added),
 - wontfix (not a bug, but a feature or design choice or necessity imposed by third-party dependencies),
-- question (should not be on Github, but on <https://community.ansel.photos>),
+- question (belongs in [GitHub Discussions](https://github.com/aurelienpierreeng/ansel/discussions), not in the issue tracker),
 - duplicate (issue already reported),
 - unclear (issue can't be understood),
 - invalid (issue is "bad" according to the above definition of a good issue).

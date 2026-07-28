@@ -1,10 +1,10 @@
 ---
 title: Designing Ansel
 date: 2024-07-14
-weight: 3
+weight: 6
 ---
 
-Ansel is __designed__, not hacked. Hackers may enjoy "working" on accelerating the demise of Darktable by increasing its [technical debt](https://en.wikipedia.org/wiki/Technical_debt).
+Ansel is __designed__, not hacked. The difference is a process: hacking optimizes for the pleasure of writing code, design optimizes for the problem being solved — and for what the solution will cost to maintain ([technical debt](https://en.wikipedia.org/wiki/Technical_debt)) long after the fun is gone. This page is that process. Pull requests that bypass it will be refused, whatever their technical quality: it is the [pact](./pact.md) applied to code.
 
 ## What is design ?
 
@@ -61,7 +61,7 @@ This is backed up by the fact that users rarely know their own needs, or rather,
 
 ### Problems come first
 
-The first step of Ansel design process is to submit a feature request, on the [Community](https://community.ansel.photos/discussions-category?category=6). Feature requests have been moved out of Github because this platform is unwelcoming to non-programmers and non-English-speakers (although the Community supports only French and English).
+The first step of Ansel design process is to open a thread in [GitHub Discussions](https://github.com/aurelienpierreeng/ansel/discussions) — since the community forum was retired, this is the venue, imperfect as it is for non-programmers; write in the language you can ([code of conduct](./code-of-conduct.md)) and state a problem, per [the problem-solving culture](./problem-solving.md).
 
 This feature request will focus on the problem to solve and refrain from proposing any solution. The problem will be defined in terms of tasks to achieve in a photographer's workflow or expected visual outcome of the processed image, aka in terms of the end goal to achieve, not in terms of tooling or technicalities thought to be needed. This may lead to a discussion to dig into the roots of the problem, which are usually [well hidden beneath what the user thinks their problem is](https://eng.aurelienpierre.com/2020/04/the-designer-and-the-drilling-machine/).
 
@@ -73,7 +73,9 @@ When the definition and scope of the problem is agreed upon between the people i
 
 No prototype proposal is accepted at this stage.
 
-Adopted solutions will lead to a new issue getting triaged in the [project management Kanban board](https://github.com/users/aurelienpierre/projects/1/views/1).
+Discussions close. When the same arguments start repeating, the decision is made with what is known, recorded with its reasons, and the thread is closed — a decision debated forever is a decision made by fatigue. The counterpart of closing is reversibility: a decision stands until real use proves it wrong, and evidence reopens what repetition cannot. If validation later shows the adopted solution fails its own acceptance criteria, it goes back to this stage — the [sunk cost](https://en.wikipedia.org/wiki/Sunk_cost) of the prototype buys it nothing.
+
+Adopted solutions will lead to a new issue getting triaged in the [project management Kanban board](https://github.com/orgs/aurelienpierreeng/projects/1).
 
 They might be conditional to researching theoretical and technical aspects to assess their feasibility, in which case they will be triaged into the _To research_ column of the Kanban board. The research findings will be added to the original issue until the feasibility of the solution is proven. When it is, the issue will be moved in the "To do" column of the Kanban board.
 
@@ -83,17 +85,17 @@ Ideally, the points to test and the testing procedure to validate the prototype 
 
 ### Prototypes come third
 
-Only the issues triaged in the "To do" column of the [project management Kanban board](https://github.com/users/aurelienpierre/projects/1/views/1) will be worked on, by myself or by anyone willing to tackle them.
+Only the issues triaged in the "To do" column of the [project management Kanban board](https://github.com/orgs/aurelienpierreeng/projects/1) will be worked on, by myself or by anyone willing to tackle them.
 
 The prototype of the solution will be proposed in a pull request of a topic branch linking the original issue. Topic branches need to be rebased on the `master` branch e.g. `git rebase ustream master` or, if you update your branch locally with new master commits, do `git pull upstream master --rebase` or [globally set up git](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---rebasefalsetruemergesinteractive) to pull through `rebase` rather than `merge`. This ensures your branch history is kept clean with minimal effort, and keeps the `master` history clean too when your PR gets merged.
 
-When the prototype pull request is reviewed and if it fits the [code quality standards](./coding-style.md) (see below) while fitting the specifications of the adopted solution, it gets approved and automatically triaged to the "To test/validating" column of the [project management Kanban board](https://github.com/users/aurelienpierre/projects/1/views/1).
+A prototype is judged on three questions, in order: does it fit the specifications of the adopted solution; does it fit the [code quality standards](./coding-style.md); and what will it cost to maintain — what must be opened to repair it, how far it reaches into the rest of the application. A feature that cannot be enclosed will be refused even if it works, even though it is already written: acceptance is where maintainability is decided, not repair time. When the prototype passes all three, it gets approved and automatically triaged to the "To test/validating" column of the [project management Kanban board](https://github.com/orgs/aurelienpierreeng/projects/1).
 
 ### Validation comes fourth
 
 Approved pull requests will be merged early in the `candidate` or `dev` branch for testing, depending whether they may break image editing histories (by adding new module parameters or changing database scheme). This branch will always be the master branch with all pull requests pending validation on top. This is meant to help testing from people who are not necessarily up-to-speed with manual git branches merging. Unlike the `dev` branch, `candidate` should not break your edits.
 
-If no bug or breakage is reported after some time and the prototype fulfils its initial purpose correctly, it will get merged in `master` and the related issue will be closed and moved to the "Done" column of the [project management Kanban board](https://github.com/users/aurelienpierre/projects/1/views/1).
+If no bug or breakage is reported after some time and the prototype fulfils its initial purpose correctly, it will get merged in `master` and the related issue will be closed and moved to the "Done" column of the [project management Kanban board](https://github.com/orgs/aurelienpierreeng/projects/1).
 
 If the prototype proves itself unsatisfactory, it may be rejected and another one will need to be worked out.
 
@@ -114,9 +116,9 @@ And then, for everything one likes, you will find another one to dislike it. So 
 
 When you scratch beneath the surface, you find than what people actually need is much closer to other people's needs than what they say they want. So you can reconcile the needs much easier than the desires, and without compromising. But then you have to trace the root needs below the will, and that takes abstraction skills and psychology.
 
-### UI designers are dangerous idiots
+### The GUI cannot be designed apart from the backend
 
-Everybody who only sees, focuses and cares about the UI is a dangerous idiot. If your GUI is complicated, it means a lot more than just a "complicated GUI" : it means that __the complexity of your backend has reached your frontend__. I have found the hard way that GUI complexity is never separate, and can't be solved separately, from backend complexity and overall application architecture. GUI is not parallel to backend architecture, it's the termination of it.
+Everybody who only sees, focuses and cares about the UI is designing blind. If your GUI is complicated, it means a lot more than just a "complicated GUI" : it means that __the complexity of your backend has reached your frontend__. I have found the hard way that GUI complexity is never separate, and can't be solved separately, from backend complexity and overall application architecture. GUI is not parallel to backend architecture, it's the termination of it.
 
 The problem of UI designers is they typically don't code, or if they do, they suck at low-level programming and software architecture. So they focus on what little they see and understand (typical [streetlight effect](https://en.wikipedia.org/wiki/Streetlight_effect)), and they only produce non-actionnable designs that conflicts with what the software actually needs to work. Because that GUI is only connecting user input to the backend, and if we need that many widgets, it's because the architecture needs that many inputs. You can't escape it : to remove widgets, you need to remove inputs, which means your architecture will have to work with fewer degrees of freedom __first__. That starts with simplifying the backend, which means stinky refactoring of dusty old code nobody understands anymore.
 
