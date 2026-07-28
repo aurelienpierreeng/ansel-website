@@ -1,6 +1,7 @@
 ---
 title: Automated workflows
 date: 2025-05-01
+weight: 14
 ---
 
 Because Ansel is mostly a one-person operation, everything that could be automated was automated. This page keeps track of everything that should be maintained in the future, and where.

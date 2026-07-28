@@ -1,7 +1,7 @@
 ---
 title: Contribute images to the AI denoiser
 date: 2026-07-18
-weight: 10
+weight: 13
 ---
 
 Ansel ships a neural raw denoiser (the `rawdenoiseai` module) that is unlike

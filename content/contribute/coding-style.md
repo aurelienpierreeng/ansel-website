@@ -1,7 +1,7 @@
 ---
 title: Coding style
 date: 2024-07-14
-weight: 5
+weight: 10
 ---
 
 ## Values

@@ -9,10 +9,10 @@ weight: 40
 
 ## General info
 
-Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated [was automated](./contribute/workflows.md) for the developer's sanity, and you are asked to use the online resources first everytime it is possible.
+Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated [was automated](./contribute/workflows.md) for the maintainer's sanity, and you are asked to use the online resources first everytime it is possible.
 
 {{< warning >}}
-When you submit a bug report or book a training session, please upload your attachment files on my [private cloud](https://cloud.apmlt.net/s/YAdfYajPkE5nLyW) instead of using third-party hosting services with an expiration date : there is no guaranty I will download the files in time and it keeps things tidy for me.
+When you submit a bug report, attach your files (RAW, `.xmp` edit history, screenshots) directly to the GitHub issue instead of using third-party hosting services with an expiration date: there is no guarantee anyone will download the files in time. See [the bug-reporting protocol](./contribute/report-a-bug.md).
 {{< /warning >}}
 
 
@@ -66,6 +66,6 @@ Everything that leads to the software crashing, producing invalid output or unus
 {{% /card %}}
 {{% card title="Questions" icon="question" %}}
 If a feature seems to have been removed or to work differently, that might be a redesign, and there is always a reason behind.
-{{< button url="https://community.ansel.photos/discussions-category?category=7" icon="question" label="Ask a question" >}}
+{{< button url="https://github.com/aurelienpierreeng/ansel/discussions" icon="question" label="Ask a question" >}}
 {{% /card %}}
 {{% /row %}}
