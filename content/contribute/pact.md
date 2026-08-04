@@ -92,8 +92,16 @@ its critics on tone — quote this page.
    is part of the deal you accepted by choosing this tool. The *tool itself* is another
    matter: when you cannot find, understand or operate something that standard GUI
    conventions should make obvious, you have found a design or documentation defect on our
-   side, not a personal failing on yours. The craft may demand a manual; the tool must not
-   — and which of the two your question touches is judged on the question, never on you.
+   side, not a personal failing on yours. The boundary between the two is not anyone's
+   opinion — it has a test: photography existed before computers. What already had to be
+   learned in a darkroom — exposure, contrast, dodging and burning, color casts, grain — is
+   the trade, and it cannot be made simpler without amputating your capability. What exists
+   only because of computers — file formats, pipeline order, display profiles, error
+   messages — is the tool, and simplifying it takes nothing away from anyone. If you
+   started photography with software, the two arrive welded together and every difficulty
+   looks like a software difficulty; the distinction is still owed to you. The craft may
+   demand a manual; the tool must not — and which of the two your question touches is
+   judged on the question, never on you.
 6. **The tool is documented for what it does *to* you, not only *for* you** — its
    assumptions, its limits, its costs in learning time, not just its features.
 7. **The prospectus stays honest.** What Ansel is and is not is written in
