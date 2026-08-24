@@ -62,9 +62,9 @@
   .param-table:has(+ .param-table) > .table-responsive { margin-bottom: 0; }
   /* Wrapping an explanation in a bare <div> indents it under its entry name. */
   .param-table td > div { margin-left: 4rem; }
-  /* A listing, not a data table: no striping, no hover tint, no cell fill.
+  /* A listing, not a data table: no rules, no striping, no hover tint, no cell fill.
      Bootstrap paints .table cells through a box-shadow, so that is reset too. */
-  .param-table td { background-color: transparent; box-shadow: none; }
+  .param-table td { background-color: transparent; box-shadow: none; border: 0; }
   </style>
 {{- end -}}
 
