@@ -1,0 +1,75 @@
+{{- /*
+  param-table: a borderless listing of menu entries, options or parameters.
+
+  Write data rows only -- no header row, no delimiter row. Put the entry name (and
+  its shortcut, if any) first, then wrap the explanation in a bare <div> to indent
+  it underneath:
+
+      {{< param-table >}}
+      | **Close path** (or <kbd>Enter</kbd>)<div>Closes the outline.</div> |
+      | **Done shape creation** (or <kbd>Escape</kbd>)<div>Leaves creation mode.</div> |
+      {{< /param-table >}}
+
+  A leading column carries the submenu an entry belongs to, when it has one:
+
+      | **Operation** | **Invert**<div>Inverts the polarity.</div> |
+      |               | **Union**<div>How shapes combine.</div> |
+
+  Markdown needs a header row to recognise a table, so one is generated here and
+  then stripped from the output: the theme paints <thead> with `table-dark`, which
+  would show up as an empty dark bar.
+
+  Consecutive blocks butt against each other with no gap, so one menu can be split
+  into several tables (top level vs. submenu) and still read as a single listing.
+
+  Unlike the theme's `table` shortcode, this renders through Page.RenderString
+  rather than `markdownify`, which keeps the page context alive so relative
+  `.md` links resolve instead of collapsing to the site root.
+*/ -}}
+
+{{- $p := .Page -}}
+{{- $inner := trim .Inner "\n\r \t" -}}
+
+{{- /* Column count comes from the first data row: "| a | b |" splits into 4 parts. */ -}}
+{{- $first := "" -}}
+{{- range (split $inner "\n") -}}
+  {{- $line := trim . " \t\r" -}}
+  {{- if and (eq $first "") (ne $line "") -}}
+    {{- $first = $line -}}
+  {{- end -}}
+{{- end -}}
+{{- $cols := sub (len (split $first "|")) 2 -}}
+{{- if lt $cols 1 -}}{{- $cols = 1 -}}{{- end -}}
+
+{{- $header := "" -}}
+{{- $delim := "" -}}
+{{- range seq $cols -}}
+  {{- $header = print $header "|   " -}}
+  {{- $delim = print $delim "| --- " -}}
+{{- end -}}
+{{- $header = print $header "|" -}}
+{{- $delim = print $delim "|" -}}
+
+{{- $html := $p.RenderString (dict "display" "block") (print $header "\n" $delim "\n" $inner) -}}
+{{- $html = replaceRE `(?s)<thead.*?</thead>` "" $html -}}
+{{- $html = replace $html "<table>" `<table class="table">` -}}
+
+{{- if not ($p.Scratch.Get "param-table-css") -}}
+  {{- $p.Scratch.Set "param-table-css" true -}}
+  <style>
+  .param-table > .table-responsive { margin-bottom: 1rem; }
+  .param-table > .table-responsive > table { margin-bottom: 0; }
+  .param-table:has(+ .param-table) > .table-responsive { margin-bottom: 0; }
+  /* Wrapping an explanation in a bare <div> indents it under its entry name. */
+  .param-table td > div { margin-left: 4rem; }
+  /* A listing, not a data table: no striping, no hover tint, no cell fill.
+     Bootstrap paints .table cells through a box-shadow, so that is reset too. */
+  .param-table td { background-color: transparent; box-shadow: none; }
+  </style>
+{{- end -}}
+
+<div class="param-table">
+<div class="table-responsive">
+{{ $html | safeHTML }}
+</div>
+</div>

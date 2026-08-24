@@ -1,0 +1,29 @@
+{{- /*
+  icon: a small image sitting inline in a sentence, for naming a button or a
+  toolbar control where a full-width screenshot would break the flow.
+
+      opened by the _Display_ button {{< icon src="lighttable-bottom-panel_display.jpg" >}} in the toolbox
+
+  The theme's render-image hook turns every Markdown image into a block <figure>
+  with lightbox controls, so `![]()` cannot be used inline. This resolves the
+  asset through the same partial the theme's figure uses, then emits a plain
+  <img> scaled to the surrounding text.
+
+  Everything is set through the style attribute rather than a <style> block: the
+  shortcode is called mid-sentence, so anything it emits lands inside a <p>.
+  `max-width: none` and `width: auto` override the theme's own image rules, which
+  otherwise fight the height set here.
+
+  Optional: `alt` for the accessible name, `height` (in em, default 1.4) to match
+  a taller or shorter line.
+*/ -}}
+
+{{- $src := .Get "src" | default (.Get 0) -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $height := .Get "height" | default "1.4" -}}
+{{- $image := partial "get_resource.html" (dict "src" $src "Page" .Page) -}}
+
+{{- with $image -}}
+{{- $css := printf "height:%sem;width:auto;max-width:none;display:inline-block;vertical-align:text-bottom;margin:0 0.15em;" $height -}}
+<img src="{{ .RelPermalink }}" alt="{{ $alt }}" class="inline-icon" style="{{ $css | safeCSS }}" />
+{{- end -}}
