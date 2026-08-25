@@ -22,24 +22,51 @@
   Consecutive blocks butt against each other with no gap, so one menu can be split
   into several tables (top level vs. submenu) and still read as a single listing.
 
+  `margin-left` indents the whole block by any CSS length, to nest a listing under
+  the sentence or the entry it belongs to:
+
+      {{< param-table margin-left="2rem" >}}
+
+  A trailing cell may hold an illustration instead of text, as a Markdown image --
+  the `figure` shortcode cannot be used here, its output spans several lines and
+  breaks the table row. `image-height` then sets a uniform height for every picture
+  in the block (any CSS length); left out, each one fills the column:
+
+      {{< param-table image-height="9rem" >}}
+      | **Union**<div>Adds the shape.</div> | ![](union.jpg "union result") |
+      {{< /param-table >}}
+
   Unlike the theme's `table` shortcode, this renders through Page.RenderString
   rather than `markdownify`, which keeps the page context alive so relative
   `.md` links resolve instead of collapsing to the site root.
 */ -}}
 
 {{- $p := .Page -}}
+{{- /* Optional uniform height for the illustrations, any CSS length. */ -}}
+{{- $imgHeight := .Get "image-height" -}}
+{{- /* Optional left margin for the whole block, any CSS length. */ -}}
+{{- $marginLeft := .Get "margin-left" -}}
+{{- $styles := slice -}}
+{{- with $imgHeight -}}
+  {{- $styles = $styles | append (printf "--param-table-image-height: %s" .) -}}
+{{- end -}}
+{{- with $marginLeft -}}
+  {{- $styles = $styles | append (printf "--param-table-margin-left: %s" .) -}}
+{{- end -}}
 {{- $inner := trim .Inner "\n\r \t" -}}
 
-{{- /* Column count comes from the first data row: "| a | b |" splits into 4 parts. */ -}}
-{{- $first := "" -}}
+{{- /* Column count: "| a | b |" splits into 4 parts, so two columns. It is taken as the
+       widest row rather than the first one -- Markdown drops every cell past what the
+       delimiter row declares, so a narrow first row would silently swallow the content
+       of all the others. */ -}}
+{{- $cols := 1 -}}
 {{- range (split $inner "\n") -}}
   {{- $line := trim . " \t\r" -}}
-  {{- if and (eq $first "") (ne $line "") -}}
-    {{- $first = $line -}}
+  {{- if ne $line "" -}}
+    {{- $n := sub (len (split $line "|")) 2 -}}
+    {{- if gt $n $cols -}}{{- $cols = $n -}}{{- end -}}
   {{- end -}}
 {{- end -}}
-{{- $cols := sub (len (split $first "|")) 2 -}}
-{{- if lt $cols 1 -}}{{- $cols = 1 -}}{{- end -}}
 
 {{- $header := "" -}}
 {{- $delim := "" -}}
@@ -52,23 +79,76 @@
 
 {{- $html := $p.RenderString (dict "display" "block") (print $header "\n" $delim "\n" $inner) -}}
 {{- $html = replaceRE `(?s)<thead.*?</thead>` "" $html -}}
-{{- $html = replace $html "<table>" `<table class="table">` -}}
+{{- /* A trailing cell can carry an illustration. The table then has to opt out of
+       the 36rem reading-width cap the theme puts on body tables, or the picture
+       stops mid-page instead of reaching the right margin. */ -}}
+{{- $class := "table" -}}
+{{- if strings.Contains $html "<figure" -}}{{- $class = "table full-width" -}}{{- end -}}
+{{- $html = replace $html "<table>" (printf `<table class="%s">` $class) -}}
 
 {{- if not ($p.Scratch.Get "param-table-css") -}}
   {{- $p.Scratch.Set "param-table-css" true -}}
   <style>
+  .param-table { margin-left: var(--param-table-margin-left, 0); }
   .param-table > .table-responsive { margin-bottom: 1rem; }
   .param-table > .table-responsive > table { margin-bottom: 0; }
   .param-table:has(+ .param-table) > .table-responsive { margin-bottom: 0; }
-  /* Wrapping an explanation in a bare <div> indents it under its entry name. */
-  .param-table td > div { margin-left: 4rem; }
+  /* Wrapping an explanation in a bare <div> indents it under its entry name. The
+     width cap keeps the reading measure at the theme's 36rem (4rem indent + 32rem of
+     text) even in an illustrated table, which opts out of that cap to reach the right
+     margin and would otherwise let the line grow with the window. */
+  .param-table td > div { margin-left: 4rem; max-width: 32rem; }
   /* A listing, not a data table: no rules, no striping, no hover tint, no cell fill.
      Bootstrap paints .table cells through a box-shadow, so that is reset too. */
   .param-table td { background-color: transparent; box-shadow: none; border: 0; }
+  /* Capping the explanation also caps the table's own content width, which would let
+     the picture drift back from the right margin on a wide window -- so an illustrated
+     table is stretched to the full column. The #content-body prefix is needed to beat
+     the theme's `#content-body table { width: auto }`, which outranks a class. */
+  #content-body .param-table table.full-width { width: 100%; table-layout: fixed; }
+  /* The text column is pinned to the reading measure once there is room for it, so the
+     illustration column is exactly the space the paragraph leaves; below that it falls
+     back to a share of the table. (:has() cannot be nested inside :has(), so
+     the text cell is reached through the table's own class rather than from its sibling,
+     and the switch is a container query because a percentage inside min() is not
+     resolved for a table-cell width -- it silently falls back to auto.) */
+  .param-table { container-type: inline-size; }
+  .param-table table.full-width td:first-child { width: 62%; }
+  @container (min-width: 58rem) {
+    .param-table table.full-width td:first-child { width: 36rem; }
+  }
+  .param-table td:has(> figure) figcaption { text-align: right; margin-top: 0.5rem; border: 0; }
+  /* With image-height set the picture keeps its aspect ratio instead of filling the
+     column, so it has to be pinned to the right edge: .img-container is centred by
+     figures.css and would otherwise strand it mid-column. */
+  .param-table td:has(> figure) .img-container img {
+    /* A cap rather than a fixed height: whichever of the two limits binds first, the
+       aspect ratio is kept exactly. A fixed height would letterbox the picture as soon
+       as the column got narrower than it, and would upscale a small one. */
+    max-height: var(--param-table-image-height, none);
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+  .param-table td:has(> figure) .img-container { margin: 0; }
+  /* A standalone figure draws a rule above and below itself (figures.css). In a cell
+     those read as the table rules this listing exists to avoid, so they go, along
+     with the spacing that goes with them -- the cell padding already separates rows.
+     The top margin is one line instead, so the picture starts level with the first
+     line of the explanation rather than with the entry name above it. */
+  .param-table td:has(> figure) > figure {
+    border: 0;
+    padding: 0;
+    /* Shrunk to the picture and centred in that leftover space; the auto side margins
+       need a definite width to work on, hence fit-content. The caption then sits under
+       the picture instead of at the far edge of the cell. */
+    width: fit-content;
+    margin: calc(1em * var(--bs-body-line-height, 1.5)) auto 0 auto;
+  }
   </style>
 {{- end -}}
 
-<div class="param-table">
+<div class="param-table"{{ with $styles }} style="{{ delimit . "; " | safeCSS }}"{{ end }}>
 <div class="table-responsive">
 {{ $html | safeHTML }}
 </div>
