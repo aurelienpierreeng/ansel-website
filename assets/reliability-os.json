@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+      "type": "bar",
+      "x": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ],
+      "y": [
+        98.21160724587516,
+        92.72828198723286,
+        91.76706827309236
+      ],
+      "hovertext": [
+        "Linux<br>98.21% crash-free (155 crashed of 8667 sessions)<br>95% confidence: 97.91-98.47%<br>one crash every 56 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
+        "Windows<br>92.73% crash-free (262 crashed of 3603 sessions)<br>95% confidence: 91.83-93.53%<br>one crash every 14 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
+        "macOS<br>91.77% crash-free (82 crashed of 996 sessions)<br>95% confidence: 89.90-93.32%<br>one crash every 12 sessions<br><i>crashes from Sentry, sessions from PostHog</i>"
+      ],
+      "hoverinfo": "text",
+      "marker": {
+        "color": "#8ec1a8"
+      },
+      "text": [
+        "98.2%",
+        "92.7%",
+        "91.8%"
+      ],
+      "textposition": "auto",
+      "error_y": {
+        "type": "data",
+        "symmetric": false,
+        "array": [
+          0.25840980851123163,
+          0.8031537806028695,
+          1.5508082218085093
+        ],
+        "arrayminus": [
+          0.301128362366498,
+          0.8941691122202684,
+          1.871752050285977
+        ],
+        "color": "rgba(0,0,0,0.35)",
+        "thickness": 1.5,
+        "width": 6
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Crash-free sessions per operating system (the last 67 days)"
+    },
+    "xaxis": {
+      "title": {
+        "text": "Operating system"
+      },
+      "type": "category"
+    },
+    "yaxis": {
+      "title": {
+        "text": "Crash-free sessions"
+      },
+      "ticksuffix": "%"
+    },
+    "margin": {
+      "t": 70,
+      "r": 30,
+      "b": 60,
+      "l": 60
+    },
+    "showlegend": false
+  }
+}

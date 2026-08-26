@@ -85,6 +85,23 @@ _Stats updated automatically every 4h from opt-in Sentry.io crash logs collectio
 {{% column %}}
 {{% card %}}
 
+{{< plotly title="Crash-free sessions over time, all revisions combined (data collected by opt-in sentry.io)." caption="false" src="reliability-trend.json" class="full-width" dynamic="true" >}}
+
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+
+{{< plotly title="Crash-free sessions per operating system (crashes from opt-in sentry.io, sessions from opt-in posthog)." caption="false" src="reliability-os.json" class="full-width" dynamic="true" >}}
+
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+
 {{< plotly title="Crash-free sessions and Mean Time Before Failure (MTBF) per nightly build (data collected by opt-in sentry.io)" caption="false" src="reliability.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
@@ -97,6 +114,12 @@ _Stats updated automatically every 4h from opt-in Sentry.io crash logs collectio
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}
+
+The two charts on the top row read the whole fleet, the two below read one revision at a time.
+
+**Crash-free sessions over time** : how reliable Ansel was on a given day, all revisions together — the answer to "is it getting better ?". One line per operating system, each averaged over a week. A bad build shows up as a dip on the day it shipped, and the lines tell you which platform it hit.
+
+**Crash-free sessions per operating system** : Ansel is developed on Linux, and it shows — a session crashes about **four times less often** there than on Windows or macOS. The figures blend two data sources, so trust the ranking over the decimals. On any platform, your edits are written to disk as you make them, so a crash costs you the last action at most.
 
 {{% row %}}
 {{% column %}}
@@ -111,7 +134,7 @@ _Stats updated automatically every 4h from opt-in Sentry.io crash logs collectio
 
 Ansel has not published a stable release yet and there is no ETA for one : a new release is published when the list of all bugs have been cleared, so we _know_ the software and stable. So far, Ansel only publishes __revisions__, which are intermediate states of the sourcecode. Once a revision has been tested by at least 40 unique users, its reliability stats can show above : the charts display the 30 most recent revisions that reached that threshold. An asterisk (\*) marks revisions we shipped as a packaged nightly build.
 
-On the two charts above, the crash-free rate is shown as a percentage whose **bar opacity encodes our confidence** : the solid part (*almost certain*) is the rate we are confident the software reaches, the *likely* range goes up to the currently recorded average, then *optimistic* reaches up to the best plausible rate written in parentheses on top. The fewer people tested a revision, the more incertainty there is on the average, the larger the {*likely* + *optimistic*} range gets : it is the margin of error of the current average at 95% confidence.
+On the two per-revision charts above, the crash-free rate is shown as a percentage whose **bar opacity encodes our confidence** : the solid part (*almost certain*) is the rate we are confident the software reaches, the *likely* range goes up to the currently recorded average, then *optimistic* reaches up to the best plausible rate written in parentheses on top. The fewer people tested a revision, the more incertainty there is on the average, the larger the {*likely* + *optimistic*} range gets : it is the margin of error of the current average at 95% confidence.
 
 Bugs need to be reported on [Github](https://github.com/aurelienpierreeng/ansel/issues) or they will never be fixed. This free software is only guaranteed to work on the computers of its developers, who are not in front of yours. __Ansel saves your editing histories immediately after each change__: in case of a crash you loose at most the last action.
 
@@ -432,6 +455,16 @@ The charts below come from the opt-in PostHog telemetry.
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+{{< plotly title="Features by the share of editing sessions that used them at least once (data collected by opt-in posthog)." caption="false" src="usage-module-reach.json" class="full-width" dynamic="true" >}}
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+Those two charts count the same features with different rulers. The first counts _activations_, so a module you nudge with twenty small slider moves outranks one you set once and leave alone. The second counts _how many sessions used it at all_, which says how many people reach for a tool rather than how much they fiddle with it. Read together, they are more informative than either alone.
 
 {{% row %}}
 {{% column %}}

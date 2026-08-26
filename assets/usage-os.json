@@ -4,19 +4,19 @@
       "type": "pie",
       "labels": [
         "Linux",
-        "macOS",
-        "Windows"
+        "Windows",
+        "macOS"
       ],
       "values": [
-        95,
-        24,
-        16
+        680,
+        323,
+        182
       ],
       "hole": 0.45,
       "hovertext": [
-        "Linux<br>95 users",
-        "macOS<br>24 users",
-        "Windows<br>16 users"
+        "Linux<br>680 users",
+        "Windows<br>323 users",
+        "macOS<br>182 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -43,7 +43,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Operating systems in use \u2014 136 users"
+      "text": "Operating systems in use \u2014 1187 users"
     },
     "margin": {
       "t": 70,

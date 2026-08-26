@@ -70,6 +70,9 @@ OUT_PATH_GPU_VENDOR = os.path.join(REPO_ROOT, "assets", "usage-gpu-vendor.json")
 OUT_PATH_DE = os.path.join(REPO_ROOT, "assets", "usage-de.json")
 OUT_PATH_OPENCL_GPU = os.path.join(REPO_ROOT, "assets", "usage-opencl-gpu.json")
 OUT_PATH_BUGS = os.path.join(REPO_ROOT, "assets", "bugs.json")
+OUT_PATH_TREND = os.path.join(REPO_ROOT, "assets", "reliability-trend.json")
+OUT_PATH_CRASH_OS = os.path.join(REPO_ROOT, "assets", "reliability-os.json")
+OUT_PATH_MODULE_REACH = os.path.join(REPO_ROOT, "assets", "usage-module-reach.json")
 
 # Soft pastel colorway (sage / blush / blue + extras) shared by all usage charts.
 PALETTE = ["#8ec1a8", "#e8a598", "#9db4d0", "#d8c19a", "#b9a6cc", "#a8ccc9",
@@ -87,6 +90,10 @@ STATS_PERIOD = os.environ.get("RELIABILITY_STATS_PERIOD", "90d")
 MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "40"))
 MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "30"))
 ENVIRONMENT = os.environ.get("RELIABILITY_ENVIRONMENT", "").strip()
+# How many features the two "most-used" charts list. 83 distinct features report
+# usage; the tail past 50 is thin (rank 50 has ~48 activations over the window,
+# rank 60 has 14), so this cut keeps every module anyone actually reaches for.
+USAGE_TOP_N = int(os.environ.get("USAGE_TOP_FEATURES", "50"))
 
 # Window length in days, parsed from STATS_PERIOD ("90d" -> 90), for HogQL INTERVAL.
 _m = re.match(r"(\d+)\s*d", STATS_PERIOD)
@@ -225,7 +232,18 @@ def fetch_posthog(key):
     return rows, first_ts
 
 
+# PostHog applies a default LIMIT 100 to any HogQL query that does not carry one,
+# silently and with no marker in the response. A GROUP BY whose cardinality exceeds
+# that returns a truncated result that still looks like a complete one: grouping
+# session_start by (day, os) came back with 1035 of 13259 sessions, an 8% sample
+# presented as the whole. Every query goes through _posthog_query, so the ceiling
+# is raised there once rather than trusted to each call site remembering.
+POSTHOG_ROW_LIMIT = 1000000
+
+
 def _posthog_query(key, hogql):
+    if not re.search(r"\bLIMIT\b", hogql, re.IGNORECASE):
+        hogql = "%s LIMIT %d" % (hogql, POSTHOG_ROW_LIMIT)
     body = json.dumps({"query": {"kind": "HogQLQuery", "query": hogql}}).encode()
     url = "%s/api/projects/%s/query/" % (POSTHOG_HOST, POSTHOG_PROJECT_ID)
     last = None
@@ -273,7 +291,7 @@ def fetch_file_types(key):
     return labels, values, hover
 
 
-def fetch_modules(key, limit=25):
+def fetch_modules(key, limit=USAGE_TOP_N):
     """Most-used features (views / panels / modules), from the module_used events.
     Returns (labels, values, hover) for the top `limit` by usage."""
     hogql = (
@@ -290,6 +308,47 @@ def fetch_modules(key, limit=25):
     return labels, values, hover
 
 
+def fetch_module_reach(key, limit=USAGE_TOP_N):
+    """Share of editing sessions in which each feature was used at least once.
+
+    session_end carries one "mod_<category>_<name>" property per feature the session
+    touched, and the key is written ONLY when the count is non-zero (verified: for
+    mod_iop_exposure, 504 sessions have the key and 504 have a value > 0), so simply
+    counting the key's presence counts the sessions that used it.
+
+    This is a different question from the "most-used features" chart, which counts
+    module_used activations: that one is dominated by features whose GUI emits an
+    event per interaction, so a module with many small slider tweaks outranks one
+    that is set once and left alone. Returns (labels, shares, hover, sessions).
+    """
+    rows = _posthog_query(key, (
+        "SELECT arrayJoin(arrayFilter(x -> startsWith(x, 'mod_'), "
+        "JSONExtractKeys(properties))) AS k, count() AS n FROM events "
+        "WHERE event = 'session_end' AND timestamp > now() - INTERVAL %d DAY "
+        "GROUP BY k ORDER BY n DESC LIMIT %d"
+    ) % (PERIOD_DAYS, limit))
+    total = _posthog_query(key, (
+        "SELECT count() FROM events WHERE event = 'session_end' "
+        "AND timestamp > now() - INTERVAL %d DAY"
+    ) % PERIOD_DAYS)
+    sessions = int(total[0][0]) if total and total[0] else 0
+    if not sessions:
+        return [], [], [], 0
+    labels, shares, hover = [], [], []
+    for k, n in rows:
+        # "mod_iop_filmicrgb" -> category "iop", name "filmicrgb". The name is the
+        # same slug the module_used events report, so both charts read alike.
+        parts = str(k).split("_", 2)
+        cat = parts[1] if len(parts) > 2 else "?"
+        name = parts[2] if len(parts) > 2 else str(k)
+        n = int(n or 0)
+        labels.append(name)
+        shares.append(100.0 * n / sessions)
+        hover.append("%s<br>%s · used in %d of %d sessions (%.1f%%)"
+                     % (name, cat, n, sessions, 100.0 * n / sessions))
+    return labels, shares, hover, sessions
+
+
 def _usage_bar_figure(labels, values, hover, title, y_title, color):
     """Single-series bar chart in the same pastel theme as the reliability charts."""
     return {
@@ -299,7 +358,10 @@ def _usage_bar_figure(labels, values, hover, title, y_title, color):
         }],
         "layout": {
             "title": {"text": title},
-            "xaxis": {"type": "category", "tickangle": -40, "automargin": True},
+            # -60 rather than the -40 the sparser charts use: the three charts on
+            # this helper carry up to USAGE_TOP_N categories, and a flatter angle
+            # collides past ~30 of them. automargin grows the bottom margin to fit.
+            "xaxis": {"type": "category", "tickangle": -60, "automargin": True},
             "yaxis": {"title": {"text": y_title}, "rangemode": "tozero"},
             "margin": {"t": 70, "r": 30, "b": 80, "l": 60},
             "showlegend": False,
@@ -411,6 +473,36 @@ def _os_family(s):
     if "mac" in t or "darwin" in t or "os x" in t:
         return "macOS"
     return "Linux"  # every other reported OS string is a Linux distro
+
+
+def fetch_sessions_by_os(key):
+    """Sessions started per OS family (Windows / macOS / Linux), from PostHog.
+
+    This is the denominator for both per-OS charts. Sessions, not users: a crash is
+    an event that happens to a session, so both sides of the ratio must count the
+    same thing. Returns (totals, per_day) with totals {family: n} and per_day
+    {"YYYY-MM-DD": {family: n}} - one query serving the bar chart and the trend.
+
+    The raw OS string is grouped in SQL but classified in Python, so _os_family()
+    stays the single definition of what counts as Linux (every distro spelling on
+    the platform charts resolves through it too).
+    """
+    rows = _posthog_query(key, (
+        "SELECT toDate(timestamp) AS d, toString(properties.os) AS v, count() AS n "
+        "FROM events WHERE event = 'session_start' AND isNotNull(properties.os) "
+        "AND timestamp > now() - INTERVAL %d DAY GROUP BY d, v"
+    ) % PERIOD_DAYS)
+    totals = {}
+    per_day = {}
+    for d, v, n in rows:
+        fam = _os_family(v)
+        if not fam:
+            continue
+        n = int(n or 0)
+        totals[fam] = totals.get(fam, 0) + n
+        day = per_day.setdefault(str(d)[:10], {})
+        day[fam] = day.get(fam, 0) + n
+    return totals, per_day
 
 
 def _distro_name(s):
@@ -1037,15 +1129,24 @@ def write_usage_figures(key):
     files_fig["data"].extend(flines)
     modules_title = ("Most-used features — %d activations (%s)"
                      % (modules_total, span))
+    # Same features, different denominator: share of sessions that used each one at
+    # least once, rather than raw activation count. See fetch_module_reach().
+    rl, rv, rh, r_sessions = fetch_module_reach(key)
+    reach_title = ("Features by share of sessions — %d sessions (%s)"
+                   % (r_sessions, span))
     jobs = (
         (OUT_PATH_FILES, fl, files_fig),
         (OUT_PATH_MODULES, ml, _usage_bar_figure(
             ml, mv, mh, modules_title, "Times used", "#9db4d0")),
+        (OUT_PATH_MODULE_REACH, rl, _usage_bar_figure(
+            rl, rv, rh, reach_title, "Share of sessions", "#b9a6cc")),
     )
     for path, labels, fig in jobs:
         if not labels:
             warn("no data for %s; keeping placeholder." % os.path.basename(path))
             continue
+        if path == OUT_PATH_MODULE_REACH:
+            fig["layout"]["yaxis"]["ticksuffix"] = "%"
         with open(path, "w") as f:
             json.dump(fig, f, indent=2)
         print("[usage] wrote %s (%d entries)" % (path, len(labels)))
@@ -1295,6 +1396,78 @@ def _format_span(start, end):
     return "the last %d days" % max(1, round(secs / 86400.0))
 
 
+def _sentry_events(token, query, fields, max_pages=20, sort="-timestamp"):
+    """Yield Sentry discover events for `query`, following cursor pagination.
+
+    `fields` are the columns to request. Bounded at `max_pages` x 100 events so a
+    runaway query can never stall the build; callers that need every event should
+    keep their filter narrow enough to fit.
+
+    `sort` is NOT optional in practice. Cursor pagination over an unsorted Discover
+    query walks an unstable ordering: consecutive runs of identical code returned
+    61 then 59 distinct crashed sessions out of the same ~490 events, because rows
+    shift between pages as the cursor advances. An explicit sort key makes the walk
+    well-defined and the build reproducible.
+    """
+    base = "%s/api/0/organizations/%s/events/" % (HOST, ORG)
+    params = [("project", PROJECT_ID)]
+    params += [("field", f) for f in fields]
+    params += [("query", query), ("statsPeriod", STATS_PERIOD), ("per_page", "100")]
+    if sort:
+        params.append(("sort", sort))
+    cursor = None
+    for _ in range(max_pages):
+        p = list(params)
+        if cursor:
+            p.append(("cursor", cursor))
+        req = urllib.request.Request(base + "?" + urllib.parse.urlencode(p),
+                                     headers={"Authorization": "Bearer %s" % token})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            payload = json.load(resp)
+            link = resp.headers.get("Link", "")
+        for ev in payload.get("data", []):
+            yield ev
+        # Follow pagination only while the next page reports results.
+        cursor = None
+        for part in link.split(","):
+            if 'rel="next"' in part and 'results="true"' in part:
+                m = re.search(r'cursor="([^"]+)"', part)
+                if m:
+                    cursor = m.group(1)
+        if not cursor:
+            return
+
+
+def fetch_crashed_sessions_by_os(token):
+    """Crashed sessions per OS family (Windows / macOS / Linux).
+
+    Deduped by session_id like fetch_crash_times, so one crashed session counts
+    once however many events it emitted. Unlike fetch_crash_times this does NOT
+    require session_seconds - a crash counts against its OS whether or not the
+    uptime made it into the envelope. Returns (totals, per_day) with totals
+    {family: crashed_sessions} and per_day {"YYYY-MM-DD": {family: crashed}}.
+    """
+    seen = set()
+    totals = {}
+    per_day = {}
+    # "timestamp" is requested because _sentry_events sorts on it, and Discover
+    # rejects (HTTP 400) a sort key that is not among the selected fields. It is
+    # also what buckets a crash into a day for the trend chart.
+    for ev in _sentry_events(token, "event.type:error",
+                             ("os.name", "session_id", "timestamp")):
+        sid = ev.get("session_id") or ev.get("id")
+        if sid in seen:
+            continue
+        seen.add(sid)
+        fam = _os_family(ev.get("os.name"))
+        if not fam:
+            continue
+        totals[fam] = totals.get(fam, 0) + 1
+        day = per_day.setdefault(str(ev.get("timestamp"))[:10], {})
+        day[fam] = day.get(fam, 0) + 1
+    return totals, per_day
+
+
 def fetch_crash_times(token):
     """Per-commit crash stats from Sentry crash events.
 
@@ -1309,63 +1482,301 @@ def fetch_crash_times(token):
     agg = {}        # hash -> aggregate
     seen = set()    # session_ids already counted
     first_ts = None
-    base = "%s/api/0/organizations/%s/events/" % (HOST, ORG)
-    params = [
-        ("project", PROJECT_ID),
-        ("field", "release"),
-        ("field", "session_seconds"),
-        ("field", "images_processed"),
-        ("field", "session_id"),
-        ("field", "timestamp"),
-        ("query", "event.type:error has:session_seconds"),
-        ("statsPeriod", STATS_PERIOD),
-        ("per_page", "100"),
-    ]
-    cursor = None
-    for _ in range(20):  # bounded pagination
-        p = list(params)
-        if cursor:
-            p.append(("cursor", cursor))
-        req = urllib.request.Request(base + "?" + urllib.parse.urlencode(p),
-                                     headers={"Authorization": "Bearer %s" % token})
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            payload = json.load(resp)
-            link = resp.headers.get("Link", "")
-        for ev in payload.get("data", []):
-            t = _parse_ts(ev.get("timestamp"))
-            if t and (first_ts is None or t < first_ts):
-                first_ts = t
-            # One record per crashed session (fall back to event id pre-session_id).
-            sid = ev.get("session_id") or ev.get("id")
-            if sid in seen:
-                continue
-            seen.add(sid)
-            h = _commit_hash(ev.get("release") or "")
-            if not h:
-                continue
-            try:
-                sec = float(ev.get("session_seconds"))
-            except (TypeError, ValueError):
-                sec = None
-            try:
-                pics = int(float(ev.get("images_processed")))
-            except (TypeError, ValueError):
-                pics = 0
-            a = agg.setdefault(h, {"hash": h, "sec_sum": 0.0, "sec_n": 0, "pics_sum": 0})
-            if sec and sec > 0:
-                a["sec_sum"] += sec
-                a["sec_n"] += 1
-            a["pics_sum"] += pics
-        # Follow pagination only while the next page reports results.
-        cursor = None
-        for part in link.split(","):
-            if 'rel="next"' in part and 'results="true"' in part:
-                m = re.search(r'cursor="([^"]+)"', part)
-                if m:
-                    cursor = m.group(1)
-        if not cursor:
-            break
+    fields = ("release", "session_seconds", "images_processed", "session_id", "timestamp")
+    for ev in _sentry_events(token, "event.type:error has:session_seconds", fields):
+        t = _parse_ts(ev.get("timestamp"))
+        if t and (first_ts is None or t < first_ts):
+            first_ts = t
+        # One record per crashed session (fall back to event id pre-session_id).
+        sid = ev.get("session_id") or ev.get("id")
+        if sid in seen:
+            continue
+        seen.add(sid)
+        h = _commit_hash(ev.get("release") or "")
+        if not h:
+            continue
+        try:
+            sec = float(ev.get("session_seconds"))
+        except (TypeError, ValueError):
+            sec = None
+        try:
+            pics = int(float(ev.get("images_processed")))
+        except (TypeError, ValueError):
+            pics = 0
+        a = agg.setdefault(h, {"hash": h, "sec_sum": 0.0, "sec_n": 0, "pics_sum": 0})
+        if sec and sec > 0:
+            a["sec_sum"] += sec
+            a["sec_n"] += 1
+        a["pics_sum"] += pics
     return list(agg.values()), first_ts
+
+
+# Smoothing window for the trend chart: 7 days, centered (half=3 either side).
+TREND_HALF = 3
+# A per-OS point needs at least this many (weighted) sessions behind it before it
+# means anything. macOS runs ~15 sessions/day (3 days in the window have none at
+# all), so a raw daily rate there is 0% or 100% and nothing in between.
+TREND_MIN_SESSIONS = 30.0
+# Rather than drop a point that cannot reach that floor in 7 days, the window GROWS
+# around it until it can, up to this half-width (21 days). A sparse platform earns
+# more smoothing instead of a hole in its line: with a fixed 7-day window macOS
+# broke into three 3-day gaps and Windows into one 4-day gap, which reads as missing
+# data when it is really just a quiet week. Measured worst case over the current
+# window is half=9 (19 days, Windows) and half=8 (17 days, macOS); Linux never needs
+# more than the default 3. The cap exists so a genuinely dead series still breaks
+# rather than being averaged into meaninglessness.
+TREND_MAX_HALF = 10
+
+
+def _triangular_smooth(total, healthy, half=TREND_HALF, min_total=0.0,
+                       max_half=None):
+    """Centered triangular-weighted moving average of healthy/total, as a percent.
+
+    Weights are 1 at the centre tapering to 1/(h+1) at the window edge, times each
+    day's own volume, so a quiet day counts for less than a busy one. Weights are
+    non-negative, so every output is a true weighted mean of its window and can
+    never fall outside the range of the daily rates it averages - which a
+    rectangular window also guarantees but, being flat, smears a single bad day
+    into a plateau its full width instead of a dip on the day itself.
+
+    When `min_total` is set, the half-width starts at `half` and grows a day at a
+    time until the window holds that much volume, stopping at `max_half`. Returns
+    (values, halves): the percentages, and the half-width each one actually used so
+    the hover can say when a point is smoothed over more than the nominal week. A
+    value is None only where even the widest window is too thin, or where the
+    inputs are inconsistent (more crashes than sessions, which the two-source join
+    can produce where one source has data and the other does not) - None breaks the
+    line rather than drawing a fabricated value.
+    """
+    n = len(total)
+    values = []
+    halves = []
+
+    def window(i, h):
+        t = 0.0
+        acc = 0.0
+        for j in range(max(0, i - h), min(n, i + h + 1)):
+            w = 1.0 - abs(j - i) / float(h + 1)
+            t += w * total[j]
+            acc += w * healthy[j]
+        return t, acc
+
+    for i in range(n):
+        h = half
+        t, acc = window(i, h)
+        while t < min_total and max_half is not None and h < max_half:
+            h += 1
+            t, acc = window(i, h)
+        if t <= 0 or t < min_total or acc < 0:
+            values.append(None)
+            halves.append(None)
+        else:
+            values.append(100.0 * acc / t)
+            halves.append(h)
+    return values, halves
+
+
+def build_trend_figure(payload, span_label, os_crashes=None, os_sessions=None):
+    """Crash-free session rate over time, from the per-release daily series.
+
+    Costs no extra API call: fetch_groups() already downloads a daily `series` per
+    release alongside the totals, and until now only sentry_first_session() looked
+    at it. Rates are session-weighted across releases per day, so the line answers
+    "how reliable was Ansel on this date", which the per-revision chart cannot show.
+
+    The daily rate is noisy at ~150 sessions/day (one bad afternoon moves it several
+    points), so the readable series is a 7-day CENTERED session-weighted mean; the
+    raw daily rate stays visible underneath as faint markers. Centered, not
+    trailing: a trailing mean lags the data by half its window, which would place
+    every improvement three days after the commit that caused it. The window is
+    truncated at both ends rather than dropped, so the line still reaches today -
+    the last points average fewer days and are correspondingly less settled.
+
+    The day weights are TRIANGULAR, not uniform. A rectangular window smears a
+    single bad day across its whole width as a flat plateau: the 2026-08-16
+    incident (202 sessions at 55% crash-free, revision b2be90f) pinned seven
+    consecutive days to ~88% and put the minimum on 08-17 rather than on the day
+    the crashes actually happened, which reads as "broken for a week" instead of
+    "one bad build". Tapering the weights puts the trough on the incident and lets
+    the flanks recover toward their own daily values. Weights stay non-negative, so
+    each point remains a genuine weighted mean of its window and can never fall
+    outside the range of the daily rates it averages.
+
+    Returns None when there is not enough data to draw a trend.
+    """
+    intervals = payload.get("intervals") or []
+    groups = payload.get("groups") or []
+    if not intervals or not groups:
+        return None
+
+    # Per-day totals, restricted to commit-based releases like build_figure, so the
+    # trend and the headline rate describe the same population.
+    dates, day_total, day_healthy = [], [], []
+    for i, iv in enumerate(intervals):
+        total = 0.0
+        healthy = 0.0
+        for grp in groups:
+            release = (grp.get("by") or {}).get("release")
+            if not release or _commit_hash(release) is None:
+                continue
+            series = grp.get("series") or {}
+            sess = (series.get("sum(session)") or [])
+            rate = (series.get("crash_free_rate(session)") or [])
+            if i >= len(sess) or not sess[i]:
+                continue
+            r = rate[i] if i < len(rate) else None
+            if r is None:
+                continue
+            total += sess[i]
+            healthy += sess[i] * float(r)
+        if total > 0:
+            dates.append(str(iv)[:10])
+            day_total.append(total)
+            day_healthy.append(healthy)
+
+    if len(dates) < 7:
+        return None
+
+    daily = [100.0 * h / t for h, t in zip(day_healthy, day_total)]
+    rolling, _ = _triangular_smooth(day_total, day_healthy)
+
+    # Per-OS decomposition. Sentry's sessions API cannot group by OS, so these
+    # come from the same cross-source join as the per-OS bar chart: Sentry crashes
+    # over PostHog sessions, both bucketed by day. They are therefore NOT expected
+    # to reproduce the Sentry-native aggregate exactly - measured agreement is a
+    # median of 0.03 points across the window, but up to 8 points on a bad day.
+    os_series = []
+    if os_crashes and os_sessions:
+        for fam, color in (("Linux", "#8ec1a8"), ("Windows", "#9db4d0"),
+                           ("macOS", "#e8a598")):
+            sess = [float((os_sessions.get(d) or {}).get(fam, 0)) for d in dates]
+            crash = [float((os_crashes.get(d) or {}).get(fam, 0)) for d in dates]
+            if sum(sess) <= 0:
+                continue
+            healthy = [n - k for n, k in zip(sess, crash)]
+            line, halves = _triangular_smooth(sess, healthy,
+                                              min_total=TREND_MIN_SESSIONS,
+                                              max_half=TREND_MAX_HALF)
+            if not any(v is not None for v in line):
+                continue
+
+            def _hover(d, v, h, fam=fam):
+                if v is None:
+                    return "%s<br>%s: too few sessions to say" % (d, fam)
+                days_used = 2 * h + 1
+                span = ("%d-day centered average" % days_used if days_used > 2 * TREND_HALF + 1
+                        else "7-day centered average")
+                return "%s<br>%s: %.1f%% crash-free (%s)" % (d, fam, v, span)
+
+            os_series.append({
+                "type": "scatter", "mode": "lines", "x": dates, "y": line,
+                "name": fam, "connectgaps": False,
+                "line": {"color": color, "width": 2.5},
+                "hovertext": [_hover(d, v, h)
+                              for d, v, h in zip(dates, line, halves)],
+                "hoverinfo": "text"})
+
+    # One line per operating system and nothing else. An all-platforms aggregate was
+    # tried alongside them and removed: it is a session-weighted blend dominated by
+    # Linux (65% of sessions), so it tracks the Linux line most of the time and
+    # crosses the others during an incident, adding a fourth line that says nothing
+    # the three do not - and it came from Sentry's own session counts rather than
+    # the join, so on a bad day it disagreed with its own components by ~7 points
+    # (2026-08-16: parts recombine to 89%, Sentry-native aggregate read 81.7%).
+    # The per-revision charts below carry the fleet-wide number.
+    data = list(os_series)
+    if not data:
+        # No PostHog key, so no per-OS split is possible: fall back to the
+        # Sentry-native aggregate alone rather than publishing an empty chart.
+        data = [
+            {"type": "scatter", "mode": "markers", "x": dates, "y": daily,
+             "name": "All platforms, daily",
+             "marker": {"color": "rgba(51,51,51,0.22)", "size": 5},
+             "hovertext": ["%s<br>%.1f%% crash-free over %d sessions"
+                           % (d, v, round(t))
+                           for d, v, t in zip(dates, daily, day_total)],
+             "hoverinfo": "text"},
+            {"type": "scatter", "mode": "lines", "x": dates, "y": rolling,
+             "name": "All platforms",
+             "line": {"color": "#333333", "width": 3},
+             "hovertext": ["%s<br>%.1f%% crash-free (7-day centered average)" % (d, v)
+                           if v is not None else d for d, v in zip(dates, rolling)],
+             "hoverinfo": "text"}]
+    return {
+        "data": data,
+        "layout": {
+            "title": {"text": "Crash-free sessions over time (%s)" % span_label},
+            "xaxis": {"title": {"text": "Date"}, "type": "date"},
+            # Anchored near the top: the interesting range is 90-100%, and starting
+            # at zero would flatten every movement that matters into one line.
+            "yaxis": {"title": {"text": "Crash-free sessions"}, "ticksuffix": "%",
+                      "rangemode": "normal"},
+            "margin": {"t": 70, "r": 30, "b": 60, "l": 60},
+            "showlegend": True,
+            "legend": {"orientation": "h", "x": 0.5, "xanchor": "center",
+                       "y": 0.01, "yanchor": "bottom",
+                       "bgcolor": "rgba(255,255,255,0.65)",
+                       "bordercolor": "rgba(0,0,0,0.15)", "borderwidth": 1},
+        },
+    }
+
+
+def build_crash_os_figure(crashed, sessions, span_label):
+    """Crash-free rate per OS family: Sentry crashed sessions over PostHog sessions.
+
+    Sentry's sessions API cannot group by OS (release/environment/session.status
+    only), so the denominator has to come from PostHog's session_start events. That
+    makes this the one chart on the page whose numerator and denominator come from
+    two different opt-ins: a user who accepted crash reporting but declined usage
+    telemetry is counted on top and not at the bottom. The RANKING is robust to
+    that; the absolute rate carries an unknown systematic error, and the chart says
+    so rather than hiding it. Returns None if either side is missing.
+    """
+    if not crashed or not sessions:
+        return None
+    rows = []
+    for fam in ("Linux", "Windows", "macOS"):
+        n = sessions.get(fam, 0)
+        k = crashed.get(fam, 0)
+        if n <= 0:
+            continue
+        rate = 100.0 * (n - k) / n
+        low, high = _wilson_interval(n - k, n)
+        rows.append((fam, rate, 100.0 * low, 100.0 * high, n, k))
+    if not rows:
+        return None
+    rows.sort(key=lambda r: r[1], reverse=True)
+
+    labels = [r[0] for r in rows]
+    values = [r[1] for r in rows]
+    hover = ["%s<br>%.2f%% crash-free (%d crashed of %d sessions)<br>"
+             "95%% confidence: %.2f-%.2f%%<br>one crash every %.0f sessions<br>"
+             "<i>crashes from Sentry, sessions from PostHog</i>"
+             % (fam, rate, k, n, low, high, (n / k) if k else float("inf"))
+             for fam, rate, low, high, n, k in rows]
+    return {
+        "data": [{
+            "type": "bar", "x": labels, "y": values,
+            "hovertext": hover, "hoverinfo": "text",
+            "marker": {"color": "#8ec1a8"},
+            "text": ["%.1f%%" % v for v in values], "textposition": "auto",
+            "error_y": {"type": "data", "symmetric": False,
+                        "array": [r[3] - r[1] for r in rows],
+                        "arrayminus": [r[1] - r[2] for r in rows],
+                        "color": "rgba(0,0,0,0.35)", "thickness": 1.5, "width": 6},
+        }],
+        "layout": {
+            # No subtitle: at the width this chart gets in a two-column row it
+            # wraps or truncates. The two-source caveat lives in the hover and in
+            # the page copy instead.
+            "title": {"text": "Crash-free sessions per operating system (%s)"
+                              % span_label},
+            "xaxis": {"title": {"text": "Operating system"}, "type": "category"},
+            "yaxis": {"title": {"text": "Crash-free sessions"}, "ticksuffix": "%"},
+            "margin": {"t": 70, "r": 30, "b": 60, "l": 60},
+            "showlegend": False,
+        },
+    }
 
 
 def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None,
@@ -1821,6 +2232,43 @@ def main():
             json.dump(fig, f, indent=2)
     print("[reliability] wrote %s and %s (%d releases, %d total sessions)"
           % (OUT_PATH, OUT_PATH_USERS, n_shown, global_total))
+
+    # Per-OS crash figures, fetched ONCE and shared by the bar chart (totals) and
+    # the trend chart (daily breakdown). Sentry's sessions API cannot group by OS,
+    # so both need Sentry crashes over PostHog sessions, hence both tokens.
+    crash_totals, crash_daily = {}, {}
+    sess_totals, sess_daily = {}, {}
+    if ph_key:
+        try:
+            crash_totals, crash_daily = fetch_crashed_sessions_by_os(token)
+            sess_totals, sess_daily = fetch_sessions_by_os(ph_key)
+        except Exception as exc:  # noqa: BLE001 - best effort, never break the build
+            warn("per-OS crash query failed (%s); OS charts keep their placeholder."
+                 % exc)
+            crash_totals, crash_daily = {}, {}
+            sess_totals, sess_daily = {}, {}
+    else:
+        warn("no PostHog key; per-OS charts skipped (they need the session count).")
+
+    # Crash-free rate over time, from the daily series already in `payload`, split
+    # per OS where the join is available.
+    trend = build_trend_figure(payload, span_label, crash_daily, sess_daily)
+    if trend:
+        with open(OUT_PATH_TREND, "w") as f:
+            json.dump(trend, f, indent=2)
+        print("[reliability] wrote %s (%d days, %d series)"
+              % (OUT_PATH_TREND, len(trend["data"][0]["x"]), len(trend["data"])))
+    else:
+        warn("not enough daily history for the trend chart; keeping placeholder.")
+
+    crash_os = build_crash_os_figure(crash_totals, sess_totals, span_label)
+    if crash_os:
+        with open(OUT_PATH_CRASH_OS, "w") as f:
+            json.dump(crash_os, f, indent=2)
+        print("[reliability] wrote %s (%d platforms)"
+              % (OUT_PATH_CRASH_OS, len(crash_os["data"][0]["x"])))
+    elif ph_key:
+        warn("no usable crash-per-OS data; keeping placeholder.")
     return 0
 
 
