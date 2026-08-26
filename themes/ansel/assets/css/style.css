@@ -483,6 +483,25 @@ blockquote::before {
   max-width: 100% !important;
 }
 
+/* Mouse interactions: the pointer counterpart of a key. Bootstrap fills <kbd> solid
+   (dark box, light glyphs); a mouse action is not a key, so it is drawn as an outline
+   instead. It stays a <kbd> -- the element means "user input", which a click or a
+   scroll is just as much as a keystroke -- and only the class changes the look, e.g.
+   <kbd>Shift</kbd>+<kbd class="mouse">scroll</kbd>. */
+kbd.mouse {
+  /* Bootstrap's kbd padding, minus the 1px the border adds back, so both boxes end up
+     exactly the same size and sit on the same baseline. Longhands rather than the
+     shorthand: the minifier strips the space between two adjacent calc() values. */
+  padding-block: calc(0.1875rem - 1px);
+  padding-inline: calc(0.375rem - 1px);
+  font-family: var(--bs-font-monospace);
+  font-size: 0.875em;
+  color: var(--bs-body-color);
+  background-color: transparent;
+  border: 1px solid var(--bs-body-color);
+  border-radius: 0.25rem;
+}
+
 a[href^="#fn:"],
 a[href^="#fnref:"] {
   text-decoration: none;
