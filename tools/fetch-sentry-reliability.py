@@ -30,9 +30,9 @@ Tunables (env vars, with defaults):
   POSTHOG_HOST=https://eu.posthog.com
   POSTHOG_PROJECT_ID=206740
   RELIABILITY_STATS_PERIOD=90d              (rolling window = "currently used")
-  RELIABILITY_MIN_USERS=35                  (drop revisions used by too few unique
+  RELIABILITY_MIN_USERS=40                  (drop revisions used by too few unique
                                              users to be statistically meaningful)
-  RELIABILITY_MAX_RELEASES=20               (cap bars for readability; the cap keeps
+  RELIABILITY_MAX_RELEASES=30               (cap bars for readability; the cap keeps
                                              the NEWEST revisions, not the busiest)
   RELIABILITY_ENVIRONMENT=                  (e.g. "nightly" to show only official
                                              builds; empty = all environments)
@@ -84,8 +84,8 @@ HOST = os.environ.get("SENTRY_HOST", "https://de.sentry.io")
 POSTHOG_HOST = os.environ.get("POSTHOG_HOST", "https://eu.posthog.com")
 POSTHOG_PROJECT_ID = os.environ.get("POSTHOG_PROJECT_ID", "206740")
 STATS_PERIOD = os.environ.get("RELIABILITY_STATS_PERIOD", "90d")
-MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "35"))
-MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "20"))
+MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "40"))
+MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "30"))
 ENVIRONMENT = os.environ.get("RELIABILITY_ENVIRONMENT", "").strip()
 
 # Window length in days, parsed from STATS_PERIOD ("90d" -> 90), for HogQL INTERVAL.
