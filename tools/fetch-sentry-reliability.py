@@ -30,9 +30,10 @@ Tunables (env vars, with defaults):
   POSTHOG_HOST=https://eu.posthog.com
   POSTHOG_PROJECT_ID=206740
   RELIABILITY_STATS_PERIOD=90d              (rolling window = "currently used")
-  RELIABILITY_MIN_USERS=25                  (drop revisions used by too few unique
+  RELIABILITY_MIN_USERS=35                  (drop revisions used by too few unique
                                              users to be statistically meaningful)
-  RELIABILITY_MAX_RELEASES=12               (cap bars for readability)
+  RELIABILITY_MAX_RELEASES=20               (cap bars for readability; the cap keeps
+                                             the NEWEST revisions, not the busiest)
   RELIABILITY_ENVIRONMENT=                  (e.g. "nightly" to show only official
                                              builds; empty = all environments)
 """
@@ -84,7 +85,7 @@ POSTHOG_HOST = os.environ.get("POSTHOG_HOST", "https://eu.posthog.com")
 POSTHOG_PROJECT_ID = os.environ.get("POSTHOG_PROJECT_ID", "206740")
 STATS_PERIOD = os.environ.get("RELIABILITY_STATS_PERIOD", "90d")
 MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "35"))
-MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "12"))
+MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "20"))
 ENVIRONMENT = os.environ.get("RELIABILITY_ENVIRONMENT", "").strip()
 
 # Window length in days, parsed from STATS_PERIOD ("90d" -> 90), for HogQL INTERVAL.
@@ -1466,23 +1467,41 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     global_total = int(round(g_total))
 
     # Only statistically meaningful revisions (used by enough distinct people),
-    # most-active first, capped for readability.
-    shown = [c for c in clusters if c["users"] >= MIN_USERS]
-    shown.sort(key=lambda c: c["total"], reverse=True)
-    shown = shown[:MAX_RELEASES]
+    # then the MOST RECENT of those, capped for readability.
+    #
+    # The cap must rank on RECENCY, not on accumulated session count: sessions keep
+    # arriving for weeks after a build ships, so "most sessions" is mostly a proxy
+    # for "has been in the window longest" and systematically evicts the newest
+    # builds. Ranking by total pushed the newest bar to 11 days old while builds up
+    # to 7 days old already cleared MIN_USERS.
+    candidates = [c for c in clusters if c["users"] >= MIN_USERS]
 
-    # Attach each shown revision's commit date (from GitHub) and read the x-axis
-    # chronologically by it, oldest -> newest. Unknown/unpushed commits fall back
-    # to the revision number and trail at the end.
+    # Attach each candidate's commit date (from GitHub) BEFORE the cap, since the
+    # cap now ranks on it. That is one request per candidate rather than per shown
+    # revision; the candidate set is bounded by MIN_USERS and stays small.
     if gh_token:
-        for c in shown:
+        for c in candidates:
             if c.get("hash"):
                 c["date"] = fetch_commit_date(gh_token, c["hash"])
 
+    # Recency, best first. A commit we cannot date (unpushed, or no GitHub token)
+    # cannot be claimed to be recent, so it ranks below every dated one and falls
+    # back to the revision number, then to session count - which is what this
+    # selection did for everything before dates were available.
+    def _recency_key(c):
+        d = c.get("date")
+        rev = c.get("revision")
+        return (d is not None, d or "", int(rev) if rev else 0, c["total"])
+    candidates.sort(key=_recency_key, reverse=True)
+    shown = candidates[:MAX_RELEASES]
+
+    # Read the x-axis chronologically, oldest -> newest. Unknown/unpushed commits
+    # fall back to the revision number and trail at the end. Two builds committed on
+    # the same day are ordered most-used first, the only finer signal we have.
     def _order_key(c):
         d = c.get("date")
         rev = c.get("revision")
-        return (d is None, d or "", int(rev) if rev else 0)
+        return (d is None, d or "", int(rev) if rev else 0, -c["total"])
     shown.sort(key=_order_key)
 
     # Fold everything that didn't make the cut (below the session threshold, beyond
@@ -1586,8 +1605,12 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
             "barmode": "stack",
             # Unique commit-hash ids as categories (so same-day revisions stay
             # separate), with the commit date shown as the tick label.
+            # Dates are long labels and there are up to MAX_RELEASES of them, so
+            # slant them and let Plotly grow the bottom margin to fit rather than
+            # betting a fixed one is enough at every viewport width.
             "xaxis": {"title": {"text": "Revision"}, "type": "category",
-                      "tickmode": "array", "tickvals": xids, "ticktext": labels},
+                      "tickmode": "array", "tickvals": xids, "ticktext": labels,
+                      "tickangle": -45, "automargin": True},
             "yaxis": {"title": {"text": y_title}, "rangemode": "tozero",
                       "ticksuffix": "%", "range": [0, 108]},
             # Legend overlaid inside the plot, just above the x axis.
