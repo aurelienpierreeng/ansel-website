@@ -22,8 +22,8 @@
         "Budgie"
       ],
       "values": [
-        249,
-        203,
+        251,
+        206,
         100,
         30,
         23,
@@ -42,8 +42,8 @@
       ],
       "hole": 0.45,
       "hovertext": [
-        "KDE<br>249 users",
-        "GNOME<br>203 users",
+        "KDE<br>251 users",
+        "GNOME<br>206 users",
         "Cinnamon<br>100 users",
         "XFCE<br>30 users",
         "Hyprland<br>23 users",
@@ -85,7 +85,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Desktop environment on Linux \u2014 658 users"
+      "text": "Desktop environment on Linux \u2014 663 users"
     },
     "margin": {
       "t": 70,

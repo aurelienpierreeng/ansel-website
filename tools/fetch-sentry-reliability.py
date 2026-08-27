@@ -45,7 +45,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Consumed by the existing {{< plotly src="reliability.json" >}} shortcode, whose
@@ -480,29 +480,39 @@ def fetch_sessions_by_os(key):
 
     This is the denominator for both per-OS charts. Sessions, not users: a crash is
     an event that happens to a session, so both sides of the ratio must count the
-    same thing. Returns (totals, per_day) with totals {family: n} and per_day
-    {"YYYY-MM-DD": {family: n}} - one query serving the bar chart and the trend.
+    same thing. Returns (totals, per_release) with totals {family: n} and
+    per_release {commit_hash: {family: n}} - one query serving both per-OS charts.
+
+    Keyed by the COMMIT the session ran, not the day it ran on: the trend chart
+    plots reliability against the date a build was committed, so a session started
+    today on last week's build belongs to last week's build. Sessions whose release
+    is not commit-shaped are dropped from per_release (they still count in totals,
+    which the bar chart uses and which does not care about the build's date).
 
     The raw OS string is grouped in SQL but classified in Python, so _os_family()
     stays the single definition of what counts as Linux (every distro spelling on
     the platform charts resolves through it too).
     """
     rows = _posthog_query(key, (
-        "SELECT toDate(timestamp) AS d, toString(properties.os) AS v, count() AS n "
+        "SELECT coalesce(properties.commit, properties.app_version) AS rel, "
+        "toString(properties.os) AS v, count() AS n "
         "FROM events WHERE event = 'session_start' AND isNotNull(properties.os) "
-        "AND timestamp > now() - INTERVAL %d DAY GROUP BY d, v"
+        "AND timestamp > now() - INTERVAL %d DAY GROUP BY rel, v"
     ) % PERIOD_DAYS)
     totals = {}
-    per_day = {}
-    for d, v, n in rows:
+    per_release = {}
+    for rel, v, n in rows:
         fam = _os_family(v)
         if not fam:
             continue
         n = int(n or 0)
         totals[fam] = totals.get(fam, 0) + n
-        day = per_day.setdefault(str(d)[:10], {})
-        day[fam] = day.get(fam, 0) + n
-    return totals, per_day
+        h = _commit_hash(rel or "")
+        if not h:
+            continue
+        entry = per_release.setdefault(h, {})
+        entry[fam] = entry.get(fam, 0) + n
+    return totals, per_release
 
 
 def _distro_name(s):
@@ -1197,6 +1207,80 @@ def _is_packaged(cluster_hash, packaged_hashes):
                for p in packaged_hashes)
 
 
+def fetch_commit_dates(token, hashes, max_lookups=200):
+    """Map each commit hash to its committer date (YYYY-MM-DD).
+
+    Resolving one hash per request costs a request per hash, and the trend chart
+    needs dates for every commit anyone ran - 503 of them over a 90-day window,
+    which is both slow and wasteful at a 4-hourly rebuild. So the default branch is
+    listed in bulk first (~12 requests for ~1200 commits) and only what is left
+    over is looked up individually.
+
+    That leftover is not noise: measured, the bulk list covers 78.7% of sessions,
+    because a fifth of the nightlies people run are built from commits that never
+    landed on the default branch. Those are resolved one by one in descending
+    session order, so if `max_lookups` binds it is the least-used commits that go
+    unresolved. Returns {hash: "YYYY-MM-DD"}; callers must cope with misses.
+
+    Some commits are unresolvable by design and SHOULD stay that way. A commit that
+    exists in nobody's clone but the author's has no date GitHub can serve, and the
+    sessions behind it are not shipped software. Measured on the current window,
+    117 commits go undated and account for 19.8% of sessions - but 78% of that is
+    two commits alone, each a Fedora self-build run ~1000 times by ONE user (the
+    developer's own machine, never pushed). Excluding them from a per-platform
+    reliability chart is right: one person's dev loop is 15.4% of all sessions in
+    the window and reports zero crashes. Do not "fix" this by falling back to a
+    date the build was first SEEN - that silently readmits exactly this traffic.
+    """
+    dates = {}
+    by_sha = {}
+    # `since` is generous: a build in use today can be older than the stats window.
+    since = (datetime.now(timezone.utc) - timedelta(days=PERIOD_DAYS + 30)).strftime(
+        "%Y-%m-%dT%H:%M:%SZ")
+    for page in range(1, 41):
+        try:
+            batch = _gh_request(token, "%s/repos/%s/commits?since=%s&per_page=100&page=%d"
+                                % (GITHUB_API, GITHUB_REPO, since, page))
+        except Exception as exc:  # noqa: BLE001
+            warn("commit listing page %d failed (%s); falling back to per-commit "
+                 "lookups." % (page, exc))
+            break
+        if not batch:
+            break
+        for c in batch:
+            sha = (c.get("sha") or "").lower()
+            d = (((c.get("commit") or {}).get("committer") or {}).get("date")
+                 or ((c.get("commit") or {}).get("author") or {}).get("date"))
+            if sha and d:
+                by_sha[sha] = d[:10]
+        if len(batch) < 100:
+            break
+
+    # Abbreviated hashes are prefixes of the full SHA, so index by prefix length
+    # actually used rather than scanning every SHA per hash.
+    prefixes = {}
+    for sha, d in by_sha.items():
+        for n in (7, 8, 10, 12, 40):
+            prefixes.setdefault(sha[:n], d)
+
+    unresolved = []
+    for h in hashes:
+        d = by_sha.get(h) or prefixes.get(h) or prefixes.get(h[:12]) or prefixes.get(h[:10])
+        if d:
+            dates[h] = d
+        else:
+            unresolved.append(h)
+
+    for h in unresolved[:max_lookups]:
+        d = fetch_commit_date(token, h)
+        if d:
+            dates[h] = d
+    if len(unresolved) > max_lookups:
+        warn("%d commits left undated (lookup cap %d); their sessions are excluded "
+             "from the trend chart." % (len(unresolved) - max_lookups, max_lookups))
+    return dates
+
+
 def fetch_commit_date(token, sha):
     """Committer date (YYYY-MM-DD) for a commit hash, or None. GitHub's commits
     endpoint resolves abbreviated SHAs, so the short hashes we cluster on work."""
@@ -1444,17 +1528,18 @@ def fetch_crashed_sessions_by_os(token):
     Deduped by session_id like fetch_crash_times, so one crashed session counts
     once however many events it emitted. Unlike fetch_crash_times this does NOT
     require session_seconds - a crash counts against its OS whether or not the
-    uptime made it into the envelope. Returns (totals, per_day) with totals
-    {family: crashed_sessions} and per_day {"YYYY-MM-DD": {family: crashed}}.
+    uptime made it into the envelope. Returns (totals, per_release) with totals
+    {family: crashed_sessions} and per_release {commit_hash: {family: crashed}} -
+    keyed by the build that crashed, not the day it crashed on, to match
+    fetch_sessions_by_os() and the trend chart's build-date axis.
     """
     seen = set()
     totals = {}
-    per_day = {}
+    per_release = {}
     # "timestamp" is requested because _sentry_events sorts on it, and Discover
-    # rejects (HTTP 400) a sort key that is not among the selected fields. It is
-    # also what buckets a crash into a day for the trend chart.
+    # rejects (HTTP 400) a sort key that is not among the selected fields.
     for ev in _sentry_events(token, "event.type:error",
-                             ("os.name", "session_id", "timestamp")):
+                             ("os.name", "release", "session_id", "timestamp")):
         sid = ev.get("session_id") or ev.get("id")
         if sid in seen:
             continue
@@ -1463,9 +1548,12 @@ def fetch_crashed_sessions_by_os(token):
         if not fam:
             continue
         totals[fam] = totals.get(fam, 0) + 1
-        day = per_day.setdefault(str(ev.get("timestamp"))[:10], {})
-        day[fam] = day.get(fam, 0) + 1
-    return totals, per_day
+        h = _commit_hash(ev.get("release") or "")
+        if not h:
+            continue
+        entry = per_release.setdefault(h, {})
+        entry[fam] = entry.get(fam, 0) + 1
+    return totals, per_release
 
 
 def fetch_crash_times(token):
@@ -1576,81 +1664,134 @@ def _triangular_smooth(total, healthy, half=TREND_HALF, min_total=0.0,
     return values, halves
 
 
-def build_trend_figure(payload, span_label, os_crashes=None, os_sessions=None):
-    """Crash-free session rate over time, from the per-release daily series.
+def eligible_commits(groups, min_users=None):
+    """Commit hashes of releases tested by at least `min_users` distinct people.
 
-    Costs no extra API call: fetch_groups() already downloads a daily `series` per
-    release alongside the totals, and until now only sentry_first_session() looked
-    at it. Rates are session-weighted across releases per day, so the line answers
-    "how reliable was Ansel on this date", which the per-revision chart cannot show.
-
-    The daily rate is noisy at ~150 sessions/day (one bad afternoon moves it several
-    points), so the readable series is a 7-day CENTERED session-weighted mean; the
-    raw daily rate stays visible underneath as faint markers. Centered, not
-    trailing: a trailing mean lags the data by half its window, which would place
-    every improvement three days after the commit that caused it. The window is
-    truncated at both ends rather than dropped, so the line still reaches today -
-    the last points average fewer days and are correspondingly less settled.
-
-    The day weights are TRIANGULAR, not uniform. A rectangular window smears a
-    single bad day across its whole width as a flat plateau: the 2026-08-16
-    incident (202 sessions at 55% crash-free, revision b2be90f) pinned seven
-    consecutive days to ~88% and put the minimum on 08-17 rather than on the day
-    the crashes actually happened, which reads as "broken for a week" instead of
-    "one bad build". Tapering the weights puts the trough on the incident and lets
-    the flanks recover toward their own daily values. Weights stay non-negative, so
-    each point remains a genuine weighted mean of its window and can never fall
-    outside the range of the daily rates it averages.
-
-    Returns None when there is not enough data to draw a trend.
+    Same gate, same counter and same prefix-clustering the per-revision charts use,
+    so "shown on one chart" and "shown on the other" mean the same thing: a release
+    nobody really tested does not get to state a crash rate anywhere on the page.
+    Counts come from Sentry's count_unique(user), which is what MIN_USERS has always
+    been measured against - PostHog sees a different opt-in population and would
+    apply a different, quietly incompatible threshold.
     """
-    intervals = payload.get("intervals") or []
-    groups = payload.get("groups") or []
-    if not intervals or not groups:
+    if min_users is None:
+        min_users = MIN_USERS
+    users = {}
+    for grp in groups or []:
+        h = _commit_hash((grp.get("by") or {}).get("release") or "")
+        if not h:
+            continue
+        n = int((grp.get("totals") or {}).get("count_unique(user)") or 0)
+        # The same build appears under several release names; merge by prefix and
+        # keep the longest (most specific) hash as the key, as build_figure does.
+        key = None
+        for k in users:
+            if k.startswith(h) or h.startswith(k):
+                key = k
+                break
+        if key is None:
+            users[h] = n
+        else:
+            total = users.pop(key) + n
+            users[h if len(h) > len(key) else key] = total
+    return {h for h, n in users.items() if n >= min_users}
+
+
+def build_trend_figure(groups, span_label, commit_dates,
+                       os_crashes=None, os_sessions=None, eligible=None):
+    """Crash-free session rate against the date the build was COMMITTED.
+
+    The x axis is build vintage, not calendar time. Bucketing by the day a session
+    ran answers "how many crashes happened on this date", which mixes every build
+    in use that day - a week-old nightly and a three-day-old one land in the same
+    bucket, so a fix cannot be seen separately from the old builds still running
+    beside it. Bucketing by the build's own commit date answers "how good was the
+    code written on this date", which is the question the page is asking. Measured
+    on the current window, 97.6% of sessions run a build committed inside the
+    window and none is older than its start, so the two axes span nearly the same
+    dates - but they attribute the sessions differently.
+
+    Sessions and crashes arrive keyed by commit hash and are re-bucketed here onto
+    a daily grid of commit dates. Several builds a day share a date and are summed;
+    a day with no build contributes nothing and the smoothing window widens across
+    it. Commits whose date could not be resolved are dropped and reported, never
+    silently folded into a neighbouring day.
+
+    Smoothing is the centered triangular kernel of _triangular_smooth(): centered
+    so a change appears at the build that caused it rather than half a window
+    later, triangular so one bad build is a dip on itself rather than a flat
+    plateau its full width, and adaptive so a quiet platform widens its window
+    instead of leaving a hole. Returns None when there is not enough to draw.
+    """
+    # Drop releases too few people tested, before anything else looks at them: a
+    # build three people ran has no business drawing a point on this chart, exactly
+    # as it draws no bar on the per-revision ones. `eligible` holds full or
+    # abbreviated hashes, so membership is a prefix test either way.
+    if eligible is not None:
+        def _is_eligible(h):
+            return any(h.startswith(k) or k.startswith(h) for k in eligible)
+        os_sessions = {h: v for h, v in (os_sessions or {}).items() if _is_eligible(h)}
+        os_crashes = {h: v for h, v in (os_crashes or {}).items() if _is_eligible(h)}
+        groups = [g for g in (groups or [])
+                  if (_commit_hash((g.get("by") or {}).get("release") or "") or "")
+                  and _is_eligible(_commit_hash((g.get("by") or {}).get("release") or ""))]
+
+    # Commit hash -> committer date, for every build that reported anything.
+    hashes = set(os_sessions or {}) | set(os_crashes or {})
+    for grp in groups or []:
+        h = _commit_hash((grp.get("by") or {}).get("release") or "")
+        if h:
+            hashes.add(h)
+    if not commit_dates:
         return None
 
-    # Per-day totals, restricted to commit-based releases like build_figure, so the
-    # trend and the headline rate describe the same population.
-    dates, day_total, day_healthy = [], [], []
-    for i, iv in enumerate(intervals):
-        total = 0.0
-        healthy = 0.0
-        for grp in groups:
-            release = (grp.get("by") or {}).get("release")
-            if not release or _commit_hash(release) is None:
-                continue
-            series = grp.get("series") or {}
-            sess = (series.get("sum(session)") or [])
-            rate = (series.get("crash_free_rate(session)") or [])
-            if i >= len(sess) or not sess[i]:
-                continue
-            r = rate[i] if i < len(rate) else None
-            if r is None:
-                continue
-            total += sess[i]
-            healthy += sess[i] * float(r)
-        if total > 0:
-            dates.append(str(iv)[:10])
-            day_total.append(total)
-            day_healthy.append(healthy)
-
-    if len(dates) < 7:
+    def date_of(h):
+        d = commit_dates.get(h)
+        if d:
+            return d
+        # Abbreviated and full hashes coexist in the same data; reconcile by prefix
+        # the way _commit_hash's callers do everywhere else.
+        for k, v in commit_dates.items():
+            if k.startswith(h) or h.startswith(k):
+                return v
         return None
 
-    daily = [100.0 * h / t for h, t in zip(day_healthy, day_total)]
-    rolling, _ = _triangular_smooth(day_total, day_healthy)
+    resolved = {h: date_of(h) for h in hashes}
+    undated = [h for h, d in resolved.items() if not d]
 
-    # Per-OS decomposition. Sentry's sessions API cannot group by OS, so these
-    # come from the same cross-source join as the per-OS bar chart: Sentry crashes
-    # over PostHog sessions, both bucketed by day. They are therefore NOT expected
-    # to reproduce the Sentry-native aggregate exactly - measured agreement is a
-    # median of 0.03 points across the window, but up to 8 points on a bad day.
+    # Daily grid spanning the commit dates we could resolve.
+    known = sorted({d for d in resolved.values() if d})
+    if len(known) < 7:
+        return None
+    first = datetime.strptime(known[0], "%Y-%m-%d")
+    last = datetime.strptime(known[-1], "%Y-%m-%d")
+    dates = [(first + timedelta(days=i)).strftime("%Y-%m-%d")
+             for i in range((last - first).days + 1)]
+    index = {d: i for i, d in enumerate(dates)}
+
+    def bucket(per_release, fam):
+        """Sum one family's per-commit counts onto the commit-date grid."""
+        out = [0.0] * len(dates)
+        dropped = 0
+        for h, by_fam in (per_release or {}).items():
+            n = float(by_fam.get(fam, 0))
+            if not n:
+                continue
+            d = resolved.get(h)
+            if d is None or d not in index:
+                dropped += n
+                continue
+            out[index[d]] += n
+        return out, dropped
+
     os_series = []
+    lost = 0.0
     if os_crashes and os_sessions:
         for fam, color in (("Linux", "#8ec1a8"), ("Windows", "#9db4d0"),
                            ("macOS", "#e8a598")):
-            sess = [float((os_sessions.get(d) or {}).get(fam, 0)) for d in dates]
-            crash = [float((os_crashes.get(d) or {}).get(fam, 0)) for d in dates]
+            sess, dropped = bucket(os_sessions, fam)
+            crash, _ = bucket(os_crashes, fam)
+            lost += dropped
             if sum(sess) <= 0:
                 continue
             healthy = [n - k for n, k in zip(sess, crash)]
@@ -1664,9 +1805,10 @@ def build_trend_figure(payload, span_label, os_crashes=None, os_sessions=None):
                 if v is None:
                     return "%s<br>%s: too few sessions to say" % (d, fam)
                 days_used = 2 * h + 1
-                span = ("%d-day centered average" % days_used if days_used > 2 * TREND_HALF + 1
-                        else "7-day centered average")
-                return "%s<br>%s: %.1f%% crash-free (%s)" % (d, fam, v, span)
+                span = ("%d-day window" % days_used
+                        if days_used > 2 * TREND_HALF + 1 else "7-day window")
+                return ("%s<br>%s: %.1f%% crash-free<br>builds committed around "
+                        "this date (%s)" % (d, fam, v, span))
 
             os_series.append({
                 "type": "scatter", "mode": "lines", "x": dates, "y": line,
@@ -1676,37 +1818,48 @@ def build_trend_figure(payload, span_label, os_crashes=None, os_sessions=None):
                               for d, v, h in zip(dates, line, halves)],
                 "hoverinfo": "text"})
 
-    # One line per operating system and nothing else. An all-platforms aggregate was
-    # tried alongside them and removed: it is a session-weighted blend dominated by
-    # Linux (65% of sessions), so it tracks the Linux line most of the time and
-    # crosses the others during an incident, adding a fourth line that says nothing
-    # the three do not - and it came from Sentry's own session counts rather than
-    # the join, so on a bad day it disagreed with its own components by ~7 points
-    # (2026-08-16: parts recombine to 89%, Sentry-native aggregate read 81.7%).
-    # The per-revision charts below carry the fleet-wide number.
     data = list(os_series)
     if not data:
-        # No PostHog key, so no per-OS split is possible: fall back to the
-        # Sentry-native aggregate alone rather than publishing an empty chart.
-        data = [
-            {"type": "scatter", "mode": "markers", "x": dates, "y": daily,
-             "name": "All platforms, daily",
-             "marker": {"color": "rgba(51,51,51,0.22)", "size": 5},
-             "hovertext": ["%s<br>%.1f%% crash-free over %d sessions"
-                           % (d, v, round(t))
-                           for d, v, t in zip(dates, daily, day_total)],
-             "hoverinfo": "text"},
-            {"type": "scatter", "mode": "lines", "x": dates, "y": rolling,
-             "name": "All platforms",
-             "line": {"color": "#333333", "width": 3},
-             "hovertext": ["%s<br>%.1f%% crash-free (7-day centered average)" % (d, v)
-                           if v is not None else d for d, v in zip(dates, rolling)],
-             "hoverinfo": "text"}]
+        # No PostHog key, so no per-OS split is possible: fall back to an
+        # all-platforms line, still on the build-date axis, from Sentry's own
+        # per-release totals rather than publishing an empty chart.
+        total = [0.0] * len(dates)
+        healthy = [0.0] * len(dates)
+        for grp in groups or []:
+            h = _commit_hash((grp.get("by") or {}).get("release") or "")
+            d = resolved.get(h) if h else None
+            if not d or d not in index:
+                continue
+            totals = grp.get("totals") or {}
+            n = float(totals.get("sum(session)") or 0)
+            rate = totals.get("crash_free_rate(session)")
+            if n <= 0 or rate is None:
+                continue
+            total[index[d]] += n
+            healthy[index[d]] += n * float(rate)
+        if sum(total) <= 0:
+            return None
+        line, _ = _triangular_smooth(total, healthy, min_total=TREND_MIN_SESSIONS,
+                                     max_half=TREND_MAX_HALF)
+        data = [{"type": "scatter", "mode": "lines", "x": dates, "y": line,
+                 "name": "All platforms", "connectgaps": False,
+                 "line": {"color": "#333333", "width": 3},
+                 "hovertext": ["%s<br>%.1f%% crash-free" % (d, v)
+                               if v is not None else d
+                               for d, v in zip(dates, line)],
+                 "hoverinfo": "text"}]
+
+    if undated:
+        warn("%d commits had no resolvable date; their sessions are excluded from "
+             "the trend chart (%d sessions)." % (len(undated), int(lost)))
+
     return {
         "data": data,
         "layout": {
-            "title": {"text": "Crash-free sessions over time (%s)" % span_label},
-            "xaxis": {"title": {"text": "Date"}, "type": "date"},
+            "title": {"text": "Crash-free sessions by build date (%s of use)"
+                              % span_label},
+            "xaxis": {"title": {"text": "Date the build was committed"},
+                      "type": "date"},
             # Anchored near the top: the interesting range is 90-100%, and starting
             # at zero would flatten every movement that matters into one line.
             "yaxis": {"title": {"text": "Crash-free sessions"}, "ticksuffix": "%",
@@ -2236,23 +2389,47 @@ def main():
     # Per-OS crash figures, fetched ONCE and shared by the bar chart (totals) and
     # the trend chart (daily breakdown). Sentry's sessions API cannot group by OS,
     # so both need Sentry crashes over PostHog sessions, hence both tokens.
-    crash_totals, crash_daily = {}, {}
-    sess_totals, sess_daily = {}, {}
+    crash_totals, crash_by_release = {}, {}
+    sess_totals, sess_by_release = {}, {}
     if ph_key:
         try:
-            crash_totals, crash_daily = fetch_crashed_sessions_by_os(token)
-            sess_totals, sess_daily = fetch_sessions_by_os(ph_key)
+            crash_totals, crash_by_release = fetch_crashed_sessions_by_os(token)
+            sess_totals, sess_by_release = fetch_sessions_by_os(ph_key)
         except Exception as exc:  # noqa: BLE001 - best effort, never break the build
             warn("per-OS crash query failed (%s); OS charts keep their placeholder."
                  % exc)
-            crash_totals, crash_daily = {}, {}
-            sess_totals, sess_daily = {}, {}
+            crash_totals, crash_by_release = {}, {}
+            sess_totals, sess_by_release = {}, {}
     else:
         warn("no PostHog key; per-OS charts skipped (they need the session count).")
 
-    # Crash-free rate over time, from the daily series already in `payload`, split
-    # per OS where the join is available.
-    trend = build_trend_figure(payload, span_label, crash_daily, sess_daily)
+    # The trend chart plots against the date each build was COMMITTED, so every
+    # commit that reported a session or a crash needs a date. Resolved in bulk
+    # from the commit listing, with individual lookups only for what that misses.
+    commit_dates = {}
+    if gh_token:
+        # Only commits that clear the tester threshold can appear, so only those
+        # need a date - which cuts the lookups from ~500 to a couple of dozen.
+        gate = eligible_commits(groups)
+        wanted = {h for h in set(sess_by_release) | set(crash_by_release)
+                  if any(h.startswith(k) or k.startswith(h) for k in gate)}
+        wanted |= gate
+        try:
+            commit_dates = fetch_commit_dates(gh_token, sorted(
+                wanted, key=lambda h: -sum((sess_by_release.get(h) or {}).values())))
+            warn("commit dates: resolved %d of %d commits."
+                 % (len(commit_dates), len(wanted)))
+        except Exception as exc:  # noqa: BLE001
+            warn("commit-date lookup failed (%s); trend chart skipped." % exc)
+    else:
+        warn("no GitHub token; trend chart skipped (it needs commit dates).")
+
+    eligible = eligible_commits(groups)
+    warn("trend chart: %d of %d commits cleared the %d-tester threshold."
+         % (len(eligible), len({_commit_hash((g.get("by") or {}).get("release") or "")
+                                for g in groups} - {None}), MIN_USERS))
+    trend = build_trend_figure(groups, span_label, commit_dates,
+                               crash_by_release, sess_by_release, eligible)
     if trend:
         with open(OUT_PATH_TREND, "w") as f:
             json.dump(trend, f, indent=2)

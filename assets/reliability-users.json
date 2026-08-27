@@ -95,7 +95,7 @@
         "gac9a0e4 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>205 pictures edited (0 clean + 205 before a crash)",
         "g01d5714 \u2605 packaged build<br>53 crash-free / 57 users (93.0%)<br>95% confidence: 83.3\u201397.2%<br>777 pictures edited (0 clean + 777 before a crash)",
         "g137fed9 \u2605 packaged build<br>52 crash-free / 55 users (94.5%)<br>95% confidence: 85.1\u201398.1%<br>47068 pictures edited (46049 clean + 1019 before a crash)",
-        "gca1f9f9 \u2605 packaged build<br>41 crash-free / 45 users (91.1%)<br>95% confidence: 79.3\u201396.5%<br>54852 pictures edited (49839 clean + 5013 before a crash)",
+        "gca1f9f9 \u2605 packaged build<br>41 crash-free / 45 users (91.1%)<br>95% confidence: 79.3\u201396.5%<br>55033 pictures edited (50020 clean + 5013 before a crash)",
         "gb171b04 \u2605 packaged build<br>51 crash-free / 53 users (96.2%)<br>95% confidence: 87.2\u201399.0%<br>194 pictures edited (0 clean + 194 before a crash)",
         "g6d52870 \u2605 packaged build<br>95 crash-free / 99 users (96.0%)<br>95% confidence: 90.1\u201398.4%<br>4956 pictures edited (0 clean + 4956 before a crash)",
         "g771dc81 \u2605 packaged build<br>40 crash-free / 41 users (97.6%)<br>95% confidence: 87.4\u201399.6%",
@@ -175,7 +175,7 @@
         "gac9a0e4 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>205 pictures edited (0 clean + 205 before a crash)",
         "g01d5714 \u2605 packaged build<br>53 crash-free / 57 users (93.0%)<br>95% confidence: 83.3\u201397.2%<br>777 pictures edited (0 clean + 777 before a crash)",
         "g137fed9 \u2605 packaged build<br>52 crash-free / 55 users (94.5%)<br>95% confidence: 85.1\u201398.1%<br>47068 pictures edited (46049 clean + 1019 before a crash)",
-        "gca1f9f9 \u2605 packaged build<br>41 crash-free / 45 users (91.1%)<br>95% confidence: 79.3\u201396.5%<br>54852 pictures edited (49839 clean + 5013 before a crash)",
+        "gca1f9f9 \u2605 packaged build<br>41 crash-free / 45 users (91.1%)<br>95% confidence: 79.3\u201396.5%<br>55033 pictures edited (50020 clean + 5013 before a crash)",
         "gb171b04 \u2605 packaged build<br>51 crash-free / 53 users (96.2%)<br>95% confidence: 87.2\u201399.0%<br>194 pictures edited (0 clean + 194 before a crash)",
         "g6d52870 \u2605 packaged build<br>95 crash-free / 99 users (96.0%)<br>95% confidence: 90.1\u201398.4%<br>4956 pictures edited (0 clean + 4956 before a crash)",
         "g771dc81 \u2605 packaged build<br>40 crash-free / 41 users (97.6%)<br>95% confidence: 87.4\u201399.6%",
@@ -284,7 +284,7 @@
         "gac9a0e4 \u2605 packaged build<br>38 crash-free / 40 users (95.0%)<br>95% confidence: 83.5\u201398.6%<br>205 pictures edited (0 clean + 205 before a crash)",
         "g01d5714 \u2605 packaged build<br>53 crash-free / 57 users (93.0%)<br>95% confidence: 83.3\u201397.2%<br>777 pictures edited (0 clean + 777 before a crash)",
         "g137fed9 \u2605 packaged build<br>52 crash-free / 55 users (94.5%)<br>95% confidence: 85.1\u201398.1%<br>47068 pictures edited (46049 clean + 1019 before a crash)",
-        "gca1f9f9 \u2605 packaged build<br>41 crash-free / 45 users (91.1%)<br>95% confidence: 79.3\u201396.5%<br>54852 pictures edited (49839 clean + 5013 before a crash)",
+        "gca1f9f9 \u2605 packaged build<br>41 crash-free / 45 users (91.1%)<br>95% confidence: 79.3\u201396.5%<br>55033 pictures edited (50020 clean + 5013 before a crash)",
         "gb171b04 \u2605 packaged build<br>51 crash-free / 53 users (96.2%)<br>95% confidence: 87.2\u201399.0%<br>194 pictures edited (0 clean + 194 before a crash)",
         "g6d52870 \u2605 packaged build<br>95 crash-free / 99 users (96.0%)<br>95% confidence: 90.1\u201398.4%<br>4956 pictures edited (0 clean + 4956 before a crash)",
         "g771dc81 \u2605 packaged build<br>40 crash-free / 41 users (97.6%)<br>95% confidence: 87.4\u201399.6%",
@@ -301,7 +301,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Crash-free users per revision (the last 67 days)<br />91.0% crash-free over 1307 unique users"
+      "text": "Crash-free users per revision (the last 67 days)<br />90.9% crash-free over 1314 unique users"
     },
     "barmode": "stack",
     "xaxis": {

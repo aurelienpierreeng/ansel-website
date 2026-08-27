@@ -33,7 +33,7 @@
         88.16404247495294,
         84.34560888628694,
         88.84755146695751,
-        89.29155395249818,
+        89.41993723231529,
         88.49564458853717,
         91.68139528413525,
         95.6330738816602,
@@ -46,9 +46,9 @@
         90.03592034139221,
         86.3241961563402,
         95.0726667364727,
-        57.61121238626294,
-        90.58305721154971,
-        74.49541323120975
+        57.70276339108098,
+        90.64016491186845,
+        74.88502755404346
       ],
       "name": "Almost certain",
       "marker": {
@@ -76,7 +76,7 @@
         "95%",
         "58%",
         "91%",
-        "74%"
+        "75%"
       ],
       "textposition": "inside",
       "insidetextanchor": "end",
@@ -90,7 +90,7 @@
         "g22f623c \u2605 packaged build<br>273 crash-free / 294 sessions (92.9%)<br>95% confidence: 88.2\u201395.8% (effective n\u2248182)<br>avg session: 39 min<br>MTBF (uptime before crash): 89 min (n=21)",
         "g6859265 \u2605 packaged build<br>101 crash-free / 106 sessions (95.3%)<br>95% confidence: 84.3\u201398.7% (effective n\u224842)<br>MTBF (uptime before crash): 4 s (n=4)",
         "g9e45a3d \u2605 packaged build<br>278 crash-free / 296 sessions (93.9%)<br>95% confidence: 88.8\u201396.8% (effective n\u2248148)<br>MTBF (uptime before crash): 10 min (n=18)",
-        "ga5831af \u2605 packaged build<br>225 crash-free / 234 sessions (96.2%)<br>95% confidence: 89.3\u201398.7% (effective n\u224878)<br>MTBF (uptime before crash): 59 s (n=9)",
+        "ga5831af \u2605 packaged build<br>228 crash-free / 237 sessions (96.2%)<br>95% confidence: 89.4\u201398.7% (effective n\u224879)<br>MTBF (uptime before crash): 59 s (n=9)",
         "gb453c5e \u2605 packaged build<br>184 crash-free / 194 sessions (94.8%)<br>95% confidence: 88.5\u201397.8% (effective n\u224897)<br>MTBF (uptime before crash): 28 min (n=11)",
         "gac9a0e4 \u2605 packaged build<br>163 crash-free / 167 sessions (97.6%)<br>95% confidence: 91.7\u201399.3% (effective n\u224884)<br>MTBF (uptime before crash): 19 min (n=4)",
         "g01d5714 \u2605 packaged build<br>227 crash-free / 231 sessions (98.3%)<br>95% confidence: 95.6\u201399.3% (effective n\u2248231)<br>MTBF (uptime before crash): 23 min (n=4)",
@@ -103,9 +103,9 @@
         "gc5cd15d \u2605 packaged build<br>142 crash-free / 148 sessions (95.9%)<br>95% confidence: 90.0\u201398.4% (effective n\u224899)<br>avg session: 25 min<br>MTBF (uptime before crash): 5 min (n=6)",
         "gc8d7623 \u2605 packaged build<br>182 crash-free / 194 sessions (93.8%)<br>95% confidence: 86.3\u201397.3% (effective n\u224881)<br>avg session: 76 min<br>MTBF (uptime before crash): 5 min (n=13)",
         "g39a0290 \u2605 packaged build<br>110 crash-free / 111 sessions (99.1%)<br>95% confidence: 95.1\u201399.8% (effective n\u2248111)<br>MTBF (uptime before crash): 10.4 h (n=1)",
-        "gb2be90f \u2605 packaged build<br>231 crash-free / 322 sessions (71.7%)<br>95% confidence: 57.6\u201382.6% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
-        "g3436875 \u2605 packaged build<br>151 crash-free / 157 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
-        "g111bee0 \u2605 packaged build<br>101 crash-free / 115 sessions (87.8%)<br>95% confidence: 74.5\u201394.7% (effective n\u224841)<br>MTBF (uptime before crash): 12 min (n=14)"
+        "gb2be90f \u2605 packaged build<br>232 crash-free / 323 sessions (71.8%)<br>95% confidence: 57.7\u201382.7% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
+        "g3436875 \u2605 packaged build<br>152 crash-free / 158 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
+        "g111bee0 \u2605 packaged build<br>103 crash-free / 117 sessions (88.0%)<br>95% confidence: 74.9\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
       ],
       "hoverinfo": "text"
     },
@@ -142,7 +142,7 @@
         4.693100382189925,
         10.937409981637586,
         5.071367451961407,
-        6.862292201347984,
+        6.78259441325433,
         6.349716236205083,
         5.923395135026425,
         2.635324386738077,
@@ -155,9 +155,9 @@
         5.910025604553724,
         7.490236833350522,
         4.0264323626263945,
-        14.127918048519668,
-        5.595286737494874,
-        13.330673725311996
+        14.123861995915917,
+        5.562366733701168,
+        13.149160480144573
       ],
       "name": "Likely",
       "marker": {
@@ -170,7 +170,7 @@
         "g22f623c \u2605 packaged build<br>273 crash-free / 294 sessions (92.9%)<br>95% confidence: 88.2\u201395.8% (effective n\u2248182)<br>avg session: 39 min<br>MTBF (uptime before crash): 89 min (n=21)",
         "g6859265 \u2605 packaged build<br>101 crash-free / 106 sessions (95.3%)<br>95% confidence: 84.3\u201398.7% (effective n\u224842)<br>MTBF (uptime before crash): 4 s (n=4)",
         "g9e45a3d \u2605 packaged build<br>278 crash-free / 296 sessions (93.9%)<br>95% confidence: 88.8\u201396.8% (effective n\u2248148)<br>MTBF (uptime before crash): 10 min (n=18)",
-        "ga5831af \u2605 packaged build<br>225 crash-free / 234 sessions (96.2%)<br>95% confidence: 89.3\u201398.7% (effective n\u224878)<br>MTBF (uptime before crash): 59 s (n=9)",
+        "ga5831af \u2605 packaged build<br>228 crash-free / 237 sessions (96.2%)<br>95% confidence: 89.4\u201398.7% (effective n\u224879)<br>MTBF (uptime before crash): 59 s (n=9)",
         "gb453c5e \u2605 packaged build<br>184 crash-free / 194 sessions (94.8%)<br>95% confidence: 88.5\u201397.8% (effective n\u224897)<br>MTBF (uptime before crash): 28 min (n=11)",
         "gac9a0e4 \u2605 packaged build<br>163 crash-free / 167 sessions (97.6%)<br>95% confidence: 91.7\u201399.3% (effective n\u224884)<br>MTBF (uptime before crash): 19 min (n=4)",
         "g01d5714 \u2605 packaged build<br>227 crash-free / 231 sessions (98.3%)<br>95% confidence: 95.6\u201399.3% (effective n\u2248231)<br>MTBF (uptime before crash): 23 min (n=4)",
@@ -183,9 +183,9 @@
         "gc5cd15d \u2605 packaged build<br>142 crash-free / 148 sessions (95.9%)<br>95% confidence: 90.0\u201398.4% (effective n\u224899)<br>avg session: 25 min<br>MTBF (uptime before crash): 5 min (n=6)",
         "gc8d7623 \u2605 packaged build<br>182 crash-free / 194 sessions (93.8%)<br>95% confidence: 86.3\u201397.3% (effective n\u224881)<br>avg session: 76 min<br>MTBF (uptime before crash): 5 min (n=13)",
         "g39a0290 \u2605 packaged build<br>110 crash-free / 111 sessions (99.1%)<br>95% confidence: 95.1\u201399.8% (effective n\u2248111)<br>MTBF (uptime before crash): 10.4 h (n=1)",
-        "gb2be90f \u2605 packaged build<br>231 crash-free / 322 sessions (71.7%)<br>95% confidence: 57.6\u201382.6% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
-        "g3436875 \u2605 packaged build<br>151 crash-free / 157 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
-        "g111bee0 \u2605 packaged build<br>101 crash-free / 115 sessions (87.8%)<br>95% confidence: 74.5\u201394.7% (effective n\u224841)<br>MTBF (uptime before crash): 12 min (n=14)"
+        "gb2be90f \u2605 packaged build<br>232 crash-free / 323 sessions (71.8%)<br>95% confidence: 57.7\u201382.7% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
+        "g3436875 \u2605 packaged build<br>152 crash-free / 158 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
+        "g111bee0 \u2605 packaged build<br>103 crash-free / 117 sessions (88.0%)<br>95% confidence: 74.9\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
       ],
       "hoverinfo": "text"
     },
@@ -222,7 +222,7 @@
         2.92133265605338,
         3.413735050344144,
         2.8491454081695196,
-        2.529571304837731,
+        2.497659665486779,
         2.9330340715066683,
         1.7358799610834978,
         1.0562074350716415,
@@ -235,9 +235,9 @@
         2.4664067013682853,
         3.5147599340203612,
         0.7416923521941783,
-        10.842804823998094,
-        2.3256291723797773,
-        6.860042963017307
+        10.825526953462813,
+        2.310972905025551,
+        6.744785316637035
       ],
       "name": "Optimistic",
       "marker": {
@@ -279,7 +279,7 @@
         "g22f623c \u2605 packaged build<br>273 crash-free / 294 sessions (92.9%)<br>95% confidence: 88.2\u201395.8% (effective n\u2248182)<br>avg session: 39 min<br>MTBF (uptime before crash): 89 min (n=21)",
         "g6859265 \u2605 packaged build<br>101 crash-free / 106 sessions (95.3%)<br>95% confidence: 84.3\u201398.7% (effective n\u224842)<br>MTBF (uptime before crash): 4 s (n=4)",
         "g9e45a3d \u2605 packaged build<br>278 crash-free / 296 sessions (93.9%)<br>95% confidence: 88.8\u201396.8% (effective n\u2248148)<br>MTBF (uptime before crash): 10 min (n=18)",
-        "ga5831af \u2605 packaged build<br>225 crash-free / 234 sessions (96.2%)<br>95% confidence: 89.3\u201398.7% (effective n\u224878)<br>MTBF (uptime before crash): 59 s (n=9)",
+        "ga5831af \u2605 packaged build<br>228 crash-free / 237 sessions (96.2%)<br>95% confidence: 89.4\u201398.7% (effective n\u224879)<br>MTBF (uptime before crash): 59 s (n=9)",
         "gb453c5e \u2605 packaged build<br>184 crash-free / 194 sessions (94.8%)<br>95% confidence: 88.5\u201397.8% (effective n\u224897)<br>MTBF (uptime before crash): 28 min (n=11)",
         "gac9a0e4 \u2605 packaged build<br>163 crash-free / 167 sessions (97.6%)<br>95% confidence: 91.7\u201399.3% (effective n\u224884)<br>MTBF (uptime before crash): 19 min (n=4)",
         "g01d5714 \u2605 packaged build<br>227 crash-free / 231 sessions (98.3%)<br>95% confidence: 95.6\u201399.3% (effective n\u2248231)<br>MTBF (uptime before crash): 23 min (n=4)",
@@ -292,16 +292,16 @@
         "gc5cd15d \u2605 packaged build<br>142 crash-free / 148 sessions (95.9%)<br>95% confidence: 90.0\u201398.4% (effective n\u224899)<br>avg session: 25 min<br>MTBF (uptime before crash): 5 min (n=6)",
         "gc8d7623 \u2605 packaged build<br>182 crash-free / 194 sessions (93.8%)<br>95% confidence: 86.3\u201397.3% (effective n\u224881)<br>avg session: 76 min<br>MTBF (uptime before crash): 5 min (n=13)",
         "g39a0290 \u2605 packaged build<br>110 crash-free / 111 sessions (99.1%)<br>95% confidence: 95.1\u201399.8% (effective n\u2248111)<br>MTBF (uptime before crash): 10.4 h (n=1)",
-        "gb2be90f \u2605 packaged build<br>231 crash-free / 322 sessions (71.7%)<br>95% confidence: 57.6\u201382.6% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
-        "g3436875 \u2605 packaged build<br>151 crash-free / 157 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
-        "g111bee0 \u2605 packaged build<br>101 crash-free / 115 sessions (87.8%)<br>95% confidence: 74.5\u201394.7% (effective n\u224841)<br>MTBF (uptime before crash): 12 min (n=14)"
+        "gb2be90f \u2605 packaged build<br>232 crash-free / 323 sessions (71.8%)<br>95% confidence: 57.7\u201382.7% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
+        "g3436875 \u2605 packaged build<br>152 crash-free / 158 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
+        "g111bee0 \u2605 packaged build<br>103 crash-free / 117 sessions (88.0%)<br>95% confidence: 74.9\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Crash-free sessions per revision (the last 67 days)<br />96.4% crash-free over 12466 sessions"
+      "text": "Crash-free sessions per revision (the last 67 days)<br />96.4% crash-free over 12499 sessions"
     },
     "barmode": "stack",
     "xaxis": {

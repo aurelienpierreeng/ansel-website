@@ -63,10 +63,10 @@
         1,
         1,
         1,
-        372,
+        374,
         1,
         1,
-        125,
+        126,
         2,
         2,
         1,
@@ -75,7 +75,7 @@
         1,
         3,
         1,
-        145,
+        150,
         1,
         2,
         9,
@@ -85,7 +85,7 @@
         1,
         2,
         1,
-        71,
+        72,
         1,
         1
       ],
@@ -235,10 +235,10 @@
         "1920\u00d7965<br>1 users",
         "1920\u00d7972<br>1 users",
         "1600\u00d71200<br>1 users",
-        "1920\u00d71080<br>372 users \u00b7 median",
+        "1920\u00d71080<br>374 users \u00b7 median",
         "1080\u00d71920<br>1 users",
         "1902\u00d71193<br>1 users",
-        "1920\u00d71200<br>125 users",
+        "1920\u00d71200<br>126 users",
         "2048\u00d71152<br>2 users",
         "2048\u00d71280<br>2 users",
         "2048\u00d71330<br>1 users",
@@ -247,7 +247,7 @@
         "2160\u00d71440<br>1 users",
         "2196\u00d71464<br>3 users",
         "2256\u00d71504<br>1 users",
-        "2560\u00d71440<br>145 users",
+        "2560\u00d71440<br>150 users",
         "1440\u00d72560<br>1 users",
         "2456\u00d71535<br>2 users",
         "2560\u00d71600<br>9 users",
@@ -257,7 +257,7 @@
         "3200\u00d71800<br>1 users",
         "3840\u00d71600<br>2 users",
         "5120\u00d71440<br>1 users",
-        "3840\u00d72160<br>71 users",
+        "3840\u00d72160<br>72 users",
         "3600\u00d72400<br>1 users",
         "5120\u00d72160<br>1 users"
       ],
@@ -284,7 +284,7 @@
       },
       "x": [
         0,
-        372
+        374
       ],
       "y": [
         "855\u00d7554",
@@ -314,7 +314,7 @@
       },
       "x": [
         0,
-        372
+        374
       ],
       "y": [
         "1920\u00d71080",
@@ -344,7 +344,7 @@
       },
       "x": [
         0,
-        372
+        374
       ],
       "y": [
         "1440\u00d72560",
@@ -359,7 +359,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Screen size in device pixels, after high-DPI scaling \u2014 1165 users"
+      "text": "Screen size in device pixels, after high-DPI scaling \u2014 1174 users"
     },
     "xaxis": {
       "title": {

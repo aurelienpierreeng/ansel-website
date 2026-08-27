@@ -41,19 +41,19 @@
         "DNGTMP"
       ],
       "y": [
-        2934,
-        2900,
-        1373,
-        1317,
-        1035,
-        1022,
+        2944,
+        2902,
+        1381,
+        1318,
+        1036,
+        1029,
         604,
-        542,
-        452,
-        387,
+        544,
+        454,
+        390,
         342,
         229,
-        212,
+        213,
         151,
         45,
         16,
@@ -79,19 +79,19 @@
         1
       ],
       "hovertext": [
-        "NEF<br>2934 files opened",
-        "DNG (mosaiced)<br>2900 files opened",
-        "CR2<br>1373 files opened",
-        "RAF<br>1317 files opened",
-        "ARW<br>1035 files opened",
-        "JPG<br>1022 files opened",
+        "NEF<br>2944 files opened",
+        "DNG (mosaiced)<br>2902 files opened",
+        "CR2<br>1381 files opened",
+        "RAF<br>1318 files opened",
+        "ARW<br>1036 files opened",
+        "JPG<br>1029 files opened",
         "ORF<br>604 files opened",
-        "CR3<br>542 files opened",
-        "TIFF<br>452 files opened",
-        "DNG (demosaiced)<br>387 files opened",
+        "CR3<br>544 files opened",
+        "TIFF<br>454 files opened",
+        "DNG (demosaiced)<br>390 files opened",
         "RW2<br>342 files opened",
         "EXR<br>229 files opened",
-        "PEF<br>212 files opened",
+        "PEF<br>213 files opened",
         "PNG<br>151 files opened",
         "HEIC<br>45 files opened",
         "3FR<br>16 files opened",
@@ -143,7 +143,7 @@
       ],
       "y": [
         0,
-        2934
+        2944
       ],
       "text": [
         "",
@@ -173,7 +173,7 @@
       ],
       "y": [
         0,
-        2934
+        2944
       ],
       "text": [
         "",
@@ -203,7 +203,7 @@
       ],
       "y": [
         0,
-        2934
+        2944
       ],
       "text": [
         "",
@@ -214,7 +214,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 13662 files (the last 66 days)"
+      "text": "Image files opened, by type \u2014 13699 files (the last 67 days)"
     },
     "xaxis": {
       "type": "category",

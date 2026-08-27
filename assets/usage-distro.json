@@ -15,29 +15,29 @@
         "Other"
       ],
       "values": [
-        150,
+        153,
         136,
         88,
         66,
         65,
         45,
-        17,
+        18,
         17,
         16,
-        71
+        72
       ],
       "hole": 0.45,
       "hovertext": [
-        "Ubuntu<br>150 users",
+        "Ubuntu<br>153 users",
         "Fedora<br>136 users",
         "Linux Mint<br>88 users",
         "Debian<br>66 users",
         "Arch Linux<br>65 users",
         "CachyOS<br>45 users",
-        "openSUSE<br>17 users",
+        "openSUSE<br>18 users",
         "Manjaro<br>17 users",
         "EndeavourOS<br>16 users",
-        "Other<br>71 users"
+        "Other<br>72 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -64,7 +64,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 671 users"
+      "text": "Linux distributions \u2014 676 users"
     },
     "margin": {
       "t": 70,

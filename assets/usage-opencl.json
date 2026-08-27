@@ -7,13 +7,13 @@
         "Without OpenCL"
       ],
       "values": [
-        654,
-        533
+        659,
+        537
       ],
       "hole": 0.45,
       "hovertext": [
-        "With OpenCL<br>654 users",
-        "Without OpenCL<br>533 users"
+        "With OpenCL<br>659 users",
+        "Without OpenCL<br>537 users"
       ],
       "hoverinfo": "text",
       "textinfo": "label+percent",
@@ -40,7 +40,7 @@
   ],
   "layout": {
     "title": {
-      "text": "GPU acceleration (OpenCL) \u2014 1187 users"
+      "text": "GPU acceleration (OpenCL) \u2014 1196 users"
     },
     "margin": {
       "t": 70,

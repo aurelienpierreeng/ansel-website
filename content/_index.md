@@ -85,7 +85,7 @@ _Stats updated automatically every 4h from opt-in Sentry.io crash logs collectio
 {{% column %}}
 {{% card %}}
 
-{{< plotly title="Crash-free sessions over time, all revisions combined (data collected by opt-in sentry.io)." caption="false" src="reliability-trend.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Crash-free sessions plotted against the date each build was committed — not the date it was used (data collected by opt-in sentry.io and posthog)." caption="false" src="reliability-trend.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
 {{% /column %}}
@@ -115,9 +115,9 @@ _Stats updated automatically every 4h from opt-in Sentry.io crash logs collectio
 {{% /column %}}
 {{% /row %}}
 
-The two charts on the top row read the whole fleet, the two below read one revision at a time.
+The two charts on the top row read the whole fleet, the two below read one revision at a time. Wherever a date appears, it is the date the build was committed, never the day someone happened to be editing.
 
-**Crash-free sessions over time** : how reliable Ansel was on a given day, all revisions together — the answer to "is it getting better ?". One line per operating system, each averaged over a week. A bad build shows up as a dip on the day it shipped, and the lines tell you which platform it hit.
+**Crash-free sessions by build date** : one line per operating system, each averaged over about a week. **The dates are when the code was written, not when it was run** — a crash today on last week's nightly counts against last week's build. So reading left to right shows the code getting better, not the calendar going by. A bad build dips at its own date, and the lines say which platform it hit.
 
 **Crash-free sessions per operating system** : Ansel is developed on Linux, and it shows — a session crashes about **four times less often** there than on Windows or macOS. The figures blend two data sources, so trust the ranking over the decimals. On any platform, your edits are written to disk as you make them, so a crash costs you the last action at most.
 
