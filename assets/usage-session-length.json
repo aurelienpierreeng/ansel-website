@@ -18,7 +18,7 @@
         1703,
         821,
         684,
-        482,
+        483,
         292,
         458
       ],
@@ -28,7 +28,7 @@
         "5\u201315 min<br>1703 sessions",
         "15\u201330 min<br>821 sessions",
         "30\u201360 min<br>684 sessions",
-        "1\u20132 h<br>482 sessions",
+        "1\u20132 h<br>483 sessions",
         "2\u20134 h<br>292 sessions",
         "4 h+<br>458 sessions"
       ],
@@ -130,7 +130,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Session length \u2014 11543 sessions"
+      "text": "Session length \u2014 11544 sessions"
     },
     "xaxis": {
       "type": "category",

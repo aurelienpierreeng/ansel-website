@@ -22,7 +22,7 @@
         636,
         707,
         1582,
-        1080
+        1081
       ],
       "hovertext": [
         "0<br>2103 sessions",
@@ -33,7 +33,7 @@
         "25\u201349<br>636 sessions",
         "50\u201399<br>707 sessions",
         "100\u2013499<br>1582 sessions",
-        "500+<br>1080 sessions"
+        "500+<br>1081 sessions"
       ],
       "hoverinfo": "text",
       "marker": {
@@ -133,7 +133,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Images edited per session \u2014 11543 sessions"
+      "text": "Images edited per session \u2014 11544 sessions"
     },
     "xaxis": {
       "type": "category",

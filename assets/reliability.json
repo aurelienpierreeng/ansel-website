@@ -48,7 +48,7 @@
         95.0726667364727,
         57.70276339108098,
         90.64016491186845,
-        74.88502755404346
+        75.0754208909952
       ],
       "name": "Almost certain",
       "marker": {
@@ -105,7 +105,7 @@
         "g39a0290 \u2605 packaged build<br>110 crash-free / 111 sessions (99.1%)<br>95% confidence: 95.1\u201399.8% (effective n\u2248111)<br>MTBF (uptime before crash): 10.4 h (n=1)",
         "gb2be90f \u2605 packaged build<br>232 crash-free / 323 sessions (71.8%)<br>95% confidence: 57.7\u201382.7% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
         "g3436875 \u2605 packaged build<br>152 crash-free / 158 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
-        "g111bee0 \u2605 packaged build<br>103 crash-free / 117 sessions (88.0%)<br>95% confidence: 74.9\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
+        "g111bee0 \u2605 packaged build<br>104 crash-free / 118 sessions (88.1%)<br>95% confidence: 75.1\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
       ],
       "hoverinfo": "text"
     },
@@ -157,7 +157,7 @@
         4.0264323626263945,
         14.123861995915917,
         5.562366733701168,
-        13.149160480144573
+        13.060172329343771
       ],
       "name": "Likely",
       "marker": {
@@ -185,7 +185,7 @@
         "g39a0290 \u2605 packaged build<br>110 crash-free / 111 sessions (99.1%)<br>95% confidence: 95.1\u201399.8% (effective n\u2248111)<br>MTBF (uptime before crash): 10.4 h (n=1)",
         "gb2be90f \u2605 packaged build<br>232 crash-free / 323 sessions (71.8%)<br>95% confidence: 57.7\u201382.7% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
         "g3436875 \u2605 packaged build<br>152 crash-free / 158 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
-        "g111bee0 \u2605 packaged build<br>103 crash-free / 117 sessions (88.0%)<br>95% confidence: 74.9\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
+        "g111bee0 \u2605 packaged build<br>104 crash-free / 118 sessions (88.1%)<br>95% confidence: 75.1\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
       ],
       "hoverinfo": "text"
     },
@@ -237,7 +237,7 @@
         0.7416923521941783,
         10.825526953462813,
         2.310972905025551,
-        6.744785316637035
+        6.688595069184359
       ],
       "name": "Optimistic",
       "marker": {
@@ -294,14 +294,14 @@
         "g39a0290 \u2605 packaged build<br>110 crash-free / 111 sessions (99.1%)<br>95% confidence: 95.1\u201399.8% (effective n\u2248111)<br>MTBF (uptime before crash): 10.4 h (n=1)",
         "gb2be90f \u2605 packaged build<br>232 crash-free / 323 sessions (71.8%)<br>95% confidence: 57.7\u201382.7% (effective n\u224847)<br>MTBF (uptime before crash): 18 min (n=91)",
         "g3436875 \u2605 packaged build<br>152 crash-free / 158 sessions (96.2%)<br>95% confidence: 90.6\u201398.5% (effective n\u2248105)<br>MTBF (uptime before crash): 2 min (n=6)",
-        "g111bee0 \u2605 packaged build<br>103 crash-free / 117 sessions (88.0%)<br>95% confidence: 74.9\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
+        "g111bee0 \u2605 packaged build<br>104 crash-free / 118 sessions (88.1%)<br>95% confidence: 75.1\u201394.8% (effective n\u224842)<br>MTBF (uptime before crash): 12 min (n=14)"
       ],
       "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Crash-free sessions per revision (the last 67 days)<br />96.4% crash-free over 12499 sessions"
+      "text": "Crash-free sessions per revision (the last 67 days)<br />96.4% crash-free over 12500 sessions"
     },
     "barmode": "stack",
     "xaxis": {

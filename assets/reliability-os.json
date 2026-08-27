@@ -4,41 +4,41 @@
       "type": "bar",
       "x": [
         "Linux",
-        "Windows",
-        "macOS"
+        "macOS",
+        "Windows"
       ],
       "y": [
-        98.20441988950276,
-        92.75442477876106,
-        91.82452642073778
+        96.32975719932242,
+        90.88785046728972,
+        87.73819386909693
       ],
       "hovertext": [
-        "Linux<br>98.20% crash-free (156 crashed of 8688 sessions)<br>95% confidence: 97.90-98.46%<br>one crash every 56 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
-        "Windows<br>92.75% crash-free (262 crashed of 3616 sessions)<br>95% confidence: 91.86-93.55%<br>one crash every 14 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
-        "macOS<br>91.82% crash-free (82 crashed of 1003 sessions)<br>95% confidence: 89.97-93.36%<br>one crash every 12 sessions<br><i>crashes from Sentry, sessions from PostHog</i>"
+        "Linux<br>96.33% crash-free (65 crashed of 1771 sessions)<br>95% confidence: 95.35-97.11%<br>one crash every 27 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
+        "macOS<br>90.89% crash-free (39 crashed of 428 sessions)<br>95% confidence: 87.79-93.26%<br>one crash every 11 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
+        "Windows<br>87.74% crash-free (148 crashed of 1207 sessions)<br>95% confidence: 85.77-89.47%<br>one crash every 8 sessions<br><i>crashes from Sentry, sessions from PostHog</i>"
       ],
       "hoverinfo": "text",
       "marker": {
         "color": "#8ec1a8"
       },
       "text": [
-        "98.2%",
-        "92.8%",
-        "91.8%"
+        "96.3%",
+        "90.9%",
+        "87.7%"
       ],
       "textposition": "auto",
       "error_y": {
         "type": "data",
         "symmetric": false,
         "array": [
-          0.2586716973207501,
-          0.8003603808639355,
-          1.5403323368757356
+          0.7802268183072698,
+          2.3747886390563337,
+          1.7316131359327613
         ],
         "arrayminus": [
-          0.3012806875694167,
-          0.8911043341881282,
-          1.859483270784395
+          0.9807786519028099,
+          3.10222687190101,
+          1.9710659836353983
         ],
         "color": "rgba(0,0,0,0.35)",
         "thickness": 1.5,
