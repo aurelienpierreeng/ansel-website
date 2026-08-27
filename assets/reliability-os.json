@@ -3,53 +3,86 @@
     {
       "type": "bar",
       "x": [
+        "Windows",
         "Linux",
-        "macOS",
-        "Windows"
+        "macOS"
       ],
       "y": [
-        96.32975719932242,
-        90.88785046728972,
-        87.73819386909693
+        58.73015873015873,
+        25.793650793650794,
+        15.476190476190476
       ],
-      "hovertext": [
-        "Linux<br>96.33% crash-free (65 crashed of 1771 sessions)<br>95% confidence: 95.35-97.11%<br>one crash every 27 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
-        "macOS<br>90.89% crash-free (39 crashed of 428 sessions)<br>95% confidence: 87.79-93.26%<br>one crash every 11 sessions<br><i>crashes from Sentry, sessions from PostHog</i>",
-        "Windows<br>87.74% crash-free (148 crashed of 1207 sessions)<br>95% confidence: 85.77-89.47%<br>one crash every 8 sessions<br><i>crashes from Sentry, sessions from PostHog</i>"
-      ],
-      "hoverinfo": "text",
+      "name": "Share of crashes",
+      "offsetgroup": "crash",
       "marker": {
-        "color": "#8ec1a8"
+        "color": "#e8a598"
       },
       "text": [
-        "96.3%",
-        "90.9%",
-        "87.7%"
+        "59%",
+        "26%",
+        "15%"
       ],
       "textposition": "auto",
+      "hovertext": [
+        "Windows<br>148 of 252 crashes (58.7%)<br>one crash every 8 sessions on this platform",
+        "Linux<br>65 of 252 crashes (25.8%)<br>one crash every 27 sessions on this platform",
+        "macOS<br>39 of 252 crashes (15.5%)<br>one crash every 11 sessions on this platform"
+      ],
+      "hoverinfo": "text",
       "error_y": {
         "type": "data",
         "symmetric": false,
         "array": [
-          0.7802268183072698,
-          2.3747886390563337,
-          1.7316131359327613
+          5.903011323982092,
+          5.736687973498203,
+          4.98042928757908
         ],
         "arrayminus": [
-          0.9807786519028099,
-          3.10222687190101,
-          1.9710659836353983
+          6.165177944002274,
+          5.009771436169483,
+          3.9436794720446873
         ],
         "color": "rgba(0,0,0,0.35)",
         "thickness": 1.5,
         "width": 6
       }
+    },
+    {
+      "type": "bar",
+      "x": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "y": [
+        22.5,
+        65.0,
+        12.5
+      ],
+      "name": "Share of bug reports",
+      "offsetgroup": "bugs",
+      "marker": {
+        "color": "#8ec1a8"
+      },
+      "text": [
+        "22%",
+        "65%",
+        "12%"
+      ],
+      "textposition": "auto",
+      "hovertext": [
+        "Windows<br>9 of 40 bug reports (22.5%)<br><i>operating system self-declared on the report form</i>",
+        "Linux<br>26 of 40 bug reports (65.0%)<br><i>operating system self-declared on the report form</i>",
+        "macOS<br>5 of 40 bug reports (12.5%)<br><i>operating system self-declared on the report form</i>"
+      ],
+      "hoverinfo": "text"
     }
   ],
   "layout": {
     "title": {
-      "text": "Crash-free sessions per operating system (the last 67 days)"
+      "text": "Crashes vs bug reports, per platform (the last 67 days)"
     },
+    "barmode": "group",
     "xaxis": {
       "title": {
         "text": "Operating system"
@@ -58,9 +91,10 @@
     },
     "yaxis": {
       "title": {
-        "text": "Crash-free sessions"
+        "text": "Share of the total"
       },
-      "ticksuffix": "%"
+      "ticksuffix": "%",
+      "rangemode": "tozero"
     },
     "margin": {
       "t": 70,
@@ -68,6 +102,13 @@
       "b": 60,
       "l": 60
     },
-    "showlegend": false
+    "showlegend": true,
+    "legend": {
+      "orientation": "h",
+      "x": 0.5,
+      "xanchor": "center",
+      "y": 1.02,
+      "yanchor": "bottom"
+    }
   }
 }

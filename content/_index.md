@@ -92,7 +92,7 @@ _Stats updated automatically every 4h from opt-in Sentry.io crash logs collectio
 {{% column %}}
 {{% card %}}
 
-{{< plotly title="Crash-free sessions per operating system (crashes from opt-in sentry.io, sessions from opt-in posthog)." caption="false" src="reliability-os.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Share of all crashes versus share of all bug reports, per operating system (crashes from opt-in sentry.io, bug reports from Github)." caption="false" src="reliability-os.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
 {{% /column %}}
@@ -119,7 +119,7 @@ The two charts on the top row read the whole fleet, the two below read one revis
 
 **Crash-free sessions by build date** : one line per operating system, each averaged over about a week. **The dates are when the code was written, not when it was run** — a crash today on last week's nightly counts against last week's build. So reading left to right shows the code getting better, not the calendar going by. A bad build dips at its own date, and the lines say which platform it hit.
 
-**Crash-free sessions per operating system** : Ansel is developed on Linux, and it shows — a session crashes about **three times less often** there than on Windows or macOS. The figures blend two data sources, so trust the ranking over the decimals. On any platform, your edits are written to disk as you make them, so a crash costs you the last action at most.
+**Where crashes happen, and where bug reports come from** : Windows carries well over half of all crashes — and crashes three times more often per session than Linux — yet files under a quarter of the bug reports. Linux is the mirror image. The two are not independent : a bug nobody reports is a bug nobody can fix, so it keeps crashing, for everyone on that platform. Ansel is free, and written by people who cannot test on your machine — **telling us what breaks is the contribution we actually need**. Whatever happens, your edits are written to disk as you make them, so a crash costs you the last action at most.
 
 {{% row %}}
 {{% column %}}

@@ -26,7 +26,7 @@
       ],
       "y": [
         74,
-        35,
+        36,
         29,
         27,
         25,
@@ -48,7 +48,7 @@
       ],
       "hovertext": [
         "Quadro M2200<br>74 users",
-        "Apple M1<br>35 users",
+        "Apple M1<br>36 users",
         "NVIDIA GeForce GTX 1060 6GB<br>29 users",
         "Intel Iris Xe Graphics<br>27 users",
         "Intel UHD Graphics<br>25 users",
@@ -76,7 +76,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Graphics cards in use \u2014 405 users"
+      "text": "Graphics cards in use \u2014 406 users"
     },
     "xaxis": {
       "type": "category",

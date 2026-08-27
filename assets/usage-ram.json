@@ -39,7 +39,7 @@
         1,
         12,
         10,
-        140,
+        141,
         5,
         25,
         26,
@@ -50,7 +50,7 @@
         2,
         14,
         43,
-        313,
+        314,
         5,
         1,
         5,
@@ -72,7 +72,7 @@
         "0\u20132 GiB<br>1 users",
         "2\u20134 GiB<br>12 users",
         "4\u20136 GiB<br>10 users",
-        "6\u20138 GiB<br>140 users",
+        "6\u20138 GiB<br>141 users",
         "8\u201310 GiB<br>5 users",
         "10\u201312 GiB<br>25 users",
         "12\u201314 GiB<br>26 users",
@@ -83,7 +83,7 @@
         "24\u201326 GiB<br>2 users",
         "26\u201328 GiB<br>14 users",
         "28\u201330 GiB<br>43 users",
-        "30\u201332 GiB<br>313 users",
+        "30\u201332 GiB<br>314 users",
         "34\u201336 GiB<br>5 users",
         "36\u201338 GiB<br>1 users",
         "38\u201340 GiB<br>5 users",
@@ -199,7 +199,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Installed memory (RAM) \u2014 1174 users"
+      "text": "Installed memory (RAM) \u2014 1176 users"
     },
     "xaxis": {
       "type": "category",

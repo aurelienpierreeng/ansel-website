@@ -21,7 +21,7 @@
         66,
         65,
         45,
-        18,
+        19,
         17,
         16,
         72
@@ -34,7 +34,7 @@
         "Debian<br>66 users",
         "Arch Linux<br>65 users",
         "CachyOS<br>45 users",
-        "openSUSE<br>18 users",
+        "openSUSE<br>19 users",
         "Manjaro<br>17 users",
         "EndeavourOS<br>16 users",
         "Other<br>72 users"
@@ -64,7 +64,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 676 users"
+      "text": "Linux distributions \u2014 677 users"
     },
     "margin": {
       "t": 70,

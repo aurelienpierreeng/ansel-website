@@ -29,7 +29,7 @@
         2,
         1,
         1,
-        12,
+        13,
         1,
         7,
         3,
@@ -63,7 +63,7 @@
         1,
         1,
         1,
-        374,
+        375,
         1,
         1,
         126,
@@ -201,7 +201,7 @@
         "800\u00d7520<br>2 users",
         "872\u00d7491<br>1 users",
         "835\u00d7522<br>1 users",
-        "840\u00d7525<br>12 users",
+        "840\u00d7525<br>13 users",
         "854\u00d7534<br>1 users",
         "855\u00d7554<br>7 users",
         "855\u00d7556<br>3 users",
@@ -235,7 +235,7 @@
         "1920\u00d7965<br>1 users",
         "1920\u00d7972<br>1 users",
         "1600\u00d71200<br>1 users",
-        "1920\u00d71080<br>374 users \u00b7 median",
+        "1920\u00d71080<br>375 users \u00b7 median",
         "1080\u00d71920<br>1 users",
         "1902\u00d71193<br>1 users",
         "1920\u00d71200<br>126 users",
@@ -284,7 +284,7 @@
       },
       "x": [
         0,
-        374
+        375
       ],
       "y": [
         "855\u00d7554",
@@ -314,7 +314,7 @@
       },
       "x": [
         0,
-        374
+        375
       ],
       "y": [
         "1920\u00d71080",
@@ -344,7 +344,7 @@
       },
       "x": [
         0,
-        374
+        375
       ],
       "y": [
         "1440\u00d72560",
@@ -359,7 +359,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Screen size in device pixels, after high-DPI scaling \u2014 1174 users"
+      "text": "Screen size in device pixels, after high-DPI scaling \u2014 1176 users"
     },
     "xaxis": {
       "title": {

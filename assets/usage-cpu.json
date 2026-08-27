@@ -29,13 +29,13 @@
         16,
         170,
         31,
-        342,
+        343,
         68,
         9,
         196,
         8,
         2,
-        188,
+        189,
         3,
         46,
         15,
@@ -51,13 +51,13 @@
         "2 cores<br>16 users",
         "4 cores<br>170 users",
         "6 cores<br>31 users",
-        "8 cores<br>342 users",
+        "8 cores<br>343 users",
         "10 cores<br>68 users \u00b7 median",
         "11 cores<br>9 users",
         "12 cores<br>196 users",
         "14 cores<br>8 users",
         "15 cores<br>2 users",
-        "16 cores<br>188 users",
+        "16 cores<br>189 users",
         "18 cores<br>3 users",
         "20 cores<br>46 users",
         "22 cores<br>15 users",
@@ -95,7 +95,7 @@
       ],
       "y": [
         0,
-        342
+        343
       ],
       "text": [
         "",
@@ -125,7 +125,7 @@
       ],
       "y": [
         0,
-        342
+        343
       ],
       "text": [
         "",
@@ -155,7 +155,7 @@
       ],
       "y": [
         0,
-        342
+        343
       ],
       "text": [
         "",
@@ -166,7 +166,7 @@
   ],
   "layout": {
     "title": {
-      "text": "CPU logical cores \u2014 1174 users"
+      "text": "CPU logical cores \u2014 1176 users"
     },
     "xaxis": {
       "type": "category",

@@ -301,7 +301,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Crash-free users per revision (the last 67 days)<br />90.9% crash-free over 1314 unique users"
+      "text": "Crash-free users per revision (the last 67 days)<br />91.0% crash-free over 1315 unique users"
     },
     "barmode": "stack",
     "xaxis": {

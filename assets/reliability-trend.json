@@ -319,10 +319,10 @@
         78.32618025751073,
         68.16608996539793,
         61.30434782608695,
-        64.3611911623439,
-        68.13304721030043,
-        72.90400972053463,
-        79.13165266106442
+        64.3953934740883,
+        68.20128479657387,
+        73.00242130750605,
+        79.24791086350974
       ],
       "name": "Windows",
       "connectgaps": false,
@@ -388,9 +388,9 @@
         "2026-08-13<br>Windows: 68.2% crash-free<br>builds committed around this date (7-day window)",
         "2026-08-14<br>Windows: 61.3% crash-free<br>builds committed around this date (7-day window)",
         "2026-08-15<br>Windows: 64.4% crash-free<br>builds committed around this date (7-day window)",
-        "2026-08-16<br>Windows: 68.1% crash-free<br>builds committed around this date (7-day window)",
-        "2026-08-17<br>Windows: 72.9% crash-free<br>builds committed around this date (7-day window)",
-        "2026-08-18<br>Windows: 79.1% crash-free<br>builds committed around this date (7-day window)"
+        "2026-08-16<br>Windows: 68.2% crash-free<br>builds committed around this date (7-day window)",
+        "2026-08-17<br>Windows: 73.0% crash-free<br>builds committed around this date (7-day window)",
+        "2026-08-18<br>Windows: 79.2% crash-free<br>builds committed around this date (7-day window)"
       ],
       "hoverinfo": "text"
     },
@@ -513,13 +513,13 @@
         96.73469387755101,
         95.72192513368984,
         94.71365638766521,
-        94.96124031007751,
-        94.66019417475728,
-        94.15584415584415,
-        93.75,
-        96.15384615384616,
-        97.82608695652173,
-        99.05660377358491
+        94.98069498069499,
+        94.68599033816425,
+        94.19354838709677,
+        93.7984496124031,
+        96.20253164556962,
+        97.86096256684492,
+        99.07407407407408
       ],
       "name": "macOS",
       "connectgaps": false,
@@ -586,7 +586,7 @@
         "2026-08-14<br>macOS: 94.2% crash-free<br>builds committed around this date (9-day window)",
         "2026-08-15<br>macOS: 93.8% crash-free<br>builds committed around this date (7-day window)",
         "2026-08-16<br>macOS: 96.2% crash-free<br>builds committed around this date (7-day window)",
-        "2026-08-17<br>macOS: 97.8% crash-free<br>builds committed around this date (7-day window)",
+        "2026-08-17<br>macOS: 97.9% crash-free<br>builds committed around this date (7-day window)",
         "2026-08-18<br>macOS: 99.1% crash-free<br>builds committed around this date (7-day window)"
       ],
       "hoverinfo": "text"

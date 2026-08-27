@@ -8,13 +8,13 @@
         "Other"
       ],
       "values": [
-        362,
+        363,
         301,
         6
       ],
       "hole": 0.45,
       "hovertext": [
-        "Wayland<br>362 users",
+        "Wayland<br>363 users",
         "X11<br>301 users",
         "Other<br>6 users"
       ],
@@ -43,7 +43,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Display server on Linux \u2014 669 users"
+      "text": "Display server on Linux \u2014 670 users"
     },
     "margin": {
       "t": 70,

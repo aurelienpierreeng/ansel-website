@@ -1300,6 +1300,62 @@ def _gh_count(token, qualifiers):
     return int(_gh_request(token, url).get("total_count", 0))
 
 
+# The bug-report form (.github/ISSUE_TEMPLATE/BUG-REPORT.yml) has a dropdown whose
+# rendered heading is this, followed by one of its fixed options. Parsing the body
+# beats reading labels: labels depend on someone triaging, and only two exist
+# ("Windows only", "MacOS only") - measured, they cover 8 of 480 bug reports, which
+# would make Windows and macOS look like they never report anything at all.
+OS_FIELD_RE = re.compile(
+    r"###\s*Computer's operating system\s*\n+\s*(.+?)\s*(?:\n###|\n*$)", re.S)
+
+
+def fetch_bug_reports_by_os(token, days=None, max_pages=10):
+    """Bug reports per OS family, read from the form's operating-system dropdown.
+
+    Returns (counts, n_issues, n_parsed): {family: reports}, how many bug reports
+    the window held, and how many of them actually carried the field. The last two
+    matter - roughly a third do not (older reports predate the form, and some are
+    free-form), and a rate computed from a two-thirds sample should say so.
+
+    KNOWN BIAS, and it runs one way: the dropdown's `default: 1` preselects "Linux",
+    so a reporter who ignores the field is recorded as Linux. Linux's share is
+    therefore an UPPER bound, and the other two are lower bounds.
+    """
+    if days is None:
+        days = PERIOD_DAYS
+    since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+    query = "repo:%s is:issue type:Bug created:>=%s" % (GITHUB_REPO, since)
+    items = []
+    for page in range(1, max_pages + 1):
+        url = "%s/search/issues?per_page=100&page=%d&q=%s" % (
+            GITHUB_API, page, urllib.parse.quote(query))
+        payload = _gh_request(token, url)
+        batch = payload.get("items") or []
+        items += batch
+        if not batch or len(items) >= int(payload.get("total_count") or 0):
+            break
+
+    counts = {}
+    parsed = 0
+    for issue in items:
+        m = OS_FIELD_RE.search(issue.get("body") or "")
+        if not m:
+            continue
+        parsed += 1
+        value = m.group(1).strip().lower()
+        # Same three families as everywhere else; the dropdown offers two macOS
+        # architectures and one Windows range, and anything else people type in is
+        # a distro name.
+        if "windows" in value:
+            fam = "Windows"
+        elif "macos" in value or "mac os" in value:
+            fam = "macOS"
+        else:
+            fam = "Linux"
+        counts[fam] = counts.get(fam, 0) + 1
+    return counts, len(items), parsed
+
+
 def _bucket_counts(token, bucket_q):
     """For a milestone/no-milestone bucket, count resolved (closed as completed)
     and still-open issues per type. Returns (fixed_total, open_total, per_type)."""
@@ -1894,66 +1950,128 @@ def build_trend_figure(groups, span_label, commit_dates,
     }
 
 
-def build_crash_os_figure(crashed, sessions, span_label):
-    """Crash-free rate per OS family: Sentry crashed sessions over PostHog sessions.
+def build_crash_os_figure(crashed, sessions, span_label, bugs=None):
+    """Where crashes happen versus where bug reports come from, per OS family.
 
-    Sentry's sessions API cannot group by OS (release/environment/session.status
-    only), so the denominator has to come from PostHog's session_start events. That
-    makes this the one chart on the page whose numerator and denominator come from
-    two different opt-ins: a user who accepted crash reporting but declined usage
-    telemetry is counted on top and not at the bottom. The RANKING is robust to
-    that; the absolute rate carries an unknown systematic error, and the chart says
-    so rather than hiding it.
+    Both series are SHARES of their own total, so they can be read against each
+    other directly: of every crash we record, this much happened on Windows; of
+    every bug report we receive, this much came from Windows. A platform whose
+    crash bar towers over its report bar is one where things break and nobody says
+    so - which is the point of putting them side by side.
 
-    Both sides are gated to releases that cleared MIN_USERS testers, so this chart
-    and the trend beside it describe the same population. Ungated the numbers look
-    visibly better (Linux 98.20% vs 96.33%, Windows 92.75% vs 87.74%), because the
-    untested builds are mostly their own author's: run constantly, crashing rarely.
-    Returns None if either side is missing.
+    Deliberately not a rate per user. Telemetry is opt-in and the users most likely
+    to decline it are the same technically inclined users most likely to file a good
+    report, so the opt-in population is a biased sample of the user base, biased by
+    an unknown amount in an unknown direction. Shares need no user count: each is
+    computed inside its own dataset, which is the whole of what we can honestly
+    claim to know. The crash rate per platform still appears in the hover, where it
+    is context rather than the headline.
+
+    Crashes come from Sentry, sessions from PostHog (Sentry's sessions API cannot
+    group by OS), and both are gated to releases that cleared MIN_USERS testers.
+    Bug reports come from GitHub alone. Returns None if there is nothing to draw.
     """
-    if not crashed or not sessions:
+    if not crashed:
         return None
+
+    total_crashes = sum(crashed.values())
+    total_bugs = sum((bugs or {}).values())
+    if total_crashes <= 0:
+        return None
+
     rows = []
     for fam in ("Linux", "Windows", "macOS"):
-        n = sessions.get(fam, 0)
         k = crashed.get(fam, 0)
-        if n <= 0:
+        n = sessions.get(fam, 0) if sessions else 0
+        b = (bugs or {}).get(fam, 0)
+        if k == 0 and b == 0:
             continue
-        rate = 100.0 * (n - k) / n
-        low, high = _wilson_interval(n - k, n)
-        rows.append((fam, rate, 100.0 * low, 100.0 * high, n, k))
+        rows.append({"fam": fam, "crashes": k, "sessions": n, "bugs": b,
+                     "crash_share": 100.0 * k / total_crashes,
+                     "bug_share": (100.0 * b / total_bugs) if total_bugs else None})
     if not rows:
         return None
-    rows.sort(key=lambda r: r[1], reverse=True)
+    # Worst first: the platform carrying most of the crashes leads, so the gap to
+    # its report bar is the first thing read.
+    rows.sort(key=lambda r: r["crash_share"], reverse=True)
 
-    labels = [r[0] for r in rows]
-    values = [r[1] for r in rows]
-    hover = ["%s<br>%.2f%% crash-free (%d crashed of %d sessions)<br>"
-             "95%% confidence: %.2f-%.2f%%<br>one crash every %.0f sessions<br>"
-             "<i>crashes from Sentry, sessions from PostHog</i>"
-             % (fam, rate, k, n, low, high, (n / k) if k else float("inf"))
-             for fam, rate, low, high, n, k in rows]
-    return {
-        "data": [{
-            "type": "bar", "x": labels, "y": values,
-            "hovertext": hover, "hoverinfo": "text",
+    labels = [r["fam"] for r in rows]
+
+    def _ci(k, n):
+        """Wilson bounds for a share, as percentage points above/below it.
+
+        Used for the crash split only - see the bug-report series below for why
+        that one carries no interval.
+        """
+        if not n:
+            return 0.0, 0.0
+        low, high = _wilson_interval(k, n)
+        share = 100.0 * k / n
+        return share - 100.0 * low, 100.0 * high - share
+
+    crash_minus, crash_plus = [], []
+    crash_hover = []
+    for r in rows:
+        lo, hi = _ci(r["crashes"], total_crashes)
+        crash_minus.append(lo)
+        crash_plus.append(hi)
+        rate = (100.0 * r["crashes"] / r["sessions"]) if r["sessions"] else None
+        crash_hover.append(
+            "%s<br>%d of %d crashes (%.1f%%)" % (r["fam"], r["crashes"],
+                                                 total_crashes, r["crash_share"])
+            + ("<br>one crash every %.0f sessions on this platform"
+               % (r["sessions"] / r["crashes"]) if rate else ""))
+
+    data = [{
+        "type": "bar", "x": labels, "y": [r["crash_share"] for r in rows],
+        "name": "Share of crashes", "offsetgroup": "crash",
+        "marker": {"color": "#e8a598"},
+        "text": ["%.0f%%" % r["crash_share"] for r in rows], "textposition": "auto",
+        "hovertext": crash_hover, "hoverinfo": "text",
+        "error_y": {"type": "data", "symmetric": False, "array": crash_plus,
+                    "arrayminus": crash_minus, "color": "rgba(0,0,0,0.35)",
+                    "thickness": 1.5, "width": 6},
+    }]
+
+    # No error bars on this series, unlike the crash one. The distinction is not
+    # cosmetic: a crash is observed only when its user opted into telemetry, so the
+    # crashes we hold are a SAMPLE and their split carries sampling error. Bug
+    # reports have no unobserved counterpart - a report either exists in the
+    # tracker or does not - so this split is a census of the reports we received
+    # and exact by construction. Its real uncertainty is a bias, not a variance
+    # (the form preselects Linux, and a third of reports carry no OS at all), and
+    # a confidence interval would misrepresent that as random scatter.
+    if total_bugs:
+        bug_hover = [
+            "%s<br>%d of %d bug reports (%.1f%%)<br>"
+            "<i>operating system self-declared on the report form</i>"
+            % (r["fam"], r["bugs"], total_bugs, r["bug_share"]) for r in rows]
+        data.append({
+            "type": "bar", "x": labels, "y": [r["bug_share"] for r in rows],
+            "name": "Share of bug reports", "offsetgroup": "bugs",
             "marker": {"color": "#8ec1a8"},
-            "text": ["%.1f%%" % v for v in values], "textposition": "auto",
-            "error_y": {"type": "data", "symmetric": False,
-                        "array": [r[3] - r[1] for r in rows],
-                        "arrayminus": [r[1] - r[2] for r in rows],
-                        "color": "rgba(0,0,0,0.35)", "thickness": 1.5, "width": 6},
-        }],
+            "text": ["%.0f%%" % r["bug_share"] for r in rows],
+            "textposition": "auto",
+            "hovertext": bug_hover, "hoverinfo": "text",
+        })
+
+    return {
+        "data": data,
         "layout": {
-            # No subtitle: at the width this chart gets in a two-column row it
-            # wraps or truncates. The two-source caveat lives in the hover and in
-            # the page copy instead.
-            "title": {"text": "Crash-free sessions per operating system (%s)"
+            # Kept short on purpose: this chart sits in a two-column row, where a
+            # Plotly title does not wrap - it just runs past the plot. The titles
+            # that fit there are 48-59 characters; 72 overflowed. The legend and
+            # the y-axis already say "share", so the title need not repeat it.
+            "title": {"text": "Crashes vs bug reports, per platform (%s)"
                               % span_label},
+            "barmode": "group",
             "xaxis": {"title": {"text": "Operating system"}, "type": "category"},
-            "yaxis": {"title": {"text": "Crash-free sessions"}, "ticksuffix": "%"},
+            "yaxis": {"title": {"text": "Share of the total"}, "ticksuffix": "%",
+                      "rangemode": "tozero"},
             "margin": {"t": 70, "r": 30, "b": 60, "l": 60},
-            "showlegend": False,
+            "showlegend": True,
+            "legend": {"orientation": "h", "x": 0.5, "xanchor": "center",
+                       "y": 1.02, "yanchor": "bottom"},
         },
     }
 
@@ -2467,9 +2585,22 @@ def main():
     else:
         warn("not enough daily history for the trend chart; keeping placeholder.")
 
+    # Second series for the per-OS chart: how the bug reports split across
+    # platforms. GitHub only - no telemetry involved, and deliberately so.
+    bugs_by_os = None
+    if gh_token:
+        try:
+            bugs_by_os, n_issues, n_parsed = fetch_bug_reports_by_os(gh_token)
+            warn("bug reports by platform: %s (%d of %d reports in the window "
+                 "declared an OS)" % (bugs_by_os, n_parsed, n_issues))
+        except Exception as exc:  # noqa: BLE001
+            warn("bug-report-per-OS lookup failed (%s); chart keeps crash bars only."
+                 % exc)
+            bugs_by_os = None
+
     crash_os = build_crash_os_figure(_sum_by_family(crash_by_release, eligible),
                                      _sum_by_family(sess_by_release, eligible),
-                                     span_label)
+                                     span_label, bugs_by_os)
     if crash_os:
         with open(OUT_PATH_CRASH_OS, "w") as f:
             json.dump(crash_os, f, indent=2)
