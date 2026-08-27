@@ -483,16 +483,54 @@ blockquote::before {
   max-width: 100% !important;
 }
 
+/* Bootstrap pads <kbd> around the monospace font's own ascent/descent box, which is
+   taller than the label and lopsided: the key hangs below the baseline of the sentence
+   it sits in, and the label rides high inside its own box. Two separate corrections
+   fix that: the padding centres the label in the box, and the lift centres the box on
+   the cap height of the text around it. Both go through custom properties so the
+   outlined variant below can subtract its border from the same values.
+
+   Fallback figures, for browsers without text-box trimming: line-height 1 measures the
+   padding from the label rather than from the font's line box, and the padding is then
+   split unevenly, in em so it tracks the label -- the font reserves a descender's worth
+   of room under the baseline that a key label seldom uses, so the bottom gets that much
+   less than the top. */
+kbd {
+  --kbd-padding-top: 0.27em;
+  --kbd-padding-bottom: 0.13em;
+  --kbd-lift: 0.08em;
+  display: inline-block;
+  line-height: 1;
+  padding-top: var(--kbd-padding-top);
+  padding-bottom: var(--kbd-padding-bottom);
+  vertical-align: var(--kbd-lift);
+}
+
+/* Where the browser can trim the leading itself, no guessing is needed: the box is cut
+   down to cap height on top and baseline underneath, whatever the font, so an equal
+   padding on both sides centres the label exactly. The padding also has to clear the
+   descenders that now hang out of the trimmed box -- 0.36em leaves room under a "g".
+   Chrome 133, Safari 18.2 and Firefox 142 and up. */
+@supports (text-box: trim-both cap alphabetic) {
+  kbd {
+    --kbd-padding-top: 0.36em;
+    --kbd-padding-bottom: 0.36em;
+    --kbd-lift: 0.07em;
+    text-box: trim-both cap alphabetic;
+  }
+}
+
 /* Mouse interactions: the pointer counterpart of a key. Bootstrap fills <kbd> solid
    (dark box, light glyphs); a mouse action is not a key, so it is drawn as an outline
    instead. It stays a <kbd> -- the element means "user input", which a click or a
    scroll is just as much as a keystroke -- and only the class changes the look, e.g.
    <kbd>Shift</kbd>+<kbd class="mouse">scroll</kbd>. */
 kbd.mouse {
-  /* Bootstrap's kbd padding, minus the 1px the border adds back, so both boxes end up
+  /* The padding above, minus the 1px the border adds back, so both boxes end up
      exactly the same size and sit on the same baseline. Longhands rather than the
      shorthand: the minifier strips the space between two adjacent calc() values. */
-  padding-block: calc(0.1875rem - 1px);
+  padding-top: calc(var(--kbd-padding-top) - 1px);
+  padding-bottom: calc(var(--kbd-padding-bottom) - 1px);
   padding-inline: calc(0.375rem - 1px);
   font-family: var(--bs-font-monospace);
   font-size: 0.875em;
