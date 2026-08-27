@@ -480,14 +480,14 @@ def fetch_sessions_by_os(key):
 
     This is the denominator for both per-OS charts. Sessions, not users: a crash is
     an event that happens to a session, so both sides of the ratio must count the
-    same thing. Returns (totals, per_release) with totals {family: n} and
-    per_release {commit_hash: {family: n}} - one query serving both per-OS charts.
+    same thing. Returns {commit_hash: {family: n}} - one query serving both per-OS
+    charts, which fold it down with _sum_by_family() under the same tester gate.
 
     Keyed by the COMMIT the session ran, not the day it ran on: the trend chart
     plots reliability against the date a build was committed, so a session started
     today on last week's build belongs to last week's build. Sessions whose release
-    is not commit-shaped are dropped from per_release (they still count in totals,
-    which the bar chart uses and which does not care about the build's date).
+    is not commit-shaped are dropped: they cannot be attributed to a release, so
+    they can neither be dated nor checked against the tester threshold.
 
     The raw OS string is grouped in SQL but classified in Python, so _os_family()
     stays the single definition of what counts as Linux (every distro spelling on
@@ -499,20 +499,17 @@ def fetch_sessions_by_os(key):
         "FROM events WHERE event = 'session_start' AND isNotNull(properties.os) "
         "AND timestamp > now() - INTERVAL %d DAY GROUP BY rel, v"
     ) % PERIOD_DAYS)
-    totals = {}
     per_release = {}
     for rel, v, n in rows:
         fam = _os_family(v)
         if not fam:
             continue
-        n = int(n or 0)
-        totals[fam] = totals.get(fam, 0) + n
         h = _commit_hash(rel or "")
         if not h:
             continue
         entry = per_release.setdefault(h, {})
-        entry[fam] = entry.get(fam, 0) + n
-    return totals, per_release
+        entry[fam] = entry.get(fam, 0) + int(n or 0)
+    return per_release
 
 
 def _distro_name(s):
@@ -1528,13 +1525,11 @@ def fetch_crashed_sessions_by_os(token):
     Deduped by session_id like fetch_crash_times, so one crashed session counts
     once however many events it emitted. Unlike fetch_crash_times this does NOT
     require session_seconds - a crash counts against its OS whether or not the
-    uptime made it into the envelope. Returns (totals, per_release) with totals
-    {family: crashed_sessions} and per_release {commit_hash: {family: crashed}} -
-    keyed by the build that crashed, not the day it crashed on, to match
+    uptime made it into the envelope. Returns {commit_hash: {family: crashed}},
+    keyed by the build that crashed rather than the day it crashed on, to match
     fetch_sessions_by_os() and the trend chart's build-date axis.
     """
     seen = set()
-    totals = {}
     per_release = {}
     # "timestamp" is requested because _sentry_events sorts on it, and Discover
     # rejects (HTTP 400) a sort key that is not among the selected fields.
@@ -1547,13 +1542,12 @@ def fetch_crashed_sessions_by_os(token):
         fam = _os_family(ev.get("os.name"))
         if not fam:
             continue
-        totals[fam] = totals.get(fam, 0) + 1
         h = _commit_hash(ev.get("release") or "")
         if not h:
             continue
         entry = per_release.setdefault(h, {})
         entry[fam] = entry.get(fam, 0) + 1
-    return totals, per_release
+    return per_release
 
 
 def fetch_crash_times(token):
@@ -1664,6 +1658,31 @@ def _triangular_smooth(total, healthy, half=TREND_HALF, min_total=0.0,
     return values, halves
 
 
+def _hash_in(h, hashes):
+    """True if `h` names the same commit as any hash in `hashes`.
+
+    Abbreviated and full SHAs coexist throughout this data (a release can be named
+    "8f7c553", "0.0.0+3836~g8f7c553fb6" or the full 40 chars), so membership is a
+    prefix test in either direction, never equality.
+    """
+    return any(h.startswith(k) or k.startswith(h) for k in hashes)
+
+
+def _sum_by_family(per_release, eligible=None):
+    """Fold {commit: {family: n}} into {family: n}, keeping only tested releases.
+
+    The gate belongs here rather than at the fetch, because the same per-commit
+    data feeds both per-OS charts and both must count the same population.
+    """
+    out = {}
+    for h, by_fam in (per_release or {}).items():
+        if eligible is not None and not _hash_in(h, eligible):
+            continue
+        for fam, n in by_fam.items():
+            out[fam] = out.get(fam, 0) + n
+    return out
+
+
 def eligible_commits(groups, min_users=None):
     """Commit hashes of releases tested by at least `min_users` distinct people.
 
@@ -1728,13 +1747,14 @@ def build_trend_figure(groups, span_label, commit_dates,
     # as it draws no bar on the per-revision ones. `eligible` holds full or
     # abbreviated hashes, so membership is a prefix test either way.
     if eligible is not None:
-        def _is_eligible(h):
-            return any(h.startswith(k) or k.startswith(h) for k in eligible)
-        os_sessions = {h: v for h, v in (os_sessions or {}).items() if _is_eligible(h)}
-        os_crashes = {h: v for h, v in (os_crashes or {}).items() if _is_eligible(h)}
+        os_sessions = {h: v for h, v in (os_sessions or {}).items()
+                       if _hash_in(h, eligible)}
+        os_crashes = {h: v for h, v in (os_crashes or {}).items()
+                      if _hash_in(h, eligible)}
         groups = [g for g in (groups or [])
-                  if (_commit_hash((g.get("by") or {}).get("release") or "") or "")
-                  and _is_eligible(_commit_hash((g.get("by") or {}).get("release") or ""))]
+                  if _commit_hash((g.get("by") or {}).get("release") or "")
+                  and _hash_in(_commit_hash((g.get("by") or {}).get("release")),
+                               eligible)]
 
     # Commit hash -> committer date, for every build that reported anything.
     hashes = set(os_sessions or {}) | set(os_crashes or {})
@@ -1883,7 +1903,13 @@ def build_crash_os_figure(crashed, sessions, span_label):
     two different opt-ins: a user who accepted crash reporting but declined usage
     telemetry is counted on top and not at the bottom. The RANKING is robust to
     that; the absolute rate carries an unknown systematic error, and the chart says
-    so rather than hiding it. Returns None if either side is missing.
+    so rather than hiding it.
+
+    Both sides are gated to releases that cleared MIN_USERS testers, so this chart
+    and the trend beside it describe the same population. Ungated the numbers look
+    visibly better (Linux 98.20% vs 96.33%, Windows 92.75% vs 87.74%), because the
+    untested builds are mostly their own author's: run constantly, crashing rarely.
+    Returns None if either side is missing.
     """
     if not crashed or not sessions:
         return None
@@ -2389,17 +2415,26 @@ def main():
     # Per-OS crash figures, fetched ONCE and shared by the bar chart (totals) and
     # the trend chart (daily breakdown). Sentry's sessions API cannot group by OS,
     # so both need Sentry crashes over PostHog sessions, hence both tokens.
-    crash_totals, crash_by_release = {}, {}
-    sess_totals, sess_by_release = {}, {}
+    # Both per-OS charts are gated to releases enough people actually tested, the
+    # same rule and the same counter as the per-revision charts. Without it the
+    # figures are dominated by builds nobody but their author ran: one Fedora
+    # self-build accounted for 15.4% of all sessions in the window, one user, zero
+    # crashes, which alone lifted the published Linux rate by ~1.9 points.
+    eligible = eligible_commits(groups)
+    seen_commits = {_commit_hash((g.get("by") or {}).get("release") or "")
+                    for g in groups} - {None}
+    warn("per-OS charts: %d of %d commits cleared the %d-tester threshold."
+         % (len(eligible), len(seen_commits), MIN_USERS))
+
+    crash_by_release, sess_by_release = {}, {}
     if ph_key:
         try:
-            crash_totals, crash_by_release = fetch_crashed_sessions_by_os(token)
-            sess_totals, sess_by_release = fetch_sessions_by_os(ph_key)
+            crash_by_release = fetch_crashed_sessions_by_os(token)
+            sess_by_release = fetch_sessions_by_os(ph_key)
         except Exception as exc:  # noqa: BLE001 - best effort, never break the build
             warn("per-OS crash query failed (%s); OS charts keep their placeholder."
                  % exc)
-            crash_totals, crash_by_release = {}, {}
-            sess_totals, sess_by_release = {}, {}
+            crash_by_release, sess_by_release = {}, {}
     else:
         warn("no PostHog key; per-OS charts skipped (they need the session count).")
 
@@ -2410,10 +2445,8 @@ def main():
     if gh_token:
         # Only commits that clear the tester threshold can appear, so only those
         # need a date - which cuts the lookups from ~500 to a couple of dozen.
-        gate = eligible_commits(groups)
         wanted = {h for h in set(sess_by_release) | set(crash_by_release)
-                  if any(h.startswith(k) or k.startswith(h) for k in gate)}
-        wanted |= gate
+                  if _hash_in(h, eligible)} | eligible
         try:
             commit_dates = fetch_commit_dates(gh_token, sorted(
                 wanted, key=lambda h: -sum((sess_by_release.get(h) or {}).values())))
@@ -2424,10 +2457,6 @@ def main():
     else:
         warn("no GitHub token; trend chart skipped (it needs commit dates).")
 
-    eligible = eligible_commits(groups)
-    warn("trend chart: %d of %d commits cleared the %d-tester threshold."
-         % (len(eligible), len({_commit_hash((g.get("by") or {}).get("release") or "")
-                                for g in groups} - {None}), MIN_USERS))
     trend = build_trend_figure(groups, span_label, commit_dates,
                                crash_by_release, sess_by_release, eligible)
     if trend:
@@ -2438,7 +2467,9 @@ def main():
     else:
         warn("not enough daily history for the trend chart; keeping placeholder.")
 
-    crash_os = build_crash_os_figure(crash_totals, sess_totals, span_label)
+    crash_os = build_crash_os_figure(_sum_by_family(crash_by_release, eligible),
+                                     _sum_by_family(sess_by_release, eligible),
+                                     span_label)
     if crash_os:
         with open(OUT_PATH_CRASH_OS, "w") as f:
             json.dump(crash_os, f, indent=2)
