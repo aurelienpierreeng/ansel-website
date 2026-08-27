@@ -30,7 +30,7 @@ Tunables (env vars, with defaults):
   POSTHOG_HOST=https://eu.posthog.com
   POSTHOG_PROJECT_ID=206740
   RELIABILITY_STATS_PERIOD=90d              (rolling window = "currently used")
-  RELIABILITY_MIN_USERS=40                  (drop revisions used by too few unique
+  RELIABILITY_MIN_USERS=25                  (drop revisions used by too few unique
                                              users to be statistically meaningful)
   RELIABILITY_MAX_RELEASES=30               (cap bars for readability; the cap keeps
                                              the NEWEST revisions, not the busiest)
@@ -87,7 +87,7 @@ HOST = os.environ.get("SENTRY_HOST", "https://de.sentry.io")
 POSTHOG_HOST = os.environ.get("POSTHOG_HOST", "https://eu.posthog.com")
 POSTHOG_PROJECT_ID = os.environ.get("POSTHOG_PROJECT_ID", "206740")
 STATS_PERIOD = os.environ.get("RELIABILITY_STATS_PERIOD", "90d")
-MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "40"))
+MIN_USERS = int(os.environ.get("RELIABILITY_MIN_USERS", "25"))
 MAX_RELEASES = int(os.environ.get("RELIABILITY_MAX_RELEASES", "30"))
 ENVIRONMENT = os.environ.get("RELIABILITY_ENVIRONMENT", "").strip()
 # How many features the two "most-used" charts list. 83 distinct features report
@@ -392,16 +392,118 @@ def _hist_quantile_figure(labels, counts, title, y_title, x_title, color, unit):
     }
 
 
-def fetch_active_users(key):
-    """Daily count of unique users (active users over time). Returns (dates, users)."""
-    rows = _posthog_query(key, (
-        "SELECT toDate(timestamp) AS d, count(DISTINCT person_id) AS u "
-        "FROM events WHERE event = 'session_start' "
-        "AND timestamp > now() - INTERVAL %d DAY GROUP BY d ORDER BY d"
-    ) % PERIOD_DAYS)
-    dates = [str(d) for d, _ in rows]
-    users = [int(u or 0) for _, u in rows]
-    return dates, users
+def fetch_sentry_user_activity(token):
+    """Sentry install ids by day and by release, from crash events.
+
+    Sentry's sessions API reports count_unique(user) but never the ids, so it can
+    be counted and not merged. Crash events do carry the id, which is the same
+    anonymous install id PostHog stores as distinct_id - so these can be UNIONED
+    with PostHog's, not added to them, and a user present in both is counted once.
+
+    The cost of that is coverage: a Sentry user who never crashed does not appear
+    here at all. Measured, the union gains 39 user-days over PostHog alone, so this
+    supplements rather than transforms. One pagination serves both series.
+    Returns (by_day, by_release), each {key: set(install_id)}.
+    """
+    by_day, by_release = {}, {}
+    for ev in _sentry_events(token, "event.type:error",
+                             ("user", "release", "timestamp")):
+        uid = ev.get("user") or ""
+        if uid.startswith("id:"):
+            uid = uid[3:]
+        if not uid:
+            continue
+        day = str(ev.get("timestamp"))[:10]
+        by_day.setdefault(day, set()).add(uid)
+        h = _commit_hash(ev.get("release") or "")
+        if h:
+            by_release.setdefault(h, set()).add(uid)
+    return by_day, by_release
+
+
+def fetch_active_users(key, sentry_token=None):
+    """Unique users per day, PostHog and Sentry merged. Returns (dates, users).
+
+    Merged on the install id rather than summed, so somebody who reports to both
+    counts once. Grouped on distinct_id, not person_id: distinct_id IS the install
+    id Sentry uses, and only that lets the two sources be unioned at all.
+    """
+    per_day = {}
+    for d, uid in _posthog_query(key, (
+            "SELECT toDate(timestamp) AS d, distinct_id FROM events "
+            "WHERE event = 'session_start' "
+            "AND timestamp > now() - INTERVAL %d DAY GROUP BY d, distinct_id"
+    ) % PERIOD_DAYS):
+        per_day.setdefault(str(d)[:10], set()).add(uid)
+
+    if sentry_token:
+        try:
+            sentry_day, _ = fetch_sentry_user_activity(sentry_token)
+            for day, uids in sentry_day.items():
+                per_day.setdefault(day, set()).update(uids)
+        except Exception as exc:  # noqa: BLE001 - PostHog alone is still a chart
+            warn("Sentry user activity failed (%s); active users are PostHog only."
+                 % exc)
+
+    dates = sorted(per_day)
+    return dates, [len(per_day[d]) for d in dates]
+
+
+def fetch_nightly_reach(key, gh_token, sentry_token=None):
+    """Unique users who ran each nightly, keyed by the nightly's commit date.
+
+    "Testing reach": how many people actually exercised the build committed that
+    day. Restricted to build_channel = "nightly" - a self-build is not something we
+    shipped, and including them would count the developer's own machine as reach.
+    That restriction also keeps this cheap: nightlies are 72 distinct commits over
+    the window against 488 self-builds, and all 72 date from the bulk commit
+    listing.
+
+    Several nightlies can share a date when one is triggered by hand, and they are
+    merged by UNION of their users, never by sum: the same person running two of
+    the day's builds tested that day's code once, not twice. Returns (dates, users).
+    """
+    by_commit = {}
+    for rel, uid in _posthog_query(key, (
+            "SELECT coalesce(properties.commit, properties.app_version) AS rel, "
+            "distinct_id FROM events WHERE event = 'session_start' "
+            "AND toString(properties.build_channel) = 'nightly' "
+            "AND isNotNull(coalesce(properties.commit, properties.app_version)) "
+            "AND timestamp > now() - INTERVAL %d DAY GROUP BY rel, distinct_id"
+    ) % PERIOD_DAYS):
+        h = _commit_hash(rel or "")
+        if h:
+            by_commit.setdefault(h, set()).add(uid)
+
+    if sentry_token:
+        try:
+            _, sentry_release = fetch_sentry_user_activity(sentry_token)
+            for h, uids in sentry_release.items():
+                if _hash_in(h, by_commit):
+                    key_h = next(k for k in by_commit
+                                 if k.startswith(h) or h.startswith(k))
+                    by_commit[key_h].update(uids)
+        except Exception as exc:  # noqa: BLE001
+            warn("Sentry release users failed (%s); reach is PostHog only." % exc)
+
+    if not by_commit or not gh_token:
+        return [], []
+    dates = fetch_commit_dates(gh_token, sorted(by_commit,
+                                                key=lambda h: -len(by_commit[h])))
+    per_date = {}
+    undated = 0
+    for h, uids in by_commit.items():
+        d = dates.get(h) or next((v for k, v in dates.items()
+                                  if k.startswith(h) or h.startswith(k)), None)
+        if not d:
+            undated += 1
+            continue
+        per_date.setdefault(d, set()).update(uids)
+    if undated:
+        warn("%d nightly commits had no resolvable date; omitted from reach."
+             % undated)
+    ordered = sorted(per_date)
+    return ordered, [len(per_date[d]) for d in ordered]
 
 
 def _fetch_floats(key, prop):
@@ -1060,27 +1162,45 @@ def write_platform_figures(key, sentry_token=None):
         print("[usage] wrote %s (%d entries)" % (path, len(labels)))
 
 
-def write_engagement_figures(key):
+def write_engagement_figures(key, sentry_token=None, gh_token=None):
     """Active-users-over-time, session-length and images-per-session charts."""
     jobs = []
 
-    # 2. Active users over time (daily line).
-    dates, users = fetch_active_users(key)
+    # 2. Active users over time, plus how far each nightly actually got tested.
+    #    The two lines are counted on DIFFERENT x meanings and say so in their
+    #    names: one is "people using Ansel on this date", the other is "people who
+    #    ran the build committed on this date", which is the number that says
+    #    whether a nightly was exercised before the next one landed.
+    dates, users = fetch_active_users(key, sentry_token)
+    reach_dates, reach_users = fetch_nightly_reach(key, gh_token, sentry_token)
     if dates:
+        data = [{
+            "type": "scatter", "mode": "lines+markers", "x": dates, "y": users,
+            "name": "Active users (date of use)",
+            "hovertext": ["%s<br>%d active users" % (d, u)
+                          for d, u in zip(dates, users)],
+            "hoverinfo": "text", "line": {"color": "#8ec1a8", "width": 2},
+            "marker": {"color": "#8ec1a8", "size": 6}, "fill": "tozeroy",
+            "fillcolor": "rgba(142,193,168,0.25)"}]
+        if reach_dates:
+            data.append({
+                "type": "scatter", "mode": "lines+markers",
+                "x": reach_dates, "y": reach_users,
+                "name": "Testers of that day's nightly (date of build)",
+                "hovertext": ["%s<br>%d unique users ran a nightly built this day"
+                              % (d, u) for d, u in zip(reach_dates, reach_users)],
+                "hoverinfo": "text", "line": {"color": "#9db4d0", "width": 2},
+                "marker": {"color": "#9db4d0", "size": 6}})
         jobs.append((OUT_PATH_ACTIVE, dates, {
-            "data": [{
-                "type": "scatter", "mode": "lines+markers", "x": dates, "y": users,
-                "hovertext": ["%s<br>%d active users" % (d, u)
-                              for d, u in zip(dates, users)],
-                "hoverinfo": "text", "line": {"color": "#8ec1a8", "width": 2},
-                "marker": {"color": "#8ec1a8", "size": 6}, "fill": "tozeroy",
-                "fillcolor": "rgba(142,193,168,0.25)"}],
+            "data": data,
             "layout": {
-                "title": {"text": "Active users per day"},
+                "title": {"text": "Active users, and testing reach per nightly"},
                 "xaxis": {"title": {"text": "Date"}, "type": "date"},
                 "yaxis": {"title": {"text": "Unique users"}, "rangemode": "tozero"},
                 "margin": {"t": 70, "r": 30, "b": 60, "l": 60},
-                "showlegend": False,
+                "showlegend": True,
+                "legend": {"orientation": "h", "x": 0.5, "xanchor": "center",
+                           "y": 1.02, "yanchor": "bottom"},
             },
         }))
 
@@ -1959,6 +2079,13 @@ def build_crash_os_figure(crashed, sessions, span_label, bugs=None):
     crash bar towers over its report bar is one where things break and nobody says
     so - which is the point of putting them side by side.
 
+    The two do not scale symmetrically across platforms, and the reason is
+    architectural rather than statistical: macOS is a UNIX, so a share of what gets
+    fixed on Linux reaches it without anyone reporting it there, while Windows
+    shares almost none of that code and a Windows defect survives until a Windows
+    user reports it. Expect macOS to sit better than its report share predicts and
+    Windows worse; that is the shape of the data, not a flaw in it.
+
     Deliberately not a rate per user. Telemetry is opt-in and the users most likely
     to decline it are the same technically inclined users most likely to file a good
     report, so the opt-in population is a biased sample of the user base, biased by
@@ -2437,6 +2564,9 @@ def main():
 
     # "How is Ansel used?" charts come from PostHog alone, so build them regardless
     # of whether Sentry (reliability) is available.
+    # Read before the usage block: the engagement chart needs it to date nightlies.
+    gh_token = _read_token("GITHUB_TOKEN", ".github-auth")
+
     if ph_key:
         try:
             write_usage_figures(ph_key)
@@ -2447,7 +2577,7 @@ def main():
         except Exception as exc:  # noqa: BLE001
             warn("platform figures failed (%s); keeping placeholders." % exc)
         try:
-            write_engagement_figures(ph_key)
+            write_engagement_figures(ph_key, get_token(), gh_token)
         except Exception as exc:  # noqa: BLE001
             warn("engagement figures failed (%s); keeping placeholders." % exc)
     else:
@@ -2455,7 +2585,6 @@ def main():
 
     # Bug-report progress from GitHub (independent of everything above), and the
     # commit hashes of our packaged builds (to flag them on the reliability chart).
-    gh_token = _read_token("GITHUB_TOKEN", ".github-auth")
     packaged_hashes = set()
     if gh_token:
         try:

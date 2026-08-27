@@ -119,7 +119,7 @@ The two charts on the top row read the whole fleet, the two below read one revis
 
 **Crash-free sessions by build date** : one line per operating system, each averaged over about a week. **The dates are when the code was written, not when it was run** — a crash today on last week's nightly counts against last week's build. So reading left to right shows the code getting better, not the calendar going by. A bad build dips at its own date, and the lines say which platform it hit.
 
-**Where crashes happen, and where bug reports come from** : Windows carries well over half of all crashes — and crashes three times more often per session than Linux — yet files under a quarter of the bug reports. Linux is the mirror image. The two are not independent : a bug nobody reports is a bug nobody can fix, so it keeps crashing, for everyone on that platform. Ansel is free, and written by people who cannot test on your machine — **telling us what breaks is the contribution we actually need**. Whatever happens, your edits are written to disk as you make them, so a crash costs you the last action at most.
+**Where crashes happen, and where bug reports come from** : Windows carries just over half of all crashes — and crashes nearly three times more often per session than Linux — yet files under a quarter of the bug reports. Linux is the mirror image. macOS sits closer to Linux than its share of reports would suggest, and that is not luck : it is a UNIX, so a good deal of what we fix on Linux reaches it for free. Windows shares almost none of that code — it is a different architecture, not a variant — so a Windows bug exists until a Windows user tells us about it. **A bug nobody reports is a bug nobody can fix**, and it keeps crashing for everyone on that platform. Ansel is free, and written by people who cannot test on your machine : telling us what breaks is the contribution we actually need. Whatever happens, your edits are written to disk as you make them, so a crash costs you the last action at most.
 
 {{% row %}}
 {{% column %}}
@@ -132,7 +132,7 @@ The two charts on the top row read the whole fleet, the two below read one revis
 
 {{% column %}}
 
-Ansel has not published a stable release yet and there is no ETA for one : a new release is published when the list of all bugs have been cleared, so we _know_ the software and stable. So far, Ansel only publishes __revisions__, which are intermediate states of the sourcecode. Once a revision has been tested by at least 40 unique users, its reliability stats can show above : the charts display the 30 most recent revisions that reached that threshold. An asterisk (\*) marks revisions we shipped as a packaged nightly build.
+Ansel has not published a stable release yet and there is no ETA for one : a new release is published when the list of all bugs have been cleared, so we _know_ the software and stable. So far, Ansel only publishes __revisions__, which are intermediate states of the sourcecode. Once a revision has been tested by at least 25 unique users, its reliability stats can show above : the charts display the 30 most recent revisions that reached that threshold. An asterisk (\*) marks revisions we shipped as a packaged nightly build.
 
 On the two per-revision charts above, the crash-free rate is shown as a percentage whose **bar opacity encodes our confidence** : the solid part (*almost certain*) is the rate we are confident the software reaches, the *likely* range goes up to the currently recorded average, then *optimistic* reaches up to the best plausible rate written in parentheses on top. The fewer people tested a revision, the more incertainty there is on the average, the larger the {*likely* + *optimistic*} range gets : it is the margin of error of the current average at 95% confidence.
 
@@ -417,12 +417,12 @@ Copyright.
 
 ## How is Ansel used ?
 
-The charts below come from the opt-in PostHog telemetry.
+The charts below come from the opt-in PostHog telemetry, and — where user counts are involved — from the opt-in Sentry reports too. The two are merged on the anonymous install id, so somebody reporting to both is counted once.
 
 {{% row %}}
 {{% column %}}
 {{% card %}}
-{{< plotly title="Active users per day." caption="false" src="usage-active.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Unique users per day (PostHog and Sentry merged), and how many unique users tested each nightly build — that second line sits on the date the nightly was committed, merging several builds released the same day." caption="false" src="usage-active.json" class="full-width" dynamic="true" >}}
 {{% /card %}}
 {{% /column %}}
 {{% /row %}}

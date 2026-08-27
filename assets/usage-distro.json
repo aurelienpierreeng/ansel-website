@@ -16,7 +16,7 @@
       ],
       "values": [
         153,
-        136,
+        137,
         88,
         66,
         65,
@@ -29,7 +29,7 @@
       "hole": 0.45,
       "hovertext": [
         "Ubuntu<br>153 users",
-        "Fedora<br>136 users",
+        "Fedora<br>137 users",
         "Linux Mint<br>88 users",
         "Debian<br>66 users",
         "Arch Linux<br>65 users",
@@ -64,7 +64,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Linux distributions \u2014 677 users"
+      "text": "Linux distributions \u2014 678 users"
     },
     "margin": {
       "t": 70,

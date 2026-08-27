@@ -8,9 +8,9 @@
         "macOS"
       ],
       "y": [
-        58.73015873015873,
-        25.793650793650794,
-        15.476190476190476
+        51.52354570637119,
+        29.085872576177284,
+        19.390581717451525
       ],
       "name": "Share of crashes",
       "offsetgroup": "crash",
@@ -18,29 +18,29 @@
         "color": "#e8a598"
       },
       "text": [
-        "59%",
-        "26%",
-        "15%"
+        "52%",
+        "29%",
+        "19%"
       ],
       "textposition": "auto",
       "hovertext": [
-        "Windows<br>148 of 252 crashes (58.7%)<br>one crash every 8 sessions on this platform",
-        "Linux<br>65 of 252 crashes (25.8%)<br>one crash every 27 sessions on this platform",
-        "macOS<br>39 of 252 crashes (15.5%)<br>one crash every 11 sessions on this platform"
+        "Windows<br>186 of 361 crashes (51.5%)<br>one crash every 13 sessions on this platform",
+        "Linux<br>105 of 361 crashes (29.1%)<br>one crash every 36 sessions on this platform",
+        "macOS<br>70 of 361 crashes (19.4%)<br>one crash every 12 sessions on this platform"
       ],
       "hoverinfo": "text",
       "error_y": {
         "type": "data",
         "symmetric": false,
         "array": [
-          5.903011323982092,
-          5.736687973498203,
-          4.98042928757908
+          5.1121756971324785,
+          4.885595049984108,
+          4.391878776637739
         ],
         "arrayminus": [
-          6.165177944002274,
-          5.009771436169483,
-          3.9436794720446873
+          5.1442588825872875,
+          4.445180413286529,
+          3.74729841431877
         ],
         "color": "rgba(0,0,0,0.35)",
         "thickness": 1.5,
@@ -80,7 +80,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Crashes vs bug reports, per platform (the last 67 days)"
+      "text": "Crashes vs bug reports, per platform (the last 68 days)"
     },
     "barmode": "group",
     "xaxis": {

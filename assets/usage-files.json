@@ -7,8 +7,8 @@
         "DNG (mosaiced)",
         "CR2",
         "RAF",
-        "ARW",
         "JPG",
+        "ARW",
         "ORF",
         "CR3",
         "TIFF",
@@ -27,8 +27,8 @@
         "HEIF",
         "HIF",
         "CRW",
-        "SRW",
         "WEBP",
+        "SRW",
         "NONE",
         "JP2",
         "AVIF",
@@ -41,20 +41,20 @@
         "DNGTMP"
       ],
       "y": [
-        2947,
-        2903,
-        1381,
-        1318,
-        1037,
-        1030,
-        606,
-        545,
-        455,
-        390,
+        2957,
+        2912,
+        1395,
+        1325,
+        1049,
+        1043,
+        607,
+        547,
+        464,
+        395,
         342,
         229,
         213,
-        152,
+        155,
         45,
         16,
         12,
@@ -65,7 +65,7 @@
         8,
         6,
         6,
-        5,
+        6,
         5,
         4,
         3,
@@ -79,20 +79,20 @@
         1
       ],
       "hovertext": [
-        "NEF<br>2947 files opened",
-        "DNG (mosaiced)<br>2903 files opened",
-        "CR2<br>1381 files opened",
-        "RAF<br>1318 files opened",
-        "ARW<br>1037 files opened",
-        "JPG<br>1030 files opened",
-        "ORF<br>606 files opened",
-        "CR3<br>545 files opened",
-        "TIFF<br>455 files opened",
-        "DNG (demosaiced)<br>390 files opened",
+        "NEF<br>2957 files opened",
+        "DNG (mosaiced)<br>2912 files opened",
+        "CR2<br>1395 files opened",
+        "RAF<br>1325 files opened",
+        "JPG<br>1049 files opened",
+        "ARW<br>1043 files opened",
+        "ORF<br>607 files opened",
+        "CR3<br>547 files opened",
+        "TIFF<br>464 files opened",
+        "DNG (demosaiced)<br>395 files opened",
         "RW2<br>342 files opened",
         "EXR<br>229 files opened",
         "PEF<br>213 files opened",
-        "PNG<br>152 files opened",
+        "PNG<br>155 files opened",
         "HEIC<br>45 files opened",
         "3FR<br>16 files opened",
         "NRW<br>12 files opened",
@@ -103,8 +103,8 @@
         "HEIF<br>8 files opened",
         "HIF<br>6 files opened",
         "CRW<br>6 files opened",
+        "WEBP<br>6 files opened",
         "SRW<br>5 files opened",
-        "WEBP<br>5 files opened",
         "NONE<br>4 files opened",
         "JP2<br>3 files opened",
         "AVIF<br>3 files opened",
@@ -143,7 +143,7 @@
       ],
       "y": [
         0,
-        2947
+        2957
       ],
       "text": [
         "",
@@ -173,7 +173,7 @@
       ],
       "y": [
         0,
-        2947
+        2957
       ],
       "text": [
         "",
@@ -203,7 +203,7 @@
       ],
       "y": [
         0,
-        2947
+        2957
       ],
       "text": [
         "",
@@ -214,7 +214,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Image files opened, by type \u2014 13710 files (the last 67 days)"
+      "text": "Image files opened, by type \u2014 13796 files (the last 67 days)"
     },
     "xaxis": {
       "type": "category",

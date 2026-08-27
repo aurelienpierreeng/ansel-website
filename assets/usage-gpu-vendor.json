@@ -4,24 +4,24 @@
       "type": "pie",
       "labels": [
         "NVIDIA",
-        "Intel",
         "Apple",
+        "Intel",
         "AMD",
         "Other"
       ],
       "values": [
-        379,
+        380,
+        168,
         167,
-        166,
-        135,
+        136,
         11
       ],
       "hole": 0.45,
       "hovertext": [
-        "NVIDIA<br>379 users",
+        "NVIDIA<br>380 users",
+        "Apple<br>168 users",
         "Intel<br>167 users",
-        "Apple<br>166 users",
-        "AMD<br>135 users",
+        "AMD<br>136 users",
         "Other<br>11 users"
       ],
       "hoverinfo": "text",
@@ -49,7 +49,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Graphics card vendors \u2014 858 users"
+      "text": "Graphics card vendors \u2014 862 users"
     },
     "margin": {
       "t": 70,

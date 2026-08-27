@@ -23,7 +23,7 @@
       ],
       "values": [
         252,
-        206,
+        207,
         100,
         30,
         23,
@@ -43,7 +43,7 @@
       "hole": 0.45,
       "hovertext": [
         "KDE<br>252 users",
-        "GNOME<br>206 users",
+        "GNOME<br>207 users",
         "Cinnamon<br>100 users",
         "XFCE<br>30 users",
         "Hyprland<br>23 users",
@@ -85,7 +85,7 @@
   ],
   "layout": {
     "title": {
-      "text": "Desktop environment on Linux \u2014 664 users"
+      "text": "Desktop environment on Linux \u2014 665 users"
     },
     "margin": {
       "t": 70,
