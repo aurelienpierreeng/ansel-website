@@ -1,20 +1,39 @@
 {{ $srcset := "" }}
 {{ $image := . }}
 {{ if $image }}
-  {{ if not ( eq $image.MediaType.SubType "svg" ) }}
-    {{ print "is not SVG" }}
+  {{ if not (eq $image.MediaType.SubType "svg") }}
     {{ $iw := $image.Width }}
-    {{ $ih := $image.Height }}
     {{ $set := slice }}
-    {{ range slice 140 264 331 400 496 576 600 720 800 992 1200 1320 1440 1600 1920 2048 }}
-      {{ if lt . $iw }}
-        {{ $size := print  . "x" .}}
-        {{ $thumb := $image.Fit $size }}
-        {{ $set = $set | append (printf ("%s %dw") $thumb.RelPermalink $thumb.Width ) }}
+
+    {{ $siteSizes := slice 140 264 331 400 496 576 600 720 800 992 1200 1320 1440 1600 1920 2048 }}
+
+    {{/* track if a set size exactly matches the image width */}}
+    {{ $hasExact := false }}
+    {{ range $i, $s := $siteSizes }}
+      {{ $si := int $s }}
+      {{ if eq $si $iw }}
+        {{ $hasExact = true }}
       {{ end }}
     {{ end }}
+
+    {{/* build thumbs for every configured size that is <= the source width */}}
+    {{ range $i, $s := $siteSizes }}
+      {{ $si := int $s }}
+      {{ if le $si $iw }}
+        {{ $size := print $si "x" $si }}
+        {{ $thumb := $image.Fit $size }}
+        {{ $set = $set | append (printf "%s %dw" $thumb.RelPermalink $thumb.Width) }}
+      {{ end }}
+    {{ end }}
+
+    {{/* If no configured size matches the image width and the original image is allowed by maxSize, include the original file at its natural width */}}
+    {{ $maxSize := site.Params.Images.maxSize | default 2048 }}
+    {{ if and (not $hasExact) (le $iw $maxSize) }}
+      {{ $set = $set | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+    {{ end }}
+
     {{ if gt (len $set) 0 }}
-      {{ $srcset = delimit $set ", "}}
+      {{ $srcset = delimit $set ", " }}
     {{ end }}
   {{ end }}
 {{ end }}
