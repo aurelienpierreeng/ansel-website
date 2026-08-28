@@ -10,6 +10,22 @@
       | **Done shape creation** (or <kbd>Escape</kbd>)<div>Leaves creation mode.</div> |
       {{< /param-table >}}
 
+  A row may be written across several source lines: a line that does not open with "|"
+  belongs to the row above. Such a cell is rendered as Markdown blocks of its own, so an
+  explanation that is a list comes out a real list -- no <br> to write, and a wrapping
+  item keeps its hanging indent:
+
+      {{< param-table >}}
+      | **Circle** A disc with a soft edge.<div>
+      - <kbd class="mouse">Scroll</kbd>: diameter
+      - <kbd>Shift</kbd>+<kbd class="mouse">scroll</kbd>: feathering width
+      </div> |
+      {{< /param-table >}}
+
+  The <div> is optional there and may be dropped; it is what applies the indent, so keep
+  it unless the explanation already has a column of its own. Cells written on a single
+  line are rendered inline exactly as before.
+
   A leading column carries the submenu an entry belongs to, when it has one:
 
       | **Operation** | **Invert**<div>Inverts the polarity.</div> |
@@ -21,6 +37,10 @@
 
   Consecutive blocks butt against each other with no gap, so one menu can be split
   into several tables (top level vs. submenu) and still read as a single listing.
+
+  `indent` overrides the 4rem the explanation <div> is set in by, "0" cancelling it --
+  useful when the explanation already sits in a column of its own. The reading measure
+  stays at the theme's 36rem either way: what the indent gives up, the text takes back.
 
   `margin-left` indents the whole block by any CSS length, to nest a listing under
   the sentence or the entry it belongs to:
@@ -46,6 +66,11 @@
 {{- $imgHeight := .Get "image-height" -}}
 {{- /* Optional left margin for the whole block, any CSS length. */ -}}
 {{- $marginLeft := .Get "margin-left" -}}
+{{- /* Optional override for the explanation indent, any CSS length ("0" cancels it). */ -}}
+{{- $indent := .Get "indent" -}}
+{{- /* A bare 0 is a number, not a length, and calc() refuses to subtract it from one --
+       which would silently drop the max-width that keeps the reading measure. */ -}}
+{{- if eq $indent "0" -}}{{- $indent = "0px" -}}{{- end -}}
 {{- $styles := slice -}}
 {{- with $imgHeight -}}
   {{- $styles = $styles | append (printf "--param-table-image-height: %s" .) -}}
@@ -53,38 +78,90 @@
 {{- with $marginLeft -}}
   {{- $styles = $styles | append (printf "--param-table-margin-left: %s" .) -}}
 {{- end -}}
+{{- with $indent -}}
+  {{- $styles = $styles | append (printf "--param-table-indent: %s" .) -}}
+{{- end -}}
 {{- $inner := trim .Inner "\n\r \t" -}}
 
-{{- /* Column count: "| a | b |" splits into 4 parts, so two columns. It is taken as the
-       widest row rather than the first one -- Markdown drops every cell past what the
-       delimiter row declares, so a narrow first row would silently swallow the content
-       of all the others. */ -}}
-{{- $cols := 1 -}}
+{{- /* Fold continuation lines into the row they belong to, newline and all: a line that
+       does not open with "|" is part of the row above. Markdown gives a table row no way
+       to span lines and silently spills the overflow out of the table when one does, so
+       rows are assembled here and each cell is rendered on its own below. That is also
+       what lets a cell hold a real list: Markdown only sees blocks when it is handed a
+       block, which a table cell never is. */ -}}
+{{- $rows := slice -}}
 {{- range (split $inner "\n") -}}
   {{- $line := trim . " \t\r" -}}
   {{- if ne $line "" -}}
-    {{- $n := sub (len (split $line "|")) 2 -}}
-    {{- if gt $n $cols -}}{{- $cols = $n -}}{{- end -}}
+    {{- if or (hasPrefix $line "|") (eq (len $rows) 0) -}}
+      {{- $rows = $rows | append $line -}}
+    {{- else -}}
+      {{- $last := index $rows (sub (len $rows) 1) -}}
+      {{- $rows = append (print $last "\n" $line) (first (sub (len $rows) 1) $rows) -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
-{{- $header := "" -}}
-{{- $delim := "" -}}
-{{- range seq $cols -}}
-  {{- $header = print $header "|   " -}}
-  {{- $delim = print $delim "| --- " -}}
+{{- /* Column count: "| a | b |" splits into 4 parts, so two columns. The widest row wins
+       -- a narrow row must not shrink the others. */ -}}
+{{- $cols := 1 -}}
+{{- range $rows -}}
+  {{- $n := sub (len (split . "|")) 2 -}}
+  {{- if gt $n $cols -}}{{- $cols = $n -}}{{- end -}}
 {{- end -}}
-{{- $header = print $header "|" -}}
-{{- $delim = print $delim "|" -}}
 
-{{- $html := $p.RenderString (dict "display" "block") (print $header "\n" $delim "\n" $inner) -}}
-{{- $html = replaceRE `(?s)<thead.*?</thead>` "" $html -}}
+{{- $body := "" -}}
+{{- $hasFigure := false -}}
+{{- range $rows -}}
+  {{- $cells := split . "|" -}}
+  {{- $tr := "" -}}
+  {{- range $i := seq $cols -}}
+    {{- $cell := "" -}}
+    {{- if lt $i (len $cells) -}}{{- $cell = trim (index $cells $i) " \t\r\n" -}}{{- end -}}
+    {{- $out := "" -}}
+    {{- if ne $cell "" -}}
+      {{- if strings.Contains $cell "\n" -}}
+        {{- /* A cell written across several lines. Its explanation is Markdown in its own
+               right, so it is rendered as blocks and a list comes out a list. A <div>
+               written around it is stripped first and put back after: left in place it
+               would open a raw HTML block and Markdown would never look inside it. */ -}}
+        {{- $head := "" -}}
+        {{- $rest := $cell -}}
+        {{- $wrap := false -}}
+        {{- if strings.Contains $cell "<div>" -}}
+          {{- $parts := split $cell "<div>" -}}
+          {{- $head = index $parts 0 -}}
+          {{- $rest = replaceRE `(?s)</div>\s*$` "" (delimit (after 1 $parts) "<div>") -}}
+          {{- $wrap = true -}}
+        {{- end -}}
+        {{- with trim $head " \t\r\n" -}}
+          {{- $out = print $out ($p.RenderString (dict "display" "inline") .) -}}
+        {{- end -}}
+        {{- $blocks := "" -}}
+        {{- with trim $rest " \t\r\n" -}}
+          {{- $blocks = $p.RenderString (dict "display" "block") . -}}
+        {{- end -}}
+        {{- if $wrap -}}
+          {{- $out = print $out "<div>" $blocks "</div>" -}}
+        {{- else -}}
+          {{- $out = print $out $blocks -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $out = $p.RenderString (dict "display" "inline") $cell -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if strings.Contains $out "<figure" -}}{{- $hasFigure = true -}}{{- end -}}
+    {{- $tr = print $tr "<td>" $out "</td>" -}}
+  {{- end -}}
+  {{- $body = print $body "<tr>" $tr "</tr>" -}}
+{{- end -}}
+
 {{- /* A trailing cell can carry an illustration. The table then has to opt out of
        the 36rem reading-width cap the theme puts on body tables, or the picture
        stops mid-page instead of reaching the right margin. */ -}}
 {{- $class := "table" -}}
-{{- if strings.Contains $html "<figure" -}}{{- $class = "table full-width" -}}{{- end -}}
-{{- $html = replace $html "<table>" (printf `<table class="%s">` $class) -}}
+{{- if $hasFigure -}}{{- $class = "table full-width" -}}{{- end -}}
+{{- $html := printf `<table class="%s"><tbody>%s</tbody></table>` $class $body -}}
 
 {{- if not ($p.Scratch.Get "param-table-css") -}}
   {{- $p.Scratch.Set "param-table-css" true -}}
@@ -97,10 +174,19 @@
      width cap keeps the reading measure at the theme's 36rem (4rem indent + 32rem of
      text) even in an illustrated table, which opts out of that cap to reach the right
      margin and would otherwise let the line grow with the window. */
-  .param-table td > div { margin-left: 4rem; max-width: 32rem; }
+  .param-table td > div {
+    margin-left: var(--param-table-indent, 4rem);
+    /* Indent plus text always adds up to the theme's 36rem measure, whatever the
+       indent is set to, so changing it does not change the line length. */
+    max-width: calc(36rem - var(--param-table-indent, 4rem));
+  }
   /* A listing, not a data table: no rules, no striping, no hover tint, no cell fill.
      Bootstrap paints .table cells through a box-shadow, so that is reset too. */
   .param-table td { background-color: transparent; box-shadow: none; border: 0; }
+  /* A cell rendered as blocks ends on a list or a paragraph, whose bottom margin would
+     pad the row unevenly against the cells that hold a single line. */
+  .param-table td > :last-child,
+  .param-table td > div > :last-child { margin-bottom: 0; }
   /* Capping the explanation also caps the table's own content width, which would let
      the picture drift back from the right margin on a wide window -- so an illustrated
      table is stretched to the full column. The #content-body prefix is needed to beat
