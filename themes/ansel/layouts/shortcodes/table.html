@@ -1,4 +1,4 @@
-{{ $htmlTable := .Inner | markdownify }}
+{{ $htmlTable := .Inner | $.Page.RenderString (dict "display" "block") }}
 {{ $old := "<table>" }}
 {{ $new := "<table class=\"table table-striped table-hover full-width\">" }}
 {{ $htmlTable := replace $htmlTable $old $new }}

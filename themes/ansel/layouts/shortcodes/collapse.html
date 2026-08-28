@@ -25,7 +25,7 @@
       class="accordion-collapse collapse {{ if $open }}show{{ end }}"
       aria-labelledby="{{ $id }}-heading">
       <div class="accordion-body">
-        {{ .Inner | markdownify }}
+        {{ .Inner | $.Page.RenderString (dict "display" "block") }}
       </div>
     </div>
   </div>

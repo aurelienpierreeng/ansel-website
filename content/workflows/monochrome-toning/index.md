@@ -29,7 +29,7 @@ The cyanotype is a development where "black" is replaced by blue, because the ty
 
 ### Step 1 : switch black and blue
 
-In the [color balance](../doc/views/darkroom/modules/color-balance-rgb.md) module, go to the _4 ways_ tab, and in the _Global offset_ section, define a hue of 259° at a chroma of 1.50%. You will need to right-click on the chroma slider, then input the `1.5` value on the keyboard, because the range of the slider goes as high as 0.75%, which fits typical color-grading uses.
+In the [color balance](../../doc/views/darkroom/modules/color-balance.md) module, go to the _4 ways_ tab, and in the _Global offset_ section, define a hue of 259° at a chroma of 1.50%. You will need to right-click on the chroma slider, then input the `1.5` value on the keyboard, because the range of the slider goes as high as 0.75%, which fits typical color-grading uses.
 
 If you just do that, you will note that blacks stay neutral, and don't get tinted to blue. This is because of the internal gamut mapping in the module, that prevents negative RGB values, which would create later problems in the pipeline. To force blacks to be colored, you will need to raise the luminance of the _Global offset_ by the same amount as the chroma, that is 1.50% in this example.
 

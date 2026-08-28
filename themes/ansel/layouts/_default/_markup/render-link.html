@@ -1,6 +1,10 @@
 {{- $link := strings.Replace .Destination "_index.md" "" -}}
 {{- $isRemote := strings.HasPrefix $link "http" -}}
 {{- $isAnchor := strings.HasPrefix $link "#" -}}
+{{/* A shortcode in the destination -- [text]({{< relref "..." >}}) -- reaches the hook as
+     Hugo's own placeholder, the real URL being spliced in once the page is rendered.
+     Resolving it here would consume the placeholder and leave the link pointing nowhere. */}}
+{{- $isShortcode := strings.HasPrefix $link "HAHAHUGOSHORTCODE" -}}
 {{- $isWikipedia := strings.Contains $link "wikipedia.org" -}}
 {{- $isNetwork := strings.Contains $link "ansel.photos" -}}
 {{- $isDownload := eq (lower .Title) "download" -}}
@@ -15,7 +19,7 @@
   {{- $title = "External link" -}}
 {{- end -}}
 
-{{- if and (not $isRemote) (not $isAnchor) -}}
+{{- if and (not $isShortcode) (and (not $isRemote) (not $isAnchor)) -}}
   {{/*
     For local links, we want writers to use relative links to (mostly .md) files, as much as possible.
     These links can be followed in modern text editors on the file system, without building the website.
@@ -36,17 +40,45 @@
       {{- $link = strings.Replace $link ".md" "" -}}
     {{- end -}}
 
+    {{/* A leaf bundle is addressed by its directory: "index" is the file a writer follows
+         in an editor, but it is not part of the page's path. */}}
+    {{- $link = strings.TrimSuffix "/index" $link -}}
+
     {{- $got_it := false -}}
 
-    {{/* This works as-is only for relative links to pages from the same section/branch bundle */}}
-    {{- with $page.GetPage $link -}}
+    {{/* Not every link target is a page. A file sitting next to the page in its bundle --
+         an XMP sidecar, a spreadsheet -- is a page resource, and is served as-is. */}}
+    {{- with $page.Resources.GetMatch $link -}}
       {{- $link = .RelPermalink -}}
       {{- $got_it = true -}}
     {{- end -}}
 
-    {{- with site.GetPage $link -}}
-      {{- $link = .RelPermalink -}}
-      {{- $got_it = true -}}
+    {{/* This works as-is only for relative links to pages from the same section/branch bundle */}}
+    {{- if not $got_it -}}
+      {{- with $page.GetPage $link -}}
+        {{- $link = .RelPermalink -}}
+        {{- $got_it = true -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- if not $got_it -}}
+      {{- with site.GetPage $link -}}
+        {{- $link = .RelPermalink -}}
+        {{- $got_it = true -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{/* Resolve the link the way the writer wrote it: as a path on disk, relative to the
+         file the link is in. path.Join folds the "../" away, which is what neither GetPage
+         nor `ref` does from inside a page bundle -- there, "../" has to climb out of the
+         bundle directory, and both read it as climbing out of the section instead. */}}
+    {{- if not $got_it -}}
+      {{- with $page.File -}}
+        {{- with site.GetPage (path.Join "/" (path.Dir .Path) $link) -}}
+          {{- $link = .RelPermalink -}}
+          {{- $got_it = true -}}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
 
     {{/* This works only for relative links pointing to pages outside the current section/branch bundle

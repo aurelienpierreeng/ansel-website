@@ -1,6 +1,6 @@
 <blockquote class="col-12 col-md-6 border-secondary-subtle border-top border-bottom float-md-end my-3 my-md-1 ms-0 ms-md-3 p-2 d-flex flex-row floating-quote {{ with .Get "class" }}{{ . }}{{ end }}">
   <div class="ps-2 py-3 quote-content">
-    <span class="fs-5 lh-sm">{{ .Inner | markdownify }}</span>
-    {{ with .Get "author" }}<span class="text-secondary fst-italic">— {{ . | markdownify }}</span>{{ end }}
+    <span class="fs-5 lh-sm">{{ .Inner | $.Page.RenderString (dict "display" "inline") }}</span>
+    {{ with .Get "author" }}<span class="text-secondary fst-italic">— {{ . | $.Page.RenderString (dict "display" "inline") }}</span>{{ end }}
   </div>
 </blockquote>
