@@ -146,6 +146,16 @@ _Download counts read every night from GitHub releases and Docker Hub, for every
 {{% column %}}
 {{% card %}}
 
+{{< plotly title="Sessions per month by build channel: our nightly packages, builds compiled from source, and distributions' own packages (opt-in usage statistics). This, not repository clone counts, is how many people run a self-build: every CI job clones too." caption="false" src="usage-channels-monthly.json" class="full-width" dynamic="true" >}}
+
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+
 {{< plotly title="Reported issues (bugs, tasks and features) already resolved versus still open, per release (source: Github). Much has already been done; what remains is tracked openly." caption="false" src="bugs.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
