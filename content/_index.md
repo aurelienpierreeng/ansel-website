@@ -34,11 +34,23 @@ Pressing the camera shutter merely started a process ending when the on-screen p
 
 {{< divider >}}
 
-## Download
+## Install
 
-{{< button url="/download/" label="Download Ansel" icon="download" >}}
+{{% row %}}
 
-_Nightly builds for Linux, Windows and macOS, with the crash rate and the number of testers of every build, on the [download page](/download/)._
+{{% column class="text-center" %}}
+{{< button url="/download/" label="Download" icon="download" >}}
+{{% /column %}}
+
+{{% column class="text-center" %}}
+{{< button url="/doc/install/" label="Installation help" icon="mouse" >}}
+{{% /column %}}
+
+{{% column class="text-center" %}}
+{{< button url="/doc/getting-started/" label="Getting started" icon="hands-helping" >}}
+{{% /column %}}
+
+{{% /row %}}
 
 {{< divider >}}
 
