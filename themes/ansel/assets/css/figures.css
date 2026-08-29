@@ -78,6 +78,58 @@ figure img {
   margin: 0 auto;
 }
 
+/* A hairline around the picture itself. Screenshots of a panel, a menu or a dialog end
+   on their own light grey and bleed into the page background, which leaves the reader
+   guessing where the picture stops. A photograph, a diagram or a gradient has no such
+   problem and a frame around one only gets in the way, so this is asked for per picture
+   rather than set for a whole page.
+   The color is the background color in Ansel's theme. */
+figure.img-wrapper.framed .img-container img {
+  border: 5px solid #686868;
+}
+
+/* The same hairline on every inline icon the `icon` shortcode drops mid-sentence. Unlike
+   a figure, this is not asked for per picture: an icon is always a button cropped out of
+   the interface, so it always carries the panel's grey to its edges and always needs the
+   outline to stop it bleeding into the line of text. Same colour as the figure's frame,
+   but the width is in em rather than px: the figure's 5px is a hairline on a full-width
+   screenshot and would be a quarter of the height of an icon, so this one scales with the
+   icon instead.
+   content-box keeps the border outside the height the shortcode sets in em: under the
+   inherited border-box it would eat into that height instead, and the icon would come out
+   smaller than the text it sits in. */
+img.inline-icon {
+  border: 0.15em solid #686868;
+  box-sizing: content-box;
+}
+
+/* Opt-outs for a standalone figure, passed through the `figure` shortcode's `class`
+   parameter -- {{< figure src="..." class="align-left" />}}. */
+
+/* A picture narrower than the column is centred by default. Left-aligning it takes both
+   the image and its container: .img-container carries auto inline margins of its own,
+   which stop it stretching across the figure's grid and centre it at its content size,
+   so resetting the image alone would just move it inside a box that is still centred. */
+figure.align-left .img-container,
+figure.align-left img {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+figure.align-left figcaption {
+  text-align: left;
+}
+
+/* Drops the rules a figure draws above and below itself, along with the padding that
+   only exists to keep the picture off them -- for an illustration that reads as part of
+   the sentence around it rather than as a plate set apart from the text. The vertical
+   margin stays: without the rules there is nothing else keeping the text at a distance. */
+figure.borderless {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0;
+}
+
 section > figure + figure,
 section > figure + .gallery,
 section > .gallery + figure,

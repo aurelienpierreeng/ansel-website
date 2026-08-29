@@ -14,6 +14,23 @@
   `max-width: none` and `width: auto` override the theme's own image rules, which
   otherwise fight the height set here.
 
+  The corners are rounded, in em so the radius follows the icon's own size: a button
+  cropped out of the interface keeps the panel's background in its corners, which reads
+  as a hard square pasted into the line of text.
+
+  The frame comes from figures.css, which outlines every inline icon the same way the
+  figure shortcode outlines a screenshot.
+
+  An SVG is sized from its own `viewBox` rather than left to the browser. `width: auto`
+  against a set height needs an intrinsic ratio to resolve, and an SVG that declares
+  neither a viewBox nor width/height has none -- the browser then falls back to the
+  spec's default object size and the icon comes out 300px wide in the middle of the
+  sentence. The ratio is read off the file here and passed as `aspect-ratio`, which
+  settles the width whatever the file does or does not declare. A file carrying nothing
+  to measure is squared, with a warning naming it: a square is wrong by a little, 300px
+  is wrong by a lot. Raster images are left alone -- their intrinsic size already
+  answers the question.
+
   Optional: `alt` for the accessible name, `height` (in em, default 1.4) to match
   a taller or shorter line.
 */ -}}
@@ -24,6 +41,35 @@
 {{- $image := partial "get_resource.html" (dict "src" $src "Page" .Page) -}}
 
 {{- with $image -}}
-{{- $css := printf "height:%sem;width:auto;max-width:none;display:inline-block;vertical-align:text-bottom;margin:0 0.15em;" $height -}}
+{{- $css := printf "height:%sem;width:auto;max-width:none;display:inline-block;vertical-align:text-bottom;margin:0 0.15em;border-radius:0.2em;" $height -}}
+{{- if eq .MediaType.SubType "svg" -}}
+  {{- /* The opening tag only. Matched rather than cut at the first ">", which an XML
+         declaration ahead of it would swallow. */ -}}
+  {{- $tag := "" -}}
+  {{- with findRESubmatch `(?is)<svg\b([^>]*)>` .Content 1 -}}
+    {{- $tag = index (index . 0) 1 -}}
+  {{- end -}}
+  {{- $w := "" -}}
+  {{- $h := "" -}}
+  {{- /* The viewBox first: it is the ratio the drawing was authored at, and it is there
+         even when the file declares no size of its own. Its last two numbers are the
+         ones wanted, the first two being the origin. */ -}}
+  {{- with findRESubmatch `(?i)viewbox\s*=\s*["']\s*[-+0-9.eE]+[\s,]+[-+0-9.eE]+[\s,]+([-+0-9.eE]+)[\s,]+([-+0-9.eE]+)` $tag 1 -}}
+    {{- $m := index . 0 -}}
+    {{- $w = index $m 1 -}}
+    {{- $h = index $m 2 -}}
+  {{- else -}}
+    {{- /* Failing that, the size the file declares. Only a bare number or px is read: any
+           other unit is a length the ratio cannot be recovered from. */ -}}
+    {{- with findRESubmatch `(?i)\swidth\s*=\s*["']([0-9.]+)(?:px)?["']` $tag 1 -}}{{- $w = index (index . 0) 1 -}}{{- end -}}
+    {{- with findRESubmatch `(?i)\sheight\s*=\s*["']([0-9.]+)(?:px)?["']` $tag 1 -}}{{- $h = index (index . 0) 1 -}}{{- end -}}
+  {{- end -}}
+  {{- if and (gt (float ($w | default 0)) 0.0) (gt (float ($h | default 0)) 0.0) -}}
+    {{- $css = print $css (printf "aspect-ratio:%s/%s;" $w $h) -}}
+  {{- else -}}
+    {{- warnf "icon: %q declares neither a viewBox nor a width and height, so its proportions cannot be read -- squared. Add a viewBox to the file." $src -}}
+    {{- $css = print $css "aspect-ratio:1/1;" -}}
+  {{- end -}}
+{{- end -}}
 <img src="{{ .RelPermalink }}" alt="{{ $alt }}" class="inline-icon" style="{{ $css | safeCSS }}" />
 {{- end -}}

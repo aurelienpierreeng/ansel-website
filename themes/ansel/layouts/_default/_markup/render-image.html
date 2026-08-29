@@ -1,1 +1,19 @@
-{{ partial "image.html" (dict "Page" .Page "Src" .Destination "Caption" .Title) }}
+{{- /* A Markdown image has nowhere to carry the `class` parameter the `figure` shortcode
+       takes, and inside a `param-table` cell `figure` cannot be used at all -- its output
+       spans several lines and breaks the table row apart. So the class rides in the
+       image's URL, as a `class=` query taken back off here before the file is looked up:
+
+           ![](panel.png?class=framed)
+           ![](panel.png?class=framed+align-left "the panel")
+
+       Several classes are separated by "+", which is what a space is written as in a
+       query string anywhere else. Anything but a `class=` query is left alone, so a
+       remote image keeps whatever query its URL needs. */ -}}
+{{- $src := .Destination -}}
+{{- $class := "" -}}
+{{- $parts := split $src "?" -}}
+{{- if and (gt (len $parts) 1) (hasPrefix (index $parts 1) "class=") -}}
+  {{- $src = index $parts 0 -}}
+  {{- $class = replace (strings.TrimPrefix "class=" (index $parts 1)) "+" " " -}}
+{{- end -}}
+{{ partial "image.html" (dict "Page" .Page "Src" $src "Caption" .Title "Class" $class) }}

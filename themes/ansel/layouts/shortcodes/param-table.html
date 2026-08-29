@@ -31,9 +31,10 @@
       | **Operation** | **Invert**<div>Inverts the polarity.</div> |
       |               | **Union**<div>How shapes combine.</div> |
 
-  Markdown needs a header row to recognise a table, so one is generated here and
-  then stripped from the output: the theme paints <thead> with `table-dark`, which
-  would show up as an empty dark bar.
+  The <table> is written out here rather than handed to Markdown as one: rows are
+  assembled from the source lines and each cell rendered on its own. It carries no
+  <thead> at all -- the theme paints one with `table-dark`, which would show up as
+  an empty dark bar.
 
   Consecutive blocks butt against each other with no gap, so one menu can be split
   into several tables (top level vs. submenu) and still read as a single listing.
@@ -42,6 +43,17 @@
   useful when the explanation already sits in a column of its own. The reading measure
   stays at the theme's --reading-width either way: what the indent gives up, the text
   takes back.
+
+  `image-crop="square"` crops every picture in the block to a square of `image-height`,
+  taken from its middle -- for a set of small illustrations that should line up as tiles
+  whatever they were shot at:
+
+      {{< param-table image-height="5rem" image-crop="square" >}}
+
+  `gutter` sets the space after a leading label column, and after a picture column that
+  sits between one and its explanation -- 1rem if not given:
+
+      {{< param-table gutter="0.5rem" >}}
 
   `margin-left` indents the whole block by any CSS length, to nest a listing under
   the sentence or the entry it belongs to:
@@ -57,30 +69,46 @@
       | **Union**<div>Adds the shape.</div> | ![](union.jpg "union result") |
       {{< /param-table >}}
 
+  The class `figure` takes as a parameter rides in the image's URL instead, as a
+  `class=` query the render-image hook strips off again -- `![](panel.png?class=framed)`,
+  several classes joined by "+".
+
+  The illustration may lead the row instead of closing it. Which column carries the
+  reading measure follows the picture: a trailing one leaves the measure on the text
+  column to its left, a leading one takes only the width it actually renders at --
+  `image-height` applied to its own aspect ratio -- and hands the rest to the text:
+
+      {{< param-table image-height="14rem" >}}
+      | ![](wheel.png) | <div>What the wheel does.</div> |
+      {{< /param-table >}}
+
   Unlike the theme's `table` shortcode, this renders through Page.RenderString
   rather than `markdownify`, which keeps the page context alive so relative
   `.md` links resolve instead of collapsing to the site root.
 */ -}}
 
 {{- $p := .Page -}}
+{{- /* "square" crops every picture in the block to a square of `image-height`, centred. */ -}}
+{{- $square := eq (.Get "image-crop") "square" -}}
 {{- /* Optional uniform height for the illustrations, any CSS length. */ -}}
 {{- $imgHeight := .Get "image-height" -}}
-{{- /* Optional left margin for the whole block, any CSS length. */ -}}
-{{- $marginLeft := .Get "margin-left" -}}
-{{- /* Optional override for the explanation indent, any CSS length ("0" cancels it). */ -}}
-{{- $indent := .Get "indent" -}}
-{{- /* A bare 0 is a number, not a length, and calc() refuses to subtract it from one --
+{{- /* Optional override for the explanation indent, any CSS length ("0" cancels it).
+       A bare 0 is a number, not a length, and calc() refuses to subtract it from one --
        which would silently drop the max-width that keeps the reading measure. */ -}}
+{{- $indent := .Get "indent" -}}
 {{- if eq $indent "0" -}}{{- $indent = "0px" -}}{{- end -}}
+{{- /* Each of these rides to the CSS as --param-table-<name>, the parameter's own name,
+       and one left unset is simply left out: `image-height` a uniform picture height,
+       `margin-left` an indent for the whole block, `gutter` the space after a leading
+       label or picture column. Any CSS length. */ -}}
 {{- $styles := slice -}}
-{{- with $imgHeight -}}
-  {{- $styles = $styles | append (printf "--param-table-image-height: %s" .) -}}
-{{- end -}}
-{{- with $marginLeft -}}
-  {{- $styles = $styles | append (printf "--param-table-margin-left: %s" .) -}}
-{{- end -}}
-{{- with $indent -}}
-  {{- $styles = $styles | append (printf "--param-table-indent: %s" .) -}}
+{{- range $var := slice (slice "image-height" $imgHeight)
+                        (slice "margin-left" (.Get "margin-left"))
+                        (slice "indent" $indent)
+                        (slice "gutter" (.Get "gutter")) -}}
+  {{- with index $var 1 -}}
+    {{- $styles = $styles | append (printf "--param-table-%s: %s" (index $var 0) .) -}}
+  {{- end -}}
 {{- end -}}
 {{- $inner := trim .Inner "\n\r \t" -}}
 
@@ -91,17 +119,21 @@
        what lets a cell hold a real list: Markdown only sees blocks when it is handed a
        block, which a table cell never is. */ -}}
 {{- $rows := slice -}}
+{{- $row := "" -}}
 {{- range (split $inner "\n") -}}
   {{- $line := trim . " \t\r" -}}
   {{- if ne $line "" -}}
-    {{- if or (hasPrefix $line "|") (eq (len $rows) 0) -}}
-      {{- $rows = $rows | append $line -}}
+    {{- if eq $row "" -}}
+      {{- $row = $line -}}
+    {{- else if hasPrefix $line "|" -}}
+      {{- $rows = $rows | append $row -}}
+      {{- $row = $line -}}
     {{- else -}}
-      {{- $last := index $rows (sub (len $rows) 1) -}}
-      {{- $rows = append (print $last "\n" $line) (first (sub (len $rows) 1) $rows) -}}
+      {{- $row = print $row "\n" $line -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
+{{- with $row -}}{{- $rows = $rows | append . -}}{{- end -}}
 
 {{- /* Column count: "| a | b |" splits into 4 parts, so two columns. The widest row wins
        -- a narrow row must not shrink the others. */ -}}
@@ -113,6 +145,16 @@
 
 {{- $body := "" -}}
 {{- $hasFigure := false -}}
+{{- /* An illustration in the *leading* cell, rather than the trailing one. The column
+       is then sized to the picture instead of to the text, so its widest aspect ratio
+       is collected here to turn `image-height` into a width further down. */ -}}
+{{- $leadFigure := false -}}
+{{- $leadRatio := 0.0 -}}
+{{- /* An illustration in a column that neither opens nor closes the row -- pictures between
+       a label and its explanation. That column is sized to the pictures, and the measure
+       stays with the explanation, which is no longer the cell before the last. */ -}}
+{{- $midFigure := false -}}
+{{- $midRatio := 0.0 -}}
 {{- range $rows -}}
   {{- $cells := split . "|" -}}
   {{- $tr := "" -}}
@@ -120,6 +162,8 @@
     {{- $cell := "" -}}
     {{- if lt $i (len $cells) -}}{{- $cell = trim (index $cells $i) " \t\r\n" -}}{{- end -}}
     {{- $out := "" -}}
+    {{- /* An explanation alone in its cell, with no entry name above it to hang under. */ -}}
+    {{- $bareCell := false -}}
     {{- if ne $cell "" -}}
       {{- if strings.Contains $cell "\n" -}}
         {{- /* A cell written across several lines. Its explanation is Markdown in its own
@@ -131,28 +175,71 @@
         {{- $wrap := false -}}
         {{- if strings.Contains $cell "<div>" -}}
           {{- $parts := split $cell "<div>" -}}
-          {{- $head = index $parts 0 -}}
+          {{- $head = trim (index $parts 0) " \t\r\n" -}}
           {{- $rest = replaceRE `(?s)</div>\s*$` "" (delimit (after 1 $parts) "<div>") -}}
           {{- $wrap = true -}}
         {{- end -}}
-        {{- with trim $head " \t\r\n" -}}
+        {{- with $head -}}
           {{- $out = print $out ($p.RenderString (dict "display" "inline") .) -}}
         {{- end -}}
         {{- $blocks := "" -}}
         {{- with trim $rest " \t\r\n" -}}
           {{- $blocks = $p.RenderString (dict "display" "block") . -}}
         {{- end -}}
+        {{- /* Same test as in the single-line branch below: a cell that is nothing but a <div>
+               has no entry name of its own to hang under. */ -}}
+        {{- if and $wrap (eq $head "") -}}{{- $bareCell = true -}}{{- end -}}
         {{- if $wrap -}}
           {{- $out = print $out "<div>" $blocks "</div>" -}}
         {{- else -}}
           {{- $out = print $out $blocks -}}
         {{- end -}}
+      {{- else if and (hasPrefix $cell "<div>") (hasSuffix $cell "</div>") -}}
+        {{- /* A cell that is nothing but a <div> -- an explanation with a column of its own,
+               its entry name beside it rather than above it. Left as written, the <div> opens
+               a raw HTML block and Goldmark never looks inside: the explanation comes out with
+               its `_emphasis_` and its links as literal text. So the wrapper comes off, the
+               Markdown is rendered, and it goes back on. */ -}}
+        {{- $body := strings.TrimSuffix "</div>" (strings.TrimPrefix "<div>" $cell) -}}
+        {{- $out = print "<div>" ($p.RenderString (dict "display" "inline") $body) "</div>" -}}
+        {{- /* Nothing above it in its own cell to be indented under, so the hanging indent is
+               dropped and the measure taken back -- see `.bare` in style.css. */ -}}
+        {{- $bareCell = true -}}
       {{- else -}}
         {{- $out = $p.RenderString (dict "display" "inline") $cell -}}
       {{- end -}}
     {{- end -}}
-    {{- if strings.Contains $out "<figure" -}}{{- $hasFigure = true -}}{{- end -}}
-    {{- $tr = print $tr "<td>" $out "</td>" -}}
+    {{- $tdClass := "" -}}
+    {{- if strings.Contains $out "<figure" -}}
+      {{- $hasFigure = true -}}
+      {{- $tdClass = " class=\"illustration\"" -}}
+      {{- $lead := eq $i 1 -}}
+      {{- $mid := and (not $lead) (ne $i $cols) -}}
+      {{- /* A picture that opens the row, or sits in the middle of it, has to have its column
+             pinned to the width the picture actually renders at. Left to shrink to its content
+             the column collapses instead -- `max-width: 100%` on the image makes its min-content
+             contribution zero, so a neighbour asking for the full width wins and the picture is
+             squeezed out of sight. The width comes from the intrinsic size the image partial
+             writes onto the <img>; several rows may illustrate the same column, so the widest
+             picture sets it. A trailing picture needs none of this and is not measured. */ -}}
+      {{- if or $lead $mid -}}
+        {{- $ratio := 0.0 -}}
+        {{- with findRESubmatch `width="([0-9]+)"\s*height="([0-9]+)"` $out 1 -}}
+          {{- $m := index . 0 -}}
+          {{- $h := int (index $m 2) -}}
+          {{- if gt $h 0 -}}{{- $ratio = div (float (int (index $m 1))) (float $h) -}}{{- end -}}
+        {{- end -}}
+        {{- if $lead -}}
+          {{- $leadFigure = true -}}
+          {{- if gt $ratio $leadRatio -}}{{- $leadRatio = $ratio -}}{{- end -}}
+        {{- else -}}
+          {{- $midFigure = true -}}
+          {{- if gt $ratio $midRatio -}}{{- $midRatio = $ratio -}}{{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $bareCell -}}{{- $tdClass = " class=\"bare\"" -}}{{- end -}}
+    {{- $tr = print $tr "<td" $tdClass ">" $out "</td>" -}}
   {{- end -}}
   {{- $body = print $body "<tr>" $tr "</tr>" -}}
 {{- end -}}
@@ -162,95 +249,46 @@
        stops mid-page instead of reaching the right margin. */ -}}
 {{- $class := "table" -}}
 {{- if $hasFigure -}}{{- $class = "table full-width" -}}{{- end -}}
+{{- /* A leading illustration inverts which column is sized for what. With `image-height`
+       set, the picture's rendered width is known -- the ratio applied to that height,
+       plus the 0.5rem Bootstrap pads each side of a cell with -- so the column is pinned
+       to exactly that and the explanation takes every remaining pixel. Without it the
+       picture fills its column instead, so there is no width to pin and the reading
+       measure goes to the explanation column rather than the picture's. Only ever one of
+       the two columns is given a width: under `table-layout: fixed`, sizing both lets
+       them overflow the table and the browser shrinks each one to fit. */ -}}
+{{- if $leadFigure -}}
+  {{- /* Cropped square, the picture is as wide as it is tall whatever the file's own ratio. */ -}}
+  {{- if $square -}}{{- $leadRatio = 1.0 -}}{{- end -}}
+  {{- if and $imgHeight (gt $leadRatio 0.0) -}}
+    {{- $class = print $class " lead-figure" -}}
+    {{- $styles = $styles | append (printf "--param-table-image-width: calc(%.4f * var(--param-table-image-height) + 1rem)" $leadRatio) -}}
+  {{- else -}}
+    {{- $class = print $class " lead-figure-auto" -}}
+  {{- end -}}
+{{- end -}}
+{{- /* A trailing illustration with a leading label column beside the explanation: three
+       columns, not two, so the measure below cannot be hung on the first cell -- that one
+       carries the label. It is pinned narrow here instead, and the measure moves to the
+       explanation, which `td:nth-last-child(2)` reaches in either shape (it is the first
+       cell when the picture closes a two-column row). */ -}}
+{{- if and $hasFigure (not $leadFigure) (gt $cols 2) -}}
+  {{- $class = print $class " lead-label" -}}
+{{- end -}}
+{{- if $midFigure -}}
+  {{- $class = print $class " mid-figure" -}}
+  {{- if and $imgHeight (gt $midRatio 0.0) -}}
+    {{- /* The width the picture renders at: `image-height` applied to its own aspect ratio, the
+           same arithmetic as for a leading picture. The indent and the gutter ride in the width
+           because the cell is sized border-box. */ -}}
+    {{- if $square -}}{{- $midRatio = 1.0 -}}{{- end -}}
+    {{- $styles = $styles | append (printf "--param-table-figure-width: calc(%.4f * var(--param-table-image-height) + var(--param-table-indent, 4rem) + var(--param-table-gutter, 1rem))" $midRatio) -}}
+  {{- end -}}
+{{- end -}}
 {{- $html := printf `<table class="%s"><tbody>%s</tbody></table>` $class $body -}}
 
-{{- if not ($p.Scratch.Get "param-table-css") -}}
-  {{- $p.Scratch.Set "param-table-css" true -}}
-  <style>
-  .param-table { margin-left: var(--param-table-margin-left, 0); }
-  .param-table > .table-responsive { margin-bottom: 1rem; }
-  .param-table > .table-responsive > table { margin-bottom: 0; }
-  .param-table:has(+ .param-table) > .table-responsive { margin-bottom: 0; }
-  /* The theme caps every body table at the reading measure, but on a listing that cap
-     lands on the table as a whole: the entry-name or icon column, and the 0.5rem
-     Bootstrap pads each cell with, are taken out of the text's share, so the
-     explanation stops several rem short of the measure the indent was meant to hold.
-     The measure is carried by the explanation itself (the rule below), so the table is
-     released from the cap and grows by whatever the columns beside the text need.
-     :has() keeps that release to tables that actually have a capped explanation: one
-     built entirely of bare cells has nothing to carry the measure, so it keeps the
-     theme's cap rather than letting its lines run to the full column. */
-  #content-body .param-table table:has(td > div) { max-width: none; }
-  /* Wrapping an explanation in a bare <div> indents it under its entry name. The
-     width cap keeps the reading measure at the theme's --reading-width (4rem indent +
-     the rest as text) even in an illustrated table, which opts out of that cap to reach
-     the right margin and would otherwise let the line grow with the window. */
-  .param-table td > div {
-    margin-left: var(--param-table-indent, 4rem);
-    /* Indent plus text always adds up to the theme's measure, whatever the indent is
-       set to, so changing it does not change the line length. */
-    max-width: calc(var(--reading-width, 36rem) - var(--param-table-indent, 4rem));
-  }
-  /* A listing, not a data table: no rules, no striping, no hover tint, no cell fill.
-     Bootstrap paints .table cells through a box-shadow, so that is reset too. */
-  .param-table td { background-color: transparent; box-shadow: none; border: 0; }
-  /* A cell rendered as blocks ends on a list or a paragraph, whose bottom margin would
-     pad the row unevenly against the cells that hold a single line. */
-  .param-table td > :last-child,
-  .param-table td > div > :last-child { margin-bottom: 0; }
-  /* Capping the explanation also caps the table's own content width, which would let
-     the picture drift back from the right margin on a wide window -- so an illustrated
-     table is stretched to the full column. The #content-body prefix is needed to beat
-     the theme's `#content-body table { width: auto }`, which outranks a class. */
-  #content-body .param-table table.full-width { width: 100%; table-layout: fixed; }
-  /* The text column is pinned to the reading measure once there is room for it, so the
-     illustration column is exactly the space the paragraph leaves; below that it falls
-     back to a share of the table. (:has() cannot be nested inside :has(), so
-     the text cell is reached through the table's own class rather than from its sibling,
-     and the switch is a container query because a percentage inside min() is not
-     resolved for a table-cell width -- it silently falls back to auto.) */
-  .param-table { container-type: inline-size; }
-  .param-table table.full-width td:first-child { width: 62%; }
-  /* 64rem, not the 58rem the narrower measure needed: the threshold is the measure plus
-     the ~22rem an illustration wants, so that pinning the text column never takes the
-     picture below the width it had at the share it falls back to. A container query
-     cannot read a custom property, so the two numbers have to be kept in step by hand
-     with --reading-width in style.css. */
-  @container (min-width: 64rem) {
-    .param-table table.full-width td:first-child { width: var(--reading-width, 36rem); }
-  }
-  .param-table td:has(> figure) figcaption { text-align: right; margin-top: 0.5rem; border: 0; }
-  /* With image-height set the picture keeps its aspect ratio instead of filling the
-     column, so it has to be pinned to the right edge: .img-container is centred by
-     figures.css and would otherwise strand it mid-column. */
-  .param-table td:has(> figure) .img-container img {
-    /* A cap rather than a fixed height: whichever of the two limits binds first, the
-       aspect ratio is kept exactly. A fixed height would letterbox the picture as soon
-       as the column got narrower than it, and would upscale a small one. */
-    max-height: var(--param-table-image-height, none);
-    max-width: 100%;
-    width: auto;
-    height: auto;
-  }
-  .param-table td:has(> figure) .img-container { margin: 0; }
-  /* A standalone figure draws a rule above and below itself (figures.css). In a cell
-     those read as the table rules this listing exists to avoid, so they go, along
-     with the spacing that goes with them -- the cell padding already separates rows.
-     The top margin is one line instead, so the picture starts level with the first
-     line of the explanation rather than with the entry name above it. */
-  .param-table td:has(> figure) > figure {
-    border: 0;
-    padding: 0;
-    /* Shrunk to the picture and centred in that leftover space; the auto side margins
-       need a definite width to work on, hence fit-content. The caption then sits under
-       the picture instead of at the far edge of the cell. */
-    width: fit-content;
-    margin: calc(1em * var(--bs-body-line-height, 1.5)) auto 0 auto;
-  }
-  </style>
-{{- end -}}
 
-<div class="param-table"{{ with $styles }} style="{{ delimit . "; " | safeCSS }}"{{ end }}>
+<div class="param-table{{ if $square }} square-figures{{ end }}"{{ with $styles }} style="{{ delimit . "; " | safeCSS }}"{{ end }}>
 <div class="table-responsive">
 {{ $html | safeHTML }}
 </div>

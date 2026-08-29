@@ -905,3 +905,185 @@ a[href^="#fn:"] {
   font-variant-numeric: tabular-nums;
   text-decoration: none;
 }
+
+/* ---------------------------------------------------------------------------
+   param-table
+   The listing the `param-table` shortcode builds. These rules used to be inlined
+   by the shortcode itself, emitted once per page behind a `Page.Scratch` flag --
+   but Scratch outlives a rebuild, so from the second render of a page onwards the
+   guard saw the flag already set and the whole stylesheet silently went missing.
+   They live here instead, where a page cannot lose them. The shortcode still
+   passes the per-block knobs (`image-height`, `margin-left`, `indent`, and the
+   picture width it computes) as custom properties on the wrapper.
+   --------------------------------------------------------------------------- */
+.param-table { margin-left: var(--param-table-margin-left, 0); }
+.param-table > .table-responsive { margin-bottom: 1rem; }
+.param-table > .table-responsive > table { margin-bottom: 0; }
+.param-table:has(+ .param-table) > .table-responsive { margin-bottom: 0; }
+/* The theme caps every body table at the reading measure, but on a listing that cap
+   lands on the table as a whole: the entry-name or icon column, and the 0.5rem
+   Bootstrap pads each cell with, are taken out of the text's share, so the
+   explanation stops several rem short of the measure the indent was meant to hold.
+   The measure is carried by the explanation itself (the rule below), so the table is
+   released from the cap and grows by whatever the columns beside the text need.
+   :has() keeps that release to tables that actually have a capped explanation: one
+   built entirely of bare cells has nothing to carry the measure, so it keeps the
+   theme's cap rather than letting its lines run to the full column. */
+#content-body .param-table table:has(td > div) { max-width: none; }
+/* Wrapping an explanation in a bare <div> indents it under its entry name. The
+   width cap keeps the reading measure at the theme's --reading-width (4rem indent +
+   the rest as text) even in an illustrated table, which opts out of that cap to reach
+   the right margin and would otherwise let the line grow with the window. */
+.param-table td > div {
+  margin-left: var(--param-table-indent, 4rem);
+  /* Indent plus text always adds up to the theme's measure, whatever the indent is
+     set to, so changing it does not change the line length. */
+  max-width: calc(var(--reading-width, 36rem) - var(--param-table-indent, 4rem));
+}
+/* A listing, not a data table: no rules, no striping, no hover tint, no cell fill.
+   Bootstrap paints .table cells through a box-shadow, so that is reset too. */
+.param-table td { background-color: transparent; box-shadow: none; border: 0; }
+/* A leading column sits right against the explanation beside it: all that separates them
+   is the 0.5rem Bootstrap pads a cell with each side, and a label column narrow enough to
+   hug its own text has nothing else to give. The gutter goes on the label, never on the
+   explanation, where it would come out of the reading measure instead of out of the slack.
+   `:not(:last-child)` is what asks whether there is a second column at all -- on a listing
+   of bare one-cell rows the first cell is also the last, and there is no gutter to draw.
+   Illustrated blocks are left out: there the first column is the text itself (or, with
+   `lead-figure`, the picture), and only a `lead-label` block leads with a label. */
+.param-table table:not(.full-width) td:first-child:not(:last-child),
+.param-table table.full-width.lead-label td:first-child {
+  padding-right: var(--param-table-gutter, 1rem);
+}
+/* A cell rendered as blocks ends on a list or a paragraph, whose bottom margin would
+   pad the row unevenly against the cells that hold a single line. */
+/* An explanation alone in its cell -- its entry name in a column of its own beside it, rather
+   than on the line above -- has nothing to hang under, so the indent is dropped and the measure
+   it was giving up is taken back. Left in, it reads as a gap between the two columns. */
+.param-table td.bare > div {
+  margin-left: 0;
+  max-width: var(--reading-width, 36rem);
+  /* An explanation that follows its entry name in the same cell starts on the line below it,
+     since the <div> is a block. One alone in its cell has no such name to clear and would sit
+     flush with the top instead, half a listing out of step with the rows around it -- and with
+     the pictures beside it, which are given this very offset for the same reason. */
+  margin-top: calc(1em * var(--bs-body-line-height, 1.5));
+}
+.param-table td > :last-child,
+.param-table td > div > :last-child { margin-bottom: 0; }
+/* Capping the explanation also caps the table's own content width, which would let
+   the picture drift back from the right margin on a wide window -- so an illustrated
+   table is stretched to the full column. The #content-body prefix is needed to beat
+   the theme's `#content-body table { width: auto }`, which outranks a class. */
+#content-body .param-table table.full-width { width: 100%; table-layout: fixed; }
+/* The text column is pinned to the reading measure once there is room for it, so the
+   illustration column is exactly the space the paragraph leaves; below that it falls
+   back to a share of the table. (:has() cannot be nested inside :has(), so
+   the text cell is reached through the table's own class rather than from its sibling,
+   and the switch is a container query because a percentage inside min() is not
+   resolved for a table-cell width -- it silently falls back to auto.) */
+.param-table { container-type: inline-size; }
+.param-table table.full-width:not(.lead-figure, .lead-figure-auto, .mid-figure) td:nth-last-child(2) { width: 62%; }
+/* The label column of a `lead-label` block hugs its text rather than taking a share of
+   the table: `table-layout: auto` is what lets a column shrink to its content at all --
+   under `fixed` every column that is not given a width splits the slack evenly -- and
+   the picture column then soaks that slack up with `width: 100%`, so the label is left
+   at its own width and the explanation keeps the measure the rule above gives it. */
+#content-body .param-table table.full-width.lead-label { table-layout: auto; }
+.param-table table.full-width.lead-label td:first-child { width: auto; white-space: nowrap; }
+.param-table table.full-width.lead-label td:last-child { width: 100%; }
+/* Pictures in a column of their own between the label and the explanation: the explanation
+   is given the slack instead, so the picture column is left to shrink to what it holds and
+   the measure is carried by the explanation's own <div>. No width is set on the pictures --
+   asking for a percentage of a column that is itself sizing to its content makes the `max-width:
+   100%` on the image resolve against nothing, and the picture collapses out of sight. The
+   measure rule above steps aside for the same reason it exists: the cell before the last is
+   the pictures here, not the text. */
+.param-table table.full-width.mid-figure td:last-child { width: 100%; }
+.param-table table.full-width.mid-figure td.illustration {
+  /* `min-width`, not `width` alone: the explanation beside it is asking for the whole table
+     (`width: 100%`, so that the slack lands there rather than in the label), and under an auto
+     layout a plain `width` is only a preference -- the browser is free to shrink this column
+     back to its min-content to satisfy the neighbour, and the min-content of an image carrying
+     `max-width: 100%` is zero, so the picture disappears. A minimum cannot be bargained away. */
+  /* A minimum, not a width: the cell may also carry the entry name the pictures illustrate,
+     and that name is kept on one line below -- so the column has to be free to grow past the
+     pictures when the name is the wider of the two. A fixed width would force the name to wrap
+     inside a column sized for the picture alone. */
+  min-width: var(--param-table-figure-width, auto);
+  /* The name and its pictures are one entry: it reads as a label, not as a paragraph, so it
+     does not break across lines however narrow the column gets squeezed. */
+  white-space: nowrap;
+  /* Pictures standing in for an explanation take the indent an explanation would have had, so a
+     row that illustrates instead of describing keeps the listing's left edge. */
+  padding-left: var(--param-table-indent, 4rem);
+  padding-right: var(--param-table-gutter, 1rem);
+}
+/* Left, not centred: the indent above is only exact if the picture starts at the content edge. */
+.param-table table.full-width.mid-figure td.illustration > figure {
+  margin-left: 0;
+  margin-right: auto;
+}
+/* Illustration in the leading cell: that column is exactly as wide as the picture
+   renders, so the explanation beside it is not squeezed against a column sized for
+   text. Falls back to the text share if the calc cannot be resolved. */
+.param-table table.full-width.lead-figure td:first-child { width: var(--param-table-image-width, 62%); }
+/* Leading illustration with no image-height: the picture fills its column, so it is
+   the explanation that carries the measure. */
+.param-table table.full-width.lead-figure-auto td:last-child { width: 62%; }
+/* 64rem, not the 58rem the narrower measure needed: the threshold is the measure plus
+   the ~22rem an illustration wants, so that pinning the text column never takes the
+   picture below the width it had at the share it falls back to. A container query
+   cannot read a custom property, so the two numbers have to be kept in step by hand
+   with --reading-width in style.css. */
+@container (min-width: 64rem) {
+  .param-table table.full-width:not(.lead-figure, .lead-figure-auto, .mid-figure) td:nth-last-child(2) { width: var(--reading-width, 36rem); }
+  .param-table table.full-width.lead-figure-auto td:last-child { width: var(--reading-width, 36rem); }
+}
+.param-table td:has(> figure) figcaption { text-align: right; margin-top: 0.5rem; border: 0; }
+/* With image-height set the picture keeps its aspect ratio instead of filling the
+   column, so it has to be pinned to the right edge: .img-container is centred by
+   figures.css and would otherwise strand it mid-column. */
+.param-table td:has(> figure) .img-container img {
+  /* A cap rather than a fixed height: whichever of the two limits binds first, the
+     aspect ratio is kept exactly. A fixed height would letterbox the picture as soon
+     as the column got narrower than it, and would upscale a small one. */
+  max-height: var(--param-table-image-height, none);
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+.param-table td:has(> figure) .img-container { margin: 0; }
+/* `image-crop="square"`: every picture in the block is a square of `image-height`, filled from
+   the middle of the original. `object-fit` is what crops -- the alternative, trimming the files
+   themselves, throws away pixels the writer may want back. `max-width` has to go with it: the
+   cap it sets is what would otherwise stop a picture from reaching its square side. */
+.param-table.square-figures td:has(> figure) .img-container img {
+  width: var(--param-table-image-height, auto);
+  height: var(--param-table-image-height, auto);
+  max-width: none;
+  object-fit: cover;
+}
+/* A standalone figure draws a rule above and below itself (figures.css). In a cell
+   those read as the table rules this listing exists to avoid, so they go, along
+   with the spacing that goes with them -- the cell padding already separates rows.
+   The top margin is one line instead, so the picture starts level with the first
+   line of the explanation rather than with the entry name above it. */
+.param-table td:has(> figure) > figure {
+  border: 0;
+  padding: 0;
+  /* Shrunk to the picture and centred in that leftover space; the auto side margins
+     need a definite width to work on, hence fit-content. The caption then sits under
+     the picture instead of at the far edge of the cell. */
+  width: fit-content;
+  margin: calc(1em * var(--bs-body-line-height, 1.5)) auto 0 auto;
+}
+/* That line of lead-in only exists to clear an entry name. A picture in the leading
+   cell has none above it, so it starts level with the top of the explanation beside
+   it instead of one line down -- level with the text, not with the cell: a line box
+   is taller than its glyphs, and the leading is split evenly above and below them, so
+   the first line's letters start half of that surplus below the top of the cell. The
+   picture, being a block, would otherwise sit flush against it and read as too high. */
+.param-table td:first-child:has(> figure) > figure {
+  margin-top: calc(1em * (var(--bs-body-line-height, 1.5) - 1) / 2);
+}
