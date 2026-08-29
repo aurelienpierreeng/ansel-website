@@ -11,6 +11,5 @@ Builds are named `Ansel-x.y.z+N.g<commit>`: a higher `N` is a newer build, and t
 
 - **Crash-free, all platforms** — share of sessions on that build that ended without a crash, from the users who opted in to crash reports (Sentry). Crash reports identify the build, not the package, so this is the same figure for every package of one build.
 - **Testers, this platform** — how many distinct people ran that build on this platform, from the opt-in usage statistics (PostHog). The two macOS packages share one count, as no architecture is reported.
-- **Downloads** — the lifetime download count of that file on GitHub.
 
 {{< release-table >}}

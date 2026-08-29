@@ -14,7 +14,6 @@
     <th>Build</th><th>Date</th><th>Commit</th><th class="text-end">Size</th>
     <th class="text-end" title="crash-free sessions over the last {{ $data.window_days }} days, from opt-in crash reports (Sentry) -- for this build on every platform: Sentry counts the build, not the package">Crash-free, all platforms</th>
     <th class="text-end" title="distinct people who ran this build on this platform over the last {{ $data.window_days }} days, from opt-in usage statistics (PostHog); the two macOS packages share one count">Testers, this platform</th>
-    <th class="text-end">Downloads</th>
   </tr></thead>
   <tbody>
   {{- range .builds }}
@@ -22,10 +21,9 @@
       <td><a href="{{ .url }}" title="{{ .name }}"><i class="fas fa-download"></i> {{ .version }}</a></td>
       <td>{{ with .date }}{{ . }}{{ else }}—{{ end }}</td>
       <td>{{ with .sha }}<a href="https://github.com/aurelienpierreeng/ansel/commit/{{ . }}"><code>{{ substr . 0 10 }}</code></a>{{ else }}<code>{{ .hash }}</code>{{ end }}</td>
-      <td class="text-end">{{ div .size 1048576 }} MiB</td>
+      <td class="text-end">{{ printf "%.0f" (div .size 1048576.0) }} MiB</td>
       <td class="text-end">{{ if ne .crash_free nil }}{{ printf "%.1f" (mul .crash_free 100) }} %{{ else }}—{{ end }}</td>
       <td class="text-end">{{ with .testers }}{{ . }}{{ else }}—{{ end }}</td>
-      <td class="text-end">{{ .downloads }}</td>
     </tr>
   {{- end }}
   </tbody>
