@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-08-29T16:29:08Z",
+ "generated": "2026-08-29T18:17:16Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -16,6 +16,28 @@
    "sha256": "d09d5b91bf2c428f7222de2956821971f1c0fe3c4cb40c608cf1aae018c9abb6",
    "commit": "f2eb2b0ef23f5a7ad95d966b8329e5f67c6140ac"
   },
+  "dmg-arm64": {
+   "name": "Ansel-0.0.0+4833.g2df3464754-arm64.dmg",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-08/Ansel-0.0.0%2B4833.g2df3464754-arm64.dmg",
+   "size": 146153526,
+   "uploaded": "2026-08-29T18:04:27Z",
+   "release": "nightly-2026-08",
+   "version": "0.0.0+4833.g2df3464754",
+   "commit_short": "2df3464754",
+   "sha256": "d8284e507f3b8924f9141ca6afc2fcf3a349b775172ee210bd2ae4f245469f67",
+   "commit": "2df3464754f6f73bbc25b3cd6814d1d74bd61588"
+  },
+  "dmg-i386": {
+   "name": "Ansel-0.0.0+4833.g2df3464754-i386.dmg",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-08/Ansel-0.0.0%2B4833.g2df3464754-i386.dmg",
+   "size": 148745084,
+   "uploaded": "2026-08-29T18:04:34Z",
+   "release": "nightly-2026-08",
+   "version": "0.0.0+4833.g2df3464754",
+   "commit_short": "2df3464754",
+   "sha256": "a1ccbeb11a1b2925d6ab9b38162022dc993af5f827102b112760554e77bbe049",
+   "commit": "2df3464754f6f73bbc25b3cd6814d1d74bd61588"
+  },
   "docker": {
    "name": "Ansel-0.0.0+4825.g332e90fe3a-docker.tar.zst",
    "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-08/Ansel-0.0.0%2B4825.g332e90fe3a-docker.tar.zst",
@@ -29,6 +51,17 @@
    "pull": "aurelienpierre/ansel:0.0.0-4825.g332e90fe3a",
    "digest": "sha256:102e678b8c9742ba39130d6e3c23283cf6be144507f887fee963c223df1a11da",
    "commit": "332e90fe3a449062a03089185bfec22d94652d91"
+  },
+  "exe": {
+   "name": "ansel-0.0.0+4833.g2df3464754-win64.exe",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-08/ansel-0.0.0%2B4833.g2df3464754-win64.exe",
+   "size": 154667433,
+   "uploaded": "2026-08-29T18:10:53Z",
+   "release": "nightly-2026-08",
+   "version": "0.0.0+4833.g2df3464754",
+   "commit_short": "2df3464754",
+   "sha256": "48ac128d6a93e05f335d7c7f72af2d19d4e6b6fe6b5538c59e8bd9b0e8950594",
+   "commit": "2df3464754f6f73bbc25b3cd6814d1d74bd61588"
   },
   "flatpak": {
    "name": "Ansel-0.0.0+4826.gf2eb2b0ef2-x86_64.flatpak",
