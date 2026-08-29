@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-08-29T16:26:52Z",
+ "generated": "2026-08-29T16:29:08Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -29,6 +29,17 @@
    "pull": "aurelienpierre/ansel:0.0.0-4825.g332e90fe3a",
    "digest": "sha256:102e678b8c9742ba39130d6e3c23283cf6be144507f887fee963c223df1a11da",
    "commit": "332e90fe3a449062a03089185bfec22d94652d91"
+  },
+  "flatpak": {
+   "name": "Ansel-0.0.0+4826.gf2eb2b0ef2-x86_64.flatpak",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-08/Ansel-0.0.0%2B4826.gf2eb2b0ef2-x86_64.flatpak",
+   "size": 98240904,
+   "uploaded": "2026-08-29T16:28:46Z",
+   "release": "nightly-2026-08",
+   "version": "0.0.0+4826.gf2eb2b0ef2",
+   "commit_short": "f2eb2b0ef2",
+   "sha256": "c630c7f4f0798be5c6dbf3f773c24dea74fe6cc5689f0770b33ddc9d29843cf4",
+   "commit": "f2eb2b0ef23f5a7ad95d966b8329e5f67c6140ac"
   }
  }
 }
