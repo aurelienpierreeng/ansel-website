@@ -12,8 +12,8 @@
 <table class="table table-sm table-hover align-middle">
   <thead><tr>
     <th>Build</th><th>Date</th><th>Commit</th><th class="text-end">Size</th>
-    <th class="text-end" title="crash-free sessions, last {{ $data.window_days }} days (opt-in Sentry)">Crash-free</th>
-    <th class="text-end" title="unique users seen on this build, last {{ $data.window_days }} days (opt-in Sentry and PostHog, whichever counted more)">Testers</th>
+    <th class="text-end" title="crash-free sessions over the last {{ $data.window_days }} days, from opt-in crash reports (Sentry) -- for this build on every platform: Sentry counts the build, not the package">Crash-free, all platforms</th>
+    <th class="text-end" title="distinct people who ran this build on this platform over the last {{ $data.window_days }} days, from opt-in usage statistics (PostHog); the two macOS packages share one count">Testers, this platform</th>
     <th class="text-end">Downloads</th>
   </tr></thead>
   <tbody>

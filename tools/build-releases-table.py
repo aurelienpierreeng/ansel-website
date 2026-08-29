@@ -118,17 +118,45 @@ def sentry_by_hash(token):
                 "sessions": v["sessions"], "users": v["users"]} for h, v in out.items()}
 
 
+# The app reports `os` as the platform's pretty name ("Windows 11", "macOS 15.6", a
+# Linux distribution's name). A package format is one platform, so testers are counted
+# on the platform the package runs on; the two macOS packages share one count, since no
+# architecture is reported.
+def platform_of(os_name):
+    o = (os_name or "").lower()
+    if o.startswith("windows"):
+        return "windows"
+    if o.startswith("macos") or o.startswith("mac os") or "darwin" in o:
+        return "macos"
+    return "linux"
+
+
+PLATFORM_OF_FORMAT = {"appimage": "linux", "flatpak": "linux", "docker": "linux",
+                      "exe": "windows", "dmg-arm64": "macos", "dmg-i386": "macos"}
+
+
 def posthog_by_hash(key):
+    """{hash: {"linux": n, "windows": n, "macos": n, "all": n}} distinct users per commit."""
     if not key:
         return {}
-    hogql = ("SELECT coalesce(properties.commit, properties.app_version) AS r, count(DISTINCT distinct_id) AS u "
+    hogql = ("SELECT coalesce(properties.commit, properties.app_version) AS r, toString(properties.os) AS o, "
+             "count(DISTINCT distinct_id) AS u "
              "FROM events WHERE event = 'session_start' AND timestamp > now() - INTERVAL %d DAY "
-             "AND isNotNull(coalesce(properties.commit, properties.app_version)) GROUP BY r" % rel.PERIOD_DAYS)
+             "AND isNotNull(coalesce(properties.commit, properties.app_version)) GROUP BY r, o" % rel.PERIOD_DAYS)
     try:
-        return {rel._commit_hash(str(r)): int(u or 0) for r, u in rel._posthog_query(key, hogql) if rel._commit_hash(str(r))}
+        rows = rel._posthog_query(key, hogql)
     except Exception as e:  # noqa: BLE001
         print("posthog: %s" % e, file=sys.stderr)
         return {}
+    out = {}
+    for r, o, u in rows:
+        h = rel._commit_hash(str(r))
+        if not h:
+            continue
+        cur = out.setdefault(h, {"linux": 0, "windows": 0, "macos": 0, "all": 0})
+        cur[platform_of(str(o))] += int(u or 0)
+        cur["all"] += int(u or 0)
+    return out
 
 
 def lookup(table, h):
@@ -152,12 +180,14 @@ def main():
         for a in rows[key]:
             c = commits.get(a["hash"], {})
             s = lookup(sentry, a["hash"]) or {}
-            p = lookup(posthog, a["hash"])
-            users = [x for x in (s.get("users"), p) if x]
+            p = lookup(posthog, a["hash"]) or {}
+            # Sentry knows the build, not the package: crash-free and its user count
+            # cover every platform of this commit. PostHog knows the platform, so the
+            # testers column is the count on the platform this package runs on.
             items.append({**a, "sha": c.get("sha"), "date": c.get("date"),
                           "crash_free": s.get("crash_free"), "sessions": s.get("sessions"),
-                          "testers": max(users) if users else None,
-                          "testers_sentry": s.get("users"), "testers_posthog": p})
+                          "testers": p.get(PLATFORM_OF_FORMAT[key]) if p else None,
+                          "testers_all_platforms": max([x for x in (s.get("users"), p.get("all")) if x] or [0]) or None})
         out["formats"].append({"key": key, "label": label, "builds": items})
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
