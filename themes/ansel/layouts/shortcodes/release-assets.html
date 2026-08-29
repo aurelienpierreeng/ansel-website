@@ -31,42 +31,66 @@
   {{- end -}}
 {{- end -}}
 
-{{- $apiURL := printf "https://api.github.com/repos/%s/releases/tags/%s" $repoSlug $releaseTag -}}
+{{- /*
+  Source of truth: data/nightly.json, written to this repository by Ansel's nightly CI
+  (tools/nightly_manifest.py in aurelienpierreeng/ansel) after every build. It names the
+  newest build of every format, so the download buttons need no GitHub API call at build
+  time -- no token, no rate limit, no dependency on api.github.com being reachable.
+
+  The manifest is keyed by format; this shortcode is called with a filename extension, so
+  the extension is matched against each entry's filename. `offset` (previous builds) is
+  not something the manifest carries: it lists the newest only, and the API fallback below
+  still answers offset > 0 the old way.
+
+  The API path is kept as the fallback for that, and for the day the data file is missing
+  or stale (a CI outage): a page that shows last night's build beats one with no button.
+*/ -}}
+{{- $matches := slice -}}
+{{- $manifest := site.Data.nightly -}}
+{{- if and $manifest (eq $offset 0) -}}
+  {{- range $key, $entry := $manifest.formats -}}
+    {{- $name := $entry.name | default "" | lower -}}
+    {{- if and $entry.url (hasSuffix $name $extension) -}}
+      {{- $matches = $matches | append (dict "name" $name "url" $entry.url "date" ($entry.uploaded | default "")) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $matches -}}
+{{- $apiURL := printf "https://api.github.com/repos/%s/releases?per_page=3" $repoSlug -}}
 {{- $headers := dict "Accept" "application/vnd.github+json" "User-Agent" "AnselWebsite" -}}
 {{- if $token -}}
   {{- $headers = merge $headers (dict "Authorization" (printf "Bearer %s" $token)) -}}
 {{- end -}}
-
 {{- $resource := false -}}
 {{- with try (resources.GetRemote $apiURL (dict "headers" $headers)) -}}
   {{- if .Err -}}
-    {{- warnf "Failed to fetch GitHub release %q: %s" $apiURL .Err -}}
+    {{- warnf "Failed to fetch GitHub releases %q: %s" $apiURL .Err -}}
   {{- else -}}
     {{- $resource = .Value -}}
   {{- end -}}
 {{- end -}}
-{{- $releaseData := dict -}}
+{{- /* Newest releases first; the nightly-YYYY-MM pre-releases rotate monthly, so the
+       previous build may sit in the previous month's release on the first of a month. */ -}}
 {{- with $resource -}}
-  {{- $releaseData = .Content | transform.Unmarshal -}}
-{{- end -}}
-
-{{- $matches := slice -}}
-{{- with $releaseData.assets -}}
-  {{- range . -}}
-    {{- $name := .name | lower -}}
-    {{- $downloadURL := .browser_download_url -}}
-    {{- if and $downloadURL (not (strings.Contains $name "source")) (hasSuffix $name $extension) -}}
-      {{- $assetDate := .updated_at | default .created_at | default "" -}}
-      {{- $matches = $matches | append (dict "name" $name "url" $downloadURL "date" $assetDate) -}}
+  {{- range .Content | transform.Unmarshal -}}
+    {{- with .assets -}}
+      {{- range . -}}
+        {{- $name := .name | lower -}}
+        {{- $downloadURL := .browser_download_url -}}
+        {{- if and $downloadURL (not (strings.Contains $name "source")) (hasSuffix $name $extension) -}}
+          {{- $assetDate := .updated_at | default .created_at | default "" -}}
+          {{- $matches = $matches | append (dict "name" $name "url" $downloadURL "date" $assetDate) -}}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
-
+{{- end -}}
 {{- $matches = sort $matches "date" "desc" -}}
 {{- $selectedAsset := index $matches $offset -}}
 
 {{ if not $selectedAsset }}
-  {{- $fallbackURL := printf "https://github.com/%s/releases/tag/%s" $repoSlug $releaseTag -}}
+  {{- $fallbackURL := printf "https://github.com/%s/releases" $repoSlug -}}
   <a role="button" class="btn btn-dark my-1" href="{{ $fallbackURL }}">View release assets</a>
 {{ else }}
   {{- $name := index $selectedAsset "name" -}}
