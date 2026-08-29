@@ -1,0 +1,140 @@
+#!/usr/bin/env python3
+"""Turn data/download-stats.json into two Plotly figures for the home page.
+
+The series is written by Ansel's nightly CI (tools/download_stats.py there): one snapshot
+per day of every lifetime download counter -- GitHub release assets per format and per
+build month, Docker Hub pulls. Two figures come out of it, consumed by the existing
+{{< plotly src=... dynamic="true" >}} shortcode:
+
+  assets/downloads-monthly.json   downloads per month, all packages
+  assets/downloads-formats.json   share of each package format, lifetime
+
+"Per month" is two things stitched together. Before the series starts, the only monthly
+signal is the build month of the asset that was downloaded (nightly users download the
+current nightly, so it is a fair proxy). From the first snapshot on, the difference
+between the last snapshot of one month and the last of the previous is the number of
+downloads that actually happened that month, all assets and Docker pulls included, and
+that is what is plotted from then on. The caption says so.
+
+No data, or an unreadable file, writes placeholder figures so the build never fails.
+"""
+
+import datetime
+import json
+import os
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SERIES = os.path.join(ROOT, "data", "download-stats.json")
+OUT_MONTHLY = os.path.join(ROOT, "assets", "downloads-monthly.json")
+OUT_FORMATS = os.path.join(ROOT, "assets", "downloads-formats.json")
+
+LABELS = {
+    "appimage": "Linux AppImage", "flatpak": "Linux Flatpak", "exe": "Windows installer",
+    "dmg-arm64": "macOS (Apple Silicon)", "dmg-i386": "macOS (Intel)",
+    "docker": "Docker (pulls)", "docker-archive": "Docker (archive)", "zsync": "AppImage updater (zsync)",
+    "other": "other",
+}
+COLORS = {
+    "appimage": "#f4a261", "flatpak": "#e9c46a", "exe": "#2a9d8f", "dmg-arm64": "#8ecae6",
+    "dmg-i386": "#219ebc", "docker": "#6c757d", "docker-archive": "#adb5bd", "zsync": "#dee2e6", "other": "#ced4da",
+}
+
+LAYOUT = {
+    "paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgba(0,0,0,0)",
+    "margin": {"l": 50, "r": 20, "t": 30, "b": 60},
+    "legend": {"orientation": "h", "y": -0.25},
+}
+
+
+def placeholder(text):
+    return {"data": [], "layout": {**LAYOUT, "annotations": [{"text": text, "showarrow": False, "xref": "paper", "yref": "paper", "x": 0.5, "y": 0.5}]}}
+
+
+def write(path, fig):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(fig, f, separators=(",", ":"))
+
+
+def monthly(series):
+    """(months, values, note): downloads per month, build-month attribution before the
+    series starts, snapshot differences from then on."""
+    latest = series[-1]
+    by_build_month = latest["github"]["by_month"]
+    first_month = series[0]["date"][:7]
+
+    # last snapshot of each month, for the differences
+    last_of = {}
+    for s in series:
+        last_of[s["date"][:7]] = s
+
+    def total(s):
+        return s["github"]["total"] + ((s.get("docker_hub") or {}).get("pull_count") or 0)
+
+    months = sorted(set(m for m in by_build_month if m) | set(last_of))
+    values, note = [], []
+    prev = None
+    for m in months:
+        if m < first_month or m not in last_of:
+            values.append(by_build_month.get(m, 0)); note.append("by build month")
+        else:
+            base = total(prev) if prev else (total(last_of[m]) - by_build_month.get(m, 0))
+            values.append(max(total(last_of[m]) - base, 0)); note.append("measured")
+        if m in last_of:
+            prev = last_of[m]
+    return months, values, note
+
+
+def build(series):
+    if not series:
+        return placeholder("No download statistics yet"), placeholder("No download statistics yet")
+    latest = series[-1]
+
+    months, values, note = monthly(series)
+    fig_monthly = {
+        "data": [{
+            "type": "bar", "x": months, "y": values, "name": "downloads",
+            "marker": {"color": ["#2a9d8f" if n == "measured" else "#8ecae6" for n in note]},
+            "hovertemplate": "%{x}: %{y:,} downloads<br>%{customdata}<extra></extra>",
+            "customdata": note,
+        }],
+        "layout": {**LAYOUT, "title": {"text": ""}, "xaxis": {"type": "category", "title": {"text": "month"}},
+                   "yaxis": {"title": {"text": "downloads, all packages"}, "rangemode": "tozero"}, "showlegend": False},
+    }
+
+    counts = dict(latest["github"]["by_format"])
+    hub = (latest.get("docker_hub") or {}).get("pull_count")
+    if hub:
+        counts["docker"] = hub
+    counts.pop("zsync", None)  # updater traffic, not a person choosing a package
+    items = [(k, v) for k, v in counts.items() if v > 0]
+    items.sort(key=lambda kv: -kv[1])
+    fig_formats = {
+        "data": [{
+            "type": "pie", "labels": [LABELS.get(k, k) for k, _ in items], "values": [v for _, v in items],
+            "marker": {"colors": [COLORS.get(k, "#ced4da") for k, _ in items]},
+            "textinfo": "label+percent", "hovertemplate": "%{label}: %{value:,} (%{percent})<extra></extra>",
+            "sort": False,
+        }],
+        "layout": {**LAYOUT, "showlegend": False},
+    }
+    return fig_monthly, fig_formats
+
+
+def main():
+    try:
+        with open(SERIES, encoding="utf-8") as f:
+            series = json.load(f)
+        series = [s for s in series if isinstance(s, dict) and "github" in s]
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"download charts: no usable series ({e}); placeholders written", file=sys.stderr)
+        series = []
+    fig_monthly, fig_formats = build(series)
+    write(OUT_MONTHLY, fig_monthly)
+    write(OUT_FORMATS, fig_formats)
+    print(f"download charts: {len(series)} day(s) of data -> {os.path.relpath(OUT_MONTHLY, ROOT)}, {os.path.relpath(OUT_FORMATS, ROOT)}")
+
+
+if __name__ == "__main__":
+    main()
