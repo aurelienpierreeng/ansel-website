@@ -14,3 +14,4 @@ po/footers/*
 .posthog-auth
 .posthog-auth-perso
 .github-auth
+data/releases.json
