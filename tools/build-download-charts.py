@@ -58,32 +58,42 @@ def write(path, fig):
 
 
 def monthly(series):
-    """(months, values, note): downloads per month, build-month attribution before the
-    series starts, snapshot differences from then on."""
+    """(months, github, docker, note): downloads per month.
+
+    GitHub: build-month attribution before the series starts, snapshot differences from
+    then on. Docker Hub: the public API exposes one lifetime pull_count and nothing per
+    month, so its monthly line exists only from the series on -- the difference between
+    the last snapshots of two months -- and is 0 before that, honestly."""
     latest = series[-1]
     by_build_month = latest["github"]["by_month"]
     first_month = series[0]["date"][:7]
 
-    # last snapshot of each month, for the differences
     last_of = {}
     for s in series:
         last_of[s["date"][:7]] = s
 
-    def total(s):
-        return s["github"]["total"] + ((s.get("docker_hub") or {}).get("pull_count") or 0)
+    def gh(s):
+        return s["github"]["total"]
+
+    def hub(s):
+        return ((s.get("docker_hub") or {}).get("pull_count")) or 0
 
     months = sorted(set(m for m in by_build_month if m) | set(last_of))
-    values, note = [], []
+    github, docker, note = [], [], []
     prev = None
     for m in months:
         if m < first_month or m not in last_of:
-            values.append(by_build_month.get(m, 0)); note.append("by build month")
+            github.append(by_build_month.get(m, 0)); docker.append(0); note.append("by build month")
         else:
-            base = total(prev) if prev else (total(last_of[m]) - by_build_month.get(m, 0))
-            values.append(max(total(last_of[m]) - base, 0)); note.append("measured")
-        if m in last_of:
-            prev = last_of[m]
-    return months, values, note
+            cur = last_of[m]
+            if prev is None:
+                # first month on record: no earlier snapshot to subtract; the build-month
+                # count is the best available figure for GitHub, nothing for Docker
+                github.append(by_build_month.get(m, 0)); docker.append(0); note.append("by build month (first month on record)")
+            else:
+                github.append(max(gh(cur) - gh(prev), 0)); docker.append(max(hub(cur) - hub(prev), 0)); note.append("measured")
+            prev = cur
+    return months, github, docker, note
 
 
 def build(series):
@@ -91,16 +101,23 @@ def build(series):
         return placeholder("No download statistics yet"), placeholder("No download statistics yet")
     latest = series[-1]
 
-    months, values, note = monthly(series)
+    months, github, docker, note = monthly(series)
     fig_monthly = {
-        "data": [{
-            "type": "bar", "x": months, "y": values, "name": "downloads",
-            "marker": {"color": ["#2a9d8f" if n == "measured" else "#8ecae6" for n in note]},
-            "hovertemplate": "%{x}: %{y:,} downloads<br>%{customdata}<extra></extra>",
-            "customdata": note,
-        }],
-        "layout": {**LAYOUT, "title": {"text": ""}, "xaxis": {"type": "category", "title": {"text": "month"}},
-                   "yaxis": {"title": {"text": "downloads, all packages"}, "rangemode": "tozero"}, "showlegend": False},
+        "data": [
+            {
+                "type": "bar", "x": months, "y": github, "name": "packages (GitHub releases)",
+                "marker": {"color": ["#2a9d8f" if n == "measured" else "#8ecae6" for n in note]},
+                "hovertemplate": "%{x}: %{y:,} package downloads<br>%{customdata}<extra></extra>",
+                "customdata": note,
+            },
+            {
+                "type": "bar", "x": months, "y": docker, "name": "Docker Hub pulls",
+                "marker": {"color": "#6c757d"},
+                "hovertemplate": "%{x}: %{y:,} Docker pulls<extra></extra>",
+            },
+        ],
+        "layout": {**LAYOUT, "barmode": "stack", "xaxis": {"type": "category", "title": {"text": "month"}},
+                   "yaxis": {"title": {"text": "downloads"}, "rangemode": "tozero"}, "showlegend": True},
     }
 
     counts = dict(latest["github"]["by_format"])
