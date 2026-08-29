@@ -121,6 +121,37 @@ The two charts on the top row read the whole fleet, the two below read one revis
 
 **Where crashes happen, and where bug reports come from** : Windows carries just over half of all crashes — and crashes nearly three times more often per session than Linux — yet files under a quarter of the bug reports. Linux is the mirror image. macOS sits closer to Linux than its share of reports would suggest, and that is not luck : it is a UNIX, so a good deal of what we fix on Linux reaches it for free. Windows shares almost none of that code — it is a different architecture, not a variant — so a Windows bug exists until a Windows user tells us about it. **A bug nobody reports is a bug nobody can fix**, and it keeps crashing for everyone on that platform. Ansel is free, and written by people who cannot test on your machine : telling us what breaks is the contribution we actually need. Whatever happens, your edits are written to disk as you make them, so a crash costs you the last action at most.
 
+### How much is it used ?
+
+_Download counts read every night from GitHub releases and Docker Hub, for every nightly package. Every way of getting Ansel — the buttons above, the in-app update, Homebrew, Scoop, AppImageUpdate — ends up in these counters._
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+
+{{< plotly title="Downloads per month. Packages from GitHub releases: dark bars are measured between two daily snapshots, light bars (before the daily record began) count the downloads of the packages built that month. Docker Hub pulls, stacked on top, are measured the same way and exist only from the daily record on." caption="false" src="downloads-monthly.json" class="full-width" dynamic="true" >}}
+
+{{% /card %}}
+{{% /column %}}
+{{% column %}}
+{{% card %}}
+
+{{< plotly title="Share of each package format, all time (GitHub release assets, and Docker Hub pulls)." caption="false" src="downloads-formats.json" class="full-width" dynamic="true" >}}
+
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
+{{% row %}}
+{{% column %}}
+{{% card %}}
+
+{{< plotly title="Sessions per month by build channel: our nightly packages, builds compiled from source, and distributions' own packages (opt-in usage statistics). This, not repository clone counts, is how many people run a self-build: every CI job clones too." caption="false" src="usage-channels-monthly.json" class="full-width" dynamic="true" >}}
+
+{{% /card %}}
+{{% /column %}}
+{{% /row %}}
+
 {{% row %}}
 {{% column %}}
 {{% card %}}

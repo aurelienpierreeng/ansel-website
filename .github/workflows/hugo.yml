@@ -68,6 +68,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 tools/fetch-sentry-reliability.py
+      # Download charts from data/download-stats.json, which Ansel's nightly CI appends
+      # to after every build. No secrets: the data is already in this repository.
+      - name: Build the download charts
+        run: python3 tools/build-download-charts.py
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
