@@ -73,7 +73,6 @@ OUT_PATH_BUGS = os.path.join(REPO_ROOT, "assets", "bugs.json")
 OUT_PATH_TREND = os.path.join(REPO_ROOT, "assets", "reliability-trend.json")
 OUT_PATH_CRASH_OS = os.path.join(REPO_ROOT, "assets", "reliability-os.json")
 OUT_PATH_MODULE_REACH = os.path.join(REPO_ROOT, "assets", "usage-module-reach.json")
-OUT_PATH_CHANNELS_MONTHLY = os.path.join(REPO_ROOT, "assets", "usage-channels-monthly.json")
 
 # Soft pastel colorway (sage / blush / blue + extras) shared by all usage charts.
 PALETTE = ["#8ec1a8", "#e8a598", "#9db4d0", "#d8c19a", "#b9a6cc", "#a8ccc9",
@@ -2558,62 +2557,6 @@ def build_figure(groups, posthog_rows, crash_rows, span_label, global_users=None
     return sessions_figure, users_figure, len(shown), global_total
 
 
-
-# ---------------------------------------------------------------------------
-# Sessions per month by build channel: nightly (our packages), self-build
-# (compiled from source), package-<distro> (a distribution's package). The one
-# figure that says how many people actually run a self-build -- repository
-# clone counts cannot: every CI job clones too. Whole history, not the rolling
-# window: this is a time series, and session_start has carried build_channel
-# since the telemetry was introduced.
-# ---------------------------------------------------------------------------
-CHANNEL_COLORS = {"nightly": "#2a9d8f", "self-build": "#f4a261", "unknown": "#ced4da"}
-
-
-def fetch_channels_monthly(key):
-    """[(month 'YYYY-MM', channel, sessions)], all history, from session_start."""
-    hogql = (
-        "SELECT formatDateTime(toStartOfMonth(timestamp), '%Y-%m') AS m, "
-        "coalesce(nullIf(toString(properties.build_channel), ''), 'unknown') AS chan, "
-        "count() AS n "
-        "FROM events WHERE event = 'session_start' "
-        "GROUP BY m, chan ORDER BY m, chan"
-    )
-    return [(str(m), str(chan), int(n or 0)) for m, chan, n in _posthog_query(key, hogql)]
-
-
-def build_channels_monthly_fig(rows):
-    months = sorted({m for m, _, _ in rows})
-    chans = sorted({c for _, c, _ in rows}, key=lambda c: (c != "nightly", c != "self-build", c))
-    by = {(m, c): n for m, c, n in rows}
-    data = []
-    for c in chans:
-        label = {"nightly": "nightly packages", "self-build": "self-build (from source)"}.get(c, c)
-        if c.startswith("package-"):
-            label = "distribution package (%s)" % c[len("package-"):]
-        data.append({
-            "type": "bar", "name": label, "x": months, "y": [by.get((m, c), 0) for m in months],
-            "marker": {"color": CHANNEL_COLORS.get(c, "#8ecae6" if c.startswith("package-") else "#adb5bd")},
-            "hovertemplate": "%{x}: %{y:,} sessions<extra>" + label + "</extra>",
-        })
-    layout = {
-        "barmode": "stack", "paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgba(0,0,0,0)",
-        "margin": {"l": 50, "r": 20, "t": 30, "b": 60}, "legend": {"orientation": "h", "y": -0.25},
-        "xaxis": {"type": "category", "title": {"text": "month"}},
-        "yaxis": {"title": {"text": "sessions (opt-in telemetry)"}, "rangemode": "tozero"},
-    }
-    return {"data": data, "layout": layout}
-
-
-def write_channels_monthly(key):
-    rows = fetch_channels_monthly(key)
-    if not rows:
-        warn("no data for %s; keeping placeholder." % os.path.basename(OUT_PATH_CHANNELS_MONTHLY))
-        return
-    with open(OUT_PATH_CHANNELS_MONTHLY, "w", encoding="utf-8") as f:
-        json.dump(build_channels_monthly_fig(rows), f, separators=(",", ":"))
-    print("wrote %s (%d rows)" % (os.path.relpath(OUT_PATH_CHANNELS_MONTHLY, REPO_ROOT), len(rows)))
-
 def main():
     token = get_token()
     ph_key = get_posthog_key()
@@ -2688,10 +2631,6 @@ def main():
     if ph_key:
         try:
             posthog_rows, ph_first = fetch_posthog(ph_key)
-            try:
-                write_channels_monthly(ph_key)
-            except Exception as exc:  # noqa: BLE001 -- one figure must not sink the rest
-                warn("channels-by-month figure failed (%s); keeping placeholder." % exc)
             span_starts.append(ph_first)
         except Exception as exc:  # noqa: BLE001
             warn("PostHog request failed (%s); session length omitted." % exc)

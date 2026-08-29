@@ -68,6 +68,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 tools/fetch-sentry-reliability.py
+          # The /download page's build list: GitHub releases joined with Sentry and
+          # PostHog per commit. Same tokens as above; each is optional.
+          python3 tools/build-releases-table.py
       # Download charts from data/download-stats.json, which Ansel's nightly CI appends
       # to after every build. No secrets: the data is already in this repository.
       - name: Build the download charts
