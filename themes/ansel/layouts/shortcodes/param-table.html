@@ -40,7 +40,8 @@
 
   `indent` overrides the 4rem the explanation <div> is set in by, "0" cancelling it --
   useful when the explanation already sits in a column of its own. The reading measure
-  stays at the theme's 36rem either way: what the indent gives up, the text takes back.
+  stays at the theme's --reading-width either way: what the indent gives up, the text
+  takes back.
 
   `margin-left` indents the whole block by any CSS length, to nest a listing under
   the sentence or the entry it belongs to:
@@ -157,7 +158,7 @@
 {{- end -}}
 
 {{- /* A trailing cell can carry an illustration. The table then has to opt out of
-       the 36rem reading-width cap the theme puts on body tables, or the picture
+       the reading-width cap the theme puts on body tables, or the picture
        stops mid-page instead of reaching the right margin. */ -}}
 {{- $class := "table" -}}
 {{- if $hasFigure -}}{{- $class = "table full-width" -}}{{- end -}}
@@ -170,15 +171,25 @@
   .param-table > .table-responsive { margin-bottom: 1rem; }
   .param-table > .table-responsive > table { margin-bottom: 0; }
   .param-table:has(+ .param-table) > .table-responsive { margin-bottom: 0; }
+  /* The theme caps every body table at the reading measure, but on a listing that cap
+     lands on the table as a whole: the entry-name or icon column, and the 0.5rem
+     Bootstrap pads each cell with, are taken out of the text's share, so the
+     explanation stops several rem short of the measure the indent was meant to hold.
+     The measure is carried by the explanation itself (the rule below), so the table is
+     released from the cap and grows by whatever the columns beside the text need.
+     :has() keeps that release to tables that actually have a capped explanation: one
+     built entirely of bare cells has nothing to carry the measure, so it keeps the
+     theme's cap rather than letting its lines run to the full column. */
+  #content-body .param-table table:has(td > div) { max-width: none; }
   /* Wrapping an explanation in a bare <div> indents it under its entry name. The
-     width cap keeps the reading measure at the theme's 36rem (4rem indent + 32rem of
-     text) even in an illustrated table, which opts out of that cap to reach the right
-     margin and would otherwise let the line grow with the window. */
+     width cap keeps the reading measure at the theme's --reading-width (4rem indent +
+     the rest as text) even in an illustrated table, which opts out of that cap to reach
+     the right margin and would otherwise let the line grow with the window. */
   .param-table td > div {
     margin-left: var(--param-table-indent, 4rem);
-    /* Indent plus text always adds up to the theme's 36rem measure, whatever the
-       indent is set to, so changing it does not change the line length. */
-    max-width: calc(36rem - var(--param-table-indent, 4rem));
+    /* Indent plus text always adds up to the theme's measure, whatever the indent is
+       set to, so changing it does not change the line length. */
+    max-width: calc(var(--reading-width, 36rem) - var(--param-table-indent, 4rem));
   }
   /* A listing, not a data table: no rules, no striping, no hover tint, no cell fill.
      Bootstrap paints .table cells through a box-shadow, so that is reset too. */
@@ -200,8 +211,13 @@
      resolved for a table-cell width -- it silently falls back to auto.) */
   .param-table { container-type: inline-size; }
   .param-table table.full-width td:first-child { width: 62%; }
-  @container (min-width: 58rem) {
-    .param-table table.full-width td:first-child { width: 36rem; }
+  /* 64rem, not the 58rem the narrower measure needed: the threshold is the measure plus
+     the ~22rem an illustration wants, so that pinning the text column never takes the
+     picture below the width it had at the share it falls back to. A container query
+     cannot read a custom property, so the two numbers have to be kept in step by hand
+     with --reading-width in style.css. */
+  @container (min-width: 64rem) {
+    .param-table table.full-width td:first-child { width: var(--reading-width, 36rem); }
   }
   .param-table td:has(> figure) figcaption { text-align: right; margin-top: 0.5rem; border: 0; }
   /* With image-height set the picture keeps its aspect ratio instead of filling the

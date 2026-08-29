@@ -4,7 +4,8 @@
 {{ if eq $cols 0 }}
   <!-- we are not in a gallery -->
   {{ if eq .Class "narrow-width" }}
-    {{ $sizes = "(max-width: 36rem) 100vw, 36rem" }}
+    <!-- Tracks --reading-width in style.css, which steps up at 1500px. -->
+    {{ $sizes = "(max-width: 36rem) 100vw, (min-width: 1500px) 42rem, 36rem" }}
   {{ else }}
     {{ $sizes = site.Params.Images.sizes }}
   {{ end }}

@@ -2,6 +2,26 @@ body {
   background-color: #f2f2f2 !important;
 }
 
+/* Reading measure. Body text is capped rather than left to fill its column, which on a
+   wide window would give a line far too long to track back to the start of the next one.
+   Everything that carries running text is measured from this one value -- style.css
+   here, and the param-table shortcode's own stylesheet -- so the two never drift.
+
+   The cap only bites once the column is wider than it, so on a phone or a tablet the
+   text already fills the width and the value is inert. The step below raises it where
+   there is genuinely room: the article sits in a col-xl-6, i.e. half the window less
+   the 1.5rem row gutter and the 1rem padding the card adds each side, so 42rem of text
+   needs about 1456px of window. 1500px is that, rounded up, with a little slack. */
+:root {
+  --reading-width: 36rem;
+}
+
+@media (min-width: 1500px) {
+  :root {
+    --reading-width: 42rem;
+  }
+}
+
 html {
   scroll-padding-top: 80px;
   scroll-behavior: smooth;
@@ -433,7 +453,7 @@ pre.mermaid img {
 #content-body figure.narrow-width,
 #content-body table,
 #content-body blockquote {
-  max-width: 36rem;
+  max-width: var(--reading-width);
   width: auto;
   box-sizing: border-box;
 }
@@ -470,8 +490,8 @@ blockquote::before {
 
 #content-body ul,
 #content-body ol {
-  max-width: 35rem;
   /* account for margins and padding */
+  max-width: calc(var(--reading-width) - 1rem);
   width: auto;
   box-sizing: border-box;
 }
