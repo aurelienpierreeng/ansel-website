@@ -21,6 +21,11 @@ ignoreLogs = ['warning-goldmark-raw-html']
 
 [menu]
   [[menu.main]]
+    identifier = "download"
+    name = "Download"
+    url = "/download/"
+    weight = 1
+  [[menu.main]]
     identifier = "workflows"
     name = "Workflows"
     url = "/workflows/"

@@ -29,16 +29,21 @@ SERIES = os.path.join(ROOT, "data", "download-stats.json")
 OUT_MONTHLY = os.path.join(ROOT, "assets", "downloads-monthly.json")
 OUT_FORMATS = os.path.join(ROOT, "assets", "downloads-formats.json")
 
+# Colours: the soft pastel colorway every other chart on the site uses, imported from
+# the script that draws them so the two cannot drift apart.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("reliability", os.path.join(os.path.dirname(os.path.abspath(__file__)), "fetch-sentry-reliability.py"))
+_rel = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_rel)
+PALETTE = _rel.PALETTE
+
 LABELS = {
     "appimage": "Linux AppImage", "flatpak": "Linux Flatpak", "exe": "Windows installer",
     "dmg-arm64": "macOS (Apple Silicon)", "dmg-i386": "macOS (Intel)",
     "docker": "Docker (pulls)", "docker-archive": "Docker (archive)", "zsync": "AppImage updater (zsync)",
     "other": "other",
 }
-COLORS = {
-    "appimage": "#f4a261", "flatpak": "#e9c46a", "exe": "#2a9d8f", "dmg-arm64": "#8ecae6",
-    "dmg-i386": "#219ebc", "docker": "#6c757d", "docker-archive": "#adb5bd", "zsync": "#dee2e6", "other": "#ced4da",
-}
+FORMAT_ORDER = ["exe", "appimage", "dmg-arm64", "dmg-i386", "flatpak", "docker", "docker-archive", "other"]
+COLORS = {k: PALETTE[i % len(PALETTE)] for i, k in enumerate(FORMAT_ORDER)}
 
 LAYOUT = {
     "paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgba(0,0,0,0)",
@@ -106,13 +111,14 @@ def build(series):
         "data": [
             {
                 "type": "bar", "x": months, "y": github, "name": "packages (GitHub releases)",
-                "marker": {"color": ["#2a9d8f" if n == "measured" else "#8ecae6" for n in note]},
+                # one palette colour; the estimate (by build month) is the same hue, lighter
+                "marker": {"color": PALETTE[0], "opacity": [1.0 if n == "measured" else 0.55 for n in note]},
                 "hovertemplate": "%{x}: %{y:,} package downloads<br>%{customdata}<extra></extra>",
                 "customdata": note,
             },
             {
                 "type": "bar", "x": months, "y": docker, "name": "Docker Hub pulls",
-                "marker": {"color": "#6c757d"},
+                "marker": {"color": PALETTE[2]},
                 "hovertemplate": "%{x}: %{y:,} Docker pulls<extra></extra>",
             },
         ],
@@ -130,7 +136,7 @@ def build(series):
     fig_formats = {
         "data": [{
             "type": "pie", "labels": [LABELS.get(k, k) for k, _ in items], "values": [v for _, v in items],
-            "marker": {"colors": [COLORS.get(k, "#ced4da") for k, _ in items]},
+            "marker": {"colors": [COLORS.get(k, PALETTE[-1]) for k, _ in items]},
             "textinfo": "label+percent", "hovertemplate": "%{label}: %{value:,} (%{percent})<extra></extra>",
             "sort": False,
         }],

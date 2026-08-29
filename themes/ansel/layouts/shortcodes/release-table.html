@@ -1,0 +1,35 @@
+{{- /* One table per package format from data/releases.json (tools/build-releases-table.py).
+       Usage: {{< release-table format="appimage" >}}  -- or no format for all of them. */ -}}
+{{- $want := .Get "format" -}}
+{{- $data := site.Data.releases -}}
+{{- if not $data -}}
+  <p><em>No build list yet.</em></p>
+{{- else -}}
+{{- range $data.formats -}}
+{{- if or (not $want) (eq .key $want) -}}
+<h3 id="{{ .key }}">{{ .label }}</h3>
+<div class="table-responsive">
+<table class="table table-sm table-hover align-middle">
+  <thead><tr>
+    <th>Build</th><th>Date</th><th>Commit</th><th class="text-end">Size</th>
+    <th class="text-end" title="crash-free sessions over the last {{ $data.window_days }} days, from opt-in crash reports (Sentry) -- for this build on every platform: Sentry counts the build, not the package">Crash-free, all platforms</th>
+    <th class="text-end" title="distinct people who ran this build on this platform over the last {{ $data.window_days }} days, from opt-in usage statistics (PostHog); the two macOS packages share one count">Testers, this platform</th>
+  </tr></thead>
+  <tbody>
+  {{- range .builds }}
+    <tr>
+      <td><a href="{{ .url }}" title="{{ .name }}"><i class="fas fa-download"></i> {{ .version }}</a></td>
+      <td>{{ with .date }}{{ . }}{{ else }}—{{ end }}</td>
+      <td>{{ with .sha }}<a href="https://github.com/aurelienpierreeng/ansel/commit/{{ . }}"><code>{{ substr . 0 10 }}</code></a>{{ else }}<code>{{ .hash }}</code>{{ end }}</td>
+      <td class="text-end">{{ printf "%.0f" (div .size 1048576.0) }} MiB</td>
+      <td class="text-end">{{ if ne .crash_free nil }}{{ printf "%.1f" (mul .crash_free 100) }} %{{ else }}—{{ end }}</td>
+      <td class="text-end">{{ with .testers }}{{ . }}{{ else }}—{{ end }}</td>
+    </tr>
+  {{- end }}
+  </tbody>
+</table>
+</div>
+{{- end -}}
+{{- end -}}
+<p class="text-muted small">Crash-free rate and testers cover the last {{ $data.window_days }} days of opt-in reports; a dash means no report reached us for that build. Updated {{ $data.generated }}.</p>
+{{- end -}}
