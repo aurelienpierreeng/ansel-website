@@ -23,6 +23,8 @@ import datetime
 import json
 import os
 import sys
+import re
+import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SERIES = os.path.join(ROOT, "data", "download-stats.json")
@@ -62,43 +64,106 @@ def write(path, fig):
         json.dump(fig, f, separators=(",", ":"))
 
 
-def monthly(series):
-    """(months, github, docker, note): downloads per month.
+MONTHS_SHOWN = 12
+# GitHub asset name suffix -> format key, as in the stats collector.
+SUFFIXES = [("-x86_64.AppImage", "appimage"), ("-x86_64.flatpak", "flatpak"), ("-arm64.dmg", "dmg-arm64"),
+            ("-i386.dmg", "dmg-i386"), ("-win64.exe", "exe"), ("-docker.tar.zst", "docker-archive")]
+MONTH_TAG = re.compile(r"^nightly-(\d{4}-\d{2})$")
 
-    GitHub: build-month attribution before the series starts, snapshot differences from
-    then on. Docker Hub: the public API exposes one lifetime pull_count and nothing per
-    month, so its monthly line exists only from the series on -- the difference between
-    the last snapshots of two months -- and is 0 before that, honestly."""
+
+def github_by_month_format(token):
+    """{month: {format: lifetime downloads}} by BUILD month, from the release assets.
+
+    The daily series carries per-format totals but not per-month-per-format, so the
+    months before the series started can only be attributed by the month the package was
+    built -- a fair proxy for nightlies, whose users download the current one. The month
+    is the release tag's (nightly-YYYY-MM) when it carries one, else the asset's creation
+    date. Best effort: no token or no network yields nothing, and the chart falls back to
+    unstacked totals for those months."""
+    out = {}
+    try:
+        page = 1
+        while True:
+            req = urllib.request.Request("https://api.github.com/repos/aurelienpierreeng/ansel/releases?per_page=100&page=%d" % page,
+                                         headers={"Accept": "application/vnd.github+json", "User-Agent": "ansel-website",
+                                                  **({"Authorization": "Bearer %s" % token} if token else {})})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                batch = json.loads(r.read().decode("utf-8"))
+            if not batch:
+                break
+            for rel in batch:
+                m = MONTH_TAG.match(rel["tag_name"])
+                for a in rel["assets"]:
+                    key = next((k for suf, k in SUFFIXES if a["name"].endswith(suf)), None)
+                    if not key:
+                        continue
+                    month = m.group(1) if m else (a.get("created_at") or "")[:7]
+                    out.setdefault(month, {}).setdefault(key, 0)
+                    out[month][key] += int(a.get("download_count") or 0)
+            page += 1
+    except Exception as e:  # noqa: BLE001
+        print("github: %s (build-month breakdown unavailable)" % e, file=sys.stderr)
+    return out
+
+
+def monthly(series, by_month_format):
+    """(months, {format: [value per month]}, note per month) for the last MONTHS_SHOWN.
+
+    From the first snapshot on, a month's downloads per format are the differences of
+    the per-format lifetime totals between the last snapshots of consecutive months --
+    what actually happened that month -- and Docker Hub pulls the same way. Before the
+    series, the build-month attribution above."""
     latest = series[-1]
-    by_build_month = latest["github"]["by_month"]
     first_month = series[0]["date"][:7]
-
     last_of = {}
     for s in series:
         last_of[s["date"][:7]] = s
 
-    def gh(s):
-        return s["github"]["total"]
+    def fmt_totals(s):
+        return dict(s["github"].get("by_format") or {})
 
     def hub(s):
         return ((s.get("docker_hub") or {}).get("pull_count")) or 0
 
-    months = sorted(set(m for m in by_build_month if m) | set(last_of))
-    github, docker, note = [], [], []
+    # The past calendar year, every month present, zero where nothing happened -- not
+    # the last twelve months that happen to have data, which spanned four years once the
+    # retired release had been pruned down to scattered survivors.
+    today = datetime.date.today().replace(day=1)
+    months = []
+    y, mo = today.year, today.month
+    for _ in range(MONTHS_SHOWN):
+        months.append("%04d-%02d" % (y, mo))
+        mo -= 1
+        if mo == 0:
+            y, mo = y - 1, 12
+    months.reverse()
+    formats = [k for k in FORMAT_ORDER if k not in ("docker-archive", "zsync", "other")]
+    values = {k: [] for k in formats}
+    note = []
     prev = None
     for m in months:
         if m < first_month or m not in last_of:
-            github.append(by_build_month.get(m, 0)); docker.append(0); note.append("by build month")
+            src = by_month_format.get(m, {})
+            for k in formats:
+                values[k].append(src.get(k, 0) if k != "docker" else 0)
+            note.append("by build month")
         else:
             cur = last_of[m]
             if prev is None:
-                # first month on record: no earlier snapshot to subtract; the build-month
-                # count is the best available figure for GitHub, nothing for Docker
-                github.append(by_build_month.get(m, 0)); docker.append(0); note.append("by build month (first month on record)")
+                src = by_month_format.get(m, {})
+                for k in formats:
+                    values[k].append(src.get(k, 0) if k != "docker" else 0)
+                note.append("by build month (first month on record)")
             else:
-                github.append(max(gh(cur) - gh(prev), 0)); docker.append(max(hub(cur) - hub(prev), 0)); note.append("measured")
+                ct, pt = fmt_totals(cur), fmt_totals(prev)
+                for k in formats:
+                    if k == "docker":
+                        values[k].append(max(hub(cur) - hub(prev), 0))
+                    else:
+                        values[k].append(max(ct.get(k, 0) - pt.get(k, 0), 0))
+                note.append("measured")
             prev = cur
-    return months, github, docker, note
+    return months, values, note
 
 
 def build(series):
@@ -106,23 +171,21 @@ def build(series):
         return placeholder("No download statistics yet"), placeholder("No download statistics yet")
     latest = series[-1]
 
-    months, github, docker, note = monthly(series)
+    months, values, note = monthly(series, github_by_month_format(os.environ.get("GITHUB_TOKEN")))
+    traces = []
+    for k, ys in values.items():
+        if not any(ys):
+            continue
+        traces.append({
+            "type": "bar", "x": months, "y": ys, "name": LABELS.get(k, k),
+            "marker": {"color": COLORS[k]},
+            "hovertemplate": "%{x}: %{y:,} " + LABELS.get(k, k) + "<br>%{customdata}<extra></extra>",
+            "customdata": note,
+        })
     fig_monthly = {
-        "data": [
-            {
-                "type": "bar", "x": months, "y": github, "name": "packages (GitHub releases)",
-                # one palette colour; the estimate (by build month) is the same hue, lighter
-                "marker": {"color": PALETTE[0], "opacity": [1.0 if n == "measured" else 0.55 for n in note]},
-                "hovertemplate": "%{x}: %{y:,} package downloads<br>%{customdata}<extra></extra>",
-                "customdata": note,
-            },
-            {
-                "type": "bar", "x": months, "y": docker, "name": "Docker Hub pulls",
-                "marker": {"color": PALETTE[2]},
-                "hovertemplate": "%{x}: %{y:,} Docker pulls<extra></extra>",
-            },
-        ],
-        "layout": {**LAYOUT, "barmode": "stack", "xaxis": {"type": "category", "title": {"text": "month"}},
+        "data": traces,
+        "layout": {**LAYOUT, "title": {"text": "Downloads per month, past year, by package"}, "margin": {**LAYOUT["margin"], "t": 60},
+                   "barmode": "stack", "xaxis": {"type": "category", "title": {"text": "month"}},
                    "yaxis": {"title": {"text": "downloads"}, "rangemode": "tozero"}, "showlegend": True},
     }
 
@@ -140,7 +203,7 @@ def build(series):
             "textinfo": "label+percent", "hovertemplate": "%{label}: %{value:,} (%{percent})<extra></extra>",
             "sort": False,
         }],
-        "layout": {**LAYOUT, "showlegend": False},
+        "layout": {**LAYOUT, "title": {"text": "Share of each package format, all time downloads"}, "margin": {**LAYOUT["margin"], "t": 60}, "showlegend": False},
     }
     return fig_monthly, fig_formats
 

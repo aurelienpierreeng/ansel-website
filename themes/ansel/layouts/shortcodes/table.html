@@ -1,6 +1,6 @@
 {{ $htmlTable := .Inner | $.Page.RenderString (dict "display" "block") }}
 {{ $old := "<table>" }}
-{{ $new := "<table class=\"table table-striped table-hover full-width\">" }}
+{{ $new := printf "<table class=\"table table-striped table-hover %s\">" (.Get "class" | default "full-width") }}
 {{ $htmlTable := replace $htmlTable $old $new }}
 
 {{ $old := "<thead>" }}

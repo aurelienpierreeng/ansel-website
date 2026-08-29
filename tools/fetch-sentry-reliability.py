@@ -34,8 +34,9 @@ Tunables (env vars, with defaults):
                                              users to be statistically meaningful)
   RELIABILITY_MAX_RELEASES=30               (cap bars for readability; the cap keeps
                                              the NEWEST revisions, not the busiest)
-  RELIABILITY_ENVIRONMENT=                  (e.g. "nightly" to show only official
-                                             builds; empty = all environments)
+  RELIABILITY_ENVIRONMENT=                  (an exact Sentry environment name; since
+                                             ansel#1336 these are "<channel>-<platform>",
+                                             e.g. "nightly-windows"; empty = all)
 """
 
 import json

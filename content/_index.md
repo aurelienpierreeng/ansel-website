@@ -460,7 +460,7 @@ _Download counts, read every night from GitHub releases and Docker Hub, for ever
 {{% column %}}
 {{% card %}}
 
-{{< plotly title="Download statistics: downloads per month, all packages. Packages from GitHub releases are measured between two daily snapshots; before the daily record began (lighter bars) they are the downloads of the packages built that month. Docker Hub pulls, stacked on top, are measured the same way and exist only from the daily record on." caption="false" src="downloads-monthly.json" class="full-width" dynamic="true" >}}
+{{< plotly title="Download statistics: downloads per month over the past year, stacked by package. From the daily record on, each month is measured between two snapshots; before it, a month counts the downloads of the packages built that month. Docker Hub pulls exist only from the daily record on." caption="false" src="downloads-monthly.json" class="full-width" dynamic="true" >}}
 
 {{% /card %}}
 {{% /column %}}

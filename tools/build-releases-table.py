@@ -110,18 +110,37 @@ def bucket(table, h, new):
     return new
 
 
-def sentry_by_hash(token):
-    """{hash prefix: {"crash_free": float|None, "users": int}} aggregated over release names."""
-    if not token:
-        return {}
-    try:
-        payload = rel.fetch_groups(token)
-    except Exception as e:  # noqa: BLE001
-        print("sentry: %s" % e, file=sys.stderr)
-        return {}
+PLATFORMS = ("linux", "windows", "macos")
+
+
+def platform_of_environment(env):
+    """The platform an environment name ends with, or None for the bare channel.
+
+    The app names its Sentry environment "<channel>-<platform>" (nightly-windows,
+    package-fedora-linux); sessions from before that carry the bare channel. A channel
+    can contain hyphens, so the platform is whatever follows the LAST one."""
+    tail = (env or "").rsplit("-", 1)[-1].lower()
+    return tail if tail in PLATFORMS else None
+
+
+def _sentry_sessions(token):
+    """Sessions grouped by release AND environment over the reliability window."""
+    params = [("project", rel.PROJECT_ID), ("field", "sum(session)"), ("field", "crash_free_rate(session)"),
+              ("field", "count_unique(user)"), ("groupBy", "release"), ("groupBy", "environment"),
+              ("statsPeriod", rel.STATS_PERIOD), ("interval", "1d")]
+    url = "%s/api/0/organizations/%s/sessions/?%s" % (rel.HOST, rel.ORG, urllib.parse.urlencode(params))
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer %s" % token})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return json.load(resp).get("groups", [])
+
+
+def aggregate_sentry(groups):
+    """{hash: {"all": stats, "by_platform": {platform: stats}}} with stats =
+    {"sessions", "healthy", "users"}; prefix-related release names cluster together."""
     out = {}
-    for grp in payload.get("groups", []):
-        release = (grp.get("by") or {}).get("release")
+    for grp in groups:
+        by = grp.get("by") or {}
+        release, env = by.get("release"), by.get("environment")
         h = rel._commit_hash(release) if release else None
         if not h:
             continue
@@ -129,12 +148,90 @@ def sentry_by_hash(token):
         sessions = int(t.get("sum(session)") or 0)
         rate = t.get("crash_free_rate(session)")
         users = int(t.get("count_unique(user)") or 0)
-        cur = bucket(out, h, {"sessions": 0, "healthy": 0.0, "users": 0})
-        cur["sessions"] += sessions
-        cur["healthy"] += sessions * float(rate) if rate is not None else 0.0
-        cur["users"] += users
-    return {h: {"crash_free": (v["healthy"] / v["sessions"]) if v["sessions"] else None,
-                "sessions": v["sessions"], "users": v["users"]} for h, v in out.items()}
+        entry = bucket(out, h, {"all": {"sessions": 0, "healthy": 0.0, "users": 0}, "by_platform": {}})
+        targets = [entry["all"]]
+        platform = platform_of_environment(env)
+        if platform:
+            targets.append(entry["by_platform"].setdefault(platform, {"sessions": 0, "healthy": 0.0, "users": 0}))
+        for cur in targets:
+            cur["sessions"] += sessions
+            cur["healthy"] += sessions * float(rate) if rate is not None else 0.0
+            cur["users"] += users
+    return out
+
+
+def sentry_by_hash(token):
+    """Per commit: "all" from the release-only query, "by_platform" from the query
+    grouped by environment.
+
+    The two are not the same population: grouping by environment drops every session
+    that carries no environment value (measured: 12 773 sessions by release, 11 494 by
+    release and environment -- ten percent gone, eleven of one build's 73). So the
+    build's overall figures come from the release-only query, which is complete, and
+    the environment query contributes only the platform split, which is all it can."""
+    if not token:
+        return {}
+    try:
+        out = aggregate_sentry(_sentry_sessions(token))
+        for grp in rel.fetch_groups(token).get("groups", []):
+            release = (grp.get("by") or {}).get("release")
+            h = rel._commit_hash(release) if release else None
+            if not h:
+                continue
+            t = grp.get("totals") or {}
+            sessions = int(t.get("sum(session)") or 0)
+            rate = t.get("crash_free_rate(session)")
+            entry = bucket(out, h, {"all": None, "by_platform": {}})
+            cur = entry.setdefault("all_complete", {"sessions": 0, "healthy": 0.0, "users": 0})
+            cur["sessions"] += sessions
+            cur["healthy"] += sessions * float(rate) if rate is not None else 0.0
+            cur["users"] += int(t.get("count_unique(user)") or 0)
+        for entry in out.values():
+            if entry.get("all_complete"):
+                entry["all"] = entry.pop("all_complete")
+        return out
+    except Exception as e:  # noqa: BLE001
+        print("sentry: %s" % e, file=sys.stderr)
+        return {}
+
+
+def rate_of(stats):
+    return (stats["healthy"] / stats["sessions"]) if stats and stats["sessions"] else None
+
+
+FAMILY_OF_PLATFORM = {"linux": "Linux", "windows": "Windows", "macos": "macOS"}
+
+
+def merged_by_hash(sentry_token, posthog_key):
+    """{hash: {platform: (crashed, sessions)}} -- the per-OS estimate the reliability
+    trend chart is built from, so the table agrees with the chart above it: crashed
+    sessions per OS from Sentry's crash events (os.name, deduplicated by session), over
+    sessions started per OS from PostHog. Two opt-in populations stitched together,
+    hence an estimate; the environment split, when a build has it, is exact."""
+    if not (sentry_token and posthog_key):
+        return {}
+    try:
+        crashed_raw = rel.fetch_crashed_sessions_by_os(sentry_token)
+        sessions_raw = rel.fetch_sessions_by_os(posthog_key)
+    except Exception as e:  # noqa: BLE001
+        print("merged per-OS estimate: %s" % e, file=sys.stderr)
+        return {}
+    out = {}
+    for h, fams in sessions_raw.items():
+        entry = bucket(out, h, {})
+        for platform, family in FAMILY_OF_PLATFORM.items():
+            n = int(fams.get(family, 0))
+            if n:
+                c, s = entry.get(platform, (0, 0))
+                entry[platform] = (c, s + n)
+    for h, fams in crashed_raw.items():
+        entry = bucket(out, h, {})
+        for platform, family in FAMILY_OF_PLATFORM.items():
+            k = int(fams.get(family, 0))
+            if k:
+                c, s = entry.get(platform, (0, 0))
+                entry[platform] = (c + k, s)
+    return out
 
 
 # The app reports `os` as the platform's pretty name ("Windows 11", "macOS 15.6", a
@@ -154,28 +251,62 @@ PLATFORM_OF_FORMAT = {"appimage": "linux", "flatpak": "linux", "docker": "linux"
                       "exe": "windows", "dmg-arm64": "macos", "dmg-i386": "macos"}
 
 
-def posthog_by_hash(key):
-    """{hash: {"linux": n, "windows": n, "macos": n, "all": n}} distinct users per commit."""
+def posthog_ids_by_hash(key):
+    """{hash: {platform: set(install ids)}} from PostHog session starts, plus "all"."""
     if not key:
         return {}
-    hogql = ("SELECT coalesce(properties.commit, properties.app_version) AS r, toString(properties.os) AS o, "
-             "count(DISTINCT distinct_id) AS u "
+    hogql = ("SELECT coalesce(properties.commit, properties.app_version) AS r, toString(properties.os) AS o, distinct_id "
              "FROM events WHERE event = 'session_start' AND timestamp > now() - INTERVAL %d DAY "
-             "AND isNotNull(coalesce(properties.commit, properties.app_version)) GROUP BY r, o" % rel.PERIOD_DAYS)
+             "AND isNotNull(coalesce(properties.commit, properties.app_version)) GROUP BY r, o, distinct_id" % rel.PERIOD_DAYS)
     try:
         rows = rel._posthog_query(key, hogql)
     except Exception as e:  # noqa: BLE001
         print("posthog: %s" % e, file=sys.stderr)
         return {}
     out = {}
-    for r, o, u in rows:
+    for r, o, uid in rows:
         h = rel._commit_hash(str(r))
-        if not h:
+        if not h or not uid:
             continue
-        cur = bucket(out, h, {"linux": 0, "windows": 0, "macos": 0, "all": 0})
-        cur[platform_of(str(o))] += int(u or 0)
-        cur["all"] += int(u or 0)
+        entry = bucket(out, h, {"all": set()})
+        entry["all"].add(uid)
+        entry.setdefault(platform_of(str(o)), set()).add(uid)
     return out
+
+
+def sentry_ids_by_hash(token):
+    """{hash: {platform: set(install ids)}} from Sentry crash events -- the only Sentry
+    source that names users -- plus "all". The Sentry user id IS the PostHog distinct_id
+    (both are the app's anonymous install id), which is what makes the union honest."""
+    if not token:
+        return {}
+    out = {}
+    try:
+        for ev in rel._sentry_events(token, "event.type:error", ("user", "os.name", "release", "timestamp")):
+            uid = ev.get("user") or ""
+            if uid.startswith("id:"):
+                uid = uid[3:]
+            h = rel._commit_hash(ev.get("release") or "")
+            if not uid or not h:
+                continue
+            entry = bucket(out, h, {"all": set()})
+            entry["all"].add(uid)
+            fam = rel._os_family(ev.get("os.name"))
+            platform = {"Windows": "windows", "macOS": "macos", "Linux": "linux"}.get(fam)
+            if platform:
+                entry.setdefault(platform, set()).add(uid)
+    except Exception as e:  # noqa: BLE001
+        print("sentry users: %s" % e, file=sys.stderr)
+    return out
+
+
+def testers_for(posthog_ids, sentry_ids, h, platform):
+    """(merged, posthog, sentry) distinct installs on build h on this platform, the
+    merge being a union on the shared install id -- the same merge the site's
+    unique-users chart makes. platform=None means every platform."""
+    p = (lookup(posthog_ids, h) or {}).get(platform or "all", set())
+    s = (lookup(sentry_ids, h) or {}).get(platform or "all", set())
+    return len(p | s), len(p), len(s)
 
 
 def lookup(table, h):
@@ -191,7 +322,9 @@ def main():
     rows = github_assets(gh_token)
     commits = commit_info([a["hash"] for v in rows.values() for a in v], gh_token)
     sentry = sentry_by_hash(rel.get_token())
-    posthog = posthog_by_hash(rel.get_posthog_key())
+    posthog_ids = posthog_ids_by_hash(rel.get_posthog_key())
+    sentry_ids = sentry_ids_by_hash(rel.get_token())
+    merged = merged_by_hash(rel.get_token(), rel.get_posthog_key())
     out = {"generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "window_days": rel.PERIOD_DAYS, "formats": []}
     for key, label, _ in FORMATS:
@@ -199,14 +332,29 @@ def main():
         for a in rows[key]:
             c = commits.get(a["hash"], {})
             s = lookup(sentry, a["hash"]) or {}
-            p = lookup(posthog, a["hash"]) or {}
-            # Sentry knows the build, not the package: crash-free and its user count
-            # cover every platform of this commit. PostHog knows the platform, so the
-            # testers column is the count on the platform this package runs on.
+            platform = PLATFORM_OF_FORMAT[key]
+            testers, t_posthog, t_sentry = testers_for(posthog_ids, sentry_ids, a["hash"], platform)
+            testers_all, _, _ = testers_for(posthog_ids, sentry_ids, a["hash"], None)
+            # Crash-free on this platform when sessions were recorded under the
+            # platform-suffixed environment (ansel#1336); before that, the build's rate
+            # over every platform, flagged so the page can say so. Testers come from
+            # PostHog, which has always known the platform.
+            # Three tiers, best available first: exact (Sentry sessions under this
+            # platform's environment, ansel#1336), then the estimate the reliability
+            # chart uses (Sentry crashes over PostHog sessions on this platform), then
+            # the build's rate over every platform.
+            own = (s.get("by_platform") or {}).get(platform)
+            est = (lookup(merged, a["hash"]) or {}).get(platform)
+            if own and own["sessions"]:
+                crash_free, sessions, scope = rate_of(own), own["sessions"], "platform"
+            elif est and est[1]:
+                crash_free, sessions, scope = max(1.0 - est[0] / est[1], 0.0), est[1], "merged"
+            else:
+                crash_free, sessions, scope = rate_of(s.get("all")), (s.get("all") or {}).get("sessions"), "all"
             items.append({**a, "sha": c.get("sha"), "date": c.get("date"),
-                          "crash_free": s.get("crash_free"), "sessions": s.get("sessions"),
-                          "testers": p.get(PLATFORM_OF_FORMAT[key]) if p else None,
-                          "testers_all_platforms": max([x for x in (s.get("users"), p.get("all")) if x] or [0]) or None})
+                          "crash_free": crash_free, "sessions": sessions or None, "crash_free_scope": scope,
+                          "testers": testers or None, "testers_posthog": t_posthog, "testers_sentry": t_sentry,
+                          "testers_all_platforms": testers_all or None})
         out["formats"].append({"key": key, "label": label, "builds": items})
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:

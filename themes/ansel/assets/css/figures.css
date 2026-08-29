@@ -164,3 +164,16 @@ section > .gallery + figure,
   /* Mardown parsing articfacts */
   display: none;
 }
+
+/* A figure inside a card is framed by the card already: no rule above and below it,
+   and no extra spacing (the download page's charts). */
+.card figure {
+  border-top: 0;
+  border-bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+/* On a full-width page the 35rem cap on paragraphs and tables does not apply. */
+.full-width-page p, .full-width-page table, .full-width-page ul, .full-width-page ol, .full-width-page h3, .full-width-page h4 {
+  max-width: 100% !important;
+}

@@ -3,6 +3,7 @@ title: Download
 date: 2026-08-29T18:00:00+02:00
 draft: false
 weight: 5
+layout: full
 ---
 
 <div class="lead my-5 ps-3">Get Ansel for Linux, Windows and macOS, see how stable the nightly builds are, and pick any recent build of every package with its crash rate and the number of people who ran it.</div>
@@ -13,13 +14,12 @@ weight: 5
 {{% card icon="linux fab" title="Linux" %}}
 Distribution-agnostic, portable AppImage executable
 {{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".appimage" label="Download latest" >}}
-{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".appimage" label="Download previous" offset="1" display="link" >}}
 {{% /card %}}
 
 {{% card icon="windows fab" title="Windows" %}}
 Windows 7 to 11 installer
 {{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".exe" label="Download latest" >}}
-{{< release-assets release="https://github.com/aurelienpierreeng/ansel/releases/tag/v0.0.0" extension=".exe" label="Download previous" offset="1" display="link" >}}
+
 {{% /card %}}
 
 {{% card icon="apple fab" title="MacOS X" %}}
@@ -117,15 +117,47 @@ The links above always point to the latest nightly build of the "fairly stable" 
 {{% /column %}}
 {{% /row %}}
 
-{{< divider >}}
-
-{{< divider >}}
-
 ## Every recent build, per package
 
 Builds are named `Ansel-x.y.z+N.g<commit>`: a higher `N` is a newer build, and the commit links to the exact source it was built from. Nightlies are the "fairly stable" channel — quickly broken, quickly fixed — so the crash-free rate is there to help you pick: a build that many people ran without crashing is a safer bet than yesterday's. Reading the columns:
 
-- **Crash-free, all platforms** — share of sessions on that build that ended without a crash, from the users who opted in to crash reports (Sentry). Crash reports identify the build, not the package, so this is the same figure for every package of one build.
-- **Testers, this platform** — how many distinct people ran that build on this platform, from the opt-in usage statistics (PostHog). The two macOS packages share one count, as no architecture is reported.
+- **Crash-free** — share of sessions on that build, on this platform, that ended without a crash. Unmarked: measured by the opt-in crash reports (Sentry) filed from this platform. `≈`: estimated the way the chart above is — crash reports from this platform (Sentry) over sessions started on it (opt-in usage statistics, PostHog), two populations stitched together. `*`: the build's rate over every platform, nothing platform-specific being available. The two macOS packages share one figure, as no architecture is reported.
+- **Testers** — how many distinct installations ran that build on this platform: the opt-in usage statistics (PostHog) and the opt-in crash reports (Sentry) merged on the anonymous install id both carry, so an installation seen by either counts once — the same merge as the unique-users chart. Hover for the two sources. The two macOS packages share one count.
 
-{{< release-table >}}
+### Linux AppImage
+
+{{< table class="full-width" >}}
+{{< release-table format="appimage" >}}
+{{< /table >}}
+
+### Linux Flatpak
+
+{{< table class="full-width" >}}
+{{< release-table format="flatpak" >}}
+{{< /table >}}
+
+### Windows installer
+
+{{< table class="full-width" >}}
+{{< release-table format="exe" >}}
+{{< /table >}}
+
+### macOS, Apple Silicon
+
+{{< table class="full-width" >}}
+{{< release-table format="dmg-arm64" >}}
+{{< /table >}}
+
+### macOS, Intel
+
+{{< table class="full-width" >}}
+{{< release-table format="dmg-i386" >}}
+{{< /table >}}
+
+### Docker image
+
+{{< table class="full-width" >}}
+{{< release-table format="docker" >}}
+{{< /table >}}
+
+_Crash-free rate and testers cover the last 90 days of opt-in reports; a dash means no report reached us for that build._
