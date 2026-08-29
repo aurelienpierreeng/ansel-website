@@ -91,6 +91,25 @@ def commit_info(hashes, token):
     return out
 
 
+def bucket(table, h, new):
+    """The entry for commit hash h, merging prefix-related keys into one.
+
+    One build is named several ways -- a full 40-char SHA in one source, the ten
+    characters from the filename in another, seven in a third -- and every name of one
+    commit is a prefix of the longest. Keyed naively they split the build's numbers
+    across entries, and a prefix lookup then returns whichever came first (the first
+    version of this script did, and reported a build's testers on one platform only).
+    The longest name becomes the key; shorter ones fold into it."""
+    for k in list(table):
+        if k.startswith(h) or h.startswith(k):
+            if len(h) > len(k):
+                table[h] = table.pop(k)
+                return table[h]
+            return table[k]
+    table[h] = new
+    return new
+
+
 def sentry_by_hash(token):
     """{hash prefix: {"crash_free": float|None, "users": int}} aggregated over release names."""
     if not token:
@@ -110,7 +129,7 @@ def sentry_by_hash(token):
         sessions = int(t.get("sum(session)") or 0)
         rate = t.get("crash_free_rate(session)")
         users = int(t.get("count_unique(user)") or 0)
-        cur = out.setdefault(h, {"sessions": 0, "healthy": 0.0, "users": 0})
+        cur = bucket(out, h, {"sessions": 0, "healthy": 0.0, "users": 0})
         cur["sessions"] += sessions
         cur["healthy"] += sessions * float(rate) if rate is not None else 0.0
         cur["users"] += users
@@ -153,7 +172,7 @@ def posthog_by_hash(key):
         h = rel._commit_hash(str(r))
         if not h:
             continue
-        cur = out.setdefault(h, {"linux": 0, "windows": 0, "macos": 0, "all": 0})
+        cur = bucket(out, h, {"linux": 0, "windows": 0, "macos": 0, "all": 0})
         cur[platform_of(str(o))] += int(u or 0)
         cur["all"] += int(u or 0)
     return out
