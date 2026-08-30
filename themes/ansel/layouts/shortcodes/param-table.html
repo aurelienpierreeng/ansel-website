@@ -56,6 +56,15 @@
 
       {{< param-table gutter="0.5rem" >}}
 
+  `valign` says where the content of a cell sits against the tallest cell of its row,
+  as any `vertical-align` keyword -- `valign="middle"` for a caption-like line that should
+  sit level with the middle of the illustration beside it. Cells start at the top without
+  it. Asking for one also drops the line of lead-in that offsets an explanation and a
+  picture, which is there to clear an entry name a hand-aligned cell has no reason to
+  line up with:
+
+      {{< param-table image-height="6rem" valign="middle" >}}
+
   `margin-left` indents the whole block by any CSS length, to nest a listing under
   the sentence or the entry it belongs to:
 
@@ -101,12 +110,15 @@
 {{- /* Each of these rides to the CSS as --param-table-<name>, the parameter's own name,
        and one left unset is simply left out: `image-height` a uniform picture height,
        `margin-left` an indent for the whole block, `gutter` the space after a leading
-       label or picture column. Any CSS length. */ -}}
+       label or picture column -- any CSS length -- and `valign` where the content of a
+       cell sits against the tallest cell of its row, any `vertical-align` keyword. */ -}}
+{{- $valign := .Get "valign" -}}
 {{- $styles := slice -}}
 {{- range $var := slice (slice "image-height" $imgHeight)
                         (slice "margin-left" (.Get "margin-left"))
                         (slice "indent" $indent)
-                        (slice "gutter" (.Get "gutter")) -}}
+                        (slice "gutter" (.Get "gutter"))
+                        (slice "valign" $valign) -}}
   {{- with index $var 1 -}}
     {{- $styles = $styles | append (printf "--param-table-%s: %s" (index $var 0) .) -}}
   {{- end -}}
@@ -295,7 +307,7 @@
 {{- $html := printf `<table class="%s"><tbody>%s</tbody></table>` $class $body -}}
 
 
-<div class="param-table{{ if $square }} square-figures{{ end }}"{{ with $styles }} style="{{ delimit . "; " | safeCSS }}"{{ end }}>
+<div class="param-table{{ with $imgHeight }} sized-figures{{ end }}{{ if $square }} square-figures{{ end }}{{ with $valign }} valigned{{ end }}"{{ with $styles }} style="{{ delimit . "; " | safeCSS }}"{{ end }}>
 <div class="table-responsive">
 {{ $html | safeHTML }}
 </div>

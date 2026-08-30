@@ -941,8 +941,23 @@ a[href^="#fn:"] {
   max-width: calc(var(--reading-width, 36rem) - var(--param-table-indent, 4rem));
 }
 /* A listing, not a data table: no rules, no striping, no hover tint, no cell fill.
-   Bootstrap paints .table cells through a box-shadow, so that is reset too. */
-.param-table td { background-color: transparent; box-shadow: none; border: 0; }
+   Bootstrap paints .table cells through a box-shadow, so that is reset too.
+   `valign` rides in as a custom property; unset, cells start at the top, which is what
+   Bootstrap has them inherit from the table anyway. */
+.param-table td {
+  background-color: transparent;
+  box-shadow: none;
+  border: 0;
+  vertical-align: var(--param-table-valign, top);
+}
+/* An explanation alone in its cell, and a picture, are each given a line of lead-in to
+   clear the entry name above them (see the rules further down). A cell the writer has
+   aligned by hand has no such name to line up with -- it is being set against the
+   picture beside it instead -- and that line would push it that far below the mark. */
+.param-table.valigned td.bare > div,
+.param-table.valigned td:has(> figure) > figure {
+  margin-top: 0;
+}
 /* A leading column sits right against the explanation beside it: all that separates them
    is the 0.5rem Bootstrap pads a cell with each side, and a label column narrow enough to
    hug its own text has nothing else to give. The gutter goes on the label, never on the
@@ -1045,22 +1060,32 @@ a[href^="#fn:"] {
    column, so it has to be pinned to the right edge: .img-container is centred by
    figures.css and would otherwise strand it mid-column. */
 .param-table td:has(> figure) .img-container img {
-  /* A cap rather than a fixed height: whichever of the two limits binds first, the
-     aspect ratio is kept exactly. A fixed height would letterbox the picture as soon
-     as the column got narrower than it, and would upscale a small one. */
-  max-height: var(--param-table-image-height, none);
+  /* No `image-height`: the picture comes out at the size its own file has, and shrinks
+     only where the column is narrower than that. What sizes it is the width attribute
+     Hugo writes on the <img>; `width: auto` would hand that job to the srcset's `sizes`
+     instead, which resolves to the width of the column and blows up anything smaller
+     than it. */
   max-width: 100%;
-  width: auto;
   height: auto;
+}
+.param-table.sized-figures td:has(> figure) .img-container img {
+  /* `image-height` given: the cap drives the size and the width follows the ratio, so
+     the width attribute has to give way -- left to hold the picture at its own width
+     while the cap shortens it, it would squash it. A cap rather than a fixed height:
+     whichever of the two limits binds first, the aspect ratio is kept exactly. A fixed
+     height would letterbox the picture as soon as the column got narrower than it. */
+  max-height: var(--param-table-image-height);
+  width: auto;
 }
 .param-table td:has(> figure) .img-container { margin: 0; }
 /* `image-crop="square"`: every picture in the block is a square of `image-height`, filled from
-   the middle of the original. `object-fit` is what crops -- the alternative, trimming the files
+   the middle of the original -- it needs that height to have a side to crop to, and does
+   nothing without one. `object-fit` is what crops -- the alternative, trimming the files
    themselves, throws away pixels the writer may want back. `max-width` has to go with it: the
    cap it sets is what would otherwise stop a picture from reaching its square side. */
-.param-table.square-figures td:has(> figure) .img-container img {
-  width: var(--param-table-image-height, auto);
-  height: var(--param-table-image-height, auto);
+.param-table.square-figures.sized-figures td:has(> figure) .img-container img {
+  width: var(--param-table-image-height);
+  height: var(--param-table-image-height);
   max-width: none;
   object-fit: cover;
 }
