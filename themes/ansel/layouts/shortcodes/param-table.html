@@ -11,7 +11,8 @@
       {{< /param-table >}}
 
   A row may be written across several source lines: a line that does not open with "|"
-  belongs to the row above. Such a cell is rendered as Markdown blocks of its own, so an
+  belongs to the row above. A blank line between two of them is a block break like
+  any other, so a cell may hold a paragraph after a list rather than a further item. Such a cell is rendered as Markdown blocks of its own, so an
   explanation that is a list comes out a real list -- no <br> to write, and a wrapping
   item keeps its hanging indent:
 
@@ -122,15 +123,21 @@
 {{- $row := "" -}}
 {{- range (split $inner "\n") -}}
   {{- $line := trim . " \t\r" -}}
-  {{- if ne $line "" -}}
-    {{- if eq $row "" -}}
-      {{- $row = $line -}}
-    {{- else if hasPrefix $line "|" -}}
-      {{- $rows = $rows | append $row -}}
-      {{- $row = $line -}}
-    {{- else -}}
-      {{- $row = print $row "\n" $line -}}
+  {{- if eq $line "" -}}
+    {{- /* A blank line inside a row is kept: it is the only thing that ends a list, so a
+           cell can carry a paragraph after one instead of having it swallowed as a further
+           item. Once a row is closed the newline is trailing whitespace, which the cell
+           trim below takes off again, and a blank line before the first row is nothing. */ -}}
+    {{- if ne $row "" -}}
+      {{- $row = print $row "\n" -}}
     {{- end -}}
+  {{- else if eq $row "" -}}
+    {{- $row = $line -}}
+  {{- else if hasPrefix $line "|" -}}
+    {{- $rows = $rows | append $row -}}
+    {{- $row = $line -}}
+  {{- else -}}
+    {{- $row = print $row "\n" $line -}}
   {{- end -}}
 {{- end -}}
 {{- with $row -}}{{- $rows = $rows | append . -}}{{- end -}}
