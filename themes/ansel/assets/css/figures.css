@@ -130,6 +130,15 @@ figure.borderless {
   padding: 0;
 }
 
+/* Closes the gap under a figure, for an illustration that belongs to what comes right
+   after it -- a picture introducing the paragraph or the listing below rather than
+   illustrating the one above. Only the bottom is touched: what sits before the figure
+   keeps the usual distance, and a figure that still draws its rules keeps the padding
+   that holds the picture off the bottom one. */
+figure.tight {
+  margin-bottom: 0.5rem;
+}
+
 section > figure + figure,
 section > figure + .gallery,
 section > .gallery + figure,
@@ -137,6 +146,13 @@ section > .gallery + figure,
   /* 2 figure elements stacked back-to-back */
   border-top: none!important;
   margin-top: -1.5rem!important;
+}
+
+/* Same back-to-back stacking, over a figure whose bottom margin `tight` has already
+   shortened: pulling the full 1.5rem back would drag the next one over it. */
+section > figure.tight + figure,
+section > figure.tight + .gallery {
+  margin-top: -0.5rem!important;
 }
 
 .image-fit {
