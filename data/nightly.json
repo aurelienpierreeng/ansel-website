@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-09-04T09:38:20Z",
+ "generated": "2026-09-04T09:41:43Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -41,12 +41,12 @@
   "docker": {
    "name": "Ansel-0.0.0+4893.g124a406d72-docker.tar.zst",
    "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B4893.g124a406d72-docker.tar.zst",
-   "size": 806888123,
-   "uploaded": "2026-09-03T09:47:43Z",
+   "size": 807236591,
+   "uploaded": "2026-09-04T09:41:24Z",
    "release": "nightly-2026-09",
    "version": "0.0.0+4893.g124a406d72",
    "commit_short": "124a406d72",
-   "sha256": "0e5976842f2521c45f9b009c7354e7be8e2106b096fe96b7edbdba710b81e90f",
+   "sha256": "1ec56109a2fa20a2db84c0bdc828c86a48bb8813d33b80e76454f15de4c2ebc5",
    "image": "aurelienpierre/ansel",
    "pull": "aurelienpierre/ansel:0.0.0-4893.g124a406d72",
    "digest": "sha256:428ab96debf613518bcec9d16f55ff535bb57cbda93831c5c89367e5cf81debf",
