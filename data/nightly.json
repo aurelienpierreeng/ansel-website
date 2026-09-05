@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-09-04T11:18:42Z",
+ "generated": "2026-09-05T08:59:09Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -49,7 +49,7 @@
    "sha256": "1ec56109a2fa20a2db84c0bdc828c86a48bb8813d33b80e76454f15de4c2ebc5",
    "image": "aurelienpierre/ansel",
    "pull": "aurelienpierre/ansel:0.0.0-4893.g124a406d72",
-   "digest": "sha256:428ab96debf613518bcec9d16f55ff535bb57cbda93831c5c89367e5cf81debf",
+   "digest": "sha256:05bc6fd5da0672b36549f1294277a8f53a134c7af7088a3ae532ea68d84c6834",
    "commit": "124a406d72964ca33bf1a625faedfec71a6af2e1"
   },
   "exe": {
