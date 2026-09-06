@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-09-06T14:29:56Z",
+ "generated": "2026-09-06T14:33:58Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -39,26 +39,29 @@
    "commit": "124a406d72964ca33bf1a625faedfec71a6af2e1"
   },
   "docker": {
-   "name": "Ansel-0.0.0+4893.g124a406d72-docker.tar.zst",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B4893.g124a406d72-docker.tar.zst",
-   "size": 807300151,
-   "uploaded": "2026-09-05T09:10:25Z",
+   "name": "Ansel-0.0.0+4913.gacff0ef2a7-docker.tar.zst",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B4913.gacff0ef2a7-docker.tar.zst",
+   "size": 807467770,
+   "uploaded": "2026-09-06T14:33:36Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+4893.g124a406d72",
-   "commit_short": "124a406d72",
-   "sha256": "3f7d663326bf535e0be2363dd9c455a39d33814ed351a457db2f52c12005619a",
-   "commit": "124a406d72964ca33bf1a625faedfec71a6af2e1"
+   "version": "0.0.0+4913.gacff0ef2a7",
+   "commit_short": "acff0ef2a7",
+   "sha256": "92433d050d64064cffce9e7f05e0f21efa287687d58cac3a8ae016654320f230",
+   "image": "aurelienpierre/ansel",
+   "pull": "aurelienpierre/ansel:0.0.0-4913.gacff0ef2a7",
+   "digest": "sha256:8d83ade62200b6249ee7114cad8ce8326670ed17eb6048fcb0b37acb9fd37ab4",
+   "commit": "acff0ef2a787c5bdcb84aaab103679145c2878a3"
   },
   "exe": {
-   "name": "ansel-0.0.0+4893.g124a406d72-win64.exe",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/ansel-0.0.0%2B4893.g124a406d72-win64.exe",
-   "size": 153677419,
-   "uploaded": "2026-09-03T09:38:23Z",
+   "name": "ansel-0.0.0+4913.gacff0ef2a7-win64.exe",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/ansel-0.0.0%2B4913.gacff0ef2a7-win64.exe",
+   "size": 153688729,
+   "uploaded": "2026-09-06T14:33:42Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+4893.g124a406d72",
-   "commit_short": "124a406d72",
-   "sha256": "877584fa8e796a6b03d2ce10b0b6cad3f1c105b6cb3aea24f8f6efca3b7832bb",
-   "commit": "124a406d72964ca33bf1a625faedfec71a6af2e1"
+   "version": "0.0.0+4913.gacff0ef2a7",
+   "commit_short": "acff0ef2a7",
+   "sha256": "08da0268f8a443c93b6296482a8fe57a8a19cc5438374e50ec6635e83b1aa1ea",
+   "commit": "acff0ef2a787c5bdcb84aaab103679145c2878a3"
   },
   "flatpak": {
    "name": "Ansel-0.0.0+4913.gacff0ef2a7-x86_64.flatpak",
