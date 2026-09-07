@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-09-07T22:33:26Z",
+ "generated": "2026-09-07T23:19:16Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -17,26 +17,26 @@
    "commit": "a294300ae620eaa7746e34185c7cf31a4ed1d9e7"
   },
   "dmg-arm64": {
-   "name": "Ansel-0.0.0+4950.g1b693a4c56-arm64.dmg",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B4950.g1b693a4c56-arm64.dmg",
-   "size": 146176087,
-   "uploaded": "2026-09-07T19:27:10Z",
+   "name": "Ansel-0.0.0+4953.gd17e1e95cd-arm64.dmg",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B4953.gd17e1e95cd-arm64.dmg",
+   "size": 146176183,
+   "uploaded": "2026-09-07T23:18:44Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+4950.g1b693a4c56",
-   "commit_short": "1b693a4c56",
-   "sha256": "51afbd74fe49abc66c8bd9be0ce855dce256342b259bb0cfa56afc4a4eaa5a32",
-   "commit": "1b693a4c5666e4a49103ebae5b29fac520eb9484"
+   "version": "0.0.0+4953.gd17e1e95cd",
+   "commit_short": "d17e1e95cd",
+   "sha256": "5d3fa0756742c070b1d80e81c0bf4dc7f931d947a9b6ca887a413c0e6abb5b88",
+   "commit": "d17e1e95cddb96df4a2371b9d7f27d3b5fd1542e"
   },
   "dmg-i386": {
-   "name": "Ansel-0.0.0+4950.g1b693a4c56-i386.dmg",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B4950.g1b693a4c56-i386.dmg",
-   "size": 148832066,
-   "uploaded": "2026-09-07T19:27:19Z",
+   "name": "Ansel-0.0.0+4953.gd17e1e95cd-i386.dmg",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B4953.gd17e1e95cd-i386.dmg",
+   "size": 148832119,
+   "uploaded": "2026-09-07T23:18:49Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+4950.g1b693a4c56",
-   "commit_short": "1b693a4c56",
-   "sha256": "16b9e96e67a040344990f2eef89285c2d67dda46443ad014b4601893b05d1827",
-   "commit": "1b693a4c5666e4a49103ebae5b29fac520eb9484"
+   "version": "0.0.0+4953.gd17e1e95cd",
+   "commit_short": "d17e1e95cd",
+   "sha256": "82be3e08073dce8133db55cab51556ca8b3685e4f803b99348267b6e5d71db82",
+   "commit": "d17e1e95cddb96df4a2371b9d7f27d3b5fd1542e"
   },
   "docker": {
    "name": "Ansel-0.0.0+4925.ga294300ae6-docker.tar.zst",
