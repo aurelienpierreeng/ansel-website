@@ -32,6 +32,16 @@
       | **Operation** | **Invert**<div>Inverts the polarity.</div> |
       |               | **Union**<div>How shapes combine.</div> |
 
+  A block holding such a group is marked `grouped`, and grey rules put its levels back
+  where the listing carries on in a second block butted under it -- the usual shape of a
+  menu, the submenu first and then the plain entries. That second block has no leading
+  column of its own, so without them its top-level entries land in the very column the
+  submenu name sat in: each of its rows opens with a rule instead, the first one included,
+  which is what marks the end of the submenu. A block standing on its own is left alone,
+  however many groups it holds: every row there is an entry of the same level, and a rule
+  between each of them would be noise. Blocks with an illustration are left out too: there
+  every row fills its leading cell, the entry beside its picture, not the head of a group.
+
   The <table> is written out here rather than handed to Markdown as one: rows are
   assembled from the source lines and each cell rendered on its own. It carries no
   <thead> at all -- the theme paints one with `table-dark`, which would show up as
@@ -174,9 +184,27 @@
        stays with the explanation, which is no longer the cell before the last. */ -}}
 {{- $midFigure := false -}}
 {{- $midRatio := 0.0 -}}
-{{- range $rows -}}
-  {{- $cells := split . "|" -}}
+{{- /* Does this block hold a group at all -- a leading cell carrying a submenu name, with the
+       entries of that submenu under it? A grouped block is closed by a rule as well as split
+       by one, so that where the submenu ends and the plain entries resume stays visible even
+       when the two are separate blocks butted together. */ -}}
+{{- $grouped := false -}}
+{{- range $ri, $r := $rows -}}
+  {{- $cells := split $r "|" -}}
   {{- $tr := "" -}}
+  {{- /* A filled leading cell opens a new group -- the submenu the entries under it belong to.
+         A grey rule is drawn above it to set that group off from the one before, so a listing
+         split into submenus reads as sections rather than as one run of rows. Not on the first
+         row, which opens nothing, and only on the two-column shape: with three columns the
+         leading cell is a label beside a picture, not a heading over a group. Illustrated
+         blocks are left out again in the stylesheet, where `full-width` marks them. */ -}}
+  {{- $trClass := "" -}}
+  {{- if and (eq $cols 2) (gt (len $cells) 1) -}}
+    {{- if ne (trim (index $cells 1) " \t\r\n") "" -}}
+      {{- $grouped = true -}}
+      {{- if gt $ri 0 -}}{{- $trClass = " class=\"group\"" -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
   {{- range $i := seq $cols -}}
     {{- $cell := "" -}}
     {{- if lt $i (len $cells) -}}{{- $cell = trim (index $cells $i) " \t\r\n" -}}{{- end -}}
@@ -260,8 +288,14 @@
     {{- if $bareCell -}}{{- $tdClass = " class=\"bare\"" -}}{{- end -}}
     {{- $tr = print $tr "<td" $tdClass ">" $out "</td>" -}}
   {{- end -}}
-  {{- $body = print $body "<tr>" $tr "</tr>" -}}
+  {{- $body = print $body "<tr" $trClass ">" $tr "</tr>" -}}
 {{- end -}}
+
+{{- /* An illustrated block has no groups to close: there a filled leading cell is the entry
+       beside its picture, on every row, not the head of a submenu. The rows were marked as
+       the block was assembled, before the first picture was known; the stylesheet drops those
+       marks again through `full-width`, and the block-level flag is cleared here. */ -}}
+{{- if $hasFigure -}}{{- $grouped = false -}}{{- end -}}
 
 {{- /* A trailing cell can carry an illustration. The table then has to opt out of
        the reading-width cap the theme puts on body tables, or the picture
@@ -307,7 +341,7 @@
 {{- $html := printf `<table class="%s"><tbody>%s</tbody></table>` $class $body -}}
 
 
-<div class="param-table{{ with $imgHeight }} sized-figures{{ end }}{{ if $square }} square-figures{{ end }}{{ with $valign }} valigned{{ end }}"{{ with $styles }} style="{{ delimit . "; " | safeCSS }}"{{ end }}>
+<div class="param-table{{ if $grouped }} grouped{{ end }}{{ with $imgHeight }} sized-figures{{ end }}{{ if $square }} square-figures{{ end }}{{ with $valign }} valigned{{ end }}"{{ with $styles }} style="{{ delimit . "; " | safeCSS }}"{{ end }}>
 <div class="table-responsive">
 {{ $html | safeHTML }}
 </div>

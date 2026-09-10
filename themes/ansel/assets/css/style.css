@@ -950,6 +950,39 @@ a[href^="#fn:"] {
   border: 0;
   vertical-align: var(--param-table-valign, top);
 }
+/* `--bs-border-color` is Bootstrap's own, and it follows the colour mode. Not
+   `--bs-secondary-subtle`, which 5.3 does not define (it has `--bs-secondary-bg-subtle`):
+   an undefined variable makes the whole `border-top` shorthand invalid at computed-value
+   time, so the rule is thrown away and no rule is drawn at all -- silently.
+
+   A menu written as several blocks butted together -- the submenu first, then the plain
+   entries -- loses the one thing that told the two apart: the second block has no leading
+   column, so its top-level entries land in the very column the submenu name sat in, with
+   nothing between them. Grey rules put the levels back. They are drawn only on such a
+   listing, never on a lone block: a table whose every row is an entry of the same level
+   has nothing to separate, and a rule between each of its rows would be noise.
+
+   The block that carries the submenu wears `grouped`; the rules reach the rest of the
+   listing from it. Illustrated blocks are left out through `full-width` -- there a filled
+   leading cell is the entry beside its picture, not the head of a group. */
+.param-table.grouped:has(+ .param-table) > .table-responsive > table:not(.full-width) > tbody > tr.group > td {
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+  /* The rule needs air on both sides: the cell's own 0.5rem of padding alone leaves it
+     crowded against the two entries it separates. */
+  padding-top: 1rem;
+}
+/* Every entry of the block butted under a grouped one is a top-level entry again, the
+   submenu having ended with the block above -- so each of them opens with a rule, the
+   first one included, which is what marks the end of the submenu itself. The bottom row
+   of the group only gives the air; the rule above belongs to the entry below it, so the
+   two blocks never draw two lines at the same junction. */
+.param-table.grouped:has(+ .param-table) > .table-responsive > table > tbody > tr:last-child > td {
+  padding-bottom: 1rem;
+}
+.param-table.grouped + .param-table > .table-responsive > table:not(.full-width) > tbody > tr > td {
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+  padding-top: 1rem;
+}
 /* An explanation alone in its cell, and a picture, are each given a line of lead-in to
    clear the entry name above them (see the rules further down). A cell the writer has
    aligned by hand has no such name to line up with -- it is being set against the
