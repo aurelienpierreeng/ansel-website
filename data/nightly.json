@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-09-18T09:46:15Z",
+ "generated": "2026-09-18T10:36:44Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -17,26 +17,26 @@
    "commit": "f4840185674ad8d7b2a1e01c6a4a5d2aaa2ab9a6"
   },
   "dmg-arm64": {
-   "name": "Ansel-0.0.0+5020.gb35c95990d-arm64.dmg",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5020.gb35c95990d-arm64.dmg",
-   "size": 146252242,
-   "uploaded": "2026-09-17T11:16:37Z",
+   "name": "Ansel-0.0.0+5038.gf484018567-arm64.dmg",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5038.gf484018567-arm64.dmg",
+   "size": 146242864,
+   "uploaded": "2026-09-18T10:36:03Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+5020.gb35c95990d",
-   "commit_short": "b35c95990d",
-   "sha256": "90a220c40ce102e7ae9c82d811257ef081d7063065a7292cf55e2b4d193fb626",
-   "commit": "b35c95990d543a07180f53e7440e540a869fcad2"
+   "version": "0.0.0+5038.gf484018567",
+   "commit_short": "f484018567",
+   "sha256": "4b6aee479c0d5e9e3aa26f5f1382a32c01176c92ef4ddc6aee11c795b5905230",
+   "commit": "f4840185674ad8d7b2a1e01c6a4a5d2aaa2ab9a6"
   },
   "dmg-i386": {
-   "name": "Ansel-0.0.0+5020.gb35c95990d-i386.dmg",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5020.gb35c95990d-i386.dmg",
-   "size": 149047872,
-   "uploaded": "2026-09-17T11:16:46Z",
+   "name": "Ansel-0.0.0+5038.gf484018567-i386.dmg",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5038.gf484018567-i386.dmg",
+   "size": 149060078,
+   "uploaded": "2026-09-18T10:36:13Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+5020.gb35c95990d",
-   "commit_short": "b35c95990d",
-   "sha256": "2e90fa663d146681d3ddcda4aeceaed8e18d5c8535ba70b19d61902897d01267",
-   "commit": "b35c95990d543a07180f53e7440e540a869fcad2"
+   "version": "0.0.0+5038.gf484018567",
+   "commit_short": "f484018567",
+   "sha256": "b54a3752f5130a2199dbe25819c22dcba7fe4a6f518c85436065290767e386ef",
+   "commit": "f4840185674ad8d7b2a1e01c6a4a5d2aaa2ab9a6"
   },
   "docker": {
    "name": "Ansel-0.0.0+5038.gf484018567-docker.tar.zst",
