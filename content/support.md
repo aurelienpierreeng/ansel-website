@@ -9,7 +9,7 @@ weight: 40
 
 ## General info
 
-Ansel is mostly a one-person operation. This is good news when it comes to keeping developement in sync with users needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated [was automated](./contribute/workflows.md) for the maintainer's sanity, and you are asked to use the online resources first everytime it is possible.
+Ansel is mostly a one-person operation. This is good news when it comes to keeping development in sync with users' needs and expectations, not so much when it comes to balancing the workload. So everything that could be automated [was automated](./contribute/workflows.md) for the maintainer's sanity, and you are asked to use the online resources first everytime it is possible.
 
 {{< warning >}}
 When you submit a bug report, attach your files (RAW, `.xmp` edit history, screenshots) directly to the GitHub issue instead of using third-party hosting services with an expiration date: there is no guarantee anyone will download the files in time. See [the bug-reporting protocol](./contribute/report-a-bug.md).
