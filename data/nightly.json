@@ -1,20 +1,20 @@
 {
  "schema": 1,
- "generated": "2026-09-23T10:05:49Z",
+ "generated": "2026-09-23T11:28:21Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
  "formats": {
   "appimage": {
-   "name": "Ansel-0.0.0+5085.g4c10c57faf-x86_64.AppImage",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5085.g4c10c57faf-x86_64.AppImage",
-   "size": 263772664,
-   "uploaded": "2026-09-22T09:54:55Z",
+   "name": "Ansel-0.0.0+5090.g88cb31d572-x86_64.AppImage",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5090.g88cb31d572-x86_64.AppImage",
+   "size": 263690744,
+   "uploaded": "2026-09-23T09:57:16Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+5085.g4c10c57faf",
-   "commit_short": "4c10c57faf",
-   "sha256": "5e7fb80e8686b94a0f5cdd58ed0c283710b99494a9fc023fb99a8dd60533e08b",
-   "commit": "4c10c57faf276d0598081ddebb688cccdf45860e"
+   "version": "0.0.0+5090.g88cb31d572",
+   "commit_short": "88cb31d572",
+   "sha256": "c0d7aacfc18fd45a4d09fdb848865559134743c08bf37dcf9a0674c7d5bba878",
+   "commit": "88cb31d5721b91fd113636706092d72761001e70"
   },
   "dmg-arm64": {
    "name": "Ansel-0.0.0+5085.g4c10c57faf-arm64.dmg",
@@ -39,37 +39,40 @@
    "commit": "4c10c57faf276d0598081ddebb688cccdf45860e"
   },
   "docker": {
-   "name": "Ansel-0.0.0+5085.g4c10c57faf-docker.tar.zst",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5085.g4c10c57faf-docker.tar.zst",
-   "size": 804870993,
-   "uploaded": "2026-09-22T10:01:05Z",
+   "name": "Ansel-0.0.0+5090.g88cb31d572-docker.tar.zst",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5090.g88cb31d572-docker.tar.zst",
+   "size": 804899982,
+   "uploaded": "2026-09-23T10:05:25Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+5085.g4c10c57faf",
-   "commit_short": "4c10c57faf",
-   "sha256": "60769a340b383c7a4877d44687fc8ba4d9f83ae62a4ee5ed08cabc12b693aafd",
-   "commit": "4c10c57faf276d0598081ddebb688cccdf45860e"
+   "version": "0.0.0+5090.g88cb31d572",
+   "commit_short": "88cb31d572",
+   "sha256": "2bd6f35dc1425d7ec66e6dd22b8c483cf467cda0cc7306ddc362092e777abfd7",
+   "image": "aurelienpierre/ansel",
+   "pull": "aurelienpierre/ansel:0.0.0-5090.g88cb31d572",
+   "digest": "sha256:009b67bc34ec56542c6d071d0d43dddc665aefbce22e1063c0bc80f62e8ccf60",
+   "commit": "88cb31d5721b91fd113636706092d72761001e70"
   },
   "exe": {
-   "name": "ansel-0.0.0+5089.gaa1090dd07-win64.exe",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/ansel-0.0.0%2B5089.gaa1090dd07-win64.exe",
-   "size": 153835189,
-   "uploaded": "2026-09-23T00:26:41Z",
+   "name": "ansel-0.0.0+5090.g88cb31d572-win64.exe",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/ansel-0.0.0%2B5090.g88cb31d572-win64.exe",
+   "size": 153841427,
+   "uploaded": "2026-09-23T10:02:53Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+5089.gaa1090dd07",
-   "commit_short": "aa1090dd07",
-   "sha256": "fe614767db5fd8d9b773f07aee291cc5ced7db829d46c492c56ab9a9f6a06f57",
-   "commit": "aa1090dd07a46c18b2beddf14b1c16dd398341b0"
+   "version": "0.0.0+5090.g88cb31d572",
+   "commit_short": "88cb31d572",
+   "sha256": "a519e9491362dcd568e5b136574c980ca9272d01ba9c72afc8b88864e070e1ba",
+   "commit": "88cb31d5721b91fd113636706092d72761001e70"
   },
   "flatpak": {
-   "name": "Ansel-0.0.0+5086.g99666b0d68-x86_64.flatpak",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5086.g99666b0d68-x86_64.flatpak",
-   "size": 103914672,
-   "uploaded": "2026-09-22T11:33:23Z",
+   "name": "Ansel-0.0.0+5090.g88cb31d572-x86_64.flatpak",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-09/Ansel-0.0.0%2B5090.g88cb31d572-x86_64.flatpak",
+   "size": 104683112,
+   "uploaded": "2026-09-23T11:27:54Z",
    "release": "nightly-2026-09",
-   "version": "0.0.0+5086.g99666b0d68",
-   "commit_short": "99666b0d68",
-   "sha256": "7168690a9a316e363b4871b341cb09e7b8cce90ef534e8ab154fe139080493ed",
-   "commit": "99666b0d68a2014a02dc2f668e06d732dd50adfc"
+   "version": "0.0.0+5090.g88cb31d572",
+   "commit_short": "88cb31d572",
+   "sha256": "2db6db5c95b875518fc75fa69118fb381e7490f206dac3d0aea6ba4dad0ec52b",
+   "commit": "88cb31d5721b91fd113636706092d72761001e70"
   }
  }
 }
