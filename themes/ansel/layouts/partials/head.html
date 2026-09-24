@@ -6,12 +6,15 @@
 
 <link rel="sitemap" href="/sitemap.xml" />
 
-{{ $title := "" }}
-{{ if .IsHome }}
-{{ $title = .Site.Title }}
-{{ else }}
-{{ $title = print .Site.Title " | " .Title }}
-{{ end }}
+{{- /* Title: most specific first, the site last ("Page | Ansel"): results cut
+       at ~60 characters and the page is what distinguishes one result from the
+       next. The home says what Ansel is (params.tagline per language, else English). */ -}}
+{{- $title := "" -}}
+{{- if .IsHome -}}
+  {{- $title = printf "%s — %s" site.Title (site.Params.tagline | default "open-source raw photo editor for artists") -}}
+{{- else -}}
+  {{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
 <title>{{ $title }}</title>
 
 {{- $bs_1 := resources.Get "css/bootstrap.css" -}}
@@ -29,15 +32,23 @@
 
 <meta name="author" content="{{ index .Site.Params.Author "name" }}"/>
 
-{{ $description := "" }}
-{{ if .Params.description }}
-{{ $description = .Params.description | safeHTML }}
-{{ else if .Summary }}
-{{ $description = .Summary| safeHTML }}
-{{ else }}
-{{ $description = .Title | safeHTML }}
-{{ end }}
-
+{{- /* Description: hand-written, else the summary as plain text; one line, at
+       most 160 characters (the whole HTML summary was emitted before). An author
+       page describes the author. */ -}}
+{{- $description := "" -}}
+{{- if .Params.description -}}
+  {{- $description = .Params.description -}}
+{{- else if and (eq .Kind "term") (eq .Data.Plural "authors") -}}
+  {{- /* the term page Hugo generates does not carry the author file's front
+         matter (content/authors/<name>/_index.md): read it from that file */ -}}
+  {{- $a := . -}}{{- if not .Params.bio }}{{ with site.GetPage (printf "/authors/%s" (.Title | urlize)) }}{{ $a = . }}{{ end }}{{ end -}}
+  {{- $description = printf "%s — %s" ($a.Params.name | default .Title) ($a.Params.bio | default "") -}}
+{{- else if .Summary -}}
+  {{- $description = .Summary -}}
+{{- else -}}
+  {{- $description = .Title -}}
+{{- end -}}
+{{- $description = $description | plainify | htmlUnescape | replaceRE "\\s+" " " | strings.TrimSpace | truncate 160 " …" -}}
 <meta name="description" content="{{ $description }}">
 <meta name="robots" content="index, follow"/>
 <meta name="copyright" content="{{ .Site.Copyright }}"/>
@@ -46,35 +57,35 @@
 <meta name="keywords" content="{{ delimit .Params.tags ", " }}">
 {{ end }}
 
+{{- /* hreflang: only pages that exist in another language, plus x-default. It
+       pointed untranslated pages at translate.google.com, a third-party URL. */ -}}
 {{- if .IsTranslated -}}
-  {{ range .AllTranslations }}
+  {{- range .AllTranslations }}
   <link rel="alternate" href="{{ .Permalink }}" hreflang="{{ .Lang }}" title="{{ .Language.LanguageName }}"/>
-  {{ end }}
-{{ else }}
-  {{ if in .Language "fr" }}
-  <link rel="alternate" href="http://translate.google.com/translate?js=n&sl=auto&tl=en&u={{ .Permalink }}" hreflang="fr" title="English" />
-  {{ else }}
-  <link rel="alternate" href="http://translate.google.com/translate?js=n&sl=auto&tl=fr&u={{ .Permalink }}" hreflang="en" title="Français" />
-  {{ end }}
+  {{- if eq .Lang "en" }}
+  <link rel="alternate" href="{{ .Permalink }}" hreflang="x-default"/>
+  {{- end }}
+  {{- end }}
 {{- end -}}
 
 {{ $href := .Permalink | absLangURL }}
 
-{{ if .IsPage }}
 <link rel="canonical" href="{{ $href }}" >
-{{ end }}
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="{{ .Title | safeHTML }}" />
+<meta property="og:type" content="{{ cond .IsPage "article" "website" }}" />
+<meta property="og:title" content="{{ cond .IsHome $title .Title }}" />
 <meta property="og:url" content="{{ $href | absLangURL }}" />
 
-{{ if .Params.thumbnail }}
-  <meta property="og:image" content="{{ .Params.thumbnail | absLangURL}}" />
-{{ else }}
-	<meta property="og:image" content="{{ .Site.BaseURL }}/logo-og.png" />
-{{ end }}
+{{- /* The fallback pointed at //logo-og.png, which does not exist (404 on every
+       share without a thumbnail). og-default.jpg: the darkroom and the name. */ -}}
+{{- $ogimage := "og-default.jpg" | absURL -}}
+{{- with .Params.thumbnail }}{{ $ogimage = . | absLangURL }}{{ end }}
+<meta property="og:image" content="{{ $ogimage }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ $ogimage }}" />
 
 <meta property="og:description" content="{{ $description }}">
+<meta name="twitter:description" content="{{ $description }}">
 
 <meta property="article:author" content="{{ index .Site.Params.Author "url" }}">
 <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02" }}">
@@ -89,6 +100,8 @@
 {{ end }}
 
 <meta property="article:section" content="{{ .Section }}">
+
+{{ partial "schema.html" (dict "page" . "description" $description "image" $ogimage) }}
 
 {{ range .AlternativeOutputFormats -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}

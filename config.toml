@@ -8,6 +8,7 @@ enableGitInfo = true
 defaultContentLanguageInSubdir = true
 refLinksErrorLevel = 'warning'
 canonifyURLs = true
+enableRobotsTXT = true
 removePathAccents = true
 timeout = "360s"
 
@@ -91,6 +92,8 @@ ignoreLogs = ['warning-goldmark-raw-html']
     title = 'Ansel'
     languagename = "Français"
     weight = 2
+    [languages.fr.params]
+      tagline = 'éditeur photo raw libre pour les artistes'
   [languages.de]
     title = 'Ansel'
     languagename = "Deutsch"

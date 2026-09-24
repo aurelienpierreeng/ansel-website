@@ -7,9 +7,9 @@
 	{{ $path := printf "/%s/%s" "authors" ($name | urlize) }}
 	{{ with $.Site.GetPage $path }}
 		<div class="clearfix">
-			<img src="{{ printf "%s?s=120" .Params.gravatar }}" class="float-start me-2">
-			<h5>{{ .Params.name }}</h5>
-			<p>{{ .Params.bio }} <a href="{{ .Params.website }}">Website</a></p>
+			<img src="{{ printf "%s?s=120" .Params.gravatar }}" class="float-start me-2" width="120" height="120" loading="lazy" alt="{{ .Params.name }}">
+			<h5><a href="{{ .RelPermalink }}" rel="author" class="link-dark">{{ .Params.name }}</a></h5>
+			<p>{{ .Params.bio }} <a href="{{ .Params.website }}">{{ .Params.websiteLabel | default "Website" }}</a></p>
 		</div>
 	{{ end }}
 {{ end }}

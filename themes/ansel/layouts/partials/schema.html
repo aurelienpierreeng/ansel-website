@@ -1,0 +1,79 @@
+{{- /* Structured data (schema.org JSON-LD), one @graph per page.
+       - WebSite, the Ansel SoftwareApplication and the Ansel organisation;
+       - the person who created Ansel, under the same @id as on
+         https://aurelienpierre.com/identity.jsonld, so that search engines merge
+         what ansel.photos and his own sites say about him into one entity;
+       - on author pages: ProfilePage whose main entity is that person;
+       - on pages that credit authors: BlogPosting (news) or TechArticle, authored
+         by them.
+       Called as: partial "schema.html" (dict "page" . "description" $d "image" $i) */ -}}
+{{- $p := .page -}}
+{{- $home := site.Home.Permalink -}}
+{{- $siteID := printf "%s#website" $home -}}
+{{- $appID := "https://ansel.photos/#software" -}}
+{{- $orgID := "https://ansel.photos/#organization" -}}
+{{- $personID := "https://aurelienpierre.com/#person" -}}
+{{- $founder := site.GetPage "/authors/aurelien-pierre" -}}
+
+{{- $person := dict "@type" "Person" "@id" $personID "name" "Aurélien Pierre" "url" "https://aurelienpierre.com/" -}}
+{{- with $founder -}}
+  {{- with .Params.sameAs }}{{ $person = merge $person (dict "sameAs" .) }}{{ end -}}
+  {{- with .Params.portrait }}{{ $person = merge $person (dict "image" .) }}{{ end -}}
+  {{- with .Params.jobTitle }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end -}}
+  {{- with .Params.bio }}{{ $person = merge $person (dict "description" .) }}{{ end -}}
+{{- end -}}
+
+{{- $org := dict "@type" "Organization" "@id" $orgID "name" "Ansel" "url" "https://ansel.photos/"
+      "logo" (dict "@type" "ImageObject" "url" ("logo_128x128.png" | absURL))
+      "founder" (dict "@id" $personID)
+      "sameAs" (slice "https://github.com/aurelienpierreeng") -}}
+{{- $app := dict "@type" "SoftwareApplication" "@id" $appID "name" "Ansel" "url" "https://ansel.photos/"
+      "applicationCategory" "MultimediaApplication" "applicationSubCategory" "Raw photo editor"
+      "operatingSystem" "Linux, Windows, macOS" "license" "https://www.gnu.org/licenses/gpl-3.0.html"
+      "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "EUR")
+      "creator" (dict "@id" $personID) "publisher" (dict "@id" $orgID)
+      "sameAs" (slice "https://github.com/aurelienpierreeng/ansel") -}}
+{{- $website := dict "@type" "WebSite" "@id" $siteID "url" $home "name" site.Title "inLanguage" $p.Lang
+      "about" (dict "@id" $appID) "publisher" (dict "@id" $orgID) -}}
+{{- $graph := slice $website $app $org $person -}}
+
+{{- $pageID := printf "%s#webpage" $p.Permalink -}}
+{{- $webpage := dict "@type" "WebPage" "@id" $pageID "url" $p.Permalink "name" $p.Title "isPartOf" (dict "@id" $siteID) "inLanguage" $p.Lang -}}
+{{- with .description }}{{ $webpage = merge $webpage (dict "description" .) }}{{ end -}}
+{{- if $p.IsHome }}{{ $webpage = merge $webpage (dict "about" (dict "@id" $appID)) }}{{ end -}}
+
+{{- /* author pages: ProfilePage */ -}}
+{{- if and (eq $p.Kind "term") (eq $p.Data.Plural "authors") -}}
+  {{- $who := dict "@id" (printf "%s#person" $p.Permalink) -}}
+  {{- if eq (lower (urlize ($p.Params.name | default $p.Title))) "aurelien-pierre" -}}
+    {{- $who = dict "@id" $personID -}}
+  {{- else -}}
+    {{- $other := dict "@type" "Person" "@id" (printf "%s#person" $p.Permalink) "name" ($p.Params.name | default $p.Title) -}}
+    {{- with $p.Params.website }}{{ $other = merge $other (dict "url" .) }}{{ end -}}
+    {{- with $p.Params.bio }}{{ $other = merge $other (dict "description" .) }}{{ end -}}
+    {{- $graph = $graph | append $other -}}
+  {{- end -}}
+  {{- $webpage = merge $webpage (dict "@type" (slice "WebPage" "ProfilePage") "mainEntity" $who "about" $who) -}}
+{{- end -}}
+{{- $graph = $graph | append $webpage -}}
+
+{{- /* pages that credit authors */ -}}
+{{- if and $p.IsPage ($p.Param "authors") -}}
+  {{- $authors := slice -}}
+  {{- range $p.Param "authors" -}}
+    {{- if eq (lower (urlize .)) "aurelien-pierre" -}}
+      {{- $authors = $authors | append (dict "@id" $personID) -}}
+    {{- else -}}
+      {{- $authors = $authors | append (dict "@type" "Person" "name" .) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $article := dict "@type" (cond (eq $p.Section "news") "BlogPosting" "TechArticle") "@id" (printf "%s#article" $p.Permalink)
+        "headline" ($p.Title | truncate 110 "…") "isPartOf" (dict "@id" $pageID) "mainEntityOfPage" (dict "@id" $pageID)
+        "author" $authors "publisher" (dict "@id" $orgID) "inLanguage" $p.Lang "about" (dict "@id" $appID) -}}
+  {{- with .image }}{{ $article = merge $article (dict "image" .) }}{{ end -}}
+  {{- with .description }}{{ $article = merge $article (dict "description" .) }}{{ end -}}
+  {{- if not $p.Date.IsZero }}{{ $article = merge $article (dict "datePublished" ($p.Date.Format "2006-01-02T15:04:05Z07:00")) }}{{ end -}}
+  {{- if not $p.Lastmod.IsZero }}{{ $article = merge $article (dict "dateModified" ($p.Lastmod.Format "2006-01-02T15:04:05Z07:00")) }}{{ end -}}
+  {{- $graph = $graph | append $article -}}
+{{- end -}}
+<script type="application/ld+json">{{ (dict "@context" "https://schema.org" "@graph" $graph) | jsonify | safeJS }}</script>

@@ -38,6 +38,20 @@
 
         {{ if not $content }}
             <h1 class="display-3 text-left my-4 border-bottom border-dark">{{ .Title }} <span class="float-end align-middle">{{ partial "rss.html" . }}</span></h1>
+            {{- if and (eq .Kind "term") (eq .Data.Plural "authors") }}
+            {{- $a := . -}}{{- if not .Params.bio }}{{ with site.GetPage (printf "/authors/%s" (.Title | urlize)) }}{{ $a = . }}{{ end }}{{ end }}
+            <section class="d-flex gap-3 align-items-start mb-4">
+              {{- with $a.Params.gravatar }}<img src="{{ . }}?s=240" width="120" height="120" alt="{{ $a.Params.name | default $.Title }}" class="rounded flex-shrink-0">{{ end }}
+              <div>
+                {{- with $a.Params.jobTitle }}<p class="fw-semibold mb-1">{{ . }}</p>{{ end }}
+                {{- with $a.Params.bio }}<p class="mb-2">{{ . }}</p>{{ end }}
+                <p class="mb-0">
+                  {{- with $a.Params.website }}<a href="{{ . }}" rel="me">{{ $a.Params.websiteLabel | default . }}</a>{{ end }}
+                  {{- range $a.Params.links }} · <a href="{{ .url }}" rel="me">{{ .name }}</a>{{ end }}
+                </p>
+              </div>
+            </section>
+            {{- end }}
         {{ else }}
             <h1 class="display-3 text-left my-4 border-bottom border-dark">Section content <span class="float-end align-middle">{{ partial "rss.html" . }}</span></h1>
         {{ end }}
