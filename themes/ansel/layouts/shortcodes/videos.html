@@ -1,0 +1,41 @@
+{{/* The tutorial catalogue, from data/videos.json.  {{< videos channel="darktable_tutorials" lang="fr" >}}
+
+     Filters, all optional: `channel` (PeerTube channel name), `lang` (fr, en…), `since` (YYYY),
+     `limit`. Only migrated videos are listed — a video still stuck on YouTube has no public page
+     to link to. Newest first; `order="asc"` for a series you want read in order.
+
+     This is the single place the tutorial list is maintained: peertube.py sync rewrites the JSON
+     from the instance, the page follows. */}}
+
+{{- $all := or (and site.Data.videos site.Data.videos.videos) slice -}}
+{{- $v := where $all "pt" "!=" nil -}}
+{{- $v = where $v "state" "published" -}}
+{{- with .Get "channel" }}{{ $v = where $v "channel" . }}{{ end -}}
+{{- with .Get "lang" }}{{ $v = where $v "lang" . }}{{ end -}}
+{{- with .Get "since" }}{{ $v = where $v "published" ">=" . }}{{ end -}}
+{{- $v = sort $v "published" (cond (eq (.Get "order") "asc") "asc" "desc") -}}
+{{- with .Get "limit" }}{{ $v = first (int .) $v }}{{ end -}}
+
+{{- if $v -}}
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 video-catalogue">
+{{- range $v }}
+  <div class="col">
+    <div class="card h-100">
+      <a href="{{ .url }}" rel="noopener">
+        {{- with .thumbnail }}<img src="{{ . }}" class="card-img-top" loading="lazy" alt="{{ $.Page.Title }}" width="320" height="180">{{ end -}}
+      </a>
+      <div class="card-body">
+        <h3 class="fs-6 card-title"><a href="{{ .url }}" rel="noopener">{{ .title }}</a></h3>
+        <p class="card-text small text-muted">
+          {{- with .published }}<time datetime="{{ . }}">{{ . }}</time>{{ end -}}
+          {{- with .duration }} · {{ printf "%d min" (div . 60) }}{{ end -}}
+          {{- with .lang }} · {{ upper . }}{{ end -}}
+        </p>
+      </div>
+    </div>
+  </div>
+{{- end }}
+</div>
+{{- else -}}
+<p class="text-muted">{{ i18n "no_videos" | default "Aucune vidéo publiée pour l’instant." }}</p>
+{{- end -}}

@@ -1,0 +1,18 @@
+{{/* A PeerTube video.  {{< peertube id="grPgNPPcyd3yQXsoADNyE2" title="…" >}}
+
+     `id` is the short uuid; `instance` defaults to the one in data/videos.json. Self-hosted, no
+     third-party cookie, so no discreto gate: the player loads with the page. p2p=0 keeps the
+     viewer's IP off the swarm — pass p2p="1" to trade that for the bandwidth saving. */}}
+
+{{- $instance := or (.Get "instance") (index (or site.Data.videos dict) "instance") | default "https://watch.makearmy.io" -}}
+{{- $p2p := .Get "p2p" | default "0" -}}
+{{- $caption := .Get "title" -}}
+
+<figure class="full-width peertube {{ if $caption }}caption-figure{{ end }}">
+<div class="ratio ratio-16x9">
+  <iframe loading="lazy" src="{{ $instance }}/videos/embed/{{ .Get `id` | safeURL }}?p2p={{ $p2p }}&amp;title=0&amp;warningTitle=0{{ with .Get `params` }}{{ . | safeURL }}{{ end }}" class="full-width" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups allow-forms" {{ with $caption }}title="{{ . }}"{{ end }}></iframe>
+</div>
+{{ with $caption }}
+<figcaption>{{ . }}</figcaption>
+{{ end }}
+</figure>

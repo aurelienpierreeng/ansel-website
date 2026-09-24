@@ -1,0 +1,36 @@
+{{/* One video, wherever it currently lives.  {{< video id="OmKGLMyNCHM" >}}
+
+     `id` is the YouTube id the page was written with — the stable name of the video, kept even
+     after it left YouTube. data/videos.json (peertube.py sync) says where it plays today:
+
+       migrated  -> the PeerTube embed, no consent gate
+       pending   -> the YouTube embed, as before
+       unknown   -> the YouTube embed, so an id nobody catalogued still works
+
+     Re-pointing a video is therefore a line in the ledger, never an edit in the prose. */}}
+
+{{- $id := or (.Get "id") (.Get 0) -}}
+{{- $title := .Get "title" -}}
+{{- $entry := "" -}}
+{{- range (or (and site.Data.videos site.Data.videos.videos) slice) -}}
+  {{- if or (eq .yt $id) (eq .pt $id) -}}{{- $entry = . -}}{{- end -}}
+{{- end -}}
+
+{{- if and $entry $entry.pt -}}
+  {{- $instance := site.Data.videos.instance | default "https://watch.makearmy.io" -}}
+  {{- $caption := or $title $entry.title -}}
+  <figure class="full-width peertube {{ if $caption }}caption-figure{{ end }}">
+  <div class="ratio ratio-16x9">
+    <iframe loading="lazy" src="{{ $instance }}/videos/embed/{{ $entry.pt | safeURL }}?p2p=0&amp;title=0&amp;warningTitle=0" class="full-width" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups allow-forms" {{ with $caption }}title="{{ . }}"{{ end }}></iframe>
+  </div>
+  {{ with $caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{- else -}}
+  {{- $caption := or $title (and $entry $entry.title) -}}
+  <figure class="full-width youtube {{ if $caption }}caption-figure{{ end }}">
+  <div class="ratio ratio-16x9">
+    <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{{ $id | safeURL }}?modestbranding=1" class="full-width" allowfullscreen {{ with $caption }}title="{{ . }}"{{ end }}></iframe>
+  </div>
+  {{ with $caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{- end -}}

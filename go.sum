@@ -44,3 +44,5 @@ github.com/aurelienpierreeng/ansel-doc v0.0.0-20250522115640-4d0163973d19 h1:p5D
 github.com/aurelienpierreeng/ansel-doc v0.0.0-20250522115640-4d0163973d19/go.mod h1:ImICdhS1nsmu74ujSE7jwW1JkMstU19oiRwmBabpVdc=
 github.com/aurelienpierreeng/ansel-doc v0.0.0-20250928222958-20f2e6aa9a19 h1:SutdX/d5HExBLTt/GYMkuXfERlYqX7JjWZS8eFsq0qs=
 github.com/aurelienpierreeng/ansel-doc v0.0.0-20250928222958-20f2e6aa9a19/go.mod h1:ImICdhS1nsmu74ujSE7jwW1JkMstU19oiRwmBabpVdc=
+github.com/aurelienpierreeng/ansel-doc v0.0.0-20260828165636-70199446161c h1:5ZIrbcKHGL/K4xGHpHK65x+oKAcj4YG+nlfB/H1GJRY=
+github.com/aurelienpierreeng/ansel-doc v0.0.0-20260828165636-70199446161c/go.mod h1:ImICdhS1nsmu74ujSE7jwW1JkMstU19oiRwmBabpVdc=

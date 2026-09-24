@@ -1,6 +1,7 @@
 ---
 title: The mathematics of guided laplacians and harmonic transposition
 date: 2026-07-10
+lastmod: 2026-08-05
 draft: false
 weight: 16
 authors:
@@ -1401,6 +1402,14 @@ Cheap and physically unarguable, the floors remove the residual magenta-and-dark
 and diffusion alone can leave in a large all-clipped core (a blown sun disc), and they account for the
 improvement on the all-clipped correlated case reported below.
 
+One caveat was discovered after publication, on real raws rather than on this bench : because the
+module runs *after* white balance, the per-channel clip levels **are the white-balance gains**, and a
+floor that snaps each channel independently to its own level imprints the gains' chromaticity — the
+same mechanical magenta this article opened with — on every multi-clip pixel whose extrapolation
+undershoots. The bench never sees it because its scenes clip at *equal* levels. The measured fix, a
+*joint* floor gated by the clip-level asymmetry, is the subject of the
+[addendum](#addendum--the-white-balance-clip-regime).
+
 ##### Chrominance, by diffusion
 
 The chrominance $r = \text{RGB}/L_\text{sum}$ is diffused inward from the core rim : harmonic inpainting of the
@@ -1766,7 +1775,12 @@ implementation through `ansel-cli`**, not by the Python research prototype : the
 implementations deliberately drift (different solvers, resolutions and stage trade-offs, see
 [the C production code](#the-c-production-code)), by 0.009 to 0.089 RMSE inside the clipped
 zones across this bench, so their numbers must never be mixed. The whole bench reproduces
-from the [annex](#annex--reproducing-the-results).
+from the [annex](#annex--reproducing-the-results). (The white-balance campaign of the
+[addendum](#addendum--the-white-balance-clip-regime) later added two scenes — a white emitter over
+textured amber behind occluders, and a blown gradient sky — and a chromaticity-share metric,
+because the six scenes above all clip at equal levels and linear RMSE is nearly blind to the hue
+failures users actually report ; the numbers in this section are unaffected, by construction and
+by re-measurement.)
 
 The metrics of the shipped algorithm below are computed inside the clipped area only. **RMSE** is the
 root-mean-square error against the ground truth, in sensor units normalized so the clip level is
@@ -2350,6 +2364,185 @@ leans progressively from the colour-line toward the smooth luminance dome as the
 measured data grows, not because the line is known to fail there, but because nothing can vouch
 for it.
 
+## Addendum : the white-balance clip regime
+
+*(Added 2026-08, after field testing on real raws.)*
+
+The bench above declared victory, and users kept reporting magenta. Both were right. Every synthetic
+scene in the bench writes `AsShotNeutral = (1,1,1)`, so the production pipeline develops it at **unit
+white balance** — all three channels clip at the same level. No real camera occupies that regime : the
+module runs after the `temperature` stage, so on a real raw the per-channel clip levels *are* the
+white-balance gains, typically $(2.3, 1.0, 1.3)$ and beyond. Everything in this addendum follows from
+taking that regime seriously : two new failure families were isolated on real photographs, measured to
+their root causes, and fixed behind gates that leave every number in the article above bit-for-bit
+untouched. The campaign also extended the bench so the regime stays covered.
+
+### The floors author the colour
+
+The lead complaint (clipped neon tubes rendered magenta) survived three plausible theories — an
+X-Trans phase mismatch, demosaic bleed, a fit-slope error — each killed by measurement before the
+real mechanism surfaced, and it is embarrassingly close to the one this article opened with. Dumping
+the module's own output and bucketing per-channel means by "own channel clipped" against the
+per-channel clip levels showed the clipped channels sitting **exactly at their floors**. The
+[saturation floor](#a-saturation-floor) is per-channel : on a multi-clip pixel whose extrapolation
+undershoots, each clipped channel snaps to its own level, and the *ratio between the floors* — the
+white-balance gains, i.e. magenta — replaces whatever hue the solver produced. The solver's chroma was
+fine ; the floors destroyed it. (The 2021 method looked whiter on the same subjects only because it
+*violates* the floors — dimmer, not less wrong.)
+
+The fix preserves the floors' physical guarantee while removing their colour authority : a **joint
+floor** lifts the whole clipped subset by one scalar $s = \max_k(t_k / e_k)$ until the most demanding
+per-channel target is met — brightness from the floors, hue from the solver — identical to the
+per-channel floor wherever a single channel clips, capped at 8× with the per-channel floor kept
+afterwards as the degenerate-estimate safety net.
+
+Applied unconditionally, this *regressed the whole bench* : at equal clip levels the per-channel
+imprint is neutral, usually near the truth of a bright core, and materially helpful. The regime is
+detectable from the clip levels alone, so the joint floor is blended in by a **clip-asymmetry gate**
+$g = S\big((A - 1.25)/0.75\big)$ with $A = \max_c \text{clip}_c / \min_c \text{clip}_c$ : zero
+through the whole unit-white-balance regime, one from $A \ge 2$, which every real camera reaches. Two
+traps are worth recording. The ramp must *not* start at $A = 1$ : the clip levels inherit the
+pipeline's input profile handling, which carries a ~10 % non-white-balance wiggle even on the
+unit-balance DNGs (measured $A = 1.145$ on this very bench) — a ramp from 1 silently opened the gate
+to 0.2 on the regression suite and contaminated a whole candidate round before it was caught. And the
+synthetic DNGs *cannot* exercise the gate through the production pipeline at all : `temperature`
+ignores their `AsShotNeutral`, so the C-side regression guard is bit-identity at gate zero, and the
+regime itself is validated on real raws and through the Python leg described below.
+
+{{% figure src="./wb-mac-fourway.png" %}}
+The clipped neon tubes, four ways. Top to bottom : the article's method as published (per-channel floors — the tubes and their glow drift magenta) ; the joint floor alone (hue restored where the solver spoke, about two thirds of the visible fix) ; the surround refinements added (the shipped look) ; the shipped configuration with the trusted-ring vote arbitrating the refinements.
+{{% /figure %}}
+
+### Continuing the surround : chromaticity gradients and their gate
+
+The second family (blotchy pink-lavender patches and occluder-shaped chroma ghosting inside a blown
+sunrise) traced to a bias every value-continuing estimator in the method shares : colour-line fits and
+harmonic ratio fills anchor on the **last unclipped band before the clip contour**, and that band is
+not the scene — it is sensor rolloff and veiling flare, whitened and threaded with occluder penumbras.
+Hardening the dim-anchor rejection made it *worse* (it starved the windows ; the dark anchors were
+warm, not the contaminant), and shrinking slopes toward a mean-ratio prior plateaued short because the
+prior inherits the same fence hue.
+
+The shipped stage extends the **bright, fully-valid surround's chromaticity shares** into the blown
+zone with the same biharmonic, gradient-continuing operator the luminance dome already uses, then
+reprojects each *partial multi-clip* pixel's clipped subset onto the extended field — the surviving
+channels anchor the brightness, the clipped ones take the field's shares. Three hard-won details : the
+anchors stand clear of a *thin* guard ring around the contour (a wide moat exiles them to
+unrepresentative far content and inverts the fix) ; all-clip pixels are **not** reprojected
+(redistributing a poor core total by the field's shares was measured to produce negative pixels) ; and
+the whole continuation is a *scene assumption*, true for gradient skies and false for self-coloured
+emitters, so it arbitrates itself against the method's trusted zone : at 1-clip pixels — rebuilt from
+two measured guides — the field either agrees with the solver or it does not, and the agreement
+weight, diffused inward with a region-level ring vote as fallback, gates the reprojection. On the
+white-lamp complaint above the gate correctly reads the lamps as self-coloured and stands down — which
+is how it was established that the magenta fix could **not** come from this stage and had to come from
+the floors.
+
+### The surround refinements and the trusted-ring vote
+
+Between the floors and the continuation sit three smaller *surround-importing* refinements, all
+gated by the same clip asymmetry : the self-dome's filled chroma is pulled toward the bright
+surround mean, multi-clip pixels are re-projected onto the dome's chromaticity instead of blending
+per channel, and the all-clip core's floor is re-hued (magnitude-preserving) toward the surround
+mean so the downstream stages stop treating the inverse-gain magenta as a colour target. They fix
+the last third of the neon complaint and land the sunrise on the warm side — and they are exactly as
+dangerous as they sound : on a genuinely self-coloured emitter they paint the surround over the
+subject. Their arbitration took three measured failures to get right (all in the
+[graveyard](#annex--the-graveyard)) : a per-pixel agreement average is capped near 0.3 on any real
+ring by noise and texture spread, at *every* tolerance tight enough to still protect the emitter ;
+referencing the whole-window valid mean lets dark unrelated content close the gate on exactly the
+scenes the refinements serve ; and a bright-surround dispersion factor turned out *inverted* on the
+one scene it was designed for. What separates the regimes is not how much the trusted ring disagrees
+but **how coherently** : a self-coloured emitter shifts its whole 1-clip ring to one side of the
+bright-surround mean, while real scenes scatter around it. The shipped vote is a t-statistic,
+$t = |\text{ring mean} - \text{surround mean}|_1 / \max(\text{ring dispersion}, 0.02)$ mapped
+through $e^{-(t/5)^2}$ — measured at $t \approx 10$ (vote ≈ 0) on the self-coloured bench emitter
+and $t = 0.3$–$1.5$ (vote ≈ 1) on the real photographs.
+
+{{% figure src="./wbregime-magentasun.png" %}}
+The self-coloured emitter that polices the refinements, in the white-balance regime leg (left to right : clipped input, per-channel floors, joint floors only, full refinements, refinements × ring vote, ground truth). Ungated refinements (fourth panel) paint the surround over the magenta sun and more than double its chroma error ; the ring vote (fifth panel) reads the coherent shift of the trusted ring and stands down, landing on the safe column." 
+{{% /figure %}}
+
+### The floor-authored band and value continuation
+
+With the floors gated and the refinements arbitrated, one reservoir of magenta remained, and its
+measurement is the sharpest number of the campaign : on the sunrise, **92.5 %** of the 1-clip zone —
+the widest band of any real blown sky, since the highest-gain channel clips first and alone — ended
+within 3 % of its own saturation floor, with a mean fit lift of **+0.9 %**. The two-guide fits, which
+the whole design treats as trustworthy, under-predict below the floor almost everywhere in that band
+on real flare-contaminated data ; the floor (correctly) discards them, pins the clipped channel at
+its level, and the band wears the gain's hue. The trusted zone the gates lean on is, on real skies,
+mostly floor-authored — the assumption *"1-clip pixels are measured-chromaticity-correct"* is a
+bench truth, not a field truth.
+
+Two designs failed against the floor before one passed. Reprojecting the authored band onto the
+extended chromaticity field fails because the bright surround of a twilight sky is measurably
+*pinker and less red* than the floored band itself — the floor vetoes the move, and the veto is
+physically right ($u_c \ge \text{clip}_c$ is a measurement). Interpolating the *shares* of the
+reconstructed core outward fails the same way wherever the core's colour genuinely differs from the
+band's. What the band actually lacks is a **value profile** for its one clipped channel : the shipped
+fix fills that channel's own values with a biharmonic dome over the authored band, anchored on
+*both* sides — the multi-clip reconstruction inside, the measured data outside — floored at
+saturation. It writes only the clipped channel, approaches the clip level at the outer contour by
+construction (no seam), and it is the same operator the luminance already trusts. On the sunrise it
+releases a fifth of the authored band from the floor (91.6 % → 71.9 %) and grades the sky from the
+warm core outward.
+
+What remains at the floor after that is honest : the band's measured guides are themselves brightened
+by veiling flare (the knee estimator, run in reverse, measures the band **15–18 % above** the
+below-band trend — the opposite sign of rolloff, which is why the knee correctly refuses to engage),
+and no reconstruction bound by measured data may repaint them. De-flaring is a different feature —
+veiling-glare estimation and subtraction *before* reconstruction — and is future work.
+
+### Extending the bench to the regime
+
+The bench gained two scenes — `wbclips`, a white emitter over textured amber behind mullion
+occluders written with real white-balance metadata, and `gradsky`, the blown-gradient-sky geometry —
+and a **chromaticity-share RMSE** (the per-pixel share error $u_c/\sum u$, ×100) reported alongside
+linear RMSE, which is magnitude-dominated and nearly blind to hue. Because the production pipeline
+ignores the synthetic white-balance metadata, the regime itself is exercised by a Python leg that
+clips in the *physically correct order* : the ground-truth scene is clipped at the sensor, multiplied
+by the gains, reconstructed in that domain, divided back, and scored. The shipped configuration
+against that leg :
+
+{{< table caption="The white-balance regime leg (sensor clip, then gains (2.2, 1.0, 1.5)), scored against ground truth inside the clipped zone : linear RMSE / chromaticity-share RMSE ×100. 'Per-channel' is the article's published behavior in this regime ; 'shipped' is the gated joint floors, refinements × ring vote, and value continuation. The emitter row is the safety case : the vote must keep the shipped column at the per-channel column's chroma." >}}
+| case | per-channel floors | shipped |
+|---|---|---|
+| RGB balls | 0.040 / 0.27 | 0.055 / 0.35 |
+| magenta sun | 0.354 / 1.29 | 0.354 / 1.30 |
+| correlated | 0.027 / 0.49 | 0.030 / 0.62 |
+| random | 0.044 / 1.00 | 0.044 / 1.01 |
+| PK1-like sky | 0.115 / 2.95 | 0.113 / 2.90 |
+| occluded sun | 0.096 / 2.47 | 0.088 / 2.36 |
+| white emitter / amber (`wbclips`) | 0.877 / 2.92 | 0.723 / 1.40 |
+| gradient sky (`gradsky`) | 3.450 / 3.55 | 3.442 / 0.95 |
+{{< /table >}}
+
+{{% figure src="./wbregime-gradsky.png" %}}
+The gradient-sky case in the white-balance regime (clipped input, per-channel floors, joint floors only, full refinements, shipped, ground truth) : the chromaticity-share error drops from 3.55 to 0.95 — the hue failure the original bench could not see, fixed by the machinery the original bench could not exercise."
+{{% /figure %}}
+
+The chroma error halves on the emitter-over-amber case and drops almost fourfold on the gradient
+sky, while the self-coloured emitter is held at published behavior by the vote — the regime's
+victory condition. The small losses on `balls` and `correlated` are the price of the arbitration
+and are invisible at the display ; the two real photographs that motivated the campaign were
+accepted visually at every step.
+
+### Open in this regime
+
+Two limits are measured and waiting. **Veiling flare on measured data**, described above : the
+reconstruction's contract ends where measurement begins, and the flare lives in the measurements.
+And a **window-scale blindness** found on a blue LED lamp array : with a large blown region the fit
+windows clamp at $\sigma = 64$ px and cannot resolve the 5–20 px interstices between bulbs, while
+the soft-luminance affinity that normally separates unrelated content within a window is blind
+there, because the clipped-high channel dominates the luminance of bulbs and interstices alike —
+so anchored, high-confidence fits deliver bulb-level coefficients to glow-level pixels, and the
+display clips the over-lift to pale, mask-shaped fingers. Every localized patch tried against it
+(a contour feather, gated and ungated ; split anchor sets for the intercept transport) was
+measured useless or harmful and is recorded in the graveyard ; the honest candidates are a
+valid-channel-only luminance affinity, or multi-scale fit windows — both method-level changes,
+neither yet built.
+
 ## How this work was actually done
 
 The method above is inseparable from the way it was produced, and the way it was produced
@@ -2917,6 +3110,66 @@ $p^\top A p$ falls to rounding noise, and the step size explodes — intermitten
 under instrumentation, because any change to thread timing changed the summation order that
 triggered it. That heisenbug is why every exact solve in the shipped code runs in 64-bit
 floats through the direct factorisation.
+
+**The ungated joint floor** (white-balance campaign). *Problem :* the per-channel saturation
+floors imprint the white-balance gains' magenta on multi-clip pixels (the
+[addendum](#addendum--the-white-balance-clip-regime)). *Strategy :* replace them everywhere with the
+scalar-subset lift that preserves the solver's hue. *Why it failed :* at equal clip levels the
+per-channel imprint is neutral and usually near the truth of a bright core — the joint form
+regressed every original bench case at once. The floors' colour authority is only wrong when the
+clip levels disagree ; hence the clip-asymmetry gate.
+
+**The per-pixel ring-agreement vote** (two tolerances). *Problem :* arbitrate the surround-importing
+refinements between real scenes and self-coloured emitters. *Strategy :* average a per-pixel
+Gaussian agreement weight $e^{-(\text{err}/\tau)^2}$ over the trusted 1-clip ring. *Why it
+failed :* real rings scatter by noise and texture, so the average caps near 0.3 at any $\tau$ tight
+enough to keep the emitter closed ($\tau = 0.10$ starved the two real photographs to 11–14 % of the
+intended correction) ; loosening to $\tau = 0.25$ re-opened the emitter and the gradient sky both.
+Disagreement *amount* does not separate the regimes — disagreement *coherence* does (the shipped
+t-statistic).
+
+**The whole-window vote reference.** *Problem :* the same arbitration. *Strategy :* reference the
+ring's agreement to the mean chromaticity of *all* valid pixels in the window. *Why it failed :*
+dark, unrelated content (night streets, forest silhouettes) pollutes the mean, and the vote closes
+on exactly the scenes the refinements serve. The reference must be the *bright* valid surround
+(≥ 35 % of the blown zone's plateau) — the same lesson the continuation stage's anchors had already
+taught.
+
+**The bright-surround dispersion factor.** *Problem :* keep the flat-mean refinements off gradient
+skies specifically. *Strategy :* multiply the vote by $e^{-(\text{dispersion}/\sigma)^2}$ of the
+bright surround's chromaticity, on the theory that a chroma-gradient sky disperses widely. *Why it
+failed :* measured inverted — the synthetic gradient sky's bright dispersion (0.059) came out
+*lower* than the real photographs' (0.11–0.20). A statistic must be measured on the discriminating
+cases before it is trusted to discriminate.
+
+**Share reprojection of the floor-authored band.** *Problem :* 92.5 % of a real blown sky's 1-clip
+band sits at its own floor wearing the gain's hue (the addendum). *Strategy :* reproject those
+pixels onto the extended chromaticity field, like partial multi-clip pixels. *Why it failed :* the
+bright surround of a twilight sky is measurably pinker and *less red* than the floored band, so the
+implied value fell below the floor and the floor vetoed it — correctly, since $u_c \ge
+\text{clip}_c$ is a measurement. A second variant anchored the field on the reconstructed warm core
+as well ; same veto over ~98 % of the band. The band needed a *value* profile for its one clipped
+channel, not somebody else's shares.
+
+**The regime-consistency feather.** *Problem :* the multi-clip lace and the 1-clip collar are
+reconstructed by estimators with different biases, meeting at a noise-jagged contour. *Strategy :*
+within a few pixels of the contour, blend the lace's clipped channels toward the level extended
+from outside by normalized convolution. *Why it failed :* on a blown sky the "outside" is the
+flare-whitened fence whose influence the continuation stage had just removed — the feather
+re-imported it and doubled the gradient sky's chroma error. Modulating the feather by the
+continuation's own gate restored the bench and simultaneously switched the feather off on the one
+scene it had helped (whose gate is legitimately open). The artifact it chased was later measured to
+sit not at the contour but deep inside the lace — wrong fix for a mislocated defect.
+
+**Split anchor sets for the intercept transport.** *Problem :* the pale-finger over-lift on a blue
+LED lamp array, theorized as core-fitted intercepts diffusing across anchor-starved dim interstices.
+*Strategy :* let the intercept plane — which carries the DC — anchor on the mass-only window set
+while the slopes keep the strict $R^2$ gate. *Why it failed :* it was a fix for a rejection that
+never happens — instrumenting the anchor masks measured **zero** windows rejected by the $R^2$ gate
+on the artifact image. The finger coefficients come from anchored, high-confidence fits whose
+$\sigma = 64$ px windows simply cannot resolve 5–20 px structure ; no anchor bookkeeping changes
+that. (The measured root cause and the candidate fixes are in the addendum's open items.)
+
 
 ## Annex : reproducing the results
 

@@ -1,0 +1,105 @@
+{
+  "instance": "https://watch.makearmy.io",
+  "account": "ansel_project",
+  "updated": "2026-09-24",
+  "videos": [
+    {
+      "yt": null,
+      "pt": "mAdNJqTTjASSQ9b4TrnjWk",
+      "title": "[EN] Image processing and pixel pipeline in Darktable 3.0",
+      "channel": "darktable_tutorials",
+      "lang": "en",
+      "duration": 2921,
+      "published": "2025-10-12",
+      "thumbnail": null,
+      "url": "https://watch.makearmy.io/w/mAdNJqTTjASSQ9b4TrnjWk",
+      "embed": "https://watch.makearmy.io/videos/embed/mAdNJqTTjASSQ9b4TrnjWk",
+      "state": "published"
+    },
+    {
+      "yt": null,
+      "pt": "t4PYzbJrMmM6av2BrPLnSS",
+      "title": "[FR] Comprendre la différence entre netteté et contraste local",
+      "channel": "darktable_tutorials",
+      "lang": "fr",
+      "duration": 1749,
+      "published": "2025-10-12",
+      "thumbnail": null,
+      "url": "https://watch.makearmy.io/w/t4PYzbJrMmM6av2BrPLnSS",
+      "embed": "https://watch.makearmy.io/videos/embed/t4PYzbJrMmM6av2BrPLnSS",
+      "state": "published"
+    },
+    {
+      "yt": null,
+      "pt": "x7PhKVKyyaHjZYnESHVN52",
+      "title": "[FR] Démarrer et organiser son travail avec Darktable",
+      "channel": "darktable_tutorials",
+      "lang": "fr",
+      "duration": 3978,
+      "published": "2025-10-12",
+      "thumbnail": null,
+      "url": "https://watch.makearmy.io/w/x7PhKVKyyaHjZYnESHVN52",
+      "embed": "https://watch.makearmy.io/videos/embed/x7PhKVKyyaHjZYnESHVN52",
+      "state": "published"
+    },
+    {
+      "yt": null,
+      "pt": "rn5jWKiEtY1z2zyZgYrrqy",
+      "title": "[FR] Y a-t-t'il un ordre canonique pour la retouche photo ?",
+      "channel": "darktable_tutorials",
+      "lang": "fr",
+      "duration": 4123,
+      "published": "2025-10-12",
+      "thumbnail": null,
+      "url": "https://watch.makearmy.io/w/rn5jWKiEtY1z2zyZgYrrqy",
+      "embed": "https://watch.makearmy.io/videos/embed/rn5jWKiEtY1z2zyZgYrrqy",
+      "state": "published"
+    },
+    {
+      "yt": null,
+      "pt": "grPgNPPcyd3yQXsoADNyE2",
+      "title": "[FR] La retouche de paysage avec Darktable",
+      "channel": "darktable_tutorials",
+      "lang": "fr",
+      "duration": 3880,
+      "published": "2025-10-13",
+      "thumbnail": null,
+      "url": "https://watch.makearmy.io/w/grPgNPPcyd3yQXsoADNyE2",
+      "embed": "https://watch.makearmy.io/videos/embed/grPgNPPcyd3yQXsoADNyE2",
+      "state": "published"
+    },
+    {
+      "yt": "5CmsxxxsMDs",
+      "pt": null,
+      "title": null,
+      "channel": null,
+      "lang": null,
+      "duration": null,
+      "published": null,
+      "thumbnail": null,
+      "state": "pending"
+    },
+    {
+      "yt": "JEY9lmCZbIc",
+      "pt": null,
+      "title": null,
+      "channel": null,
+      "lang": null,
+      "duration": null,
+      "published": null,
+      "thumbnail": null,
+      "state": "pending"
+    },
+    {
+      "yt": "OmKGLMyNCHM",
+      "pt": null,
+      "title": "Retouche à la volée sous darktable : le nu",
+      "channel": null,
+      "lang": "fr",
+      "duration": null,
+      "published": null,
+      "thumbnail": null,
+      "state": "pending"
+    }
+  ]
+}
