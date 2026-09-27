@@ -8,6 +8,7 @@ jobTitle: "Image-processing and colour-science engineer"
 portrait: "https://aurelienpierre.com/wp-content/uploads/2021/09/Auto-portrait-0088-MLM_0774.jpg"
 # the same person as https://aurelienpierre.com/#person (identity.jsonld): search engines merge the two
 sameAs:
+  - "https://orcid.org/0009-0006-1719-9011"
   - "https://aurelienpierre.com/"
   - "https://github.com/aurelienpierre"
   - "https://gitlab.com/aurelienpierre"
