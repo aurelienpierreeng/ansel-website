@@ -1,0 +1,80 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "group",
+    "role": "owner",
+    "name": "Ansel Co-Op",
+    "email": "ansel-project@pm.me",
+    "description": "Ansel Co-Op is the organisation around Ansel, an open-source raw photo editor for artists forked from darktable in 2022 by Aurélien Pierre, and maintained since October 2025 by Jiyoné (Guillaume Stutin). The Co-Op umbrella (github.com/aurelienpierreeng) also holds the documentation in 10 languages, the website in 9, the Chantal documentation search engine (47,000 pages indexed, about 1,100 questions answered per month, free, no account), and the research code around the editor: VirtualSecretary, LensSerious, ansel-denoise. The ultimate goal is a co-operative in which the users actually own the project; pending that legal structure, the Liberapay team keeps the boat afloat: money given there is split among the people doing the work, by public takes. It pays for servers, the ansel.photos domain, the build and test infrastructure, a crawler running 24/7, and the AI subscriptions (Claude) used for development and documentation. The founder's own authorship and scoped work are declared separately at https://aurelienpierre.com/funding.json.",
+    "webpageUrl": {
+      "url": "https://ansel.photos/"
+    }
+  },
+  "projects": [
+    {
+      "guid": "ansel",
+      "name": "Ansel",
+      "description": "An open-source raw photo editor for artists — a darktable fork (2022) that keeps the imaging science and trims the rest. 1,000+ stars, GPL-3.0, nightly builds for Linux, Windows and macOS. Ships the scene-referred pipeline its founder wrote for darktable (filmic RGB, tone equalizer, color balance RGB, diffuse or sharpen, guided-Laplacian highlight reconstruction), plus, in 2026, the color equalizer module, scene-referred raster drawing and the Canvas layout-and-print atelier.",
+      "webpageUrl": {
+        "url": "https://ansel.photos/"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/aurelienpierreeng/ansel"
+      },
+      "licenses": ["spdx:GPL-3.0"],
+      "tags": ["photography", "graphics", "science", "linux", "design"]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "liberapay-team",
+        "type": "payment-provider",
+        "address": "https://liberapay.com/Ansel",
+        "description": "The canonical channel: the Ansel Co-Op team on Liberapay. Money is split among the people doing the work, by public takes. No rewards, nothing to unlock — everything the project makes is free and stays free."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "running-costs",
+        "status": "active",
+        "name": "Running the project: servers, domain, builds, crawler, AI subscriptions",
+        "description": "Keeps ansel.photos, the documentation, the nightly builds and the Chantal search engine online, and pays the AI subscriptions used for development and documentation. Infrastructure, not wages.",
+        "amount": 100,
+        "currency": "EUR",
+        "frequency": "monthly",
+        "channels": ["liberapay-team"]
+      },
+      {
+        "guid": "colour-pipeline-lib",
+        "status": "active",
+        "name": "The scene-referred colour pipeline as a standalone library",
+        "description": "Scoped deliverable, roughly 50 working days by the original author: the scene-referred colour-processing core — working colour space, filmic tone mapping, color balance RGB, hue-angle interpolation — extracted into a documented, tested library with a stable API, usable by any raw pipeline. Copyright provenance traceable line by line through git history.",
+        "amount": 40000,
+        "currency": "EUR",
+        "frequency": "one-time",
+        "channels": ["liberapay-team"]
+      },
+      {
+        "guid": "guided-laplacian",
+        "status": "active",
+        "name": "Guided-Laplacian highlight reconstruction, packaged and documented",
+        "description": "Scoped deliverable, roughly 20 working days by the original author: the guided-Laplacian highlight reconstruction and the rotation-invariant Laplacian operator as standalone, documented code with a written derivation, a test corpus and numerical-stability bounds.",
+        "amount": 15000,
+        "currency": "EUR",
+        "frequency": "one-time",
+        "channels": ["liberapay-team"]
+      },
+      {
+        "guid": "one-off",
+        "status": "active",
+        "name": "One-off contribution, any amount",
+        "description": "For someone whose photographs went through this code. Split among the people doing the work, by public takes.",
+        "amount": 10,
+        "currency": "EUR",
+        "frequency": "one-time",
+        "channels": ["liberapay-team"]
+      }
+    ]
+  }
+}
