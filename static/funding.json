@@ -19,7 +19,8 @@
         "url": "https://ansel.photos/"
       },
       "repositoryUrl": {
-        "url": "https://github.com/aurelienpierreeng/ansel"
+        "url": "https://github.com/aurelienpierreeng/ansel",
+        "wellKnown": "https://raw.githubusercontent.com/aurelienpierreeng/ansel/master/.well-known/funding-manifest-urls"
       },
       "licenses": [
         "spdx:GPL-3.0"
@@ -40,7 +41,8 @@
         "url": "https://ansel.photos/doc"
       },
       "repositoryUrl": {
-        "url": "https://github.com/aurelienpierreeng/ansel-doc"
+        "url": "https://github.com/aurelienpierreeng/ansel-doc",
+        "wellKnown": "https://raw.githubusercontent.com/aurelienpierreeng/ansel-doc/master/.well-known/funding-manifest-urls"
       },
       "licenses": [
         "spdx:GPL-3.0"
@@ -58,10 +60,12 @@
       "name": "Virtual Secretary",
       "description": "A Python framework building the missing knowledge layer over documentation, mailboxes, calendars and third-party sources. Its documentation is generated from the repository with MkDocs at virtualsecretary.aurelienpierre.com. It powers Chantal (chantal.aurelienpierre.com), a semantic search engine over 47,000 pages of photography and raw-processing documentation answering about 1,100 questions a month, free and without an account, and an email/agenda automation engine that files and tags mail from rules written against real context.",
       "webpageUrl": {
-        "url": "https://virtualsecretary.aurelienpierre.com/"
+        "url": "https://virtualsecretary.aurelienpierre.com/",
+        "wellKnown": "https://virtualsecretary.aurelienpierre.com/.well-known/funding-manifest-urls"
       },
       "repositoryUrl": {
-        "url": "https://github.com/aurelienpierreeng/VirtualSecretary"
+        "url": "https://github.com/aurelienpierreeng/VirtualSecretary",
+        "wellKnown": "https://raw.githubusercontent.com/aurelienpierreeng/VirtualSecretary/main/.well-known/funding-manifest-urls"
       },
       "licenses": [
         "spdx:GPL-3.0"
@@ -79,10 +83,12 @@
       "name": "LensSerious",
       "description": "Lens-correction mathematics as data rather than as a runtime. Lensfun's community database is excellent but its runtime fights a modern raw pipeline: 8.4 MB of XML parsed into flat lists at every startup (89–102 ms measured), linear fuzzy scans, and a process-global setlocale() flipped during parsing. LensSerious keeps the database and drops the runtime: CPU/SIMD/OpenCL-ready closed forms, parity-tested against liblensfun.",
       "webpageUrl": {
-        "url": "https://github.com/aurelienpierreeng/LensSerious"
+        "url": "https://github.com/aurelienpierreeng/LensSerious",
+        "wellKnown": "https://raw.githubusercontent.com/aurelienpierreeng/LensSerious/main/.well-known/funding-manifest-urls"
       },
       "repositoryUrl": {
-        "url": "https://github.com/aurelienpierreeng/LensSerious"
+        "url": "https://github.com/aurelienpierreeng/LensSerious",
+        "wellKnown": "https://raw.githubusercontent.com/aurelienpierreeng/LensSerious/main/.well-known/funding-manifest-urls"
       },
       "licenses": [
         "spdx:LGPL-3.0"
@@ -100,10 +106,12 @@
       "name": "ansel-denoise",
       "description": "Training pipeline for Ansel's neural raw denoiser, working in the CFA domain with synthetic supervision derived from measured camera noise profiles — denoising before demosaicing, where the noise actually is.",
       "webpageUrl": {
-        "url": "https://github.com/aurelienpierreeng/ansel-denoise"
+        "url": "https://github.com/aurelienpierreeng/ansel-denoise",
+        "wellKnown": "https://raw.githubusercontent.com/aurelienpierreeng/ansel-denoise/master/.well-known/funding-manifest-urls"
       },
       "repositoryUrl": {
-        "url": "https://github.com/aurelienpierreeng/ansel-denoise"
+        "url": "https://github.com/aurelienpierreeng/ansel-denoise",
+        "wellKnown": "https://raw.githubusercontent.com/aurelienpierreeng/ansel-denoise/master/.well-known/funding-manifest-urls"
       },
       "licenses": [
         "spdx:GPL-3.0"
