@@ -5,7 +5,7 @@
     "role": "owner",
     "name": "Ansel Co-Op",
     "email": "ansel-project@pm.me",
-    "description": "Ansel Co-Op is the organisation behind Ansel, an open-source raw photo editor for artists, forked from darktable in 2022 by Aurélien Pierre and maintained since October 2025 by Jiyoné (Guillaume Stutin). Everything under github.com/aurelienpierreeng is funded here: the editor, its documentation in 10 languages, the developer documentation at dev.ansel.photos, the website in 9 languages, and the research code around them — VirtualSecretary, LensSerious, ansel-denoise. The websites are served by GitHub Pages from a static CMS, so they cost nothing to host; what the project actually pays for is the ansel.photos domain name (30 €/year) and the AI subscriptions used for development and documentation (90 €/month plus VAT, for two developers — Anthropic declined to sponsor the project). Money given to this team is split among the people doing the work, by public takes. The ultimate goal is a co-operative in which the users actually own the project; pending that legal structure, this Liberapay team keeps the boat afloat. Everything the project makes is free and stays free: no rewards, nothing to unlock. The founder's personal work — his websites, writings, music and the repositories on his own account — is funded separately at https://aurelienpierre.com/funding.json.",
+    "description": "Ansel Co-Op is the organisation behind Ansel, an open-source raw photo editor for artists, forked from darktable in 2022 by Aurélien Pierre and maintained since October 2025 by Jiyoné (Guillaume Stutin). Everything under github.com/aurelienpierreeng is funded here: the editor, its documentation in 10 languages, the developer documentation at dev.ansel.photos, the website in 9 languages, and the research code around them — VirtualSecretary, LensSerious, ansel-denoise. The websites are served by GitHub Pages from a static CMS, so they cost nothing to host; what the project actually pays for is the ansel.photos domain name (30 €/year) and the AI subscriptions used for development and documentation (90 €/month plus VAT each, for two developers — 216 €/month; Anthropic declined to sponsor the project). Money given to this team is split among the people doing the work, by public takes. The ultimate goal is a co-operative in which the users actually own the project; pending that legal structure, this Liberapay team keeps the boat afloat. Everything the project makes is free and stays free: no rewards, nothing to unlock. The founder's personal work — his websites, writings, music and the repositories on his own account — is funded separately at https://aurelienpierre.com/funding.json.",
     "webpageUrl": {
       "url": "https://ansel.photos/"
     }
@@ -131,8 +131,8 @@
         "guid": "running-costs",
         "status": "active",
         "name": "The project's actual bills",
-        "description": "What the Co-Op pays every month, itemised: AI subscriptions for two developers, 90 € plus VAT (108 €), and the ansel.photos domain name at 30 €/year (2.50 €/month). The websites and documentation are served by GitHub Pages at no cost. Infrastructure and tools, not wages.",
-        "amount": 111,
+        "description": "What the Co-Op pays every month, itemised: AI subscriptions for development and documentation, 90 € plus VAT (108 €) per developer for two developers — 216 € — and the ansel.photos domain name at 30 €/year (2.50 €/month). The websites and documentation are served by GitHub Pages at no cost. Infrastructure and tools, not wages.",
+        "amount": 219,
         "currency": "EUR",
         "frequency": "monthly",
         "channels": [
