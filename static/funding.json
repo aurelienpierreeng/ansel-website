@@ -56,9 +56,9 @@
     {
       "guid": "virtual-secretary",
       "name": "Virtual Secretary",
-      "description": "A Python framework building the missing knowledge layer over documentation, mailboxes, calendars and third-party sources. It powers Chantal, a semantic search engine over 47,000 pages of photography and raw-processing documentation that answers about 1,100 questions a month, free and without an account, and an email/agenda automation engine that files and tags mail from rules written against real context.",
+      "description": "A Python framework building the missing knowledge layer over documentation, mailboxes, calendars and third-party sources. Its documentation is generated from the repository with MkDocs at virtualsecretary.aurelienpierre.com. It powers Chantal (chantal.aurelienpierre.com), a semantic search engine over 47,000 pages of photography and raw-processing documentation answering about 1,100 questions a month, free and without an account, and an email/agenda automation engine that files and tags mail from rules written against real context.",
       "webpageUrl": {
-        "url": "https://chantal.aurelienpierre.com"
+        "url": "https://virtualsecretary.aurelienpierre.com/"
       },
       "repositoryUrl": {
         "url": "https://github.com/aurelienpierreeng/VirtualSecretary"
