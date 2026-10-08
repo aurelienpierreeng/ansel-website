@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-10-08T12:07:21Z",
+ "generated": "2026-10-08T13:06:14Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -17,15 +17,15 @@
    "commit": "7230d1b35573214c4832cd3006d4ea6a44855283"
   },
   "dmg-arm64": {
-   "name": "Ansel-0.0.0+5232.gea59057346-arm64.dmg",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-10/Ansel-0.0.0%2B5232.gea59057346-arm64.dmg",
-   "size": 146321755,
-   "uploaded": "2026-10-07T15:33:57Z",
+   "name": "Ansel-0.0.0+5241.g7230d1b355-arm64.dmg",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-10/Ansel-0.0.0%2B5241.g7230d1b355-arm64.dmg",
+   "size": 146322131,
+   "uploaded": "2026-10-08T13:05:44Z",
    "release": "nightly-2026-10",
-   "version": "0.0.0+5232.gea59057346",
-   "commit_short": "ea59057346",
-   "sha256": "89157254feb842f84687bdb3954ea54bbe6631b7e4ada6c65c48f1b406964f8a",
-   "commit": "ea59057346517ce0e0cbd109d5a37d4b0711b967"
+   "version": "0.0.0+5241.g7230d1b355",
+   "commit_short": "7230d1b355",
+   "sha256": "7d69f634889ab476cc2bc07beb8fb81b8fc9dab527ebf17c5873427ddd5ac199",
+   "commit": "7230d1b35573214c4832cd3006d4ea6a44855283"
   },
   "dmg-i386": {
    "name": "Ansel-0.0.0+5232.gea59057346-i386.dmg",
