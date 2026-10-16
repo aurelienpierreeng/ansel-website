@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-10-15T18:37:49Z",
+ "generated": "2026-10-16T09:27:45Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -36,7 +36,7 @@
    "version": "0.0.0+5232.gea59057346",
    "commit_short": "ea59057346",
    "sha256": "73e9a391f1d999794d16472e376f2ce1a83fe4b4b8e79904af9d4ec738c5f128",
-   "commit": null
+   "commit": "ea59057346517ce0e0cbd109d5a37d4b0711b967"
   },
   "docker": {
    "name": "Ansel-0.0.0+5260.g22b2e62997-docker.tar.zst",
