@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-10-20T10:07:26Z",
+ "generated": "2026-10-20T10:14:03Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -47,21 +47,18 @@
    "version": "0.0.0+5263.ga7455a803b",
    "commit_short": "a7455a803b",
    "sha256": "cea6c26dbab295a181ce4207f84a7e19c68bc7c33fc4c6c6eb79094b5bec9be4",
-   "image": "aurelienpierre/ansel",
-   "pull": "aurelienpierre/ansel:0.0.0-5263.ga7455a803b",
-   "digest": "sha256:1918687cdc87114c06801303f31bbc778acec98d085ae7105468e79a71ce9184",
    "commit": "a7455a803b7df3b84b9afa12869f1a8be148a221"
   },
   "exe": {
-   "name": "ansel-0.0.0+5263.ga7455a803b-win64.exe",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-10/ansel-0.0.0%2B5263.ga7455a803b-win64.exe",
-   "size": 154161958,
-   "uploaded": "2026-10-19T10:52:10Z",
+   "name": "ansel-0.0.0+5274.gc1c4123fcb-win64.exe",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-10/ansel-0.0.0%2B5274.gc1c4123fcb-win64.exe",
+   "size": 154136722,
+   "uploaded": "2026-10-20T10:13:31Z",
    "release": "nightly-2026-10",
-   "version": "0.0.0+5263.ga7455a803b",
-   "commit_short": "a7455a803b",
-   "sha256": "7c360456408c0d2f29974b5534e0f5d96c9637502743e083650f091b2d651953",
-   "commit": "a7455a803b7df3b84b9afa12869f1a8be148a221"
+   "version": "0.0.0+5274.gc1c4123fcb",
+   "commit_short": "c1c4123fcb",
+   "sha256": "bb9755cc17a3d1dac17a700c7e84cab41998967276c13f57b359a47d542435a3",
+   "commit": "c1c4123fcb33fbd00f1bd1b5f73513d7fc42177e"
   },
   "flatpak": {
    "name": "Ansel-0.0.0+5266.g199597e02a-x86_64.flatpak",
