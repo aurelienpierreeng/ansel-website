@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated": "2026-10-21T10:22:38Z",
+ "generated": "2026-10-21T11:32:26Z",
  "channel": "nightly",
  "repo": "aurelienpierreeng/ansel",
  "download_page": "https://ansel.photos/en/download/",
@@ -64,15 +64,15 @@
    "commit": "5632537f6e8527dd2bc3b271c36a3eeedd64ad34"
   },
   "flatpak": {
-   "name": "Ansel-0.0.0+5274.gc1c4123fcb-x86_64.flatpak",
-   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-10/Ansel-0.0.0%2B5274.gc1c4123fcb-x86_64.flatpak",
-   "size": 103840928,
-   "uploaded": "2026-10-20T11:23:03Z",
+   "name": "Ansel-0.0.0+5281.g7a35b47d25-x86_64.flatpak",
+   "url": "https://github.com/aurelienpierreeng/ansel/releases/download/nightly-2026-10/Ansel-0.0.0%2B5281.g7a35b47d25-x86_64.flatpak",
+   "size": 103853704,
+   "uploaded": "2026-10-21T11:31:53Z",
    "release": "nightly-2026-10",
-   "version": "0.0.0+5274.gc1c4123fcb",
-   "commit_short": "c1c4123fcb",
-   "sha256": "f5ad937f584d539863967ee52c62fa3ca13cb66ef04cf9fa8af8382c3baeb4f3",
-   "commit": "c1c4123fcb33fbd00f1bd1b5f73513d7fc42177e"
+   "version": "0.0.0+5281.g7a35b47d25",
+   "commit_short": "7a35b47d25",
+   "sha256": "1fcfb52ca5284bea7e6f4448d6a9612e7ccb4d11606cd5436452da55c1185e89",
+   "commit": "7a35b47d2571f4041bd7564fa335773bb3c0ea6b"
   }
  }
 }
